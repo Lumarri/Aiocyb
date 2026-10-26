@@ -24,6 +24,19 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tool/generate_icons.ps1
 
 El script solo exporta tamaños, formato y fondo para cada plataforma; el original generado conserva su transparencia. No modifica la política de ejecución del sistema.
 
+## Comprobación de la entrega
+
+- `flutter analyze --no-pub`: sin incidencias.
+- Trece PNG exportados con las dimensiones esperadas y siete tamaños válidos en el ICO.
+- `flutter build apk --release --target-platform android-arm64 --no-pub`: compilación correcta; Gradle tardó 722,3 segundos.
+- El manifiesto Android compilado apunta al nuevo icono normal y redondo. El APK contiene las cinco densidades clásicas, dos variantes adaptativas y la capa monocromática.
+- Los píxeles visibles de los seis PNG Android empaquetados coinciden con los originales exportados, aunque la compresión de sus archivos sea diferente.
+- La auditoría completa del APK vuelve a confirmar 25 cursos, 430 lecciones, 930 ejercicios, los recursos de Aoi y la ausencia del permiso de Internet. Las fuentes de las comprobaciones de interfaz de 1.6 conservan sus hashes; no se ha modificado código Dart ni repetido la prueba de interfaz para cambiar el icono.
+
+[Auditoría del icono](ICON_AUDIT.json) · [Auditoría del APK actual](BUILD_AUDIT.json).
+
+APK local: `build/app/outputs/flutter-apk/app-release.apk`, 69 964 302 bytes. SHA-256: `4839e8b7097221776b76ee2efc366b2ed5add9750479c252ac629a41aacb0aad`. Se conserva la versión 1.6.0+8. El instalador se genera localmente y queda fuera del repositorio de código. No se ha instalado esta compilación en un teléfono ni comprobado el icono en un lanzador físico.
+
 ## Generación original
 
 Se aplicó la habilidad imagegen con la herramienta integrada `image_gen`, con `transparent_background: true`. No se usó la CLI ni una clave API. El resultado se copió a `assets/branding/aiocyb-emblem-v1.png` antes de generar las exportaciones.

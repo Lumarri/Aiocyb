@@ -1,8 +1,8 @@
 {
   "version": "1.6.0+8",
   "apk": "build/app/outputs/flutter-apk/app-release.apk",
-  "bytes": 69831313,
-  "sha256": "873090ca2695e58cd2580816083c9cfe131acfbd61d4720ae283071b9bf3106a",
+  "bytes": 69964302,
+  "sha256": "4839e8b7097221776b76ee2efc366b2ed5add9750479c252ac629a41aacb0aad",
   "portraits": 16,
   "course_covers": 5,
   "course_interface_source_files": [

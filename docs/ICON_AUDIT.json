@@ -1,0 +1,164 @@
+{
+    "date":  "2026-10-26",
+    "version":  "1.6.0+8",
+    "status":  "passed",
+    "flutter_analyze":  "No issues found (10.0 s)",
+    "png_exports":  13,
+    "windows_ico_sizes":  [
+                              16,
+                              24,
+                              32,
+                              48,
+                              64,
+                              128,
+                              256
+                          ],
+    "adaptive_safe_radius_dp":  33,
+    "measured_artwork_radius_dp":  31.03,
+    "alpha_threshold":  16,
+    "compiled_adaptive_variants":  2,
+    "compiled_monochrome_variants":  1,
+    "compiled_png_pixel_checks":  [
+                                      {
+                                          "source":  "android/app/src/main/res/drawable-nodpi/aiocyb_emblem_foreground.png",
+                                          "resource":  "res/tv.png",
+                                          "size":  432,
+                                          "pixel_mismatches":  0
+                                      },
+                                      {
+                                          "source":  "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+                                          "resource":  "res/9w.png",
+                                          "size":  48,
+                                          "pixel_mismatches":  0
+                                      },
+                                      {
+                                          "source":  "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+                                          "resource":  "res/yn.png",
+                                          "size":  72,
+                                          "pixel_mismatches":  0
+                                      },
+                                      {
+                                          "source":  "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+                                          "resource":  "res/FS.png",
+                                          "size":  96,
+                                          "pixel_mismatches":  0
+                                      },
+                                      {
+                                          "source":  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+                                          "resource":  "res/RJ.png",
+                                          "size":  144,
+                                          "pixel_mismatches":  0
+                                      },
+                                      {
+                                          "source":  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+                                          "resource":  "res/o-.png",
+                                          "size":  192,
+                                          "pixel_mismatches":  0
+                                      }
+                                  ],
+    "apk":  {
+                "path":  "build/app/outputs/flutter-apk/app-release.apk",
+                "bytes":  69964302,
+                "sha256":  "4839e8b7097221776b76ee2efc366b2ed5add9750479c252ac629a41aacb0aad"
+            },
+    "source_files":  [
+                         {
+                             "path":  "android/app/src/main/AndroidManifest.xml",
+                             "sha256":  "461830859ee8a35554075218d9e98679d3fd45e292a41fe0817c331111c513b1"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/drawable/aiocyb_icon_foreground.xml",
+                             "sha256":  "4c581b275bacfa6a0978ab3ca527757b0932b9c87f471e67e46567c382cc6fc0"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/drawable/aiocyb_icon_monochrome.xml",
+                             "sha256":  "dd348def49642f6b2f585ea80636126e4d857c1ce8b97c1a276938c15b6aa226"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/drawable-nodpi/aiocyb_emblem_foreground.png",
+                             "sha256":  "ee64df7fc9141aaf3a63cb93edc4954114b2404685b067dbe9575b0fb8dbd0fe"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+                             "sha256":  "e3238ded9b5c205cab16f7e1e5592541ad840406977e1708147c1dffa095134f"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-anydpi-v33/ic_launcher.xml",
+                             "sha256":  "1607fedf56801b5c02e14927cdb80550a88617ac8e447fdd34ce539b14dbc610"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+                             "sha256":  "94693237f61f3f642fc8ddcd4bfc8cdf2518b6a5cdb16b9fc7cf600972cb31c2"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+                             "sha256":  "3627c68e3bee0e2175a90136634736831dc55084b9ecda321e68896698c96190"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+                             "sha256":  "30a0bc50275e51f3946bb990138b88f89972f528b64be8df264b8c192c38f9bf"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+                             "sha256":  "e090e90ecfa23a4ccf7f8da257eef8c701f59b208f4ffc51f11bbad1af3d5ff3"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+                             "sha256":  "3959578b3e5c5d713224ff630bfbd753af2258aa2e9f762fc0587165b2c03b1f"
+                         },
+                         {
+                             "path":  "android/app/src/main/res/values/icon_colors.xml",
+                             "sha256":  "d123a4f909d5e7346e2f9cde2d2a9afbed97adf9acf505a7a9672aa88e1b6fb1"
+                         },
+                         {
+                             "path":  "assets/branding/aiocyb-emblem-v1.png",
+                             "sha256":  "ae40e48e5fafa7297be721a8711c81891d4a606ef699ac7eedd31c686077f2c2"
+                         },
+                         {
+                             "path":  "assets/branding/aiocyb-icon-1024.png",
+                             "sha256":  "1e3ee56afc161c2ec85bb1648e4b1daa83414644d18de5feb237200efa29d0a1"
+                         },
+                         {
+                             "path":  "assets/branding/play-store-icon-512.png",
+                             "sha256":  "32b93f2205a954749b48aac94aad5fd43c0400718992910c338c4e531f834c03"
+                         },
+                         {
+                             "path":  "tool/generate_icons.ps1",
+                             "sha256":  "45cd6559d63f578fce40f5f5248948d94f32ade0f298bea70e1171b9b1430d05"
+                         },
+                         {
+                             "path":  "web/favicon.png",
+                             "sha256":  "35384fdf76607c7fff7a0b758a4fdc2a5c5c6a9fa9873c9fbfdd5a80a511d264"
+                         },
+                         {
+                             "path":  "web/icons/Icon-192.png",
+                             "sha256":  "3959578b3e5c5d713224ff630bfbd753af2258aa2e9f762fc0587165b2c03b1f"
+                         },
+                         {
+                             "path":  "web/icons/Icon-512.png",
+                             "sha256":  "32b93f2205a954749b48aac94aad5fd43c0400718992910c338c4e531f834c03"
+                         },
+                         {
+                             "path":  "web/icons/Icon-maskable-192.png",
+                             "sha256":  "6b723a18483d6d6015869d6d0763a8dc71763b481131c9aba7eef5c192b39809"
+                         },
+                         {
+                             "path":  "web/icons/Icon-maskable-512.png",
+                             "sha256":  "3b7ba536ea4d2bcb558ba7a1c15ffd61c47cdafc7f0b01270f8433142eb2db04"
+                         },
+                         {
+                             "path":  "web/index.html",
+                             "sha256":  "a0bff09618fd70e9bf5707e728b34fcf23f07e139d915ac90d9180094b790b8b"
+                         },
+                         {
+                             "path":  "web/manifest.json",
+                             "sha256":  "dfd96d8a33cb5aef7d9884358236cb4f634a2dee0092244955833def8cee2417"
+                         },
+                         {
+                             "path":  "windows/runner/resources/app_icon.ico",
+                             "sha256":  "888899ad5af9387513cd641df3db552491ff4b1b81358f447ae65e70e3c22631"
+                         }
+                     ],
+    "hardware_launcher_tested":  false,
+    "windows_executable_built":  false
+}
