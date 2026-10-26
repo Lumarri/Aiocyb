@@ -1,0 +1,1649 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "p-phishing-signals-intro-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Ven, cariño: hoy le quitamos el disfraz al correo urgente. Mi brazo metálico pesa menos que todas sus promesas juntas.",
+      "explanation": "Aprenderás a reconocer solicitudes sospechosas, examinar direcciones y comprobar mensajes por otra vía. El objetivo es decidir con información antes de entregar datos, pagar o abrir contenido inesperado."
+    },
+    {
+      "id": "p-phishing-signals-intro-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Ese supuesto premio exige un depósito. Qué encanto: hasta para ganarte la lotería inventada quieren cobrarte entrada. Vamos a revisar la trampa.",
+      "explanation": "Un ofrecimiento atractivo puede llevar a una acción que beneficia al remitente fraudulento. Durante la lección separarás lo que el mensaje promete de lo que realmente te pide hacer."
+    },
+    {
+      "id": "p-phishing-signals-intro-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Te acompaño a mirar el mensaje por dentro. Los logotipos impresionan, sí; también impresiono yo y no por eso debes regalarme tu contraseña.",
+      "explanation": "La identidad visual de una empresa puede copiarse con facilidad. Considera el contexto, la petición y el dominio, y confirma cualquier cambio sensible usando un contacto o acceso previamente conocido."
+    },
+    {
+      "id": "p-phishing-signals-intro-0-4",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Hoy el examen se lo hacemos al remitente. Si quiere tu confianza, que aporte algo más convincente que mayúsculas y amenazas dramáticas.",
+      "explanation": "El phishing intenta obtener información, dinero o acciones mediante una identidad engañosa. No hace falta adivinar las intenciones de cada persona: puedes comprobar solicitudes concretas antes de actuar."
+    },
+    {
+      "id": "p-phishing-signals-intro-0-5",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "Dicen que tu beca desaparece en diez minutos. Joder, qué puntualidad para asustar y qué poca para presentar pruebas. Respira conmigo.",
+      "explanation": "La simulación utiliza una amenaza académica para provocar prisa. Estudiaremos cómo esa presión reduce la revisión del mensaje y cómo recuperar el control verificando desde el portal oficial por tu cuenta."
+    },
+    {
+      "id": "p-phishing-signals-intro-0-6",
+      "lessonId": "phishing-signals",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Prometo disfrutar cuando desmontemos el engaño. Tú traes la curiosidad; yo traigo esta ceja levantada y una intolerancia deliciosa a las estafas.",
+      "explanation": "No todos los mensajes extraños son fraudes, ni todo mensaje pulido es legítimo. Practicarás una evaluación proporcionada que combine indicios y comprobación independiente, sin convertir cada notificación en una emergencia."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Un impostor puede ponerse el nombre de tu instituto sin pedir permiso. Yo al menos tendría la decencia de exigir un uniforme bonito.",
+      "explanation": "La suplantación presenta a un atacante como una entidad de confianza. Un correo con nombre institucional puede pedir credenciales, transferencias o descargas; el nombre mostrado no demuestra quién controla la cuenta emisora."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El SMS del paquete quiere tu tarjeta para una entrega inexistente. Una historia cotidiana basta; el villano no necesita una pantalla llena de calaveras.",
+      "explanation": "El engaño también llega por SMS y aplicaciones de mensajería. Una supuesta entrega usa un contexto familiar para solicitar datos financieros. Comprueba el envío en la aplicación del transportista que ya utilizabas."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Mira ese correo impecable: tipografía elegante y estafa con corbata. La buena ortografía no convierte al remitente en una criatura honesta, cielo.",
+      "explanation": "Los mensajes fraudulentos pueden tener redacción profesional, imágenes correctas y datos reales. El acabado visual reduce sospechas, pero la autenticidad exige comprobar la solicitud y su origen mediante canales independientes."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-4",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "A veces no quieren tu clave: quieren que pagues una factura falsa. Distinto anzuelo, misma descarada costumbre de meterse donde no deben.",
+      "explanation": "El objetivo puede ser dinero o una acción, además de credenciales. Una solicitud de cambiar la cuenta bancaria de un proveedor debe confirmarse con un contacto conocido antes de ordenar el pago."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-5",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "La cuenta de un conocido también puede enviar basura peligrosa. Me encanta arruinar sorpresas, sobre todo cuando la sorpresa trae un archivo sospechoso.",
+      "explanation": "Una cuenta comprometida puede distribuir mensajes que parecen venir de alguien cercano. Si la petición resulta inesperada, confirma con esa persona por otra vía antes de ejecutar archivos o compartir información."
+    },
+    {
+      "id": "p-phishing-signals-theory-0-6",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "El supuesto coordinador pide acceso a tu nube para revisar una tarea. Consentida soy yo; exigir permisos absurdos ya es otra categoría.",
+      "explanation": "Algunos engaños solicitan autorizar aplicaciones o conceder acceso a archivos en lugar de escribir una contraseña. Revisa quién pide el permiso, qué alcance tiene y si la tarea lo necesita realmente."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Cuando te meten un cronómetro delante, quieren alquilar tu pánico. Haz una pausa: tu criterio funciona mejor sin un estafador marcando el ritmo.",
+      "explanation": "Amenazar con cerrar una cuenta puede empujarte a actuar sin revisar. La urgencia es una alerta que requiere comprobación, no una prueba suficiente de fraude ni una razón para obedecer inmediatamente."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Soporte te pide la contraseña por chat. Qué servicio tan completo: además de resolver incidencias, quiere quedarse con las llaves de casa.",
+      "explanation": "Una solicitud inesperada de credenciales merece detenerse. No envíes contraseñas en una conversación; abre el servicio por tu acceso habitual y pregunta al soporte oficial si existe una incidencia real."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "El teléfono incluido en el correo también puede ser parte del teatro. Busca tu contacto habitual; no le pidas al disfraz que certifique el disfraz.",
+      "explanation": "Verificar por una vía independiente exige no depender de los enlaces ni los números proporcionados por el aviso sospechoso. Usa un marcador propio, la aplicación instalada o un teléfono obtenido previamente de forma fiable."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-4",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Tu nombre completo en el saludo impresiona menos de lo que crees. Hasta una filtración puede personalizar el engaño; qué atención al cliente, carajo.",
+      "explanation": "Los datos personales pueden proceder de publicaciones o filtraciones y servir para hacer creíble un mensaje. Que conozcan tu nombre o curso no confirma que pertenezcan al servicio que dicen representar."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-5",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "La dirección dice pagos@becas-rayo.test, pero habla como tu universidad. Yo levantaría esta ceja aunque el mensaje me alabara el peinado.",
+      "explanation": "Compara la dirección completa con el remitente esperado y revisa la coherencia de la petición. Un dominio distinto es un indicio relevante; confirma el caso antes de atribuirle legitimidad o malicia definitiva."
+    },
+    {
+      "id": "p-phishing-signals-theory-1-6",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Un aviso raro merece comprobación, no una persecución con música dramática. Nosotras desmontamos la petición; el espectáculo se lo dejamos a mi sonrisa.",
+      "explanation": "Una evaluación útil considera varias señales y el contexto. Los errores tipográficos, la prisa o un remitente desconocido pueden justificar una pausa, pero una comprobación independiente ayuda a resolver la incertidumbre."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "En academia.example.verificar.test, la academia está de invitada en el nombre. Quien manda es verificar.test; esa decoración de la izquierda no compra autoridad.",
+      "explanation": "En este dominio ficticio, verificar.test es la base y academia.example es un subdominio. La presencia del nombre de una institución a la izquierda no prueba que esa institución gestione el sitio."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "El candado cifra la conversación, cariño; no le hace una entrevista moral al dueño. Una estafa también puede viajar muy bien abrigada.",
+      "explanation": "HTTPS protege la conexión frente a ciertas escuchas y modificaciones durante el transporte. No demuestra que el contenido sea honesto ni que la organización sugerida por el diseño controle ese dominio."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Compara aula.campus.example con campus.example.premios.test. Se parecen por delante, pero el segundo termina viviendo en premios.test. Bonito truco; pésimo invitado.",
+      "explanation": "Para estos ejemplos reservados, identifica el dominio base antes de interpretar los nombres situados a su izquierda. Compartir una palabra al inicio no convierte dos direcciones en servicios de la misma organización."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-4",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "El enlace presume de llamarse Portal seguro. Yo podría llamarme Duquesa del Cifrado y seguir necesitando mostrar quién controla mi dirección.",
+      "explanation": "El texto visible de un enlace puede diferir de su destino. Cuando la interfaz lo permita, inspecciona la dirección completa sin abrirla; si quedan dudas, utiliza directamente el acceso oficial que conoces."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-5",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "En cuenta.test/acceso/banco.example, el banco está metido en la ruta, no al mando. La barra no concede títulos de propiedad, por mucho que presuma.",
+      "explanation": "El dominio aparece antes de la primera barra que sigue al esquema y al nombre del servidor. En este ejemplo simplificado, cuenta.test aloja el sitio; banco.example es solo parte de la ruta."
+    },
+    {
+      "id": "p-phishing-signals-theory-2-6",
+      "lessonId": "phishing-signals",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Una dirección acortada es una caja cerrada: todavía no sabemos adónde apunta. Me gusta el misterio en una novela, menos cuando pide tus datos.",
+      "explanation": "Los acortadores pueden ocultar el destino hasta resolver el enlace y no implican fraude por sí mismos. Ante una petición sensible e inesperada, evita depender de esa dirección y comprueba el aviso por tu acceso habitual."
+    },
+    {
+      "id": "p-phishing-signals-procedure-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Primero lee qué quieren exactamente. El asunto grita seguridad, pero el cuerpo pide tu clave; tremenda obra de teatro con presupuesto para descaro.",
+      "explanation": "Describe la acción solicitada antes de tocar enlaces: introducir credenciales, enviar dinero, descargar archivos o conceder permisos. Esta lectura permite evaluar el riesgo de la petición sin interactuar con su destino."
+    },
+    {
+      "id": "p-phishing-signals-procedure-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Suelta el botón un segundo y resume el mensaje en una frase. Si cuesta entender por qué necesitan tu tarjeta, tenemos tarea deliciosa.",
+      "explanation": "Identifica quién solicita la acción, para qué dice necesitarla y qué consecuencia anuncia. Una petición poco clara debe aclararse por un medio conocido antes de facilitar datos o realizar un pago."
+    },
+    {
+      "id": "p-phishing-signals-procedure-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Ese aviso del campus exige instalar un visor especial. Antes de obedecer, lee la exigencia completa; la letra pequeña también sabe ponerse colmillos.",
+      "explanation": "Una solicitud de instalación merece atención adicional porque ejecutar software puede modificar el equipo. No abras el adjunto para averiguar si era necesario; contrasta primero la tarea con el canal institucional habitual."
+    },
+    {
+      "id": "p-phishing-signals-procedure-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Ahora despliega la dirección completa del remitente. El nombre bonito es maquillaje; quiero ver el dominio que está debajo, sin pestañas postizas.",
+      "explanation": "Examina la dirección que aparece al ampliar los datos del emisor y compárala con la esperada. El nombre visible puede editarse libremente y una coincidencia aparente tampoco descarta una cuenta legítima comprometida."
+    },
+    {
+      "id": "p-phishing-signals-procedure-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Revisa academia.example.verificar.test de derecha a izquierda. Si te distrae la palabra academia, el truco ya está trabajando horas extra para el impostor.",
+      "explanation": "En el enlace del ejercicio, identifica verificar.test como dominio base y separa el subdominio academia.example. Haz la lectura como análisis de una dirección ficticia; no necesitas visitar ninguna página para responder."
+    },
+    {
+      "id": "p-phishing-signals-procedure-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Mira también el destino, no solo quien firma. Un mensajero conocido puede traer una dirección rara; mi desconfianza tiene muy buena vista periférica.",
+      "explanation": "Compara el dominio del enlace con el servicio que supuestamente representa. Si no puedes verlo con claridad sin abrirlo, prescinde del enlace y realiza la comprobación desde el acceso oficial guardado."
+    },
+    {
+      "id": "p-phishing-signals-procedure-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Abre tú la aplicación oficial, sin usar el atajo del correo. Me encanta cuando le arruinamos al impostor su ruta turística hacia tu contraseña.",
+      "explanation": "Accede desde una aplicación instalada de confianza o un marcador que ya utilizabas y busca allí el supuesto aviso. Si no aparece, consulta con la entidad mediante un contacto previamente verificado."
+    },
+    {
+      "id": "p-phishing-signals-procedure-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "La beca no se valida preguntándole al mismo correo que te amenaza. Busca el portal de siempre; yo espero aquí, magníficamente impaciente.",
+      "explanation": "Comprueba el estado de la beca en el sistema académico habitual. Mantener independiente esta comprobación evita que un sitio falso confirme su propio relato y te devuelva al mismo formulario engañoso."
+    },
+    {
+      "id": "p-phishing-signals-procedure-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Si necesitas llamar, usa el número que ya tenías del centro. Ese teléfono recién servido en el mensaje también puede tener colmillos.",
+      "explanation": "Los datos de contacto de un mensaje sospechoso pueden conducir a un cómplice. Recupera el teléfono desde documentación fiable o el directorio oficial abierto por tu cuenta y pregunta por la solicitud concreta."
+    },
+    {
+      "id": "p-phishing-signals-procedure-3-1",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "explaining",
+      "text": "Confirmado el engaño, repórtalo antes de limpiar la bandeja. Quiero quitarle público al estafador, pero no mandar las pruebas al agujero negro.",
+      "explanation": "Usa la función de reporte o avisa al responsable según el procedimiento del centro. Conserva los datos que te indiquen y elimina el mensaje de la bandeja únicamente después de reportarlo y respetar la preservación requerida."
+    },
+    {
+      "id": "p-phishing-signals-procedure-3-2",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "smirk",
+      "text": "No lo reenvíes como souvenir a todo el grupo. Reportar tiene destinatario; repartir enlaces venenosos por entusiasmo es una fiesta de mierda.",
+      "explanation": "Comunica el caso al canal adecuado evitando difundir enlaces activos o adjuntos. Si el equipo de soporte solicita el mensaje original, utiliza el mecanismo indicado para conservar encabezados y otros datos relevantes."
+    },
+    {
+      "id": "p-phishing-signals-procedure-3-3",
+      "lessonId": "phishing-signals",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "skeptical",
+      "text": "Ya tienes confirmación: guarda la referencia del reporte y sigue las instrucciones de limpieza. Mi gusto por el drama termina donde empiezan las evidencias.",
+      "explanation": "En entornos de estudio o trabajo, el responsable puede necesitar conservar el correo para investigar o bloquear campañas similares. No borres registros ni material solicitado; después aplica la retirada del mensaje indicada por la organización."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Mira la amenaza de la beca: diez minutos y una clave como rescate. El supuesto soporte ha confundido atención académica con secuestro teatral.",
+      "explanation": "El mensaje ficticio combina urgencia, petición de contraseña y un dominio que no representa a academia.example. Analiza esas señales y decide cómo contrastar el aviso sin seguir la ruta que propone el remitente."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Tenemos soporte@becas-urgentes.test y un enlace con academia incrustada. No aprietes nada: vamos a separar remitente, promesa y destino, como una autopsia bastante educada.",
+      "explanation": "La dirección del emisor y el destino del enlace son elementos distintos que deben examinarse por separado. Los dominios del escenario están reservados para simulaciones y no requieren ninguna conexión real."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "El reloj del mensaje no manda sobre tu cabeza. La beca se comprueba con la institución; al chantajista le podemos regalar una espera eterna.",
+      "explanation": "La decisión importante es elegir una comprobación independiente antes de entregar información. Un plazo amenazante no autentica el aviso y no obliga a usar el enlace o el contacto ofrecidos en él."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-4",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Ese academia.example al principio intenta robarse el protagonismo. Yo también soy vanidosa, cariño, pero al menos no oculto quién está detrás de mi sonrisa.",
+      "explanation": "Observa la estructura completa de academia.example.verificar.test. El fragmento familiar está colocado como subdominio de verificar.test; reconocer una marca dentro de la dirección no basta para atribuirle el control del sitio."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-5",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "Piden la clave para evitar perder una beca. Vaya procedimiento de mierda: hasta la amenaza viene con un formulario para hacerse pasar por ti.",
+      "explanation": "Entregar credenciales a una página no verificada puede permitir accesos ajenos. En esta simulación no escribas ninguna contraseña; practica evaluando el mensaje y seleccionando una vía legítima para confirmar el estado académico."
+    },
+    {
+      "id": "p-phishing-signals-scenario-0-6",
+      "lessonId": "phishing-signals",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Te dejo frente al mensaje y me quedo a tu lado. Busca qué quieren que hagas y qué puedes comprobar sin obedecerles primero.",
+      "explanation": "Antes de responder, distingue la afirmación de que perderás la beca de la acción solicitada: introducir tu contraseña. La verificación del primer punto debe realizarse sin ejecutar la segunda acción propuesta."
+    },
+    {
+      "id": "p-phishing-signals-question-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El aviso de la beca quiere una reacción inmediata. Elige cómo investigarías su amenaza sin convertirte en su asistente de reparto o de contraseñas.",
+      "explanation": "Esta pregunta evalúa la vía elegida para comprobar un mensaje inesperado. Compara qué opción depende del propio aviso y cuál permite contrastar la situación con información ajena a su remitente."
+    },
+    {
+      "id": "p-phishing-signals-question-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Te están poniendo prisa con algo importante. Yo te pongo esta mirada exigente: decide qué acción te daría una confirmación útil y segura.",
+      "explanation": "Piensa en el efecto de cada respuesta antes de seleccionar. Una acción puede exponer información, otra puede ampliar la difusión del mensaje y otra puede servir para comprobar si la incidencia existe."
+    },
+    {
+      "id": "p-phishing-signals-question-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "No estamos votando qué correo resulta más convincente. Debes escoger tu siguiente movimiento ante la beca amenazada; la credibilidad se comprueba con acciones.",
+      "explanation": "El ejercicio trata de respuesta preventiva frente a una posible suplantación. Considera si tu acción conserva el control de las credenciales y te permite verificar el aviso sin confiar previamente en él."
+    },
+    {
+      "id": "p-phishing-signals-question-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Ahora interrogamos al candado del navegador. ¿Qué puede prometer de verdad y qué le estamos atribuyendo por pura fascinación con los dibujitos brillantes?",
+      "explanation": "La pregunta distingue una propiedad técnica de la conexión de la identidad y conducta del propietario del sitio. Evalúa qué afirmación describe el alcance real de HTTPS sin añadir garantías que no proporciona."
+    },
+    {
+      "id": "p-phishing-signals-question-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Una web preciosa luce HTTPS y una sonrisa comercial. Cuidado con enamorarte de las apariencias: esa plaza ya la tengo bastante disputada yo.",
+      "explanation": "Compara las opciones sobre HTTPS teniendo en cuenta que diseño, transporte e intención son cuestiones diferentes. No utilices la calidad visual de una página como demostración de que su petición resulta legítima."
+    },
+    {
+      "id": "p-phishing-signals-question-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Dime qué acredita HTTPS sin regalarle poderes de detector de mentiras. Aquí las herramientas tienen límites, incluso cuando el icono parece muy tranquilizador.",
+      "explanation": "Responde sobre el protocolo y su garantía específica, no sobre la impresión que produce. Un mecanismo técnico puede ser útil y al mismo tiempo no responder a todas las preguntas sobre la seguridad del sitio."
+    },
+    {
+      "id": "p-phishing-signals-question-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Observa academia.example.verificar.test completa. Quiero saber qué dominio gobierna esa dirección, no cuál palabra te guiña el ojo primero desde la izquierda.",
+      "explanation": "El ejercicio utiliza una estructura de dominio ficticia sencilla para practicar la identificación de su base. Distingue los subdominios del nombre que puede administrar los nombres situados a su izquierda."
+    },
+    {
+      "id": "p-phishing-signals-question-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "La dirección se ha puesto academia como perfume. Tú decide a quién pertenece la casa; el aroma institucional no firma escrituras, por fortuna.",
+      "explanation": "No confundas una palabra reconocible dentro de una URL con la organización que controla su dominio. Lee la jerarquía del nombre y compara las opciones con la dirección exacta del enunciado."
+    },
+    {
+      "id": "p-phishing-signals-question-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Esta pregunta castiga al ojo impaciente con una pequeña trampa. Mira todos los puntos del dominio antes de coronar a la primera academia que veas.",
+      "explanation": "Se evalúa tu lectura del nombre del servidor, no el texto del mensaje ni la firma del remitente. Revisa qué fragmento es un subdominio y cuál constituye la base de este ejemplo."
+    },
+    {
+      "id": "p-phishing-signals-hint-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Pista cariñosa con un codazo: una comprobación sirve cuando el sospechoso no elige también la fuente que lo declara inocente. Busca independencia.",
+      "explanation": "Pregúntate si el medio que utilizarías ya era de confianza antes de recibir el aviso. Seguir instrucciones del mismo mensaje para validarlo puede dejarte dentro de un circuito controlado por quien lo envió."
+    },
+    {
+      "id": "p-phishing-signals-hint-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Meter tu clave no investiga nada; le da exactamente lo que pide. Busca una acción que consiga información antes de sacrificar tus credenciales al drama.",
+      "explanation": "Diferencia obedecer de verificar. La elección útil debe aclarar el supuesto problema de la beca sin exigir que confíes previamente en la página que el aviso propone para introducir datos."
+    },
+    {
+      "id": "p-phishing-signals-hint-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "La multitud no autentica un enlace, cielo. Repartir la duda a cien personas produce cien dudas; necesitamos una fuente que conozca tu situación académica.",
+      "explanation": "La popularidad o difusión de un aviso no garantiza que sea cierto. Considera quién dispone realmente de los registros de la beca y cómo podrías consultar esa información sin usar datos de contacto recién recibidos."
+    },
+    {
+      "id": "p-phishing-signals-hint-0-4",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Imagina que el correo entero miente, incluido su enlace. ¿Tu método de comprobación seguiría funcionando? Esa pregunta le hace cosquillas bastante desagradables al fraude.",
+      "explanation": "Evalúa cada opción bajo la hipótesis de que el mensaje es falso. Una verificación robusta debe permitir encontrar la situación real incluso cuando no puedes confiar en ningún elemento proporcionado por el remitente."
+    },
+    {
+      "id": "p-phishing-signals-hint-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Imagina una carta transportada en una caja cerrada: el embalaje protege el trayecto, pero no vuelve sincera la carta. Traslada esa diferencia a HTTPS.",
+      "explanation": "Separa la protección durante el intercambio de la veracidad del contenido recibido. El hecho de que una conexión tenga medidas criptográficas no constituye una evaluación de las prácticas comerciales del sitio."
+    },
+    {
+      "id": "p-phishing-signals-hint-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Un estafador también puede comprar un traje impecable. Pregunta si el diseño tiene alguna relación técnica con lo que el protocolo del navegador verifica.",
+      "explanation": "La apariencia gráfica y el funcionamiento de una conexión corresponden a aspectos distintos. Busca una respuesta que no convierta la estética del sitio en una condición para considerar verdadera una garantía de honestidad."
+    },
+    {
+      "id": "p-phishing-signals-hint-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "El protocolo no entrevista al dueño sobre sus valores. Si una opción promete sinceridad universal, le estamos dando un cargo ridículamente grande al candado.",
+      "explanation": "Desconfía de las afirmaciones absolutas que vinculan una señal técnica con la ausencia total de fraude. Revisa qué parte del intercambio protege esa tecnología y qué aspectos siguen necesitando comprobación independiente."
+    },
+    {
+      "id": "p-phishing-signals-hint-1-4",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Piensa quién puede crear una página: personas honestas e impostores. Ahora pregúntate si ambos podrían utilizar el mismo protocolo para entregar su contenido.",
+      "explanation": "Que una tecnología sea accesible a cualquier operador no la vuelve inútil. Simplemente significa que su presencia debe interpretarse por su función concreta y no como una recomendación general del propietario."
+    },
+    {
+      "id": "p-phishing-signals-hint-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Empieza por el extremo derecho y reconstruye la jerarquía. Si lees como un cartel publicitario de izquierda a derecha, el nombre llamativo gana demasiada ventaja.",
+      "explanation": "En el ejemplo reservado, separa la terminación .test y el nombre que la precede de los elementos añadidos como subdominios. Esa lectura ayuda a no confundir una marca incrustada con la base del dominio."
+    },
+    {
+      "id": "p-phishing-signals-hint-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "El nombre del remitente no administra DNS por aparecer en pantalla. Busca la parte de la dirección que seguiría mandando aunque cambiaran la palabra academia.",
+      "explanation": "Una firma visible y un dominio son elementos diferentes del mensaje. Para esta pregunta debes analizar el nombre del servidor y localizar su base, no inferir propiedad a partir de etiquetas elegidas por el emisor."
+    },
+    {
+      "id": "p-phishing-signals-hint-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Prueba a imaginar otro nombre delante: biblioteca, premios o AoiEsGenial. Si el resto conserva el control, ya estás mirando donde merece mi atención.",
+      "explanation": "Los subdominios pueden variar sin cambiar el dominio base que los administra. Observa qué parte de academia.example.verificar.test contiene esos nombres subordinados y cuál permanece como referencia para determinar la propiedad."
+    },
+    {
+      "id": "p-phishing-signals-hint-2-4",
+      "lessonId": "phishing-signals",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "No te detengas justo después de example; todavía quedan puntos y nombres. Una dirección se analiza completa, igual que una excusa demasiado bien perfumada.",
+      "explanation": "Reconocer un fragmento familiar a mitad de la dirección puede producir una conclusión apresurada. Lee hasta el final y comprueba si ese fragmento ocupa realmente la posición de dominio base o de subdominio."
+    },
+    {
+      "id": "p-phishing-signals-correct-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Bien: portal oficial abierto por tu cuenta. Le has quitado al correo el mando a distancia de tus decisiones; casi me dan ganas de aplaudir.",
+      "explanation": "Consultar el portal habitual permite comprobar la beca sin entregar la contraseña al sitio del aviso. La independencia del canal rompe la necesidad de confiar primero en el mensaje que estás investigando."
+    },
+    {
+      "id": "p-phishing-signals-correct-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Elegiste una fuente que conoce tu beca y no depende del enlace recibido. Eso sí que es poner al estafador a sudar sin mover una silla.",
+      "explanation": "La institución puede confirmar el estado académico mediante su sistema oficial. Acceder por tu marcador o aplicación de confianza evita que una página impostora fabrique tanto la amenaza como su supuesta solución."
+    },
+    {
+      "id": "p-phishing-signals-correct-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Así se hace: comprobación propia antes de obedecer. Mi ceja baja un milímetro; no abuses de semejante privilegio, que luego me pides felicitaciones diarias.",
+      "explanation": "Has priorizado verificar el aviso en lugar de introducir credenciales o difundir su enlace. Si el portal no aclara el caso, el siguiente paso razonable es consultar a la institución mediante un contacto fiable."
+    },
+    {
+      "id": "p-phishing-signals-correct-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Exacto: conexión cifrada, dueño todavía bajo examen. Has evitado convertir el candado en santo patrón de los comerciantes con intenciones bastante cuestionables.",
+      "explanation": "HTTPS protege el tráfico de la conexión, pero también puede estar presente en páginas fraudulentas. Para evaluar una petición debes comprobar el dominio, el contexto y la entidad por un canal independiente."
+    },
+    {
+      "id": "p-phishing-signals-correct-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Me gusta esa precisión: el protocolo cuida el trayecto, no expide certificados de bondad. Al impostor le acabas de quitar un accesorio muy rentable.",
+      "explanation": "El cifrado de la comunicación es una protección concreta y valiosa. No demuestra que el formulario necesite tus datos ni que quien lo publica represente a la organización sugerida por su logotipo."
+    },
+    {
+      "id": "p-phishing-signals-correct-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Has puesto al candado en su puesto correcto. Excelente; tanta autoridad imaginaria empezaba a subírsele a la cabeza, y para diva ya estoy yo.",
+      "explanation": "La respuesta distingue transporte seguro de honestidad del sitio. Incluso con HTTPS, una página puede copiar una marca y solicitar información indebida; el dominio y la verificación independiente siguen siendo necesarios."
+    },
+    {
+      "id": "p-phishing-signals-correct-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Verificar.test: ahí está la base. Academia.example era un adorno colocado a la izquierda; se acabó su pequeño desfile de autoridad prestada, cariño.",
+      "explanation": "El nombre academia.example.verificar.test está bajo verificar.test en este ejemplo. Academia.example forma parte del subdominio y no demuestra vínculo con una institución que utilice academia.example como dominio independiente."
+    },
+    {
+      "id": "p-phishing-signals-correct-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Encontraste a quien manda en la dirección sin dejarte hipnotizar por academia. Qué desagradable debes de resultar para el departamento creativo de las estafas.",
+      "explanation": "Identificar verificar.test evita atribuir el sitio al nombre institucional incrustado como subdominio. La estructura del dominio aporta más información sobre su control que el orden visual que intenta destacar una marca conocida."
+    },
+    {
+      "id": "p-phishing-signals-correct-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Bien leído: verificar.test conserva el control aunque delante escriban academia, biblioteca o PrincesaAoi. Lo último mejor lo reservamos para algo con más categoría.",
+      "explanation": "Los nombres añadidos a la izquierda son subordinados al dominio base de la simulación. Haber reconocido esa jerarquía permite distinguir una dirección institucional de otra que simplemente reutiliza su nombre dentro de la URL."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "La urgencia del aviso está hecha para apurarte, cariño. Antes de introducir una clave, comprobemos la beca entrando por nuestra cuenta al servicio oficial.",
+      "explanation": "Entregar credenciales al sitio del aviso puede exponer la cuenta y no demuestra que exista un problema académico. Comprueba el estado de la beca desde el portal oficial al que accedes habitualmente."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Ese formulario no necesita una prueba de tu confianza. Necesita que le cierres la puerta hasta comprobar la historia; la contraseña no es un detector de mentiras.",
+      "explanation": "Escribir la clave implica obedecer una solicitud todavía no autenticada. La alternativa segura es abrir por tu cuenta el sistema de la institución y consultar allí el supuesto vencimiento de la beca."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Avisar a otros nace de una buena intención. Primero hay que verificar el mensaje; reenviar su enlace podría llevar la misma trampa a más personas.",
+      "explanation": "Difundir el enlace puede exponer a más personas y no valida la amenaza. Si necesitas avisar a un responsable, utiliza el canal de reporte y conserva el mensaje según sus instrucciones, sin circularlo indiscriminadamente."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-0-4",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "El grupo no necesita una invitación al fraude con catering. Primero averiguamos si la beca corre peligro; después comunicamos información comprobada por el canal adecuado.",
+      "explanation": "Reenviar el aviso amplía su alcance sin aportar certeza sobre su origen. Accede directamente al portal académico y, si confirmas el engaño, repórtalo evitando adjuntos o enlaces activos para otros estudiantes."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "El candado aporta una protección real, pero no responde todo. Distingamos una conexión cifrada de la honestidad del sitio; ambos asuntos necesitan comprobaciones diferentes.",
+      "explanation": "Una conexión cifrada no garantiza la honestidad del sitio ni la legitimidad de su formulario. Un atacante puede operar una página con HTTPS y aun así utilizarla para recopilar contraseñas o datos financieros."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Le has dado al protocolo poderes de juez moral. Joder, ni mi ojo cibernético hace eso: protege el transporte, pero la petición sigue necesitando verificación.",
+      "explanation": "HTTPS reduce ciertos riesgos de la comunicación entre navegador y servidor. No certifica que el servidor pertenezca a la marca imitada ni que el destinatario vaya a tratar de forma legítima los datos enviados."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Una página bien diseñada inspira confianza, lo sé. La apariencia no demuestra quién la controla; revisemos el dominio y qué nos está pidiendo antes de decidir.",
+      "explanation": "La apariencia visual no cambia el significado técnico de HTTPS. Copiar una web profesional resulta posible; comprueba el dominio y la solicitud mediante fuentes independientes aunque el diseño sea elegante y funcione sin errores."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-1-4",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Que la web combine los colores no significa que merezca tus datos. Yo sí acepto elogios estéticos; para autenticar un servicio necesitamos pruebas mejores.",
+      "explanation": "Un diseño cuidado puede aumentar la credibilidad percibida, pero no proporciona garantías de legitimidad. HTTPS cifra la conexión independientemente del acabado de la página y no demuestra las intenciones de su operador."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-2-1",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Ese nombre al principio llama la atención. Vamos a leer también el final de la dirección: los subdominios pueden imitar una marca sin pertenecerle realmente.",
+      "explanation": "En academia.example.verificar.test, academia.example no ocupa la posición de dominio base. Está subordinado a verificar.test, por lo que reconocer el nombre de una academia dentro de la dirección no acredita su control."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-2-2",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Te detuviste antes de terminar la dirección. Esa es justo la silla que preparó la trampa; levántate conmigo y mira lo que viene después.",
+      "explanation": "El fragmento conocido aparece seguido de .verificar.test y pertenece a ese dominio ficticio. Lee toda la jerarquía del nombre antes de atribuir el sitio a una organización por una coincidencia parcial."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-2-3",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "El nombre del remitente es una pista aparte, cariño. Esta pregunta trata de quién controla la dirección web; fijémonos en sus componentes y en su final.",
+      "explanation": "La etiqueta que muestra el correo es independiente del control del sitio enlazado. Para esta pregunta analiza academia.example.verificar.test: verificar.test es la base del dominio y los nombres anteriores son subdominios."
+    },
+    {
+      "id": "p-phishing-signals-incorrect-2-4",
+      "lessonId": "phishing-signals",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Esa firma puede cambiarse como un apodo en un chat. No la usemos como escritura de propiedad; al dominio le toca presentar sus propios papeles.",
+      "explanation": "El remitente puede elegir un nombre que sugiera autoridad sin controlar el servicio mencionado. La dirección propuesta está bajo verificar.test; el texto visible del correo no altera la jerarquía técnica de ese nombre."
+    },
+    {
+      "id": "p-phishing-signals-result-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Aprobado, y el impostor se queda sin contraseña, sin público y sin aplausos. Yo me quedo con el mérito emocional de haber levantado la ceja primero.",
+      "explanation": "Has practicado la verificación por canales conocidos, el alcance limitado de HTTPS y la lectura de dominios. Mantén esos tres hábitos al recibir solicitudes urgentes, incluso si llegan con logotipos auténticos o datos personales."
+    },
+    {
+      "id": "p-phishing-signals-result-0-2",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen trabajo: ahora puedes detener una petición sin detener tu vida entera. Ser prudente resulta bastante más elegante que discutir con cada notificación del teléfono.",
+      "explanation": "La revisión útil combina señales del mensaje con una comprobación independiente. No necesitas demostrar quién es el atacante para decidir no entregar datos a una solicitud que aún no has podido autenticar."
+    },
+    {
+      "id": "p-phishing-signals-result-0-3",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Tu premio real es que ya no te compran con un cronómetro y una palabra familiar. Qué fastidio tan precioso acabas de volverte para el fraude.",
+      "explanation": "Completar esta práctica mejora decisiones concretas, pero no garantiza detectar todos los engaños. Cuando un aviso siga siendo ambiguo, conserva la calma y pide confirmación a la organización mediante un contacto que ya conozcas."
+    },
+    {
+      "id": "p-phishing-signals-result-1-1",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Nos queda una trampa por desarmar; perfecto, mi ceja aún tenía batería. Volvamos a la parte donde la apariencia intentó hacerse pasar por una prueba.",
+      "explanation": "Repasa la diferencia entre diseño profesional, conexión HTTPS e identidad legítima. Son aspectos separados: ni el acabado visual ni el cifrado sustituyen la revisión del dominio y la comprobación de una solicitud inesperada."
+    },
+    {
+      "id": "p-phishing-signals-result-1-2",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Repetimos el análisis, no el error. Dale al mensaje el tiempo que él intenta quitarte; yo puedo esperar si con eso le estropeamos la función.",
+      "explanation": "Revisa primero qué pide el aviso, después quién lo envía y finalmente cómo verificarlo por otra vía. Esa secuencia permite corregir una decisión precipitada antes de introducir credenciales o distribuir el enlace."
+    },
+    {
+      "id": "p-phishing-signals-result-1-3",
+      "lessonId": "phishing-signals",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "No te mando al calabozo: te mando a mirar el dominio completo. Mi sadismo tiene objetivos pedagógicos y unas condiciones de mantenimiento sorprendentemente razonables.",
+      "explanation": "Vuelve al ejemplo academia.example.verificar.test y distingue la base verificar.test del subdominio que imita una institución. Después relaciona esa lectura con la decisión de consultar el portal oficial por tu cuenta."
+    },
+    {
+      "id": "p-safe-response-intro-0-1",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Hiciste clic. Bien, respira: todavía no hemos convocado al apocalipsis. Vamos a averiguar qué pasó antes de regalarle al pánico el teclado entero.",
+      "explanation": "La respuesta depende de si solo abriste una página, entregaste información o ejecutaste un archivo. Identificar las acciones realizadas permite elegir medidas proporcionadas sin asumir automáticamente una pérdida completa de tus cuentas."
+    },
+    {
+      "id": "p-safe-response-intro-0-2",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Si hubo una metida de pata, la estudiamos sin coronarte rey del desastre. Mis pullas apuntan al mal hábito; tú necesitas un plan que funcione.",
+      "explanation": "Un incidente puede gestionarse mejor si se describe pronto y con claridad. Esta lección enseña a detener la interacción, proteger accesos por vías oficiales y pedir ayuda conservando la información útil para investigar."
+    },
+    {
+      "id": "p-safe-response-intro-0-3",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Cerrar todo a golpes no es un procedimiento, cariño. Antes de tocar veinte ajustes, dime si escribiste datos, descargaste algo o llegaste a ejecutarlo.",
+      "explanation": "Acciones distintas implican riesgos diferentes. Abrir una página no equivale a ejecutar un programa, y descargar un archivo tampoco demuestra que se haya abierto; esa distinción orienta las siguientes medidas de respuesta."
+    },
+    {
+      "id": "p-safe-response-intro-0-4",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "El botón ya fue pulsado; ahora nos interesa el siguiente movimiento. El pasado no acepta parches, qué cabrón, pero tus decisiones actuales sí pueden mejorar.",
+      "explanation": "Detener nuevas interacciones reduce la exposición mientras aclaras lo sucedido. No envíes más datos ni vuelvas al sitio para comprobarlo; anota el contexto y utiliza canales oficiales para solicitar instrucciones adecuadas."
+    },
+    {
+      "id": "p-safe-response-intro-0-5",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Me quedo a tu lado mientras ponemos orden. Puedes admitir el error sin ceremonia: mi brazo metálico sirve para señalar pasos, no para repartir castigos.",
+      "explanation": "Informar con honestidad facilita una respuesta técnica adecuada. Ocultar que se entregó una contraseña o se ejecutó un archivo puede retrasar las medidas que protegen una cuenta, el dispositivo o la organización."
+    },
+    {
+      "id": "p-safe-response-intro-0-6",
+      "lessonId": "safe-response",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Hoy practicamos qué hacer después del susto. Nada de exorcismos digitales: hechos concretos, acceso oficial y ayuda competente, con mi comentario mordaz de cortesía.",
+      "explanation": "El escenario principal supone que escribiste la contraseña de correo en un sitio falso y conservas un teléfono de confianza. Aprenderás a responder a esa exposición sin confundirla con cualquier otro tipo de incidente."
+    },
+    {
+      "id": "p-safe-response-theory-0-1",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Abrir un enlace no es lo mismo que entregarle tu clave. Podemos odiar ambos sustos con elegancia y aun así tratarlos de manera diferente.",
+      "explanation": "Una visita puede exponer datos de navegación o aprovechar fallos del dispositivo, pero no demuestra por sí sola que una cuenta haya sido tomada. Evalúa el sitio, el estado del equipo y las acciones posteriores."
+    },
+    {
+      "id": "p-safe-response-theory-0-2",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Descargaste un archivo, pero no lo abriste: ese detalle importa. Mi ceja distingue verbos, porque convertir cualquier descarga en ejecución sería una chapuza pedagógica.",
+      "explanation": "Anota si el archivo solo se guardó, si se abrió con una aplicación o si instalaste un programa. No lo ejecutes para averiguar qué hace; consulta a soporte si desconoces su origen o comportamiento."
+    },
+    {
+      "id": "p-safe-response-theory-0-3",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Primera información útil: qué tocaste y qué compartiste. La novela del susto puede esperar; los hechos no necesitan una banda sonora para servirnos.",
+      "explanation": "Una cronología sencilla puede incluir hora aproximada, canal del mensaje, sitio visitado y tipos de datos enviados. No escribas la contraseña en el reporte ni vuelvas a la web sospechosa para completar detalles."
+    },
+    {
+      "id": "p-safe-response-theory-0-4",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Cierra la página rara y frena nuevas respuestas. Si el supuesto soporte insiste por chat, no le debemos un epílogo ni una despedida cariñosa.",
+      "explanation": "Detener la interacción evita exponer información adicional mientras investigas. Conserva lo que ya tienes del mensaje siguiendo las instrucciones del responsable y contacta al servicio por un acceso oficial abierto independientemente."
+    },
+    {
+      "id": "p-safe-response-theory-0-5",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Escribir datos y pulsar enviar no siempre son mundos separados. Algunas páginas pueden recoger lo tecleado antes; qué dedicación tan asquerosamente eficiente al engaño.",
+      "explanation": "Si introdujiste una contraseña en un sitio falso, trátala como expuesta aunque no recuerdes haber enviado el formulario. Cambia esa credencial desde el servicio oficial usando un dispositivo de confianza."
+    },
+    {
+      "id": "p-safe-response-theory-0-6",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Un código compartido también cuenta como dato entregado. No lo escondas detrás de un solo era un numerito; algunos numeritos abren puertas muy importantes.",
+      "explanation": "Incluye códigos de acceso, permisos autorizados o información financiera entre las acciones que debes comunicar. La exposición no se limita a contraseñas: el tipo de dato determina qué acceso o servicio requiere protección."
+    },
+    {
+      "id": "p-safe-response-theory-1-1",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Si soltaste la clave, cambiamos el candado desde una entrada fiable. No regresamos al callejón que nos engañó para pedirle un servicio de cerrajería.",
+      "explanation": "Desde un dispositivo de confianza, abre el servicio oficial mediante tu aplicación o marcador habitual y cambia la contraseña expuesta. No uses enlaces de mensajes posteriores que prometan reparar la cuenta."
+    },
+    {
+      "id": "p-safe-response-theory-1-2",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Cambiar la clave ayuda, pero una sesión ajena podría seguir abierta. Mira las sesiones activas: las visitas sin invitación no merecen quedarse a desayunar.",
+      "explanation": "Revisa los accesos y cierra las sesiones desconocidas con las herramientas oficiales. Los servicios difieren en cómo invalidan sesiones tras cambiar contraseñas; no supongas que ese cambio revoca automáticamente todos los accesos existentes."
+    },
+    {
+      "id": "p-safe-response-theory-1-3",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Comprueba el correo y teléfono de recuperación. Un intruso podría dejarse una puerta trasera administrativa; qué detalle tan repulsivamente organizado, casi da rabia admirarlo.",
+      "explanation": "Revisa si cambiaron las opciones de recuperación, los factores adicionales o los métodos autorizados de acceso. Restaura los datos correctos por el canal oficial y solicita ayuda si ya no controlas esas opciones."
+    },
+    {
+      "id": "p-safe-response-theory-1-4",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "¿La misma contraseña vivía en otra cuenta? Entonces la mudanza también le toca allí. Una filtración no respeta fronteras dibujadas con pereza, cielo.",
+      "explanation": "Si reutilizaste la credencial expuesta, reemplázala también en los otros servicios por contraseñas distintas. Prioriza el correo y las cuentas sensibles; un gestor puede facilitar esa separación sin memorizar muchas claves."
+    },
+    {
+      "id": "p-safe-response-theory-1-5",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Si entregaste la tarjeta, contacta al banco de verdad. El estafador no lleva el departamento de devoluciones, por mucho que su siguiente mensaje lo prometa.",
+      "explanation": "Comunica la exposición de información financiera mediante el teléfono o la aplicación oficial de tu entidad. Sigue sus indicaciones para proteger el medio de pago y revisar movimientos, sin responder a contactos desconocidos."
+    },
+    {
+      "id": "p-safe-response-theory-1-6",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Añade o revisa MFA después de asegurar el acceso. Me encantan las puertas extra, siempre que no compartas el código con el primer actor convincente.",
+      "explanation": "La verificación adicional reduce riesgos de uso de una contraseña robada, pero los códigos también pueden ser capturados mediante engaños. Rechaza solicitudes no iniciadas y configura métodos resistentes al phishing cuando estén disponibles."
+    },
+    {
+      "id": "p-safe-response-theory-2-1",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Ejecutaste el supuesto visor y ahora sospechas malware. Desconecta la red y busca ayuda; mi humor puede ser ácido, pero esta parte requiere orden.",
+      "explanation": "Aislar el equipo de la red puede limitar comunicaciones del programa y propagación a otros sistemas. En un entorno institucional sigue su procedimiento y consulta al responsable antes de realizar cambios adicionales."
+    },
+    {
+      "id": "p-safe-response-theory-2-2",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "No borres registros para que la pantalla parezca inocente. Eso sería maquillar la escena y tirarle las gafas a quien viene a investigar.",
+      "explanation": "Los registros, mensajes y archivos pueden ayudar a determinar qué ocurrió y su alcance. Evita borrar o modificar evidencias por tu cuenta; el personal técnico decidirá cómo preservarlas y qué limpieza corresponde realizar."
+    },
+    {
+      "id": "p-safe-response-theory-2-3",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "exasperated",
+      "text": "El archivo sospechoso no se manda al grupo para pedir opiniones. Carajo, no es una receta: podrías regalarle el problema a todos tus contactos.",
+      "explanation": "Reenviar un posible malware aumenta la exposición de otras personas. Describe el caso al soporte sin adjuntar el archivo por iniciativa propia; utiliza solo el canal seguro de entrega que te indiquen."
+    },
+    {
+      "id": "p-safe-response-theory-2-4",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Para proteger la cuenta, usa otro dispositivo fiable si sospechas del ordenador. No le susurres una contraseña nueva al mismo equipo que podría estar escuchando.",
+      "explanation": "Un equipo potencialmente comprometido puede registrar nuevas credenciales o alterar la navegación. Realiza los cambios sensibles desde un dispositivo de confianza y deja la evaluación del equipo sospechoso a personal competente."
+    },
+    {
+      "id": "p-safe-response-theory-2-5",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Instalar cinco limpiadores encontrados al azar no constituye medicina digital. Podrías añadir otra mierda al desastre; primero informa y sigue indicaciones del soporte.",
+      "explanation": "Las herramientas de respuesta deben elegirse según el contexto y el procedimiento de la organización. Descargar software de fuentes desconocidas puede empeorar la situación o alterar evidencia necesaria para comprender la ejecución sospechosa."
+    },
+    {
+      "id": "p-safe-response-theory-2-6",
+      "lessonId": "safe-response",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Aislar no significa decidir tú una demolición completa. El equipo técnico valorará limpieza, reinstalación y recuperación; nosotras le entregamos hechos, no cenizas decorativas.",
+      "explanation": "Después de contener el incidente, la recuperación depende de su alcance y del sistema afectado. No restaures copias ni reinstales por impulso: esas acciones pueden requerir preparación y preservación de información para la investigación."
+    },
+    {
+      "id": "p-safe-response-procedure-0-1",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Primer paso: deja de interactuar con el sitio. Cierra esa página y no respondas al supuesto soporte; no necesita una segunda oportunidad para pedirte más.",
+      "explanation": "No envíes otros datos, autorices permisos adicionales ni abras archivos relacionados con el aviso. Detener la interacción establece una pausa para evaluar la exposición y elegir un canal de ayuda fiable."
+    },
+    {
+      "id": "p-safe-response-procedure-0-2",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Si aparece un mensaje que ofrece arreglarlo pagando, no seguimos la cadena. Una estafa con secuela sigue siendo la misma película de mierda.",
+      "explanation": "Las ofertas de recuperación pueden prolongar el engaño y pedir pagos o acceso remoto. Interrumpe el contacto y consulta al proveedor real por su aplicación o un teléfono que ya tuvieses verificado."
+    },
+    {
+      "id": "p-safe-response-procedure-0-3",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Aparta el cursor del formulario y las manos del botón de descargar. Me encanta tu iniciativa, cielo; ahora la iniciativa consiste en frenar.",
+      "explanation": "Evita realizar acciones nuevas mientras no sepas qué ocurrió. Puedes conservar el mensaje recibido sin abrir sus enlaces; no vuelvas a la página sospechosa para obtener capturas o comprobar su funcionamiento."
+    },
+    {
+      "id": "p-safe-response-procedure-1-1",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Segundo paso: inventario de hechos, sin adornos. ¿Abriste, escribiste, descargaste o ejecutaste? Tus verbos nos dicen más que una descripción épica del susto.",
+      "explanation": "Anota las acciones que recuerdas y la hora aproximada. Distingue los datos entregados por categoría, como contraseña o tarjeta, sin reproducir sus valores secretos en notas que puedas compartir con soporte."
+    },
+    {
+      "id": "p-safe-response-procedure-1-2",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Incluye cualquier permiso concedido a una aplicación. Los accesos no siempre entran vestidos de contraseña; algunos vienen con un botón bastante amable que dice autorizar.",
+      "explanation": "Comprueba si aprobaste una conexión de aplicaciones, una solicitud MFA o permisos para archivos. Esos hechos ayudan al soporte a valorar accesos adicionales que un simple cambio de contraseña quizá no elimine."
+    },
+    {
+      "id": "p-safe-response-procedure-1-3",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Si no recuerdas un detalle, dilo así. Inventar precisión para quedar bien solo le añade confeti al informe; prefiero una duda honesta y útil.",
+      "explanation": "Diferencia los hechos confirmados de lo que sospechas. Una frase como no recuerdo si lo abrí permite investigar sin descartar riesgos prematuramente ni afirmar que ocurrió una ejecución que nadie ha comprobado."
+    },
+    {
+      "id": "p-safe-response-procedure-2-1",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Tercer paso: dispositivo fiable y acceso oficial. Cambia la clave expuesta y revisa sesiones; al intruso imaginario no le reservamos sillón ni manta.",
+      "explanation": "Entra al servicio desde una aplicación o marcador conocido, establece una contraseña única y revisa los accesos activos. Verifica también la recuperación y los factores adicionales para detectar cambios que no hayas realizado."
+    },
+    {
+      "id": "p-safe-response-procedure-2-2",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Si el ordenador está bajo sospecha, utiliza tu teléfono de confianza. La contraseña nueva merece una entrada limpia, no una audiencia con posibles espías.",
+      "explanation": "Evita introducir credenciales nuevas en un dispositivo que podría estar comprometido. Para el escenario, el teléfono confiable permite abrir el servicio oficial y proteger la cuenta mientras se evalúa el resto del incidente."
+    },
+    {
+      "id": "p-safe-response-procedure-2-3",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Revisa dónde repetías esa clave y separa las cuentas. Sí, da trabajo; también me cuesta mantener esta expresión impecable y no voy pidiendo atajos peligrosos.",
+      "explanation": "Sustituye la credencial expuesta en todos los servicios donde la reutilizaste, asignando contraseñas distintas. Después revisa los métodos de recuperación para conservar acceso legítimo sin dejar alternativas configuradas por otra persona."
+    },
+    {
+      "id": "p-safe-response-procedure-3-1",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "explaining",
+      "text": "Cuarto paso: avisa al soporte verdadero con un resumen claro. Qué pasó, cuándo y qué entregaste; tu contraseña completa se queda fuera de la conversación.",
+      "explanation": "Utiliza el canal oficial del servicio o del centro de estudios. Explica las acciones realizadas y las medidas ya tomadas para evitar que el responsable trabaje con una descripción incompleta del caso."
+    },
+    {
+      "id": "p-safe-response-procedure-3-2",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "skeptical",
+      "text": "No adjuntes el programa raro por entusiasmo colaborativo. Primero pregunta cómo remitir evidencia; mi generosidad también tiene límites cuando el regalo podría infectar otro equipo.",
+      "explanation": "El personal de soporte puede solicitar encabezados, capturas existentes o muestras mediante un sistema específico. Espera esas instrucciones, no publiques datos sensibles y conserva los materiales sin modificarlos ni distribuirlos a otras personas."
+    },
+    {
+      "id": "p-safe-response-procedure-3-3",
+      "lessonId": "safe-response",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "smirk",
+      "text": "Anota el número del caso y sigue el plan acordado. Ya tendremos tiempo de burlarnos del señuelo; ahora toca que la ayuda tenga seguimiento.",
+      "explanation": "Conservar la referencia del reporte facilita comunicar novedades y coordinar la recuperación. Si observas accesos o movimientos no reconocidos, comunícalos por el mismo canal, indicando cuándo aparecieron y evitando compartir credenciales."
+    },
+    {
+      "id": "p-safe-response-scenario-0-1",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Escribiste la clave del correo en una web falsa y conservas tu teléfono fiable. Tenemos una exposición concreta y una vía útil; nada de rendirse al melodrama.",
+      "explanation": "El riesgo principal del escenario es el uso de la contraseña revelada. No se afirma que ejecutaras archivos ni que todas tus cuentas estén comprometidas; decide cómo proteger ese acceso mediante el servicio legítimo."
+    },
+    {
+      "id": "p-safe-response-scenario-0-2",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Todavía puedes entrar al correo. Eso es una oportunidad para actuar, no una prueba de que el impostor se fue a dormir la siesta.",
+      "explanation": "Mantener acceso no demuestra que la contraseña siga siendo secreta. Puede haber una sesión ajena abierta o cambios pendientes; aprovecha el dispositivo de confianza para revisar la seguridad por los mecanismos oficiales."
+    },
+    {
+      "id": "p-safe-response-scenario-0-3",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "La página falsa ya tuvo su momento de gloria. Ahora trabajamos desde tu teléfono: el escenario nos lo da de confianza, así que úsalo con cabeza.",
+      "explanation": "La elección del dispositivo importa porque no conviene introducir claves nuevas en un equipo sospechoso. En la simulación puedes tomar el teléfono como punto fiable para entrar directamente al proveedor de correo."
+    },
+    {
+      "id": "p-safe-response-scenario-0-4",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "No negocies con la web que se llevó tu clave. Seguro promete devolverla con un lacito; qué ternura tan cabrona para una mentira reciclada.",
+      "explanation": "Responder al atacante no revoca lo que ya sabe y puede provocar nuevas solicitudes de información. Las medidas de protección deben aplicarse en el servicio real, sin depender del sitio que capturó la credencial."
+    },
+    {
+      "id": "p-safe-response-scenario-0-5",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Describe lo ocurrido sin copiar aquí tu contraseña. Nos basta saber qué tipo de dato salió; no voy a pedirte otra filtración para documentar la primera.",
+      "explanation": "El contexto útil incluye que se introdujo la contraseña del correo, la hora aproximada y cómo llegó el enlace. La explicación al soporte no debe contener el secreto en sí ni enviarse al remitente fraudulento."
+    },
+    {
+      "id": "p-safe-response-scenario-0-6",
+      "lessonId": "safe-response",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "El reto consiste en ordenar la respuesta, no en fingir que nunca ocurrió. Ponte a mi lado: resolvemos el problema y luego insultamos al señuelo.",
+      "explanation": "Valora qué acción reduce pronto el riesgo sobre la cuenta y qué revisiones acompañan esa acción. El escenario requiere intervenir desde una vía fiable y evaluar accesos, sin esperar a observar un daño visible."
+    },
+    {
+      "id": "p-safe-response-question-0-1",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "La contraseña del correo ya salió hacia una página falsa. Elige una respuesta que proteja el acceso real; el estafador no organiza nuestra agenda de recuperación.",
+      "explanation": "Compara las consecuencias de esperar, continuar hablando con el engaño o aplicar medidas en el proveedor auténtico. Busca una actuación que reduzca la utilidad de la credencial expuesta sin añadir nuevas revelaciones."
+    },
+    {
+      "id": "p-safe-response-question-0-2",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Sigues teniendo acceso desde un teléfono fiable. ¿Qué movimiento aprovecha esa ventaja para responder al incidente en vez de regalarle tiempo al problema?",
+      "explanation": "La pregunta supone una exposición de credenciales confirmada y un medio confiable disponible. Evalúa cuál de las opciones actúa sobre la seguridad de la cuenta y cuál depende de una promesa o de la inacción."
+    },
+    {
+      "id": "p-safe-response-question-0-3",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Aquí no premiamos la paciencia con posibles intrusos. Decide el siguiente paso con esa clave expuesta; mi lado consentido exige acciones que sirvan de algo.",
+      "explanation": "Piensa en qué elementos del servicio permiten reducir accesos no autorizados. Tu respuesta debe tener en cuenta la exposición ya ocurrida, sin suponer que conservar acceso significa que nadie más puede entrar."
+    },
+    {
+      "id": "p-safe-response-question-1-1",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Ahora toca informar al soporte. Elige qué datos le permitirían entender el incidente sin convertir tu reporte en otra fuga de secretos o de archivos sospechosos.",
+      "explanation": "Una comunicación útil aporta contexto suficiente para investigar y al mismo tiempo limita la exposición. Compara las opciones según el valor informativo que ofrecen y los riesgos que introducirían al compartirlas."
+    },
+    {
+      "id": "p-safe-response-question-1-2",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "El técnico necesita reconstruir hechos, no coleccionar tus llaves personales. ¿Qué información lo acerca al problema sin abrir una puerta nueva por el camino?",
+      "explanation": "Distingue describir un dato comprometido de entregar su valor secreto. Considera también quién recibe la información y si la difusión propuesta de un archivo ayudaría realmente al responsable encargado del caso."
+    },
+    {
+      "id": "p-safe-response-question-1-3",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Imagina que atiendo tu reporte con mi café intacto. Dame material útil para investigar, no un regalo envenenado ni una confesión con contraseña incluida.",
+      "explanation": "La pregunta evalúa la calidad y seguridad de la información enviada al soporte. Prioriza hechos que permitan decidir actuaciones y evita materiales cuya divulgación pueda crear otro acceso indebido o ampliar el incidente."
+    },
+    {
+      "id": "p-safe-response-question-2-1",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Un clic: ¿catástrofe universal, inocencia automática o algo que merece análisis? Vamos a quitarles el megáfono a los extremos antes de que organicen otra tragedia.",
+      "explanation": "Evalúa una afirmación general sobre abrir enlaces teniendo en cuenta que páginas, dispositivos y acciones posteriores varían. Busca una respuesta que reconozca esa diversidad sin prometer daño inevitable ni ausencia total de riesgo."
+    },
+    {
+      "id": "p-safe-response-question-2-2",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "No sabemos si solo miraste la página o hiciste algo más. Elige qué conclusión permite esa información limitada; mi ojo cibernético no inventa pruebas.",
+      "explanation": "El ejercicio distingue certeza de posibilidad. Considera qué hechos adicionales necesitarías para valorar el impacto y evita atribuir pérdida de cuentas o seguridad absoluta a una única acción descrita sin contexto."
+    },
+    {
+      "id": "p-safe-response-question-2-3",
+      "lessonId": "safe-response",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Te prohíbo dramáticamente enamorarte de los siempre y los nunca. Escoge la conclusión sobre un clic que aguante cuando cambiamos el sitio o el dispositivo.",
+      "explanation": "Las opciones plantean diferentes grados de generalización sobre el riesgo. Piensa si un mismo resultado puede afirmarse para cualquier enlace, cualquier equipo y cualquier conducta que siga a la visita inicial."
+    },
+    {
+      "id": "p-safe-response-hint-0-1",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "La clave revelada sigue siendo útil mientras conserve su validez. Busca una opción que cambie esa situación sin pedir colaboración a quien acaba de engañarte.",
+      "explanation": "Piensa quién tiene autoridad técnica para modificar el acceso a la cuenta. La ayuda efectiva debe apoyarse en ese servicio y no en un intercambio adicional con el sitio que recogió el secreto."
+    },
+    {
+      "id": "p-safe-response-hint-0-2",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Esperar a ver humo no es detectar un incendio a tiempo. Si sabes que el secreto salió, considera qué actuación reduce pronto su valor para terceros.",
+      "explanation": "No necesitas una señal visible de abuso para responder a una contraseña expuesta. Valora la opción que interviene sobre el acceso conocido y permite comprobar si existen otros accesos que tú no autorizaste."
+    },
+    {
+      "id": "p-safe-response-hint-0-3",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "El impostor podría prometer borrar tu clave y además regalarte una estrella. Muy romántico; muy inútil como control de seguridad. Busca quién sí controla la cuenta.",
+      "explanation": "Una promesa del receptor malicioso no puede demostrar que haya dejado de conocer el secreto. Evalúa medidas verificables dentro del proveedor real que disminuyan el riesgo asociado a los datos revelados."
+    },
+    {
+      "id": "p-safe-response-hint-0-4",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Usa como brújula el teléfono fiable que menciona el escenario. Esa pieza está ahí por una razón; no necesitamos volver al mismo formulario para resolverlo.",
+      "explanation": "El dispositivo de confianza ofrece una vía para actuar fuera del entorno del engaño. Compara las respuestas considerando cuál aprovecha ese acceso seguro y cuál te mantiene ligado al remitente o a la espera."
+    },
+    {
+      "id": "p-safe-response-hint-1-1",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Un buen reporte permite ordenar una secuencia: antes, durante y después. Si el dato no ayuda a reconstruirla y además es secreto, déjalo fuera.",
+      "explanation": "Considera cómo el responsable distinguiría una visita, una entrega de información y una ejecución de software. La descripción de acciones aporta más para esa evaluación que recibir credenciales personales completas."
+    },
+    {
+      "id": "p-safe-response-hint-1-2",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "El soporte no necesita probar tu contraseña para creer tu historia. Busca la opción que describa el incidente sin entregar material que permitiría repetirlo.",
+      "explanation": "Separar el tipo de información expuesta de su contenido exacto reduce riesgos en el reporte. Comunicar que se reveló una credencial resulta distinto de enviar esa credencial a otra persona o sistema."
+    },
+    {
+      "id": "p-safe-response-hint-1-3",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Mandar el archivo sospechoso a todos es repartir trabajo de la peor manera. La colaboración útil tiene destinatario y unas instrucciones, no una explosión social.",
+      "explanation": "Antes de enviar muestras, el responsable debe indicar cómo recibirlas de forma segura. En esta pregunta elige información que pueda comunicarse sin ejecutar ni distribuir el material relacionado con el incidente."
+    },
+    {
+      "id": "p-safe-response-hint-1-4",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Imagínate leyendo el reporte sin haber visto la pantalla. Necesitas entender la secuencia y el alcance, no poseer las llaves ni abrir una caja misteriosa.",
+      "explanation": "Un resumen debe dar al soporte contexto suficiente para hacer preguntas y priorizar acciones. Evalúa qué opción comunica hechos del caso manteniendo a salvo los secretos y evitando aumentar el número de personas expuestas."
+    },
+    {
+      "id": "p-safe-response-hint-2-1",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Compara dos escenas: cerrar una página inmediatamente y ejecutar su instalador. Si las tratas como idénticas, el análisis se convierte en una caricatura bastante cara.",
+      "explanation": "Las conductas posteriores a abrir el enlace pueden cambiar mucho la exposición. Revisa si la respuesta elegida permite considerar esas diferencias en lugar de imponer una conclusión universal a todos los casos."
+    },
+    {
+      "id": "p-safe-response-hint-2-2",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Hasta el dispositivo importa: no conocemos sus fallos ni su estado. Asegurar cualquier resultado sin esos datos sería presumir demasiado, incluso para mi nivel habitual.",
+      "explanation": "Un navegador actualizado, una vulnerabilidad y los datos introducidos influyen en el riesgo de una visita. Pregúntate si la opción seleccionada admite esas variables o las ignora con una regla absoluta."
+    },
+    {
+      "id": "p-safe-response-hint-2-3",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Pánico automático y confianza automática comparten defecto: no miran las pruebas. Busca una conclusión que todavía deje espacio para preguntar qué ocurrió realmente.",
+      "explanation": "Reconocer incertidumbre no equivale a minimizar el incidente. Significa separar lo que sabemos de lo que requiere evaluación para elegir medidas útiles sin añadir afirmaciones que los hechos aún no permiten sostener."
+    },
+    {
+      "id": "p-safe-response-hint-2-4",
+      "lessonId": "safe-response",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Una sola palabra, clic, cuenta poco sobre toda la historia. Piensa qué preguntarías después antes de declarar ganada o perdida cada cuenta del planeta.",
+      "explanation": "El enlace visitado, los permisos concedidos, los datos compartidos y las ejecuciones posteriores son hechos relevantes. Una buena valoración del impacto necesita atenderlos y no deducir todo el resultado de la visita inicial."
+    },
+    {
+      "id": "p-safe-response-correct-0-1",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Eso: cambio por el servicio oficial y revisión de sesiones. Has pasado del susto a quitarle oportunidades al intruso; apruebo esa costumbre, sorprendentemente útil.",
+      "explanation": "Cambiar la contraseña expuesta limita su uso futuro y revisar sesiones ayuda a detectar o revocar accesos existentes. Hazlo desde el dispositivo de confianza y comprueba también la recuperación y los factores adicionales."
+    },
+    {
+      "id": "p-safe-response-correct-0-2",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Elegiste actuar donde se controla la cuenta, no donde nació el engaño. Me gusta: dejamos al impostor hablando solo con su decoración de soporte técnico.",
+      "explanation": "El proveedor auténtico ofrece los controles para renovar la clave y revisar accesos. Utilizar el canal oficial evita nuevas interacciones con el atacante y permite proteger la cuenta sin depender de sus promesas."
+    },
+    {
+      "id": "p-safe-response-correct-0-3",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Bien resuelto: no esperaste una semana a que la situación escribiera una secuela. La credencial expuesta necesita una respuesta pronta y revisiones alrededor del cambio.",
+      "explanation": "Actuar pronto reduce la ventana de uso de la contraseña conocida por terceros. Además del cambio, revisa sesiones y recuperación, y sustituye esa misma clave en cualquier otro servicio donde la hubieras reutilizado."
+    },
+    {
+      "id": "p-safe-response-correct-1-1",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Hechos, momento y datos afectados: eso sí ayuda. El técnico puede investigar sin que tu contraseña termine de gira por otra conversación; qué concepto tan civilizado.",
+      "explanation": "Una descripción del suceso, su hora aproximada y los tipos de datos entregados permite priorizar la respuesta. No hace falta enviar secretos completos ni distribuir archivos sospechosos para aportar ese contexto."
+    },
+    {
+      "id": "p-safe-response-correct-1-2",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Buen reporte: suficiente contexto y cero llaves regaladas. Mi café imaginario sigue en su taza; acabas de evitar una de mis escenas de frustración favoritas.",
+      "explanation": "El soporte necesita reconstruir acciones y valorar el alcance, no conocer tu contraseña. Indica también las medidas tomadas y conserva el mensaje original según sus instrucciones para que pueda solicitar evidencia adicional si corresponde."
+    },
+    {
+      "id": "p-safe-response-correct-1-3",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Elegiste información que aclara el caso sin multiplicar el daño. Ahora sí puedo llamar a eso colaboración y no reparto creativo de problemas digitales.",
+      "explanation": "Comunicar qué ocurrió y qué categorías de información se compartieron mantiene el reporte útil y acotado. Si el responsable necesita una muestra o el correo original, te indicará cómo transferirlo de manera segura."
+    },
+    {
+      "id": "p-safe-response-correct-2-1",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Exacto: analizar acciones y contexto. Un clic merece atención, no una profecía universal; acabas de quitarle trabajo al departamento de pánico automático, cariño.",
+      "explanation": "El impacto depende del sitio, del estado del dispositivo y de lo que hiciste después. No todos los clics comprometen cuentas, pero tampoco puede descartarse todo riesgo sin revisar las circunstancias del incidente."
+    },
+    {
+      "id": "p-safe-response-correct-2-2",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Me gusta esa respuesta con criterio. Has dejado a los siempre y los nunca discutiendo solos mientras nosotras hacemos las preguntas que sí importan.",
+      "explanation": "Abrir un enlace no describe por sí solo la exposición completa. Evaluar si se enviaron datos, se concedieron permisos o se ejecutó contenido ayuda a escoger entre revisar una cuenta, aislar el equipo o solicitar asistencia."
+    },
+    {
+      "id": "p-safe-response-correct-2-3",
+      "lessonId": "safe-response",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Bien: ni sentencia fatal ni permiso para confiar en todo. Este equilibrio me sienta estupendo; tendré que añadirlo a mi lista de virtudes insoportables.",
+      "explanation": "Una valoración proporcionada reconoce posibles riesgos y evita afirmaciones sin evidencia. Lo útil es detener interacciones adicionales, describir los hechos y aplicar medidas relacionadas con las acciones y datos realmente expuestos."
+    },
+    {
+      "id": "p-safe-response-incorrect-0-1",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Después del susto apetece dejarlo para otro día. Si entregaste la clave, actuar pronto desde un dispositivo de confianza ayuda a reducir el riesgo.",
+      "explanation": "Una contraseña revelada puede utilizarse antes de que aparezcan señales visibles. Cámbiala pronto en el servicio oficial desde tu dispositivo de confianza y revisa las sesiones, la recuperación y la verificación adicional."
+    },
+    {
+      "id": "p-safe-response-incorrect-0-2",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "La cuenta no necesita una semana de reflexión sentimental. La contraseña ya salió; esperar por costumbre le deja una oportunidad innecesaria a quien podría usarla.",
+      "explanation": "No es necesario confirmar un acceso malicioso para responder a una exposición de credenciales conocida. Actúa mediante el proveedor legítimo, cambia la clave y examina los accesos existentes sin volver al sitio falso."
+    },
+    {
+      "id": "p-safe-response-incorrect-0-3",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Entiendo las ganas de pedir explicaciones, cielo. El estafador ya conoce lo que escribiste; centremos el esfuerzo en proteger la cuenta mediante su servicio oficial.",
+      "explanation": "Continuar el contacto puede prolongar el engaño y no revoca la contraseña expuesta. Interrumpe la conversación y protege el acceso desde el servicio oficial con un dispositivo fiable, revisando sesiones y recuperación."
+    },
+    {
+      "id": "p-safe-response-incorrect-0-4",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "No le encargamos la reparación a quien montó la trampa. Su promesa de ayudarte vale aproximadamente lo mismo que su primera mentira: nada útil para asegurarte.",
+      "explanation": "El remitente fraudulento no ofrece un control verificable sobre la seguridad de tu cuenta. El cambio de contraseña y la revisión de accesos deben realizarse en el proveedor real, sin utilizar instrucciones enviadas por el atacante."
+    },
+    {
+      "id": "p-safe-response-incorrect-1-1",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "El soporte puede ayudarte sin conocer tu contraseña completa. Cuéntale qué pasó y cuándo, conservando los secretos fuera del reporte; esa información suele ser más útil.",
+      "explanation": "El responsable necesita saber que se expuso una credencial y cómo ocurrió, no recibir su contenido. Comunica hechos, hora aproximada y tipo de información afectada; protege la contraseña mediante los controles oficiales."
+    },
+    {
+      "id": "p-safe-response-incorrect-1-2",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "No hace falta demostrar que perdiste un secreto volviéndolo a compartir. El informe describe la herida; no necesita meter otro dedo en ella, carajo.",
+      "explanation": "Compartir la contraseña añade exposición innecesaria, incluso en una conversación de ayuda. Explica el tipo de dato revelado y las acciones realizadas, y usa el procedimiento oficial para cambiar la credencial comprometida."
+    },
+    {
+      "id": "p-safe-response-incorrect-1-3",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Compartir detalles del incidente ayuda, pero no necesitamos distribuir el archivo sospechoso. Describe lo ocurrido y sigue el canal indicado por el soporte para conservar evidencias.",
+      "explanation": "Un archivo potencialmente malicioso puede poner en riesgo a quienes lo reciban o ejecuten. Informa al soporte de su existencia y espera el mecanismo específico que indique para transferir muestras si las necesita."
+    },
+    {
+      "id": "p-safe-response-incorrect-1-4",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "La colección de víctimas no necesita ampliarse para investigar. No repartas el adjunto como recuerdo; un resumen claro llega más lejos sin sembrar el camino.",
+      "explanation": "Difundir una muestra por canales generales aumenta el alcance del incidente y puede perder contexto útil. Describe lo ocurrido al responsable y conserva el material según sus instrucciones, evitando reenviarlo por iniciativa propia."
+    },
+    {
+      "id": "p-safe-response-incorrect-2-1",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "El miedo puede hacer que todo parezca perdido. Un clic no demuestra ese desenlace: revisemos qué se abrió, qué datos diste y si ejecutaste algo después.",
+      "explanation": "Un clic no implica automáticamente comprometer cada cuenta. La evaluación debe considerar el sitio, las condiciones del dispositivo y si entregaste credenciales, autorizaste permisos o ejecutaste contenido que pudiera ampliar la exposición."
+    },
+    {
+      "id": "p-safe-response-incorrect-2-2",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Has llamado al apocalipsis antes de mirar el parte. Podemos tomar el incidente en serio sin afirmar que ya se perdió todo lo que existe.",
+      "explanation": "La información del enunciado es insuficiente para concluir una pérdida total. Detén nuevas interacciones y reconstruye las acciones; esas evidencias permiten decidir medidas concretas sin caer en una predicción universal de daño."
+    },
+    {
+      "id": "p-safe-response-incorrect-2-3",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "No todos los clics causan daños, pero tampoco podemos descartar cualquier riesgo. Evaluemos la página, el dispositivo y las acciones concretas antes de sacar conclusiones.",
+      "explanation": "Abrir enlaces puede implicar riesgos según el contenido y el dispositivo, aunque no todo clic produzca una intrusión. Evalúa también los datos enviados y las acciones posteriores para responder de forma proporcionada."
+    },
+    {
+      "id": "p-safe-response-incorrect-2-4",
+      "lessonId": "safe-response",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Ese nunca pretende jubilar todo el análisis de seguridad. Qué oferta tan tentadora y tan mala: el contexto importa, incluidos los fallos que pueda tener el equipo.",
+      "explanation": "No puedes garantizar ausencia de daño para cualquier visita. Un sitio podría explotar una vulnerabilidad o inducir acciones peligrosas; la respuesta adecuada consiste en investigar qué sucedió sin asumir seguridad absoluta ni compromiso inevitable."
+    },
+    {
+      "id": "p-safe-response-result-0-1",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Aprobado: distingues hechos, proteges accesos y sabes pedir ayuda sin regalar contraseñas. Mi orgullo es insoportable hoy; te tocará soportarlo, ganaste ese privilegio.",
+      "explanation": "Has practicado una respuesta basada en lo ocurrido: detener la interacción, identificar la exposición y proteger la cuenta por vías oficiales. Mantén el reporte claro y conserva evidencias según las indicaciones del responsable."
+    },
+    {
+      "id": "p-safe-response-result-0-2",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen trabajo poniendo orden después del susto. La próxima notificación podrá hacer ruido; tú ya tienes un procedimiento y yo una sonrisa bastante satisfecha.",
+      "explanation": "La recuperación requiere acciones relacionadas con el incidente concreto, no promesas universales. Recuerda usar un dispositivo de confianza para cambiar claves y solicitar asistencia cuando haya ejecución sospechosa, accesos extraños o datos financieros comprometidos."
+    },
+    {
+      "id": "p-safe-response-result-0-3",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "No convertiste el clic en una tragedia ni en un permiso para ignorarlo. Qué madurez tan molesta para mis chistes de desastre; tendré que improvisar otros.",
+      "explanation": "Reconocer límites permite responder mejor: conservar acceso no descarta exposición, y abrir una página no demuestra pérdida total. Usa esas diferencias para actuar pronto donde existe un riesgo concreto y pedir ayuda con hechos."
+    },
+    {
+      "id": "p-safe-response-result-1-1",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Nos falta afinar la respuesta, no repartir culpas. Vuelve al dato central: qué hiciste y qué control puede reducir ese riesgo; mi ceja te acompaña.",
+      "explanation": "Repasa las diferencias entre visitar, revelar credenciales y ejecutar contenido. Después relaciona cada acción con una medida: revisar la situación, proteger la cuenta o contener el equipo y avisar al soporte competente."
+    },
+    {
+      "id": "p-safe-response-result-1-2",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Repetimos una vuelta con menos prisa y mejores pruebas. Mi paciencia hace ruido de metal, sí, pero sigue aquí hasta que entiendas por qué funciona el plan.",
+      "explanation": "En el escenario, la clave de correo está expuesta y dispones de un teléfono fiable. Revisa cómo actuar en el proveedor oficial y qué información puede ayudar al soporte sin compartir el secreto nuevamente."
+    },
+    {
+      "id": "p-safe-response-result-1-3",
+      "lessonId": "safe-response",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "El pánico y la negación suspendieron antes que tú. Dejémoslos fuera y repasemos con calma; disfruto molestarte, pero disfruto más cuando puedes explicarlo por tu cuenta.",
+      "explanation": "Reconstruye la secuencia de respuesta con tus palabras: parar, identificar acciones, proteger accesos afectados y comunicar el incidente. Evita borrar pruebas o distribuir archivos sospechosos mientras el responsable determina cómo continuar la investigación."
+    }
+  ]
+}

@@ -1,0 +1,1931 @@
+{
+  "id": "safe-browsing",
+  "title": "Navegación segura",
+  "description": "Cuarenta prácticas breves para reconocer destinos, permisos y engaños antes de actuar en la web.",
+  "category": "Seguridad cotidiana",
+  "symbol": "08",
+  "color": 4281989375,
+  "lessons": [
+    {
+      "id": "safe-browsing-address-parts",
+      "title": "Anatomía de una dirección",
+      "minutes": 3,
+      "intro": "Aprende a separar el sitio visitado de su ruta para decidir dónde estás antes de escribir información o seguir una petición inesperada.",
+      "sections": [
+        {
+          "title": "Dirección, dominio y ruta",
+          "body": "Una dirección web reúne piezas con funciones diferentes. En https://biblioteca.example/catalogo, HTTPS indica el esquema, biblioteca.example identifica el servidor y /catalogo es la ruta solicitada. Un nombre de otra empresa escrito después de esa barra no cambia el dominio. Leer la dirección completa ayuda a reconocer qué sitio recibe tu solicitud, aunque su portada use nombres o imágenes familiares. Estos ejemplos son ficticios y no requieren visitarlos."
+        }
+      ],
+      "steps": [
+        "Localiza el dominio del ejemplo sin abrirlo.",
+        "Separa la ruta que comienza con la primera barra después del dominio."
+      ],
+      "scenario": "En una tarea ficticia recibes https://avisos.test/academia.example/beca. La página muestra el escudo del centro y pide iniciar sesión para conservar tu plaza de estudios durante este mes.",
+      "questions": [
+        {
+          "prompt": "¿Qué dominio aloja esa dirección?",
+          "options": [
+            "avisos.test",
+            "academia.example",
+            "El escudo del centro"
+          ],
+          "answer": 0,
+          "explanation": "Avisos.test es el dominio del ejemplo. Academia.example aparece dentro de la ruta y el escudo es contenido visual; ninguno cambia qué servidor recibe la visita.",
+          "wrongExplanations": [
+            null,
+            "Academia.example está después de una barra, dentro de la ruta. Esa posición no le da control del sitio; debes identificar el dominio que aparece antes de esa ruta.",
+            "Una imagen puede copiarse y no controla la dirección del navegador. El sitio del ejemplo está alojado bajo avisos.test aunque muestre el escudo de una institución."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Acércate: hoy miramos la dirección antes de dejar que un logotipo bonito nos venda una historia demasiado cómoda.",
+        "theory": "Mi dedo metálico señala el dominio; esa parte merece atención antes de mirar colores, escudos y promesas institucionales.",
+        "hint": "Busca qué fragmento está antes de la ruta, sin dejar que el nombre conocido del centro robe protagonismo.",
+        "correct": "Bien leído: localizaste al anfitrión real y dejaste al escudo haciendo su trabajo decorativo, que ya es bastante.",
+        "soft": "La barra puede despistar al principio; separa las piezas conmigo y verás qué nombre identifica realmente el sitio.",
+        "sharp": "Ese escudo acaba de ganar una autoridad imaginaria impresionante; quitémosle la corona antes de que te pida credenciales.",
+        "pass": "Primera dirección desmontada con criterio; mi orgullo crece y el margen para presumir de los impostores se encoge.",
+        "review": "Repasa dominio y ruta por separado; una lectura completa vale más que reconocer una palabra familiar a medias."
+      }
+    },
+    {
+      "id": "safe-browsing-subdomain-trick",
+      "title": "El nombre que va delante",
+      "minutes": 3,
+      "intro": "Reconoce cómo un nombre conocido puede aparecer como subdominio de otra organización y evita atribuir autoridad por una coincidencia visual al inicio.",
+      "sections": [
+        {
+          "title": "La jerarquía de nombres",
+          "body": "En aula.centro.example, aula es un subdominio de centro.example. En centro.example.premios.test, centro.example queda subordinado a premios.test. Para estos nombres reservados, leer desde el extremo derecho ayuda a encontrar la base del dominio. La primera palabra visible no determina quién controla el sitio. Esta práctica usa terminaciones de ejemplo; en direcciones reales existen sufijos públicos de varias partes que requieren una interpretación cuidadosa."
+        }
+      ],
+      "steps": [
+        "Compara dónde termina cada nombre completo.",
+        "Identifica qué fragmentos quedan subordinados al dominio base del ejemplo."
+      ],
+      "scenario": "Un mensaje ficticio anuncia material gratuito en centro.example.regalos.test. La dirección comienza con el nombre habitual del colegio, pero termina con un dominio diferente al conocido.",
+      "questions": [
+        {
+          "prompt": "¿Qué base controla centro.example.regalos.test?",
+          "options": [
+            "centro.example",
+            "regalos.test",
+            "La palabra centro por aparecer primero"
+          ],
+          "answer": 1,
+          "explanation": "Regalos.test es la base en este ejemplo reservado. Centro.example aparece como subdominio y no demuestra que el colegio controle esa dirección ni que haya publicado su contenido.",
+          "wrongExplanations": [
+            "Centro.example está incrustado a la izquierda de regalos.test. Compartir el nombre del colegio no cambia la jerarquía; la base que aparece al final sigue siendo regalos.test.",
+            null,
+            "El orden visual no concede propiedad. La primera palabra puede elegirse para distraer; en este caso centro es parte de un subdominio subordinado a regalos.test."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese nombre familiar al principio quiere atención exclusiva; me parece una estrategia bastante descarada, incluso para mis estándares.",
+        "theory": "Observa el final completo: los subdominios pueden disfrazarse de institución sin convertirse por ello en dueños del sitio.",
+        "hint": "Reconstruye la jerarquía desde la derecha y pregunta qué parte podría seguir igual aunque cambie el primer nombre.",
+        "correct": "Encontraste la base y arruinaste el disfraz; me encanta cuando una dirección pierde su pequeña obra de teatro.",
+        "soft": "Es una confusión habitual; leer todo el nombre con calma ayuda a no regalar confianza al fragmento más llamativo.",
+        "sharp": "El nombre del colegio se puso delante para distraerte; ya podemos quitarle ese escenario prestado y mirar al dueño.",
+        "pass": "Otro truco de nombres bajo control; nadie te está pidiendo memorizar Internet entero, solo leer con un poco de malicia.",
+        "review": "Vuelve al extremo derecho del ejemplo y distingue el dominio base de los nombres que dependen de él."
+      }
+    },
+    {
+      "id": "safe-browsing-https-scope",
+      "title": "Lo que sí promete HTTPS",
+      "minutes": 3,
+      "intro": "Distingue la protección del transporte de la honestidad del sitio para interpretar HTTPS sin convertir una señal técnica en una garantía universal de confianza.",
+      "sections": [
+        {
+          "title": "Cifrado con límites claros",
+          "body": "HTTPS protege la comunicación entre el navegador y el servidor frente a ciertas escuchas y alteraciones durante el transporte. Esa protección es importante, pero un sitio fraudulento también puede utilizarla. El protocolo no certifica que una tienda entregue compras ni que un formulario deba recibir tu contraseña. Además de la conexión, debes comprobar el dominio, el contexto de la petición y la identidad del servicio por medios independientes."
+        }
+      ],
+      "steps": [
+        "Identifica qué parte del intercambio protege HTTPS.",
+        "Separa esa propiedad de las promesas que hace el dueño de la página."
+      ],
+      "scenario": "Una tienda ficticia de consolas ofrece precios sorprendentes y utiliza HTTPS. No encuentras información verificable del vendedor, pero su página asegura que el candado demuestra que todo es auténtico.",
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra HTTPS por sí solo?",
+          "options": [
+            "Que la tienda cumplirá el envío",
+            "Que el propietario es honesto",
+            "Que la conexión utiliza cifrado"
+          ],
+          "answer": 2,
+          "explanation": "HTTPS indica una conexión cifrada, no una evaluación comercial del vendedor. La legitimidad de la tienda necesita otras comprobaciones aunque el navegador no muestre problemas con el certificado.",
+          "wrongExplanations": [
+            "El cifrado no garantiza que un vendedor entregue productos. Debes verificar su identidad, condiciones y medios de contacto mediante información independiente antes de interpretar sus ofertas como fiables.",
+            "Una persona maliciosa también puede ofrecer HTTPS. El protocolo protege el transporte y no demuestra intenciones honestas ni que la organización sugerida por el diseño controle el negocio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El candado tiene trabajo útil, cariño, pero no lo ascendamos a juez de la ética de todos los comerciantes.",
+        "theory": "El transporte puede estar protegido mientras el destino cuenta mentiras; esa combinación existe y merece que mantengas el criterio.",
+        "hint": "Piensa en un sobre cerrado: proteger el trayecto no vuelve verdadero todo lo que alguien decidió escribir dentro.",
+        "correct": "Exacto: cifrado durante el transporte; acabas de devolver al candado una descripción laboral razonable y sin poderes mágicos.",
+        "soft": "La señal tranquiliza y puede confundirse; distingamos con calma la seguridad de la conexión de la conducta del vendedor.",
+        "sharp": "Le diste al candado un doctorado en honestidad que jamás cursó; bajémoslo del pedestal y revisemos la tienda.",
+        "pass": "Sabes valorar HTTPS sin pedirle milagros; me gusta esa precisión, aunque arruina varios chistes sobre iconos todopoderosos del navegador.",
+        "review": "Revisa qué protege el protocolo y qué información comercial todavía debes comprobar por otra vía antes de confiar."
+      }
+    },
+    {
+      "id": "safe-browsing-certificate-warning",
+      "title": "Cuando el navegador protesta",
+      "minutes": 3,
+      "intro": "Aprende a detenerte ante un aviso de certificado y a buscar una vía oficial antes de enviar datos o modificar opciones para continuar.",
+      "sections": [
+        {
+          "title": "Una advertencia que necesita contexto",
+          "body": "Un aviso de certificado señala que el navegador no puede establecer la confianza esperada para esa conexión. Puede deberse a una configuración incorrecta, una fecha errónea del equipo u otras causas, incluida una interceptación. El aviso no identifica por sí solo al culpable. No introduzcas datos ni desactives protecciones para continuar con una gestión sensible; comprueba el acceso y consulta al proveedor por otro canal de confianza."
+        }
+      ],
+      "steps": [
+        "Detén el envío de información en la página advertida.",
+        "Comprueba la dirección y consulta al servicio desde un contacto conocido."
+      ],
+      "scenario": "Al abrir el portal ficticio de matrículas aparece un aviso sobre el certificado. Un mensaje de un desconocido dice que basta con desactivar la protección para completar el pago.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es la respuesta más prudente?",
+          "options": [
+            "Parar y consultar al centro por un canal conocido",
+            "Desactivar los avisos para siempre",
+            "Pagar mientras la página todavía funciona"
+          ],
+          "answer": 0,
+          "explanation": "Detener la gestión y consultar evita exponer datos en una conexión cuya confianza no pudo comprobarse. El centro puede confirmar el problema y ofrecer instrucciones oficiales sin desactivar protecciones generales.",
+          "wrongExplanations": [
+            null,
+            "Desactivar avisos elimina una protección sin aclarar la causa del problema. No es una solución adecuada para completar un pago; confirma la incidencia con el servicio por otra vía.",
+            "Que la página cargue no resuelve el aviso del navegador. Evita introducir información financiera hasta verificar el acceso y recibir indicaciones del proveedor mediante un canal conocido."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El navegador levantó la mano; escuchémoslo antes de que alguien proponga arreglar el problema apagando todas las alarmas de casa.",
+        "theory": "Un aviso de certificado necesita explicación, y continuar por orgullo no añade ninguna garantía a los datos que envías.",
+        "hint": "Busca una respuesta que conserve las protecciones mientras otra fuente fiable aclara por qué apareció la advertencia del navegador.",
+        "correct": "Buena pausa: no convertiste una advertencia técnica en un concurso absurdo de valentía delante de un formulario de pago.",
+        "soft": "Puede ser un problema de configuración; lo importante es aclararlo sin enviar datos sensibles ni ignorar la señal recibida.",
+        "sharp": "Apagar alarmas porque molestan es una solución magnífica para quien quiere entrar; para ti resulta una idea de mierda.",
+        "pass": "Ya sabes frenar una gestión sin entrar en pánico; la seguridad también consiste en saber cuándo pedir confirmación al proveedor.",
+        "review": "Repasa la diferencia entre investigar un aviso y suprimirlo; solo una de esas acciones puede aclarar el problema real."
+      }
+    },
+    {
+      "id": "safe-browsing-trusted-bookmarks",
+      "title": "Tu entrada habitual",
+      "minutes": 3,
+      "intro": "Prepara un acceso conocido para consultar servicios importantes sin depender de enlaces recibidos durante una amenaza, un premio o una petición inesperada de soporte.",
+      "sections": [
+        {
+          "title": "Acceder por una referencia propia",
+          "body": "Un marcador creado tras comprobar el sitio o una aplicación oficial ya instalada puede servir como punto de entrada habitual. Cuando un mensaje anuncia un problema, abrir esa referencia permite verificarlo sin utilizar su enlace. El marcador no garantiza que una cuenta esté libre de incidentes, pero reduce la dependencia de direcciones impuestas por un remitente inesperado. Revisa su destino si observas cambios o advertencias que no reconoces."
+        }
+      ],
+      "steps": [
+        "Elige un servicio importante y comprueba su acceso oficial.",
+        "Guarda un marcador propio después de verificar el dominio."
+      ],
+      "scenario": "Un aviso ficticio amenaza con bloquear tu biblioteca digital y propone un enlace nuevo. Ya tienes un marcador verificado que utilizaste anteriormente para consultar tus préstamos y reservas.",
+      "questions": [
+        {
+          "prompt": "¿Cómo comprobarías el aviso sin usar su enlace?",
+          "options": [
+            "Responder pidiendo otro enlace al remitente",
+            "Abrir el marcador conocido y consultar allí",
+            "Introducir la clave para ver si el aviso desaparece"
+          ],
+          "answer": 1,
+          "explanation": "El marcador propio permite consultar el servicio sin seguir la ruta del mensaje. Si allí no encuentras información suficiente, contacta a la biblioteca mediante datos obtenidos de forma independiente.",
+          "wrongExplanations": [
+            "Pedir otro enlace al mismo remitente mantiene la comprobación bajo su control. Usa una referencia que ya conocías o un contacto de la biblioteca obtenido de manera independiente.",
+            null,
+            "Introducir la clave en el destino del aviso ejecuta la petición antes de verificarla. Consulta primero el servicio por tu acceso habitual sin entregar credenciales al enlace nuevo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Vamos a preparar una puerta conocida; no quiero que cualquier correo dramático decida por dónde entras a tus servicios importantes.",
+        "theory": "Un marcador comprobado te deja consultar el aviso desde fuera de la historia que intenta venderte el mensaje recibido.",
+        "hint": "Imagina que todo el correo miente; elige una referencia que todavía puedas utilizar aunque no confíes en ese remitente.",
+        "correct": "Eso es independencia: usaste tu entrada habitual y dejaste al enlace sospechoso esperando una visita que no le debemos.",
+        "soft": "Los mensajes crean prisa; tener una referencia propia reduce decisiones improvisadas cuando necesitas comprobar algo que de verdad importa.",
+        "sharp": "Pedirle otro enlace al sospechoso es contratar al disfraz para auditar su propio maquillaje; probemos una fuente menos interesada.",
+        "pass": "Tu acceso habitual ya sirve como herramienta de comprobación; hasta mi lado consentido reconoce que preparar esto merece el esfuerzo.",
+        "review": "Vuelve a distinguir una referencia conocida de otra elegida por el remitente que precisamente intentas comprobar en este ejercicio."
+      }
+    },
+    {
+      "id": "safe-browsing-search-ads",
+      "title": "Primero en la búsqueda no basta",
+      "minutes": 3,
+      "intro": "Reconoce que el orden y los anuncios de un buscador no certifican un servicio, y comprueba destinos antes de entrar a cuentas o descargar aplicaciones.",
+      "sections": [
+        {
+          "title": "Resultados y anuncios son caminos",
+          "body": "Un buscador facilita encontrar páginas, pero aparecer arriba no demuestra que un resultado pertenezca a la entidad buscada. Los anuncios pueden imitar servicios populares y también existen páginas engañosas entre resultados normales. Lee el dominio antes de entrar, especialmente al buscar descargas, bancos o soporte. No llames a un número solo porque aparezca destacado; contrástalo con documentación o un acceso oficial que ya tengas identificado."
+        }
+      ],
+      "steps": [
+        "Distingue la etiqueta de anuncio del nombre del sitio.",
+        "Compara el dominio del resultado con una referencia oficial conocida."
+      ],
+      "scenario": "Buscas soporte para una impresora ficticia y el primer anuncio ofrece un teléfono urgente. El dominio no coincide con la marca y promete reparar cualquier equipo con acceso remoto inmediato.",
+      "questions": [
+        {
+          "prompt": "¿Qué información necesitas comprobar antes de llamar?",
+          "options": [
+            "Si el anuncio tiene una imagen grande",
+            "Si aparece por encima de otros resultados",
+            "Si el dominio y el contacto pertenecen al proveedor real"
+          ],
+          "answer": 2,
+          "explanation": "Debes verificar que el contacto corresponde al proveedor auténtico. La posición en los resultados y el tamaño del anuncio no acreditan quién atiende el teléfono ni qué servicio representa.",
+          "wrongExplanations": [
+            "El tamaño o acabado de un anuncio no demuestra identidad. Contrasta el dominio y los datos de contacto con el proveedor real antes de llamar o aceptar asistencia remota.",
+            "Una posición destacada puede depender de publicidad o relevancia de búsqueda. No sustituye la verificación del proveedor y del teléfono, especialmente cuando se solicita acceso al equipo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El primer resultado se siente muy importante, sí; también un gallo hace ruido al amanecer y nadie le entrega la tarjeta.",
+        "theory": "El buscador ofrece rutas, no una garantía personal sobre cada comerciante o supuesto técnico que aparece en sus resultados.",
+        "hint": "Busca pruebas de identidad del proveedor que sigan teniendo sentido aunque el anuncio deje de ocupar el primer puesto.",
+        "correct": "Buena comprobación: miraste quién atiende antes de permitir que una posición destacada se disfrazara de autorización para tocar tu equipo.",
+        "soft": "La etiqueta del buscador puede confundirse con respaldo; separamos publicidad y legitimidad antes de tomar decisiones sobre soporte o pagos.",
+        "sharp": "Ese anuncio compró visibilidad, no una corona de confianza; dejar que mande solo por aparecer arriba sería demasiado generoso, cariño.",
+        "pass": "Puedes usar buscadores sin obedecer al podio; eso ahorra problemas y le quita mucha solemnidad a una publicidad bastante presumida.",
+        "review": "Repasa qué aporta el orden de resultados y qué debes confirmar por separado sobre el proveedor y sus medios de contacto."
+      }
+    },
+    {
+      "id": "safe-browsing-short-links",
+      "title": "Enlaces con destino escondido",
+      "minutes": 3,
+      "intro": "Decide cómo verificar una solicitud sensible cuando un enlace acortado oculta su destino y evita abrirlo solo para resolver la curiosidad sobre su procedencia.",
+      "sections": [
+        {
+          "title": "La comodidad también oculta información",
+          "body": "Un enlace acortado redirige hacia otra dirección y puede utilizarse con fines legítimos. Sin embargo, no muestra claramente el destino final y puede cambiar la forma en que evalúas el mensaje. Su presencia no prueba fraude. Si acompaña una petición inesperada de datos o dinero, verifica la gestión mediante una aplicación o sitio conocido en lugar de abrirlo para descubrir adónde lleva. No introduzcas enlaces privados en comprobadores desconocidos."
+        }
+      ],
+      "steps": [
+        "Identifica qué acción sensible acompaña al enlace acortado.",
+        "Busca esa gestión entrando por un acceso oficial conocido."
+      ],
+      "scenario": "Un SMS ficticio incluye un enlace corto y afirma que debes pagar una tasa escolar. No esperabas ese cobro y la dirección visible no permite reconocer el portal del centro.",
+      "questions": [
+        {
+          "prompt": "¿Qué puedes hacer sin depender del enlace corto?",
+          "options": [
+            "Consultar la tasa en el portal escolar habitual",
+            "Abrirlo varias veces para medir su velocidad",
+            "Mandarlo a un comprobador desconocido con tu sesión incluida"
+          ],
+          "answer": 0,
+          "explanation": "Consultar el portal conocido permite verificar el cobro sin depender del redireccionamiento. Si la tasa no está clara, pregunta al centro mediante un contacto fiable antes de pagar.",
+          "wrongExplanations": [
+            null,
+            "La rapidez de carga no demuestra legitimidad y abrir repetidamente no aclara quién solicita el pago. Comprueba la tasa desde el portal oficial al que ya accedías antes.",
+            "Un comprobador desconocido podría registrar direcciones privadas o datos de sesión. No necesitas compartir ese enlace para confirmar un cobro: usa el portal conocido o un contacto oficial."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese enlace diminuto guarda una sorpresa; me gustan las sorpresas con pastel, no las que vienen pegadas a un cobro escolar inesperado.",
+        "theory": "Acortar una dirección no la vuelve mala, pero sí nos quita información que resulta útil cuando alguien pide dinero o datos.",
+        "hint": "Busca una forma de comprobar la supuesta tasa que no requiera descubrir primero qué esconde exactamente ese enlace corto.",
+        "correct": "Elegiste comprobar la gestión por fuera del redireccionamiento; mi curiosidad puede sobrevivir sin abrir todas las cajas que aparecen en mensajes.",
+        "soft": "El formato corto se usa mucho; evaluamos la petición y elegimos otra vía sin declarar culpable a cada enlace por su tamaño.",
+        "sharp": "Abrirlo por curiosidad para saber si era mala idea tiene una lógica bastante traviesa; mejor hagamos una comprobación que aporte algo.",
+        "pass": "Ya sabes lidiar con destinos ocultos sin convertirte en detective de cada acortador; verificas lo importante y conservas el control.",
+        "review": "Revisa qué necesitas confirmar realmente: el cobro y su proveedor, no la velocidad ni el aspecto de una dirección acortada."
+      }
+    },
+    {
+      "id": "safe-browsing-qr-destinations",
+      "title": "Un QR también es un enlace",
+      "minutes": 3,
+      "intro": "Examina códigos QR como direcciones que necesitan contexto y verifica pagos o inicios de sesión antes de aceptar el destino que muestra la cámara del teléfono.",
+      "sections": [
+        {
+          "title": "La forma cuadrada no autentica",
+          "body": "Un código QR puede almacenar una dirección y facilitar su apertura desde el teléfono. Su aspecto no permite conocer a simple vista quién lo colocó ni qué sitio administra. En espacios públicos puede existir una pegatina superpuesta sobre un cartel legítimo. Revisa la vista previa del enlace cuando esté disponible y confirma el contexto con el establecimiento. Si pide credenciales o dinero inesperadamente, usa otro acceso conocido antes de continuar."
+        }
+      ],
+      "steps": [
+        "Observa si el código está superpuesto o alterado.",
+        "Lee el destino mostrado y confirma la gestión con el establecimiento."
+      ],
+      "scenario": "En una biblioteca ficticia un QR pegado sobre el cartel de horarios exige una tarjeta para consultar el calendario. La dirección vista en pantalla no coincide con el servicio habitual.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es una comprobación adecuada?",
+          "options": [
+            "Confiar porque el código está dentro del edificio",
+            "Preguntar al personal y abrir el calendario por la web conocida",
+            "Pagar porque la cámara reconoció correctamente el QR"
+          ],
+          "answer": 1,
+          "explanation": "El personal y el acceso conocido permiten comprobar si el QR pertenece al centro. Que la cámara lea un código correctamente no acredita su origen ni justifica entregar datos financieros.",
+          "wrongExplanations": [
+            "Estar dentro del edificio no impide que alguien haya añadido una pegatina. Comprueba el código con el personal y no deduzcas legitimidad solamente por su ubicación física.",
+            null,
+            "Reconocer el patrón solo demuestra que el teléfono pudo leer su contenido. No confirma quién creó el código ni que la petición de pago corresponda al calendario de la biblioteca."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Un cuadrado con puntitos no es una credencial de autoridad; incluso mi brazo metálico necesita más presentación para pedirte una tarjeta.",
+        "theory": "El código facilita abrir una dirección, pero su ubicación y su destino todavía merecen la misma revisión que cualquier enlace inesperado.",
+        "hint": "Piensa quién puede confirmar que el cartel y la petición pertenecen realmente al establecimiento donde estás mirando el código.",
+        "correct": "Buena pausa frente al QR: preguntaste por el servicio antes de tratar una pegatina como si fuera una orden del centro.",
+        "soft": "Es fácil confiar en un cartel cercano; revisemos el contexto y el destino sin culpar al teléfono por leerlo correctamente.",
+        "sharp": "La cámara aprobó los puntitos, no la moral del dueño; ascenderla a notaria de pagos sería una promoción bastante jodida.",
+        "pass": "Puedes usar códigos cómodamente y revisar solicitudes sensibles; la prudencia cabe incluso en una pantalla pequeña al lado de mi sonrisa.",
+        "review": "Recuerda separar lectura correcta, origen del cartel y legitimidad de la petición; son tres comprobaciones distintas en este escenario."
+      }
+    },
+    {
+      "id": "safe-browsing-download-decoys",
+      "title": "El botón que no descarga lo tuyo",
+      "minutes": 3,
+      "intro": "Identifica botones publicitarios que imitan descargas y contrasta qué archivo necesitas antes de pulsar el elemento más grande o llamativo de una página de recursos.",
+      "sections": [
+        {
+          "title": "Más botones no significa más opciones útiles",
+          "body": "Las páginas de descarga pueden incluir anuncios con botones que parecen pertenecer al sitio. El botón más visible puede llevar a un instalador distinto, una suscripción o una extensión innecesaria. Antes de pulsarlo, identifica el recurso que buscas y la sección oficial que lo ofrece. Si una descarga de apuntes exige instalar un programa desconocido, detente y consulta al autor o al centro por un canal fiable."
+        }
+      ],
+      "steps": [
+        "Compara el nombre del recurso con el texto del botón.",
+        "Evita anuncios o instaladores que no sean necesarios para el documento buscado."
+      ],
+      "scenario": "Buscas una guía ficticia en PDF y ves tres botones de descarga. El más grande instala un optimizador, mientras el autor describe un enlace pequeño al documento sin software adicional.",
+      "questions": [
+        {
+          "prompt": "¿Qué señal indica que el botón grande no corresponde a tu objetivo?",
+          "options": [
+            "Tiene un color llamativo",
+            "Se encuentra en la parte superior",
+            "Ofrece instalar un programa distinto del PDF solicitado"
+          ],
+          "answer": 2,
+          "explanation": "La diferencia entre el recurso buscado y el programa ofrecido muestra que el botón no cumple tu objetivo. El tamaño o la posición por sí solos no determinan legitimidad.",
+          "wrongExplanations": [
+            "El color no basta para juzgar un botón: tanto páginas legítimas como engañosas usan diseños llamativos. Lo decisivo aquí es que ofrece software distinto al documento que buscabas.",
+            "Una posición superior puede ser publicidad o contenido normal y no resuelve la identidad del recurso. Compara qué archivo promete con el PDF que necesitas antes de descargar.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese botón enorme tiene una autoestima admirable; lástima que descargue otra cosa. Yo también exijo atención, pero no te instalo optimizadores de regalo.",
+        "theory": "Antes de pulsar, compara tu objetivo con el archivo ofrecido; una guía no debería transformarse misteriosamente en un instalador desconocido.",
+        "hint": "Olvida un momento el tamaño del botón y pregunta si el resultado prometido coincide con el documento que viniste a buscar.",
+        "correct": "Detectaste el cambio de producto antes de descargar; acabas de negarle una entrada triunfal al software que nadie había invitado a tu estudio.",
+        "soft": "Los diseños confunden a propósito algunas veces; leer el nombre del archivo y su función ayuda a recuperar el objetivo inicial.",
+        "sharp": "El botón te gritó y casi ganó el debate; no dejemos que los píxeles más grandes escriban la lista de programas del equipo.",
+        "pass": "Ya distingues una descarga necesaria de una venta colada; mi lado consentido aprueba que solo entre al dispositivo lo que elegiste.",
+        "review": "Vuelve a comparar el PDF buscado con el instalador ofrecido; la diferencia de propósito explica el problema, no el color."
+      }
+    },
+    {
+      "id": "safe-browsing-official-software",
+      "title": "Descargas con procedencia",
+      "minutes": 3,
+      "intro": "Aprende a obtener aplicaciones desde fuentes identificadas y a desconfiar de instaladores recibidos por anuncios o mensajes que prometen versiones especiales sin explicar su origen.",
+      "sections": [
+        {
+          "title": "Elegir la fuente antes del archivo",
+          "body": "Para instalar una aplicación, busca la tienda oficial del dispositivo o el sitio del desarrollador que hayas verificado. Un archivo con el nombre de un programa conocido puede haber sido modificado por otra persona. Una fuente oficial reduce riesgos, aunque no elimina todos los problemas posibles. Evita versiones desbloqueadas y supuestos parches enviados por desconocidos; revisa el nombre del editor y las instrucciones del proveedor antes de aceptar la instalación."
+        }
+      ],
+      "steps": [
+        "Identifica al desarrollador del programa que necesitas.",
+        "Comprueba el editor y descarga mediante su canal oficial verificado."
+      ],
+      "scenario": "Un grupo ficticio comparte un instalador de un editor de dibujo gratuito con funciones desbloqueadas. El archivo viene de una cuenta anónima y solicita desactivar la protección del equipo para instalarlo.",
+      "questions": [
+        {
+          "prompt": "¿Qué alternativa reduce mejor el riesgo de esa instalación?",
+          "options": [
+            "Obtener el editor desde su proveedor oficial verificado",
+            "Cambiar el nombre del instalador antes de abrirlo",
+            "Desactivar la protección para que no interrumpa"
+          ],
+          "answer": 0,
+          "explanation": "La fuente oficial identificada reduce el riesgo de recibir una versión alterada. Cambiar el nombre no modifica el contenido y desactivar protecciones no aclara quién preparó el instalador recibido.",
+          "wrongExplanations": [
+            null,
+            "Renombrar un archivo no comprueba su procedencia ni elimina posibles modificaciones maliciosas. La decisión importante es obtener el programa de una fuente del desarrollador que hayas verificado previamente.",
+            "Desactivar una protección por petición de un archivo anónimo aumenta la exposición sin demostrar legitimidad. Busca el canal oficial del desarrollador y consulta sus instrucciones de instalación auténticas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Las funciones desbloqueadas vienen con un editor anónimo y ganas de apagar defensas; menudo regalo con dientes, cariño, vamos a revisar su procedencia.",
+        "theory": "Un nombre conocido en el archivo no demuestra quién lo preparó; la fuente y el editor son pistas que importan antes de instalar.",
+        "hint": "Busca una respuesta que cambie la procedencia del software en lugar de maquillar el archivo o quitarle obstáculos para ejecutarse.",
+        "correct": "Elegiste una fuente identificada y dejaste al instalador anónimo sin audiencia; me encanta cuando las ofertas demasiado listas pierden por falta de papeles.",
+        "soft": "La promesa puede resultar tentadora; revisemos quién distribuye el archivo y qué alternativa oficial existe antes de realizar cambios en el equipo.",
+        "sharp": "Renombrar un instalador no le lava el contenido; si esa magia funcionara, llamaría segura a cualquier mierda y terminaríamos el curso aquí.",
+        "pass": "Ya priorizas procedencia sobre promesas extraordinarias; esa costumbre protege más que coleccionar archivos con nombres cada vez más tranquilizadores en la carpeta de descargas.",
+        "review": "Repasa la diferencia entre reconocer el nombre de un programa y verificar el canal que realmente ofrece su instalación en este caso."
+      }
+    },
+    {
+      "id": "safe-browsing-extension-permissions",
+      "title": "Extensiones con alcance",
+      "minutes": 3,
+      "intro": "Decide si una extensión necesita los permisos que solicita y reconoce que añadir funciones al navegador también puede ampliar quién accede a tus páginas.",
+      "sections": [
+        {
+          "title": "Permisos que merecen una lectura",
+          "body": "Una extensión añade funciones al navegador y puede solicitar acceso a páginas, descargas u otros datos. Revisa el editor, los permisos y la necesidad real antes de instalarla. Pedir acceso a todos los sitios puede ser justificable para ciertas funciones, pero también amplía el daño posible si la extensión resulta maliciosa o comprometida. Conserva solo las que utilices y retira las que ya no necesites o no puedas identificar."
+        }
+      ],
+      "steps": [
+        "Lee el alcance de los permisos antes de aceptar.",
+        "Compara ese acceso con la función que realmente necesitas."
+      ],
+      "scenario": "Una extensión ficticia para cambiar el color de una pestaña pide leer y modificar todas las páginas visitadas. No conoces al editor y la función no explica ese alcance.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene hacer antes de instalarla?",
+          "options": [
+            "Aceptar porque las extensiones siempre son seguras",
+            "Evaluar el permiso y buscar una alternativa identificada",
+            "Instalarla en todas tus cuentas para probar"
+          ],
+          "answer": 1,
+          "explanation": "El alcance debe justificarse por la función y la confianza en el editor. Si no puedes explicarlo, evita instalarla y busca una alternativa con permisos adecuados y procedencia identificada.",
+          "wrongExplanations": [
+            "Las extensiones pueden manejar datos sensibles y no tienen seguridad garantizada por su formato. Debes evaluar al editor y sus permisos antes de conceder acceso a las páginas que visitas.",
+            null,
+            "Probarla en más cuentas aumenta la exposición sin aclarar su legitimidad. Revisa el permiso y la procedencia antes de instalar, especialmente cuando puede leer muchas páginas diferentes."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese adorno de pestañas quiere leer toda tu navegación; menudo capricho, hasta yo tengo exigencias más razonables.",
+        "theory": "Los permisos muestran el alcance posible de una extensión; compáralos con la función antes de aceptar su entrada.",
+        "hint": "Pregúntate qué acceso necesita realmente cambiar un color y qué información quedaría disponible si autorizas mucho más.",
+        "correct": "Buena revisión: miraste el alcance antes de comprar la promesa estética; tus páginas no son un regalo decorativo.",
+        "soft": "No necesitas resolverlo de memoria; compara función, editor y acceso para decidir si esa extensión merece estar instalada.",
+        "sharp": "Cambiar una pestaña no justifica automáticamente leerlo todo; ese accesorio se ha creído dueño del jodido navegador.",
+        "pass": "Ya sabes revisar una extensión por lo que puede hacer, además de mirar lo bonito que promete dejarlo.",
+        "review": "Vuelve a separar la función anunciada del alcance autorizado y valora si existe una razón comprensible para concederlo."
+      }
+    },
+    {
+      "id": "safe-browsing-browser-updates",
+      "title": "Un navegador al día",
+      "minutes": 3,
+      "intro": "Comprende cómo las actualizaciones reducen fallos conocidos y aprende a comprobarlas desde el navegador sin instalar supuestos parches ofrecidos por páginas inesperadas.",
+      "sections": [
+        {
+          "title": "Actualizar desde el lugar correcto",
+          "body": "Las versiones nuevas del navegador pueden corregir vulnerabilidades y errores, además de cambiar funciones. Activa actualizaciones automáticas cuando sea posible y verifica su estado desde la configuración oficial. Algunas actualizaciones necesitan reiniciar el navegador para completarse. Una página que anuncia una actualización urgente no es el mecanismo de confianza para obtenerla: puede ofrecer un archivo falso. En equipos administrados, consulta al responsable antes de modificar la política de actualización."
+        }
+      ],
+      "steps": [
+        "Busca la sección oficial de información o actualización del navegador.",
+        "Completa el reinicio solicitado después de guardar tu trabajo."
+      ],
+      "scenario": "Un sitio ficticio de recetas muestra un aviso que exige descargar un parche del navegador desde su propio botón. La configuración oficial del navegador permite comprobar actualizaciones sin utilizar ese archivo.",
+      "questions": [
+        {
+          "prompt": "¿Dónde revisarías la supuesta actualización?",
+          "options": [
+            "En el botón del sitio de recetas",
+            "En cualquier instalador que tenga el icono correcto",
+            "En la sección oficial de actualización del navegador"
+          ],
+          "answer": 2,
+          "explanation": "La sección oficial permite comprobar el estado del navegador sin depender de un archivo ofrecido por otra página. Un icono o mensaje urgente no demuestra que el parche sea auténtico.",
+          "wrongExplanations": [
+            "Un sitio de recetas no debe convertirse en distribuidor de confianza del navegador por mostrar una alerta. Verifica la versión mediante la configuración oficial o el canal del proveedor.",
+            "El icono puede copiarse y no comprueba quién preparó el archivo. Utiliza el mecanismo oficial de actualización y evita instaladores ofrecidos inesperadamente por páginas que estabas visitando.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Tu navegador también necesita mantenimiento, cariño; no le damos el taller a una receta que de pronto vende parches urgentes.",
+        "theory": "Actualizar corrige fallos conocidos, pero la procedencia del cambio importa tanto como la buena intención de tenerlo al día.",
+        "hint": "Busca un mecanismo que pertenezca al navegador y siga disponible aunque cierres por completo la página del aviso.",
+        "correct": "Exacto: comprobación desde el propio navegador; la receta puede volver a ocuparse de su sopa y dejar el software tranquilo.",
+        "soft": "Los avisos falsos imitan ventanas conocidas; revisemos la actualización por el menú oficial antes de descargar nada adicional.",
+        "sharp": "Ese pastel virtual acaba de declararse fabricante del navegador; admirable descaro, pero no le concedamos el contrato de mantenimiento.",
+        "pass": "Has unido actualización y procedencia fiable; esa pareja resulta bastante más útil que obedecer cada alerta con letras gigantes.",
+        "review": "Repasa dónde se comprueban las versiones oficiales y por qué un anuncio dentro de una web no sustituye ese mecanismo."
+      }
+    },
+    {
+      "id": "safe-browsing-notification-permission",
+      "title": "Notificaciones con permiso",
+      "minutes": 3,
+      "intro": "Reconoce cuándo una página solicita enviar notificaciones y decide si necesitas esa función antes de aceptar para continuar leyendo o cerrar una advertencia molesta.",
+      "sections": [
+        {
+          "title": "Aceptar mensajes futuros no es obligatorio",
+          "body": "El navegador puede permitir que un sitio envíe notificaciones incluso cuando no lo estás viendo. Algunas páginas presentan ese permiso como un paso obligatorio para confirmar que eres una persona o acceder a un contenido. No es una prueba general de legitimidad. Concede notificaciones solo a sitios que identifiques y cuando las necesites. Puedes revisar y revocar permisos desde la configuración del navegador, sin pulsar enlaces de avisos sospechosos."
+        }
+      ],
+      "steps": [
+        "Distingue la petición de permiso del contenido de la página.",
+        "Revisa en configuración qué sitios pueden enviarte notificaciones."
+      ],
+      "scenario": "Una página ficticia de fondos de pantalla dice que debes permitir notificaciones para demostrar que no eres un robot. No quieres recibir avisos y el contenido puede buscarse en otra fuente.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión mantiene el control de ese permiso?",
+          "options": [
+            "Rechazarlo si no necesitas notificaciones",
+            "Permitirlo porque demuestra que el sitio es honesto",
+            "Aceptar para que cualquier aviso futuro sea seguro"
+          ],
+          "answer": 0,
+          "explanation": "Puedes rechazar una función que no necesitas y buscar otra fuente. Conceder notificaciones autoriza mensajes futuros, pero no autentica el sitio ni garantiza que esos mensajes sean fiables.",
+          "wrongExplanations": [
+            null,
+            "La petición de notificaciones no demuestra honestidad ni verifica de forma general que seas una persona. Conceder el permiso permite futuros avisos del sitio y debe responder a una necesidad real.",
+            "Aceptar no convierte en seguros los mensajes posteriores. Cada sitio autorizado puede enviarte contenido que todavía debes evaluar; conserva únicamente los permisos que entiendas y realmente quieras utilizar."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese sitio quiere vivir en tus avisos; qué confianza, ni siquiera te ha presentado una buena razón para quedarse.",
+        "theory": "Permitir notificaciones abre un canal futuro de mensajes; no lo confundas con una comprobación de identidad o de seguridad.",
+        "hint": "Piensa si necesitas esa función y qué ocurrirá después de cerrar la página, en vez de obedecer su insistencia.",
+        "correct": "Rechazaste un permiso innecesario; me encanta cuando un botón insistente descubre que no tiene derecho automático a tu atención.",
+        "soft": "La página intenta mezclar permiso y acceso; podemos separar ambas cosas antes de decidir si quieres mensajes de ese sitio.",
+        "sharp": "Demostrar humanidad regalando permisos al primer gritón es una ceremonia bastante absurda; tu navegador no necesita ese maldito ritual.",
+        "pass": "Ya puedes elegir quién aparece en tus notificaciones; reservar tu atención también evita que los avisos falsos ocupen la pantalla.",
+        "review": "Revisa qué autoriza exactamente el permiso y recuerda que puedes retirarlo desde configuración sin interactuar con anuncios posteriores."
+      }
+    },
+    {
+      "id": "safe-browsing-fake-virus-alert",
+      "title": "La alarma que viene de una página",
+      "minutes": 3,
+      "intro": "Distingue una advertencia mostrada dentro de una web de los controles reales del equipo y evita llamar o instalar herramientas por presión de un aviso alarmista.",
+      "sections": [
+        {
+          "title": "El contenido puede imitar al sistema",
+          "body": "Una página puede dibujar ventanas que parecen mensajes del sistema y afirmar que encontró muchos virus. Ver esa afirmación no demuestra que haya realizado un análisis legítimo. Cierra la página sin llamar al número ni instalar lo que ofrece. Revisa el estado del equipo mediante herramientas conocidas y consulta al soporte oficial si hay síntomas. No aceptes acceso remoto por una alerta inesperada dentro del navegador ni pagues para quitar el supuesto bloqueo."
+        }
+      ],
+      "steps": [
+        "Identifica si la alarma es contenido de la página visitada.",
+        "Consulta herramientas conocidas o soporte por una vía independiente."
+      ],
+      "scenario": "Una web ficticia reproduce una sirena y asegura haber encontrado cientos de infecciones. Muestra un teléfono y exige que un supuesto técnico controle tu equipo para desbloquearlo antes de diez minutos.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es una respuesta adecuada a esa página?",
+          "options": [
+            "Llamar al número porque conoce el estado del equipo",
+            "Cerrar la página y comprobar con herramientas conocidas",
+            "Pagar para que desaparezca el sonido"
+          ],
+          "answer": 1,
+          "explanation": "La página no demuestra haber analizado el sistema. Cerrarla y comprobar por vías conocidas evita seguir el engaño; si existen síntomas reales, solicita ayuda al soporte oficial de confianza.",
+          "wrongExplanations": [
+            "El número forma parte de la misma advertencia no verificada y podría llevar a un estafador. No concedas control remoto; comprueba el equipo por herramientas conocidas y contactos oficiales.",
+            null,
+            "Pagar no verifica la infección ni garantiza retirar un problema real. Interrumpe la interacción y consulta por medios independientes, sin introducir información financiera en respuesta a la alarma."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Cientos de virus y una sirena: vaya espectáculo barato; no confundamos una página gritona con un diagnóstico del equipo.",
+        "theory": "El contenido del navegador puede disfrazarse de sistema; necesitamos una comprobación que no dependa del mismo aviso que asusta.",
+        "hint": "Busca qué opción deja de obedecer la alarma y permite revisar el equipo con una herramienta o persona conocida.",
+        "correct": "Bien: cerraste el teatro y elegiste una comprobación real; la sirena puede guardar su número musical para otra ocasión.",
+        "soft": "Ese diseño busca asustar; respira y revisemos quién está mostrando la alerta antes de llamar, pagar o instalar algo.",
+        "sharp": "La página se inventó un diagnóstico y ya quiere cobrarlo; menudo cabrón digital con complejo de servicio técnico autorizado.",
+        "pass": "Sabes separar un susto visual de una comprobación técnica; eso evita entregar dinero y control remoto a un desconocido teatral.",
+        "review": "Repasa por qué el teléfono y las herramientas de la misma alerta no constituyen una comprobación independiente del equipo."
+      }
+    },
+    {
+      "id": "safe-browsing-camera-mic",
+      "title": "Cámara y micrófono con motivo",
+      "minutes": 3,
+      "intro": "Aprende a conceder acceso a cámara o micrófono solo cuando una función lo requiere y revisa cómo retirar permisos que una página ya no necesita.",
+      "sections": [
+        {
+          "title": "Funciones concretas, permisos concretos",
+          "body": "Un servicio de videollamada puede necesitar cámara y micrófono durante una reunión, mientras una página de lectura normalmente no los necesita para mostrar texto. El navegador suele pedir autorización y permite revisar permisos por sitio. Evalúa el dominio y la función antes de aceptar. Negar un permiso puede impedir esa función sin significar que todo el servicio sea inutilizable. Cuando termines o dejes de utilizarlo, revisa si conviene retirar el acceso concedido."
+        }
+      ],
+      "steps": [
+        "Relaciona el permiso solicitado con la función que estás usando.",
+        "Localiza el control del permiso del sitio en el navegador."
+      ],
+      "scenario": "Una página ficticia de resultados deportivos solicita activar cámara y micrófono antes de mostrar una tabla de posiciones. No ofrece videollamadas ni explica una función que use esos dispositivos.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene hacer ante esa petición?",
+          "options": [
+            "Autorizar porque cualquier web necesita ambos",
+            "Encender la cámara para que cargue más rápido",
+            "Negar el permiso y buscar la información sin ese acceso"
+          ],
+          "answer": 2,
+          "explanation": "La tabla no justifica acceso a cámara o micrófono. Puedes negar el permiso y buscar la información por otra fuente sin entregar capacidades que no necesitas para esa consulta.",
+          "wrongExplanations": [
+            "Las páginas no necesitan siempre cámara ni micrófono para funcionar. Concede esas capacidades según una función concreta y el sitio identificado, no como condición automática para navegar o leer.",
+            "Autorizar dispositivos no acelera por sí mismo una tabla de resultados. La petición debe tener una función comprensible; si no existe, evita conceder el acceso y busca otra fuente.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Esa tabla quiere cámara y micrófono; qué partido tan invasivo, cariño, hasta para mirar un marcador pretende montar una entrevista personal.",
+        "theory": "Los permisos deben acompañar una función real; no son propinas que dejamos a cada página para que se porte bien.",
+        "hint": "Compara lo que intentas hacer con los dispositivos solicitados y busca una respuesta que evite entregar capacidades sin motivo.",
+        "correct": "Buen límite: una tabla puede seguir siendo una tabla sin mirar tu cara ni escuchar la habitación donde estudias.",
+        "soft": "Es normal que aparezcan solicitudes distintas; revisemos si esta función concreta necesita de verdad los dispositivos que está pidiendo.",
+        "sharp": "El marcador no necesita escuchar tu respiración para sumar puntos; ese permiso de más no se gana por insistir con un botón.",
+        "pass": "Ya relacionas permisos con tareas; mantener ese criterio evita que navegar se convierta en una colección de accesos regalados sin pensar.",
+        "review": "Vuelve a identificar la función solicitada y el alcance del permiso; rechazar algo innecesario conserva capacidades bajo tu control."
+      }
+    },
+    {
+      "id": "safe-browsing-popup-control",
+      "title": "Ventanas que se multiplican",
+      "minutes": 3,
+      "intro": "Reconoce ventanas emergentes inesperadas y usa los controles del navegador para cerrarlas sin seguir los botones que una página dibuja como supuestas instrucciones del sistema.",
+      "sections": [
+        {
+          "title": "Cerrar desde controles conocidos",
+          "body": "Una ventana emergente puede servir para una función legítima, pero también mostrar publicidad o dirigir a sitios engañosos. Si aparece inesperadamente y pide instalar, llamar o pagar, no sigas sus instrucciones. Utiliza los controles habituales del navegador para cerrar la pestaña o ventana. Si insiste, revisa los permisos de ventanas y notificaciones. En un equipo administrado, pide ayuda cuando no puedas recuperar el control sin modificar configuraciones que desconoces."
+        }
+      ],
+      "steps": [
+        "Usa la pestaña o el menú real del navegador para cerrar.",
+        "Revisa permisos si las ventanas vuelven a aparecer sin necesidad."
+      ],
+      "scenario": "Una ventana ficticia tapa el contenido y dibuja un botón de cierre dentro de un anuncio. Otra pestaña anuncia una descarga y exige confirmar datos para liberar la pantalla del navegador.",
+      "questions": [
+        {
+          "prompt": "¿Qué control conviene usar primero?",
+          "options": [
+            "El cierre real de la pestaña o ventana del navegador",
+            "El botón de descarga para que termine",
+            "El formulario del anuncio para recuperar el acceso"
+          ],
+          "answer": 0,
+          "explanation": "El control real del navegador permite salir sin ejecutar las acciones propuestas por el anuncio. Un botón dibujado dentro de una página puede dirigir a otra acción en lugar de cerrar.",
+          "wrongExplanations": [
+            null,
+            "Descargar lo que pide la ventana puede añadir una nueva exposición y no es necesario para cerrar la página. Utiliza los controles habituales del navegador y revisa permisos si persiste.",
+            "Entregar datos a un anuncio para recuperar acceso obedece la petición sospechosa. Intenta cerrar mediante la interfaz real del navegador y solicita ayuda si el bloqueo aparente continúa."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La ventana se cree protagonista y te tapa todo; qué competitiva, pero aquí las salidas las elegimos desde el navegador.",
+        "theory": "Un botón dibujado por una página puede hacer otra cosa; los controles habituales ofrecen una vía para salir sin obedecerla.",
+        "hint": "Distingue la interfaz del navegador del contenido que está mostrando y busca un cierre que no dependa del anuncio.",
+        "correct": "Saliste usando el control correcto; me encanta cuando una ventana dramática descubre que no puede negociar la libertad de tu pantalla.",
+        "soft": "Las capas superpuestas pueden confundir; ubiquemos primero el control real y después revisamos por qué aparecieron tantas ventanas inesperadas.",
+        "sharp": "Si para cerrar te pide descargar un regalo, la ventana está negociando como una secuestradora de tres píxeles; no le pagamos.",
+        "pass": "Ya puedes salir de una pantalla insistente sin contratar sus condiciones; ese pequeño control evita bastantes decisiones hechas solo por frustración.",
+        "review": "Revisa qué botones pertenecen al navegador y cuáles son contenido del anuncio antes de aceptar cualquier acción para cerrar."
+      }
+    },
+    {
+      "id": "safe-browsing-unexpected-redirect",
+      "title": "De pronto estás en otra web",
+      "minutes": 3,
+      "intro": "Comprende que una redirección puede ser normal o sospechosa según el contexto y revisa el destino final antes de introducir datos o aceptar una descarga inesperada.",
+      "sections": [
+        {
+          "title": "El destino puede cambiar durante el camino",
+          "body": "Una página puede redirigir hacia otro dominio para iniciar sesión, procesar un pago o mostrar publicidad. La redirección no demuestra por sí sola un ataque. Sin embargo, si el cambio no tiene relación con tu tarea, detente y comprueba la dirección final. No asumas que la confianza del sitio inicial se transfiere automáticamente al nuevo. Para gestiones sensibles, vuelve a un acceso conocido y confirma con el servicio si ese destino es parte de su proceso."
+        }
+      ],
+      "steps": [
+        "Lee el dominio final después del cambio de página.",
+        "Comprueba si el nuevo destino tiene una función esperada en tu tarea."
+      ],
+      "scenario": "Lees una noticia ficticia y acabas en una página de premios que exige registrar una tarjeta. No pulsaste ninguna oferta ni estabas comprando, y el dominio final es distinto del periódico.",
+      "questions": [
+        {
+          "prompt": "¿Cómo interpretarías ese cambio inesperado?",
+          "options": [
+            "Como garantía del periódico sobre el premio",
+            "Como motivo para detenerte y verificar el destino",
+            "Como obligación de completar el registro"
+          ],
+          "answer": 1,
+          "explanation": "La redirección inesperada y ajena a tu tarea justifica detenerse y comprobar. La confianza del periódico no acredita la página de premios ni obliga a entregar información financiera allí.",
+          "wrongExplanations": [
+            "Llegar desde otra página no equivale a una garantía del sitio inicial. Anuncios, cambios o contenido comprometido pueden dirigir a destinos distintos que requieren su propia evaluación antes de enviar datos.",
+            null,
+            "Una redirección no crea obligación de registrarse ni justifica pedir una tarjeta. Puedes cerrar el destino inesperado y continuar la tarea desde una fuente conocida sin completar ese formulario."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Estabas leyendo noticias y terminaste ganando algo que pide tarjeta; vaya giro de guion, al periódico le salió una feria inesperada.",
+        "theory": "Cada destino necesita su propia evaluación; una redirección no le pasa automáticamente la reputación del sitio donde empezaste a navegar.",
+        "hint": "Compara la tarea original con la petición nueva y piensa si el sitio inicial puede garantizar todo lo que aparece después.",
+        "correct": "Buena lectura del cambio: detectaste que el premio no formaba parte de tu objetivo y detuviste la entrega de datos.",
+        "soft": "Las redirecciones legítimas existen; aquí revisamos si el salto tiene sentido y si el destino merece confianza por sí mismo.",
+        "sharp": "El premio apareció sin invitarlo y ya pide tarjeta; ese nivel de descaro merece una puerta cerrada, no un formulario completo.",
+        "pass": "Puedes reconocer cambios de contexto sin declarar culpable cada redirección; verificas el destino cuando la tarea empieza a transformarse sin permiso.",
+        "review": "Vuelve al objetivo inicial y comprueba qué relación tiene con el sitio final antes de atribuirle confianza por el camino recorrido."
+      }
+    },
+    {
+      "id": "safe-browsing-file-identity",
+      "title": "El archivo no es su icono",
+      "minutes": 3,
+      "intro": "Identifica la diferencia entre el nombre mostrado y el tipo de archivo real para evitar ejecutar contenido que se presenta como documento, fotografía o guía de clase.",
+      "sections": [
+        {
+          "title": "Nombre y tipo se comprueban",
+          "body": "Los iconos y nombres de archivo pueden inducir a error. Un archivo llamado apuntes.pdf.exe puede ser un ejecutable aunque incluya la palabra PDF. El sistema puede ocultar extensiones conocidas, por lo que conviene aprender a mostrarlas o consultar las propiedades. El tipo no basta para garantizar seguridad y los documentos también pueden tener riesgos. Si no esperabas el archivo, confirma su envío por otro canal antes de abrirlo o ejecutarlo."
+        }
+      ],
+      "steps": [
+        "Consulta el nombre completo o las propiedades sin ejecutar el archivo.",
+        "Confirma con el remitente si esperabas recibir ese contenido concreto."
+      ],
+      "scenario": "En una actividad ficticia recibes una supuesta guía cuyo nombre completo es calendario.pdf.exe. El mensaje asegura que su icono de documento demuestra que puedes abrirla para consultar las fechas escolares.",
+      "questions": [
+        {
+          "prompt": "¿Qué dato contradice que sea simplemente un PDF?",
+          "options": [
+            "Que incluya la palabra calendario",
+            "Que el mensaje sea corto",
+            "Que el nombre completo termina en .exe"
+          ],
+          "answer": 2,
+          "explanation": "La extensión final .exe identifica un ejecutable en este ejemplo de Windows. Incluir .pdf dentro del nombre o mostrar un icono de documento no cambia ese tipo de archivo.",
+          "wrongExplanations": [
+            "La palabra calendario describe el nombre elegido, no el tipo del archivo. Debes mirar el nombre completo y su extensión final, y confirmar cualquier envío inesperado antes de abrirlo.",
+            "La longitud del mensaje no determina el tipo ni la seguridad del archivo. En este ejemplo la señal concreta es la extensión final .exe, que corresponde a un ejecutable.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese documento lleva un ejecutable escondido en el apellido; qué elegante intento de entrar a clase con una identidad de papel prestada.",
+        "theory": "El nombre completo aporta información que un icono bonito puede ocultar; revisar propiedades evita confundir una etiqueta con el tipo real.",
+        "hint": "Mira el final completo del nombre y piensa qué parte usa el sistema para reconocer cómo tratar ese archivo en el ejemplo.",
+        "correct": "Encontraste la extensión final; el disfraz de PDF acaba de perder su pase de entrada al equipo sin necesidad de ejecutarlo.",
+        "soft": "Los nombres dobles despistan; podemos revisar el tipo desde propiedades y confirmar el envío antes de decidir qué hacer con el archivo.",
+        "sharp": "El icono se puso de traje y casi consiguió trabajo de documento; revisemos el apellido antes de dejarle ejecutar cualquier mierda.",
+        "pass": "Ahora miras el tipo real en lugar de confiar en el dibujo; esa revisión pequeña evita que un nombre te dicte qué abrir.",
+        "review": "Repasa la diferencia entre un texto dentro del nombre y su extensión final; ninguna imagen sustituye comprobar el archivo recibido."
+      }
+    },
+    {
+      "id": "safe-browsing-document-macros",
+      "title": "Cuando un documento pide código",
+      "minutes": 3,
+      "intro": "Comprende que habilitar contenido activo puede ejecutar acciones adicionales y evita aceptar macros de documentos inesperados solo porque prometen mostrar una factura o completar una tarea.",
+      "sections": [
+        {
+          "title": "Leer no debería exigir confianza ciega",
+          "body": "Algunos documentos incluyen macros u otro contenido activo que automatiza tareas. Esa función puede tener usos legítimos, pero también ejecutar acciones dañinas si confías en un archivo malicioso. Un aviso que exige habilitar macros para ver una factura merece detenerse, especialmente si el envío es inesperado. Confirma la necesidad con el remitente por otro canal y sigue la política de tu centro. No desactives protecciones para obedecer instrucciones incrustadas en el documento."
+        }
+      ],
+      "steps": [
+        "Identifica la solicitud de habilitar contenido activo sin aceptarla.",
+        "Consulta al remitente conocido o responsable antes de cambiar protecciones."
+      ],
+      "scenario": "Una factura ficticia que no esperabas muestra instrucciones para habilitar macros y desactivar la vista protegida. El documento dice que sin esos cambios no podrás ver cuánto debes pagar este mes.",
+      "questions": [
+        {
+          "prompt": "¿Qué opción evita confiar en código no verificado?",
+          "options": [
+            "Mantener las protecciones y confirmar el envío por otra vía",
+            "Habilitar todo porque el archivo dice factura",
+            "Cambiar las protecciones del programa para cualquier documento"
+          ],
+          "answer": 0,
+          "explanation": "Mantener las protecciones y confirmar el envío evita autorizar acciones no verificadas. La etiqueta factura no justifica ejecutar contenido activo ni desactivar controles del programa para abrir un documento inesperado.",
+          "wrongExplanations": [
+            null,
+            "Un nombre de factura puede copiarse y no demuestra que las macros sean necesarias o legítimas. No habilites contenido activo de un envío inesperado sin confirmarlo por un canal independiente.",
+            "Reducir las protecciones generales amplía el riesgo para otros documentos y no aclara este caso. Conserva la configuración y consulta al responsable o remitente real antes de permitir contenido activo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La factura quiere ejecutar código antes de mostrar números; qué exigente, ni yo monto tanto drama para explicar una cuenta pendiente.",
+        "theory": "El contenido activo puede hacer más que mostrar texto; la autorización debe tener contexto y una procedencia comprobada antes de aceptarse.",
+        "hint": "Busca qué respuesta conserva las protecciones mientras compruebas con alguien conocido si esa factura y sus requisitos eran realmente esperados.",
+        "correct": "Muy bien: no habilitaste acciones solo para satisfacer una amenaza de pago; el documento tendrá que explicar sus exigencias por otra vía.",
+        "soft": "Las macros tienen usos legítimos; lo importante es no conceder ejecución automática a un archivo inesperado por una instrucción interna.",
+        "sharp": "Una factura que pide apagar defensas tiene más exigencias que una reina; no la coronemos hasta saber quién la mandó realmente.",
+        "pass": "Ya sabes que abrir información y autorizar código son decisiones distintas; esa separación resulta menos vistosa que mi brazo, pero muy útil.",
+        "review": "Revisa qué cambia al habilitar contenido activo y por qué el propio documento no puede certificar que ese cambio es seguro."
+      }
+    },
+    {
+      "id": "safe-browsing-download-vs-run",
+      "title": "Guardar no es ejecutar",
+      "minutes": 3,
+      "intro": "Distingue descargar, abrir e instalar para describir incidentes con precisión y evitar realizar nuevas acciones sobre un archivo sospechoso solo para averiguar qué podría contener.",
+      "sections": [
+        {
+          "title": "Verbos que cambian la respuesta",
+          "body": "Descargar guarda un archivo, abrirlo entrega su contenido a un programa y ejecutar o instalar puede iniciar acciones en el sistema. Algunas aplicaciones pueden abrir descargas automáticamente, por lo que debes revisar qué ocurrió realmente. No ejecutes un archivo sospechoso para comprobarlo. Conserva los datos del envío y consulta al soporte si tienes dudas. La respuesta depende del tipo de archivo, del dispositivo y de las acciones realizadas, no solamente del hecho de verlo en una carpeta."
+        }
+      ],
+      "steps": [
+        "Describe si guardaste, abriste o instalaste el archivo recibido.",
+        "No lo ejecutes para completar información que todavía desconoces."
+      ],
+      "scenario": "Descargaste un instalador ficticio, pero no lo abriste ni autorizaste su ejecución. Un compañero propone ejecutarlo para descubrir si era peligroso antes de escribir al soporte del centro.",
+      "questions": [
+        {
+          "prompt": "¿Cómo describirías el caso sin añadir otra exposición?",
+          "options": [
+            "Decir que está todo perdido sin revisar",
+            "Indicar que lo descargaste y no ejecutarlo para probar",
+            "Abrirlo y repartir copias si no pasa nada visible"
+          ],
+          "answer": 1,
+          "explanation": "Describe que lo descargaste sin afirmar una ejecución que no ocurrió. No lo abras para probar; consulta al soporte con los hechos y utiliza sus instrucciones para conservar o retirar el archivo.",
+          "wrongExplanations": [
+            "Descargar por sí solo no demuestra pérdida total ni permite descartar cualquier riesgo. Explica las acciones confirmadas y deja que el soporte evalúe el contexto sin inventar consecuencias universales.",
+            null,
+            "Ejecutarlo crea una exposición nueva y la ausencia de síntomas no demuestra seguridad. Repartir copias también pone a otros en riesgo; informa al soporte sin probar ni distribuir el archivo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Tenemos un archivo guardado, no una confesión de ejecución; mis cejas distinguen verbos porque el análisis merece algo mejor que una adivinanza dramática.",
+        "theory": "Describir la acción exacta permite responder con criterio; ejecutar por curiosidad añade un hecho nuevo que preferimos no fabricar innecesariamente.",
+        "hint": "Busca una respuesta que conserve los hechos conocidos y permita pedir ayuda sin convertir la duda en una prueba sobre tu equipo.",
+        "correct": "Exacto: describiste la descarga y evitaste la ejecución de prueba; el soporte recibe hechos y el archivo pierde una oportunidad innecesaria de actuar.",
+        "soft": "Puede costar recordar cada paso; indica lo confirmado y las dudas sin abrir de nuevo el archivo para completar tu relato del incidente.",
+        "sharp": "Probar si era peligroso ejecutándolo es una investigación con demasiadas ganas de ser protagonista; dejemos ese jodido experimento fuera del equipo personal.",
+        "pass": "Ya diferencias guardar, abrir y ejecutar; esa precisión ayuda más que anunciar tragedias o declarar inocencia porque la pantalla sigue funcionando normalmente.",
+        "review": "Repasa qué acciones cambian el estado del equipo y cuáles puedes describir sin volver a interactuar con el contenido que recibiste."
+      }
+    },
+    {
+      "id": "safe-browsing-wifi-name",
+      "title": "El nombre de la red no basta",
+      "minutes": 3,
+      "intro": "Comprueba la red disponible con el establecimiento y evita atribuir confianza a una conexión solo porque su nombre coincide con un lugar o promete acceso gratuito.",
+      "sections": [
+        {
+          "title": "Elegir una conexión con contexto",
+          "body": "Una red inalámbrica puede tener un nombre parecido al del local sin pertenecerle. Pregunta al personal por el nombre exacto y el proceso de acceso antes de conectarte. Mantén actualizado el dispositivo y evita aceptar certificados o instalar perfiles desconocidos para entrar. Una red confirmada tampoco convierte cualquier sitio visitado en legítimo. HTTPS sigue siendo relevante y las gestiones sensibles pueden esperar o realizarse mediante otra conexión que controles mejor."
+        }
+      ],
+      "steps": [
+        "Pregunta al establecimiento qué red y acceso proporciona.",
+        "Evita instalar perfiles inesperados para utilizar una red abierta."
+      ],
+      "scenario": "En una cafetería ficticia aparecen CafeLibre y CafeLibre_Gratis. Nadie te ha indicado cuál corresponde al local y una de ellas solicita instalar un perfil para ofrecer conexión ilimitada.",
+      "questions": [
+        {
+          "prompt": "¿Qué deberías confirmar antes de conectarte?",
+          "options": [
+            "Cuál tiene el nombre más atractivo",
+            "Qué red y proceso de acceso reconoce el personal",
+            "Cuál promete mayor velocidad en su nombre"
+          ],
+          "answer": 1,
+          "explanation": "El personal puede indicar la red y el proceso del establecimiento. Un nombre atractivo o una promesa de velocidad no autentica al operador ni justifica instalar perfiles desconocidos en el dispositivo.",
+          "wrongExplanations": [
+            "El nombre puede elegirse para imitar al local y no demuestra quién opera la red. Confirma con el establecimiento el acceso esperado y evita requisitos de instalación que no entiendas.",
+            null,
+            "Una promesa escrita en el nombre no prueba rendimiento ni identidad. La comprobación útil es preguntar al personal por la red real y el procedimiento oficial de conexión del local."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Dos redes con nombre de cafetería compiten por tu atención; el aroma a café no autentica puntos de acceso, cariño.",
+        "theory": "El nombre inalámbrico puede copiarse; confirmar con el lugar evita confiar solo en una etiqueta que cualquiera podría elegir.",
+        "hint": "Busca una fuente del establecimiento que pueda explicar el acceso, en lugar de comparar las promesas escritas en cada nombre.",
+        "correct": "Bien: preguntaste quién ofrece la conexión antes de entregar confianza a una etiqueta bonita que podría haberse inventado cualquier visitante.",
+        "soft": "Las redes parecidas generan dudas razonables; confirmamos el nombre y los requisitos sin asumir que toda conexión abierta es maliciosa.",
+        "sharp": "Esa red se autoproclamó gratis y rápida; dos adjetivos no la convierten en propietaria de la cafetería ni del dispositivo.",
+        "pass": "Ya sabes verificar una conexión sin enamorarte del nombre; la comodidad funciona mejor cuando alguien puede explicar quién la proporciona.",
+        "review": "Repasa la diferencia entre reconocer una etiqueta y comprobar con el establecimiento quién opera la red y cómo se accede."
+      }
+    },
+    {
+      "id": "safe-browsing-captive-portal",
+      "title": "La pantalla de acceso del wifi",
+      "minutes": 3,
+      "intro": "Reconoce qué puede pedir un portal de conexión y evita usar contraseñas de otros servicios o instalar contenido desconocido solo para conseguir acceso a una red.",
+      "sections": [
+        {
+          "title": "Conectar no exige regalar otras cuentas",
+          "body": "Algunas redes muestran una página para aceptar condiciones o introducir un código entregado por el establecimiento. Ese portal no debería recibir la contraseña de tu correo personal como condición de acceso. Comprueba el procedimiento con el responsable y no ignores advertencias del navegador ni instales certificados por una instrucción inesperada. Si el requisito no coincide con lo anunciado o resulta confuso, usa otra conexión y consulta antes de enviar datos sensibles."
+        }
+      ],
+      "steps": [
+        "Compara el portal con las instrucciones del establecimiento.",
+        "No introduzcas contraseñas de otros servicios para obtener conexión."
+      ],
+      "scenario": "El portal ficticio de un hotel pide la contraseña completa de tu correo para activar el wifi. La recepción solo había indicado introducir un código impreso en la tarjeta de la habitación.",
+      "questions": [
+        {
+          "prompt": "¿Qué harías con esa petición diferente?",
+          "options": [
+            "Entregar la contraseña porque solo sirve para conectar",
+            "Usar la contraseña de una cuenta aún más importante",
+            "Detenerte y consultar con recepción sin enviar la clave"
+          ],
+          "answer": 2,
+          "explanation": "La petición no coincide con el procedimiento explicado y solicita un secreto de otro servicio. Consulta con recepción y no entregues la contraseña de correo para obtener conexión a la red.",
+          "wrongExplanations": [
+            "La contraseña del correo puede permitir acceso a esa cuenta y no debe entregarse por una promesa de conexión. Verifica el portal y sus requisitos con la recepción del hotel.",
+            "Cambiar qué cuenta expones no resuelve la legitimidad del portal y puede empeorar el daño. No introduzcas credenciales ajenas al proceso; consulta al establecimiento por el acceso correcto.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El wifi quiere tu contraseña de correo para darte Internet; qué hospitalidad tan invasiva, ni siquiera te ha ofrecido una almohada decente.",
+        "theory": "Un portal puede pedir un código del lugar; eso no le concede permiso general para conocer las claves de otros servicios personales.",
+        "hint": "Compara lo que explicó recepción con lo que pide la pantalla y elige una respuesta que no exponga otra cuenta.",
+        "correct": "Buena consulta: detectaste el cambio de requisitos y conservaste tu secreto mientras una fuente real aclara el acceso del establecimiento.",
+        "soft": "Los portales varían entre lugares; la diferencia importante aquí es pedir una contraseña personal que no formaba parte del procedimiento anunciado.",
+        "sharp": "Para conectar a Internet no hace falta entregar las llaves del correo; ese portal está mezclando servicios con un descaro de mierda.",
+        "pass": "Sabes usar un portal sin confundir acceso a una red con permiso para conocer todas tus cuentas; excelente límite de entrada.",
+        "review": "Revisa qué datos corresponden al servicio de conexión y cuáles pertenecen a otra cuenta que el portal no debería recibir."
+      }
+    },
+    {
+      "id": "safe-browsing-vpn-limits",
+      "title": "La VPN no corrige una estafa",
+      "minutes": 3,
+      "intro": "Comprende qué cambia al usar una VPN y evita interpretar el túnel de conexión como una garantía sobre las páginas, sus formularios o las descargas recibidas.",
+      "sections": [
+        {
+          "title": "Cambiar el trayecto no cambia la intención",
+          "body": "Una VPN dirige parte o todo el tráfico mediante un proveedor y puede proteger ese tramo de la conexión según su configuración. También traslada confianza al operador de la VPN. No verifica la honestidad de cada sitio ni impide que entregues una contraseña en un formulario falso. Mantén HTTPS, revisa destinos y permisos, y entiende qué servicio utilizas. No necesitas instalar una VPN desconocida porque un anuncio la presente como protección absoluta contra cualquier amenaza."
+        }
+      ],
+      "steps": [
+        "Identifica qué proveedor recibiría el tráfico de la VPN.",
+        "Evalúa el sitio y su petición aunque el túnel esté activo."
+      ],
+      "scenario": "Con una VPN activada, una tienda ficticia te pide pagar por mensajería a una cuenta personal. Su anuncio afirma que cualquier compra es segura porque tu conexión pasa por un túnel protegido.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite de la VPN importa aquí?",
+          "options": [
+            "No demuestra la honestidad del vendedor ni del pago",
+            "Convierte automáticamente cualquier vendedor en fiable",
+            "Hace innecesario revisar direcciones y solicitudes"
+          ],
+          "answer": 0,
+          "explanation": "La VPN no evalúa las intenciones del vendedor ni legitima el método de pago. Debes comprobar la tienda y sus condiciones independientemente de cómo se transporte tu tráfico hasta ella.",
+          "wrongExplanations": [
+            null,
+            "Un túnel no examina si el vendedor entregará el producto o si el pago corresponde al negocio. La legitimidad comercial requiere comprobaciones distintas de la protección del trayecto.",
+            "Usar una VPN no elimina la necesidad de revisar dominios ni acciones solicitadas. Un sitio falso puede recibir datos introducidos voluntariamente aunque el tráfico llegue mediante una conexión protegida."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La VPN se puso capa de heroína universal; bonita publicidad, cariño, pero el túnel no hace honesto al dueño de una tienda.",
+        "theory": "Proteger un trayecto y evaluar una petición son tareas diferentes; la VPN no toma por ti las decisiones sobre pagos o credenciales.",
+        "hint": "Pregúntate si cambiar el camino de la conexión modifica las intenciones del vendedor o solo cómo llega el tráfico hasta él.",
+        "correct": "Bien visto: mantuviste la evaluación de la tienda; el túnel puede seguir con su trabajo sin convertirse en notario de todas tus compras.",
+        "soft": "La publicidad mezcla beneficios distintos; separamos el transporte de la relación comercial para entender qué protección tienes y qué falta comprobar.",
+        "sharp": "Si una VPN curara las estafas, sus anuncios serían mucho menos pesados; ese maldito túnel no firma contratos por el vendedor.",
+        "pass": "Ya reconoces una herramienta útil sin aceptar poderes ilimitados; esa costumbre también te protege de comprar seguridad en forma de promesas exageradas.",
+        "review": "Repasa quién recibe confianza al usar una VPN y qué decisiones sobre sitios, formularios y pagos siguen dependiendo de tu comprobación."
+      }
+    },
+    {
+      "id": "safe-browsing-shared-computer",
+      "title": "Salir en un equipo compartido",
+      "minutes": 3,
+      "intro": "Aprende a terminar sesiones en dispositivos compartidos y evita confundir cerrar una pestaña con retirar el acceso de tu cuenta a quien utilice el navegador después.",
+      "sections": [
+        {
+          "title": "La sesión puede quedarse abierta",
+          "body": "Cuando entras a una cuenta, el navegador mantiene información que permite seguir usando la sesión sin escribir de nuevo la contraseña. Cerrar una pestaña no siempre termina ese acceso. En un equipo compartido, utiliza el cierre de sesión del servicio, evita guardar claves y no mantengas cuentas sensibles abiertas. Si olvidaste salir, revisa las sesiones desde un dispositivo de confianza y usa los controles oficiales para cerrar la que quedó en el equipo compartido."
+        }
+      ],
+      "steps": [
+        "Utiliza el cierre de sesión del servicio antes de marcharte.",
+        "No guardes credenciales en un perfil que utilizan otras personas."
+      ],
+      "scenario": "En una sala ficticia consultas el correo y cierras la pestaña antes de salir. La siguiente persona vuelve a abrir el sitio y encuentra tu bandeja sin que se le pida contraseña.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción faltó para terminar el acceso?",
+          "options": [
+            "Cambiar el fondo de pantalla",
+            "Cerrar sesión dentro del servicio",
+            "Bajar el brillo de la pantalla"
+          ],
+          "answer": 1,
+          "explanation": "Debías usar el cierre de sesión del correo. Cerrar una pestaña puede conservar la sesión del navegador, de modo que otra persona siga entrando sin conocer la contraseña de la cuenta.",
+          "wrongExplanations": [
+            "El fondo de pantalla no controla la sesión del correo. Para terminar ese acceso debes cerrar sesión en el servicio y evitar que el navegador compartido guarde tus credenciales personales.",
+            null,
+            "El brillo afecta la pantalla, no la autenticación. Usa la salida del servicio y, si olvidaste hacerlo, revisa desde un dispositivo fiable qué sesiones puedes cerrar de forma remota."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La pestaña cerrada no siempre se lleva la sesión consigo; qué huésped tan cómodo, casi compite conmigo por quedarme donde quiero.",
+        "theory": "El servicio mantiene acceso mediante la sesión; terminarlo requiere su salida oficial y cuidado con las credenciales guardadas en perfiles compartidos.",
+        "hint": "Busca qué opción actúa sobre la autenticación del correo, en lugar de cambiar solamente el aspecto del equipo o de la pantalla.",
+        "correct": "Exacto: salir del servicio termina el acceso que una pestaña cerrada podía conservar; al siguiente usuario no le dejamos una bandeja de bienvenida.",
+        "soft": "Es una confusión común; cerrar la vista y cerrar el acceso son operaciones distintas aunque ambos botones parezcan terminar tu tarea del momento.",
+        "sharp": "La cuenta no se marchó porque bajaste el telón de la pestaña; hay que echar a la sesión, no decorar mejor el escenario.",
+        "pass": "Ya reconoces cómo cerrar una cuenta en equipos compartidos; ese hábito evita que otra persona encuentre más que una página de inicio normal.",
+        "review": "Revisa qué mantiene una sesión y cómo utilizar el cierre oficial del servicio antes de entregar el navegador a otra persona del lugar."
+      }
+    },
+    {
+      "id": "safe-browsing-autofill-origin",
+      "title": "Lo que indica el autocompletado",
+      "minutes": 3,
+      "intro": "Utiliza la coincidencia del gestor de contraseñas como una señal útil y evita copiar credenciales a mano cuando el destino no coincide con el servicio que esperabas abrir.",
+      "sections": [
+        {
+          "title": "Una ayuda que no reemplaza la comprobación",
+          "body": "Los gestores suelen asociar credenciales con direcciones o servicios y pueden evitar sugerirlas en un dominio diferente. Si la contraseña habitual no aparece, comprueba el sitio antes de copiarla manualmente. La ausencia de sugerencia puede tener causas normales, pero también advertir que no estás donde creías. No fuerces el llenado para superar esa duda. Revisa el dominio, vuelve al acceso conocido y consulta al proveedor si el comportamiento no se explica."
+        }
+      ],
+      "steps": [
+        "Observa si el gestor reconoce el servicio esperado.",
+        "Comprueba el dominio antes de copiar cualquier credencial manualmente."
+      ],
+      "scenario": "Un enlace ficticio dice abrir tu academia, pero el gestor no propone la clave que normalmente reconoce. La dirección tiene palabras adicionales y la página insiste en que la copies desde otra aplicación.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es una revisión prudente antes de copiarla?",
+          "options": [
+            "Desactivar el gestor para que no moleste",
+            "Probar la clave en varios enlaces del mensaje",
+            "Comprobar el dominio y abrir el acceso conocido"
+          ],
+          "answer": 2,
+          "explanation": "La falta de coincidencia justifica revisar el destino antes de introducir secretos. Puede tener una causa normal, pero copiar a mano sin verificar elimina una oportunidad útil de detectar un sitio distinto.",
+          "wrongExplanations": [
+            "Desactivar el gestor no aclara por qué dejó de reconocer el sitio. Comprueba el dominio y utiliza el acceso habitual antes de introducir manualmente una contraseña en un formulario inesperado.",
+            "Probar credenciales en otros enlaces del mismo mensaje aumenta la exposición sin aportar una comprobación independiente. Revisa la dirección y abre la academia mediante un acceso que ya conocías.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Tu gestor no reconoció la puerta y la página exige que metas la llave igualmente; detengamos esa negociación tan conveniente para el desconocido.",
+        "theory": "Una coincidencia ausente merece revisión, aunque no pruebe fraude; comprobar el destino es mejor que forzar el llenado por impaciencia ante el formulario.",
+        "hint": "Busca una acción que aclare dónde estás antes de trasladar manualmente un secreto desde el lugar donde lo tienes guardado con cuidado.",
+        "correct": "Buena revisión del destino; aprovechaste la señal del gestor sin convertirla en prueba definitiva ni saltártela solo porque la página estaba insistente.",
+        "soft": "Puede fallar una sugerencia por varios motivos; revisamos el dominio primero y después distinguimos configuración normal de un cambio sospechoso de servicio.",
+        "sharp": "La página dice que ignores al gestor y le regales la clave; qué coincidencia tan jodidamente favorable para quien montó ese formulario tan amable.",
+        "pass": "Sabes usar una pista del gestor con criterio; la herramienta ayuda más cuando sus diferencias provocan una comprobación en lugar de una copia automática apresurada.",
+        "review": "Repasa por qué una ausencia de autocompletado pide investigar el destino y no supone ni fraude seguro ni permiso para copiar sin verificar."
+      }
+    },
+    {
+      "id": "safe-browsing-remember-me",
+      "title": "Recordarme no es para cualquier equipo",
+      "minutes": 3,
+      "intro": "Decide cuándo evitar la opción de mantener una cuenta abierta y reconoce el riesgo de conservar acceso persistente en dispositivos prestados, compartidos o que no controlas personalmente.",
+      "sections": [
+        {
+          "title": "Comodidad que conserva acceso",
+          "body": "La opción recordarme o mantener sesión puede prolongar el acceso de una cuenta en ese navegador. Es cómoda en un dispositivo personal protegido, pero aumenta la exposición si otras personas usan el mismo perfil o el equipo se pierde sin protección adecuada. No la selecciones en equipos prestados o públicos. Al terminar, cierra sesión mediante el servicio y evita guardar contraseñas; tampoco asumas que una ventana privada elimina todos los riesgos de un dispositivo ajeno."
+        }
+      ],
+      "steps": [
+        "Identifica quién puede utilizar ese perfil del navegador.",
+        "Evita conservar sesiones en dispositivos que no controlas."
+      ],
+      "scenario": "En el portátil ficticio de un compañero aparece la casilla mantener sesión al entrar a tu plataforma de estudio. Usará el mismo perfil después y tú solo necesitas consultar una entrega.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión conviene para esa consulta?",
+          "options": [
+            "No mantener sesión y salir del servicio al terminar",
+            "Mantenerla porque el portátil es rápido",
+            "Guardar también la contraseña para ahorrar segundos"
+          ],
+          "answer": 0,
+          "explanation": "No mantener sesión y cerrar el acceso reduce la posibilidad de que el siguiente usuario entre a tu cuenta. El rendimiento del portátil no determina si conviene conservar credenciales personales allí.",
+          "wrongExplanations": [
+            null,
+            "La velocidad no cambia quién puede usar el navegador después. En un dispositivo prestado evita mantener la sesión, no guardes claves y utiliza la salida del servicio al terminar tu consulta.",
+            "Guardar la contraseña facilita futuros accesos desde un equipo que no controlas. No es necesario para una consulta puntual; conserva tus credenciales fuera del perfil del compañero y cierra sesión."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Recordarme suena tierno hasta que el portátil pertenece a otro; no dejemos tu cuenta instalada como una visita permanente.",
+        "theory": "Conservar sesión prolonga el acceso, así que importa quién controla el equipo y quién podrá usar ese mismo navegador después.",
+        "hint": "Piensa quién abrirá el navegador después de tu consulta y qué acceso quedaría si conservas la sesión sin revisarla.",
+        "correct": "Elegiste una visita corta y una salida completa; la plataforma no necesita quedarse de invitada permanente en el portátil del compañero.",
+        "soft": "La comodidad invita a aceptar; en un equipo prestado decide conscientemente cuánto acceso quieres dejar y ciérralo al terminar la consulta.",
+        "sharp": "El portátil es rápido, pero una sesión ajena también entraría deprisa; no confundamos rendimiento con permiso para guardar tus llaves personales.",
+        "pass": "Ya adaptas la comodidad al contexto del dispositivo; una casilla pequeña puede decidir si tu cuenta termina la visita contigo.",
+        "review": "Revisa qué implica mantener sesión y por qué debes salir del servicio en un navegador que luego utilizará otra persona."
+      }
+    },
+    {
+      "id": "safe-browsing-shop-identity",
+      "title": "La tienda necesita referencias",
+      "minutes": 3,
+      "intro": "Comprueba información del vendedor, condiciones y contactos antes de comprar y reconoce que una oferta llamativa o reseñas dentro del propio sitio no bastan para acreditar un negocio.",
+      "sections": [
+        {
+          "title": "Comprobar antes de entregar el pago",
+          "body": "Una compra necesita confianza en quien vende y claridad sobre producto, precio final, entrega y devoluciones. Busca datos del negocio y contrasta experiencias en fuentes independientes, teniendo en cuenta que las reseñas también pueden manipularse. HTTPS y un diseño profesional no garantizan cumplimiento. Si la oferta parece extraordinaria, revisa con más cuidado y evita que un contador te impida comparar. No envíes documentos personales que no tengan una necesidad explicada para esa compra."
+        }
+      ],
+      "steps": [
+        "Busca identidad y contacto verificables del vendedor.",
+        "Compara condiciones y referencias fuera de la misma tienda."
+      ],
+      "scenario": "Una tienda ficticia ofrece portátiles a una décima parte del precio habitual y publica únicamente elogios en su propia página. No muestra una dirección de contacto verificable ni explica devoluciones o entregas.",
+      "questions": [
+        {
+          "prompt": "¿Qué comprobación aporta información más útil antes de pagar?",
+          "options": [
+            "Contar cuántos colores usa la portada",
+            "Contrastar vendedor y condiciones con referencias independientes",
+            "Confiar porque todas sus reseñas internas son excelentes"
+          ],
+          "answer": 1,
+          "explanation": "Contrastar al vendedor y sus condiciones aporta información que no depende solo de su publicidad. Las reseñas internas y la apariencia visual pueden manipularse y no garantizan que entregue lo anunciado.",
+          "wrongExplanations": [
+            "La paleta visual no demuestra identidad ni cumplimiento del negocio. Busca contactos verificables, condiciones claras y referencias independientes antes de pagar una oferta que reduce de forma extraordinaria el precio.",
+            null,
+            "Las reseñas publicadas dentro de la propia tienda pueden seleccionarse o inventarse. Necesitas comprobar al vendedor y las condiciones mediante información externa, sin interpretar elogios internos como garantía comercial."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Un portátil casi regalado y ninguna dirección verificable; qué generosidad selectiva, cariño, vamos a conocer al negocio antes de pagarle.",
+        "theory": "La confianza comercial requiere información comprobable del vendedor y la compra, además de reseñas que podría haber escrito él mismo.",
+        "hint": "Busca datos que no dependan del escaparate interesado en cobrar; una oferta necesita sostenerse fuera de sus propias promesas perfectas.",
+        "correct": "Buena comprobación independiente: pediste algo más sólido que una portada bonita antes de permitirle al vendedor recibir tu dinero.",
+        "soft": "Los descuentos pueden ser reales; aquí falta identidad y condiciones claras, así que revisamos esas piezas antes de decidir la compra.",
+        "sharp": "Todos se adoran en sus reseñas internas; yo también podría escribir elogios míos y seguir sin enviar un jodido portátil.",
+        "pass": "Ya evalúas una tienda como relación comercial; eso evita decisiones basadas únicamente en un precio espectacular y una cuenta atrás.",
+        "review": "Repasa qué datos permiten entender o reclamar la compra y cuáles son publicidad que no demuestra que el vendedor vaya a cumplir."
+      }
+    },
+    {
+      "id": "safe-browsing-payment-change",
+      "title": "Cuando cambian la cuenta de pago",
+      "minutes": 3,
+      "intro": "Detecta solicitudes inesperadas de cambiar el destino de un pago y confirma la modificación con un contacto previamente conocido antes de enviar dinero a nuevas instrucciones recibidas por mensaje.",
+      "sections": [
+        {
+          "title": "El cambio necesita confirmación propia",
+          "body": "Un mensaje puede suplantar a un proveedor o salir de una cuenta comprometida y pedir que una factura se pague en otro lugar. Que conozca el importe o el proyecto no demuestra legitimidad. Antes de cambiar el destino, confirma por un teléfono o contacto ya verificado, sin utilizar los datos nuevos del mismo mensaje. En una organización, respeta su proceso de aprobación y conserva la petición para que el responsable pueda revisarla si resulta falsa."
+        }
+      ],
+      "steps": [
+        "Separa la factura original de la nueva instrucción de pago.",
+        "Confirma el cambio mediante un contacto previamente verificado."
+      ],
+      "scenario": "El supuesto organizador de un curso ficticio escribe desde una conversación conocida y cambia la cuenta bancaria a última hora. Pide ignorar la factura anterior y no llamar porque está muy ocupado preparando clases.",
+      "questions": [
+        {
+          "prompt": "¿Qué deberías hacer antes de enviar el dinero?",
+          "options": [
+            "Pagar porque conoce el nombre del curso",
+            "Obedecer la petición de no llamar",
+            "Confirmar el cambio por un contacto que ya conocías"
+          ],
+          "answer": 2,
+          "explanation": "La confirmación independiente permite comprobar si el cambio es auténtico, incluso cuando llega desde una conversación conocida. Los detalles del curso o la prisa no sustituyen la aprobación del destino de pago.",
+          "wrongExplanations": [
+            "Conocer el curso puede proceder de mensajes anteriores, información pública o una cuenta comprometida. Verifica el cambio mediante un contacto previo antes de enviar dinero al nuevo destino de pago.",
+            "La petición de no llamar impide precisamente una comprobación útil y no demuestra legitimidad. Usa un contacto ya verificado y sigue el procedimiento de aprobación antes de modificar el pago.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El pago cambió de dirección y no quiere preguntas; qué combinación tan cómoda para quien cobra, vamos a pedir confirmación independiente.",
+        "theory": "Un cambio de cuenta puede ser legítimo; compruébalo fuera de la nueva instrucción y respeta el proceso habitual de aprobación.",
+        "hint": "Piensa qué contacto existía antes del mensaje y podría confirmar el destino sin depender del aviso que acaba de cambiarlo.",
+        "correct": "Comprobaste el cambio antes de mover dinero; los detalles conocidos son contexto, y no una autorización automática para otra cuenta.",
+        "soft": "Una conversación conocida inspira confianza, pero una modificación sensible merece revisión: la cuenta podría estar comprometida o el mensaje equivocado.",
+        "sharp": "Tiene tiempo para cambiar la cuenta pero ninguno para confirmarla; qué agenda tan cabrona, no dejemos que su prisa autorice pagos.",
+        "pass": "Ya separas una relación conocida de una instrucción nueva; esa pausa protege pagos reales cuando aparece otro destino para el dinero.",
+        "review": "Reconocer al interlocutor y verificar una modificación son cosas distintas; utiliza un canal previo que aporte independencia a la confirmación."
+      }
+    },
+    {
+      "id": "safe-browsing-marketplace-chat",
+      "title": "La venta que sale de la plataforma",
+      "minutes": 3,
+      "intro": "Evalúa peticiones de continuar pagos o verificaciones fuera de una plataforma de compraventa y comprueba sus procesos oficiales antes de aceptar enlaces enviados por compradores o vendedores desconocidos.",
+      "sections": [
+        {
+          "title": "Cambiar de canal cambia las garantías",
+          "body": "Una plataforma puede ofrecer mensajería, avisos de venta y procedimientos de pago propios. Llevar la operación a un enlace externo puede apartarte de esos mecanismos y facilitar engaños. No todas las conversaciones externas son fraude, pero antes de seguirlas revisa qué protección perderías y cómo funciona realmente el servicio. Una supuesta verificación para cobrar que exige tu contraseña o un pago previo debe contrastarse desde la aplicación oficial, no desde el enlace del interlocutor."
+        }
+      ],
+      "steps": [
+        "Busca el estado de la venta en la aplicación habitual.",
+        "Revisa el procedimiento oficial para recibir pagos antes de seguir enlaces externos."
+      ],
+      "scenario": "Un comprador ficticio afirma haber pagado y envía un enlace externo para que introduzcas tu tarjeta y contraseña. La aplicación donde publicaste el producto no muestra ninguna venta ni notificación de cobro pendiente.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción permite comprobar la venta sin seguir ese enlace?",
+          "options": [
+            "Consultar el proceso y estado en la aplicación oficial",
+            "Completar el formulario porque el comprador parece amable",
+            "Pagar una tasa externa para liberar el dinero supuesto"
+          ],
+          "answer": 0,
+          "explanation": "La aplicación y sus instrucciones permiten comprobar si existe una operación real. La amabilidad del interlocutor o un enlace de verificación no justifican entregar credenciales ni pagar para desbloquear un cobro no confirmado.",
+          "wrongExplanations": [
+            null,
+            "El tono amable no demuestra que haya una compra real ni legitima un formulario externo. Revisa el estado de la operación y las instrucciones del servicio desde su aplicación oficial antes de introducir datos.",
+            "Pagar una tasa propuesta por un desconocido puede formar parte del engaño y no demuestra un cobro pendiente. Verifica la operación dentro de la plataforma y consulta su soporte oficial si persiste la duda."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El comprador pagó en su imaginación y ahora pide tu tarjeta para demostrarlo; consultemos la plataforma antes de financiar esa novela.",
+        "theory": "Cambiar de canal puede apartarte de los procesos del servicio; comprueba primero cómo se confirman ventas y cobros en la plataforma.",
+        "hint": "Busca la fuente que registra la operación y conoce su procedimiento, sin depender de quien intenta que completes un formulario nuevo.",
+        "correct": "Verificaste la venta donde debería constar; el formulario externo pierde una autoridad basada solamente en la promesa de un comprador desconocido.",
+        "soft": "Las plataformas tienen procesos distintos; consulta sus instrucciones oficiales antes de aceptar una verificación que cambia de sitio y solicita secretos.",
+        "sharp": "Dinero invisible y una tasa muy visible; qué negocio de mierda, no vamos a financiar esa fantasía por un mensaje amable.",
+        "pass": "Ya distingues una notificación real de una afirmación en chat; comprobarlo en la plataforma permite decidir sin revelar secretos por confianza.",
+        "review": "Revisa dónde se confirma la operación y qué datos exige el servicio; el enlace del comprador no puede sustituir esas comprobaciones."
+      }
+    },
+    {
+      "id": "safe-browsing-remote-support",
+      "title": "Control remoto por invitación comprobada",
+      "minutes": 3,
+      "intro": "Reconoce el alcance de autorizar asistencia remota y evita entregar control del dispositivo a personas que aparecen mediante anuncios, llamadas inesperadas o alertas que no solicitaste previamente.",
+      "sections": [
+        {
+          "title": "La ayuda también necesita identidad",
+          "body": "Las herramientas de control remoto permiten ver o manejar un dispositivo y pueden ser útiles con soporte legítimo. Ese alcance también facilita robos si se concede a un desconocido. Antes de autorizar, confirma la identidad del técnico por el canal oficial que tú abriste y entiende qué acciones realizará. No aceptes acceso por una llamada inesperada ni compartas claves o códigos para demostrar tu identidad. Si ya lo concediste de forma sospechosa, interrumpe el acceso y solicita ayuda independiente."
+        }
+      ],
+      "steps": [
+        "Confirma quién ofrece la asistencia y por qué canal la solicitaste.",
+        "Comprende el alcance antes de autorizar control remoto del equipo."
+      ],
+      "scenario": "Tras un anuncio ficticio llama un supuesto técnico que afirma trabajar para tu navegador. Dice haber detectado fallos y pide instalar una herramienta de control remoto sin que tú hayas solicitado ninguna asistencia previa.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta evita conceder acceso sin verificar al técnico?",
+          "options": [
+            "Aceptar porque conoce el nombre del navegador",
+            "Rechazar y contactar al soporte oficial por tu cuenta",
+            "Compartir la clave para acelerar la reparación"
+          ],
+          "answer": 1,
+          "explanation": "Rechazar el acceso y contactar por un canal oficial permite comprobar la situación sin entregar control a un desconocido. Conocer un producto común no acredita la identidad del supuesto técnico ni su diagnóstico.",
+          "wrongExplanations": [
+            "El nombre del navegador puede adivinarse o incluirse en una llamada masiva. No demuestra autorización para manejar tu equipo; verifica la necesidad y la identidad del técnico mediante un canal oficial independiente.",
+            null,
+            "Entregar una contraseña aumenta la exposición y no valida al técnico. El soporte legítimo debe poder explicar su identidad y procedimiento sin pedir secretos por una llamada inesperada que tú no iniciaste."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Un técnico apareció sin cita y quiere manejar el equipo; qué confianza acelerada, primero averiguamos quién pidió realmente esa asistencia remota.",
+        "theory": "El control remoto puede ayudar, pero requiere identidad confirmada y una necesidad que entiendas antes de autorizar acceso al dispositivo.",
+        "hint": "Piensa quién inició la asistencia y cómo comprobarías al técnico sin utilizar únicamente los datos que acaba de darte él mismo.",
+        "correct": "No entregaste control por una llamada inesperada; el soporte auténtico puede explicar la necesidad desde su canal oficial sin exigir confianza previa.",
+        "soft": "Las herramientas remotas no son malas por sí mismas; revisamos identidad y origen antes de permitir que otra persona maneje información.",
+        "sharp": "Detectó tus fallos sin cita y cobra confianza por teléfono; qué cabrón eficiente, lástima que no haya demostrado su identidad real.",
+        "pass": "Ya sabes pedir soporte conservando el derecho a entender quién entra, qué alcance tendrá y por qué necesita controlar tu dispositivo.",
+        "review": "Repasa cómo comprobar la identidad y por qué un diagnóstico no solicitado no autoriza instalaciones ni compartir contraseñas con quien llama."
+      }
+    },
+    {
+      "id": "safe-browsing-clipboard-commands",
+      "title": "Pegar comandos no es verificar",
+      "minutes": 3,
+      "intro": "Reconoce instrucciones que piden copiar código desde una página y ejecutarlo en el dispositivo, y evita convertir una supuesta comprobación de acceso en ejecución de acciones desconocidas.",
+      "sections": [
+        {
+          "title": "La copia puede transformarse en ejecución",
+          "body": "Una página puede mostrar una comprobación que pide abrir una consola y pegar un comando. Esa acción no equivale a marcar una casilla: puede ejecutar instrucciones con el alcance de tu usuario. No sigas comandos que no entiendes ni uses el portapapeles como prueba de identidad. Si una tarea legítima requiere instrucciones técnicas, confírmalas con el responsable por una fuente conocida y comprende qué hacen antes de realizarlas sobre tu equipo."
+        }
+      ],
+      "steps": [
+        "Identifica si la instrucción abre una consola o ejecuta código.",
+        "Consulta al responsable por otra vía antes de pegar comandos desconocidos."
+      ],
+      "scenario": "Una web ficticia dice que para demostrar que eres humano debes copiar un texto, abrir la consola del equipo y pegarlo allí. No explica qué hace el comando ni por qué necesita ese acceso.",
+      "questions": [
+        {
+          "prompt": "¿Cómo tratarías esa supuesta comprobación?",
+          "options": [
+            "Como una instrucción que no debes ejecutar sin verificar",
+            "Como una casilla normal que nunca cambia el equipo",
+            "Como una razón para desactivar las protecciones antes de pegar"
+          ],
+          "answer": 0,
+          "explanation": "Abrir una consola y pegar código puede ejecutar acciones en el dispositivo. No es una comprobación inocua por llamarse así; verifica la instrucción con una fuente conocida antes de realizarla.",
+          "wrongExplanations": [
+            null,
+            "Una casilla y un comando no tienen el mismo alcance. El código pegado en una consola puede actuar sobre el equipo, así que no lo ejecutes por una promesa de verificación de identidad.",
+            "Desactivar protecciones no aclara el propósito del comando y puede aumentar el daño. Interrumpe la instrucción y confirma con una fuente fiable si existe una necesidad técnica real antes de ejecutarla."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La página quiere probar humanidad ejecutando un comando; qué examen tan invasivo, hasta mi sarcasmo tiene menos permisos.",
+        "theory": "Pegar código en una consola puede realizar acciones reales; el nombre de comprobación no cambia su alcance sobre el equipo.",
+        "hint": "Busca qué opción distingue una casilla visual de instrucciones capaces de actuar sobre archivos, ajustes o programas del dispositivo.",
+        "correct": "Buena pausa: no ejecutaste una orden desconocida para complacer una web que decidió ponerse creativa con la comprobación humana.",
+        "soft": "La instrucción imita un paso normal; revisamos dónde se pega el texto y qué consecuencias podría tener esa acción concreta.",
+        "sharp": "Ese acertijo pide acceso de consola para verte respirar; qué maldita confianza, no le regalamos ejecución por llamarse comprobación.",
+        "pass": "Ya reconoces cuando una instrucción de navegación cruza hacia ejecución; esa frontera merece atención antes de copiar y pegar nada.",
+        "review": "Revisa el alcance del comando y por qué la propia página no puede ser la única fuente que justifique ejecutarlo."
+      }
+    },
+    {
+      "id": "safe-browsing-form-minimum",
+      "title": "Un formulario con demasiada curiosidad",
+      "minutes": 3,
+      "intro": "Aprende a comparar los datos solicitados con el propósito de una gestión y a preguntar por alternativas cuando una página pide información sensible que no parece necesaria.",
+      "sections": [
+        {
+          "title": "La necesidad se puede cuestionar",
+          "body": "Un formulario puede pedir más información de la necesaria para prestar un servicio. Antes de completar campos sensibles, identifica el sitio y la finalidad de la solicitud. Que un campo sea obligatorio técnicamente no demuestra que la petición sea razonable. Busca una explicación oficial o una alternativa y evita introducir contraseñas de otros servicios. No uses datos falsos que puedan perjudicar una gestión importante; consulta o decide no continuar si no confías en el proceso."
+        }
+      ],
+      "steps": [
+        "Relaciona cada dato sensible con la función del formulario.",
+        "Consulta al proveedor si el motivo no aparece explicado con claridad."
+      ],
+      "scenario": "Para descargar un horario ficticio, una página solicita documento de identidad, dirección postal y contraseña del correo. El horario es público y no se explica ninguna gestión que necesite esa información personal para mostrarlo.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene hacer antes de completar los campos?",
+          "options": [
+            "Rellenarlos todos porque aparecen como obligatorios",
+            "Cuestionar la necesidad y buscar el horario por una fuente conocida",
+            "Usar contraseñas de otras cuentas para ver cuál acepta"
+          ],
+          "answer": 1,
+          "explanation": "La petición no tiene una necesidad clara para mostrar un horario público. Comprueba la fuente y busca otra vía; ningún campo obligatorio justifica entregar contraseñas de otros servicios para descargar información general.",
+          "wrongExplanations": [
+            "Una validación del formulario no demuestra que el proveedor necesite esos datos. Antes de enviarlos, comprueba el sitio y la finalidad, y busca una alternativa oficial para acceder al horario público.",
+            null,
+            "Probar contraseñas reales aumenta la exposición de otras cuentas y no comprueba el formulario. No deben entregarse claves de correo para consultar un horario; utiliza una fuente conocida o pregunta al centro."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese horario quiere saber demasiado sobre tu vida; cariño, solo pediste saber cuándo empieza clase, no tramitar una identidad nueva.",
+        "theory": "Un campo obligatorio impone una condición técnica, pero todavía podemos preguntar si el dato tiene una finalidad legítima para esta gestión.",
+        "hint": "Compara la sensibilidad de la información con la tarea sencilla que intentas realizar y piensa qué alternativa requiere menos exposición.",
+        "correct": "Bien: no confundiste obligatoriedad del formulario con necesidad real; un horario público no ganó permiso para conocer tus contraseñas por insistir.",
+        "soft": "A veces cuesta distinguir registros legítimos de excesos; revisemos el propósito y busquemos una explicación oficial antes de compartir información sensible.",
+        "sharp": "El horario ya quería tu biografía y las llaves del correo; qué formulario de mierda, pongámosle límites antes de completar su colección.",
+        "pass": "Ya puedes cuestionar una petición de datos sin improvisar respuestas falsas; comprobar la necesidad es una decisión útil antes de enviar cualquier información.",
+        "review": "Repasa qué dato requiere realmente la tarea y qué solicitudes necesitan explicación o una alternativa oficial antes de que decidas continuar con el formulario."
+      }
+    },
+    {
+      "id": "safe-browsing-connected-app-access",
+      "title": "Autorizar una aplicación también abre puertas",
+      "minutes": 3,
+      "intro": "Comprende que un botón de autorizar puede conceder acceso a una cuenta sin compartir su contraseña y revisa el alcance de las aplicaciones conectadas antes de aceptarlas.",
+      "sections": [
+        {
+          "title": "La autorización tiene efectos concretos",
+          "body": "Algunos servicios permiten que una aplicación acceda a información de otra cuenta mediante una pantalla de autorización. Eso no requiere entregar la contraseña a la aplicación, pero sí puede conceder permisos importantes. Lee qué solicita, quién la publica y si necesitas esa función. Acceder con una cuenta no implica aceptar cualquier alcance. Si autorizaste algo sospechoso, revisa las aplicaciones conectadas desde la configuración oficial y revoca lo que no reconozcas, solicitando ayuda cuando corresponda."
+        }
+      ],
+      "steps": [
+        "Lee qué datos o acciones pide la aplicación conectada.",
+        "Localiza dónde revisar y revocar accesos desde el servicio oficial."
+      ],
+      "scenario": "Una aplicación ficticia de fondos de pantalla ofrece entrar con tu cuenta de estudio y pide permiso para leer y enviar correos. No explica una función relacionada con mensajes ni una razón para ese alcance.",
+      "questions": [
+        {
+          "prompt": "¿Qué debes evaluar antes de autorizarla?",
+          "options": [
+            "Si el botón tiene un color agradable",
+            "Si evita escribir de nuevo la contraseña",
+            "Si el alcance es necesario y confías en la aplicación"
+          ],
+          "answer": 2,
+          "explanation": "La autorización concede capacidades aunque no escribas la contraseña. Debes entender el alcance y la identidad de la aplicación, y negar accesos que no se justifiquen por una función que realmente necesitas.",
+          "wrongExplanations": [
+            "El color del botón no determina el alcance ni la confianza de la aplicación. Lee los permisos y comprueba quién la publica antes de autorizar lectura o envío de correos desde tu cuenta.",
+            "Evitar escribir una contraseña no vuelve inocua la autorización. La aplicación puede recibir acceso mediante permisos delegados; revisa su necesidad y procedencia antes de aceptar que lea o envíe mensajes de correo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Un fondo de pantalla quiere enviar correos por ti; qué accesorio ambicioso, mi chaqueta no escribe mensajes cuando la cuelgo.",
+        "theory": "Autorizar concede acceso sin revelar la clave; revisa identidad y alcance aunque el botón prometa un inicio de sesión cómodo.",
+        "hint": "Mira qué acciones podría realizar la aplicación después de aceptar y compara ese alcance con la función que te interesa utilizar.",
+        "correct": "No confundiste acceso cómodo con permiso ilimitado; la aplicación necesita justificar por qué quiere entrar en espacios ajenos a su función.",
+        "soft": "Las conexiones entre servicios pueden ser útiles; evaluamos alcance y confianza antes de aceptar que una aplicación actúe sobre tu cuenta.",
+        "sharp": "El fondo decidió hacerse secretario sin contrato; estupenda iniciativa, pero no le entregamos el correo por combinar con el escritorio.",
+        "pass": "Ya reconoces puertas abiertas mediante autorizaciones; revisar aplicaciones conectadas permite controlar accesos que una contraseña sola no describe por completo.",
+        "review": "No compartir la clave y no conceder acceso son cosas distintas; una autorización también puede entregar capacidades importantes a otra aplicación."
+      }
+    },
+    {
+      "id": "safe-browsing-unexpected-mfa",
+      "title": "La solicitud de acceso que no empezaste",
+      "minutes": 3,
+      "intro": "Aprende a rechazar solicitudes de autenticación que no iniciaste y a revisar la cuenta por el canal oficial sin aceptar por cansancio, curiosidad o presión de mensajes externos.",
+      "sections": [
+        {
+          "title": "La segunda puerta también puede sufrir presión",
+          "body": "Una solicitud de verificación adicional debe corresponder a una acción que tú iniciaste. Si llega inesperadamente, no la apruebes para que deje de aparecer ni compartas códigos con alguien que se presenta como soporte. Recházala y revisa la seguridad desde el servicio oficial. Puede existir un intento ajeno o alguna configuración que necesite aclararse; no asumas su causa sin comprobar. En cuentas institucionales informa al responsable según el procedimiento de tu organización."
+        }
+      ],
+      "steps": [
+        "Rechaza solicitudes que no corresponden a una acción propia.",
+        "Revisa accesos y seguridad desde el servicio oficial conocido."
+      ],
+      "scenario": "Mientras estudias sin iniciar ninguna sesión, tu teléfono recibe varias peticiones ficticias de aprobación. Después llama alguien que dice ser técnico y pide aceptar una para dejar de molestar con nuevos avisos en pantalla.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta conserva el control del acceso?",
+          "options": [
+            "Rechazar y revisar la cuenta por el canal oficial",
+            "Aceptar una para que la persona deje de llamar",
+            "Dictar el código para que el técnico lo rechace"
+          ],
+          "answer": 0,
+          "explanation": "Rechazar evita autorizar una acción ajena. Revisa el acceso por el servicio oficial y no compartas códigos; una llamada que presiona para aprobar no demuestra que quien llama pertenezca al soporte real.",
+          "wrongExplanations": [
+            null,
+            "Aceptar por cansancio puede permitir el acceso que otra persona intenta completar. La insistencia no autentica al técnico; rechaza la solicitud y revisa la cuenta mediante el canal oficial del servicio.",
+            "Dictar un código entrega un factor que puede servir para completar un inicio de sesión. No es necesario compartirlo para rechazar solicitudes; hazlo desde tu dispositivo y consulta al soporte oficial si necesitas ayuda."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-mfa"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La puerta está sonando y tú no llamaste; no la abrimos para que el timbre descanse, aunque mi paciencia tenga límites.",
+        "theory": "La verificación adicional corresponde a tus acciones; una petición inesperada merece rechazo y revisión independiente en lugar de aprobación por insistencia.",
+        "hint": "Busca qué opción evita autorizar algo ajeno y permite comprobar la cuenta sin confiar en quien acaba de llamar por sorpresa.",
+        "correct": "Rechazaste y revisaste por tu cuenta; la insistencia pierde su encanto cuando no consigue convertir el cansancio en permiso para entrar.",
+        "soft": "Los avisos repetidos frustran; podemos rechazarlos y buscar ayuda sin conceder un acceso que no intentaste iniciar desde tu dispositivo.",
+        "sharp": "Aprobar para que no moleste es darle la llave al vecino ruidoso; qué pacto de mierda, revisemos quién intenta entrar.",
+        "pass": "Ya resistes la presión sobre la segunda puerta; la autenticación ayuda cuando cada aprobación corresponde a una acción que reconoces.",
+        "review": "Repasa qué aporta una solicitud ajena y por qué ni una llamada insistente ni compartir códigos aclaran la identidad del supuesto técnico."
+      }
+    },
+    {
+      "id": "safe-browsing-automatic-downloads",
+      "title": "Descargas que empiezan solas",
+      "minutes": 3,
+      "intro": "Aprende a reconocer descargas no solicitadas y a revisar las opciones del navegador para que un archivo inesperado no se transforme automáticamente en una apertura o instalación que no elegiste.",
+      "sections": [
+        {
+          "title": "Reducir acciones automáticas innecesarias",
+          "body": "Una página puede iniciar una descarga sin que hayas buscado ese archivo. No lo abras por aparecer en la lista ni supongas que el navegador lo necesitaba. Revisa el nombre, el origen y lo que estabas haciendo; configura las descargas para mantener el control de dónde se guardan y qué se abre automáticamente. Las opciones varían según el navegador. Si observas ejecución o comportamiento extraño, detén la interacción y pide ayuda sin probar el archivo por curiosidad."
+        }
+      ],
+      "steps": [
+        "Identifica una descarga que no corresponde a tu tarea.",
+        "Revisa las opciones oficiales de guardado y apertura automática."
+      ],
+      "scenario": "Al leer una noticia ficticia aparece un archivo en la lista de descargas sin que lo hayas pedido. La página dice que debes abrirlo para mejorar la calidad del texto, aunque ya puedes leerlo normalmente.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta evita añadir una ejecución innecesaria?",
+          "options": [
+            "Abrirlo porque el navegador lo guardó",
+            "No abrirlo y revisar origen y opciones de descarga",
+            "Compartirlo con amigos para saber qué contiene"
+          ],
+          "answer": 1,
+          "explanation": "Guardar un archivo no demuestra que fuera necesario ni fiable. No lo abras por aparecer en descargas; revisa su origen y la configuración, y solicita ayuda si detectas acciones o síntomas que no reconoces.",
+          "wrongExplanations": [
+            "El navegador puede guardar un archivo que la página solicitó sin certificar su necesidad o inocuidad. Mantén el control y no lo ejecutes solo porque aparece en la carpeta o en la lista de descargas.",
+            null,
+            "Compartirlo puede exponer a otras personas y no es un análisis seguro. Describe la descarga al soporte si necesitas ayuda, sin abrirla para probar ni distribuir una muestra por iniciativa propia a tus contactos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La noticia dejó un archivo sin pedir permiso; qué detallista, pero no abrimos cada regalo que entra por la ventana del navegador.",
+        "theory": "Una descarga automática no equivale a una decisión tuya de ejecutar; revisar esos ajustes ayuda a conservar la separación entre ambas acciones.",
+        "hint": "Piensa qué opción añade un riesgo nuevo y cuál permite revisar el origen sin abrir ni distribuir el archivo que apareció.",
+        "correct": "Dejaste el archivo sin ejecución y revisaste por qué apareció; estar en descargas no concede confianza ni permiso para actuar sobre el equipo.",
+        "soft": "Puede haber descargas automáticas legítimas; esta no corresponde a tu tarea, así que revisamos origen y ajustes antes de abrirla.",
+        "sharp": "Hasta las noticias reparten instaladores para mejorar las letras; qué maldita creatividad, conservemos el control de lo que se abre.",
+        "pass": "Ya distingues un archivo guardado de una acción elegida; revisar la apertura automática mantiene visible esa frontera durante la navegación.",
+        "review": "Repasa descargar, abrir y ejecutar; no necesitas completar las tres acciones para investigar por qué llegó un archivo que no esperabas."
+      }
+    },
+    {
+      "id": "safe-browsing-inapp-browser",
+      "title": "La dirección dentro de otra aplicación",
+      "minutes": 3,
+      "intro": "Reconoce que abrir una web dentro de una aplicación puede ocultar detalles útiles y busca una vista clara del destino antes de introducir credenciales o autorizar gestiones sensibles desde enlaces recibidos.",
+      "sections": [
+        {
+          "title": "La interfaz cambia lo que ves",
+          "body": "Algunas aplicaciones abren enlaces en una vista interna con menos controles visibles que el navegador habitual. La página sigue teniendo un destino y puede pedir información sensible. Si no puedes examinar la dirección o reconocer el contexto, evita introducir datos hasta abrir el servicio por tu aplicación oficial o navegador conocido. Que el enlace llegue dentro de una aplicación de confianza no certifica al sitio externo ni convierte a todos sus usuarios en fuentes verificadas."
+        }
+      ],
+      "steps": [
+        "Localiza si puedes ver el dominio completo en la vista interna.",
+        "Usa un acceso oficial conocido si el destino no queda claro."
+      ],
+      "scenario": "Un mensaje ficticio abre un formulario bancario dentro de una aplicación de conversación. La vista muestra solo un título y no te permite comprobar con claridad el dominio antes de pedir tu clave para evitar un bloqueo inmediato.",
+      "questions": [
+        {
+          "prompt": "¿Cómo comprobarías la gestión sin depender de esa vista?",
+          "options": [
+            "Confiar porque la aplicación de conversación es conocida",
+            "Escribir la clave para que aparezca la dirección completa",
+            "Abrir por tu cuenta la aplicación oficial del banco"
+          ],
+          "answer": 2,
+          "explanation": "Abrir la aplicación oficial evita depender de una vista cuyo destino no puedes comprobar. La confianza en la aplicación de conversación no se transmite automáticamente a un formulario externo compartido por otra persona mediante un mensaje.",
+          "wrongExplanations": [
+            "La aplicación de conversación puede ser legítima y aun así mostrar enlaces enviados por personas maliciosas. Debes comprobar el destino o consultar el banco por tu acceso oficial antes de introducir una contraseña en ese formulario.",
+            "Escribir un secreto no es un mecanismo seguro para descubrir dónde estás. Mantén tus credenciales fuera del formulario y verifica el supuesto bloqueo desde una aplicación o acceso oficial que ya conocieras antes del mensaje.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-browsing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "La aplicación muestra un título y esconde la dirección; qué anfitriona selectiva, no entregamos una clave a una puerta sin identificar.",
+        "theory": "Una vista interna cambia los controles visibles; el destino necesita comprobarse aunque recibas el enlace dentro de una aplicación conocida.",
+        "hint": "Busca un acceso que inicies tú y no dependa de la información incompleta de esa ventana que presenta una amenaza sin comprobar.",
+        "correct": "Elegiste el acceso propio del banco; la aplicación de conversación puede transportar mensajes sin certificar cada página externa que otras personas comparten.",
+        "soft": "Las vistas internas son cómodas; si ocultan información necesaria para una gestión sensible, utiliza otra vía conocida antes de enviar datos.",
+        "sharp": "El formulario se esconde tras un título y ya quiere tu clave; qué cabrón impaciente, primero le pedimos una identidad comprobable.",
+        "pass": "Ya detectas cuando una interfaz reduce lo que ves; puedes elegir otra vía para gestiones importantes sin obedecer la comodidad del enlace.",
+        "review": "Confiar en la aplicación de conversación no acredita cada página externa; comprueba el destino antes de introducir credenciales en un formulario."
+      }
+    },
+    {
+      "id": "safe-browsing-lookalike-names",
+      "title": "Direcciones que casi se parecen",
+      "minutes": 3,
+      "intro": "Reconoce pequeñas sustituciones o caracteres parecidos en un dominio y utiliza referencias conocidas para verificar servicios importantes sin depender únicamente de una lectura rápida o del parecido visual con un nombre familiar.",
+      "sections": [
+        {
+          "title": "Parecerse no significa pertenecer",
+          "body": "Un atacante puede registrar nombres parecidos a otro servicio mediante letras añadidas, cambios de orden o caracteres visualmente similares. Ese parecido puede ser difícil de detectar en pantallas pequeñas. No necesitas identificar todos los alfabetos para actuar con prudencia: comprueba la dirección completa y abre el servicio desde tu marcador o aplicación habitual cuando la petición sea sensible. El diseño copiado y un nombre casi igual no demuestran que ambos sitios pertenezcan a la misma organización."
+        }
+      ],
+      "steps": [
+        "Compara el nombre completo con una referencia oficial que ya conozcas.",
+        "Prefiere tu acceso habitual si la lectura del dominio deja dudas."
+      ],
+      "scenario": "El sitio ficticio biblioteca.example recibe un mensaje que dirige a bibli0teca.example, con un cero donde antes había una letra. La portada imita exactamente los colores y pide volver a escribir la contraseña del catálogo.",
+      "questions": [
+        {
+          "prompt": "¿Qué cambia al sustituir esa letra por un cero?",
+          "options": [
+            "Es un dominio distinto que requiere verificación",
+            "Nada porque el diseño es idéntico",
+            "La página se vuelve oficial por parecerse mucho"
+          ],
+          "answer": 0,
+          "explanation": "Bibli0teca.example y biblioteca.example son nombres diferentes. El parecido visual y la portada copiada no acreditan una relación entre ellos; usa el acceso conocido para comprobar la petición antes de introducir credenciales de la cuenta.",
+          "wrongExplanations": [
+            null,
+            "Un diseño idéntico puede copiarse y no compensa la diferencia en el dominio. La sustitución cambia el nombre del sitio; comprueba la solicitud desde la referencia oficial que ya conoces antes de escribir información de acceso.",
+            "Parecerse a otro servicio no concede autoridad ni demuestra que compartan propietario. El nombre con cero es distinto y debe verificarse por una referencia independiente, especialmente cuando solicita la contraseña de una cuenta que ya utilizabas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Ese cero se vistió de letra para entrar en la biblioteca; vamos a mirar el nombre completo antes de entregarle una contraseña.",
+        "theory": "Los nombres parecidos pueden apuntar a sitios distintos; una referencia habitual ayuda más que confiar en colores y primeras impresiones del diseño.",
+        "hint": "Compara ambos nombres y piensa si cambiar un carácter crea una dirección diferente aunque el contenido visual conserve la apariencia conocida.",
+        "correct": "Encontraste la sustitución y evitaste conceder identidad por parecido; tu marcador también habría servido para comprobar el aviso sin revisar cada carácter.",
+        "soft": "Las letras parecidas pasan desapercibidas; usamos referencias conocidas para no exigir una vista perfecta cada vez que intentamos proteger una cuenta.",
+        "sharp": "Ese cero cree que un disfraz le da título de bibliotecario; qué maldita ambición, primero tendría que demostrar quién dirige realmente esa página.",
+        "pass": "Ya sabes que parecido no significa propiedad; puedes resolver dudas desde tu acceso habitual sin competir con todos los alfabetos del planeta.",
+        "review": "Repasa coincidencia visual y nombre idéntico; una referencia conocida permite comprobar el servicio aunque una sustitución sea difícil de percibir."
+      }
+    },
+    {
+      "id": "safe-browsing-report-channel",
+      "title": "Avisar sin repartir la trampa",
+      "minutes": 3,
+      "intro": "Aprende a reportar mensajes o sitios sospechosos mediante canales adecuados conservando información útil, sin reenviar enlaces activos o archivos a grupos que podrían aumentar la exposición de otras personas durante el incidente.",
+      "sections": [
+        {
+          "title": "La advertencia necesita destinatario",
+          "body": "Reportar permite que el servicio o la organización investigue y tome medidas, pero distribuir la trampa indiscriminadamente puede ampliarla. Usa la función de reporte o el canal indicado por el responsable. Describe el contexto y conserva el mensaje original si te lo solicitan; no borres registros ni adjuntes muestras por iniciativa propia. Si quieres alertar a compañeros, comparte una explicación sin enlaces activos ni datos personales y respeta las instrucciones del centro sobre comunicaciones del caso."
+        }
+      ],
+      "steps": [
+        "Localiza el canal de reporte del servicio o de tu centro.",
+        "Describe la petición sospechosa sin redistribuir archivos ni secretos."
+      ],
+      "scenario": "Descubres una página ficticia que imita la biblioteca del centro. Un grupo propone reenviar el enlace activo a todos los alumnos para que entren, la reconozcan y comprueben por sí mismos si podían haber caído en la trampa.",
+      "questions": [
+        {
+          "prompt": "¿Qué forma de aviso reduce la difusión del riesgo?",
+          "options": [
+            "Enviar el enlace y pedir que todos lo prueben",
+            "Reportar al responsable y advertir sin enlaces activos",
+            "Reenviar el archivo sospechoso como ejemplo para abrir"
+          ],
+          "answer": 1,
+          "explanation": "Reportar al responsable y advertir sin invitar a interactuar conserva la utilidad del aviso y reduce la difusión. Si se necesita evidencia, el equipo indicará cómo recibir el mensaje o la muestra de manera adecuada para investigar.",
+          "wrongExplanations": [
+            "Pedir que todos prueben el enlace puede llevar nuevas visitas al sitio sospechoso y exponer a otras personas. Usa el canal de reporte y comparte una descripción sin acciones que requieran entrar a la página para comprobar el peligro.",
+            null,
+            "Un archivo sospechoso no debe distribuirse para que otros lo abran como demostración. Describe su existencia al responsable y espera sus instrucciones si necesita una muestra, conservando la información del envío sin ejecutar ni compartir el contenido por iniciativa propia."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Avisar ayuda, cariño; no organicemos una excursión a la trampa con todos los alumnos probando el mismo enlace para reconocerlo personalmente.",
+        "theory": "Un reporte útil tiene destinatario y evidencia cuidada; la advertencia no necesita convertirse en otro canal de distribución de archivos sospechosos.",
+        "hint": "Busca cómo informar a quien puede investigar sin pedir a más personas que visiten la página o ejecuten contenido como demostración.",
+        "correct": "Elegiste un reporte adecuado y una advertencia sin interacción; al impostor le negaste una campaña gratuita de visitas disfrazada de concienciación.",
+        "soft": "Advertir es buena intención; ajustemos el modo para que nadie necesite abrir la misma trampa mientras conservas los datos útiles para investigar.",
+        "sharp": "Repartir la trampa para enseñar que existe es una fiesta jodida; necesitamos un reporte, no más participantes dentro del enlace sospechoso.",
+        "pass": "Ya informas sin convertir el incidente en campaña viral; conservar evidencia y reducir nuevas interacciones son objetivos compatibles con un canal adecuado.",
+        "review": "Repasa quién investiga y quién solo necesita una advertencia; cada grupo requiere información diferente sin distribuir secretos, enlaces activos o muestras."
+      }
+    },
+    {
+      "id": "safe-browsing-after-click",
+      "title": "Después del clic, hechos primero",
+      "minutes": 3,
+      "intro": "Organiza una primera respuesta a un enlace sospechoso distinguiendo visita, entrega de datos y ejecución para elegir medidas proporcionadas sin asumir que todas las cuentas se perdieron ni que cualquier clic resulta inofensivo por definición.",
+      "sections": [
+        {
+          "title": "Responder depende de lo ocurrido",
+          "body": "Si abriste un enlace sospechoso, detén la interacción y no envíes más información. Identifica si introdujiste credenciales, autorizaste permisos o ejecutaste algo. Una contraseña expuesta debe cambiarse desde el servicio oficial y un dispositivo de confianza, revisando sesiones y recuperación. Ante sospecha de malware, desconecta el equipo de la red y consulta al soporte según el procedimiento del centro. No borres evidencia ni vuelvas al sitio para investigar por tu cuenta la actividad que realizó."
+        }
+      ],
+      "steps": [
+        "Anota las acciones realizadas y la hora aproximada sin copiar secretos.",
+        "Aplica medidas según la exposición y consulta al responsable por un canal oficial."
+      ],
+      "scenario": "En una simulación ficticia escribiste la contraseña del correo en una página falsa, pero no instalaste nada. Conservas acceso desde tu teléfono de confianza y el mensaje recibido para documentar lo sucedido.",
+      "questions": [
+        {
+          "prompt": "¿Qué actuación responde a esa exposición concreta?",
+          "options": [
+            "Esperar porque todavía puedes entrar a la cuenta",
+            "Borrar todas las pruebas antes de pedir ayuda",
+            "Cambiar la clave por el servicio oficial y revisar accesos"
+          ],
+          "answer": 2,
+          "explanation": "La contraseña revelada puede utilizarse aunque conserves acceso. Cámbiala desde el dispositivo fiable y el servicio oficial, revisa sesiones y recuperación, y comunica el caso sin borrar evidencia útil para investigar.",
+          "wrongExplanations": [
+            "Conservar acceso no demuestra que la contraseña siga siendo secreta ni que no existan sesiones ajenas. Actúa desde el servicio oficial y revisa la cuenta sin esperar a observar daños visibles.",
+            "Borrar pruebas dificulta entender el incidente y no protege la cuenta. Conserva el mensaje según las instrucciones del responsable, cambia la clave expuesta y describe los hechos sin eliminar información útil por tu cuenta.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "El clic pasó; ahora mandan los hechos y no el pánico con megáfono, así que revisamos qué información salió realmente del equipo.",
+        "theory": "Visitar, entregar datos y ejecutar requieren valoraciones diferentes; describirlos bien permite proteger lo afectado sin inventar incidentes ni borrar información útil.",
+        "hint": "Piensa qué dato quedó expuesto y qué controles ofrece el proveedor auténtico para reducir su utilidad sin volver al sitio falso.",
+        "correct": "Respondiste a la credencial expuesta por el canal correcto; conservas información para investigar mientras revisas sesiones y recuperación desde un dispositivo fiable.",
+        "soft": "El susto hace que todo parezca igual; separamos la contraseña revelada de otras acciones para elegir una respuesta concreta sin inventar una infección.",
+        "sharp": "Esperar una presentación formal del intruso sería una paciencia de mierda; la clave salió, así que la protegemos antes de ver daños.",
+        "pass": "Ya conviertes el susto en acciones útiles: reconocer, proteger y pedir ayuda sin borrar evidencia ni volver a probar el enlace por curiosidad.",
+        "review": "Revisa los hechos confirmados; una contraseña expuesta exige proteger la cuenta, mientras una ejecución sospechosa necesita otra evaluación y contención apropiada."
+      }
+    },
+    {
+      "id": "safe-browsing-navigation-plan",
+      "title": "Tu recorrido antes de actuar",
+      "minutes": 3,
+      "intro": "Combina lectura del destino, revisión de permisos y comprobación independiente en una decisión cotidiana para navegar con criterio sin convertir cada petición urgente en una instrucción aceptada automáticamente.",
+      "sections": [
+        {
+          "title": "Un orden breve para decidir",
+          "body": "Empieza por tu objetivo: qué buscabas hacer antes de llegar al mensaje o sitio. Revisa el dominio y la petición concreta, especialmente si requiere datos, pagos, permisos o ejecución. Si la solicitud cambia de contexto o no puedes verificarla, pausa y abre un canal conocido para comprobarla. Solo después decide si continuar. Ninguna señal aislada garantiza todo: HTTPS, una cuenta conocida o un diseño profesional necesitan interpretarse junto a la acción solicitada y la información independiente disponible."
+        }
+      ],
+      "steps": [
+        "Resume el objetivo original y la acción nueva que te pide el sitio.",
+        "Comprueba el destino y confirma peticiones sensibles desde una referencia conocida.",
+        "Continúa solo si entiendes el alcance y la necesidad de la acción que aceptarías."
+      ],
+      "scenario": "Para consultar una nota ficticia, un mensaje dirige a otro dominio y exige una extensión con acceso a todos los sitios antes de cinco minutos. Conservas la aplicación del centro y un contacto académico verificado.",
+      "questions": [
+        {
+          "prompt": "¿Qué secuencia mantiene mejor el control de esa decisión?",
+          "options": [
+            "Pausar, revisar la petición y comprobarla desde el canal conocido",
+            "Instalar rápido y comprobar la nota antes de pensar en los permisos",
+            "Aceptar porque la página combina HTTPS, escudo y una amenaza urgente"
+          ],
+          "answer": 0,
+          "explanation": "Pausar y comprobar desde el centro evita conceder acceso bajo presión. Relaciona consultar una nota con la extensión pedida y confirma si existe ese procedimiento por un canal independiente antes de autorizar permisos amplios.",
+          "wrongExplanations": [
+            null,
+            "Instalar primero concede capacidades antes de aclarar su necesidad y la identidad del sitio. La urgencia no justifica ese orden; verifica la gestión por el canal conocido y decide después si requiere una instalación.",
+            "HTTPS protege el transporte y el escudo puede copiarse; la amenaza añade presión. Ninguno acredita que una extensión sea necesaria para ver la nota ni sustituye consultar al centro por una vía independiente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "browsing",
+      "aoi": {
+        "intro": "Último recorrido, cariño: objetivo, destino y petición; pongamos cada cosa en su sitio antes de dejar que una página urgente decida nuestra tarde.",
+        "theory": "Un procedimiento breve combina lo aprendido: reconocer cambios de contexto y comprobar acciones sensibles antes de aceptar permisos, pagos o ejecución.",
+        "hint": "Compara consultar una nota con las capacidades de la extensión y busca una referencia que pueda confirmar el procedimiento de forma independiente.",
+        "correct": "Ordenaste la decisión: revisaste antes de ejecutar y elegiste una fuente independiente; qué fastidio tan precioso para una amenaza que esperaba obediencia inmediata.",
+        "soft": "No necesitas acertar cada detalle al principio; detente si la petición no encaja con tu tarea y consulta antes de conceder acceso.",
+        "sharp": "Para ver una nota quería gobernar todo el navegador; qué jodida vocación imperial, preguntemos al centro si esa coronación estaba realmente prevista.",
+        "pass": "Terminaste con un orden reutilizable: entender, revisar, comprobar y decidir; mis comentarios acompañan, pero el control y la decisión siguen siendo tuyos.",
+        "review": "Relaciona cada paso con el riesgo que reduce; comprobar debe ir antes de ejecutar y las señales visuales necesitan interpretarse según su alcance."
+      }
+    }
+  ]
+}

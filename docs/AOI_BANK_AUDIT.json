@@ -1,0 +1,60 @@
+{
+  "total_dialogues": 585,
+  "unique_dialogues": 585,
+  "unique_explanations": 585,
+  "total_words": 32891,
+  "lessons": {
+    "digital-life": 91,
+    "risk-routine": 91,
+    "passwords": 91,
+    "mfa": 91,
+    "phishing-signals": 91,
+    "safe-response": 91,
+    "diagnostic": 39
+  },
+  "stages": {
+    "courseComplete": 6,
+    "question": 59,
+    "hint": 77,
+    "correct": 59,
+    "incorrect": 92,
+    "result": 40,
+    "intro": 36,
+    "theory": 108,
+    "procedure": 72,
+    "scenario": 36
+  },
+  "files": [
+    {
+      "path": "assets/dialogues/celebrations.json",
+      "count": 6,
+      "sha256": "a368d777c52dde3b8cca3eb3d87894aee212372a1711e47cd3f8cfd40f7fddd2"
+    },
+    {
+      "path": "assets/dialogues/diagnostic.json",
+      "count": 29,
+      "sha256": "7f68718f6de99f4fdbc91606de2ddb874aff109b82fb5f60ce3ab18782aea844"
+    },
+    {
+      "path": "assets/dialogues/diagnostic_retry.json",
+      "count": 10,
+      "sha256": "e1f1286efc4a18d8eac5b4d6cfee74a8d438f0bd02f7430ba2468af19a1ee3ff"
+    },
+    {
+      "path": "assets/dialogues/foundations.json",
+      "count": 180,
+      "sha256": "84c6573a5a85e1ddefc0f5646b20507672cd201ab4921b50655fa88a9c12622e"
+    },
+    {
+      "path": "assets/dialogues/identity.json",
+      "count": 180,
+      "sha256": "dfcccfc909d9f6ec3593d03c4f0580f86e529a8766f11225442b751da0829e2f"
+    },
+    {
+      "path": "assets/dialogues/phishing.json",
+      "count": 180,
+      "sha256": "c7dc6f06a1952d4482995b6833fbfb6fc217d14fe1bf02c9c9bac3702f7654aa"
+    }
+  ],
+  "errors": []
+}

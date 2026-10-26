@@ -1,0 +1,797 @@
+{
+  "courseId": "foundations",
+  "lessons": [
+    {
+      "id": "foundations-practice-inventario",
+      "title": "Inventario: dónde duele perder algo",
+      "minutes": 5,
+      "intro": "Aprende a ordenar tus recursos digitales por su valor y sus dependencias, preparando un inventario útil que permita elegir prioridades sin copiar información privada dentro del ejercicio.",
+      "sections": [
+        {
+          "title": "Valor, ubicación y dependencias",
+          "body": "Un inventario útil describe qué recurso tienes, dónde se conserva y qué necesitarías para recuperarlo. Su importancia depende del impacto de perderlo y de la dificultad de reconstruirlo, además de su sensibilidad. Una fotografía irrepetible puede merecer más atención que un archivo descargable otra vez. También existen dependencias: si una cuenta recupera otra, proteger la primera influye en ambas. Registra categorías y ubicaciones generales, mantén el inventario protegido y evita incluir contraseñas, códigos de acceso o el contenido completo de documentos privados."
+        }
+      ],
+      "steps": [
+        "Elige tres recursos personales sin introducir datos reales en la app.",
+        "Anota para cada uno su ubicación general y la dificultad de recuperarlo.",
+        "Señala si depende de otra cuenta para restablecer el acceso."
+      ],
+      "scenario": "En una familia ficticia conviven fotografías antiguas sin otra copia, material público descargable y varias cuentas relacionadas. Quieren decidir qué proteger primero y cómo registrar esas prioridades sin reunir sus secretos en una lista expuesta.",
+      "questions": [
+        {
+          "prompt": "¿Qué recurso merece prioridad por su dificultad de reconstrucción?",
+          "scenario": "Lía conserva la única copia de unas fotos familiares irrepetibles. En la misma computadora tiene fondos públicos que puede descargar nuevamente sin coste ni pérdida importante de trabajo.",
+          "options": [
+            "Las fotos irrepetibles, atendiendo a su impacto y falta de alternativa",
+            "Los fondos, únicamente porque ocupan más espacio",
+            "Ninguno, porque ambos tienen un icono pequeño"
+          ],
+          "answer": 0,
+          "explanation": "La prioridad depende de consecuencias y recuperación, no solo del tamaño. Las fotos son irrepetibles y carecen de alternativa; los fondos pueden obtenerse de nuevo, por lo que perderlos tendría un impacto distinto en este caso.",
+          "wrongExplanations": [
+            null,
+            "El espacio ocupado no determina por sí solo la importancia del recurso. Aquí los fondos pueden recuperarse descargándolos, mientras las fotografías no tienen sustituto; conviene priorizar la consecuencia de perderlas y preparar una forma de conservarlas.",
+            "El tamaño del icono no representa el valor de la información. Ambos archivos existen como recursos, pero las fotos merecen atención especial por su carácter irrepetible y por no contar con otra copia que permita recuperarlas."
+          ],
+          "aoi": {
+            "question": "Pesa la pérdida, no el icono. Quiero saber qué sería realmente difícil recuperar si esa computadora dejara de funcionar mañana.",
+            "hint": "Compara qué podría reconstruirse sin problema y qué desaparecería de forma irreparable. El número de megabytes no responde esas dos preguntas.",
+            "correct": "Prioridad bien elegida. Las fotos guardan algo que otra descarga no devuelve; ese criterio vale más que ordenar archivos por tamaño para sentirnos organizados.",
+            "soft": "Miremos el esfuerzo de recuperar cada recurso. El caso nos da una diferencia importante entre lo reemplazable y lo que no tiene alternativa.",
+            "sharp": "El fondo enorme no recibe medalla por ocupar más, carajo. La prioridad viene del daño de perderlo, no de inflar la carpeta con megabytes."
+          }
+        },
+        {
+          "prompt": "¿Qué dependencia debe incluir el plan de protección?",
+          "scenario": "Nora usa un buzón secundario para restablecer su cuenta de estudio. Solo revisa la seguridad de la cuenta académica y nunca considera el buzón que permite recuperar su acceso.",
+          "options": [
+            "Cambiar solamente el nombre visible de la cuenta académica",
+            "Revisar también el buzón que permite restablecerla",
+            "Suponer que las cuentas relacionadas nunca se afectan entre sí"
+          ],
+          "answer": 1,
+          "explanation": "El buzón de recuperación puede influir en el control de la cuenta académica. Incluir esa dependencia permite revisar su protección y sus opciones de recuperación, en vez de evaluar cada cuenta como si estuviera completamente aislada del resto.",
+          "wrongExplanations": [
+            "El nombre visible no cambia la función del buzón de recuperación. El plan necesita contemplar quién puede controlar ese canal y cómo se protege, porque permite intervenir en el restablecimiento del acceso a la cuenta académica.",
+            null,
+            "El escenario describe una relación concreta entre ambas cuentas. Ignorarla deja fuera una vía de recuperación importante; las dependencias deben reconocerse para que el plan no proteja únicamente la pantalla principal y olvide otro acceso relevante."
+          ],
+          "aoi": {
+            "question": "Sigue el hilo de recuperación, precioso. Una cuenta puede apoyarse en otra y esconder una dependencia que el inventario todavía no está mirando.",
+            "hint": "Pregunta qué servicio participa cuando Nora pierde el acceso. La dependencia se reconoce por su función, no por cuál cuenta usa con más frecuencia.",
+            "correct": "Dependencia localizada. Miraste el canal que permite recuperar la cuenta y evitaste tratar dos servicios conectados como islas sin nada que ver.",
+            "soft": "La cuenta académica no está sola en este caso. Revisemos qué otra cuenta interviene cuando necesita recuperar el acceso antes de cambiar elementos de apariencia.",
+            "sharp": "Una foto de perfil nueva no vigila el buzón de recuperación, joder. Sigamos la dependencia real en lugar de maquillar la puerta principal y olvidar su acceso alternativo."
+          }
+        },
+        {
+          "prompt": "¿Qué contenido es adecuado para un inventario protegido de recursos?",
+          "scenario": "Un equipo prepara una lista interna para saber qué documentos conserva y dónde. Quiere identificar prioridades sin convertir la lista en una colección de contraseñas y archivos privados completos.",
+          "options": [
+            "Las contraseñas completas de todas las personas",
+            "El contenido íntegro de cada documento sensible",
+            "Categorías, ubicación general y necesidades de recuperación"
+          ],
+          "answer": 2,
+          "explanation": "El inventario necesita información suficiente para localizar recursos y planificar protección. Categorías, ubicación y recuperación cumplen ese propósito sin concentrar credenciales ni copias completas de documentos sensibles, que añadirían exposición innecesaria a la propia lista interna.",
+          "wrongExplanations": [
+            "Las contraseñas no son necesarias para describir qué recursos existen o cómo se recuperarían. Reunirlas en el inventario crea una exposición adicional; la lista debe mantenerse protegida y conservar solo los datos pertinentes a su propósito de organización.",
+            "Copiar documentos completos excede la finalidad del inventario y concentra información sensible. Identificar categorías, ubicación y necesidades permite planificar sin duplicar todo el contenido privado dentro de un listado que podría compartirse o consultarse con un alcance diferente.",
+            null
+          ],
+          "aoi": {
+            "question": "Quiero un mapa útil, no una piñata de secretos. Elige qué datos ayudan a organizar sin reunir más información privada de la necesaria.",
+            "hint": "Distingue describir un recurso de copiar todo su contenido. Busca el mínimo que permite localizarlo y planificar su protección dentro de la lista.",
+            "correct": "Inventario con propósito y límites: excelente. Organizaste lo necesario sin convertir la lista en otro sitio lleno de secretos que ahora necesitarían protección adicional.",
+            "soft": "La lista debe ayudar a encontrar y priorizar. Revisemos qué datos cumplen esa función sin añadir contraseñas o documentos completos que no necesita almacenar.",
+            "sharp": "Si el inventario reúne todas las claves, acabas de construir un premio para el intruso. Organicemos recursos sin meter cada maldito secreto en el mismo cuaderno."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Hoy haremos inventario con criterio, cariño. Quiero prioridades reales y dependencias claras, sin que me enseñes ni una sola contraseña personal.",
+        "theory": "Algo pequeño puede ser irrepetible y algo enorme recuperarse fácilmente. El valor no obedece al tamaño del archivo ni a la apariencia del icono.",
+        "pass": "Inventario entendido. Ya puedes ordenar recursos por consecuencias y recuperación sin convertir la organización de tu vida digital en otro riesgo de exposición innecesaria.",
+        "review": "Revisa qué se perdería, cómo volvería y de qué cuenta depende. Esas preguntas permiten corregir prioridades sin memorizar posiciones de las respuestas."
+      }
+    },
+    {
+      "id": "foundations-practice-tres-propiedades",
+      "title": "Tres propiedades, tres clases de daño",
+      "minutes": 5,
+      "intro": "Practica la diferencia entre exposición, cambios y falta de acceso usando casos independientes, y aprende a comprobar el contenido con referencias confiables en lugar de juzgarlo solo por su apariencia.",
+      "sections": [
+        {
+          "title": "Describir el efecto con precisión",
+          "body": "Una lectura no autorizada afecta confidencialidad incluso si nada se modifica. La disponibilidad se refiere a poder usar el recurso cuando se necesita; puede fallar por una avería sin que alguien robe información. La integridad requiere conservar el contenido previsto frente a cambios indebidos y puede comprobarse comparando versiones con una referencia confiable. Son propiedades distintas y un mismo incidente puede afectar varias. Describe primero el hecho observado, separa lo que todavía desconoces y después elige la propiedad que corresponde directamente a ese efecto."
+        }
+      ],
+      "steps": [
+        "Describe un ejemplo de lectura ajena y otro de servicio inaccesible.",
+        "Piensa qué referencia permitiría detectar cambios en un documento de práctica."
+      ],
+      "scenario": "Una academia ficticia revisa tres situaciones distintas: un listado privado leído por alguien sin permiso, un portal temporalmente caído y un presupuesto que debe compararse con su versión aprobada. Buscan describir cada efecto con precisión.",
+      "questions": [
+        {
+          "prompt": "¿Qué propiedad se afecta directamente al leer ese listado sin permiso?",
+          "scenario": "Un visitante lee las calificaciones privadas de un grupo sin autorización. No cambia ninguna cifra y el personal todavía puede abrir el listado con normalidad cuando necesita consultarlo.",
+          "options": [
+            "Solo la disponibilidad del portal",
+            "La confidencialidad de las calificaciones",
+            "La capacidad de almacenamiento del disco"
+          ],
+          "answer": 1,
+          "explanation": "El daño descrito es acceso de lectura por una persona no autorizada, por lo que afecta confidencialidad. No hace falta modificar cifras ni impedir el uso del listado para que exista exposición de información privada del grupo.",
+          "wrongExplanations": [
+            "El listado sigue accesible para el personal y el caso no describe una interrupción del servicio. El hecho relevante es que alguien ajeno pudo leer datos privados, un efecto diferente de perder disponibilidad al necesitar consultar el recurso.",
+            null,
+            "La cantidad de almacenamiento no explica quién puede leer las calificaciones. El escenario trata de una exposición sin permiso, aunque los archivos sigan existiendo y las cifras permanezcan iguales dentro del mismo disco que utiliza el personal autorizado."
+          ],
+          "aoi": {
+            "question": "No cambiaron las notas, pero alguien las miró sin invitación. Identifica el daño sin exigir que el visitante también rompa algo para reconocer el incidente.",
+            "hint": "Pregúntate quién debía poder leer esos datos. Después compara ese control de acceso con cambiar contenido o impedir que el personal utilice el listado.",
+            "correct": "Confidencialidad localizada. La lectura ajena ya importa aunque el visitante deje todo ordenado y el archivo siga abriendo como si nada hubiera pasado.",
+            "soft": "El caso conserva acceso y contenido, pero cambia quién vio la información. Revisemos esa diferencia antes de escoger otra propiedad que aquí no se describe afectada.",
+            "sharp": "Devolver el listado intacto no devuelve la privacidad, carajo. Una mirada no autorizada ya hizo su trabajo aunque las cifras sigan perfectamente quietas en sus casillas."
+          }
+        },
+        {
+          "prompt": "¿Qué propiedad describe el problema de las personas que no pueden entrar?",
+          "scenario": "El portal de inscripción de una escuela ficticia deja de responder durante una avería. No hay evidencia de lectura ajena ni de datos modificados, pero las familias no pueden usarlo en ese momento.",
+          "options": [
+            "Disponibilidad del servicio",
+            "Tamaño de los iconos del portal",
+            "Una filtración de datos confirmada por definición"
+          ],
+          "answer": 0,
+          "explanation": "La interrupción impide utilizar el servicio cuando se necesita, lo que describe una pérdida de disponibilidad. La avería no demuestra por sí sola una filtración ni una modificación; esas conclusiones requerirían evidencia adicional diferente del acceso fallido al portal.",
+          "wrongExplanations": [
+            null,
+            "Los iconos no describen la condición de poder utilizar un servicio. Aquí el portal no responde y las familias quedan sin acceso, de modo que cambiar elementos visuales no explica el efecto de la avería sobre su uso.",
+            "No poder entrar no confirma una lectura no autorizada de datos. El caso solo aporta una interrupción del servicio; atribuir una filtración añade un daño que no está demostrado y confunde el problema observado con una posible causa o consecuencia distinta."
+          ],
+          "aoi": {
+            "question": "El portal está fuera de servicio y las familias esperan. Elige la propiedad del efecto observado, sin regalarle al caso una filtración que nadie confirmó.",
+            "hint": "Mira qué función perdieron los usuarios en ese momento. Describe el acceso que necesitan y separa esa evidencia de otros daños sobre los datos que siguen desconocidos.",
+            "correct": "Disponibilidad: ese es el efecto. La avería dejó sin uso el portal, pero no nos dio pruebas para inventar una exposición de datos del sistema.",
+            "soft": "La información sobre otros daños es limitada. Podemos identificar qué les falta a las familias ahora sin asegurar una lectura ajena que el escenario no presenta.",
+            "sharp": "Un portal caído no viene con certificado automático de filtración, joder. Describe primero que nadie puede usarlo antes de añadir una película de robos que no vimos."
+          }
+        },
+        {
+          "prompt": "¿Qué acción ayuda a comprobar la integridad del presupuesto?",
+          "scenario": "Un equipo conserva un presupuesto recibido y una versión aprobada guardada por su responsable. Necesita saber si las cifras actuales coinciden con las autorizadas antes de utilizar el documento para una compra.",
+          "options": [
+            "Cambiar la extensión y confiar en el nuevo nombre",
+            "Comprimir el archivo sin revisar su contenido",
+            "Comparar las cifras con la versión aprobada confiable"
+          ],
+          "answer": 2,
+          "explanation": "La referencia aprobada permite comprobar si el contenido actual conserva las cifras autorizadas. Cambiar nombre o formato y comprimir no verifican por sí solos esa coincidencia; la comprobación debe relacionar los datos que importan con una fuente confiable del documento.",
+          "wrongExplanations": [
+            "Cambiar la extensión altera una etiqueta o cómo se intenta abrir el archivo, pero no comprueba sus cifras. Para evaluar integridad necesitas contrastar el contenido con la referencia aprobada, sin convertir un nombre distinto en garantía de corrección del presupuesto.",
+            "Comprimir reduce o reorganiza la representación del archivo, pero no demuestra que las cifras sean las aprobadas. El equipo debe comprobar el contenido frente a la referencia confiable antes de utilizarlo para decidir una compra basada en importes que podrían no coincidir.",
+            null
+          ],
+          "aoi": {
+            "question": "Aquí quiero comprobar cifras, no vestir el archivo de gala. Elige una acción que aporte evidencia sobre el contenido antes de que alguien pague un importe incorrecto.",
+            "hint": "Busca una fuente con la que puedas contrastar los valores. Cambiar la apariencia del archivo no responde si contiene exactamente lo que el responsable autorizó.",
+            "correct": "Referencia confiable elegida. Comparar el contenido sí permite detectar diferencias; ni una extensión elegante ni una compresión bonita podían certificar las cifras por su cuenta.",
+            "soft": "La comprobación necesita decir algo sobre los importes. Revisemos qué acción los contrasta con una fuente aprobada, en lugar de modificar solamente la presentación del archivo.",
+            "sharp": "Un archivo comprimido puede llevar cifras de mierda perfectamente comprimidas. El envoltorio no verifica el presupuesto; necesitamos evidencia del contenido antes de fiarnos de lo que dice."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Tres propiedades, tres escenas distintas. Hoy quiero que tus diagnósticos tengan precisión, precioso, aunque el incidente venga sin música siniestra ni luces rojas.",
+        "theory": "Leer, cambiar e impedir acceso no son la misma acción. Mi ceja estará pendiente de qué ocurrió realmente antes de permitirte acusar al concepto equivocado.",
+        "pass": "Ya separas exposición, contenido y acceso con ejemplos nuevos. Esa precisión sirve para explicar un problema y elegir protecciones que respondan al daño observado.",
+        "review": "Vuelve a describir cada hecho sin términos técnicos y después busca su propiedad. Empezar por la acción aclara el concepto sin añadir incidentes imaginarios."
+      }
+    },
+    {
+      "id": "foundations-practice-permisos",
+      "title": "Compartir solo lo necesario",
+      "minutes": 5,
+      "intro": "Practica decisiones de permisos para compartir documentos con un objetivo concreto, eligiendo destinatarios, acciones y duración sin convertir la comodidad de un enlace en acceso innecesario para otras personas.",
+      "sections": [
+        {
+          "title": "Quién, para qué y hasta cuándo",
+          "body": "Compartir con criterio empieza por definir quién necesita el recurso y qué debe hacer: leer, comentar o editar son permisos diferentes. Si solo hace falta consultar, conceder edición aumenta oportunidades de cambios no deseados. Un enlace abierto puede llegar más lejos de lo previsto al reenviarse, así que revisa sus destinatarios y condiciones reales. Cuando termina la colaboración, comprueba si el acceso sigue siendo necesario y revócalo según el procedimiento aplicable. Las capacidades concretas cambian entre servicios; verifica la configuración antes de asumir que el nombre de una opción basta."
+        }
+      ],
+      "steps": [
+        "Define un destinatario ficticio y una única acción necesaria.",
+        "Selecciona el alcance más limitado que permita realizarla.",
+        "Planifica cuándo revisarías o retirarías ese acceso."
+      ],
+      "scenario": "Un grupo ficticio comparte una guía para consulta, un borrador para una persona concreta y una carpeta temporal de colaboración. Quieren cumplir cada tarea sin abrir edición ni mantener accesos más amplios de lo necesario después del proyecto.",
+      "questions": [
+        {
+          "prompt": "¿Qué permiso encaja mejor con la tarea de consultar la guía?",
+          "scenario": "Inés necesita leer una guía aprobada para preparar una exposición. No tiene que corregir ni añadir contenido y el responsable quiere conservar la versión actual sin modificaciones de quienes solo la consultan.",
+          "options": [
+            "Permiso de edición completa por comodidad",
+            "Acceso de lectura adecuado al destinatario",
+            "Contraseña de administración de todas las carpetas"
+          ],
+          "answer": 1,
+          "explanation": "El acceso de lectura permite cumplir la tarea sin añadir la capacidad de modificar contenido. Elegir el permiso necesario reduce acciones no requeridas; la edición completa y la administración exceden lo que Inés necesita para consultar esa guía aprobada.",
+          "wrongExplanations": [
+            "La edición completa permite cambios que la tarea no requiere. Aunque Inés actúe con cuidado, conceder capacidad extra aumenta oportunidades de modificación accidental; el permiso debe corresponder al propósito de consulta definido por la persona responsable del documento.",
+            null,
+            "La administración de todas las carpetas es mucho más amplia que leer una guía. Compartir esa credencial añade exposición y responsabilidades innecesarias, sin aportar una función que Inés necesite para preparar la exposición usando el documento aprobado."
+          ],
+          "aoi": {
+            "question": "Inés viene a leer, no a remodelar la biblioteca. Elige el permiso que cumpla esa tarea sin darle herramientas que no necesita para hacerla.",
+            "hint": "Relaciona la acción solicitada con las capacidades de cada opción. La comodidad no exige conceder cambios ni control sobre recursos ajenos a esta consulta concreta.",
+            "correct": "Lectura con propósito: bien elegido. Inés puede preparar su exposición sin recibir la capacidad de cambiar una guía que ya estaba aprobada para todos.",
+            "soft": "La tarea es más limitada que algunas opciones. Revisemos qué necesita hacer realmente antes de conceder funciones adicionales sobre la guía o sobre otras carpetas.",
+            "sharp": "Para leer una receta no entregas las llaves de todo el restaurante, carajo. El permiso extra no mejora esta consulta; solo añade posibilidades que nadie pidió."
+          }
+        },
+        {
+          "prompt": "¿Qué opción limita mejor el borrador a su destinataria?",
+          "scenario": "Un borrador privado debe revisarlo únicamente Mara. El servicio permite elegir personas concretas, pero una compañera propone un enlace para cualquiera que lo reciba porque es más rápido de reenviar a otros grupos.",
+          "options": [
+            "Publicar el borrador para que todos ayuden sin preguntar",
+            "Confiar en que nadie reenviará un enlace abierto",
+            "Configurar acceso para Mara y comprobar sus permisos"
+          ],
+          "answer": 2,
+          "explanation": "La destinataria está definida y el servicio permite restringir el acceso a ella. Configurarlo y revisar permisos reduce exposición frente a un enlace abierto, cuyo alcance puede aumentar al reenviarse aunque la intención original fuera compartir solamente con una persona.",
+          "wrongExplanations": [
+            "Publicar el borrador cambia el alcance de una revisión privada a una exposición mucho mayor. La tarea menciona una única destinataria y existe una función para limitar acceso; añadir lectores sin autorización no es necesario para cumplir el objetivo del grupo.",
+            "Esperar que nadie reenvíe el enlace no aplica una restricción técnica sobre sus destinatarios. Si permite acceso a cualquiera que lo reciba, el documento podría circular más allá de Mara; conviene utilizar y comprobar el control disponible para personas específicas.",
+            null
+          ],
+          "aoi": {
+            "question": "Solo Mara necesita el borrador. No aceptes una fiesta de lectores improvisados por ahorrar unos segundos al configurar a quién debe llegar realmente el documento.",
+            "hint": "Compara el destinatario requerido con el alcance de cada opción. Piensa qué sucede si el enlace llega a otra persona que no participa en la revisión.",
+            "correct": "Destinataria y permisos comprobados. El borrador conserva el alcance que necesita la revisión en lugar de depender de que cada reenvío del enlace se porte bien.",
+            "soft": "El objetivo menciona una persona concreta. Revisemos qué configuración mantiene ese límite cuando alguien copia el enlace, sin depender únicamente de promesas sobre su uso.",
+            "sharp": "Un enlace abierto no lee tu intención privada, joder. Si cualquiera que lo reciba entra, la revisión de Mara puede terminar de excursión por grupos que nunca invitaste."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene hacer con el acceso temporal al terminar la colaboración?",
+          "scenario": "Un voluntario recibió acceso a una carpeta solo durante un proyecto que ya terminó. El responsable confirma que no necesita seguir consultándola y existe una opción para retirar su permiso sin borrar el contenido del equipo.",
+          "options": [
+            "Retirar el permiso que dejó de ser necesario",
+            "Borrar todos los documentos para ocultar la colaboración",
+            "Conservar el acceso para siempre porque ya se concedió una vez"
+          ],
+          "answer": 0,
+          "explanation": "Si la necesidad terminó, retirar ese permiso conserva el contenido y reduce acceso innecesario. La decisión sigue el propósito temporal acordado, sin borrar documentos ni asumir que una autorización inicial debe permanecer indefinidamente para cualquier uso posterior del voluntario.",
+          "wrongExplanations": [
+            null,
+            "Borrar documentos afecta el trabajo del grupo y no es necesario para retirar un permiso. El servicio ofrece una función específica que limita al destinatario anterior conservando el contenido; el cierre debe atender acceso, no destruir información útil para los demás.",
+            "Un permiso puede dejar de ser apropiado cuando termina su objetivo. Mantenerlo indefinidamente amplía la exposición sin necesidad actual; revisar y retirar accesos temporales permite que la configuración siga reflejando quién necesita realmente los recursos después del proyecto concluido."
+          ],
+          "aoi": {
+            "question": "El proyecto acabó y el acceso ya no hace falta. Cierra esa colaboración con una acción proporcionada, sin convertir la carpeta compartida en una escena de destrucción teatral.",
+            "hint": "La tarea es terminar un permiso, no eliminar el trabajo. Busca una acción que cambie quién accede y conserve los documentos que el grupo todavía utiliza.",
+            "correct": "Permiso retirado sin sacrificar archivos. Cerraste la colaboración según su duración prevista y mantuviste útil el trabajo del equipo para quienes sí deben conservar acceso.",
+            "soft": "El servicio permite separar permiso y contenido. Revisemos cuál de esas dos cosas necesita cambiar al terminar la tarea del voluntario sin afectar al resto del grupo.",
+            "sharp": "La carpeta no tiene que arder porque terminó una colaboración, carajo. Retira el acceso que sobra y deja de castigar documentos que siguen haciendo falta al equipo."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Hoy compartirás sin regalar control de todo el edificio, cariño. Vamos a mirar destinatarios, tareas y duración antes de pulsar aceptar por pura comodidad.",
+        "theory": "Leer, editar y administrar no son regalos equivalentes. El permiso más adecuado cumple la tarea sin añadir funciones que nadie pidió ni necesita para terminarla.",
+        "pass": "Permisos con propósito: conseguido. Puedes limitar una consulta, proteger un borrador y cerrar colaboraciones sin confundir quitar acceso con borrar trabajo de otras personas.",
+        "review": "Revisa quién participa, qué acción necesita y hasta cuándo. Esas tres respuestas aclaran el permiso adecuado mejor que asumir que compartir siempre debe abrirlo todo."
+      }
+    },
+    {
+      "id": "foundations-practice-recuperacion",
+      "title": "Una copia tiene que devolver algo útil",
+      "minutes": 5,
+      "intro": "Practica decisiones de recuperación que comprueben contenido, versiones y frecuencia de copia, evitando sustituir archivos válidos durante las pruebas o descubrir demasiado tarde que el respaldo se quedó desactualizado.",
+      "sections": [
+        {
+          "title": "Ensayar, conservar versiones y revisar fechas",
+          "body": "Un respaldo necesita ser utilizable cuando desaparece o se altera el original. Para comprobarlo, restaura un archivo de prueba en una ubicación separada y revisa que abre y conserva contenido esperado sin sobrescribir el trabajo vigente. Si un borrado se sincroniza, puede ser importante disponer de versiones o copias anteriores independientes. La frecuencia debe corresponder al trabajo que no quieres perder: una copia antigua omite cambios recientes. Revisa qué se guarda, durante cuánto tiempo y cómo recuperarlo antes de necesitarlo con urgencia."
+        }
+      ],
+      "steps": [
+        "Planifica restaurar un documento ficticio sin sobrescribir su original.",
+        "Comprueba qué versiones y fechas conservaría el respaldo elegido.",
+        "Relaciona la frecuencia de copia con cuánto trabajo aceptarías reconstruir."
+      ],
+      "scenario": "Un taller ficticio quiere ensayar una restauración, recuperar un texto anterior a un borrado y reducir la pérdida de avances diarios. Revisan cómo probar sin sobrescribir y qué datos mantienen realmente sus copias en cada fecha.",
+      "questions": [
+        {
+          "prompt": "¿Cómo conviene realizar la prueba de restauración?",
+          "scenario": "Un estudiante tiene un documento actual que funciona y una copia que nunca ha probado. Quiere comprobar la recuperación sin poner en riesgo el único ejemplar vigente que todavía necesita entregar al final del día.",
+          "options": [
+            "Borrar primero el original sin guardar nada más",
+            "Restaurar directamente encima del original sin comprobar opciones",
+            "Recuperar una prueba aparte y verificar su contenido"
+          ],
+          "answer": 2,
+          "explanation": "Restaurar aparte permite comprobar que la copia devuelve contenido legible sin reemplazar el trabajo actual. La prueba debe demostrar utilidad y conservar una forma de volver atrás, en vez de crear una pérdida nueva al ensayar precisamente el mecanismo de recuperación del documento.",
+          "wrongExplanations": [
+            "Borrar el original antes de validar la copia elimina una opción que todavía funciona. La prueba busca comprobar recuperación sin provocar una pérdida innecesaria; una ubicación separada permite evaluar contenido antes de tomar decisiones que afecten el documento vigente.",
+            "Sobrescribir sin revisar opciones puede sustituir una versión válida por otra antigua o incompleta. La prueba debe preservar el estado actual y verificar el contenido recuperado aparte, de modo que aprender si funciona el respaldo no arriesgue la entrega que todavía necesita el estudiante.",
+            null
+          ],
+          "aoi": {
+            "question": "Quiero ensayar recuperación, no fabricar una tragedia para darle emoción. Elige una prueba que conserve el documento vigente mientras demuestra qué devuelve la copia.",
+            "hint": "Piensa cómo mantener el original disponible durante el ensayo. La comprobación debería aportar evidencia sobre la copia sin sustituir un archivo útil antes de verificar el resultado.",
+            "correct": "Prueba aparte y contenido comprobado: excelente. El respaldo demostró lo que devuelve sin que tu experimento se comiera el documento que todavía necesitabas para la entrega.",
+            "soft": "Tenemos un original que funciona. Revisemos cómo conservarlo mientras verificamos la copia, porque una prueba de recuperación no necesita comenzar causando otra pérdida al estudiante.",
+            "sharp": "Borrar lo único que funciona para probar lo desconocido es una mierda de estreno, carajo. Ensaya aparte antes de sacrificar el documento que todavía debes entregar."
+          }
+        },
+        {
+          "prompt": "¿Qué función conviene buscar para recuperar la versión anterior?",
+          "scenario": "Una estudiante borra por error varias páginas y el cambio se sincroniza en sus dispositivos. Necesita el contenido de ayer, mientras la copia actual solo refleja el documento después del borrado accidental.",
+          "options": [
+            "Versiones anteriores recuperables o una copia previa al borrado",
+            "Un nombre nuevo para el archivo vacío",
+            "La misma versión actual duplicada muchas veces"
+          ],
+          "answer": 0,
+          "explanation": "Para volver a lo anterior necesitas datos conservados de ese momento, como historial recuperable o una copia previa. Duplicar el estado posterior o cambiar su nombre no reconstruye las páginas que ya no aparecen en la versión actual sincronizada del documento.",
+          "wrongExplanations": [
+            null,
+            "Renombrar el archivo no restaura el contenido que perdió. El objetivo requiere una versión conservada antes del borrado; cambiar la etiqueta del estado actual no recupera páginas ni modifica la información que ya se sincronizó en los demás dispositivos.",
+            "Muchas copias del mismo estado posterior repiten la ausencia de esas páginas. La cantidad no reemplaza la fecha y el contenido necesarios; debe existir una versión previa recuperable o una copia anterior que todavía conserve el texto que la estudiante necesita recuperar."
+          ],
+          "aoi": {
+            "question": "El borrado se propagó y ahora necesitamos ayer, precioso. Busca qué recurso conserva ese contenido anterior en vez de multiplicar el mismo hueco con nombres distintos.",
+            "hint": "Compara la fecha del dato disponible con el momento del error. La recuperación depende de que exista contenido anterior, no solo de crear nuevos duplicados después del borrado.",
+            "correct": "Versión anterior localizada. No confundiste sincronizar el estado nuevo con conservar todos los estados anteriores; esa diferencia permite preguntar por una recuperación que sí tenga las páginas necesarias.",
+            "soft": "La versión actual ya perdió las páginas. Revisemos qué opción podría contener información anterior al cambio, porque copiar o renombrar el estado posterior conserva el mismo problema.",
+            "sharp": "Cien copias del agujero siguen siendo un agujero, joder. La cantidad de archivos no reconstruye el texto que ninguna versión actual conserva después de sincronizar el borrado accidental."
+          }
+        },
+        {
+          "prompt": "¿Qué decisión reduce mejor la cantidad de avances diarios que quedarían sin respaldo?",
+          "scenario": "Un ilustrador trabaja cada día y solo tiene una copia del mes pasado. Quiere limitar cuánto tendría que rehacer si pierde el original, sin suponer que el nombre del respaldo actualiza su contenido automáticamente.",
+          "options": [
+            "Renombrar la copia antigua como versión definitiva de hoy",
+            "Establecer copias con una frecuencia acorde a sus avances y comprobarlas",
+            "Confiar en que el archivo antiguo contiene cambios aún no realizados"
+          ],
+          "answer": 1,
+          "explanation": "La frecuencia debe corresponder al trabajo que no quiere perder y las copias necesitan comprobarse. Un respaldo del mes pasado no conserva por su nombre los cambios posteriores; programar y revisar nuevas copias reduce ese intervalo de avances que quedarían fuera de la recuperación.",
+          "wrongExplanations": [
+            "Cambiar el nombre no actualiza el contenido del respaldo. La copia antigua sigue sin incluir las ilustraciones posteriores; para reducir trabajo no protegido necesita nuevas copias y comprobar qué fechas y archivos conserva realmente cada una.",
+            null,
+            "Una copia solo conserva información que se guardó en ella, no cambios futuros o nunca incluidos. El ilustrador debe ajustar frecuencia y verificar contenido según sus avances, en vez de atribuir al respaldo una actualización que no se ha realizado ni comprobado."
+          ],
+          "aoi": {
+            "question": "El respaldo lleva un mes de vacaciones mientras el ilustrador trabaja diario. Elige una medida que reduzca de verdad lo que quedaría fuera si pierde el original.",
+            "hint": "Relaciona cuánto avanza con cuánto aceptaría repetir. La fecha y el contenido guardados importan más que una etiqueta que diga definitivo en el nombre del respaldo.",
+            "correct": "Frecuencia ligada al trabajo y copias verificadas. Ese plan reduce avances sin proteger en lugar de confiar en que el archivo antiguo aprendió a dibujar lo nuevo por telepatía.",
+            "soft": "La copia conserva un estado antiguo. Revisemos qué acción incorpora los avances posteriores y permite comprobarlos antes de dar por protegido el trabajo de cada día.",
+            "sharp": "Ponerle hoy al nombre no le enseña el trabajo de hoy, carajo. El respaldo no adivina ilustraciones nuevas; hay que guardarlas y comprobar qué quedó recuperable."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Hoy una copia tendrá que demostrar resultados, cariño. Probemos contenido, versiones y fechas sin sacrificar originales para que el ensayo parezca más heroico de lo necesario.",
+        "theory": "Un respaldo útil responde qué devuelve y de cuándo es. Su nombre puede ser precioso; la recuperación necesita datos reales y comprobables para servirte cuando haga falta.",
+        "pass": "Recuperación entendida con pruebas seguras, versiones y frecuencia. Ya puedes exigir evidencia al respaldo sin confundir guardar un archivo viejo con conservar automáticamente cada avance nuevo del proyecto.",
+        "review": "Vuelve a mirar contenido, fecha y forma de restaurar. Esas preguntas permiten escoger una copia útil y probarla sin causar otra pérdida durante el intento de aprendizaje."
+      }
+    },
+    {
+      "id": "foundations-practice-actualizaciones",
+      "title": "Actualizar sin aceptar cualquier ventana",
+      "minutes": 5,
+      "intro": "Distingue canales oficiales, reinicios pendientes y soporte del fabricante para planificar mantenimiento útil, sin instalar supuestos arreglos de anuncios ni creer que una sola herramienta sustituye los parches que necesita el sistema.",
+      "sections": [
+        {
+          "title": "Origen, finalización y soporte",
+          "body": "Una actualización puede corregir fallos de seguridad, pero la forma de obtenerla importa: utiliza el mecanismo integrado o la fuente oficial indicada por el fabricante. Un anuncio que promete limpiar el equipo no equivale a una notificación auténtica del sistema. Algunas instalaciones requieren reiniciar para completarse; guarda el trabajo y planifica ese paso sin aplazarlo indefinidamente. Si un producto dejó de recibir soporte, revisa las opciones oficiales para migrar o reemplazarlo por una alternativa mantenida. Un antivirus no crea por sí mismo los parches que ese fabricante ya no publica."
+        }
+      ],
+      "steps": [
+        "Identifica el canal oficial de actualización de un sistema de práctica.",
+        "Comprueba si hay instalación o reinicio pendiente antes de considerar terminado el mantenimiento.",
+        "Consulta el estado de soporte en documentación oficial sin instalar herramientas de anuncios."
+      ],
+      "scenario": "Un aula ficticia compara un anuncio de reparación, un sistema con reinicio pendiente y una aplicación cuyo soporte terminó. El objetivo es elegir acciones proporcionadas que mantengan el software atendido sin confiar en mensajes que solo aparentan ser oficiales.",
+      "questions": [
+        {
+          "prompt": "¿Dónde debe comprobarse el supuesto aviso de actualización?",
+          "scenario": "Una página muestra un anuncio que exige descargar un reparador para actualizar el sistema. La persona no lo buscó y puede consultar el mecanismo de actualización integrado en los ajustes del dispositivo.",
+          "options": [
+            "En el mecanismo oficial del sistema o la fuente indicada por su fabricante",
+            "Solo en el botón del anuncio, porque usa colores oficiales",
+            "Reenviando el instalador desconocido para que otras personas lo prueben"
+          ],
+          "answer": 0,
+          "explanation": "El mecanismo oficial permite comprobar actualizaciones sin depender del anuncio inesperado. Los colores o logotipos no autentican una descarga; reenviar un instalador desconocido tampoco verifica su origen y puede aumentar exposición de otras personas a un programa que no han solicitado.",
+          "wrongExplanations": [
+            null,
+            "La apariencia puede imitar a un fabricante y no demuestra autenticidad. Conviene revisar la necesidad de actualización mediante el mecanismo integrado o su fuente oficial, en lugar de instalar un reparador que la página propone sin que la persona lo haya buscado.",
+            "Pedir a otras personas que ejecuten un instalador desconocido no valida su origen y puede trasladarles el riesgo. La comprobación útil se hace en el canal oficial correspondiente, sin repartir programas sospechosos como método improvisado de verificación del aviso recibido."
+          ],
+          "aoi": {
+            "question": "Ese anuncio grita reparación urgente, pero gritar no autentica nada. Elige una comprobación que no dependa del mismo botón que intenta venderte la descarga.",
+            "hint": "Compara quién controla cada vía de comprobación. El objetivo es verificar el estado del sistema por un camino conocido, sin ejecutar primero lo que propone la página inesperada.",
+            "correct": "Canal oficial elegido. Revisaste la actualización sin conceder autoridad a un anuncio solo porque se vistió con los colores de un fabricante conocido para llamar tu atención.",
+            "soft": "La ventana puede parecer convincente, pero revisemos su origen. Hay una forma de comprobar el sistema sin aceptar de entrada el programa que intenta ofrecer esa página.",
+            "sharp": "Un logotipo no firma certificados por decoración, carajo. No conviertas el anuncio que pide instalar algo en el único juez de si necesitas instalarlo realmente."
+          }
+        },
+        {
+          "prompt": "¿Qué acción completa mejor el mantenimiento pendiente?",
+          "scenario": "Los ajustes oficiales indican que una actualización necesita reiniciar. El estudiante tiene trabajo sin guardar y lleva días cerrando el aviso, aunque puede reservar un momento cercano para terminar la instalación de forma ordenada.",
+          "options": [
+            "Ocultar el aviso para afirmar que la actualización terminó",
+            "Guardar el trabajo y realizar el reinicio requerido en un momento cercano",
+            "Cortar la alimentación durante la instalación para ganar tiempo"
+          ],
+          "answer": 1,
+          "explanation": "Guardar el trabajo permite realizar el reinicio solicitado de forma ordenada y completar la actualización según el mecanismo oficial. Ocultar el aviso no finaliza el proceso y cortar la alimentación durante la instalación puede introducir problemas nuevos en el mantenimiento pendiente.",
+          "wrongExplanations": [
+            "Dejar de ver un mensaje no significa que se haya realizado la acción requerida. Si el sistema indica reinicio pendiente, el proceso todavía necesita ese paso; planificarlo después de guardar el trabajo atiende la necesidad real sin aplazarla indefinidamente.",
+            null,
+            "Interrumpir la alimentación no es una forma adecuada de completar una instalación y puede causar fallos. El caso permite guardar trabajo y utilizar el reinicio previsto por el sistema, conservando una secuencia de mantenimiento ordenada en vez de forzar un corte para ahorrar tiempo."
+          ],
+          "aoi": {
+            "question": "El sistema aún espera su reinicio y el trabajo necesita guardarse. Busca una solución ordenada que complete ambos objetivos sin esconder el aviso ni cortar la instalación a golpes.",
+            "hint": "Distingue quitar el recordatorio de cumplir el paso indicado. Después piensa cómo conservar el trabajo antes de realizar la acción oficial que todavía falta para terminar el mantenimiento.",
+            "correct": "Trabajo guardado y reinicio completado: buen cierre. El aviso dejó de ser una promesa aplazada y la actualización puede terminar según el procedimiento previsto por el propio sistema.",
+            "soft": "Todavía queda un paso oficial pendiente. Revisemos cómo realizarlo sin perder trabajo ni interrumpir la instalación, porque ocultar un mensaje y terminar el proceso no significan lo mismo.",
+            "sharp": "Tapar el aviso no termina el trabajo, joder. El sistema no interpreta cerrar como reiniciar por educación; guarda lo tuyo y completa el paso que sigue pendiente."
+          }
+        },
+        {
+          "prompt": "¿Qué plan atiende mejor el fin de soporte confirmado?",
+          "scenario": "El fabricante confirma que una aplicación ya no recibirá correcciones de seguridad. Un grupo quiere seguir utilizándola durante años y supone que instalar otro antivirus obligará al fabricante a corregir cualquier fallo nuevo que aparezca.",
+          "options": [
+            "Confiar en que el icono antiguo impide nuevos fallos",
+            "Suponer que otro antivirus publica todos los parches del fabricante",
+            "Revisar una migración o alternativa mantenida según las necesidades del grupo"
+          ],
+          "answer": 2,
+          "explanation": "El fin de soporte requiere evaluar cómo mantener una solución atendida, considerando migración o alternativa compatible. Un antivirus puede tener otras funciones, pero no reemplaza automáticamente las correcciones del fabricante ni elimina las consecuencias de seguir dependiendo de software que ya no las recibe.",
+          "wrongExplanations": [
+            "Un icono no impide que existan fallos y la antigüedad no garantiza seguridad. Si el fabricante deja de corregir el producto, conviene evaluar su uso y una transición apropiada en vez de atribuir protección a la apariencia con la que el grupo reconoce la aplicación.",
+            "Una herramienta antivirus no asume automáticamente el desarrollo de parches para cualquier producto sin soporte. Sus capacidades tienen otro alcance; el grupo necesita revisar opciones mantenidas y planificar una transición adecuada, sin suponer que sumar herramientas obliga al fabricante a publicar nuevas correcciones.",
+            null
+          ],
+          "aoi": {
+            "question": "El soporte terminó de verdad, no por falta de aplausos. Elige un plan que atienda esa dependencia sin prometer que otra herramienta hará el trabajo del fabricante desaparecido de escena.",
+            "hint": "Pregunta quién publica las correcciones y qué confirmó sobre ellas. Busca una solución mantenida sin inventar funciones nuevas en otra herramienta.",
+            "correct": "Transición evaluada con criterio. Reconociste el papel del soporte sin exigir que un antivirus sustituya todos los arreglos que el fabricante dejó de entregar para ese producto.",
+            "soft": "El producto dejó de recibir correcciones. Revisemos qué opción cambia esa dependencia antes de exigir tareas adicionales a una herramienta distinta.",
+            "sharp": "El antivirus no secuestra programadores para fabricar parches, carajo. Revisa la dependencia sin soporte en lugar de confiar ciegamente en otra etiqueta."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics",
+        "cisa-habits"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Hoy el mantenimiento tendrá principio y final, precioso. Nada de instalar reparadores gritones o llamar terminado a un proceso que sigue esperando su paso pendiente.",
+        "theory": "Origen oficial, instalación completa y soporte vigente responden preguntas distintas. Las revisaremos sin venderle a una sola herramienta el deber de solucionar cualquier problema del sistema.",
+        "pass": "Mantenimiento con criterio conseguido. Ya distingues un canal oficial, un reinicio necesario y una dependencia sin soporte, sin confundir ocultar avisos con completar protección real del equipo.",
+        "review": "Vuelve a preguntar de dónde viene el arreglo, qué paso falta y quién seguirá manteniendo el producto. Esas respuestas aclaran qué acción corresponde a cada caso."
+      }
+    },
+    {
+      "id": "foundations-practice-riesgo-prioridades",
+      "title": "Priorizar sin prometer riesgo cero",
+      "minutes": 5,
+      "intro": "Relaciona consecuencias, exposición y medidas disponibles para elegir prioridades sensatas, comprobando qué riesgo atiende cada acción y qué límites siguen existiendo después de mejorar la protección de un recurso.",
+      "sections": [
+        {
+          "title": "Una medida tiene alcance y límites",
+          "body": "Priorizar significa decidir qué problema merece atención antes considerando sus consecuencias, la posibilidad de que ocurra y las mejoras viables. No basta elegir lo que resulte más llamativo en pantalla. Cada medida cubre ciertos efectos: conservar una copia ayuda a recuperar, pero no impide por sí misma que alguien lea una carpeta mal compartida. Después de aplicar una protección puede quedar riesgo residual, porque cambian condiciones y existen límites. Revisa el resultado y las necesidades periódicamente, evitando transformar una mejora real en promesa de seguridad absoluta para cualquier situación."
+        }
+      ],
+      "steps": [
+        "Compara dos problemas ficticios por sus consecuencias y facilidad de recuperación.",
+        "Relaciona una medida con el efecto específico que pretende reducir.",
+        "Anota un límite que seguiría existiendo después de aplicarla."
+      ],
+      "scenario": "Una asociación ficticia decide entre arreglar un detalle visual, proteger una entrega importante y corregir accesos a información privada. Quiere emplear su tiempo con criterio y revisar resultados sin prometer que ninguna medida volverá imposible cualquier incidente futuro.",
+      "questions": [
+        {
+          "prompt": "¿Qué criterio justifica atender primero el proyecto?",
+          "scenario": "Un equipo dispone de poco tiempo. Tiene un icono desalineado que no afecta el uso y un proyecto irremplazable cuya única versión debe entregarse mañana; ambas mejoras básicas son viables con el esfuerzo disponible.",
+          "options": [
+            "Elegir siempre lo más visible aunque no cause daño",
+            "Considerar consecuencias y dificultad de recuperar el trabajo importante",
+            "Dar prioridad automática al problema que tenga el nombre más técnico"
+          ],
+          "answer": 1,
+          "explanation": "La pérdida del proyecto tendría consecuencias importantes y sería difícil reconstruirlo antes de la entrega. Comparar impacto y recuperación ayuda a priorizar una mejora viable, mientras el defecto del icono no afecta el uso ni presenta el mismo coste en este contexto.",
+          "wrongExplanations": [
+            "La visibilidad no mide por sí sola el daño posible. El icono llama la atención, pero el caso indica que no afecta al uso; el proyecto puede perderse sin alternativa y tiene una entrega cercana que aumenta las consecuencias de no protegerlo.",
+            null,
+            "El vocabulario no determina prioridad. Un problema descrito con palabras sencillas puede tener efectos graves, mientras una etiqueta técnica puede referirse a algo menor; conviene comparar consecuencias y posibilidades de recuperación reales dentro del tiempo y esfuerzo que el equipo tiene disponibles."
+          ],
+          "aoi": {
+            "question": "El icono está torcido y el proyecto no tiene red de apoyo. Elige con criterio de consecuencias, sin dejar que un detalle vistoso se coma toda la atención del equipo.",
+            "hint": "Compara qué ocurriría si cada problema sigue igual hasta mañana. La prioridad debería responder a pérdidas y recuperación, no solamente a lo que resulta más fácil de mirar en pantalla.",
+            "correct": "Consecuencias y recuperación bien comparadas. El proyecto recibe atención por lo que costaría perderlo, sin necesidad de disfrazar la prioridad con una palabra técnica o una alerta más brillante.",
+            "soft": "Ambos cambios son viables, pero sus consecuencias no son iguales. Revisemos qué problema podría afectar más al trabajo si el equipo deja todo como está hasta la entrega de mañana.",
+            "sharp": "El icono puede seguir torcido sin tragarse tu entrega, joder. No le entregues toda la agenda al detalle que más grita mientras el proyecto importante queda sin alternativa de recuperación."
+          }
+        },
+        {
+          "prompt": "¿Qué debe revisar además de conservar una copia?",
+          "scenario": "Una persona crea una copia de sus documentos privados, pero mantiene la carpeta original compartida públicamente por error. Quiere evitar que otras personas lean esa información y cree que el respaldo ya resolvió por completo el problema.",
+          "options": [
+            "Duplicar muchas veces el mismo acceso público",
+            "Cambiar el tamaño de la ventana de archivos",
+            "Los permisos y destinatarios de la carpeta expuesta"
+          ],
+          "answer": 2,
+          "explanation": "La copia ayuda a recuperar contenido, pero no impide la lectura de una carpeta expuesta. El objetivo requiere revisar y corregir permisos; también debe considerarse lo que pudo haberse leído, porque retirar acceso no revierte automáticamente exposiciones que ya ocurrieron antes del cambio.",
+          "wrongExplanations": [
+            "Repetir el mismo acceso público conserva la exposición en vez de reducirla. La recuperación de archivos y la limitación de lectura son necesidades distintas; una copia útil no cambia automáticamente los permisos que permiten a otras personas consultar el contenido original de esa carpeta.",
+            "El tamaño de una ventana no modifica quién puede acceder al documento. El síntoma relevante es una carpeta expuesta, así que deben revisarse destinatarios y permisos; cambiar apariencia no aplica la restricción de lectura que la persona busca para su información privada.",
+            null
+          ],
+          "aoi": {
+            "question": "La copia puede devolver archivos, pero no taparles los ojos a lectores autorizados por error. Busca qué control responde al problema de exposición que todavía sigue existiendo en esa carpeta.",
+            "hint": "Separa recuperar documentos y limitar lectores. Busca qué función modifica realmente quién puede consultar el contenido que todavía sigue compartido públicamente.",
+            "correct": "Permisos frente a exposición: preciso. La copia mantiene su utilidad sin recibir tareas ajenas, y corregir acceso no borra lecturas anteriores.",
+            "soft": "El respaldo ayuda, pero aquí queremos limitar lectura ajena. Revisemos qué configuración determina quién puede consultar esa carpeta que sigue expuesta.",
+            "sharp": "Un respaldo no cierra carpetas públicas por vergüenza, carajo. Limita permisos antes de multiplicar el mismo documento expuesto para sentirte más protegido."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión es razonable después de aplicar una protección?",
+          "scenario": "Una asociación corrige una debilidad y comprueba que la medida funciona para su objetivo. Después alguien promete que ya no existe ningún riesgo futuro y propone dejar de revisar accesos, cambios o nuevas necesidades del recurso protegido.",
+          "options": [
+            "La mejora tiene valor, pero sus límites y cambios necesitan revisión",
+            "Una protección útil elimina cualquier riesgo para siempre",
+            "Si queda algún riesgo, toda la mejora carece de utilidad"
+          ],
+          "answer": 0,
+          "explanation": "Una medida puede reducir un riesgo sin eliminar cualquier incidente imaginable. Revisar sus límites y los cambios del entorno permite mantenerla adecuada; reconocer riesgo residual no niega la utilidad de la mejora ni justifica abandonar todas las comprobaciones futuras sobre el recurso de la asociación.",
+          "wrongExplanations": [
+            null,
+            "Que una medida cumpla su objetivo no garantiza seguridad permanente frente a cualquier cambio. Pueden surgir condiciones o necesidades distintas; la revisión permite conservar una protección adecuada sin afirmar que una sola comprobación ya resolvió todos los riesgos futuros de ese recurso.",
+            "La utilidad no exige perfección absoluta. Una mejora puede reducir de manera importante un problema concreto aunque queden otros riesgos; reconocer ese límite ayuda a completar y revisar el plan, en lugar de rechazar una protección que sí cumple una función comprobada."
+          ],
+          "aoi": {
+            "question": "La medida funciona y merece una sonrisa, precioso. Decide si eso permite jubilar toda revisión futura del recurso que queremos mantener protegido.",
+            "hint": "Distingue cumplir un objetivo actual y garantizar cualquier futuro. La respuesta debe valorar la mejora sin negar posibles cambios del entorno.",
+            "correct": "Mejora valorada con límites presentes. Evitaste invulnerabilidad imaginaria y desprecio por lo imperfecto, conservando lo útil y la posibilidad de revisarlo después.",
+            "soft": "El resultado es útil, pero no demuestra una garantía eterna. Revisemos qué conclusión conserva la evidencia y permite adaptarse si cambian las necesidades.",
+            "sharp": "Una medida no recibe inmortalidad por pasar una prueba, joder. Celebra el avance sin vender riesgo cero ni despreciar lo que sí funciona."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Vamos a repartir atención con criterio, cariño. Cada medida tendrá que explicar qué daño reduce sin prometer que arregla todos los posibles disgustos del universo digital que protege este equipo.",
+        "theory": "Copias, permisos y revisiones se complementan. Cada medida necesita un objetivo concreto y límites claros, sin aspirar a heroísmo absoluto por separado.",
+        "pass": "Prioridades y límites comprendidos. Ya puedes valorar una mejora real, atender primero consecuencias importantes y conservar revisiones sin exigir perfección absoluta ni comprar una promesa de invulnerabilidad para siempre.",
+        "review": "Compara consecuencias y objetivos, después describe un límite. Así reconoces una mejora útil sin comprar garantías que nadie comprobó para cualquier situación futura."
+      }
+    },
+    {
+      "id": "foundations-practice-respuesta",
+      "title": "Responder sin borrar el contexto",
+      "minutes": 5,
+      "intro": "Practica respuestas iniciales ante pérdida, exposición accidental y síntomas inciertos, usando canales responsables y hechos observables sin ocultar lo ocurrido, borrar información útil o afirmar causas que todavía no se han comprobado.",
+      "sections": [
+        {
+          "title": "Contener, comunicar y reconocer incertidumbre",
+          "body": "Responder bien empieza por describir qué ocurrió y qué se conoce, separándolo de las causas todavía inciertas. Si un equipo gestionado se pierde, avisa al responsable por un canal disponible y sigue su procedimiento; no esperes a tener una explicación completa para comunicarlo. Ante un acceso compartido por error, limita la exposición cuando esté autorizado y registra qué recurso y destinatarios estuvieron implicados. Evita destruir evidencias o esconder el incidente. Una respuesta coordinada permite evaluar alcance y recuperación sin que cada persona improvise cambios contradictorios por miedo o vergüenza."
+        }
+      ],
+      "steps": [
+        "Describe un hecho observado sin atribuir una causa no confirmada.",
+        "Identifica el canal responsable al que informarías desde otro dispositivo disponible.",
+        "Separa una acción de contención autorizada de borrar datos para ocultar el problema."
+      ],
+      "scenario": "En una organización ficticia se pierde una tableta gestionada, se comparte una carpeta con un destinatario incorrecto y aparece un error sin causa confirmada. Revisan cómo avisar y contener sin inventar diagnósticos ni destruir información que permita comprender los hechos ocurridos.",
+      "questions": [
+        {
+          "prompt": "¿Qué primera decisión permite coordinar la respuesta?",
+          "scenario": "Un trabajador descubre que perdió una tableta de la organización durante un traslado. Puede llamar al canal interno de soporte desde otro teléfono, pero piensa esperar varios días hasta estar seguro de dónde la dejó antes de decir algo.",
+          "options": [
+            "Esperar indefinidamente para que nadie se entere del problema",
+            "Pedir a desconocidos las credenciales de administración del dispositivo",
+            "Avisar pronto al responsable y seguir el procedimiento disponible"
+          ],
+          "answer": 2,
+          "explanation": "Avisar pronto permite evaluar medidas según el equipo y la política. Puedes comunicar hechos disponibles sin conocer cada detalle; esperar o buscar credenciales ajenas retrasa una respuesta que corresponde coordinar a personal autorizado.",
+          "wrongExplanations": [
+            "Esperar sin informar deja al responsable sin posibilidad de evaluar el equipo y sus accesos. La incertidumbre sobre dónde quedó no impide comunicar que se perdió; pueden añadirse detalles después mientras la organización aplica el procedimiento previsto para esa situación de su dispositivo gestionado.",
+            "Obtener credenciales de desconocidos no ayuda a gestionar legítimamente la pérdida y añade otros riesgos. El trabajador dispone de un canal interno para informar; corresponde al personal autorizado valorar las acciones disponibles y coordinar la respuesta sobre el dispositivo de la organización según sus políticas.",
+            null
+          ],
+          "aoi": {
+            "question": "La tableta falta y el canal interno funciona. Elige coordinación sin esperar certezas imposibles ni buscar llaves ajenas para sentir que actúas.",
+            "hint": "Piensa quién decide medidas legítimas sobre equipos gestionados. El aviso puede incluir lo conocido y ampliarse después sin inventar dónde quedó el dispositivo.",
+            "correct": "Aviso temprano al responsable: bien. La organización puede evaluar medidas mientras llegan nuevos detalles, sin exigir al trabajador resolver la pérdida antes de informarla.",
+            "soft": "No sabemos dónde quedó, pero sí que falta. Revisemos cómo permitir que el personal autorizado evalúe la situación mientras se reúnen más datos.",
+            "sharp": "Esconder la pérdida no devuelve la tableta, carajo. El responsable necesita saberlo; esperar en silencio deja el problema sin una respuesta coordinada."
+          }
+        },
+        {
+          "prompt": "¿Qué acción responde mejor a la exposición accidental?",
+          "scenario": "Una empleada envía acceso a una carpeta privada al destinatario equivocado. Tiene autorización para retirar ese permiso y el procedimiento exige informar al responsable; quiere detener el acceso sin borrar el trabajo original ni fingir que nunca compartió la información.",
+          "options": [
+            "Retirar el acceso indebido y comunicar los hechos por el canal previsto",
+            "Borrar todo el trabajo y ocultar el mensaje enviado",
+            "Suponer que retirar permiso demuestra que nadie pudo leer nada antes"
+          ],
+          "answer": 0,
+          "explanation": "Retirar el acceso autorizado para contención limita nuevas consultas y comunicar permite evaluar lo ocurrido. No demuestra que nadie leyera datos antes; conservar los hechos y seguir el procedimiento ayuda a valorar alcance sin destruir trabajo ni ocultar información que el responsable necesita revisar.",
+          "wrongExplanations": [
+            null,
+            "Borrar trabajo y ocultar mensajes no aclara quién accedió y puede añadir pérdidas. Hay una contención autorizada y un procedimiento de aviso que permiten limitar exposición sin destruir información necesaria para evaluar lo ocurrido.",
+            "Retirar un permiso limita acceso posterior, pero no revierte una lectura o copia ya realizada. El responsable necesita conocer qué se compartió, con quién y en qué momento para evaluar el alcance, sin asumir que la corrección del ajuste prueba ausencia total de exposición previa."
+          ],
+          "aoi": {
+            "question": "El permiso erróneo puede retirarse. Busca limitar exposición sin borrar historia ni prometer que el pasado obedecerá a nuestra nueva configuración de acceso.",
+            "hint": "Separa frenar consultas futuras y conocer accesos anteriores. La opción debe permitir evaluar ambas cosas sin destruir trabajo ni sustituir aviso por una suposición favorable.",
+            "correct": "Acceso limitado y hechos comunicados. Corregir ayuda sin borrar posibles lecturas previas; conservaste contexto para valorar alcance sin sacrificar documentos ni fingir que nada ocurrió.",
+            "soft": "Podemos detener acceso, pero desconocemos qué pasó antes. Revisemos una respuesta que siga el procedimiento sin convertir la corrección en garantía sobre el pasado.",
+            "sharp": "Revocar no instala una máquina del tiempo, joder. Cierra el acceso y cuenta qué pasó en lugar de fingir que nadie pudo leer antes."
+          }
+        },
+        {
+          "prompt": "¿Cómo debe describirse el síntoma sin confirmar una causa desconocida?",
+          "scenario": "Un programa muestra un error al guardar y vuelve a funcionar. La persona desconoce su causa y debe informar lo observado, sin adjuntar documentos privados completos ni atribuirlo a un atacante específico.",
+          "options": [
+            "Publicar que una persona concreta atacó el sistema sin evidencia",
+            "Describir el mensaje, el momento y la acción observada, señalando la incertidumbre",
+            "Inventar una causa detallada para que el informe parezca más técnico"
+          ],
+          "answer": 1,
+          "explanation": "Comunicar hechos e incertidumbre permite investigar sin acusaciones no demostradas. Mensaje y contexto son útiles sin documentos privados completos; inventar una causa desvía la revisión y no sustituye evidencia para confirmar qué produjo el error observado.",
+          "wrongExplanations": [
+            "La acusación identifica a alguien sin evidencia que lo relacione con el error. Un informe responsable separa observaciones y causas pendientes; publicar nombres no ayuda a comprobar el fallo y puede ocultar otras explicaciones que el personal técnico tendría que evaluar con los datos pertinentes.",
+            null,
+            "Inventar explicaciones puede desviar comprobaciones y confundir observaciones con suposiciones. Conviene conservar mensaje, momento y acción, indicando qué se desconoce de la causa; añadir detalles falsos para impresionar no aporta evidencia útil al personal que revisa el error."
+          ],
+          "aoi": {
+            "question": "El programa protestó y luego funcionó. Quiero hechos útiles, no una novela con culpable por intuición para hacer más emocionante el error.",
+            "hint": "Distingue lo observado de lo que todavía no tiene explicación. Un aviso útil conserva esa separación sin llenar el diagnóstico pendiente con nombres o teorías inventadas.",
+            "correct": "Hechos e incertidumbre separados. El informe permite investigar sin dar autoridad a una causa inventada, conservando privacidad al incluir solo información pertinente.",
+            "soft": "El síntoma existe y la causa sigue abierta. Revisemos cómo comunicar esa diferencia con observaciones antes de transformar una sospecha en diagnóstico definitivo.",
+            "sharp": "Un nombre propio no arregla errores por salir en tu teoría, carajo. Sin pruebas no fabriques culpables: los hechos ayudan y las novelas distraen."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Responderemos con iniciativa y cabeza fría, precioso. Hechos primero, suposiciones etiquetadas y coordinación antes de una actuación heroica que termine confundiendo al responsable.",
+        "theory": "Contener no significa ocultar y avisar no exige saberlo todo. Tu informe debe separar lo observado de las causas que siguen pendientes.",
+        "pass": "Respuesta coordinada comprendida. Puedes informar pérdidas, limitar exposición y describir incertidumbre sin destruir contexto ni fabricar conclusiones que los hechos todavía no sostienen.",
+        "review": "Escribe qué pasó, qué puedes hacer con permiso y quién debe conocerlo. Separar esas preguntas permite responder sin destruir contexto ni inventar diagnósticos."
+      }
+    },
+    {
+      "id": "foundations-practice-habitos",
+      "title": "Hábitos cuando el dispositivo queda cerca de otros",
+      "minutes": 5,
+      "intro": "Practica cierre de sesiones, bloqueo de pantalla y tratamiento de medios desconocidos, distinguiendo acciones que limitan acceso real de gestos visuales que pueden dejar cuentas expuestas cuando hay otras personas cerca.",
+      "sections": [
+        {
+          "title": "Pequeñas decisiones con funciones concretas",
+          "body": "Cerrar una pestaña no siempre termina la sesión de un servicio: en equipos compartidos usa el cierre de sesión previsto y comprueba el resultado. Si te alejas de un dispositivo propio, bloquear la pantalla limita el uso inmediato por otras personas, aunque no sustituye todas las demás protecciones. Un medio de almacenamiento desconocido no debe conectarse por curiosidad; podría introducir riesgos incluso sin navegar. Lleva el hallazgo al responsable correspondiente sin abrirlo. Estas acciones atienden situaciones diferentes y funcionan mejor cuando se vuelven parte de una rutina consciente de uso."
+        }
+      ],
+      "steps": [
+        "Distingue cerrar una pestaña de cerrar la sesión del servicio en un equipo compartido.",
+        "Identifica cómo bloquearías la pantalla de un dispositivo propio al alejarte.",
+        "Define qué harías con un medio desconocido sin conectarlo para investigar su contenido."
+      ],
+      "scenario": "En un centro ficticio, las personas usan equipos compartidos, dejan puestos brevemente desatendidos y encuentran memorias de origen desconocido. Quieren hábitos que respondan a cada situación sin confundir apariencia de cierre, bloqueo del dispositivo y análisis técnico improvisado sobre medios ajenos.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción limita mejor que la siguiente persona continúe usando su cuenta?",
+          "scenario": "Una estudiante termina de consultar su correo en un equipo compartido. Solo cierra la pestaña y el navegador permite volver al servicio sin pedir credenciales, porque la sesión sigue activa para quien utilice después ese mismo equipo.",
+          "options": [
+            "Cerrar sesión mediante la función del servicio y comprobar el resultado",
+            "Minimizar la ventana y dejarla disponible detrás de otra",
+            "Cambiar el fondo de pantalla para indicar que terminó"
+          ],
+          "answer": 0,
+          "explanation": "La sesión sigue activa aunque cierre la pestaña. Usar el cierre previsto y comprobarlo atiende ese acceso persistente; minimizar o decorar permite volver al servicio desde el equipo compartido utilizando todavía la cuenta de la estudiante.",
+          "wrongExplanations": [
+            null,
+            "Minimizar cambia la presentación de la ventana y no termina la sesión del servicio. El caso indica que puede reabrirse sin credenciales, así que la cuenta seguiría disponible para otra persona; debe utilizarse el cierre de sesión previsto y comprobar que ya no continúa abierta.",
+            "El fondo de pantalla no cambia la sesión del servicio. Una señal visual de haber terminado no impide utilizar la cuenta si el navegador conserva acceso cuando otra persona vuelve al correo desde el mismo equipo compartido."
+          ],
+          "aoi": {
+            "question": "La pestaña salió, pero la cuenta espera al siguiente usuario. Elige terminar ese acceso en lugar de anunciar visualmente que la estudiante ya acabó.",
+            "hint": "Observa qué ocurre al volver al servicio. La acción debe cambiar el estado de sesión, no únicamente ocultar o decorar la ventana utilizada.",
+            "correct": "Sesión cerrada y resultado comprobado. La cuenta no quedó esperando detrás de una pestaña ausente; atendiste el acceso real y no solamente su apariencia.",
+            "soft": "Cerrar la vista no siempre cierra sesión. Revisemos qué opción modifica el acceso que todavía permite el navegador al volver al mismo servicio.",
+            "sharp": "La cuenta no se retira porque la pestaña salga del escenario, joder. Si vuelve sin credenciales, el acceso sigue listo para el próximo curioso."
+          }
+        },
+        {
+          "prompt": "¿Qué hábito limita el uso inmediato mientras está ausente?",
+          "scenario": "Un alumno debe alejarse del portátil propio en una sala compartida y dejará documentos abiertos. Busca limitar el uso inmediato de la sesión mientras falta, sin sustituir las otras medidas necesarias de protección.",
+          "options": [
+            "Dejar el cursor encima del botón de cerrar como recordatorio",
+            "Bajar un poco el brillo para dificultar la lectura",
+            "Bloquear la pantalla mediante la función del dispositivo"
+          ],
+          "answer": 2,
+          "explanation": "Bloquear pantalla limita uso de la sesión durante la ausencia. No sustituye otras defensas, pero responde al acceso inmediato del caso; modificar brillo o colocar el cursor no aplica ese control sobre el uso del dispositivo.",
+          "wrongExplanations": [
+            "La posición del cursor no impide que otra persona utilice la sesión abierta. Es un recordatorio visual, no una restricción de acceso; el hábito debe aplicar una función del dispositivo que limite el uso mientras el alumno permanece ausente de la sala durante esos minutos.",
+            "Reducir brillo no bloquea la sesión ni impide operar el portátil. El objetivo es limitar uso inmediato cuando el alumno se aleja; hace falta un control de acceso, no cambiar iluminación mientras los documentos permanecen disponibles.",
+            null
+          ],
+          "aoi": {
+            "question": "El portátil se queda y tú te vas, precioso. Elige limitar uso durante la ausencia sin vender el hábito como sustituto de todas las defensas.",
+            "hint": "Distingue una señal visual de una restricción. La opción debe cambiar qué puede hacer alguien frente al equipo durante la ausencia del alumno.",
+            "correct": "Pantalla bloqueada con propósito. Limitaste uso inmediato sin atribuir al hábito poderes sobre todos los riesgos, integrándolo como una parte concreta de la rutina.",
+            "soft": "La sesión está abierta y alguien podría utilizarla. Revisemos qué aplica un control real, en lugar de cambiar brillo o dejar recordatorios sin restricciones.",
+            "sharp": "El cursor no hace guardia y el brillo bajo no detiene manos, carajo. La ausencia necesita control de sesión, no decoración tímida ante el curioso."
+          }
+        },
+        {
+          "prompt": "¿Qué debe hacer sin conectar la memoria al equipo?",
+          "scenario": "Una persona encuentra una memoria USB desconocida en su centro de estudios. No tiene autorización ni entorno preparado para examinarla y piensa abrirla en el portátil donde conserva todos sus trabajos importantes.",
+          "options": [
+            "Abrirla desconectando internet, porque eso elimina cualquier riesgo",
+            "Entregarla al responsable siguiendo el procedimiento del centro",
+            "Probarla en todos los equipos compartidos hasta que alguien reconozca el contenido"
+          ],
+          "answer": 1,
+          "explanation": "Entregarla al responsable evita conectar un origen desconocido al equipo personal y permite seguir un procedimiento adecuado. Desconectar internet no elimina todo riesgo; probarla en varios equipos aumenta exposición sin conceder autorización para analizarla de manera improvisada.",
+          "wrongExplanations": [
+            "Un medio desconocido puede introducir riesgos sin necesitar una conexión a internet. Desconectar la red no equivale a un entorno preparado de análisis ni autoriza abrir archivos ajenos; el procedimiento del centro permite gestionar el hallazgo sin arriesgar los trabajos del portátil de la persona.",
+            null,
+            "Probarla en equipos compartidos amplía exposición y no constituye identificación segura. Existe un responsable y falta autorización de análisis; debe entregarse por el canal previsto, sin abrirla para investigar por cuenta propia sobre distintos dispositivos del centro."
+          ],
+          "aoi": {
+            "question": "La memoria no tiene historia conocida y tu portátil guarda trabajos importantes. Decide cómo gestionarla sin convertir esos documentos en voluntarios de una prueba no autorizada.",
+            "hint": "Revisa autorización y preparación para examinar el medio. Gestionar el hallazgo no necesita convertir equipos personales o compartidos en una ronda de pruebas por curiosidad.",
+            "correct": "Hallazgo entregado sin conectar: buen criterio. El responsable puede aplicar el procedimiento y tu portátil mantiene sus trabajos fuera de un ensayo con origen desconocido.",
+            "soft": "La intención de devolverla es buena, pero falta preparación y permiso. Revisemos una vía que conserve el medio desconectado mientras el responsable gestiona su hallazgo.",
+            "sharp": "Quitar internet no pone casco mágico al portátil, joder. Entrega el hallazgo sin recorrer equipos: repetir exposición no fabrica autorización ni convierte curiosidad en análisis preparado."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "defense",
+      "aoi": {
+        "intro": "Terminaremos con hábitos que sí cambian algo, cariño. Ventanas escondidas y cursores quietos no reciben certificados universales de protección por parecer gestos prudentes.",
+        "theory": "Cada escena pide su acción: terminar sesión, bloquear uso o gestionar un medio desconocido. Conserva el objetivo de cada control sin atribuirle tareas ajenas.",
+        "pass": "Hábitos concretos comprendidos. Puedes terminar sesiones, limitar ausencias y gestionar medios desconocidos sin poderes mágicos visuales ni pruebas improvisadas que nadie autorizó realizar.",
+        "review": "Describe qué quieres impedir y qué función aplica cada opción. Separar apariencia y acceso real ayuda a elegir hábitos útiles sin convertir precauciones parciales en protección completa."
+      }
+    }
+  ]
+}

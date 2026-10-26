@@ -1,0 +1,1649 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "f-digital-life-intro-0-1",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Ven, cariño: antes de imaginar hackers atravesando láseres, vamos a descubrir qué demonios merece protección en tu vida digital.",
+      "explanation": "Esta lección presenta las cuentas y la información como bienes valiosos. Aprenderás a reconocer qué quieres conservar, qué daños podrían sufrir y qué medidas responden a cada problema."
+    },
+    {
+      "id": "f-digital-life-intro-0-2",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Aparta la capucha imaginaria. Hoy el protagonista es ese correo donde conviven tus tareas, tus compras y demasiado poder.",
+      "explanation": "Una cuenta personal conecta muchos servicios y documentos. Empezar por algo cotidiano permite comprender la seguridad sin conocimientos técnicos previos y elegir una primera mejora que puedas realizar."
+    },
+    {
+      "id": "f-digital-life-intro-0-3",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "¿Tus archivos están seguros porque nadie sabe que existen? Qué argumento tan adorable. Vamos a regalarle unas bases decentes.",
+      "explanation": "La protección depende de controles y hábitos, además de las decisiones sobre compartir información. En este recorrido distinguirás acceso indebido, modificación de datos y pérdida de acceso."
+    },
+    {
+      "id": "f-digital-life-intro-0-4",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Mi brazo tiene placas; tus cuentas necesitarán otras defensas. Tranquilo, no voy a soldarte nada: empezaremos con tres ideas claras.",
+      "explanation": "Confidencialidad, integridad y disponibilidad ayudan a describir necesidades diferentes. Reconocerlas te permitirá explicar por qué una contraseña, un permiso y una copia de seguridad cumplen funciones distintas."
+    },
+    {
+      "id": "f-digital-life-intro-0-5",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "El universo digital no se reduce al aparato caro de la mesa. Ese archivo diminuto también puede arruinarte la tarde, carajo.",
+      "explanation": "El valor de un recurso puede depender del esfuerzo necesario para reconstruirlo o de las consecuencias de perderlo. Analizaremos ejemplos personales antes de practicar decisiones de protección."
+    },
+    {
+      "id": "f-digital-life-intro-0-6",
+      "lessonId": "digital-life",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Te cedo el asiento del investigador, pero yo llevo la lupa. Primero observaremos tus recursos; después elegiremos defensas con sentido.",
+      "explanation": "El recorrido avanza desde identificar información importante hasta relacionar incidentes con medidas concretas. Los ejercicios usan situaciones ficticias: puedes aprender los conceptos sin mostrar documentos privados ni credenciales."
+    },
+    {
+      "id": "f-digital-life-theory-0-1",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Una foto familiar pesa pocos megas y muchísimo más en recuerdos. Mis sensores no miden cariño; tú sí sabes cuánto vale.",
+      "explanation": "Un activo digital es un recurso con valor para alguien. Las fotografías pueden ser irrepetibles, aunque el dispositivo que las guarda sea barato y su tamaño resulte pequeño."
+    },
+    {
+      "id": "f-digital-life-theory-0-2",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Tu correo es un llavero bastante presumido: abre conversaciones, recibos y recuperaciones de otras cuentas. Hay que vigilar a ese consentido.",
+      "explanation": "Muchas plataformas permiten restablecer contraseñas mediante el correo. Si alguien controla ese buzón, podría intentar acceder a servicios vinculados; por eso merece una prioridad alta al planificar protecciones."
+    },
+    {
+      "id": "f-digital-life-theory-0-3",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Compartir una carpeta con todo el planeta para que la vea una persona es una generosidad de mierda, sinceramente.",
+      "explanation": "Los permisos determinan quién puede leer o modificar un recurso compartido. Dar acceso únicamente a quienes lo necesitan limita la exposición y reduce cambios accidentales de otras personas."
+    },
+    {
+      "id": "f-digital-life-theory-0-4",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Imagina tu proyecto final, cocinado durante semanas. El archivo vale por ese trabajo, aunque su icono parezca una galleta triste.",
+      "explanation": "El tiempo invertido y la dificultad de reconstrucción son criterios útiles para valorar documentos. Un proyecto de estudio requiere protección aunque no tenga un precio de venta establecido."
+    },
+    {
+      "id": "f-digital-life-theory-0-5",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Un contacto guardado puede parecer poca cosa hasta que necesitas llamar al único técnico que conoce tu equipo. Pequeño tesoro, ¿ves?",
+      "explanation": "Los listados de contactos y otros datos cotidianos también son activos. Preguntarte qué uso perderías si desaparecieran ayuda a identificar recursos que normalmente pasan inadvertidos durante una revisión."
+    },
+    {
+      "id": "f-digital-life-theory-0-6",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "La computadora tiene carcasa; tu identidad digital tiene consecuencias. Ese perfil que firmas con tu nombre también entra en mi inventario.",
+      "explanation": "Una cuenta puede representar públicamente a una persona y permitir publicar en su nombre. Su valor incluye reputación, relaciones y control sobre las acciones que otros atribuyen a su titular."
+    },
+    {
+      "id": "f-digital-life-theory-1-1",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Si alguien lee tu diario digital a escondidas, no importa que lo devuelva ordenadito. La confidencialidad ya recibió su desagradable visita.",
+      "explanation": "La confidencialidad exige que la información solo llegue a personas autorizadas. Un acceso de lectura puede vulnerarla sin borrar archivos, cambiar contenidos ni impedir que el dueño siga usando el sistema."
+    },
+    {
+      "id": "f-digital-life-theory-1-2",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Ese presupuesto abre perfectamente, pero alguien añadió un cero al importe. Maravilloso: la pantalla funciona y la integridad está hecha mierda.",
+      "explanation": "La integridad se relaciona con conservar información correcta frente a alteraciones indebidas. Un archivo legible y disponible todavía puede ser poco fiable si sus cifras fueron modificadas sin autorización."
+    },
+    {
+      "id": "f-digital-life-theory-1-3",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "La tarea está intacta, preciosa y encerrada en un disco que no arranca. Aplaude conmigo esa disponibilidad tan teatralmente ausente.",
+      "explanation": "La disponibilidad consiste en poder utilizar información o servicios cuando se necesitan. Una avería puede afectarla aunque nadie haya robado datos y el contenido original no haya sufrido cambios."
+    },
+    {
+      "id": "f-digital-life-theory-1-4",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Tres preguntas, tres linternas: quién mira, quién cambia y quién puede entrar cuando hace falta. Prometo no cobrarte por la iluminación.",
+      "explanation": "Estas preguntas clasifican incidentes desde ángulos diferentes. La lectura no permitida afecta la confidencialidad; una edición indebida compromete la integridad; un servicio inaccesible plantea un problema de disponibilidad."
+    },
+    {
+      "id": "f-digital-life-theory-1-5",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Un intruso puede leer, alterar y borrar la misma carpeta. Qué multitarea tan miserable: varias propiedades pueden sufrir en un único incidente.",
+      "explanation": "Las tres propiedades no son categorías excluyentes. Un suceso puede exponer documentos, modificar su contenido y dejar de permitir el acceso, de modo que requiere analizar cada efecto por separado."
+    },
+    {
+      "id": "f-digital-life-theory-1-6",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "En una lista de notas, esconder las calificaciones, evitar cambios y consultarlas a tiempo son objetivos distintos. Mi ceja exige precisión.",
+      "explanation": "El mismo recurso puede necesitar protecciones para varias propiedades. Los permisos de lectura restringen difusión, los permisos de escritura controlan ediciones y la recuperación ayuda a mantener el acceso."
+    },
+    {
+      "id": "f-digital-life-theory-2-1",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Una cerradura no apaga incendios, cariño. Del mismo modo, una contraseña estupenda no resucita por arte de magia tus archivos perdidos.",
+      "explanation": "Las medidas deben corresponder al problema que pretenden reducir. Una clave dificulta accesos a la cuenta, mientras una copia permite recuperar información cuando el original desaparece o queda inutilizable."
+    },
+    {
+      "id": "f-digital-life-theory-2-2",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Si una clave termina filtrada, una verificación adicional puede interponerse. Me encanta ponerle otra puerta en las narices al intruso.",
+      "explanation": "Combinar una contraseña con otro factor añade una comprobación al inicio de sesión. Esa capa puede limitar el uso de una credencial robada, aunque su eficacia depende del método elegido."
+    },
+    {
+      "id": "f-digital-life-theory-2-3",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Ponerle al correo la misma clave que a veinte tiendas es repartir copias del llavero. Menuda fiesta, y nadie me invitó.",
+      "explanation": "Una contraseña exclusiva reduce la relación entre cuentas. Cuando un servicio sufre una filtración, las credenciales expuestas no coinciden directamente con las de otros servicios que tengan claves diferentes."
+    },
+    {
+      "id": "f-digital-life-theory-2-4",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Piensa en una mochila impermeable, un cierre y una copia del cuaderno. Tres medidas, tres molestias diferentes para la mala suerte.",
+      "explanation": "La defensa mediante varias capas combina controles que cubren fallos distintos. Evita depender de una sola barrera y permite que otra protección reduzca las consecuencias cuando una medida no basta."
+    },
+    {
+      "id": "f-digital-life-theory-2-5",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "exasperated",
+      "text": "El antivirus no negocia tus permisos ni prepara tus copias. Deja de darle tantos trabajos, joder; hasta mi brazo necesita mantenimiento.",
+      "explanation": "Una herramienta contra software malicioso tiene un alcance concreto. Para proteger cuentas y archivos también se necesitan controles de acceso, hábitos de revisión y mecanismos de recuperación adecuados al recurso."
+    },
+    {
+      "id": "f-digital-life-theory-2-6",
+      "lessonId": "digital-life",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Quiero un plan con respaldo, no un héroe solitario de neón. Si una defensa tropieza, que otra amortigüe el desastre.",
+      "explanation": "Las capas útiles aportan funciones complementarias: prevenir entradas, detectar comportamientos extraños o recuperar datos. Varias herramientas idénticas no garantizan que todas esas necesidades estén cubiertas en una cuenta."
+    },
+    {
+      "id": "f-digital-life-procedure-0-1",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Escoge una cuenta que uses de verdad, pero déjame sin su contraseña. Tengo personalidad invasiva, no permiso para husmear secretos.",
+      "explanation": "Para este paso basta identificar el servicio, como el correo principal o una plataforma de estudio. Mantén fuera del ejercicio las claves, los códigos y cualquier dato necesario para entrar."
+    },
+    {
+      "id": "f-digital-life-procedure-0-2",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Señala mentalmente la cuenta que más fastidio te daría perder. Ahí tenemos candidata; no necesitas presentármela con credenciales y alfombra roja.",
+      "explanation": "Elige un servicio cuya pérdida tenga una consecuencia concreta para ti. Esa prioridad vuelve el ejercicio manejable: analizar una cuenta importante permite aprender el método antes de revisar las demás."
+    },
+    {
+      "id": "f-digital-life-procedure-0-3",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "¿Tienes cincuenta cuentas abiertas en la cabeza? Bájame ese desfile: selecciona una, solo una, y deja sus secretos donde estaban.",
+      "explanation": "Puedes decidir usando frecuencia de uso, documentos almacenados o vínculos con otras plataformas. Anota únicamente una referencia genérica al servicio; el objetivo actual es escoger el activo que analizarás."
+    },
+    {
+      "id": "f-digital-life-procedure-0-4",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Si dudas, empieza por el buzón que recibe recuperaciones. Ponle una etiqueta imaginaria de importante; mi ojo cibernético aprueba semejante sensatez.",
+      "explanation": "Una cuenta que ayuda a recuperar otras tiene un papel central. Identificarla como punto de partida permite observar dependencias sin iniciar sesión ni revelar información sensible durante esta actividad."
+    },
+    {
+      "id": "f-digital-life-procedure-1-1",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Ahora imagina una visita indeseada a esa cuenta. ¿Qué podría leer, cambiar o impedirte usar? El drama necesita consecuencias concretas.",
+      "explanation": "Enumera efectos de un acceso ajeno: exposición de mensajes, publicaciones indebidas o bloqueo del propietario. Relacionar daños con el servicio elegido ayuda a decidir qué protección será más relevante."
+    },
+    {
+      "id": "f-digital-life-procedure-1-2",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Recorre tus documentos sin abrirme ninguno. Busca el que costaría reconstruir y calcula el lío: tiempo, dinero, privacidad o reputación.",
+      "explanation": "Valorar pérdidas incluye más que el precio del equipo. Considera el esfuerzo de rehacer el trabajo, la sensibilidad de su contenido y las personas afectadas si alguien lo utiliza indebidamente."
+    },
+    {
+      "id": "f-digital-life-procedure-1-3",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Hazle una autopsia imaginaria al desastre: si toman tu perfil, ¿pueden hablar como tú? Odio que un impostor robe protagonismo.",
+      "explanation": "En redes o mensajería, el daño puede involucrar suplantación ante contactos. Anotar esa consecuencia permite reconocer el valor de controlar una identidad digital, incluso sin archivos importantes guardados dentro."
+    },
+    {
+      "id": "f-digital-life-procedure-1-4",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "Escribe algo más útil que perdería todo, carajo. Nombra dos cosas específicas de esa cuenta y veremos dónde duele realmente.",
+      "explanation": "Una descripción precisa podría mencionar los recibos de compra y el acceso a tareas. Separar pérdidas concretas evita decisiones vagas y permite comparar la importancia de distintos elementos almacenados."
+    },
+    {
+      "id": "f-digital-life-procedure-2-1",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Quiero dos defensas con tareas diferentes: una que dificulte entrar y otra que te devuelva los datos. Nada de parejas decorativas.",
+      "explanation": "Elige una medida preventiva, como una clave exclusiva o MFA, y una de recuperación, como una copia separada. Explica con una frase qué incidente atendería cada propuesta."
+    },
+    {
+      "id": "f-digital-life-procedure-2-2",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Diseña tu pequeño castillo: puerta para la cuenta y salvavidas para los archivos. Ya sé, mi arquitectura es deliciosamente caprichosa.",
+      "explanation": "Comprueba que tu plan cubra tanto acceso indebido como pérdida de información. Tener dos contraseñas guardadas no resuelve por sí mismo la recuperación de documentos borrados o de un dispositivo averiado."
+    },
+    {
+      "id": "f-digital-life-procedure-2-3",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Si tu plan entero dice instalar antivirus, te devuelvo la hoja con una ceja levantada. Añade protección de cuenta y recuperación.",
+      "explanation": "Relaciona cada acción con un efecto esperado sobre tu activo. Por ejemplo, MFA añade una verificación al ingreso; conservar otra copia del proyecto permite recuperarlo si falla el almacenamiento principal."
+    },
+    {
+      "id": "f-digital-life-procedure-2-4",
+      "lessonId": "digital-life",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Antes de cerrar el plan, pregúntate qué pasa si una barrera falla. Me gustan las sorpresas solamente cuando yo las preparo.",
+      "explanation": "Revisa si queda alguna respuesta disponible después de una pérdida o un acceso extraño. Un plan equilibrado puede combinar credenciales únicas, verificaciones adicionales y una copia recuperable de la información prioritaria."
+    },
+    {
+      "id": "f-digital-life-scenario-0-1",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "La carpeta abre y las respuestas ya no son las tuyas. Qué visita tan creativa; observa exactamente qué cambió antes de juzgar.",
+      "explanation": "El caso indica que todavía puedes acceder al archivo. La pista central es una modificación sin permiso, así que debes distinguir ese efecto de la pérdida de acceso o la lectura ajena."
+    },
+    {
+      "id": "f-digital-life-scenario-0-2",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "No dejes que el icono abierto te distraiga. Compara el documento actual con lo que habías escrito; el incidente vive dentro.",
+      "explanation": "Que un programa abra correctamente solo demuestra que el recurso es utilizable en ese momento. Examina la fiabilidad del contenido para identificar cuál de las propiedades de seguridad describe el problema."
+    },
+    {
+      "id": "f-digital-life-scenario-0-3",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Alguien quiso corregirte la tarea sin invitación. Mi lado consentido protesta, pero tu análisis debe fijarse en esa edición no autorizada.",
+      "explanation": "La autorización es importante: editar un documento con permiso puede ser una tarea normal. En esta situación, el cambio ajeno viola el control del propietario sobre las respuestas almacenadas."
+    },
+    {
+      "id": "f-digital-life-scenario-0-4",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "El archivo sigue allí, pero lleva respuestas intervenidas. Joder, hasta un documento disponible puede servirte una traición con formato bonito.",
+      "explanation": "Separa la existencia del archivo de la calidad de su contenido. El escenario no habla de una avería del disco ni de lentitud; describe una alteración deliberada sin consentimiento."
+    },
+    {
+      "id": "f-digital-life-scenario-0-5",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Actúa como detective de una sola pista: respuestas cambiadas. No inventes que robaron el portátil o cortaron internet; el caso ya habla.",
+      "explanation": "Responde usando los hechos proporcionados. Agregar supuestos puede llevarte a elegir una propiedad distinta; aquí el elemento que diferencia el incidente es lo ocurrido con los datos de la tarea."
+    },
+    {
+      "id": "f-digital-life-scenario-0-6",
+      "lessonId": "digital-life",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Si una mano invisible cambia tus respuestas, celebrar que la carpeta abre sería bastante prematuro. Dame un diagnóstico más fino, cariño.",
+      "explanation": "Las propiedades de seguridad permiten precisar el daño sin evaluar toda la computadora. Analiza qué condición del documento dejó de cumplirse cuando otra persona introdujo modificaciones que no habías permitido."
+    },
+    {
+      "id": "f-digital-life-question-0-1",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Alguien modificó las tareas sin permiso. Elige la propiedad afectada directamente, sin dejarte seducir por palabras técnicas con aire de importantes.",
+      "explanation": "Antes de responder, separa tres ideas: poder acceder al documento, confiar en su contenido y la rapidez de la conexión. El cambio descrito corresponde a una de esas condiciones."
+    },
+    {
+      "id": "f-digital-life-question-0-2",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Te presto mi lupa: las respuestas cambiaron, pero nadie mencionó un corte de servicio. ¿Qué concepto explica mejor esa travesura ajena?",
+      "explanation": "La pregunta solicita el efecto inmediato de una edición no permitida. Busca la opción que se refiera a la información almacenada, teniendo en cuenta los hechos concretos del enunciado."
+    },
+    {
+      "id": "f-digital-life-question-0-3",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El archivo sufrió una edición clandestina. No culpes al router porque está cerca; identifica qué propiedad recibió realmente el golpe.",
+      "explanation": "No todos los problemas digitales dependen de conectividad. Relaciona la acción de modificar datos con la definición apropiada, y evita elegir una característica únicamente porque suena a informática."
+    },
+    {
+      "id": "f-digital-life-question-1-1",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Busca un activo digital entre estas opciones. Recuerda que el valor no viene necesariamente con una etiqueta de precio y luces caras.",
+      "explanation": "La actividad contrasta información y cuentas con afirmaciones que limitan demasiado el concepto. Considera qué recurso puede contener algo útil que una persona necesite proteger en su vida cotidiana."
+    },
+    {
+      "id": "f-digital-life-question-1-2",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "¿Qué merece llamarse activo digital? Mi colección de cejas levantadas no aparece; tendrás que elegir con el criterio de esta lección.",
+      "explanation": "Piensa en el contenido y las funciones de cada alternativa. Un recurso valioso puede servir para comunicarse, recuperar accesos o guardar trabajo, independientemente del coste físico de sus componentes."
+    },
+    {
+      "id": "f-digital-life-question-1-3",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Una opción describe algo concreto; otras pretenden cobrar entrada al concepto de activo. Examina quién puso esas restricciones y si tienen sentido.",
+      "explanation": "Presta atención a expresiones absolutas como solo y únicamente. Evalúa si excluyen recursos personales que también tienen valor, en lugar de asociar la seguridad exclusivamente con equipos costosos o grandes organizaciones."
+    },
+    {
+      "id": "f-digital-life-question-2-1",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Llegó mi parte favorita: varias defensas trabajando juntas. Busca la combinación que reparta tareas útiles, no la que luzca más misteriosa.",
+      "explanation": "Compara qué problemas atiende cada alternativa. Una estrategia de varias capas debe abarcar necesidades distintas de la cuenta y los datos, en vez de depender de una sola acción aislada."
+    },
+    {
+      "id": "f-digital-life-question-2-2",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Si falla una barrera, queremos otra oportunidad de defender o recuperar. ¿Qué propuesta construye esa red de apoyo sin venderte magia?",
+      "explanation": "Evalúa la diversidad de funciones en cada opción. Proteger un inicio de sesión y conservar información recuperable responde a situaciones distintas; ocultar un acceso visual tiene otro alcance mucho más limitado."
+    },
+    {
+      "id": "f-digital-life-question-2-3",
+      "lessonId": "digital-life",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Ninguna herramienta debería cargar sola con todo el desastre. Elige el plan que no abandona cuentas y archivos a una única promesa.",
+      "explanation": "El concepto de capas se comprueba preguntando qué ocurriría ante distintos incidentes. Revisa si la opción ofrece respuestas complementarias al acceso ajeno y a la pérdida del contenido importante."
+    },
+    {
+      "id": "f-digital-life-hint-0-1",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Imagina que el archivo sigue abriendo igual de rápido. Retira esos detalles de la mesa y observa qué queda: su contenido.",
+      "explanation": "Una pista útil consiste en eliminar propiedades que el caso no dice haber perdido. Sigue existiendo acceso y no se describe una avería de conexión; la diferencia está en las respuestas guardadas."
+    },
+    {
+      "id": "f-digital-life-hint-0-2",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "¿El problema sería el mismo si el autor hubiera autorizado los cambios? Esa palabrita, permiso, está haciendo un trabajo bastante importante.",
+      "explanation": "Los cambios legítimos forman parte del uso normal de los archivos. Busca el concepto que permite describir la diferencia entre una actualización consentida y una manipulación realizada por alguien ajeno."
+    },
+    {
+      "id": "f-digital-life-hint-0-3",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Mi ceja señala las respuestas alteradas, no la puerta de la carpeta. Piensa si aún puedes confiar en lo que dice.",
+      "explanation": "Compara poder abrir un documento con poder fiarte de sus datos. Son condiciones independientes: tener acceso no elimina la necesidad de comprobar que el contenido no fue intervenido sin autorización."
+    },
+    {
+      "id": "f-digital-life-hint-0-4",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Haz una pregunta precisa: ¿qué propiedad cuida que nadie cambie mi trabajo a escondidas? Las otras opciones tendrán que justificarse solas.",
+      "explanation": "Relacionar una definición con una acción concreta suele aclarar el ejercicio. Aquí debes buscar el término vinculado a las modificaciones, manteniendo aparte los conceptos de acceso y rendimiento de la red."
+    },
+    {
+      "id": "f-digital-life-hint-1-1",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Si desapareciera mañana, ¿perderías información o una función importante? Ese criterio me gusta bastante más que mirar cuánto brilla la carcasa.",
+      "explanation": "Para reconocer un activo, considera su utilidad y las consecuencias de perder su control. El precio del aparato no es un requisito para que una cuenta o sus documentos tengan valor."
+    },
+    {
+      "id": "f-digital-life-hint-1-2",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "La seguridad también vive en mochilas de estudiantes, cariño. Sospecha de cualquier definición que la encierre exclusivamente en edificios de empresas.",
+      "explanation": "Los recursos digitales existen en contextos personales, educativos y laborales. Revisa si alguna alternativa excluye injustificadamente cuentas y datos cotidianos al presentar una categoría demasiado restringida de elementos protegibles."
+    },
+    {
+      "id": "f-digital-life-hint-1-3",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Separa el recipiente de lo que guarda. Una computadora barata puede contener años de trabajo; ese detalle debería incomodar a dos opciones.",
+      "explanation": "El valor de la información no depende únicamente del hardware. Examina qué alternativa reconoce recursos digitales en sí mismos y cuáles confunden la importancia de un activo con su precio o tamaño."
+    },
+    {
+      "id": "f-digital-life-hint-1-4",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Busca la opción que podrías incluir hoy en tu inventario personal. No necesitas una sala de servidores para empezar esta pequeña defensa.",
+      "explanation": "Una buena respuesta debe funcionar con ejemplos de la vida diaria. Piensa en dónde conservas mensajes o trabajos y contrasta esa realidad con las limitaciones que imponen las otras alternativas."
+    },
+    {
+      "id": "f-digital-life-hint-2-1",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Haz dos columnas imaginarias: impedir una entrada y recuperar un archivo. Mira qué opción tiene herramientas para llenar ambas sin inventarlas.",
+      "explanation": "Las capas se complementan cuando atienden objetivos diferentes. Identifica en las alternativas qué medidas controlan el acceso y cuáles conservan una vía de recuperación después de perder el original."
+    },
+    {
+      "id": "f-digital-life-hint-2-2",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Un icono escondido sigue teniendo la cuenta detrás. No confundas que tu primo no vea el botón con proteger realmente el servicio.",
+      "explanation": "Evalúa si la propuesta cambia los requisitos de acceso o la posibilidad de restaurar datos. Una modificación de apariencia no demuestra que existan controles adicionales frente a problemas de seguridad."
+    },
+    {
+      "id": "f-digital-life-hint-2-3",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Imagina que borraste un documento por accidente. ¿Cuál de los planes aún tendría algo útil que ofrecer? Mi sonrisa pide esa prueba.",
+      "explanation": "Probar las alternativas con un incidente distinto ayuda a ver su alcance. Una medida dirigida a detectar software malicioso no ofrece necesariamente una forma de recuperar información que ya fue eliminada."
+    },
+    {
+      "id": "f-digital-life-hint-2-4",
+      "lessonId": "digital-life",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Cuenta funciones diferentes, no palabras bonitas. Una barrera de acceso, una comprobación adicional y un recurso de recuperación desempeñan papeles complementarios.",
+      "explanation": "Una estrategia adecuada no necesita prometer protección absoluta. Basta reconocer qué conjunto reduce distintos fallos y conserva alternativas si una sola medida no logra evitar el incidente por sí misma."
+    },
+    {
+      "id": "f-digital-life-correct-0-1",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Integridad, exacto. Le encontraste las huellas a esa edición clandestina sin acusar al pobre internet. Me estás quitando oportunidades de levantar la ceja.",
+      "explanation": "La modificación sin permiso compromete la fiabilidad del documento. La respuesta acierta al fijarse en las alteraciones de los datos, aunque el archivo siga disponible y la conexión funcione normalmente."
+    },
+    {
+      "id": "f-digital-life-correct-0-2",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen diagnóstico: integridad. Abrir el archivo no absuelve a las respuestas cambiadas; por fin alguien interroga al sospechoso correcto en esta carpeta.",
+      "explanation": "Disponibilidad e integridad pueden tener resultados diferentes en el mismo documento. Aquí permanece la posibilidad de abrirlo, mientras el contenido dejó de reflejar el trabajo que el autor había autorizado."
+    },
+    {
+      "id": "f-digital-life-correct-0-3",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Sí, esa alteración golpea la integridad. El documento sobrevivió, pero alguien le cambió el guion; menuda mierda de colaboración sin permiso.",
+      "explanation": "La integridad permite analizar si se conserva el contenido previsto frente a modificaciones indebidas. Para este caso, el hecho decisivo es la sustitución de respuestas y no un fallo del servicio."
+    },
+    {
+      "id": "f-digital-life-correct-1-1",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Ese correo con documentos sí es un activo. Precio del aparato: irrelevante para esta pregunta. Mi aprobación viene con una sonrisa bastante satisfecha.",
+      "explanation": "La cuenta aporta acceso y contiene información útil, por lo que merece protección. Los activos personales no se limitan a hardware de alto coste ni a infraestructuras utilizadas por empresas."
+    },
+    {
+      "id": "f-digital-life-correct-1-2",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Acertaste al elegir la cuenta de correo. Entre sus mensajes y documentos hay valor real, aunque el icono ocupe una esquina minúscula.",
+      "explanation": "Un buzón puede guardar trabajo, comunicaciones y vías de recuperación. Esas funciones bastan para considerarlo un recurso importante; el tamaño de una organización no determina si algo necesita seguridad."
+    },
+    {
+      "id": "f-digital-life-correct-1-3",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Muy bien: viste el tesoro detrás del acceso. No hicieron falta servidores gigantes; un correo personal ya tiene bastante que perder.",
+      "explanation": "Elegir ese ejemplo muestra que identificas cuentas e información como recursos protegibles. Puedes aplicar el mismo criterio a fotografías, archivos de estudio y perfiles donde conservas control sobre tu identidad."
+    },
+    {
+      "id": "f-digital-life-correct-2-1",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Clave única, MFA y copias: ese equipo sí tiene reparto de tareas. El desastre acaba de encontrarse con varias puertas y una salida.",
+      "explanation": "La clave exclusiva limita el efecto de credenciales repetidas, MFA añade una comprobación y las copias permiten recuperar datos. Su utilidad conjunta proviene de que cubren problemas diferentes de seguridad."
+    },
+    {
+      "id": "f-digital-life-correct-2-2",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Elegiste capas complementarias, precioso. Una protege el acceso, otra refuerza la verificación y otra guarda una oportunidad cuando los archivos se pierden.",
+      "explanation": "El conjunto no garantiza que nunca ocurra un incidente, pero evita apostar todo a un único control. Cada medida mantiene una función propia dentro de la protección de cuentas e información."
+    },
+    {
+      "id": "f-digital-life-correct-2-3",
+      "lessonId": "digital-life",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "A eso lo llamo plan: credenciales separadas, segunda verificación y recuperación. Ya puedes presumir un poquito; yo seguiré exigiendo copias que funcionen.",
+      "explanation": "La opción combina prevención de accesos y recuperación posterior a una pérdida. Esa complementariedad es la característica buscada: varias medidas con objetivos distintos alrededor del mismo recurso digital importante."
+    },
+    {
+      "id": "f-digital-life-incorrect-0-1",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Casi, cariño. El archivo sigue abriendo, así que revisemos qué cambió dentro. La diferencia entre poder usarlo y confiar en su contenido es pequeña, pero decisiva.",
+      "explanation": "Esta elección se centra en el acceso al recurso, pero el enunciado describe respuestas modificadas sin autorización. La propiedad directamente afectada es la integridad, aun si el documento continúa disponible."
+    },
+    {
+      "id": "f-digital-life-incorrect-0-2",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Te fuiste a disponibilidad, y esa sospechosa tiene coartada: la carpeta abre. Volvamos al cambio de respuestas que ocurrió sin permiso.",
+      "explanation": "Un problema de disponibilidad incluiría un archivo inaccesible o un servicio caído. Como el caso señala una alteración del contenido, la clasificación adecuada corresponde a integridad y requiere fijarse en la edición."
+    },
+    {
+      "id": "f-digital-life-incorrect-0-3",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "La conexión puede ir lenta y las tareas seguir intactas. Aquí alguien modificó respuestas; vamos a mirar el contenido antes de culpar al router, ¿sí?",
+      "explanation": "La rapidez de la red es una característica de rendimiento. No explica una manipulación realizada sin permiso: el concepto de seguridad que describe la conservación correcta del contenido es la integridad."
+    },
+    {
+      "id": "f-digital-life-incorrect-0-4",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Aunque internet corriera como mis circuitos, la tarea seguiría adulterada. Medir velocidad no responde quién cambió lo que tú habías guardado.",
+      "explanation": "Una conexión rápida puede transportar un documento con datos incorrectos. El incidente se debe analizar como pérdida de integridad porque hubo cambios indebidos, sin que el enunciado aporte fallos de rendimiento."
+    },
+    {
+      "id": "f-digital-life-incorrect-1-1",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "El equipo también tiene valor, claro. Esta pregunta busca reconocer información y cuentas como activos, aunque cuesten menos que una computadora preciosa. Vamos con calma.",
+      "explanation": "La palabra solo convierte esa opción en una definición demasiado limitada. La información y los servicios también son activos, de modo que el correo con documentos es el ejemplo adecuado del ejercicio."
+    },
+    {
+      "id": "f-digital-life-incorrect-1-2",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "El hardware importa, pero su precio no dirige este club. Tus archivos no pierden valor porque el portátil venga de segunda mano.",
+      "explanation": "Relacionar activos únicamente con equipos costosos confunde el soporte físico con la utilidad de la información. Una cuenta de correo conserva valor por sus datos y funciones, independientemente del dispositivo utilizado."
+    },
+    {
+      "id": "f-digital-life-incorrect-1-3",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Tus archivos personales también merecen protección, cielo. Una empresa maneja activos digitales, pero no tiene la exclusividad; tu correo y tus tareas cuentan igualmente.",
+      "explanation": "Las redes empresariales pueden ser activos, pero no son los únicos. El concepto también abarca recursos personales y educativos; por eso excluir las cuentas cotidianas hace incorrecta esta alternativa."
+    },
+    {
+      "id": "f-digital-life-incorrect-1-4",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "¿Únicamente redes empresariales? Mis fotos pondrían una queja formal. Una persona puede tener información valiosa sin dirigir ninguna maldita empresa.",
+      "explanation": "La seguridad se aplica allí donde existen recursos que necesitan protección. Una cuenta con documentos es un ejemplo directo; la alternativa elegida falla por restringir todos los activos a una infraestructura organizacional."
+    },
+    {
+      "id": "f-digital-life-incorrect-2-1",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "El antivirus ayuda en una parte del problema. Para esta elección buscamos medidas que cubran también el acceso a cuentas y la recuperación de archivos.",
+      "explanation": "La alternativa depende de una sola clase de herramienta y deja otros riesgos sin cubrir. La combinación correcta incluye clave única, MFA y copias para complementar protección de acceso y recuperación."
+    },
+    {
+      "id": "f-digital-life-incorrect-2-2",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Solo antivirus suena cómodo, y ahí está la trampa. Si pierdes el equipo con tu única tarea, esa promesa no te devuelve nada.",
+      "explanation": "Detectar ciertas amenazas no equivale a conservar datos recuperables ni añadir verificaciones al inicio de sesión. Una estrategia por capas combina medidas con funciones distintas en lugar de depender enteramente de ese programa."
+    },
+    {
+      "id": "f-digital-life-incorrect-2-3",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Ocultar un icono puede ordenar el escritorio, pero no protege la cuenta. Pensemos juntas en barreras que controlen el acceso y permitan recuperar información.",
+      "explanation": "Quitar una señal visual no refuerza la autenticación ni crea una copia recuperable. El ejercicio pide controles complementarios, como una contraseña exclusiva, una verificación adicional y respaldo de la información."
+    },
+    {
+      "id": "f-digital-life-incorrect-2-4",
+      "lessonId": "digital-life",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Mi sonrisa está escondida y aun así sigo aquí. Con el correo pasa igual: ocultar su botón no protege el servicio, cariño.",
+      "explanation": "El servicio puede seguir accesible desde otros dispositivos o direcciones aunque desaparezca su acceso directo. Para construir capas reales necesitas medidas que cambien la seguridad de entrada o las posibilidades de recuperación."
+    },
+    {
+      "id": "f-digital-life-result-0-1",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Primer perímetro establecido. Ya distingues qué proteges y qué clase de daño ocurre; mi lado presumido dice que hacemos un equipo peligroso.",
+      "explanation": "Has relacionado activos cotidianos con confidencialidad, integridad y disponibilidad, y has reconocido medidas complementarias. El siguiente uso práctico es revisar una cuenta importante y preparar tanto su protección como su recuperación."
+    },
+    {
+      "id": "f-digital-life-result-0-2",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Te ganaste mi aprobación y una pausa breve. Ahora sabes que abrir un archivo no prueba que esté bien ni que merezca confianza.",
+      "explanation": "La lección deja un criterio útil para futuros casos: identifica el recurso, describe el efecto observado y selecciona la propiedad afectada. Esa secuencia facilita decidir una defensa acorde al problema."
+    },
+    {
+      "id": "f-digital-life-result-0-3",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "No saliste con poderes mágicos; saliste con mejores preguntas, que sirven bastante más. Me reservaré el aplauso exagerado para tu próxima defensa.",
+      "explanation": "Puedes ampliar tu inventario a otros servicios y documentos. Para cada uno, estima qué perderías y combina una medida que limite accesos indebidos con otra que permita recuperar lo importante."
+    },
+    {
+      "id": "f-digital-life-result-1-1",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Este perímetro necesita otra vuelta, y aquí sigo contigo. Confundir conceptos al practicar sale mucho más barato que hacerlo con el proyecto final.",
+      "explanation": "Repasa las tres propiedades con un ejemplo distinto para cada una: lectura ajena, cambio no permitido y falta de acceso. Después vuelve a comparar las funciones de claves, verificaciones y copias."
+    },
+    {
+      "id": "f-digital-life-result-1-2",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Mi ceja pide revisión, no rendición. Vamos a separar acceso, contenido y recuperación; ese enredo tiene menos dientes de los que aparenta.",
+      "explanation": "Retoma primero el concepto que más te costó. Si fue integridad, imagina datos cambiados que siguen abriendo; si fueron activos, identifica información personal cuyo valor no dependa del precio del aparato."
+    },
+    {
+      "id": "f-digital-life-result-1-3",
+      "lessonId": "digital-life",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "El examen nos lanzó cáscaras de plátano conceptuales. Recógelas conmigo, carajo: cada fallo señala exactamente qué explicación conviene revisar antes del siguiente intento.",
+      "explanation": "Utiliza las devoluciones de cada pregunta para corregir la relación entre incidente y concepto. Practicar de nuevo debe servir para justificar la respuesta con hechos, en vez de memorizar su posición en pantalla."
+    },
+    {
+      "id": "f-risk-routine-intro-0-1",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Hoy cazaremos riesgos sin acusar de villana a la calculadora. Guarda la paranoia; tráeme curiosidad y unos hábitos menos deliciosos para el desastre.",
+      "explanation": "Aprenderás a distinguir aquello que puede causar daño, las debilidades que lo facilitan y sus posibles consecuencias. Después practicarás mantenimiento, recuperación de archivos y una respuesta ordenada ante señales de infección."
+    },
+    {
+      "id": "f-risk-routine-intro-0-2",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Mi placa necesita mantenimiento y tus dispositivos también. No esperes humo dramático: algunos problemas crecen tranquilamente mientras aplazas una actualización por quinta vez.",
+      "explanation": "El riesgo puede existir antes de que notes un incidente. Esta lección conecta debilidades cotidianas con medidas preventivas, para que puedas actuar sin esperar una señal visible de daño."
+    },
+    {
+      "id": "f-risk-routine-intro-0-3",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Decir nunca me ha pasado no instala parches ni recupera documentos. Qué frase tan cómoda; vamos a quitarle esa corona de cartón.",
+      "explanation": "La ausencia de incidentes anteriores no demuestra que las protecciones sean suficientes. Revisar hábitos permite detectar condiciones evitables, priorizar mejoras y preparar una respuesta aunque todavía no hayas sufrido una pérdida."
+    },
+    {
+      "id": "f-risk-routine-intro-0-4",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Te propongo un trato: tú identificas puntos débiles y yo ridiculizo las malas excusas. Los riesgos no necesitan disfraz de hacker para aparecer.",
+      "explanation": "El recorrido utiliza situaciones sencillas: software pendiente de actualizar, trabajos sin otra copia y un equipo posiblemente infectado. Cada situación permite relacionar una decisión concreta con sus consecuencias previsibles."
+    },
+    {
+      "id": "f-risk-routine-intro-0-5",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "Si tu plan de recuperación consiste en llorarle al portátil, tenemos trabajo, carajo. Ven: hoy fabricamos alternativas con algo más que esperanza.",
+      "explanation": "Prepararse implica reducir debilidades y conservar opciones para cuando algo falle. Revisaremos por qué una copia debe estar separada y por qué comprobar su restauración forma parte del cuidado de la información."
+    },
+    {
+      "id": "f-risk-routine-intro-0-6",
+      "lessonId": "risk-routine",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Voy a acompañarte desde el mantenimiento hasta el aviso de incidente. Respira: actuar con método impresiona bastante más que pulsar botones en pánico.",
+      "explanation": "Al terminar podrás reconocer una vulnerabilidad, valorar una copia de seguridad y elegir una primera respuesta ante sospechas de infección. Los ejemplos permiten practicar criterios sin ejecutar programas ni tocar archivos peligrosos."
+    },
+    {
+      "id": "f-risk-routine-theory-0-1",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Imagina lluvia, una ventana rota y tu cuaderno empapado. Amenaza, debilidad y daño tienen papeles distintos; mi teatrillo trae vocabulario útil.",
+      "explanation": "Una amenaza es algo capaz de causar un perjuicio y una vulnerabilidad es una condición aprovechable. El riesgo considera la posibilidad del incidente junto con las consecuencias que tendría para el recurso."
+    },
+    {
+      "id": "f-risk-routine-theory-0-2",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Una clave repetida ya es una debilidad aunque nadie la haya robado. El problema no espera a que reserves cita con el desastre.",
+      "explanation": "La vulnerabilidad puede existir antes de cualquier ataque. Reutilizar credenciales conecta cuentas entre sí: una filtración en un servicio podría facilitar intentos de acceso en otros que acepten la misma clave."
+    },
+    {
+      "id": "f-risk-routine-theory-0-3",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Dos equipos pueden tener la misma debilidad y arriesgar cosas diferentes. No pesa igual perder una lista de compras que el único proyecto final.",
+      "explanation": "El impacto depende de los recursos afectados y de las posibilidades de recuperación. Por eso no basta reconocer un fallo técnico: también hay que considerar qué consecuencias tendría en el contexto concreto."
+    },
+    {
+      "id": "f-risk-routine-theory-0-4",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "La amenaza busca ocasión; la debilidad se la facilita. No son gemelas, cariño, aunque en las películas las metan en la misma escena.",
+      "explanation": "Un programa malicioso y un fallo sin corregir desempeñan funciones diferentes. El primero puede causar daño; el segundo es una condición que podría permitirlo, según las capacidades del programa y el entorno."
+    },
+    {
+      "id": "f-risk-routine-theory-0-5",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "Riesgo cero porque apagué el icono de alertas: mierda de matemática. Quitar avisos no elimina la posibilidad ni el coste de un incidente.",
+      "explanation": "El riesgo describe una combinación de probabilidad y consecuencias, no lo mucho que ves las advertencias. Evaluarlo requiere observar condiciones reales y estimar el daño posible, aunque nadie esté mostrando una alarma."
+    },
+    {
+      "id": "f-risk-routine-theory-0-6",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Me gusta priorizar, aunque mi ego pida atención exclusiva. Empieza por lo que pueda hacer más daño y tenga una mejora viable.",
+      "explanation": "Al gestionar riesgos se pueden comparar recursos, exposición y consecuencias para decidir por dónde actuar. No hace falta resolverlo todo a la vez: una mejora prioritaria puede reducir un problema importante."
+    },
+    {
+      "id": "f-risk-routine-theory-1-1",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Una actualización puede traer un parche bajo el brazo, aunque anuncie botones más bonitos. No confundas el maquillaje con todo su trabajo.",
+      "explanation": "Las actualizaciones pueden corregir errores de seguridad además de añadir funciones. Instalarlas mediante los mecanismos oficiales reduce debilidades conocidas, aunque ningún sistema actualizado queda automáticamente libre de todos los riesgos."
+    },
+    {
+      "id": "f-risk-routine-theory-1-2",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Tu proyecto y proyecto final definitivo viven en el mismo disco. Si el disco muere, los dos van al mismo funeral digital.",
+      "explanation": "Duplicar un archivo dentro del mismo almacenamiento no separa los riesgos de avería de ese dispositivo. Una copia útil debe conservar una vía de recuperación cuando el original y su soporte dejan de funcionar."
+    },
+    {
+      "id": "f-risk-routine-theory-1-3",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Una copia que jamás abriste es una promesa con pestañas bonitas. Yo prefiero pruebas: recupera algo y comprueba que realmente sirve.",
+      "explanation": "Ensayar una restauración permite detectar archivos dañados, versiones equivocadas o falta de permisos. La existencia de una copia no demuestra por sí sola que puedas usar su contenido cuando lo necesites."
+    },
+    {
+      "id": "f-risk-routine-theory-1-4",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Revisar actualizaciones y revisar copias son citas diferentes en el calendario. Puedes mimarme después; primero dales a ambas su pequeño turno.",
+      "explanation": "El mantenimiento reduce algunas posibilidades de incidente, mientras las copias limitan consecuencias sobre los datos. Son hábitos complementarios y conviene revisarlos periódicamente, porque los archivos y el software cambian con el tiempo."
+    },
+    {
+      "id": "f-risk-routine-theory-1-5",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Sincronizar puede copiar también un borrado. Antes de coronar esa carpeta como respaldo, averigua si conserva versiones recuperables y durante cuánto tiempo.",
+      "explanation": "Una carpeta sincronizada no equivale necesariamente a una copia independiente. Si los cambios se propagan automáticamente, una eliminación puede alcanzar todos los dispositivos; las funciones de recuperación y su comprobación resultan importantes."
+    },
+    {
+      "id": "f-risk-routine-theory-1-6",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "El disco externo conectado eternamente no es un amuleto invencible. Piensa qué fallos podría compartir con el equipo y deja de tentarlo, joder.",
+      "explanation": "La separación debe considerar los incidentes que quieres resistir. Un almacenamiento accesible desde el equipo puede estar expuesto a ciertos errores o software malicioso; conservar copias independientes mejora las opciones de recuperación."
+    },
+    {
+      "id": "f-risk-routine-theory-2-1",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Si sospechas infección, corta la conexión de red y pide ayuda. Prefiero una pausa incómoda a que ese problema empiece una gira.",
+      "explanation": "Desconectar la red puede limitar comunicaciones y propagación mientras se evalúa el equipo. Es una medida inicial de contención, no una prueba de limpieza ni una sustitución del análisis técnico posterior."
+    },
+    {
+      "id": "f-risk-routine-theory-2-2",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Borrar registros para que nadie vea el susto es limpiar la escena antes del detective. Mi ceja acaba de presentar una objeción formal.",
+      "explanation": "Los registros pueden ayudar a reconstruir qué ocurrió y cuándo. Eliminarlos por iniciativa propia dificulta la investigación y puede ocultar información necesaria para decidir la respuesta y comprobar el alcance del incidente."
+    },
+    {
+      "id": "f-risk-routine-theory-2-3",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Tu responsable técnico necesita hechos, no una novela de terror. Cuenta qué viste y cuándo, sin adornarlo con villanos que todavía no conocemos.",
+      "explanation": "Comunicar síntomas observables ayuda a evaluar la situación. Describe mensajes, comportamientos y acciones recientes sin afirmar una causa que no está confirmada; el personal encargado podrá pedir la información adicional que necesite."
+    },
+    {
+      "id": "f-risk-routine-theory-2-4",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "En un equipo de estudio compartido no juegues a cirujano improvisado. Avisa al responsable: este paciente ya tiene un procedimiento de atención.",
+      "explanation": "Las organizaciones suelen tener personas y pasos definidos para incidentes. Informar por el canal previsto permite coordinar contención, investigación y recuperación sin que intervenciones contradictorias agraven el problema o borren evidencias."
+    },
+    {
+      "id": "f-risk-routine-theory-2-5",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "exasperated",
+      "text": "Mandar el archivo sospechoso al grupo para preguntar qué hace es repartir mierda con un lazo. Describe el incidente; no multipliques la exposición.",
+      "explanation": "Reenviar un archivo potencialmente peligroso puede poner a otras personas en contacto con la amenaza. Solicita ayuda por el canal adecuado y sigue las instrucciones del responsable sobre cómo aportar muestras si fueran necesarias."
+    },
+    {
+      "id": "f-risk-routine-theory-2-6",
+      "lessonId": "risk-routine",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Desconectar la red no exige destruir nada ni proclamar victoria. Quédate en modo prudente: contener, avisar y dejar que la evidencia siga hablando.",
+      "explanation": "Ante sospechas, evita acciones irreversibles como borrar archivos o reinstalar sin indicaciones. Mantener el contexto del incidente favorece la evaluación profesional y ayuda a distinguir una infección de otros problemas del equipo."
+    },
+    {
+      "id": "f-risk-routine-procedure-0-1",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Busca en la configuración del sistema su apartado de actualizaciones. Nada de aceptar el primer anuncio chillón que prometa arreglarlo todo gratuitamente.",
+      "explanation": "Localiza el mecanismo integrado de actualización del dispositivo que utilizas. Consulta allí el estado y los requisitos; una ventana publicitaria de una página cualquiera no es un canal fiable para instalar mantenimiento."
+    },
+    {
+      "id": "f-risk-routine-procedure-0-2",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Hoy quiero que encuentres dónde se revisa el sistema, sin jugar a adivinar menús. Usa el buscador de ajustes si se esconde.",
+      "explanation": "Escribe actualización o una palabra equivalente en la búsqueda de configuración, si el dispositivo la ofrece. El objetivo del paso es saber dónde consultar el estado para repetir esta revisión posteriormente."
+    },
+    {
+      "id": "f-risk-routine-procedure-0-3",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Si el sistema pide reiniciar, no lo conviertas en una promesa de año nuevo. Primero averigua qué tiene pendiente y qué necesita.",
+      "explanation": "Al localizar las actualizaciones, comprueba si hay una descarga, una instalación o un reinicio pendiente. Conocer el estado permite planificar el mantenimiento siguiendo las indicaciones oficiales y evitando interrumpir trabajo sin guardarlo."
+    },
+    {
+      "id": "f-risk-routine-procedure-0-4",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Observa la ruta del menú como quien aprende una salida importante. No memorices cada píxel; recuerda la sección para volver sin depender de mí.",
+      "explanation": "Los nombres cambian entre dispositivos, pero la revisión suele estar dentro de la configuración del sistema. Identificar esa ubicación desarrolla autonomía para consultar futuras actualizaciones sin enlaces de mensajes o anuncios externos."
+    },
+    {
+      "id": "f-risk-routine-procedure-1-1",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Elige dónde viviría otra copia de tus trabajos, lejos del mismo fallo. Dos carpetas vecinas no me impresionan, por muy coquetas que sean.",
+      "explanation": "Piensa en un almacenamiento separado del que guarda los originales. Puede ser otro medio o un servicio con opciones adecuadas de recuperación; evalúa qué ocurriría si pierdes el equipo principal."
+    },
+    {
+      "id": "f-risk-routine-procedure-1-2",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Señala un destino concreto para el respaldo y pregúntate si podrías acceder sin este dispositivo. Esa pregunta vale más que una etiqueta bonita.",
+      "explanation": "Anota una alternativa independiente que esté a tu alcance y cómo recuperarías allí tus archivos. Si el acceso depende de algo guardado únicamente en el equipo perdido, esa dependencia también necesita revisión."
+    },
+    {
+      "id": "f-risk-routine-procedure-1-3",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Antes de elegir esa nube o ese disco, imagina un borrado accidental. ¿Qué conservaría tu destino? No me vendas niebla con brillantina.",
+      "explanation": "El lugar de copia debe corresponder al incidente que quieres superar. Revisa si mantiene versiones, si replica eliminaciones y cómo restaurarías un documento, para no confundir sincronización con recuperación garantizada."
+    },
+    {
+      "id": "f-risk-routine-procedure-1-4",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "Ponle nombre y ubicación al plan, carajo: guardaré una copia en algún lado no rescata ni una hoja cuando el disco deja de respirar.",
+      "explanation": "Define el destino separado y una manera de verificarlo con un archivo de prueba. Planificar una restauración sencilla te permitirá confirmar posteriormente que el respaldo contiene información utilizable y no solo nombres de archivos."
+    },
+    {
+      "id": "f-risk-routine-procedure-2-1",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Ahora elige a quién avisarías si el equipo se comporta de forma sospechosa. Soporte de verdad, cariño; tu grupo de memes queda descartado.",
+      "explanation": "Identifica el contacto responsable del dispositivo o de la organización. Si es un equipo personal, piensa en asistencia técnica de confianza y conserva una forma de contacto que no dependa del equipo afectado."
+    },
+    {
+      "id": "f-risk-routine-procedure-2-2",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Quiero un canal, no un héroe imaginario. Encuentra el correo, teléfono o procedimiento de la persona encargada antes de necesitarlo con urgencia.",
+      "explanation": "Preparar el contacto reduce improvisaciones durante un incidente. Verifica dónde se informa una sospecha en tu centro o trabajo y qué datos iniciales solicita, sin enviar contraseñas ni archivos sospechosos por iniciativa propia."
+    },
+    {
+      "id": "f-risk-routine-procedure-2-3",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Si el portátil pertenece al instituto, no elijas a un desconocido de un anuncio. Su responsable ya debería tener voz en este asunto.",
+      "explanation": "La propiedad y administración del dispositivo determinan a quién corresponde recibir el aviso. En entornos educativos o laborales, localiza el área encargada y prioriza sus instrucciones de respuesta sobre intervenciones informales."
+    },
+    {
+      "id": "f-risk-routine-procedure-2-4",
+      "lessonId": "risk-routine",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Imagina que pierdes la conexión justo ahora. ¿Todavía sabrías cómo avisar? Guarda una referencia útil; me gustan los planes que sobreviven a su escenario.",
+      "explanation": "El aviso no debería depender exclusivamente del dispositivo que vas a aislar. Una referencia al teléfono de soporte o un canal accesible desde otro equipo facilita pedir ayuda después de desconectar la red."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-1",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Meses sin parches y un proyecto con un solo hogar. Qué dúo tan descarado: identifica primero qué debilidad y qué consecuencia se combinan.",
+      "explanation": "El caso reúne software sin mantenimiento reciente y ausencia de una copia independiente. Analiza ambas condiciones por separado: una puede facilitar ciertos incidentes y la otra dificultar la recuperación de la información."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-2",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Mira ese equipo como si fuera una cesta con todos los huevos y el asa floja. Mi metáfora pide dos revisiones distintas.",
+      "explanation": "Las actualizaciones y las copias atienden problemas diferentes del escenario. Pregúntate qué reduciría debilidades conocidas y qué permitiría conservar el proyecto si el almacenamiento principal quedara inutilizable tras un incidente."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-3",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Todavía no hay infección confirmada; sí hay motivos para mejorar. No necesito humo ni música siniestra para señalar una situación poco prudente.",
+      "explanation": "La evaluación del riesgo no exige que el daño ya haya ocurrido. Aquí puedes reconocer medidas pendientes a partir del estado del sistema y de la dependencia de una única copia del proyecto."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-4",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "El proyecto lleva casco imaginario porque está en dos carpetas del mismo equipo. Joder, una sola avería puede burlarse de ambas a la vez.",
+      "explanation": "Considera qué recursos comparten el mismo punto de fallo. Mantener versiones dentro del equipo puede ayudar en algunos errores, pero no conserva el proyecto si falla o se pierde todo su almacenamiento."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-5",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "No hace falta elegir entre parche y copia como si fueran rivales románticos. Observa qué problema resuelve cada cual dentro de este escenario.",
+      "explanation": "Un sistema al día puede seguir sufriendo averías, y una copia no corrige fallos del software. La situación invita a combinar mantenimiento con recuperación, asignando una función clara a cada medida."
+    },
+    {
+      "id": "f-risk-routine-scenario-0-6",
+      "lessonId": "risk-routine",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Ponle consecuencias reales al caso: si ese equipo deja de arrancar esta noche, ¿de dónde saldría el proyecto? Mi ceja espera una ruta.",
+      "explanation": "Pensar en la recuperación revela dependencias ocultas. Si el único ejemplar está en el dispositivo afectado, no existe todavía una alternativa independiente para acceder al trabajo cuando ese dispositivo deja de funcionar."
+    },
+    {
+      "id": "f-risk-routine-question-0-1",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Vamos con la palabra vulnerabilidad. Elige la definición que describe su papel, sin mezclarla con cualquier objeto que simplemente aparezca en el escritorio.",
+      "explanation": "Compara si cada alternativa señala una condición que facilite un problema o un recurso sin ese significado. La pregunta evalúa el concepto, no pretende afirmar que todos los archivos sean seguros o peligrosos."
+    },
+    {
+      "id": "f-risk-routine-question-0-2",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Una de estas opciones explica vulnerabilidad; las otras cambian de tema con bastante descaro. Mira qué relación tiene cada una con posibles incidentes.",
+      "explanation": "Recuerda que amenaza, vulnerabilidad y riesgo ocupan lugares distintos al describir seguridad. Busca una definición general aplicable a muchos casos, en lugar de un elemento concreto que podría estar en cualquier dispositivo."
+    },
+    {
+      "id": "f-risk-routine-question-0-3",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Te toca repartir papeles en el drama del riesgo. ¿Qué significa vulnerabilidad? Mi personaje ya tiene demasiada personalidad; concéntrate en el término.",
+      "explanation": "Examina las alternativas como definiciones y verifica si seguirían siendo válidas en contextos diferentes. Un concepto de seguridad debe describir una función específica, no incluir indiscriminadamente todos los recursos del equipo."
+    },
+    {
+      "id": "f-risk-routine-question-1-1",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Se presenta el concurso de respaldos que sirven de verdad. Compara las tres propuestas imaginando que el almacenamiento original acaba de dejarte plantado.",
+      "explanation": "La pregunta busca la opción con mejores posibilidades de recuperación. Valora la dependencia del original y si existe alguna comprobación de utilidad, más allá de que algo tenga apariencia de duplicado."
+    },
+    {
+      "id": "f-risk-routine-question-1-2",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "¿Cuál de estas copias elegirías para confiarle tus trabajos? No votes por simpatía: interroga a cada opción sobre cómo recuperaría el contenido.",
+      "explanation": "Piensa qué conservarías si el equipo principal ya no estuviera disponible. También importa saber si el supuesto respaldo contiene datos legibles y utilizables, en lugar de simples referencias a ellos."
+    },
+    {
+      "id": "f-risk-routine-question-1-3",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Un respaldo puede llamarse definitivo y seguir siendo inútil. Ignora el nombre bonito y evalúa cuál propuesta soportaría mejor una pérdida real.",
+      "explanation": "Distingue entre conservar el contenido y conservar una señal de que existió. Después revisa qué relación tiene cada alternativa con el mismo fallo que podría afectar al documento original."
+    },
+    {
+      "id": "f-risk-routine-question-2-1",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "El equipo del trabajo parece infectado. Elige una primera respuesta que ayude a contener y coordinar, sin regalar nuevos problemas a los demás.",
+      "explanation": "Todavía hablamos de una sospecha, no de un diagnóstico definitivo. Compara los efectos de cada acción sobre otras personas, la información del incidente y la posibilidad de recibir ayuda organizada."
+    },
+    {
+      "id": "f-risk-routine-question-2-2",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Tu turno de mantener la cabeza fría: hay señales extrañas en un equipo compartido. ¿Qué decisión evita convertir el susto en un circo?",
+      "explanation": "En un entorno laboral debes considerar al equipo encargado de responder y a los demás dispositivos. Evalúa qué alternativas añaden exposición o eliminan información antes de que alguien pueda analizarla."
+    },
+    {
+      "id": "f-risk-routine-question-2-3",
+      "lessonId": "risk-routine",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Prometo una sonrisa si eliges método antes que heroísmo improvisado. Con una posible infección, ¿cuál acción facilita una respuesta responsable del trabajo?",
+      "explanation": "La pregunta contrasta medidas con consecuencias muy diferentes. Presta atención a si una opción conserva posibilidades de investigación, evita extender el problema y permite que intervenga quien administra ese dispositivo."
+    },
+    {
+      "id": "f-risk-routine-hint-0-1",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Piensa en una ventana sin cierre, no en todo lo que hay dentro de la habitación. El término describe una condición concreta.",
+      "explanation": "Usar una analogía física ayuda a separar recursos de condiciones de seguridad. Pregúntate qué característica haría más fácil que algo salga mal y contrástala con el sentido de las alternativas."
+    },
+    {
+      "id": "f-risk-routine-hint-0-2",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "La palabra cualquier suele entrar aquí con una maleta demasiado grande. No todos los objetos del equipo cumplen la función que estamos buscando.",
+      "explanation": "Una definición que abarca indiscriminadamente todos los archivos pierde precisión. Revisa qué alternativa identifica una característica relacionada con incidentes, y cuál simplemente enumera cosas que pueden existir en el sistema."
+    },
+    {
+      "id": "f-risk-routine-hint-0-3",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Recuerda el software sin parches del ejemplo. ¿Qué papel desempeña esa condición antes de que ocurra nada? Ahí tienes una pista bastante jugosa.",
+      "explanation": "El concepto puede aplicarse aunque todavía no exista un ataque confirmado. Busca una descripción que explique por qué una condición del entorno cambia las oportunidades de que ocurra un problema."
+    },
+    {
+      "id": "f-risk-routine-hint-0-4",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Una medida de recuperación intenta ayudarte después de una pérdida. Decide si encaja en el mismo papel que el término de esta pregunta.",
+      "explanation": "Relaciona cada opción con su función: almacenar información, recuperarla o describir una condición que importa para la seguridad. Separar funciones facilita descartar definiciones que cambian el significado del concepto solicitado."
+    },
+    {
+      "id": "f-risk-routine-hint-1-1",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Simula una avería de disco en tu cabeza. ¿Qué alternativa se iría con él y cuál todavía podría ofrecerte algo utilizable?",
+      "explanation": "Una copia comparte algunos fallos cuando depende del mismo almacenamiento que el original. Analiza la ubicación de cada propuesta y si el incidente imaginado dejaría una vía para recuperar el contenido."
+    },
+    {
+      "id": "f-risk-routine-hint-1-2",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Un nombre en una captura no contiene las páginas del trabajo. Imagina que necesito abrirlo, no admirar cómo se llamaba antes del desastre.",
+      "explanation": "La recuperación requiere datos suficientes para reconstruir el documento. Al comparar alternativas, diferencia una representación visual del nombre de un archivo de un recurso que pueda devolver su información completa."
+    },
+    {
+      "id": "f-risk-routine-hint-1-3",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "¿Le darías el papel principal a una actriz que nunca ensayó? Con una copia importa comprobar que puede cumplir cuando llega su escena.",
+      "explanation": "Pensar en una prueba práctica permite evaluar la confianza en el respaldo. Busca si las alternativas aportan evidencia de que el contenido realmente se puede recuperar, además de afirmar que hay algo guardado."
+    },
+    {
+      "id": "f-risk-routine-hint-1-4",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Haz dos pruebas mentales: perder el original y necesitar leer la copia. La mejor propuesta debe responder a ambas sin sacar conejos del teclado.",
+      "explanation": "La utilidad de un respaldo depende de sobrevivir al problema y de conservar contenido aprovechable. Contrasta las opciones con esos dos criterios antes de elegir la que ofrece una recuperación más convincente."
+    },
+    {
+      "id": "f-risk-routine-hint-2-1",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Piensa qué puede extender el problema y qué puede borrar sus huellas. Una respuesta sensata no necesita ninguna de esas dos travesuras.",
+      "explanation": "Revisa las consecuencias de enviar archivos y eliminar registros. El objetivo inicial es evitar daños adicionales y permitir una evaluación, no conseguir que desaparezcan los signos visibles sin comprender qué ocurrió."
+    },
+    {
+      "id": "f-risk-routine-hint-2-2",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Ese equipo tiene responsable; no eres protagonista solitario de una película. Busca la acción que deja entrar al personal adecuado en la respuesta.",
+      "explanation": "La administración del dispositivo importa porque puede existir un procedimiento de incidentes. Evalúa qué opción permite coordinar ayuda y cuál involucra a personas ajenas o altera el equipo sin instrucciones."
+    },
+    {
+      "id": "f-risk-routine-hint-2-3",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Si el archivo huele raro, repartirlo no mejora el perfume. Mi nariz imaginaria pide reducir exposición mientras alguien competente examina el caso.",
+      "explanation": "Considera a quién pondría en contacto con el riesgo cada alternativa. Una primera intervención responsable debería limitar el alcance del problema sin intentar investigar mediante el envío indiscriminado de posibles amenazas."
+    },
+    {
+      "id": "f-risk-routine-hint-2-4",
+      "lessonId": "risk-routine",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Preservar información y frenar conexiones sospechosas son ideas compatibles. Piensa cuál opción mantiene ambas posibilidades sin fingir que ya conoce la cura.",
+      "explanation": "No necesitas resolver técnicamente la infección para elegir una medida prudente. Analiza qué acciones permiten contener la situación y conservar contexto para que el responsable determine después qué sucedió en el equipo."
+    },
+    {
+      "id": "f-risk-routine-correct-0-1",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Exacto: una debilidad aprovechable. Encontraste la grieta antes de echarle la culpa a todos los archivos del escritorio; mi ceja puede descansar.",
+      "explanation": "Una vulnerabilidad es una condición que puede facilitar un incidente. Reconocerla no significa que ya se haya producido daño, sino que existe un punto débil sobre el que conviene actuar."
+    },
+    {
+      "id": "f-risk-routine-correct-0-2",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Bien: identificaste el punto débil del reparto. Ahora amenaza, vulnerabilidad y riesgo dejan de pelearse por el mismo disfraz en tu cabeza.",
+      "explanation": "La definición correcta describe una debilidad que podría aprovecharse. Una amenaza puede causar daño y el riesgo considera posibilidad y consecuencias; separar esos papeles mejora el análisis de cualquier caso cotidiano."
+    },
+    {
+      "id": "f-risk-routine-correct-0-3",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Vulnerabilidad identificada sin hacer saltar nada, qué elegante. El sistema sin parches ya podía tener una debilidad antes de recibir una visita maliciosa.",
+      "explanation": "El concepto se aplica a una condición previa al incidente, como un fallo conocido que sigue sin corregirse. No requiere que todo archivo sea peligroso ni que exista ya una infección confirmada."
+    },
+    {
+      "id": "f-risk-routine-correct-1-1",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Separada y con restauración comprobada: esa copia vino preparada. No necesito besar el disco de alegría, pero me has dado una idea bastante simpática.",
+      "explanation": "Separar la copia reduce dependencias respecto del almacenamiento original. Probar su restauración añade evidencia de que contiene datos utilizables; ambas características mejoran las posibilidades de recuperarte después de una pérdida."
+    },
+    {
+      "id": "f-risk-routine-correct-1-2",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Elegiste un respaldo que puede demostrar lo que promete. Mi aprobación exige contenido recuperable, no solo dos nombres parecidos mirándose desde una carpeta.",
+      "explanation": "La alternativa correcta combina independencia y comprobación práctica. Otro archivo junto al original comparte algunos fallos, y una captura del nombre no contiene la información necesaria para reconstruir el trabajo."
+    },
+    {
+      "id": "f-risk-routine-correct-1-3",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Así sí: destino separado y ensayo real. La mala suerte perdió una de sus bromas favoritas, y me encanta cuando le arruinamos el chiste.",
+      "explanation": "Una copia útil necesita mantenerse accesible cuando el original falla y permitir volver a obtener su contenido. Ensayar la recuperación detecta problemas antes de que dependas de ella en una urgencia."
+    },
+    {
+      "id": "f-risk-routine-correct-2-1",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Desconectar la red y avisar: orden, contención y cero reparto de archivos sospechosos. Qué decepción tan deliciosa para el caos que esperaba una fiesta.",
+      "explanation": "La desconexión puede limitar comunicación y propagación mientras el responsable coordina la respuesta. Avisar permite investigar con contexto y seguir el procedimiento previsto, sin borrar información relevante por cuenta propia."
+    },
+    {
+      "id": "f-risk-routine-correct-2-2",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Buena primera maniobra: aislar la conexión y pedir ayuda al responsable. No proclamamos curación; abrimos espacio para que el caso se evalúe bien.",
+      "explanation": "Contener una sospecha no sustituye el diagnóstico. Esta respuesta reduce exposición y organiza la intervención técnica, conservando registros y evitando que otros usuarios reciban el archivo que podría estar causando el problema."
+    },
+    {
+      "id": "f-risk-routine-correct-2-3",
+      "lessonId": "risk-routine",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Elegiste sangre fría en vez de botones dramáticos. Mi brazo aplaude: la red queda apartada y quien administra el equipo recibe el aviso.",
+      "explanation": "En un equipo laboral la respuesta debe coordinarse con su responsable. Aislar de la red puede limitar el alcance del incidente, y comunicar lo observado ayuda a decidir investigación y recuperación sin improvisaciones destructivas."
+    },
+    {
+      "id": "f-risk-routine-incorrect-0-1",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Un archivo cualquiera no es necesariamente una debilidad. Busca una condición que alguien pueda aprovechar para causar un daño; esa distinción nos ayudará aquí.",
+      "explanation": "Un archivo es un recurso y puede ser inofensivo, valioso o malicioso según el contexto. La palabra vulnerabilidad describe una condición débil del sistema o proceso, no una categoría que incluya todos los archivos."
+    },
+    {
+      "id": "f-risk-routine-incorrect-0-2",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Acusar a todos los archivos es una redada conceptual excesiva. La vulnerabilidad es el punto débil, no cualquier cosa que ocupe espacio.",
+      "explanation": "La opción elegida confunde un objeto almacenado con una propiedad que facilita un incidente. Un fallo sin parche es un ejemplo de debilidad aprovechable; guardar un documento no lo convierte automáticamente en vulnerabilidad."
+    },
+    {
+      "id": "f-risk-routine-incorrect-0-3",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "La copia comprobada es una protección, cariño. Estamos buscando una debilidad que facilite problemas; separar esas dos funciones hará mucho más clara la siguiente decisión.",
+      "explanation": "Un respaldo cuya recuperación fue comprobada es una medida para reducir consecuencias sobre la información. No define una debilidad aprovechable, que es el significado requerido por la pregunta sobre vulnerabilidades."
+    },
+    {
+      "id": "f-risk-routine-incorrect-0-4",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "La copia ensayó para salvar tu proyecto, no para fastidiarlo. Devuélvele su medalla: aquí buscábamos una condición débil, no una defensa verificada.",
+      "explanation": "Las medidas de recuperación y las vulnerabilidades se distinguen por su función. Comprobar una restauración aporta confianza al respaldo; una vulnerabilidad, en cambio, es una condición que podría permitir o facilitar daño."
+    },
+    {
+      "id": "f-risk-routine-incorrect-1-1",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Hacer otra copia es una buena intención. El detalle está en dónde vive: si comparte el mismo disco, también comparte sus posibles fallos. Revisémoslo juntas.",
+      "explanation": "Duplicar allí puede ayudar ante algún cambio accidental, pero no separa el almacenamiento del original. La mejor alternativa del ejercicio mantiene una copia aparte y comprueba que su contenido pueda restaurarse."
+    },
+    {
+      "id": "f-risk-routine-incorrect-1-2",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Dos archivos juntos no equivalen a dos oportunidades frente a una avería. Cambiaste el nombre del pasajero, pero los subiste al mismo barco.",
+      "explanation": "La carpeta no es una protección independiente frente a fallos del medio que la contiene. Se busca una copia separada con recuperación comprobada para seguir teniendo datos utilizables si el original deja de estar disponible."
+    },
+    {
+      "id": "f-risk-routine-incorrect-1-3",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "La captura conserva el nombre, pero necesitamos recuperar el contenido del proyecto. Es un detalle fácil de confundir; piensa en qué archivo podrías abrir después.",
+      "explanation": "La imagen del nombre no conserva las páginas, las fórmulas ni otros datos del documento. Para recuperarlo necesitas una copia que guarde información suficiente y cuya restauración hayas podido verificar en la práctica."
+    },
+    {
+      "id": "f-risk-routine-incorrect-1-4",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Podrías enseñarme cómo se llamaba el archivo y seguir sin una sola línea del trabajo. Ese retrato no supera mi prueba de recuperación.",
+      "explanation": "Un registro visual puede ayudar a recordar un nombre, pero no reconstruye el contenido perdido. La opción adecuada combina almacenamiento separado con una prueba de restauración para comprobar que el trabajo siga siendo utilizable."
+    },
+    {
+      "id": "f-risk-routine-incorrect-2-1",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Entiendo las ganas de limpiar el problema enseguida. Antes conviene conservar las pistas y avisar al responsable; así podrá entender qué pasó y orientarte mejor.",
+      "explanation": "Eliminar registros puede destruir datos útiles sobre tiempos y acciones del equipo. Ante la sospecha, desconecta la red y avisa al responsable; conserva la información para que la respuesta técnica se organice con evidencias."
+    },
+    {
+      "id": "f-risk-routine-incorrect-2-2",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Hacer desaparecer el historial no hace desaparecer una infección. Mi mirada de detective protesta: acabas de elegir algo que puede quitar contexto al análisis.",
+      "explanation": "Los registros sirven para investigar y valorar el alcance de lo ocurrido. Borrarlos no constituye una medida de limpieza fiable; la primera respuesta propuesta es aislar la red y avisar a quien administra el dispositivo."
+    },
+    {
+      "id": "f-risk-routine-incorrect-2-3",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Pedir ayuda es una buena idea; compartir el archivo sospechoso no hace falta. Podemos explicar lo ocurrido sin exponer a más personas. Vamos paso a paso.",
+      "explanation": "Si el archivo es peligroso, otras personas podrían abrirlo al recibirlo. Es preferible desconectar el equipo de la red y avisar al responsable, que indicará cómo aportar información o muestras si hacen falta."
+    },
+    {
+      "id": "f-risk-routine-incorrect-2-4",
+      "lessonId": "risk-routine",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Repartir el sospechoso por curiosidad es una mierda de experimento. La ayuda se pide describiendo lo ocurrido, no regalando posibles amenazas a los contactos.",
+      "explanation": "Enviar el archivo a amigos introduce nuevos receptores y puede dificultar la contención. Elige el aislamiento de red y el aviso al responsable para que la investigación se gestione por un canal adecuado."
+    },
+    {
+      "id": "f-risk-routine-result-0-1",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Ya distingues grietas, amenazas y consecuencias. Qué gusto: el caos esperaba improvisación y se encontró con alguien que revisa, respalda y avisa.",
+      "explanation": "Has identificado una vulnerabilidad, elegido un respaldo separado y probado, y reconocido una respuesta inicial de contención. Puedes convertir esos criterios en tres hábitos: mantenimiento periódico, recuperación comprobada y contactos de ayuda preparados."
+    },
+    {
+      "id": "f-risk-routine-result-0-2",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen trabajo: no necesitaste saber programar para mejorar el plan. Mi lado consentido exige una pequeña celebración y luego una revisión real de tus hábitos.",
+      "explanation": "La prevención cotidiana combina decisiones accesibles con apoyo técnico cuando hace falta. Localizar actualizaciones, planificar una copia independiente y saber a quién contactar reduce la necesidad de improvisar bajo presión."
+    },
+    {
+      "id": "f-risk-routine-result-0-3",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "El desastre perdió su acceso preferente a tus nervios. Mantén esas rutinas vivas, cariño: un plan olvidado envejece bastante peor que mi metal.",
+      "explanation": "El resultado es un punto de partida para acciones repetibles. Revisa periódicamente el estado del software, restaura un archivo de prueba y confirma que el canal de soporte elegido continúe disponible."
+    },
+    {
+      "id": "f-risk-routine-result-1-1",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Aquí toca repasar sin hacer un funeral por la nota. Tenemos tres piezas: debilidad, respaldo y respuesta; vamos a encajarlas con calma.",
+      "explanation": "Vuelve al apartado relacionado con tu error. Distingue una condición aprovechable de un recurso, compara una copia separada con otra en el mismo disco y revisa por qué conservar registros ayuda durante un incidente."
+    },
+    {
+      "id": "f-risk-routine-result-1-2",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Mi ceja todavía no firma el alta, pero ya sabemos qué revisar. Practicar aquí permite fastidiar al error sin poner en juego tus archivos.",
+      "explanation": "Usa pequeños casos para justificar cada decisión: un sistema pendiente de parches, un disco averiado o un archivo sospechoso. Explicar la consecuencia de cada opción resulta más útil que memorizar letras o posiciones."
+    },
+    {
+      "id": "f-risk-routine-result-1-3",
+      "lessonId": "risk-routine",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Ese tropiezo no merece pánico, merece una segunda lectura. Joder, para eso montamos el simulacro: que las malas ideas se caigan aquí primero.",
+      "explanation": "Repasa el alcance de las acciones antes de volver a responder. Una actualización no recupera archivos, una captura no guarda el documento y borrar evidencias no organiza la respuesta a una posible infección."
+    }
+  ]
+}

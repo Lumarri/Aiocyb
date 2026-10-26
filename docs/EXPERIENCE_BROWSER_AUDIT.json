@@ -1,0 +1,73 @@
+{
+  "viewport": "390x844",
+  "sections": [
+    "Rutas de aprendizaje",
+    "Laboratorio offline",
+    "Biblioteca",
+    "Repaso de errores",
+    "Logros"
+  ],
+  "labs": [
+    {
+      "id": "protection",
+      "stagesCompleted": 3
+    },
+    {
+      "id": "web-session",
+      "stagesCompleted": 3
+    },
+    {
+      "id": "code-review",
+      "stagesCompleted": 3
+    },
+    {
+      "id": "key-lifecycle",
+      "stagesCompleted": 3
+    }
+  ],
+  "courses": [
+    {
+      "id": "crypto-foundations",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 30
+    },
+    {
+      "id": "keys-data",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 30
+    },
+    {
+      "id": "web-security",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 30
+    },
+    {
+      "id": "secure-coding",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 30
+    }
+  ],
+  "screenshots": [
+    "24-explorar-neon-cian.png",
+    "25-ajustes-neon-violeta.png",
+    "26-rutas-aprendizaje.png",
+    "27-laboratorio-reincidencia.png",
+    "28-biblioteca-favoritos.png",
+    "29-repaso-resuelto.png",
+    "30-logros-reales.png",
+    "31-curso-nuevo-completado.png"
+  ],
+  "errors": [],
+  "themePersistedAfterReload": true,
+  "reviewResolvedWithoutChangingGrades": true,
+  "finalScore": "2/3",
+  "courseCompleted": true,
+  "previousGradesRetained": true,
+  "labsAwardNoCourseXP": true,
+  "persistedAfterReload": true,
+  "blockedExternalRequests": 7
+}

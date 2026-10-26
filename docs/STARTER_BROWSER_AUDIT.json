@@ -1,0 +1,38 @@
+[
+  {
+    "courseId": "foundations",
+    "score": 2,
+    "questions": 3,
+    "mistakeCount": 2,
+    "originalGradesRetained": 6,
+    "independentCases": true,
+    "dialogueControls": false,
+    "persistedAfterReload": true,
+    "blockedExternalRequests": 4,
+    "errors": []
+  },
+  {
+    "courseId": "identity",
+    "score": 2,
+    "questions": 3,
+    "mistakeCount": 1,
+    "originalGradesRetained": 6,
+    "independentCases": true,
+    "dialogueControls": false,
+    "persistedAfterReload": true,
+    "blockedExternalRequests": 4,
+    "errors": []
+  },
+  {
+    "courseId": "phishing",
+    "score": 2,
+    "questions": 3,
+    "mistakeCount": 1,
+    "originalGradesRetained": 6,
+    "independentCases": true,
+    "dialogueControls": false,
+    "persistedAfterReload": true,
+    "blockedExternalRequests": 4,
+    "errors": []
+  }
+]

@@ -1,0 +1,6 @@
+# Preserve exact source bytes: editorial and browser audits use SHA-256.
+* -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

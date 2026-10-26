@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "c-digital-life-courseComplete-0-1",
+      "lessonId": "digital-life",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "Fundamentos completado, cariño. Ya sabes qué defiendes y cómo preparar el terreno; al caos le acabas de estropear una entrada bastante cómoda.",
+      "explanation": "Has conectado activos digitales con confidencialidad, integridad y disponibilidad, además de reconocer debilidades, copias útiles y respuestas prudentes. Ponlo en práctica revisando una cuenta importante y comprobando que puedes recuperar un archivo."
+    },
+    {
+      "id": "c-risk-routine-courseComplete-0-1",
+      "lessonId": "risk-routine",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "El curso de Fundamentos ya es tuyo. Me encanta presumir de estudiantes que combinan criterio y prevención; qué fastidio tan delicioso para los desastres.",
+      "explanation": "Ahora distingues el valor de tus datos, las propiedades de seguridad y el papel de amenazas y vulnerabilidades. Mantén actualizaciones, respaldos comprobados y un contacto de ayuda; puedes elegir otro curso o repasar casos concretos."
+    },
+    {
+      "id": "c-passwords-courseComplete-0-1",
+      "lessonId": "passwords",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "Identidad completado. Las contraseñas recicladas perdieron su trono y las autorizaciones inesperadas ya no te mandan; joder, hoy mereces mi sonrisa más presumida.",
+      "explanation": "El curso reúne claves exclusivas, uso de gestores, factores distintos y recuperación protegida. El siguiente paso práctico es revisar la seguridad de un servicio oficial sin introducir credenciales reales en los ejercicios de esta app."
+    },
+    {
+      "id": "c-mfa-courseComplete-0-1",
+      "lessonId": "mfa",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "Acabas de cerrar el curso de Identidad, precioso. Tus cuentas necesitan criterio además de candados, y hoy les conseguiste una defensa con bastante carácter.",
+      "explanation": "Sabes separar contraseñas entre cuentas, reforzar la autenticación y rechazar solicitudes ajenas. Revisa desde la configuración oficial tus métodos y opciones de recuperación; guarda los códigos de respaldo seguros y separados del dispositivo que podrías perder."
+    },
+    {
+      "id": "c-phishing-signals-courseComplete-0-1",
+      "lessonId": "phishing-signals",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "Phishing completado, y ningún premio sospechoso logró comprarte la prisa. Déjame disfrutarlo: los estafadores prepararon el anzuelo y tú aprendiste a mirar el sedal.",
+      "explanation": "Has practicado señales de engaño, lectura de dominios, verificación independiente y respuesta según lo ocurrido. Conserva ese método al recibir mensajes reales: pausa, comprueba por canales conocidos y pide ayuda si entregaste datos o ejecutaste archivos."
+    },
+    {
+      "id": "c-safe-response-courseComplete-0-1",
+      "lessonId": "safe-response",
+      "stage": "courseComplete",
+      "anchor": 0,
+      "expression": "proud",
+      "text": "Curso de Phishing terminado. Sabes detectar la trampa y actuar si algo sale mal; esa combinación arruina muchas fiestas de mierda, y me encanta.",
+      "explanation": "Distingues una conexión cifrada de un sitio honesto y un clic de la entrega de credenciales o la ejecución de archivos. Repasa cualquier situación dudosa y prepara un canal de soporte verificado antes de necesitarlo con urgencia."
+    }
+  ]
+}

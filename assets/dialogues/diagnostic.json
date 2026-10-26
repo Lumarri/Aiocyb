@@ -1,0 +1,276 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "d-question-0",
+      "lessonId": "diagnostic",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El remitente trae un reloj imaginario para que corras. Qué detalle tan conveniente. Antes de obedecer, quiero ver cómo distingues una petición de una prueba.",
+      "explanation": "Este caso examina tu reacción ante una solicitud urgente de credenciales. Compara las opciones según la independencia de la comprobación: piensa qué información proviene del mensaje sospechoso y qué información podrías obtener por tu cuenta."
+    },
+    {
+      "id": "d-question-1",
+      "lessonId": "diagnostic",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Hay varias formas de presumir de seguridad; algunas solo cambian la decoración. Elige una que complique de verdad la entrada a tus cuentas, cariño.",
+      "explanation": "Aquí importa reconocer qué medidas modifican las condiciones de acceso. Valora si una opción reduce el daño entre servicios, añade una comprobación de identidad o simplemente altera cómo se ve el perfil."
+    },
+    {
+      "id": "d-question-2",
+      "lessonId": "diagnostic",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Una actualización vuelve a pedir atención y tú estabas cómodamente ignorándola. Vamos a averiguar si conoces su función antes de declarar que todas son un fastidio inútil.",
+      "explanation": "La pregunta contrasta cambios de apariencia, mantenimiento del software y recuperación de archivos. Busca la finalidad que corresponde al sistema actualizado y distingue qué tareas requieren medidas adicionales aunque el equipo esté al día."
+    },
+    {
+      "id": "d-question-3",
+      "lessonId": "diagnostic",
+      "stage": "question",
+      "anchor": 3,
+      "expression": "skeptical",
+      "text": "Tu trabajo tiene un gemelo. Fantástico. Ahora imagina que desaparece el equipo entero y dime si ese gemelo comparte exactamente la misma desgracia.",
+      "explanation": "Una copia debe evaluarse frente al incidente que destruiría el original. Además de pensar en su ubicación, considera cómo sabrías que contiene los datos necesarios y que puedes abrirlos cuando realmente haga falta."
+    },
+    {
+      "id": "d-question-4",
+      "lessonId": "diagnostic",
+      "stage": "question",
+      "anchor": 4,
+      "expression": "exasperated",
+      "text": "Suena una autorización que no pediste. No vamos a acariciar el botón para que deje de molestar; primero decide quién está intentando entrar y qué estás aprobando.",
+      "explanation": "El ejercicio trata de una solicitud de autenticación inesperada. Distingue entre reconocer una operación propia y conceder acceso por presión o cansancio. Piensa qué opción mantiene el control sin entregar pruebas de identidad a terceros."
+    },
+    {
+      "id": "d-hint-0",
+      "lessonId": "diagnostic",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Te regalo una pista, no mi criterio entero: si el mensaje fabrica la urgencia, también podría fabricar el enlace donde pretende que la resuelvas.",
+      "explanation": "Pregúntate si la vía elegida para comprobar el aviso depende del mismo remitente que te inquieta. Un canal conocido previamente permite contrastar la petición sin confiar en las instrucciones que estás evaluando."
+    },
+    {
+      "id": "d-hint-1",
+      "lessonId": "diagnostic",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Imagina una filtración en una tienda pequeña. ¿Qué medida impediría que ese desastre abra también otras puertas? Después piensa si una clave debería ser la única barrera.",
+      "explanation": "Analiza dos problemas separados: la reutilización entre servicios y el acceso a una cuenta concreta. La opción más sólida debe mejorar esas condiciones, en lugar de limitarse a modificar una etiqueta visible."
+    },
+    {
+      "id": "d-hint-2",
+      "lessonId": "diagnostic",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "El aspecto nuevo puede ser el envoltorio; mira qué arregla el paquete. Una aplicación bonita también puede tener fallos, por mucho que me favorezca su tema oscuro.",
+      "explanation": "Piensa en errores descubiertos después de publicar un programa. Algunas actualizaciones cambian funciones y otras corrigen problemas; ninguna de esas labores equivale a conservar una versión recuperable de tus documentos personales."
+    },
+    {
+      "id": "d-hint-3",
+      "lessonId": "diagnostic",
+      "stage": "hint",
+      "anchor": 3,
+      "expression": "thinking",
+      "text": "Pon a prueba tu respuesta con una pérdida total del portátil. Si ambas versiones desaparecen juntas, el supuesto plan de rescate tiene un agujero bastante cabrón.",
+      "explanation": "No juzgues una copia solo por tener otro nombre. Examina si comparte el punto de fallo del original y si alguna vez has comprobado que permite reconstruir el archivo completo."
+    },
+    {
+      "id": "d-hint-4",
+      "lessonId": "diagnostic",
+      "stage": "hint",
+      "anchor": 4,
+      "expression": "thinking",
+      "text": "La notificación pregunta por una acción concreta. Relaciónala con algo que tú hayas empezado; no la conviertas en un trámite automático porque insiste con mucho entusiasmo.",
+      "explanation": "Una confirmación adicional sirve para discriminar intentos de acceso, no para aprobarlos indiscriminadamente. Revisa el origen de la solicitud y recuerda que un código compartido también puede convertirse en autorización para otra persona."
+    },
+    {
+      "id": "d-correct-0",
+      "lessonId": "diagnostic",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Eso me gusta: el reloj del estafador se queda haciendo teatro mientras tú buscas una comprobación independiente. La prisa no acaba de ganarse tu contraseña.",
+      "explanation": "Entrar directamente en el servicio oficial permite contrastar el aviso sin usar el enlace del correo. La separación entre el mensaje recibido y el canal de verificación reduce la dependencia de instrucciones potencialmente fraudulentas."
+    },
+    {
+      "id": "d-correct-1",
+      "lessonId": "diagnostic",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Elegiste separar las llaves y añadir control de acceso. Mira qué sorpresa: una decisión útil sin cambiarte el avatar ni comprar una sudadera de hacker.",
+      "explanation": "Las claves distintas limitan el alcance de una filtración entre servicios. MFA añade una verificación de identidad en la cuenta que lo ofrece; sus métodos tienen resistencias diferentes, pero complementa la separación de contraseñas."
+    },
+    {
+      "id": "d-correct-2",
+      "lessonId": "diagnostic",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Exacto. Los parches también arreglan errores de seguridad, no solo mueven botones para fastidiarte la memoria muscular. Esta vez el maldito aviso tenía una razón.",
+      "explanation": "Actualizar puede corregir vulnerabilidades conocidas del sistema o las aplicaciones. Mantener el software al día reduce esa exposición, mientras las copias de seguridad siguen cubriendo una necesidad distinta: recuperar la información si se pierde o daña."
+    },
+    {
+      "id": "d-correct-3",
+      "lessonId": "diagnostic",
+      "stage": "correct",
+      "anchor": 3,
+      "expression": "delighted",
+      "text": "Ubicación separada y restauración comprobada. Ya hablamos de un rescate y no de otro archivo que se hunde elegantemente junto al primero. Te concedo esa victoria.",
+      "explanation": "La separación evita que una única pérdida física o lógica alcance necesariamente ambas versiones. Probar la restauración verifica que la copia contiene lo necesario, es legible y puede utilizarse para recuperar el trabajo."
+    },
+    {
+      "id": "d-correct-4",
+      "lessonId": "diagnostic",
+      "stage": "correct",
+      "anchor": 4,
+      "expression": "delighted",
+      "text": "Bien: puerta cerrada y revisión por tu cuenta. Quien inició esa visita tendrá que buscar otro método; tú no acabas de firmarle el acceso por agotamiento.",
+      "explanation": "Rechazar una solicitud desconocida evita autorizar ese intento. Después conviene revisar la actividad y la seguridad desde el servicio oficial, porque la petición inesperada puede indicar que otra persona está intentando usar la cuenta."
+    },
+    {
+      "id": "d-incorrect-0-0",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "La presión del correo puede distraer, cariño. Antes de enviar una clave, verifiquemos el aviso por un acceso oficial independiente; no necesitamos resolverlo desde ese mensaje.",
+      "explanation": "La amenaza de perder acceso no autentica al remitente. Entregar la contraseña convierte la petición en una posible filtración; antes de actuar, abre el servicio por una vía conocida y comprueba si existe realmente ese aviso."
+    },
+    {
+      "id": "d-incorrect-0-2",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Querer avisar a alguien es comprensible. Primero comprobemos si el correo es auténtico; reenviarlo ahora solo extendería una petición que todavía no hemos verificado.",
+      "explanation": "Compartir un mensaje sospechoso sin contexto puede propagar el engaño. La acción indicada es verificar el aviso en el servicio oficial; si necesitas ayuda, describe la situación sin distribuir enlaces peligrosos ni credenciales."
+    },
+    {
+      "id": "d-incorrect-1-0",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Una sola clave parece cómoda al empezar. El inconveniente es que una filtración puede afectar varias cuentas; revisemos cómo separar accesos y añadir otra comprobación.",
+      "explanation": "Reutilizar credenciales permite que una filtración en un servicio se pruebe en otros. Conviene mantener contraseñas largas, únicas y difíciles de adivinar, y activar una verificación adicional donde esté disponible."
+    },
+    {
+      "id": "d-incorrect-1-2",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "El nombre de usuario identifica la cuenta, cielo. Para proteger su acceso necesitamos revisar las credenciales y las verificaciones; cambiar la etiqueta no sustituye esas medidas.",
+      "explanation": "La identificación visible no sustituye una contraseña robusta ni la autenticación adicional. La opción correcta combina claves distintas entre cuentas y MFA para añadir una barrera independiente en cada servicio compatible."
+    },
+    {
+      "id": "d-incorrect-2-0",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Los cambios visuales se notan más, es normal. Una actualización también puede reparar fallos internos; conviene mirar qué corrige antes de reducirla a nuevos colores.",
+      "explanation": "Un parche puede modificar el comportamiento vulnerable de un programa aunque apenas cambie su aspecto. Las notas de la versión ayudan a identificar sus correcciones; asumir que todo es cosmético favorece posponer arreglos necesarios."
+    },
+    {
+      "id": "d-incorrect-2-2",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Actualizar y guardar copias ayudan con problemas diferentes. Podemos reparar vulnerabilidades y aun perder un archivo; mantengamos también una forma separada de recuperar el trabajo.",
+      "explanation": "Las actualizaciones mantienen el software y pueden corregir fallos. Las copias conservan información recuperable ante pérdidas o daños; son medidas complementarias y ninguna elimina la necesidad de realizar correctamente la otra."
+    },
+    {
+      "id": "d-incorrect-3-0",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 3,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Conservarlo en el equipo es cómodo, cariño. Para recuperarlo tras una avería o un robo necesitamos otra ubicación que no desaparezca junto con el original.",
+      "explanation": "Una copia en el mismo dispositivo puede servir frente a algunos errores, pero no cubre incidentes que afectan al equipo completo. Conserva otra separada y comprueba su recuperación para reducir esos fallos compartidos."
+    },
+    {
+      "id": "d-incorrect-3-1",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 3,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "La papelera puede recuperar un borrado reciente, pero se vacía. Busquemos una copia separada que podamos restaurar incluso si el archivo original ya no está disponible.",
+      "explanation": "La papelera facilita deshacer algunas eliminaciones, pero no representa una estrategia de copia segura. Elige una ubicación separada del original y verifica la restauración de la información que necesitas conservar."
+    },
+    {
+      "id": "d-incorrect-4-1",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 4,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Las solicitudes pueden parecer rutinarias, cielo. Antes de aprobar, comprueba si tú empezaste ese acceso; la verificación adicional funciona cuando reconoces lo que autorizas.",
+      "explanation": "Una confirmación MFA puede completar el acceso de quien la solicitó. Si no iniciaste esa operación, recházala y revisa la cuenta desde el canal oficial en lugar de conceder permiso para quitar la notificación."
+    },
+    {
+      "id": "d-incorrect-4-2",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 4,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Un código parece un dato pequeño, pero puede permitir entrar. Guárdalo para el acceso que tú iniciaste y verifica cualquier petición inesperada por canales oficiales.",
+      "explanation": "Los códigos de autenticación son temporales, pero pueden autorizar una sesión durante su vigencia. No los entregues a terceros; rechaza accesos que no reconoces y consulta al soporte mediante sus canales oficiales."
+    },
+    {
+      "id": "d-result-0-1",
+      "lessonId": "diagnostic",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Hay criterio aprovechable detrás de esa pantalla. No te pondré una corona por cinco preguntas, pero sí una ruta para convertir buenas intuiciones en decisiones que puedas justificar.",
+      "explanation": "El diagnóstico detecta conocimientos iniciales, no certifica dominio de la ciberseguridad. Revisa los temas donde dudaste y practica los casos: explicar por qué eliges una medida importa más que recordar una opción aislada."
+    },
+    {
+      "id": "d-result-0-2",
+      "lessonId": "diagnostic",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Tu punto de partida permite avanzar con algo de ventaja. Me reservo el derecho a levantar una ceja cuando confundas comodidad con seguridad; para eso también me trajeron.",
+      "explanation": "Las respuestas muestran reconocimiento de medidas básicas en contextos breves. Los cursos desarrollan sus límites, los procedimientos y la respuesta ante errores, para que puedas aplicar esos criterios fuera de una pregunta de opción múltiple."
+    },
+    {
+      "id": "d-result-1-1",
+      "lessonId": "diagnostic",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Este resultado solo nos dice dónde empezar. Las cuentas reales agradecen muchísimo que te equivoques aquí primero. Vamos a desmontar las confusiones una por una, sin carreras absurdas.",
+      "explanation": "El diagnóstico no bloquea cursos ni resta progreso. Empieza por fundamentos, continúa con protección de cuentas y después estudia phishing; revisar tus decisiones con explicaciones concretas ayuda a corregir hábitos antes de aplicarlos."
+    },
+    {
+      "id": "d-result-1-2",
+      "lessonId": "diagnostic",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Todavía hay puertas conceptuales abiertas, pero ninguna exige fingir que ya lo sabes todo. Mi ego ocupa suficiente espacio; tú puedes usar el resto para preguntar y practicar.",
+      "explanation": "Una nota inicial baja no describe tu capacidad de aprender. Señala temas que requieren más atención: interpreta cada error, prueba el procedimiento correspondiente y vuelve a evaluar tu razonamiento después del recorrido formativo."
+    }
+  ]
+}

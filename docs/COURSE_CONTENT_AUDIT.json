@@ -1,0 +1,43 @@
+{
+  "courses": 6,
+  "lessons": 240,
+  "exercises": 240,
+  "authored_aoi_lines": 1920,
+  "unique_theories": 240,
+  "answer_explanations": 720,
+  "unique_answer_explanations": 720,
+  "theory_words": 18233,
+  "files": [
+    {
+      "path": "assets/courses/networks-basics.json",
+      "sha256": "aefe3953e30ddb0c8cb0bf0db79566b604fb70aef6366f12bcb3f340181e4ab8",
+      "lessons": 40
+    },
+    {
+      "path": "assets/courses/ip-dns.json",
+      "sha256": "eeb8a99cb69177016e83c7f8db76b5dca21aef37213d778eda3f9bb5cb93b1ef",
+      "lessons": 40
+    },
+    {
+      "path": "assets/courses/home-wifi.json",
+      "sha256": "ff91a7cd101a28db53dda26e0d6bf782b439e9c3c0d50b298f3348774a2df7bf",
+      "lessons": 40
+    },
+    {
+      "path": "assets/courses/public-networks.json",
+      "sha256": "b488261fb2cad4e43ae4883f6b87994fbfdef5511d3236e6275bbd95b260ca21",
+      "lessons": 40
+    },
+    {
+      "path": "assets/courses/safe-browsing.json",
+      "sha256": "16e8727f7b581f739b90dc2367de799598a45ceb7ddf85c15c56a7a0539a26b5",
+      "lessons": 40
+    },
+    {
+      "path": "assets/courses/web-privacy.json",
+      "sha256": "aecaa64812d550088186aad7c109de8f2267ddb973a932462ed13e1f394ba36b",
+      "lessons": 40
+    }
+  ],
+  "errors": []
+}

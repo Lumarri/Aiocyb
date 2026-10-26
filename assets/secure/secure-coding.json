@@ -1,0 +1,1304 @@
+{
+  "id": "secure-coding",
+  "title": "Programación segura desde el diseño",
+  "description": "Aprende a revisar entradas, consultas, archivos, dependencias y fallos con contratos claros y ejemplos ilustrativos.",
+  "symbol": "P1",
+  "color": 4288010420,
+  "category": "Criptografía, web y código",
+  "closure": {
+    "text": "Treinta ejercicios de código y ya preguntas por contratos, permisos y efectos, cariño. No voy a fingir que eso no me encanta. Mantén esa costumbre cuando el programa crezca.",
+    "explanation": "Completaste diez lecciones de diseño y revisión: fronteras de confianza, validación, parámetros, archivos, secretos, componentes, fallos, concurrencia y pruebas. Los ejemplos son ilustrativos y deben adaptarse mediante documentación oficial. Conserva contratos claros y verifica tanto el recorrido permitido como los efectos que deben rechazarse."
+  },
+  "lessons": [
+    {
+      "id": "secure-coding-contratos",
+      "title": "Un programa necesita límites explicables",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Explicar la función antes del código",
+          "body": "Un programa seguro no comienza únicamente con una lista de funciones técnicas. Necesita comprender qué trabajo debe realizar y qué resultados serían incorrectos para las personas y datos que utiliza. Imagina una función que guarda una solicitud de ayuda. Su contrato puede indicar qué campos necesita, quién puede crearla, qué tamaño admite y qué respuesta produce cuando no se cumplen esas condiciones. También debe describir lo que no puede ocurrir: guardar datos de otra cuenta sin permiso, generar copias sensibles en un error o confirmar éxito después de perder la operación. Estas condiciones pueden expresarse en lenguaje claro antes de escoger un framework. No requieren que una persona principiante conozca todas las amenazas posibles para empezar a mejorar el diseño. La pregunta útil es qué propiedad importante se intenta mantener en cada paso y qué evidencia permitirá comprobarla. Un contrato pequeño ayuda a comunicar la intención de la función y evita que la implementación acumule decisiones implícitas que distintas personas interpretan de manera incompatible al añadir una nueva pantalla o una ruta de acceso."
+        },
+        {
+          "title": "Seguir fuentes y destinos",
+          "body": "Los datos pueden llegar desde un formulario, un archivo local, una integración o un registro guardado por otra función. Cada fuente debe evaluarse según el contrato de la operación actual, sin suponer que todo lo que ya estaba almacenado es seguro para cualquier uso. Un texto válido como comentario no se convierte automáticamente en una ruta de archivo permitida ni en una parte de consulta que el motor deba interpretar como estructura. Dibuja el recorrido desde la fuente hasta los destinos que producen efectos: base de datos, sistema de archivos, respuesta de una página o registro de diagnóstico. Marca dónde cambia el significado del valor y qué comprobación protege ese cambio. Esta técnica de revisión permite localizar fronteras de confianza sin depender de una lista de palabras prohibidas. La seguridad no consiste en desconfiar de todas las personas por carácter, sino en no asignar capacidades adicionales a un dato solo porque llegó por un camino familiar o porque otra función lo utilizó antes en un contexto distinto con unas reglas que ya no son las mismas."
+        },
+        {
+          "title": "Separar validación y autoridad",
+          "body": "Un dato puede estar bien formado y seguir solicitando algo que la persona no tiene permiso para hacer. Una cantidad puede ser un entero válido y exceder el saldo disponible. Un identificador puede tener el formato previsto y pertenecer a otra cuenta. El programa necesita distinguir contrato de representación, regla del negocio y autorización de la acción. Ninguna de esas comprobaciones debe quedar implícita en el hecho de que la interfaz ofrece un botón. La validación del cliente puede ayudar a mostrar errores pronto, pero el componente que ejecuta la operación debe aplicar las condiciones que realmente la controlan. Utiliza funciones y mecanismos del framework que mantengan esa separación de forma comprensible. Si una regla se comparte entre varias rutas, conviene revisar cómo se conserva coherencia sin duplicaciones que luego evolucionen de manera distinta. Para practicar compara dos solicitudes casi iguales que solo cambian en pertenencia o estado del recurso. Esa diferencia obliga a explicar qué condición autoriza el resultado, en lugar de concluir que cualquier valor del tipo correcto merece producir el mismo efecto."
+        },
+        {
+          "title": "Diseñar fallos y pruebas observables",
+          "body": "El contrato debe incluir cómo responde la función si falta un campo, falla una dependencia o cambian los permisos. Una respuesta segura evita ejecutar efectos no autorizados y no revela información innecesaria sobre secretos o recursos ajenos. También debe permitir que la persona entienda qué puede hacer después sin mostrarle detalles internos que no necesita. La trazabilidad operativa puede mantenerse mediante referencias y motivos controlados en registros protegidos. Al probar, observa datos antes y después de la operación, no solamente el texto que devuelve. Una función que responde error después de realizar un cambio indebido no cumple su contrato aunque el mensaje parezca correcto. Utiliza datos ficticios y casos basados en las condiciones del requisito: un recorrido válido, límites, pertenencia incorrecta y fallo controlado. No hace falta escribir una prueba que repita cada línea de implementación; el objetivo es comprobar propiedades que deben seguir siendo ciertas cuando el código se reordene. Un contrato explicable y pruebas de efectos aportan una base para aprender y revisar antes de incorporar más funciones al programa que el equipo tendrá que mantener."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué describe mejor el contrato de una función sensible?",
+          "scenario": "El equipo ficticio prepara una función para registrar solicitudes y necesita acordar qué resultados comprobará antes de añadir su implementación al proyecto.",
+          "options": [
+            "Solo el nombre de la variable principal",
+            "Propósito, entradas, permisos, efectos permitidos y comportamiento ante fallos",
+            "Solo que el botón sea fácil de pulsar"
+          ],
+          "answer": 1,
+          "explanation": "El contrato define propiedades observables y condiciones de la operación. Permite revisar decisiones y probar tanto el resultado válido como los efectos que deben impedirse ante un fallo.",
+          "wrongExplanations": [
+            "El nombre de una variable no describe quién puede actuar, qué condiciones debe cumplir la solicitud ni qué cambios son aceptables para la función.",
+            null,
+            "La usabilidad del botón no establece las reglas del componente que ejecutará la operación ni el comportamiento que debe comprobarse ante datos o permisos incorrectos."
+          ],
+          "aoi": {
+            "question": "La función necesita una intención revisable, tesoro. Elige algo que permita comprobar qué efectos corresponden y cuáles deben impedirse.",
+            "hint": "Busca condiciones que otra persona pueda evaluar sin tener que adivinar lo que pretendían sus nombres de variables o elementos visuales.",
+            "correct": "Correcto: el equipo ahora puede discutir requisitos y evidencia antes de repartir decisiones implícitas por toda la implementación del programa.",
+            "soft": "Un contrato útil describe el comportamiento que debe mantenerse, no solamente una parte visible de cómo se presenta la operación a la persona.",
+            "sharp": "La variable no escribió el requisito por ti, cariño. Define entradas, permisos y efectos antes de pedirle al código que adivine."
+          }
+        },
+        {
+          "prompt": "¿Por qué un dato almacenado no es seguro para cualquier destino?",
+          "scenario": "Un comentario ficticio aceptado como texto se reutiliza más tarde como parte de una ruta de archivo mediante una función diferente del mismo programa.",
+          "options": [
+            "Porque el nuevo contexto tiene reglas y capacidades que el contrato anterior no comprobaba",
+            "Porque todo dato guardado debe borrarse siempre de inmediato",
+            "Porque las bases de datos impiden cualquier reutilización de valores"
+          ],
+          "answer": 0,
+          "explanation": "La garantía depende del contrato y destino. Una validación para texto no autoriza automáticamente interpretar el mismo valor como una ruta con efectos sobre archivos del sistema.",
+          "wrongExplanations": [
+            null,
+            "La conservación debe responder a la función y al contexto; el problema es atribuir garantías universales a una comprobación realizada para un propósito distinto.",
+            "Los valores pueden reutilizarse en diseños apropiados, pero cada contexto exige respetar sus reglas de interpretación y las capacidades que se permitirán al utilizarlos."
+          ],
+          "aoi": {
+            "question": "El comentario cambió de oficio, cielo. Comprueba qué reglas necesita antes de dejarlo elegir una ubicación de archivo dentro del sistema.",
+            "hint": "Una comprobación anterior puede haber verificado formato de texto sin cubrir los efectos del nuevo destino al que se entrega ese dato.",
+            "correct": "Exacto: seguiste la frontera de interpretación y mantuviste el contrato del nuevo uso en vez de heredar una confianza que nunca se había comprobado.",
+            "soft": "La palabra validado no es una garantía universal; hay que conocer qué condiciones se comprobaron y para qué función concreta del programa.",
+            "sharp": "El texto no recibió permiso para pasearse por carpetas solo por haber sido un comentario correcto, tesoro. Revisa su nuevo destino y sus límites."
+          }
+        },
+        {
+          "prompt": "¿Qué debe observarse al probar un rechazo por falta de permiso?",
+          "scenario": "Una función ficticia devuelve el mensaje esperado ante una cuenta sin acceso y el equipo quiere comprobar si realmente impidió la modificación solicitada sobre el recurso.",
+          "options": [
+            "Solo el color del mensaje",
+            "Solo que la función terminó de ejecutarse",
+            "El estado del recurso y la ausencia del efecto no permitido, además de la respuesta"
+          ],
+          "answer": 2,
+          "explanation": "El rechazo debe impedir el efecto indebido. Comprobar datos antes y después permite detectar cambios que un mensaje de error, aunque tenga el texto correcto, no descarta por sí solo.",
+          "wrongExplanations": [
+            "El color no muestra si se ejecutó el cambio antes de generar el mensaje ni demuestra que la autorización se haya aplicado en el momento adecuado.",
+            "Terminar de ejecutar no garantiza que se respetaron permisos; una función puede completar su recorrido después de producir un efecto que debía haber rechazado antes.",
+            null
+          ],
+          "aoi": {
+            "question": "El mensaje ya lo vimos, cariño. Falta comprobar si el recurso siguió como tenía que seguir después del rechazo.",
+            "hint": "La prueba debe incluir el efecto observable y no limitarse a confirmar una frase que puede haberse producido demasiado tarde dentro del flujo.",
+            "correct": "Bien: probaste la propiedad del contrato que importa, en vez de felicitar a una respuesta que quizá solo llegó después del daño.",
+            "soft": "Una respuesta de error es una parte del resultado; los datos y efectos también cuentan al decidir si la operación cumplió el contrato.",
+            "sharp": "El mensaje rojo no devuelve permisos al pasado, tesoro. Comprueba que el cambio indebido nunca ocurrió antes de anunciar que la defensa funcionó."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un identificador válido",
+          "scenario": "Una función ficticia recibe un identificador del tipo correcto y guarda un cambio sin comprobar que la cuenta tenga permiso sobre el recurso al que ese identificador se refiere.",
+          "explanation": "La validación de formato no resolvió autorización. El componente que guarda debe comprobar identidad, recurso y acción según las reglas del servicio. Un identificador correcto solo permite localizar un objeto; no demuestra que la persona pueda modificarlo dentro de ese contexto."
+        },
+        {
+          "title": "El error después del cambio",
+          "scenario": "Una operación ficticia modifica una ficha y luego descubre que faltaba un permiso, devolviendo un mensaje de rechazo aunque la información ya quedó alterada.",
+          "explanation": "La comprobación llegó después del efecto que debía impedir. El contrato necesita garantizar una decisión apropiada antes de modificar y un manejo consistente del cambio. La prueba debe observar el estado del recurso, porque una respuesta de error por sí sola no demuestra que se haya protegido la operación."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una clase diseña una función ficticia para guardar solicitudes y aprende a describir qué datos recibe, qué permisos necesita y qué efectos debe impedir antes de escribir su implementación.",
+      "scenario": "Una clase diseña una función ficticia para guardar solicitudes y aprende a describir qué datos recibe, qué permisos necesita y qué efectos debe impedir antes de escribir su implementación.",
+      "steps": [
+        "Describe propósito, entradas, permisos y efectos prohibidos de una función.",
+        "Dibuja fuentes, destinos y cambios de significado de los datos.",
+        "Prueba el contrato observando respuestas y efectos con información ficticia."
+      ],
+      "sourceIds": [
+        "code-input",
+        "web-authz"
+      ],
+      "aoi": {
+        "intro": "Antes de programar, dime qué debe pasar y qué no puede pasar, cariño.",
+        "theory0": "Un contrato claro sabe más de seguridad que un botón puesto con mucha fe.",
+        "theory1": "Sigue la entrada hasta sus destinos; el mismo dato puede recibir significados diferentes.",
+        "theory2": "Tipo correcto, permiso y regla del negocio son comprobaciones distintas. Respeta sus trabajos.",
+        "theory3": "El fallo también tiene un contrato que no debe revelar secretos ni producir efectos indebidos.",
+        "case0": "El identificador pasó formato y todavía no ha conseguido permiso para tocar ese recurso.",
+        "case1": "El error llegó después del cambio. El recurso necesitaba la comprobación antes del aplauso rojo.",
+        "pass": "Bien: ya puedes explicar la intención del programa y comprobar efectos sin depender de su apariencia.",
+        "review": "Volvamos al contrato y al momento de ejecutar; ahí se ordenan las dudas, tesoro."
+      }
+    },
+    {
+      "id": "secure-coding-validacion",
+      "title": "Tipos, límites y reglas del negocio",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Definir lo aceptable con propósito",
+          "body": "Validar una entrada significa comprobar que cumple condiciones necesarias para la operación, no buscar cualquier carácter que suene sospechoso. Un nombre puede admitir espacios y signos legítimos; una cantidad puede requerir un rango definido; un código puede pertenecer a un conjunto limitado por el servicio. El contrato debe explicar esas decisiones según la tarea y las necesidades de las personas usuarias. Una lista de valores permitidos resulta útil cuando el dominio está realmente acotado, como una selección de estados conocidos. No debe inventarse una restricción arbitraria que excluya datos legítimos solo para simular seguridad. La validación debe ejecutarse en el componente que controla la operación, aunque el cliente la repita para ayudar a corregir errores de forma inmediata. En una práctica define entradas válidas y no válidas a partir de requisitos escritos, incluyendo casos límite. Esto permite discutir por qué se rechaza algo sin depender de una impresión sobre si el valor parece extraño, y evita que cada pantalla construya una interpretación distinta de lo que acepta el mismo servicio."
+        },
+        {
+          "title": "Convertir y limitar correctamente",
+          "body": "Los valores llegan con una representación que debe interpretarse mediante funciones apropiadas. Convertir un texto a número requiere manejar errores y decidir qué variantes forman parte del formato aceptado. Además del tipo, conviene limitar tamaños y cantidades antes de realizar trabajos costosos, de acuerdo con el recurso que consume la función. Un texto pequeño en pantalla puede ocupar más bytes de lo esperado, y caracteres visibles no equivalen siempre a una cantidad idéntica de unidades de almacenamiento. La regla debe expresar qué mide y por qué. Evita recortes silenciosos que cambien el significado de una entrada sensible, como un identificador o una credencial, sin comunicarlo según el diseño. Tampoco permitas que un error de conversión active un valor predeterminado que concede una capacidad más amplia. Para los ejercicios usa cantidades y textos ficticios, y prueba justo por debajo, en el límite y por encima de lo previsto. Una validación útil mantiene un contrato coherente tanto cuando acepta como cuando encuentra datos que no puede interpretar de la manera que la operación requiere."
+        },
+        {
+          "title": "Normalización y orden de comprobación",
+          "body": "Normalizar puede convertir representaciones equivalentes a una forma que el sistema decide utilizar, pero esa transformación necesita reglas definidas. No es apropiado aplicar indiscriminadamente cambios que alteren la identidad o significado de un dato. Una dirección, un nombre y una contraseña pueden necesitar tratamientos distintos según su contrato. Si el sistema comprueba una representación y después transforma el valor antes de usarlo, puede terminar operando sobre algo que no satisfacía las condiciones realmente evaluadas. Revisa el orden de interpretación, normalización, validación y uso para mantener correspondencia entre lo aceptado y lo ejecutado. Evita cadenas de conversiones repetidas cuya interacción nadie puede explicar, especialmente cuando participan componentes con reglas diferentes. La documentación de la plataforma ayuda a elegir funciones apropiadas para formatos específicos. En la práctica compara dos recorridos ficticios y pregunta si ambos terminan utilizando exactamente la representación que se verificó. El propósito no es inventar una limpieza universal, sino mantener estable el significado del dato a lo largo de las transformaciones que sí son necesarias para la operación del servicio."
+        },
+        {
+          "title": "La validación no termina las otras tareas",
+          "body": "Después de aceptar una cantidad o un identificador, todavía hay que comprobar reglas del negocio y permisos. Un entero dentro del rango técnico permitido puede superar una cuota o solicitar una operación incompatible con el estado actual del recurso. Un texto válido puede necesitar parámetros al entrar en SQL o escape contextual al mostrarse en una página. La validación es complementaria a esos mecanismos y no debe utilizarse como argumento para retirarlos. También conviene manejar errores con mensajes que expliquen qué puede corregir la persona sin exponer información privada sobre otras cuentas o registros. En un proyecto mantenible, las reglas compartidas deben conservar coherencia entre rutas y actualizar sus pruebas cuando cambie el requisito. Prueba valores legítimos variados, límites y casos que deberían rechazarse, observando que el servidor no produce efectos antes de completar las comprobaciones necesarias. Esa disciplina evita dos extremos: confiar ciegamente en cualquier entrada del cliente y rechazar información válida por una regla superficial que no comprende el propósito del campo ni las garantías que corresponden a su uso posterior."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué falta si una cantidad válida excede la cuota de la cuenta?",
+          "scenario": "Una entrada ficticia es un entero dentro del rango técnico aceptado, pero la operación usaría más recursos de los que esa cuenta tiene disponibles actualmente.",
+          "options": [
+            "Una comprobación de la regla del negocio y los permisos que corresponden al estado actual",
+            "Cambiar el entero a una cadena más larga",
+            "Aceptarla porque el tipo correcto ya autoriza todo"
+          ],
+          "answer": 0,
+          "explanation": "El tipo y rango técnico no equivalen a disponibilidad ni permiso. Deben comprobarse las condiciones del negocio y del recurso antes de realizar el efecto que la cuenta solicita.",
+          "wrongExplanations": [
+            null,
+            "Cambiar la representación no modifica la cuota disponible ni demuestra que la operación esté permitida para esa identidad en el estado actual del servicio.",
+            "La validación de formato no concede capacidades ni resuelve restricciones que dependen del recurso y las reglas de funcionamiento de la aplicación."
+          ],
+          "aoi": {
+            "question": "El número está bien escrito, cielo. Ahora pregunta si esa cuenta puede utilizar esa cantidad en este momento.",
+            "hint": "Distingue la forma del dato de la condición que depende de cuotas, recursos y reglas de la operación concreta.",
+            "correct": "Correcto: respetaste tanto el contrato técnico como el límite del negocio sin pedir a una sola comprobación que resuelva ambas cuestiones.",
+            "soft": "Que un dato pueda interpretarse no significa que deba ejecutarse cualquier solicitud que lo utilice con ese formato.",
+            "sharp": "El entero no se inventó saldo para aprobar tu formulario, cariño. Comprueba la regla del recurso antes de realizar el efecto."
+          }
+        },
+        {
+          "prompt": "¿Qué riesgo existe al transformar después de validar?",
+          "scenario": "Un programa ficticio comprueba una representación y aplica luego una conversión adicional que cambia el valor que interpretará su destino sensible.",
+          "options": [
+            "Siempre mejora automáticamente las garantías de la validación",
+            "Puede utilizar una representación distinta de aquella cuya condición se comprobó",
+            "Hace innecesarias las reglas del destino"
+          ],
+          "answer": 1,
+          "explanation": "La validación debe corresponder al valor y significado utilizados. Las transformaciones deben definirse con un orden que mantenga esa relación, utilizando reglas apropiadas al formato y al destino sensible.",
+          "wrongExplanations": [
+            "Una conversión puede cambiar significado y no garantiza conservar condiciones de una comprobación anterior que evaluaba una representación diferente de la utilizada al final.",
+            null,
+            "El destino mantiene sus reglas de interpretación y efectos; transformar un dato no elimina la necesidad de respetarlas ni demuestra que la nueva representación sea aceptable."
+          ],
+          "aoi": {
+            "question": "La cadena cambió de traje después del control. Comprueba si también cambió lo que significa para su destino, tesoro.",
+            "hint": "Busca la relación entre la representación verificada y la que recibe el componente que va a producir el efecto sensible.",
+            "correct": "Bien: identificaste una desalineación de contrato y puedes ordenar las transformaciones para comprobar lo que realmente se utilizará después.",
+            "soft": "La seguridad necesita conocer qué valor se evaluó y qué valor se entrega, no sumar pasos de limpieza sin entender cómo cambian el significado.",
+            "sharp": "Más conversiones no significan más criterio, cariño. Asegura que el destino utiliza justamente aquello cuyo contrato comprobaste antes de ejecutarlo."
+          }
+        },
+        {
+          "prompt": "¿Qué debe mantenerse al usar un texto validado como valor en SQL?",
+          "scenario": "Un formulario ficticio comprueba longitud y formato de una entrada y luego necesita utilizarla como valor dentro de una consulta a su base de datos.",
+          "options": [
+            "La concatenación porque ya fue validado",
+            "La eliminación universal de espacios como sustituto de otras defensas",
+            "La separación entre datos y estructura mediante parámetros apropiados"
+          ],
+          "answer": 2,
+          "explanation": "La validación y los parámetros cubren condiciones diferentes. El destino SQL necesita mantener la separación estructural incluso cuando el dato pasó el contrato de entrada previsto por la aplicación.",
+          "wrongExplanations": [
+            "Una comprobación puede evolucionar o tener límites y no reemplaza la defensa estructural que impide interpretar el valor como parte de la consulta ejecutada por el motor.",
+            "Eliminar espacios no constituye una parametrización ni resuelve de forma general las reglas de interpretación del motor SQL para los valores de una consulta.",
+            null
+          ],
+          "aoi": {
+            "question": "El dato pasó su contrato, cielo. Ahora conserva la defensa que necesita el motor que lo va a recibir como valor.",
+            "hint": "Distingue reglas del campo de la forma en que el destino separa un valor respecto de las instrucciones de la operación.",
+            "correct": "Exacto: no jubilaste los parámetros porque otra comprobación hubiera hecho bien un trabajo distinto antes en el recorrido del dato.",
+            "soft": "Una validación previa no cambia por sí misma cómo interpreta el destino una cadena que la implementación decide concatenar con estructura de consulta.",
+            "sharp": "Validado no significa autorizado a convertirse en SQL, tesoro. Separa el valor de la estructura aunque el formulario ya haya revisado su formato."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El número que no alcanza",
+          "scenario": "Una cantidad ficticia cumple el formato entero y el rango técnico del campo, pero excede la cuota disponible para la cuenta que solicita la operación.",
+          "explanation": "Pasar tipo y rango no resuelve la regla del negocio. El programa debe comprobar la cuota y la autorización en el momento apropiado antes del efecto. La validación técnica es necesaria y sigue siendo distinta de decidir si esa operación concreta corresponde al estado del recurso."
+        },
+        {
+          "title": "Se comprueba una cosa y se usa otra",
+          "scenario": "Un flujo ficticio valida un nombre de recurso y luego aplica otra transformación que cambia cómo lo interpreta el componente encargado de abrirlo.",
+          "explanation": "La comprobación puede dejar de corresponder al valor realmente utilizado. Deben definirse las transformaciones y validar la representación pertinente para el destino, siguiendo sus reglas. El objetivo es mantener una relación clara entre contrato evaluado y operación ejecutada, no encadenar limpiezas hasta obtener una cadena aceptada."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un formulario ficticio recibe nombres, cantidades y códigos, y el equipo diseña comprobaciones precisas sin confundir formato, normalización y uso seguro del dato en cada destino.",
+      "scenario": "Un formulario ficticio recibe nombres, cantidades y códigos, y el equipo diseña comprobaciones precisas sin confundir formato, normalización y uso seguro del dato en cada destino.",
+      "steps": [
+        "Escribe tipos, tamaños y valores aceptables según el requisito.",
+        "Revisa conversiones y comprueba la representación que realmente se utilizará.",
+        "Mantén permisos, reglas del negocio y defensas del destino después de validar."
+      ],
+      "sourceIds": [
+        "code-input",
+        "code-sql"
+      ],
+      "aoi": {
+        "intro": "Validar necesita un requisito, cariño. Prohibir símbolos a ojo solo produce discusiones nuevas.",
+        "theory0": "Define lo aceptable por su función y no por su apariencia respetable.",
+        "theory1": "Tipo y tamaño necesitan conversiones que fallen de una forma controlada.",
+        "theory2": "La representación comprobada debe corresponder a la que realmente utilizará el destino.",
+        "theory3": "Un dato validado sigue necesitando permisos y un uso seguro donde produce efectos.",
+        "case0": "El entero cabe en el campo y todavía puede superar la cuota de esa cuenta.",
+        "case1": "La cadena cambió después de comprobarla; revisemos el significado que recibió al final.",
+        "pass": "Bien: tus límites ya responden a un contrato y no a supersticiones sobre caracteres.",
+        "review": "Volvamos al valor que se usa y a la regla concreta que debía cumplir, tesoro."
+      }
+    },
+    {
+      "id": "secure-coding-consultas",
+      "title": "Separar valores y estructura en SQL",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "La consulta tiene un lenguaje propio",
+          "body": "SQL es un lenguaje que el motor interpreta para consultar o modificar datos. Si el programa construye una consulta juntando directamente estructura y entrada no confiable, puede conceder a esa entrada un significado distinto del valor que el requisito pretendía buscar. La defensa principal es utilizar consultas parametrizadas o mecanismos equivalentes apropiados de la biblioteca que mantengan separados instrucciones y valores. El programa define la estructura prevista y entrega los datos mediante el enlace de parámetros del controlador. En un ejemplo ilustrativo, una consulta por identificador puede contener un marcador y recibir el identificador como argumento separado, sin formar el texto de instrucciones a partir de ese contenido. La sintaxis exacta de marcadores y llamadas varía entre bibliotecas, así que debe consultarse documentación oficial para la implementación concreta. El curso enseña la relación de separación, no una cadena universal que pueda pegarse en cualquier lenguaje y funcionar con idénticas garantías. Verificar el contrato del dato sigue siendo útil, pero no reemplaza esa defensa del destino que decide cómo se interpretará la consulta."
+        },
+        {
+          "title": "Qué puede ser un parámetro",
+          "body": "Los parámetros enlazan valores dentro de posiciones que el mecanismo permite. No convierten automáticamente nombres de tablas, columnas o palabras de ordenación en elementos seguros por colocarlos donde el controlador espera un dato. Cuando una función necesita elegir estructura, el diseño debe limitar esa elección a opciones conocidas y controladas por el programa, o replantear la consulta para evitar una variación innecesaria. Por ejemplo, una selección de orden de presentación puede mapearse a unas pocas alternativas definidas en el código, en lugar de aceptar texto arbitrario como parte de la instrucción. La validación de esa selección tiene sentido porque el dominio está realmente acotado por el requisito. No construyas una lista permitida a partir de valores recibidos del mismo cliente y después la presentes como comprobación independiente. Separa el contrato del campo, el mapa de opciones confiables y el enlace de datos. Esta distinción permite revisar consultas dinámicas sin tratar toda variación como prohibida y sin afirmar que los parámetros solucionan cualquier lugar donde una aplicación decidió insertar texto."
+        },
+        {
+          "title": "Bibliotecas y permisos complementarios",
+          "body": "Un framework o una capa de acceso puede facilitar parámetros, pero su nombre no garantiza que todas sus funciones los utilicen correctamente. Algunas interfaces admiten consultas sin procesar o fragmentos estructurales que requieren revisión especial. Comprueba qué llamada se utiliza y qué datos llegan a cada argumento. También limita los permisos de la cuenta de base de datos según las tareas del componente. Un proceso que solo necesita leer determinadas fichas no debería recibir administración global por comodidad del montaje. Estos permisos no sustituyen las consultas apropiadas, pero pueden reducir capacidades que la aplicación no necesita y facilitar una separación de responsabilidades. Revisa manejo de errores para evitar que un fallo exponga consultas completas con información sensible o credenciales. Los registros pueden usar referencias y motivos controlados con acceso apropiado. En una práctica no necesitas ejecutar instrucciones contra una base real: puedes comparar diseños de llamada y explicar qué campo es estructura y cuál es valor. El aprendizaje central es reconocer el límite que la biblioteca debe conservar y qué otras decisiones mantienen el alcance de la operación dentro del servicio."
+        },
+        {
+          "title": "Probar la propiedad de separación",
+          "body": "Las pruebas deben demostrar que valores legítimos variados se tratan como datos y que las reglas del negocio y autorización siguen aplicándose. Un nombre con signos habituales no debería romper una consulta porque el programa lo concatenó como si fuera lenguaje. Tampoco debe aceptarse una modificación sobre recursos ajenos solo porque la consulta está parametrizada: esa protección no concede permiso al usuario. Utiliza un entorno autorizado y registros ficticios para comprobar resultados, límites y rechazos, observando que las operaciones no produzcan efectos adicionales. Revisa especialmente funciones donde una refactorización cambia de una interfaz parametrizada a una cadena construida manualmente, o donde una opción de ordenación empieza a recibir texto más amplio que el requisito inicial. Los ejemplos del curso son defensivos y no requieren preparar cargas para aplicaciones de terceros. Documenta la elección del controlador, la forma de enlazar valores y las opciones estructurales que el programa permite. Una consulta mantenible conserva una frontera clara entre datos y lenguaje aunque cambien sus consumidores, sus campos o la presentación de resultados en la interfaz."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué propiedad se busca al enlazar parámetros?",
+          "scenario": "Una función ficticia consulta una ficha por identificador y entrega el valor mediante el argumento separado que documenta su controlador de base de datos.",
+          "options": [
+            "Separar el dato de la estructura que el motor interpreta como consulta",
+            "Autorizar automáticamente cualquier ficha solicitada",
+            "Garantizar que ningún resultado necesita permisos de lectura"
+          ],
+          "answer": 0,
+          "explanation": "Los parámetros mantienen la separación entre valores e instrucciones según la biblioteca. La autorización sobre fichas y lectura sigue necesitando controles del servicio independientes de esa propiedad del destino.",
+          "wrongExplanations": [
+            null,
+            "La cuenta y el recurso todavía necesitan una decisión de permiso; enlazar un identificador no demuestra que el solicitante pueda acceder a la ficha correspondiente.",
+            "La consulta puede devolver datos reservados y necesita respetar permisos aunque su construcción no mezcle entradas con estructura del lenguaje interpretado por el motor."
+          ],
+          "aoi": {
+            "question": "El marcador y el argumento tienen trabajos separados, cielo. Identifica qué frontera mantiene esa forma de entregar el valor.",
+            "hint": "Busca una propiedad sobre interpretación del dato, no una concesión de permisos sobre todos los registros que pudiera nombrar el identificador.",
+            "correct": "Correcto: mantuviste datos como datos y conservaste pendientes las comprobaciones de acceso que no realiza el mecanismo de enlace por sí solo.",
+            "soft": "Una defensa de construcción de consultas no identifica al dueño del recurso ni determina automáticamente el derecho de la cuenta sobre cada resultado.",
+            "sharp": "El parámetro no expide carnés de propietario, cariño. Separa el lenguaje y deja a la autorización decidir quién puede recibir esos datos."
+          }
+        },
+        {
+          "prompt": "¿Cómo seleccionar una de dos ordenaciones estructurales?",
+          "scenario": "El requisito ficticio solo permite dos formas de ordenar resultados y la biblioteca no trata nombres de columnas como valores enlazables de la consulta.",
+          "options": [
+            "Insertar cualquier texto del cliente porque es una opción visual",
+            "Mapear una selección validada a alternativas estructurales controladas por el programa",
+            "Aceptar cualquier palabra que no contenga espacios"
+          ],
+          "answer": 1,
+          "explanation": "El dominio del requisito es limitado y debe mapearse a estructuras conocidas. Los datos restantes siguen enlazándose apropiadamente, sin conceder a una entrada arbitraria control del lenguaje de la consulta.",
+          "wrongExplanations": [
+            "Una opción visual no limita lo que un cliente puede enviar; el servidor debe mantener el conjunto de estructuras que el requisito realmente permite utilizar.",
+            null,
+            "Quitar espacios no demuestra que una cadena corresponda a una de las dos estructuras previstas ni sustituye una selección controlada según el requisito de ordenación."
+          ],
+          "aoi": {
+            "question": "Dos opciones no necesitan una puerta abierta para texto arbitrario, tesoro. Conserva el tamaño real del requisito al construir la consulta.",
+            "hint": "Busca una elección limitada por datos confiables del programa y un valor recibido que solo indique cuál alternativa corresponde seleccionar.",
+            "correct": "Exacto: permitiste la función que hacía falta sin convertir la entrada de ordenación en una invitación a redefinir estructura de consulta desde el cliente.",
+            "soft": "La variación estructural necesita un contrato propio; no puede evaluarse como si cualquier cadena recibida fuera un valor equivalente a las dos opciones previstas.",
+            "sharp": "El menú tenía dos opciones, cariño. No lo asciendas a editor del lenguaje solo para ahorrarte un mapa de alternativas controladas."
+          }
+        },
+        {
+          "prompt": "¿Qué debe revisarse aunque el framework anuncie soporte de consultas seguras?",
+          "scenario": "Un proyecto ficticio utiliza una capa de acceso con parámetros, pero una función nueva empieza a construir un fragmento mediante una interfaz de consulta sin procesar.",
+          "options": [
+            "Solo el nombre del paquete",
+            "Solo que otras funciones de la aplicación usan bien parámetros",
+            "La llamada concreta, sus argumentos y qué datos pasan a posiciones de estructura o valor"
+          ],
+          "answer": 2,
+          "explanation": "La garantía depende de cómo se usa la interfaz. Debe revisarse el recorrido específico de datos y estructura, especialmente en rutas que permiten llamadas sin procesar o fragmentos construidos manualmente.",
+          "wrongExplanations": [
+            "El nombre del paquete no demuestra que una llamada concreta conserve la separación prevista por sus interfaces apropiadas de enlace y construcción de consultas.",
+            "La corrección de otras funciones no valida automáticamente una ruta nueva que utiliza otra interfaz y puede cambiar cómo recibe e interpreta los datos del cliente.",
+            null
+          ],
+          "aoi": {
+            "question": "La biblioteca sabe hacer cosas bien, cielo. Ahora comprueba cuál de sus puertas eligió realmente esa nueva función para entregar el dato.",
+            "hint": "El contrato debe seguirse en cada llamada y argumento, no deducirse de que el proyecto importó una dependencia con funciones apropiadas disponibles.",
+            "correct": "Bien visto: revisaste el uso efectivo en vez de confiar en una garantía que solo existe cuando la interfaz se utiliza con sus condiciones correctas.",
+            "soft": "Una herramienta mantenida puede ofrecer interfaces con responsabilidades distintas; la implementación necesita elegir y utilizar la apropiada para el recorrido concreto de los datos.",
+            "sharp": "El paquete no bendice cada concatenación que le presentes, tesoro. Mira la llamada y conserva la frontera entre estructura y valores en esa ruta nueva."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El orden de resultados",
+          "scenario": "Una función ficticia permite elegir una de dos ordenaciones y alguien propone insertar cualquier texto recibido del cliente como parte de la consulta para ordenar más fácilmente.",
+          "explanation": "La selección estructural debe corresponder a alternativas controladas por el programa. Puede mapearse una opción validada a una de las estructuras permitidas, manteniendo los valores en parámetros. Aceptar texto arbitrario amplía el lenguaje que la entrada puede influir y deja de reflejar el requisito limitado de esa función."
+        },
+        {
+          "title": "Parámetros sin permisos",
+          "scenario": "Un programa ficticio usa parámetros correctamente, pero una cuenta autenticada solicita datos de otra persona y la función no comprueba esa relación antes de devolver resultados.",
+          "explanation": "La separación de datos y SQL no autoriza la operación. El servicio debe aplicar la política de acceso sobre identidad, recurso y acción, además de mantener consultas apropiadas. Una defensa bien implementada en un destino no reemplaza comprobaciones que cubren otra frontera del mismo flujo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un programa ficticio consulta fichas por identificador y orden de presentación, y el equipo aprende qué partes se enlazan como valores y cuáles necesitan una selección estructural controlada.",
+      "scenario": "Un programa ficticio consulta fichas por identificador y orden de presentación, y el equipo aprende qué partes se enlazan como valores y cuáles necesitan una selección estructural controlada.",
+      "steps": [
+        "Identifica qué partes son estructura y qué partes son valores.",
+        "Enlaza datos con la biblioteca apropiada y limita selecciones estructurales a opciones conocidas.",
+        "Revisa permisos, errores y autorización además de la parametrización."
+      ],
+      "sourceIds": [
+        "code-sql",
+        "code-input"
+      ],
+      "aoi": {
+        "intro": "El motor interpreta un lenguaje, cariño. Mantén a los valores fuera del puesto de director.",
+        "theory0": "La estructura la define el programa; el usuario aporta datos según el contrato.",
+        "theory1": "No toda parte de una consulta acepta parámetros con el mismo significado.",
+        "theory2": "Una biblioteca ayuda cuando utilizas su interfaz apropiada y revisas los atajos.",
+        "theory3": "Los permisos y la autorización siguen teniendo trabajo aunque la consulta use parámetros.",
+        "case0": "Esa ordenación tenía dos opciones y ahora quiere aceptar un lenguaje entero, tesoro.",
+        "case1": "El parámetro hizo su trabajo; faltó comprobar a quién pertenecían los resultados.",
+        "pass": "Bien: separaste estructura, valores y permiso sin mezclar las garantías que aporta cada control.",
+        "review": "Volvamos a los argumentos de la llamada antes de creerle a una etiqueta de consulta segura."
+      }
+    },
+    {
+      "id": "secure-coding-rutas",
+      "title": "Archivos, nombres y ubicaciones permitidas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Un nombre no concede una ubicación",
+          "body": "El nombre que una persona propone para un archivo sirve para presentarlo o describirlo, pero no debería decidir por sí solo cualquier ubicación que la aplicación pueda leer o escribir. El sistema de archivos interpreta rutas mediante reglas concretas, y una cadena puede recibir capacidades que el requisito no pretendía conceder a un nombre visible. Un diseño apropiado puede utilizar identificadores generados para almacenamiento y mantener el nombre de presentación como dato separado. La aplicación decide entonces qué recurso corresponde a una petición y qué operaciones están permitidas, en lugar de permitir que la entrada seleccione directamente una ruta arbitraria. Esta separación facilita renombrar, controlar extensiones y evitar colisiones según el entorno. No reemplaza permisos: conocer el identificador de un archivo tampoco demuestra que la cuenta pueda obtenerlo. Para practicar dibuja tres elementos distintos, etiqueta visible, identidad del recurso y ubicación controlada. Pregunta quién puede modificar cada uno y qué efectos tendría hacerlo. Esta claridad reduce errores que nacen al reutilizar una misma cadena para presentar información y controlar operaciones del sistema."
+        },
+        {
+          "title": "Interpretar rutas con mecanismos apropiados",
+          "body": "Las rutas pueden tener variantes y reglas distintas entre plataformas, y no conviene intentar confinarlas eliminando a mano un carácter que recuerdas de un ejemplo. Si una función debe resolver una ubicación, utiliza APIs apropiadas y un diseño que garantice que el resultado autorizado permanezca dentro del alcance previsto. La normalización y comparación deben corresponder a las reglas reales del sistema, considerando particularidades que la documentación de la plataforma establezca para el entorno. Una comprobación textual simplista puede no representar la relación entre directorios que el programa necesita verificar. Tampoco debe validarse una forma y utilizar después otra transformada cuyo significado cambió. En proyectos complejos, referencias y enlaces del sistema pueden requerir garantías adicionales sobre el momento y forma de abrir el recurso. No introduzcas código casero en un servicio real para explorar todas esas variantes como parte de este curso inicial. El aprendizaje es reconocer que el destino tiene un lenguaje y capacidades propios, elegir una abstracción apropiada y solicitar revisión cuando el requisito exige un control de ubicaciones que la persona no sabe justificar mediante las herramientas del entorno."
+        },
+        {
+          "title": "Escribir, reemplazar y retirar con permiso",
+          "body": "La operación de archivo necesita autorización según identidad, recurso y acción, no solo una ruta que pueda resolverse. Leer, crear, reemplazar y borrar conceden capacidades diferentes. Una aplicación debe evitar que un nombre repetido sobrescriba un documento ajeno por comodidad de almacenamiento. También debe controlar qué ocurre si el archivo ya existe o si dos operaciones intentan modificarlo al mismo tiempo, utilizando mecanismos apropiados al sistema y al contrato. El manejo de fallos debe dejar un estado comprensible: no anunciar éxito si solo se escribió una parte ni exponer copias temporales sin los permisos correspondientes. Para materiales reservados, revisa ubicación de temporales, vistas previas y exportaciones, porque también pueden conservar contenido sensible. Una retirada debe seguir el procedimiento del servicio y explicar su alcance sobre otras copias, en lugar de prometer que borrar una entrada elimina toda representación histórica de la información. Estas decisiones conectan seguridad y fiabilidad. El recurso no necesita únicamente quedar en una carpeta adecuada: necesita un ciclo de vida que preserve permisos y coherencia durante operaciones normales, fallos y cambios autorizados."
+        },
+        {
+          "title": "Pruebas de límites y efectos",
+          "body": "Una revisión debe comprobar nombres legítimos, colisiones, operaciones no permitidas y fallos de almacenamiento con datos prescindibles en un entorno autorizado. Observa qué ubicaciones y copias aparecen, qué contenido recibe la cuenta y cómo se conserva el estado ante un rechazo. Las pruebas deben basarse en el contrato y las reglas de la plataforma, sin ejecutar acciones sobre directorios ajenos a la práctica. Si la aplicación utiliza identificadores generados, confirma que el servidor los relaciona con el recurso permitido y no concede una ubicación por aceptar un valor con formato correcto. Si existe conversión entre plataformas, revisa el contrato del formato en ambos extremos. Documenta las capacidades del componente y reduce sus permisos del sistema a lo que necesita para su función. Esa limitación complementa las comprobaciones y evita entregar acceso amplio por facilitar un montaje temporal. Al final, una persona del equipo debería poder explicar por qué una solicitud solo afecta al recurso autorizado. Esa explicación debe sostenerse en las APIs, permisos y pruebas elegidos, no en que una cadena visible pareció suficientemente parecida al nombre de una carpeta segura."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué diseño reduce confusión entre nombre visible y ubicación?",
+          "scenario": "Un servicio ficticio necesita permitir nombres de presentación elegidos por las personas, manteniendo control sobre dónde se almacena cada documento y a quién pertenece.",
+          "options": [
+            "Usar el texto recibido como ruta arbitraria del sistema",
+            "Separar etiqueta, identificador del recurso y ubicación controlada por la aplicación",
+            "Permitir reemplazar cualquier archivo que comparta la misma etiqueta"
+          ],
+          "answer": 1,
+          "explanation": "Separar funciones permite mantener control de almacenamiento y aplicar permisos sobre recursos. El nombre de presentación continúa siendo un dato, sin conceder por sí solo capacidad de elegir ubicaciones o reemplazos del sistema.",
+          "wrongExplanations": [
+            "El texto del cliente no debe obtener una capacidad arbitraria sobre rutas que el componente puede abrir; el contrato necesita limitar ubicaciones y operaciones de forma efectiva.",
+            null,
+            "Una coincidencia de etiqueta no demuestra identidad ni permiso de reemplazo sobre el recurso que otra persona había guardado anteriormente con un nombre parecido o idéntico."
+          ],
+          "aoi": {
+            "question": "El usuario nombra el documento, cielo. Eso no significa que deba elegir cualquier ubicación ni decidir a quién se sobrescribe.",
+            "hint": "Busca distinguir lo que se presenta en pantalla de la identidad y operación que el sistema realmente autoriza sobre un recurso almacenado.",
+            "correct": "Correcto: conservaste la comodidad del nombre sin permitirle gobernar todas las capacidades del almacenamiento que utiliza la aplicación para guardar documentos.",
+            "soft": "Un nombre aceptable puede seguir representando recursos distintos; la implementación debe mantener esa relación con un control apropiado y permisos antes del efecto.",
+            "sharp": "La etiqueta no se convierte en administradora de carpetas por sonar convincente, cariño. Separa nombres y ubicaciones con el diseño que realmente necesitas."
+          }
+        },
+        {
+          "prompt": "¿Por qué una comprobación textual simple de ruta puede ser insuficiente?",
+          "scenario": "Un componente ficticio acepta ubicaciones por semejanza de letras y después utiliza una API del sistema cuyas reglas de resolución no se evaluaron durante la revisión.",
+          "options": [
+            "Porque debe respetarse cómo la plataforma interpreta y abre realmente el recurso",
+            "Porque todas las plataformas resuelven rutas de forma idéntica",
+            "Porque el nombre de la carpeta elimina cualquier necesidad de permisos"
+          ],
+          "answer": 0,
+          "explanation": "La garantía depende de las reglas del sistema y de la correspondencia entre lo comprobado y lo utilizado. Debe elegirse una abstracción apropiada al entorno, no deducir autorización de una semejanza textual superficial.",
+          "wrongExplanations": [
+            null,
+            "Las reglas y particularidades pueden variar; una garantía debe justificarse para la plataforma concreta y su forma real de resolver, acceder y controlar esas ubicaciones del sistema.",
+            "Una carpeta organizada no concede permiso a cualquier operación ni demuestra que la resolución de una entrada mantenga el recurso dentro del alcance que exige el contrato."
+          ],
+          "aoi": {
+            "question": "La API abrirá un recurso real, tesoro. Las letras parecidas todavía no demostraron que sea el que el contrato permite utilizar.",
+            "hint": "Revisa la interpretación efectiva de la plataforma y qué relación de ubicación y permiso necesitas garantizar antes de producir el efecto.",
+            "correct": "Bien visto: pediste una garantía sobre el recurso que se abre en vez de confiar en una coincidencia del texto que lo nombra.",
+            "soft": "Una ruta es una entrada para otro intérprete con reglas propias; la comprobación debe corresponder a esas reglas y al resultado que realmente se utiliza.",
+            "sharp": "El sistema no firmó tu intuición sobre carpetas, cariño. Usa sus mecanismos apropiados y comprueba lo que de verdad terminará abriéndose."
+          }
+        },
+        {
+          "prompt": "¿Qué debe definirse ante un archivo existente con la misma etiqueta?",
+          "scenario": "Dos cuentas ficticias suben documentos diferentes con nombres iguales y el servicio necesita guardar el segundo sin modificar recursos que no pertenecen al solicitante.",
+          "options": [
+            "Sobrescribir siempre el primero porque llegó antes",
+            "Confiar en que las personas nunca repiten nombres",
+            "Una estrategia de identidad, colisiones y permisos que impida reemplazos no autorizados"
+          ],
+          "answer": 2,
+          "explanation": "El contrato debe mantener identidad y autorización más allá de la etiqueta. Las colisiones son condiciones previsibles y requieren un comportamiento que preserve recursos ajenos y comunique el resultado apropiado a cada cuenta.",
+          "wrongExplanations": [
+            "El orden de llegada y el nombre coincidente no autorizan a reemplazar un documento de otra cuenta; la operación necesita una regla y un permiso apropiados sobre ese recurso.",
+            "La repetición de nombres es un caso normal que debe contemplarse; depender de que nunca ocurra deja sin definir un efecto que puede afectar información de otras personas.",
+            null
+          ],
+          "aoi": {
+            "question": "Los nombres pueden repetirse, cielo. Elige una regla que conserve los documentos y permisos de quienes ya estaban utilizando la misma aplicación.",
+            "hint": "Busca un comportamiento definido del sistema para un caso previsible, no una suposición de que la entrada nunca producirá una coincidencia con recursos ajenos.",
+            "correct": "Exacto: el guardado sabe qué recurso crea o modifica y no convierte una coincidencia de etiquetas en permiso de reemplazo sobre datos que no corresponden.",
+            "soft": "La seguridad también necesita manejar situaciones corrientes de fiabilidad, porque una colisión mal resuelta puede terminar vulnerando el límite entre cuentas y sus documentos.",
+            "sharp": "El segundo archivo no ganó una casa ajena por llevar el mismo apellido, tesoro. Define identidad, colisiones y permiso antes de reemplazar cualquier recurso."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El nombre repetido",
+          "scenario": "Una función ficticia guarda por el nombre aportado por el cliente y reemplaza un documento de otra cuenta cuando llega un segundo archivo con la misma etiqueta.",
+          "explanation": "La etiqueta visible no debe controlar sin garantías la identidad y operación de almacenamiento. Conviene separar identificadores, comprobar permisos y definir cómo manejar colisiones. La autorización debe aplicarse antes de reemplazar un recurso, aunque el nuevo nombre tenga un formato perfectamente aceptado."
+        },
+        {
+          "title": "La comparación superficial",
+          "scenario": "Un programa ficticio decide que una ubicación está autorizada porque su texto comienza con unas letras determinadas, sin evaluar cómo interpreta esa ruta el sistema que la abre.",
+          "explanation": "Una coincidencia textual no demuestra por sí sola la relación de ubicación que exige el contrato. Deben utilizarse mecanismos apropiados a la plataforma y conservar correspondencia entre lo comprobado y lo abierto. Si el equipo no puede justificar la garantía, debe revisar el diseño antes de usar datos reales."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una aplicación ficticia guarda documentos mediante nombres recibidos del cliente y el equipo diseña una separación entre presentación, identidad del recurso y ubicación real de almacenamiento.",
+      "scenario": "Una aplicación ficticia guarda documentos mediante nombres recibidos del cliente y el equipo diseña una separación entre presentación, identidad del recurso y ubicación real de almacenamiento.",
+      "steps": [
+        "Separa nombre de presentación, identificador y ubicación controlada.",
+        "Usa reglas y APIs apropiadas del sistema para resolver y abrir recursos.",
+        "Prueba permisos, colisiones y fallos observando ubicaciones y copias resultantes."
+      ],
+      "sourceIds": [
+        "code-upload",
+        "code-input"
+      ],
+      "aoi": {
+        "intro": "El nombre puede ser bonito sin recibir autoridad sobre todas las carpetas, cariño.",
+        "theory0": "Presentación, identidad y ubicación tienen funciones diferentes; no las metas en una misma cadena por costumbre.",
+        "theory1": "Las rutas obedecen reglas del sistema, no tu lista improvisada de caracteres desagradables.",
+        "theory2": "Leer y reemplazar no son el mismo permiso, aunque el archivo tenga el mismo nombre.",
+        "theory3": "Comprueba ubicaciones y efectos en un entorno limitado con datos que podamos perder sin drama.",
+        "case0": "La etiqueta repetida no debería decidir qué documento ajeno desaparece durante el guardado.",
+        "case1": "Las letras iniciales no conocen todas las reglas con que el sistema resolverá esa ubicación.",
+        "pass": "Bien: el archivo ya tiene una identidad y un ciclo de operaciones controlados con criterio.",
+        "review": "Volvamos al recurso y a la API que lo abre antes de confiar en el parecido de una cadena, tesoro."
+      }
+    },
+    {
+      "id": "secure-coding-configuracion",
+      "title": "Configuración y secretos fuera de los ejemplos",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Configurar sin distribuir capacidades ajenas",
+          "body": "La configuración permite adaptar un programa a su entorno, pero no todo valor configurable debe compartirse con todas las personas que reciben el proyecto. Un nombre de tema, una dirección pública y una credencial global tienen capacidades distintas. La plantilla de ejemplo puede describir las variables necesarias con valores ficticios, mientras los secretos reales se entregan mediante mecanismos apropiados con permisos. Incrustar una credencial en el código para que la demostración funcione rápido crea una copia que puede propagarse por historial, capturas y artefactos. No basta con retirarla antes de la última presentación si ya fue distribuida y sigue siendo utilizable. El diseño debe explicar qué identidad necesita el valor, quién lo proporciona y cómo se cambia sin editar código compartido. Para una práctica, utiliza nombres que indiquen claramente que los valores no conceden acceso real. Esa claridad ayuda a aprender el montaje sin convertir la documentación en un almacén alternativo de secretos de producción que nadie había autorizado a repartir entre participantes de una clase."
+        },
+        {
+          "title": "Valores ausentes y modos de funcionamiento",
+          "body": "Una configuración sensible debe tener un comportamiento definido cuando falta, es inválida o corresponde a otro entorno. No conviene continuar silenciosamente con una contraseña fija o desactivar una comprobación de seguridad para hacer desaparecer el error. El programa debe responder de forma controlada según el contrato y permitir diagnosticar la condición sin imprimir el valor completo que esperaba. Las opciones de desarrollo también necesitan límites claros: un modo que acepta certificados sin validación o usa datos fijos puede servir a un ensayo específico y no debe llegar por accidente al entorno final con esos comportamientos activos. Elige configuraciones separadas y comprueba cómo se seleccionan al generar la entrega. Un nombre de archivo que contiene la palabra producción no demuestra que todas sus opciones cumplan ese propósito. La evidencia debe venir de la configuración efectiva y de pruebas del comportamiento que importa. En una práctica dibuja qué variables son públicas, cuáles sensibles y qué condiciones provocan detener una operación en vez de reemplazar su requisito mediante una alternativa conocida e inapropiada."
+        },
+        {
+          "title": "El proceso de construcción también copia",
+          "body": "Una aplicación puede recibir secretos desde un sistema de despliegue y aun así incluirlos involuntariamente en los archivos que genera, mensajes de construcción o diagnósticos. La revisión debe seguir cada valor durante preparación, ejecución y distribución. Los permisos del proceso de construcción deben limitarse según su función y los artefactos deben contener únicamente lo previsto para quienes van a recibirlos. Si una capacidad debe permanecer exclusivamente en un servidor, codificarla, dividirla o cambiar su nombre dentro del paquete del cliente no mantiene esa frontera. Los dispositivos de otras personas pueden inspeccionar lo que se les entrega con capacidades suficientes. La arquitectura debe evitar distribuir ese secreto global y utilizar un flujo apropiado para las funciones que sí necesitan el servicio. Esto no impide guardar preferencias y progreso local de una app offline, porque esos datos tienen otra función y otro modelo de acceso. Distinguir ambos casos evita mezclar la privacidad del usuario en su dispositivo con una expectativa imposible de control exclusivo del proveedor sobre un valor incrustado en cada instalación que decide distribuir públicamente."
+        },
+        {
+          "title": "Revisar la entrega y sus fallos",
+          "body": "Antes de compartir, comprueba qué archivos, ejemplos y registros forman parte del resultado, y verifica la configuración que utilizará la aplicación entregada. No hace falta repetir todas las pruebas por cambiar una descripción, pero sí comprobar comportamientos nuevos, fallos y preocupaciones no resueltas que afecten el contrato. Una prueba útil verifica que una configuración ausente no activa credenciales conocidas y que los datos ficticios de ensayo están separados de recursos reales. Si se detecta una exposición, atiende la capacidad mediante revocación o cambio apropiados y revisa sus consumidores, además de retirar el archivo visible cuando corresponda. Documenta el mecanismo de configuración sin publicar valores que no son necesarios para comprenderlo. Una persona nueva del equipo debería poder preparar su entorno autorizado mediante instrucciones y permisos, sin copiar secretos de una captura antigua. La seguridad de configuración combina clasificación de valores, entrega controlada, selección de entorno y revisión del resultado distribuido. Mantener esas relaciones permite que el proyecto crezca sin convertir la primera solución rápida de una demostración en una dependencia permanente que nadie sabe retirar."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué corresponde ante una credencial necesaria ausente?",
+          "scenario": "Una aplicación ficticia no recibe su acceso requerido al iniciar una operación sensible y el equipo revisa cómo debe comportarse sin esa condición de configuración.",
+          "options": [
+            "Utilizar una contraseña fija común sin avisar",
+            "Detener o limitar la operación de forma controlada según el contrato sin activar un secreto conocido",
+            "Desactivar la autenticación de todos los consumidores"
+          ],
+          "answer": 1,
+          "explanation": "La ausencia no debe anular el requisito de acceso. El contrato debe definir una respuesta controlada que pueda diagnosticarse sin introducir una capacidad predeterminada conocida e inapropiada para la operación sensible.",
+          "wrongExplanations": [
+            "Una alternativa conocida puede conceder acceso fuera del control previsto y oculta la condición de configuración que el equipo necesitaba atender explícitamente.",
+            null,
+            "Desactivar autenticación elimina la condición de identidad y capacidad que la operación requiere; no resuelve de forma apropiada la falta de configuración para un consumidor."
+          ],
+          "aoi": {
+            "question": "Falta una condición importante, cielo. Elige una respuesta que no haga desaparecer el requisito para aparentar que todo sigue funcionando.",
+            "hint": "Busca un fallo explícito y proporcionado que conserve el límite de acceso en vez de sustituirlo por una puerta conocida.",
+            "correct": "Correcto: el sistema informa del problema sin inventar una credencial compartida que las demás instalaciones ya conocen o podrían recuperar fácilmente.",
+            "soft": "Mantener el flujo por comodidad no justifica cambiar en silencio las condiciones que el diseño exigía para permitir una operación con capacidad sensible.",
+            "sharp": "La contraseña de repuesto no es una solución si todo el mundo la conoce, cariño. Conserva el límite y atiende la configuración que falta."
+          }
+        },
+        {
+          "prompt": "¿Qué debe contener una plantilla compartida de configuración?",
+          "scenario": "Un equipo ficticio necesita enseñar qué variables existen y cómo solicitar los accesos legítimos sin repartir capacidades utilizables de sus entornos reales.",
+          "options": [
+            "Nombres, explicación y valores claramente ficticios cuando hagan falta",
+            "Credenciales reales para que nadie tenga que pedir permisos",
+            "Capturas de las claves activas porque no son texto editable"
+          ],
+          "answer": 0,
+          "explanation": "La plantilla puede describir el contrato de configuración sin contener capacidades reales. Las personas deben obtener sus accesos mediante el mecanismo autorizado y con alcance apropiado para la función que realizan.",
+          "wrongExplanations": [
+            null,
+            "Repartir credenciales reales amplía consumidores y copias sin necesidad; la facilidad del primer montaje no justifica omitir la autorización de acceso a los entornos del servicio.",
+            "Una captura conserva información recuperable y sigue distribuyendo el secreto; cambiar la forma de presentarlo no evita conceder la capacidad que su valor permite utilizar."
+          ],
+          "aoi": {
+            "question": "La plantilla necesita explicar el montaje, tesoro. No tiene que incluir llaves activas para parecer una documentación seria del proyecto.",
+            "hint": "Separa describir variables y procedimientos de entregar valores que conceden acceso real a una persona o componente concreto.",
+            "correct": "Bien: el ejemplo se puede compartir y el acceso real conserva su proceso de autorización en lugar de viajar incluido con cada copia del documento.",
+            "soft": "Un formato de ejemplo debe mantener claro qué valores son ficticios y cómo se obtiene una configuración legítima sin copiar secretos de archivos antiguos.",
+            "sharp": "La captura no vuelve inocente una llave, cariño. Enseña la forma de configurar y deja la entrega de capacidades en su canal apropiado."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra recibir un secreto mediante un mecanismo protegido?",
+          "scenario": "Un proceso ficticio recibe un valor con acceso restringido y después genera artefactos; todavía no se ha revisado qué contenido incorporan esos archivos de distribución.",
+          "options": [
+            "Que ningún archivo posterior puede contenerlo",
+            "Que todos los lectores del paquete están autorizados a utilizarlo",
+            "Solo esa etapa de entrega, sin demostrar que las copias posteriores mantengan el mismo control"
+          ],
+          "answer": 2,
+          "explanation": "La protección de una etapa no cubre automáticamente transformaciones y salidas posteriores. Hay que seguir el valor hasta registros y artefactos para comprobar qué se distribuye y con qué permisos reales.",
+          "wrongExplanations": [
+            "La generación posterior puede copiar valores en archivos; debe revisarse el comportamiento efectivo del proceso en lugar de asumir que la entrega inicial controla toda su salida.",
+            "Recibir un paquete no concede por defecto autorización a una capacidad que debía mantenerse restringida a determinados componentes o identidades dentro de la arquitectura del servicio.",
+            null
+          ],
+          "aoi": {
+            "question": "La primera entrega fue cuidadosa, cielo. Todavía falta mirar qué hizo el proceso con el valor al generar sus archivos y diagnósticos.",
+            "hint": "Una garantía localizada necesita comprobarse de nuevo cuando se crea una copia que tendrá lectores y permisos diferentes de los del almacén original.",
+            "correct": "Exacto: no extendiste una protección inicial a todo el recorrido y puedes localizar salidas donde el secreto podría haber vuelto a distribuirse sin el control previsto.",
+            "soft": "Las capacidades viajan por transformaciones y artefactos; la revisión debe seguir sus copias y no detenerse en el primer mecanismo apropiado que aparece en el flujo.",
+            "sharp": "La variable no lleva un guardia hasta el infinito, tesoro. Mira el paquete final antes de anunciar que el secreto quedó fuera de la distribución."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La alternativa conocida",
+          "scenario": "Un programa ficticio no encuentra su credencial y continúa usando una contraseña predeterminada compartida entre todas las instalaciones de prueba y la entrega final.",
+          "explanation": "La alternativa elimina el requisito de acceso controlado cuando aparece un fallo. La configuración debe manejar la ausencia de forma explícita y apropiada al entorno, sin habilitar una capacidad conocida. Las pruebas deben verificar ese recorrido negativo, no solo que la aplicación funcione cuando todo está presente."
+        },
+        {
+          "title": "La variable empaquetada",
+          "scenario": "Un proceso ficticio recibe un secreto de forma protegida, pero una plantilla de construcción lo copia después dentro de los archivos públicos de la aplicación del cliente.",
+          "explanation": "La entrega inicial no protege las copias generadas posteriormente. Debe revisarse qué incorpora el artefacto y evitar distribuir un secreto que debía permanecer bajo control del servicio. La comprobación necesita seguir el valor hasta el resultado que realmente reciben las otras personas."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un equipo prepara una aplicación ficticia para compartir y revisa cómo separar entornos, valores sensibles y opciones de prueba antes de generar los archivos que recibirán otras personas.",
+      "scenario": "Un equipo prepara una aplicación ficticia para compartir y revisa cómo separar entornos, valores sensibles y opciones de prueba antes de generar los archivos que recibirán otras personas.",
+      "steps": [
+        "Clasifica valores públicos, preferencias y capacidades sensibles de configuración.",
+        "Define selección de entorno y fallos sin alternativas secretas predecibles.",
+        "Revisa ejemplos, registros y artefactos de la entrega efectiva."
+      ],
+      "sourceIds": [
+        "crypto-secrets",
+        "code-repository"
+      ],
+      "aoi": {
+        "intro": "La configuración también reparte capacidades, cariño. Separemos ejemplos de llaves que sí abren servicios.",
+        "theory0": "No todo valor tiene el mismo permiso para viajar con el proyecto.",
+        "theory1": "Si falta un secreto, no le pongas uno conocido para fingir normalidad.",
+        "theory2": "El proceso de construir también puede crear copias que luego distribuyes sin darte cuenta.",
+        "theory3": "Revisa la entrega efectiva y no solo el archivo con un nombre tranquilizador, tesoro.",
+        "case0": "La contraseña predeterminada convirtió el fallo en una puerta que todos conocen.",
+        "case1": "La variable llegó con cuidado y la plantilla la sacó otra vez al paquete público.",
+        "pass": "Bien: el proyecto puede configurarse sin heredar secretos de una demostración antigua.",
+        "review": "Sigamos el valor hasta el archivo distribuido antes de declarar que quedó fuera del código."
+      }
+    },
+    {
+      "id": "secure-coding-componentes",
+      "title": "Dependencias que puedas conocer y mantener",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "La dependencia participa en tu función",
+          "body": "Una biblioteca aporta código y capacidades al programa aunque el equipo no haya escrito sus archivos. Puede interpretar formatos, gestionar comunicaciones o procesar datos con permisos del componente que la utiliza. Por eso la elección no debe depender únicamente de que un ejemplo de Internet la mencione o de que el nombre se parezca al de otra herramienta conocida. Comprueba procedencia, documentación, mantenimiento y adecuación a la función. Evalúa qué capacidad añade y si realmente hace falta incorporar todo ese componente para el requisito actual. Un proyecto pequeño puede beneficiarse de herramientas mantenidas que resuelvan tareas complejas correctamente, evitando reinventarlas. La decisión no es rechazar dependencias por principio, sino conocer qué se incorpora y qué responsabilidad seguirá teniendo el equipo al usarlo. Para practicar, prepara una ficha ficticia de dos alternativas y compara función, permisos y plan de mantenimiento. No ejecutes paquetes desconocidos para comprobar rápidamente si te gustan sus resultados. La evaluación de procedencia y los controles del entorno deben existir antes de dar al componente acceso a los datos o capacidades que utilizará dentro del programa."
+        },
+        {
+          "title": "Inventario y relaciones indirectas",
+          "body": "Una aplicación puede incorporar dependencias de forma directa y también recibir otras a través de los componentes elegidos. Esas relaciones importan al investigar una vulnerabilidad o preparar una actualización. El inventario debe permitir identificar versiones efectivas y cómo entran en el producto, siguiendo las herramientas del ecosistema. Un archivo de resolución o bloqueo puede ayudar a reproducir el conjunto utilizado, pero fijar versiones no demuestra que sean seguras ni elimina la necesidad de actualizarlas. Del mismo modo, un nombre de versión recién publicado no garantiza compatibilidad o ausencia de errores para cualquier aplicación. Hay que conocer qué utiliza realmente la entrega, no solo la lista de intenciones del archivo principal. Cuando aparece un aviso, identifica el componente afectado, condiciones de uso y exposición de tu aplicación con apoyo apropiado. Evita declarar un incidente inevitable o ignorar el aviso únicamente porque la biblioteca llegó de forma indirecta. La evaluación debe relacionar información mantenida del proveedor con la función y configuración reales del proyecto, documentando qué se sabe y qué aún necesita comprobarse."
+        },
+        {
+          "title": "Actualizar con criterio y evidencia",
+          "body": "Las actualizaciones pueden corregir vulnerabilidades y también cambiar interfaces o comportamientos que la aplicación necesita revisar. Mantén un proceso que priorice según el riesgo y el contexto, consulte avisos oficiales y pruebe las funciones afectadas. No hace falta ejecutar indiscriminadamente todas las comprobaciones de un sistema por una modificación sin impacto, pero sí atender fallos o preocupaciones relevantes que el cambio introduce. Un ensayo útil verifica compatibilidad del contrato, manejo de errores y controles de acceso que dependan del componente actualizado. También hay que comprobar el artefacto generado y las versiones que realmente contiene cuando el proceso lo permita. No utilices como estrategia permanente silenciar avisos sin evaluar si el componente sigue mantenido y si existe una alternativa necesaria para el proyecto. Si una dependencia ya no recibe soporte apropiado para su función, planifica una sustitución o reducción de capacidad con un alcance claro. La decisión debe quedar comprensible para quien mantiene la aplicación después, en lugar de convertirse en una cadena de excepciones que nadie recuerda por qué se aceptaron en el primer montaje de prueba."
+        },
+        {
+          "title": "La biblioteca no asume todo el contrato",
+          "body": "Usar una herramienta mantenida no garantiza que cualquier forma de invocarla mantenga sus propiedades. Una biblioteca de consultas puede ofrecer parámetros y también llamadas sin procesar; un editor puede manejar salida segura y permitir un atajo que interprete marcado sin el tratamiento esperado. El equipo debe revisar la interfaz concreta, los argumentos y las opciones que activan capacidades especiales. Las credenciales y permisos del componente también deben limitarse a su tarea. No concedas administración global porque el tutorial funcionó así en un entorno aislado que no compartía datos con otras personas. Las pruebas deben comprobar propiedades relevantes del uso, no reproducir internamente toda la implementación de la biblioteca. Documenta lo que el programa espera de ella y qué configuración mantiene esa condición. Una dependencia apropiada combina procedencia evaluada, versión conocida, uso correcto y plan de mantenimiento. Ese conjunto permite aprovechar trabajo revisado sin convertir el nombre de una herramienta popular en una promesa de seguridad automática que nadie contrasta con el comportamiento real del producto final."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra fijar una versión efectiva?",
+          "scenario": "Un proyecto ficticio conserva un archivo que permite identificar y reproducir las versiones resueltas de sus componentes en la entrega actual.",
+          "options": [
+            "Que nunca aparecerán vulnerabilidades en esos componentes",
+            "Qué selección se utilizó, sin eliminar mantenimiento ni evaluación de avisos",
+            "Que cualquier forma de invocar sus funciones será segura"
+          ],
+          "answer": 1,
+          "explanation": "Conocer y reproducir versiones aporta trazabilidad, pero no garantiza ausencia de fallos ni uso correcto. Deben mantenerse evaluación de avisos, actualizaciones apropiadas y revisión de la interfaz concreta utilizada por el programa.",
+          "wrongExplanations": [
+            "Un componente puede tener fallos aún no conocidos o requerir correcciones posteriores; fijar su versión no elimina esa posibilidad ni la responsabilidad de evaluar avisos relevantes.",
+            null,
+            "La corrección de una biblioteca no convierte cualquier llamada o configuración en apropiada; el uso debe respetar el contrato y los requisitos de sus interfaces según la función que realiza."
+          ],
+          "aoi": {
+            "question": "El inventario puede decir qué montaste, cielo. Identifica qué promesa no debe añadirse a esa capacidad de reproducción y seguimiento del producto.",
+            "hint": "Distingue conocer una selección de componentes de demostrar que no necesita revisiones aunque aparezca información nueva sobre su uso o sus fallos.",
+            "correct": "Exacto: mantuviste la trazabilidad sin usarla como excusa para dejar de revisar componentes que participan en el programa y pueden necesitar correcciones.",
+            "soft": "Un resultado reproducible puede seguir teniendo un problema; saber qué versiones contiene ayuda a evaluarlo y corregirlo en vez de garantizar que no existe.",
+            "sharp": "El archivo de bloqueo no firmó una jubilación del mantenimiento, cariño. Te cuenta qué tienes y te ayuda a decidir qué necesitas revisar cuando aparece un aviso."
+          }
+        },
+        {
+          "prompt": "¿Qué debe evaluarse ante un aviso de una dependencia indirecta?",
+          "scenario": "Una aplicación ficticia recibe un aviso sobre un componente que no figura como dependencia directa, pero aparece dentro de la selección efectiva utilizada por otra biblioteca del proyecto.",
+          "options": [
+            "Su presencia, versión, condiciones de uso y exposición real según información mantenida",
+            "Solo si el equipo escribió sus archivos manualmente",
+            "Ignorarlo siempre por no ser una dependencia directa"
+          ],
+          "answer": 0,
+          "explanation": "Una relación indirecta sigue formando parte del producto. La evaluación debe vincular el aviso con la versión y uso reales, utilizando documentación y apoyo apropiados antes de decidir prioridad y medidas del caso concreto.",
+          "wrongExplanations": [
+            null,
+            "La responsabilidad de utilizar un componente no desaparece porque su código provenga de un proveedor; el proyecto debe conocer cómo participa y qué capacidades tiene en el producto que entrega.",
+            "La forma de incorporación no elimina la posible exposición; hace falta evaluar el aviso en el contexto efectivo en vez de deducir irrelevancia de una etiqueta de dependencia indirecta."
+          ],
+          "aoi": {
+            "question": "El componente llegó por otra biblioteca, tesoro. Todavía trabaja dentro del mismo producto y necesita una revisión del contexto en que se utiliza realmente.",
+            "hint": "Busca una evaluación basada en versión y condiciones concretas, sin declarar desastre inevitable ni ignorarlo por no haberlo elegido de forma directa al principio.",
+            "correct": "Bien: seguiste la relación hasta la entrega efectiva y puedes priorizar con evidencia en lugar de dejar fuera un componente solo porque llegó acompañado de otro.",
+            "soft": "La distinción directa o indirecta ayuda al inventario, pero no decide por sí sola el impacto de un fallo en la función y permisos del programa que utiliza esa versión.",
+            "sharp": "La dependencia no deja de existir por venir de visita con otra, cariño. Revisa versión, uso y exposición antes de decidir qué medidas corresponden en ese contexto concreto."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba corresponde a una actualización que cambia una función sensible?",
+          "scenario": "Un componente ficticio modifica su forma de procesar archivos y la aplicación depende de límites de tamaño, errores controlados y permisos en ese recorrido de entrada y almacenamiento.",
+          "options": [
+            "Solo que el número de versión se vea nuevo",
+            "Repetir sin propósito cualquier prueba posible de todo el ecosistema",
+            "Comprobar contratos y controles afectados, además del manejo de fallos y preocupaciones concretas del cambio"
+          ],
+          "answer": 2,
+          "explanation": "La verificación debe centrarse en las propiedades que pueden cambiar y en riesgos o fallos pendientes. Probar los contratos afectados aporta evidencia relevante para la función que la aplicación realmente utiliza del componente actualizado.",
+          "wrongExplanations": [
+            "La etiqueta de versión no demuestra compatibilidad, límites ni manejo de errores de la función que la aplicación necesita mantener para tratar archivos en ese recorrido sensible del programa.",
+            "Ejecutar comprobaciones sin relación con el cambio puede consumir recursos sin resolver la preocupación concreta; deben elegirse pruebas que demuestren las propiedades afectadas y ampliar solo cuando haya razones nuevas que lo justifiquen.",
+            null
+          ],
+          "aoi": {
+            "question": "La versión cambió y sabemos qué contrato importa, cielo. Elige pruebas que resuelvan esa duda en lugar de medir entusiasmo por la cantidad de comandos ejecutados.",
+            "hint": "Busca evidencia sobre límites, permisos y fallos del recorrido afectado por la actualización de ese componente en el uso real de la aplicación que se está manteniendo.",
+            "correct": "Correcto: verificaste el comportamiento que debía conservarse y dejaste espacio para ampliar la revisión si aparecen fallos o preocupaciones concretas que todavía no estén resueltas por las pruebas pertinentes.",
+            "soft": "La prueba debe resolver la duda del contrato afectado, no demostrar cuántas tareas sabes repetir sin atender ese cambio concreto.",
+            "sharp": "El contador de pruebas no piensa por el equipo, tesoro. Comprueba las propiedades que cambiaron y resuelve las dudas que siguen pendientes."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La versión fijada",
+          "scenario": "Un proyecto ficticio conserva un conjunto reproducible de dependencias y descarta revisar avisos porque cree que fijar versiones significa que ya no pueden tener vulnerabilidades.",
+          "explanation": "La reproducción ayuda a conocer qué se utilizó, pero no demuestra ausencia de fallos. El equipo necesita evaluar avisos y mantener una actualización apropiada a su contexto. Una versión estable para el montaje puede seguir requiriendo una corrección cuando cambie la información disponible sobre su seguridad."
+        },
+        {
+          "title": "La función sin procesar",
+          "scenario": "Una biblioteca ficticia ofrece una interfaz apropiada para separar datos, pero una función de la aplicación utiliza un atajo sin procesar que no conserva esa separación por defecto.",
+          "explanation": "La garantía depende del uso concreto de la interfaz y sus requisitos, no solo de importar la biblioteca. Debe revisarse la llamada y mantener el contrato de datos y estructura que la función necesita. Las otras rutas correctas no validan automáticamente el atajo incorporado por una función nueva."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un proyecto ficticio incorpora bibliotecas para formatos y consultas, y el equipo prepara inventario, actualización y pruebas sin confundir una versión fijada con ausencia de vulnerabilidades.",
+      "scenario": "Un proyecto ficticio incorpora bibliotecas para formatos y consultas, y el equipo prepara inventario, actualización y pruebas sin confundir una versión fijada con ausencia de vulnerabilidades.",
+      "steps": [
+        "Registra procedencia, función y versiones efectivas directas e indirectas.",
+        "Evalúa avisos y actualizaciones según uso y exposición reales.",
+        "Prueba los contratos afectados y revisa cómo se invocan las interfaces de la biblioteca."
+      ],
+      "sourceIds": [
+        "code-dependencies",
+        "code-input"
+      ],
+      "aoi": {
+        "intro": "Una dependencia también entra a trabajar con tus datos, cariño. Comprueba a quién estás contratando.",
+        "theory0": "Elegir una biblioteca necesita procedencia y función, no una coincidencia bonita de nombres.",
+        "theory1": "Directa o indirecta, la versión efectiva participa en el producto que distribuyes.",
+        "theory2": "Fijar hace reproducible una selección; no la convierte en inmune a fallos futuros.",
+        "theory3": "Una interfaz apropiada protege cuando la usas con sus condiciones y permisos correctos.",
+        "case0": "El archivo de versiones sabe qué montaste, pero no promete que nunca habrá avisos relevantes.",
+        "case1": "La biblioteca ofreció una puerta apropiada y el atajo eligió salir por la ventana, tesoro.",
+        "pass": "Bien: conoces componentes, evalúas cambios y pruebas el contrato que tu aplicación necesita conservar.",
+        "review": "Volvamos a la versión real y a la llamada concreta antes de confiar solo en el nombre del paquete."
+      }
+    },
+    {
+      "id": "secure-coding-errores",
+      "title": "Fallar de una forma controlada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Un error necesita un significado claro",
+          "body": "Las operaciones pueden fallar porque una entrada no cumple el contrato, falta permiso, una dependencia no responde o el almacenamiento no puede completar el trabajo. Estas condiciones necesitan respuestas distintas en el diseño, aunque no todas deban revelar su detalle interno a la persona que usa la aplicación. El programa debe comunicar qué puede hacerse después sin presentar éxito cuando el efecto no se completó. Una confirmación falsa puede hacer que alguien elimine la única copia que todavía conserva, creyendo que el servicio ya recibió el documento. Del mismo modo, ocultar un fallo de autorización mediante una alternativa permisiva puede conceder una capacidad que debía rechazarse. Define estados observables para iniciar, ejecutar, confirmar y fallar, con instrucciones comprensibles para cada recorrido. No basta con capturar cualquier excepción y devolver el mismo resultado vacío para que la pantalla deje de protestar. El contrato debe mantener una diferencia que el equipo pueda revisar entre no había resultados, no tienes permiso y no se pudo completar la operación, sin convertir la respuesta pública en una fuente de información privada sobre recursos ajenos."
+        },
+        {
+          "title": "Efectos parciales y coherencia",
+          "body": "Una función puede realizar varias acciones antes de confirmar su resultado, como guardar metadatos y escribir contenido. Si una parte falla, el sistema necesita un estado coherente o un procedimiento de reparación apropiado al diseño. No todas las acciones quedan cubiertas por la misma transacción: una escritura local y una petición a otro servicio pueden tener garantías y fallos diferentes. Evita anunciar que un bloque llamado transacción hace indivisible cualquier cosa que la función ejecute dentro de él sin revisar sus límites. Utiliza mecanismos apropiados de almacenamiento, confirmación y compensación cuando correspondan, documentando qué se considera completado y qué necesita revisión. Para una práctica representa las etapas con datos ficticios y fuerza conceptualmente un fallo en cada punto, observando qué información queda y qué podría volver a solicitarse de forma segura. El objetivo es que el siguiente intento no duplique efectos ni deje copias accesibles fuera de sus permisos. Una respuesta honesta puede indicar que una operación quedó pendiente de comprobar en vez de fingir una certeza de éxito o fracaso que el sistema todavía no puede justificar."
+        },
+        {
+          "title": "Respuesta pública y contexto operativo",
+          "body": "El mensaje para la persona debe explicar el resultado y sus opciones sin incluir secretos, consultas completas ni detalles internos innecesarios. El equipo puede necesitar un registro protegido con referencias de petición y motivos controlados para investigar. Estas dos vistas cumplen funciones diferentes y no deberían fusionarse copiando una traza completa de desarrollo a la pantalla de una entrega final. También hay que revisar el contenido de las excepciones: una biblioteca puede incluir valores que la aplicación no debe volver a registrar íntegramente. Selecciona información útil y protege acceso y conservación de los diagnósticos. Si un dato procede del usuario, sigue tratándolo según el contexto donde se muestra o registra, evitando que un mensaje de error cambie su papel de contenido a estructura interpretada. En un ejercicio utiliza casos ficticios para diseñar una respuesta comprensible y un registro limitado. Poder localizar el fallo no exige que todas las personas reciban los mismos detalles ni que una captura de soporte contenga capacidades de otras cuentas que no participan en la resolución del problema."
+        },
+        {
+          "title": "Reintentos y aprendizaje de fallos",
+          "body": "Un reintento debe tener condiciones claras y respetar el estado que dejó el intento anterior. Si no sabes si otro servicio completó su parte, repetir ciegamente puede producir un efecto adicional en lugar de reparar el primero. Consulta el procedimiento y las garantías de la integración, y utiliza capacidades de identificación y repetición apropiadas cuando existan. La interfaz puede desactivar temporalmente una acción mientras se resuelve, pero el servidor necesita sus propias garantías de coherencia para solicitudes simultáneas o repetidas. Al probar, incluye dependencias indisponibles, datos incompletos y pérdida de respuesta después de una posible ejecución. Registra el resultado esperado y verifica que no se pierdan permisos ni aparezcan secretos en el diagnóstico. Una vez resuelto un fallo, añade una comprobación pertinente si protege una condición importante que podría volver a romperse, en lugar de crear pruebas que solo repitan la implementación. El diseño aprende del problema cuando transforma la incertidumbre en estados y procedimientos claros. Capturar excepciones es una herramienta; decidir qué significan para los datos, efectos y personas es el trabajo que mantiene segura y utilizable la función."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe indicar una respuesta tras un fallo de almacenamiento?",
+          "scenario": "Una función ficticia no conserva el documento y el equipo decide qué informar para que la persona no elimine por error su única copia útil.",
+          "options": [
+            "Un resultado honesto con pasos apropiados, sin declarar éxito que no ocurrió",
+            "Guardado correcto para que nadie se inquiete",
+            "El token completo de la dependencia que produjo el fallo"
+          ],
+          "answer": 0,
+          "explanation": "La respuesta debe corresponder al resultado real y permitir actuar sin crear una falsa garantía de conservación. El diagnóstico no necesita mostrar secretos para explicar que la operación no se completó.",
+          "wrongExplanations": [
+            null,
+            "Una confirmación falsa puede provocar pérdida adicional y deja sin resolver el estado de la función; ocultar el fallo no transforma la operación en un guardado válido.",
+            "Un token es una capacidad sensible y no aporta una explicación pública necesaria del resultado; el contexto operativo debe limitarse y protegerse por separado."
+          ],
+          "aoi": {
+            "question": "La persona necesita saber si conserva su copia, cielo. El mensaje tiene que ayudarla a decidir con un resultado real y comprensible.",
+            "hint": "Busca una comunicación que respete el estado de la operación y no introduzca secretos o promesas que el sistema no puede demostrar.",
+            "correct": "Correcto: mantuviste la confianza mediante precisión y evitaste que una respuesta tranquilizadora terminara provocando la pérdida del único archivo que seguía disponible.",
+            "soft": "Un fallo controlado no se define por esconder el mensaje, sino por mantener estado, permisos e información apropiada para que la persona pueda continuar sin suposiciones falsas.",
+            "sharp": "El archivo no aparece porque la pantalla diga bonito, cariño. Cuenta qué ocurrió de verdad y protege también las copias que la persona aún necesita conservar."
+          }
+        },
+        {
+          "prompt": "¿Qué debe comprobarse cuando una operación tiene varios pasos?",
+          "scenario": "Un flujo ficticio guarda metadatos y después envía contenido a otra dependencia, pero puede fallar entre ambas acciones o perder una respuesta de confirmación.",
+          "options": [
+            "Solo que el último mensaje contenga la palabra terminado",
+            "Qué efectos quedaron y cómo mantener o reparar coherencia dentro de los límites de cada mecanismo",
+            "Que capturar la excepción haga atómicas todas las acciones"
+          ],
+          "answer": 1,
+          "explanation": "La función necesita un estado coherente y procedimientos adecuados para sus efectos parciales. Una transacción o captura no cubre automáticamente operaciones de sistemas distintos ni demuestra qué parte se ejecutó ante una respuesta perdida.",
+          "wrongExplanations": [
+            "El texto final no informa por sí solo sobre los cambios que se realizaron antes del fallo ni sobre las garantías de las dependencias que participaron en el flujo.",
+            null,
+            "Capturar una excepción permite manejar control de ejecución, pero no revierte por definición cualquier efecto ya producido en componentes externos o distintos mecanismos de almacenamiento."
+          ],
+          "aoi": {
+            "question": "El flujo tiene dos pasos y una frontera entre ellos, tesoro. Pregunta qué puede quedar después del fallo y quién garantiza cada parte.",
+            "hint": "Revisa el alcance real de transacciones, confirmaciones y acciones externas antes de atribuirles una indivisibilidad que el diseño todavía no ha justificado.",
+            "correct": "Bien visto: localizaste los efectos y sus garantías, que es donde se decide si el siguiente intento repara el flujo o termina duplicando un trabajo ya realizado.",
+            "soft": "El nombre de un bloque de código no demuestra las propiedades de todas sus dependencias; hay que conocer qué acciones están realmente cubiertas por su mecanismo de coherencia.",
+            "sharp": "La excepción no trae una goma universal para todo lo ejecutado, cariño. Revisa qué cambió y qué procedimiento mantiene ese estado de forma coherente."
+          }
+        },
+        {
+          "prompt": "¿Cómo repartir información de un error entre usuario y soporte?",
+          "scenario": "Una aplicación ficticia necesita comunicar un fallo comprensible y conservar contexto operativo para investigarlo sin publicar datos internos ni capacidades sensibles en la pantalla de la persona usuaria.",
+          "options": [
+            "Mostrar todos los detalles y credenciales en ambas vistas",
+            "Eliminar toda trazabilidad para no registrar nunca nada",
+            "Mensaje público limitado y contexto operativo apropiado en registros protegidos sin secretos utilizables"
+          ],
+          "answer": 2,
+          "explanation": "Las vistas tienen funciones distintas. Puede mantenerse trazabilidad mediante referencias y motivos controlados, mientras la respuesta pública evita detalles innecesarios y los registros conservan controles de acceso y selección de datos apropiados.",
+          "wrongExplanations": [
+            "La difusión completa expone información que muchos lectores no necesitan y puede convertir un intento de diagnóstico en otra entrega de credenciales o contenido privado fuera de sus permisos.",
+            "Eliminar indiscriminadamente trazabilidad puede impedir resolver el problema; conviene registrar información útil y limitada según el propósito, excluyendo secretos y protegiendo acceso y conservación de los diagnósticos.",
+            null
+          ],
+          "aoi": {
+            "question": "Soporte y la persona usuaria necesitan respuestas útiles, cielo. Útiles no significa idénticas ni cargadas de secretos de todas las dependencias.",
+            "hint": "Busca mantener contexto suficiente para investigar y una explicación comprensible, separando accesos y excluyendo las capacidades que no es necesario copiar en ninguna de las dos vistas.",
+            "correct": "Exacto: mantuviste comunicación y trazabilidad útiles sin elegir entre una traza pública completa y un silencio que no ayuda a reparar el fallo.",
+            "soft": "La información debe seguir el propósito de cada vista y sus lectores; diagnosticar no requiere ampliar innecesariamente el acceso a datos o credenciales que pasaron por la operación.",
+            "sharp": "El soporte no necesita coleccionar tokens para sentirse informado, tesoro. Conserva referencias apropiadas y deja los secretos fuera del mensaje y del registro normal."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Éxito vacío",
+          "scenario": "Una función ficticia captura cualquier fallo de almacenamiento y responde guardado correctamente para que la persona no se preocupe mientras la aplicación pierde el contenido recibido.",
+          "explanation": "El contrato comunica un éxito que no ocurrió y puede provocar pérdida adicional si la persona elimina su copia. Debe conservarse un estado honesto y una respuesta que permita actuar. Ocultar la excepción no resuelve el resultado ni elimina la necesidad de diagnosticar la condición de almacenamiento."
+        },
+        {
+          "title": "La traza compartida",
+          "scenario": "Una pantalla ficticia muestra una excepción completa que contiene detalles de configuración y un token recibido por una dependencia durante el intento de guardar.",
+          "explanation": "La respuesta expone información que la persona no necesita. Conviene separar un mensaje comprensible de un contexto operativo limitado con acceso protegido, excluyendo secretos utilizables. El manejo del error debe atender tanto al resultado de la operación como a las copias sensibles que genera al explicarlo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una función ficticia guarda documentos mediante varias dependencias y el equipo define respuestas, estado y registros para que un error no se convierta en exposición o éxito inventado.",
+      "scenario": "Una función ficticia guarda documentos mediante varias dependencias y el equipo define respuestas, estado y registros para que un error no se convierta en exposición o éxito inventado.",
+      "steps": [
+        "Define resultados y estados sin confundir fallo, ausencia y éxito.",
+        "Comprueba efectos parciales y límites de cada mecanismo de confirmación.",
+        "Diseña mensajes, registros y reintentos que mantengan permisos y coherencia."
+      ],
+      "sourceIds": [
+        "code-errors",
+        "code-logging"
+      ],
+      "aoi": {
+        "intro": "Fallar con claridad también es una función, cariño. No le pongas una sonrisa de éxito a un archivo perdido.",
+        "theory0": "El mensaje necesita corresponder al estado, no solo tranquilizar a la pantalla.",
+        "theory1": "Una operación parcial merece coherencia y un plan, no una excepción escondida bajo la alfombra.",
+        "theory2": "El diagnóstico ayuda cuando explica sin repartir secretos a todos sus lectores.",
+        "theory3": "Reintentar necesita saber qué pudo ocurrir antes; la incertidumbre también se gestiona.",
+        "case0": "Guardado correctamente no puede significar que el contenido nunca llegó a conservarse.",
+        "case1": "La traza volvió público lo que solo necesitaba una referencia protegida para investigar, tesoro.",
+        "pass": "Bien: manejas fallos con estados y efectos claros sin convertir el registro en un almacén de credenciales.",
+        "review": "Revisemos qué se completó y qué quedó pendiente antes de decidir si corresponde repetir la operación."
+      }
+    },
+    {
+      "id": "secure-coding-concurrencia",
+      "title": "Dos operaciones pueden coincidir",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Comprobar y actuar no siempre es indivisible",
+          "body": "Un programa puede leer una condición, decidir que permite una acción y modificar después el recurso. Si otra operación realiza los mismos pasos al mismo tiempo, ambas pueden decidir sobre un estado que dejó de ser actual antes de completar sus efectos. La aplicación necesita mantener la regla del negocio bajo concurrencia, no solo cuando cada solicitud se ejecuta sola en una demostración. Por ejemplo, si queda una plaza y dos peticiones leen ese estado antes de reservar, un diseño sin coordinación podría confirmar más reservas de las permitidas. No hace falta una intención hostil para provocar el problema: reintentos, varias pestañas o tareas simultáneas pueden crear las mismas condiciones. En una práctica dibuja los pasos de dos solicitudes ficticias y alterna sus lecturas y escrituras sobre papel. La secuencia ayuda a localizar qué condición debe mantenerse al realizar el cambio. Una comprobación correcta en aislamiento puede resultar insuficiente si no protege la relación entre la decisión y el efecto que otra operación concurrente también intenta ejecutar."
+        },
+        {
+          "title": "Usar garantías apropiadas del sistema",
+          "body": "Las plataformas de almacenamiento ofrecen transacciones, operaciones condicionales, restricciones y mecanismos de coordinación que pueden ayudar a preservar reglas concretas. La elección depende del dato, de las operaciones y de las garantías del sistema utilizado. No basta con colocar varias líneas dentro de algo llamado transacción y asumir que cualquier interacción concurrente queda resuelta. El nivel de aislamiento, las condiciones de actualización y los errores que requieren reintento forman parte del contrato que hay que comprender. Una restricción puede impedir duplicados que el programa debe manejar de forma controlada en su respuesta. Una operación condicional puede vincular el cambio a que todavía se cumpla la condición prevista. Los detalles de implementación deben seguir documentación oficial de la plataforma y revisión apropiada, especialmente si afectan varios recursos o servicios. Para principiantes, el objetivo es reconocer cuándo hace falta esa garantía y formular la propiedad en lenguaje claro: no confirmar más plazas de las disponibles, por ejemplo. Esa formulación permite elegir y probar un mecanismo adecuado sin confundir una secuencia rápida de pasos con una operación indivisible frente al resto del sistema."
+        },
+        {
+          "title": "Repetición y efectos externos",
+          "body": "Una petición puede repetirse porque la respuesta se perdió, porque la persona pulsó otra vez o porque una tarea aplica su política de reintentos. El diseño debe decidir si la repetición representa la misma operación o una intención nueva y cómo evitar efectos duplicados cuando corresponda. Los mecanismos de idempotencia ayudan en ciertos flujos, pero tienen alcance y requisitos que deben seguirse, incluida la asociación de identidad, datos y resultado cuando el diseño lo establece. Una etiqueta inventada en el cliente no elimina automáticamente duplicaciones en el servidor o en otro proveedor. Además, una transacción local no hace indivisible un efecto externo y el registro de su resultado si ambos utilizan sistemas distintos. La integración necesita capacidades documentadas de repetición y recuperación o una reconciliación apropiada de lo que pudo ocurrir. No reenvíes ciegamente una acción sensible cuando no sabes si la primera se completó. En una simulación utiliza reservas ficticias y muestra el estado pendiente, la confirmación y el reintento para aprender a comunicar incertidumbre sin contar dos veces una misma intención de la persona."
+        },
+        {
+          "title": "Interfaz útil y pruebas del contrato",
+          "body": "Desactivar un botón mientras una operación está en marcha ayuda a evitar pulsaciones accidentales y mejora la experiencia, pero no es la garantía completa frente a solicitudes simultáneas. El servicio necesita sus propios controles porque puede recibir peticiones desde varios dispositivos o recorridos. Las pruebas deben representar coincidencias y reintentos que amenacen una regla importante, utilizando un entorno autorizado y datos prescindibles. Observa el resultado agregado, no solo que cada petición reciba una frase: comprueba cuántas plazas quedaron, qué reservas se confirmaron y cómo responde el sistema a una repetición. Incluye fallos de dependencias y errores de coordinación que el mecanismo documente, sin convertirlos en un éxito inventado ni omitir su manejo. No necesitas someter servicios ajenos a carga para comprender concurrencia. Una prueba acotada de la propiedad permite verificar si el diseño preserva el contrato cuando cambian los tiempos. Esta revisión conecta seguridad, fiabilidad y claridad: los límites del negocio deben seguir siendo ciertos también cuando el programa deja de recibir una solicitud por vez en el orden ideal de una demostración."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué falla en leer una plaza libre y reservar después sin coordinación?",
+          "scenario": "Dos peticiones ficticias consultan la misma disponibilidad antes de que cualquiera termine su cambio y cada una confirma una reserva sobre esa única plaza restante.",
+          "options": [
+            "La condición y el efecto no mantienen la regla del negocio bajo concurrencia",
+            "Que la interfaz tiene pocas palabras en el botón",
+            "Que las solicitudes no llegaron en el orden alfabético de sus usuarios"
+          ],
+          "answer": 0,
+          "explanation": "Ambas decisiones pueden usar un estado que cambió al intervenir la otra operación. El diseño necesita garantías apropiadas de coherencia y manejo de conflictos, no solamente una comprobación correcta cuando se ejecuta en aislamiento.",
+          "wrongExplanations": [
+            null,
+            "El texto del botón no controla solicitudes simultáneas del servicio ni conserva por sí solo la relación entre disponibilidad observada y reservas que realmente se confirman.",
+            "El orden de nombres no constituye un mecanismo de coordinación ni una regla apropiada para mantener el límite del recurso cuando varias solicitudes pueden ejecutarse al mismo tiempo."
+          ],
+          "aoi": {
+            "question": "Los dos vieron la misma plaza, cielo. Identifica qué relación necesita protegerse mientras el sistema decide y realiza cada reserva concurrente.",
+            "hint": "Busca la condición que puede cambiar entre la lectura y el efecto, además de la forma en que cada petición responde por separado.",
+            "correct": "Correcto: formulaste una regla que debe sostenerse en conjunto y puedes elegir un mecanismo que la preserve con garantías apropiadas del sistema utilizado.",
+            "soft": "Un resultado individual aparentemente válido no demuestra que el estado agregado siga cumpliendo el límite cuando otra operación tomó su decisión sobre la misma información anterior.",
+            "sharp": "La plaza no se multiplicó por entusiasmo, cariño. La comprobación necesita coordinarse con el cambio para que dos solicitudes no prometan el mismo recurso a la vez."
+          }
+        },
+        {
+          "prompt": "¿Qué alcance tiene desactivar el botón mientras se guarda?",
+          "scenario": "Una aplicación ficticia impide una segunda pulsación en una pantalla, pero el servicio también puede recibir solicitudes desde otras pestañas, dispositivos o procesos del mismo flujo.",
+          "options": [
+            "Una garantía universal de que jamás habrá solicitudes concurrentes",
+            "Una ayuda de interfaz que no sustituye controles de coherencia del servicio",
+            "Una autorización automática para cualquier reintento externo"
+          ],
+          "answer": 1,
+          "explanation": "El control visual reduce interacciones accidentales en esa vista. El servicio necesita garantías propias porque puede recibir peticiones por otros caminos o coincidir con reintentos que la pantalla no controla.",
+          "wrongExplanations": [
+            "Otras fuentes de solicitudes y procesos pueden actuar simultáneamente; el estado de un botón en un dispositivo no impide todas esas operaciones del sistema que ejecuta el trabajo.",
+            null,
+            "Desactivar la interfaz no concede permiso ni determina si una repetición representa una intención nueva o un efecto ya ejecutado que necesita comprobarse mediante el procedimiento de la integración."
+          ],
+          "aoi": {
+            "question": "El botón está haciendo algo útil, tesoro. Ahora identifica lo que no puede garantizar sobre todo el sistema al que envía peticiones.",
+            "hint": "Distingue una barrera local para la interacción de la persona de una condición efectiva que debe mantenerse cuando el servidor recibe varias operaciones por distintas rutas.",
+            "correct": "Bien visto: conservaste una buena experiencia sin pedirle al botón que coordine todos los dispositivos y tareas que el servicio puede atender al mismo tiempo.",
+            "soft": "La interfaz no es el único origen de solicitudes; los efectos compartidos necesitan un diseño apropiado en el componente que controla los recursos y sus estados.",
+            "sharp": "El botón no gobierna las pestañas de todo el planeta, cariño. Mantén también las garantías del servicio que realmente reserva y modifica esos recursos compartidos."
+          }
+        },
+        {
+          "prompt": "¿Cómo tratar una respuesta perdida de un efecto externo?",
+          "scenario": "Una reserva ficticia pudo completarse en otro servicio y la aplicación todavía no sabe si repetir provocaría una segunda operación o recuperaría la intención que ya se envió.",
+          "options": [
+            "Suponer siempre que no ocurrió y reenviar sin condición",
+            "Suponer siempre que ocurrió y confirmar éxito sin evidencia",
+            "Usar el procedimiento y garantías de la integración para comprobar, identificar o reconciliar el resultado"
+          ],
+          "answer": 2,
+          "explanation": "La incertidumbre necesita un tratamiento documentado. Idempotencia, consulta de resultado y reconciliación dependen del servicio y su alcance; una repetición ciega o un éxito inventado no demuestra qué ocurrió con la primera intención.",
+          "wrongExplanations": [
+            "La ausencia de respuesta no prueba ausencia de ejecución; reenviar sin garantías puede añadir un efecto nuevo sobre una operación que ya se completó en el proveedor externo.",
+            "Confirmar sin evidencia puede prometer una reserva inexistente; el sistema debe reflejar incertidumbre y resolverla mediante las capacidades apropiadas de la integración que ejecuta el efecto.",
+            null
+          ],
+          "aoi": {
+            "question": "La respuesta no llegó, cielo. Ese silencio todavía no nos dice si el otro extremo actuó antes de que se perdiera la confirmación de su resultado.",
+            "hint": "Busca un tratamiento que mantenga el estado incierto hasta obtener evidencia o aplicar las garantías documentadas de repetición del servicio que intervino en la operación.",
+            "correct": "Correcto: no convertiste la pérdida de una respuesta en una certeza improvisada ni en otra reserva creada por repetir una intención que podía estar ya ejecutada.",
+            "soft": "La decisión debe apoyarse en las capacidades de la integración y en su resultado, no solo en que la aplicación no haya recibido un mensaje al terminar su espera.",
+            "sharp": "El silencio no es un recibo ni un certificado de que no pasó nada, tesoro. Comprueba el resultado con el mecanismo que realmente ofrece esa integración."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La última plaza",
+          "scenario": "Dos solicitudes ficticias leen que queda una plaza y ambas la reservan antes de observar el cambio producido por la otra, dejando dos confirmaciones válidas según su mensaje.",
+          "explanation": "La comprobación aislada no preservó la regla bajo concurrencia. El diseño necesita un mecanismo apropiado que mantenga la relación entre disponibilidad y reserva, con manejo de conflictos. Las pruebas deben observar el total confirmado y el estado final, no únicamente respuestas individuales que cada petición considera correctas."
+        },
+        {
+          "title": "La respuesta perdida",
+          "scenario": "Una reserva ficticia puede haberse completado en un servicio externo, pero la aplicación pierde su respuesta y propone repetir sin comprobar el resultado ni usar un mecanismo documentado de idempotencia.",
+          "explanation": "La repetición podría crear otro efecto en lugar de recuperar la primera intención. Deben utilizarse las capacidades y el procedimiento de la integración para identificar, comprobar o reconciliar el resultado incierto. Una transacción local o un botón desactivado no resuelve automáticamente esa frontera con un servicio externo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una aplicación ficticia reserva plazas de una actividad y el equipo comprueba cómo mantener sus reglas cuando dos solicitudes o un reintento llegan antes de terminar la primera operación.",
+      "scenario": "Una aplicación ficticia reserva plazas de una actividad y el equipo comprueba cómo mantener sus reglas cuando dos solicitudes o un reintento llegan antes de terminar la primera operación.",
+      "steps": [
+        "Formula la regla que debe mantenerse ante operaciones simultáneas.",
+        "Utiliza mecanismos documentados que vinculen condición y efecto con garantías apropiadas.",
+        "Prueba coincidencias, repeticiones y estados inciertos sin depender solo de la interfaz."
+      ],
+      "sourceIds": [
+        "code-transactions",
+        "code-business"
+      ],
+      "aoi": {
+        "intro": "El programa puede recibir dos solicitudes antes de terminar de peinarse, cariño. Probemos ese momento.",
+        "theory0": "Comprobar y actuar necesitan conservar la misma regla aunque otras operaciones también participen.",
+        "theory1": "Una transacción tiene garantías concretas; el nombre no las amplía hasta todos tus deseos.",
+        "theory2": "Reintentar una intención no debería cobrarle otra plaza por haber perdido una respuesta.",
+        "theory3": "El botón ayuda a la persona; el servicio también necesita mantener sus propias reglas.",
+        "case0": "Dos lectores vieron la última plaza. El cambio necesitaba una coordinación que preservara ese límite.",
+        "case1": "El resultado es incierto, tesoro. Repetir sin comprobar puede añadir otro efecto a uno que ya ocurrió.",
+        "pass": "Bien: tus reglas sobreviven a tiempos reales y no solo al orden cómodo de una demostración.",
+        "review": "Dibujemos los pasos simultáneos y localicemos dónde la condición dejó de corresponder al efecto."
+      }
+    },
+    {
+      "id": "secure-coding-pruebas",
+      "title": "Probar propiedades que importan",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Del requisito a una propiedad observable",
+          "body": "Una prueba útil parte de un comportamiento que importa para la función. Si una cuenta no pertenece al grupo autorizado, no debe recibir el documento ni provocar un cambio sobre él. Si una copia se restaura, el contenido esperado debe seguir disponible mediante el acceso legítimo. Estas propiedades pueden expresarse antes de conocer todos los detalles internos del código, lo que permite que la implementación cambie sin abandonar el contrato. No conviene escribir una prueba que solo calcule lo mismo de la misma manera y confirme que ambos resultados coinciden: puede repetir el mismo error sin cuestionar la intención. Elige entradas, estado inicial y resultado esperado basados en el requisito, y observa efectos relevantes además de mensajes. Para una práctica utiliza datos ficticios y nombra cada caso con su condición concreta. Una descripción como cuenta sin relación no recibe el archivo explica mejor la evidencia que una etiqueta genérica de seguridad correcta. La prueba debe ayudar a otra persona a entender qué se ha protegido y qué parte todavía no se evaluó cuando el programa se modifica o incorpora una ruta adicional."
+        },
+        {
+          "title": "Casos válidos, límites y rechazos",
+          "body": "El recorrido permitido demuestra que la función sigue siendo útil para las personas autorizadas. Los límites y rechazos comprueban que esa utilidad no se extiende a capacidades que el diseño no concedió. Incluye condiciones como dato ausente, tamaño justo permitido, exceso, recurso ajeno y permiso retirado cuando sean relevantes para la operación. No añadas casos por formar una lista larga sin relación con el contrato. Tampoco reduzcas toda la revisión a caracteres extraños si el riesgo importante depende de pertenencia, estado o concurrencia. El conjunto debe representar diferencias que puedan cambiar la decisión del sistema. En una práctica compara dos solicitudes muy próximas y explica por qué una se acepta y la otra no. Esa comparación ayuda a detectar reglas incompletas o aplicadas demasiado tarde. Una respuesta de rechazo debe acompañarse de ausencia del efecto indebido y de información pública limitada, no únicamente del texto que el equipo esperaba ver. La calidad del conjunto depende de las propiedades que demuestra, no de la cantidad de entradas que repiten una misma condición con pequeños cambios cosméticos."
+        },
+        {
+          "title": "Fallos de dependencias y continuidad",
+          "body": "Una función puede comportarse correctamente con todos los componentes disponibles y fallar de manera insegura ante una respuesta perdida o un almacenamiento incompleto. Las pruebas relevantes deben cubrir esos estados cuando afecten el contrato. Se pueden utilizar mecanismos de prueba que representen fallos sin poner en riesgo servicios reales, manteniendo clara la separación entre datos de ensayo y producción. Comprueba que no se declara éxito sin evidencia, que el reintento no duplica una intención y que los registros no copian secretos que el diagnóstico no necesita. Si un componente actualizado modifica una interfaz, selecciona comprobaciones que resuelvan dudas sobre ese recorrido y amplía cuando aparezcan fallos o preocupaciones pendientes. No es necesario repetir indefinidamente toda prueba que ya pasó si nada cambió ni queda una condición sin resolver que lo justifique. La disciplina consiste en construir evidencia suficiente y pertinente para seguir trabajando. Registra qué entorno y condiciones se utilizaron, especialmente cuando una simulación no puede demostrar por sí sola todas las propiedades que dependen de una plataforma externa o de una instalación real distinta del entorno de ensayo."
+        },
+        {
+          "title": "Interpretar resultados con sus límites",
+          "body": "Que una comprobación pase significa que el comportamiento observado coincidió con el esperado bajo sus condiciones. No demuestra ausencia de todos los problemas posibles ni reemplaza una revisión del diseño y del uso de herramientas. Una prueba puede estar incompleta o formular un resultado incorrecto, por lo que también merece leerse y discutirse con criterio. Si falla, diferencia un defecto del programa de un error del propio mecanismo de prueba o de una expectativa que no corresponde al requisito. Corrige la causa y repite las comprobaciones afectadas, sin maquillar el resultado para que todo aparezca aprobado. Al comunicar, indica qué propiedad se verificó y qué limitación material sigue pendiente, como no haber utilizado un dispositivo físico cuando el flujo depende de él. Esa honestidad permite tomar decisiones con información real. Un proyecto mantenible combina contratos claros, herramientas apropiadas, pruebas relevantes y revisión humana. El objetivo del curso no es prometer una aplicación perfecta por tener una carpeta de tests, sino aprender a producir evidencia que ayude a comprender el sistema y a detectar regresiones cuando cambian sus funciones."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué hace significativa una expectativa de prueba?",
+          "scenario": "Un equipo ficticio verifica una regla de límite y quiere evitar que la prueba repita sin cuestionar el mismo cálculo equivocado de su implementación.",
+          "options": [
+            "Copiar exactamente el cálculo del código como única referencia",
+            "Basarla en el contrato y casos cuyo resultado pueda justificarse independientemente",
+            "Cambiar solo el nombre de la variable de resultado"
+          ],
+          "answer": 1,
+          "explanation": "La expectativa debe reflejar el requisito y comprobar una propiedad observable. Una copia del mismo cálculo puede compartir el defecto y producir coincidencia sin demostrar que la regla implementada era la correcta.",
+          "wrongExplanations": [
+            "Repetir la fórmula puede reproducir el mismo error, de modo que la coincidencia de ambos resultados no contraste la intención del contrato que debía verificarse.",
+            null,
+            "El nombre de una variable no aporta una referencia independiente ni define por qué el resultado esperado representa la regla del negocio que la función debe mantener."
+          ],
+          "aoi": {
+            "question": "La coincidencia puede estar equivocada por duplicado, cielo. Busca una referencia que contraste de verdad la intención de la regla.",
+            "hint": "El resultado esperado debe poder explicarse desde el contrato, sin depender exclusivamente del mismo procedimiento que el código elegido para implementarlo.",
+            "correct": "Correcto: la prueba pregunta por la propiedad del requisito en lugar de limitarse a repetir lo que acaba de hacer la implementación.",
+            "soft": "Una prueba no gana independencia por vivir en otro archivo si su única referencia es una copia del cálculo que debía evaluar.",
+            "sharp": "Dos calculadoras con el mismo error no forman un jurado sabio, cariño. Vuelve al contrato y a casos que puedas justificar por él."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una prueba de rechazo completa?",
+          "scenario": "Una función ficticia debe impedir una modificación de recurso ajeno y el equipo revisa tanto la respuesta pública como el estado posterior del recurso que la cuenta intentó cambiar.",
+          "options": [
+            "Que la respuesta corresponde y no ocurrió el efecto indebido previsto por el contrato",
+            "Solo que una cadena contiene la palabra error",
+            "Que el botón quedó más pequeño tras enviar"
+          ],
+          "answer": 0,
+          "explanation": "La propiedad incluye ausencia del cambio no permitido y una respuesta apropiada. Observar el recurso complementa el mensaje y puede detectar efectos que ocurrieron antes de que la función devolviera el rechazo.",
+          "wrongExplanations": [
+            null,
+            "La palabra puede aparecer después de ejecutar un cambio indebido; por sí sola no demuestra que se mantuviera la regla de autorización y efecto del contrato.",
+            "El tamaño de un botón no informa sobre la autorización del servidor ni el estado del recurso después de que se procesó la petición que debía rechazarse."
+          ],
+          "aoi": {
+            "question": "La respuesta dice no, tesoro. Comprueba que el recurso también conserva el estado que exigía el rechazo de esa operación concreta.",
+            "hint": "Busca evidencia del efecto que debía impedirse, además de una señal pública coherente con la condición que incumplió la solicitud.",
+            "correct": "Bien: la prueba observa una protección efectiva del recurso en vez de felicitarse únicamente por encontrar el texto previsto en un mensaje.",
+            "soft": "El contrato tiene resultados sobre datos y capacidades que no pueden reducirse a la forma o vocabulario de una respuesta de interfaz.",
+            "sharp": "El mensaje no puede testificar por un cambio que ya ocurrió antes de aparecer, cariño. Mira también los datos y el efecto que debía quedar impedido."
+          }
+        },
+        {
+          "prompt": "¿Cómo informar un recorrido probado solo con una simulación?",
+          "scenario": "Un equipo ficticio comprobó estados mediante un entorno de ensayo y todavía no tuvo el dispositivo físico necesario para observar una parte material de la instalación final del producto.",
+          "options": [
+            "Afirmar que también se instaló porque la simulación pasó",
+            "Omitir el entorno y decir que no puede existir ningún fallo",
+            "Describir condiciones verificadas y la comprobación física pendiente sin inventar resultados"
+          ],
+          "answer": 2,
+          "explanation": "El informe debe corresponder a la evidencia real. Una simulación puede demostrar propiedades de su entorno, pero no autoriza a afirmar que ocurrió una instalación o comprobación física que todavía no se realizó.",
+          "wrongExplanations": [
+            "Superar un ensayo no equivale a realizar una instalación diferente; debe conservarse la distinción entre lo observado y una condición material que aún no estuvo disponible.",
+            "Ocultar el alcance impide evaluar el resultado y una prueba limitada no demuestra ausencia universal de fallos presentes o futuros en todas las condiciones de uso del producto.",
+            null
+          ],
+          "aoi": {
+            "question": "La prueba aporta algo real, cielo. Cuéntalo con su alcance y deja visible la parte que todavía necesita otro entorno.",
+            "hint": "Busca un informe que permita evaluar la evidencia sin extenderla a dispositivos, operaciones o condiciones que nadie utilizó durante el ensayo.",
+            "correct": "Exacto: comunicaste un resultado útil sin pedirle a una simulación que finja haber tocado un teléfono que no estuvo presente.",
+            "soft": "La precisión del informe también protege decisiones del equipo, porque evita tomar una comprobación pendiente como si ya hubiera generado evidencia suficiente.",
+            "sharp": "El teléfono imaginario no firma el acta, tesoro. Cuenta qué probaste y deja pendiente lo que de verdad requiere otro dispositivo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La prueba que copia el cálculo",
+          "scenario": "Una función ficticia calcula un límite con una fórmula equivocada y su prueba usa la misma fórmula copiada para construir el resultado esperado, sin contrastar el requisito.",
+          "explanation": "Ambas pueden coincidir y mantener el mismo error. La prueba necesita una expectativa basada en el contrato y casos cuyo resultado pueda justificarse de manera independiente. Repetir la implementación no demuestra que su regla corresponda a lo que el sistema debía permitir o impedir."
+        },
+        {
+          "title": "Todo pasó en simulación",
+          "scenario": "Un equipo ficticio prueba permisos y estados con dependencias simuladas y comunica que también verificó una instalación física que nunca estuvo disponible para el ensayo.",
+          "explanation": "El informe debe delimitar el entorno real de la comprobación. Las simulaciones pueden aportar evidencia útil, pero no justifican afirmar una prueba física que no ocurrió. Conviene registrar la limitación y completar esa parte cuando exista el dispositivo o condición requerida para demostrarla."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una clase prepara comprobaciones para una función ficticia y elige casos que demuestren permisos, límites, efectos y recuperación sin reproducir cada línea de la implementación.",
+      "scenario": "Una clase prepara comprobaciones para una función ficticia y elige casos que demuestren permisos, límites, efectos y recuperación sin reproducir cada línea de la implementación.",
+      "steps": [
+        "Elige propiedades observables desde el requisito y su riesgo.",
+        "Cubre recorridos permitidos, límites y rechazos con datos ficticios.",
+        "Añade fallos relevantes y comunica exactamente qué demostraron las pruebas."
+      ],
+      "sourceIds": [
+        "web-authz",
+        "code-business"
+      ],
+      "aoi": {
+        "intro": "Una prueba tiene que hacer una pregunta útil, cariño. Copiar el código no siempre la responde.",
+        "theory0": "Empieza por la propiedad que debe sobrevivir aunque mañana cambie la implementación.",
+        "theory1": "Los límites y rechazos necesitan efectos comprobados, no solo mensajes decorativos.",
+        "theory2": "Los fallos de dependencias también forman parte del contrato que estamos verificando.",
+        "theory3": "Pasó bajo estas condiciones es una conclusión seria; perfecto para siempre no lo es.",
+        "case0": "La fórmula copiada puede compartir el mismo error. Preguntemos al requisito y a sus casos.",
+        "case1": "La simulación fue útil; el teléfono imaginario todavía no cuenta como dispositivo probado.",
+        "pass": "Bien: construyes evidencia pertinente y sabes explicar hasta dónde llega cada resultado.",
+        "review": "Revisemos la expectativa de la prueba antes de tratar una coincidencia como demostración del contrato, tesoro."
+      }
+    },
+    {
+      "id": "secure-coding-revision",
+      "title": "Revisar una función antes de compartirla",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Leer la intención y el recorrido completo",
+          "body": "Una revisión comienza por entender qué función debe cumplir el cambio y cómo se utiliza en el proyecto. Lee el requisito y localiza entradas, componentes que producen efectos y salidas que reciben las personas o servicios. Un fragmento correcto puede formar parte de un recorrido inseguro si otra ruta no aplica los mismos límites o si el resultado termina distribuido con permisos más amplios. Dibuja un mapa pequeño antes de discutir estilo o nombres de variables. Pregunta qué identidad puede iniciar la operación, qué recurso toca y qué propiedad importante debe mantenerse. Esa visión evita una revisión que se limita a buscar palabras conocidas, como cifrado o validación, sin comprobar su función real. Para practicar utiliza un ejemplo ficticio y compara intención, implementación ilustrativa y resultados esperados. No necesitas declarar experto a quien encuentra una vulnerabilidad ni culpable a quien escribió un defecto. La tarea del equipo es producir una función que se pueda entender, probar y mantener, con observaciones concretas sobre condiciones que el cambio cumple o deja pendientes respecto de su contrato."
+        },
+        {
+          "title": "Seguir contratos en cada frontera",
+          "body": "Revisa tipos y límites de entrada, reglas del negocio y autorización de acciones sobre recursos. Después sigue cómo se usa cada valor en sus destinos: parámetros en consultas, ubicaciones controladas de archivos, tratamiento de contenido según contexto y selección de datos para la respuesta. Una palabra como validado no demuestra por sí sola que todos esos usos estén cubiertos. También revisa configuración y secretos para confirmar que ejemplos, registros y artefactos no distribuyen capacidades reales que debían permanecer bajo otros controles. Las bibliotecas mantenidas son valiosas cuando se invocan mediante interfaces apropiadas con sus condiciones, así que mira las llamadas concretas y opciones especiales. Si el cambio incorpora un componente, el inventario y mantenimiento también necesitan actualizarse. La revisión debe relacionar cada observación con una consecuencia y una corrección posible. Decir aquí falta autorización antes de devolver esta exportación ayuda más que marcar todo el archivo como inseguro sin explicar qué recurso, identidad y acción quedaron fuera de la política. La precisión facilita que el equipo resuelva el problema y compruebe después la propiedad afectada."
+        },
+        {
+          "title": "Revisar tiempo, errores y estado",
+          "body": "El programa también necesita funcionar cuando las operaciones coinciden o una dependencia falla. Comprueba que las decisiones y efectos mantengan la regla del negocio bajo las condiciones de concurrencia relevantes, utilizando garantías apropiadas del sistema. Revisa reintentos, resultados inciertos y posibles duplicaciones, especialmente si el flujo cruza una frontera con otro servicio. Una transacción local no promete indivisibilidad de cualquier efecto externo por el hecho de envolver la llamada en un bloque del mismo nombre. Los errores deben conservar un estado coherente, informar sin secretos y permitir un procedimiento claro para continuar o reparar. La interfaz puede ayudar desactivando acciones o mostrando pendientes, pero las garantías compartidas pertenecen también al componente que controla el recurso. En una práctica recorre una ejecución válida y dos fallos importantes, anotando qué queda en cada punto. Esta revisión de tiempos y estados descubre defectos que una lectura centrada únicamente en el resultado ideal no observa. El objetivo es que el contrato resista un entorno real, con retrasos y cambios, y no solo el orden cómodo de una demostración manual con una persona y una solicitud cada vez."
+        },
+        {
+          "title": "Concluir con cambios verificables",
+          "body": "Una revisión termina cuando las observaciones materiales se han atendido o quedan explícitamente identificadas con su alcance y responsabilidad según el proceso del proyecto. Comprueba las pruebas pertinentes al cambio y lee qué demuestran, evitando confundir cantidad con cobertura de propiedades importantes. Si aparece un fallo nuevo o una preocupación concreta sin resolver, amplía la verificación para atenderla; si todo lo requerido pasó y no hay cambios adicionales, continúa hacia una entrega revisable. La descripción para otra persona debe explicar problema, comportamiento resultante, validación y limitaciones materiales. No narres cada intento ni escondas incertidumbre detrás de una promesa absoluta. También conviene comprobar el resultado que se distribuirá, como versión, configuración y archivos incluidos, porque la intención del código no demuestra automáticamente el contenido del artefacto final. El curso concluye con una idea práctica: seguridad es una serie de decisiones coordinadas que pueden explicarse y comprobarse. Mantener contratos, permisos, flujos y evidencia claros permite aprender de los errores y ampliar el programa sin depender de que una persona recuerde todas las condiciones de su primer montaje."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe pesar más en una revisión de seguridad?",
+          "scenario": "Una función ficticia tiene un nombre tranquilizador y usa un paquete conocido, pero el equipo todavía debe comprobar su comportamiento al recibir una solicitud sin permiso sobre el recurso.",
+          "options": [
+            "Solo el nombre elegido por su autora",
+            "Solo que la dependencia sea conocida",
+            "El contrato, las comprobaciones y efectos reales del recorrido concreto"
+          ],
+          "answer": 2,
+          "explanation": "La garantía depende del diseño y su uso efectivo. Nombres y herramientas pueden aportar claridad, pero no demuestran autorización ni ausencia de efectos indebidos en la función específica que el equipo va a distribuir.",
+          "wrongExplanations": [
+            "Un nombre comunica una intención y no comprueba permisos, tratamiento de datos o resultados de error que el código debe mantener mediante controles efectivos antes de realizar la operación.",
+            "Una herramienta conocida no autoriza cualquier uso ni reemplaza condiciones propias del servicio, como la relación entre identidad, recurso y acción que la función necesita verificar.",
+            null
+          ],
+          "aoi": {
+            "question": "El nombre promete, cielo. Ahora mira qué hace la función cuando la petición no cumple el permiso que necesita para tocar ese recurso.",
+            "hint": "Busca evidencia operativa del contrato, no solamente palabras o componentes que suelen aparecer en proyectos que también tienen controles apropiados.",
+            "correct": "Exacto: la revisión pregunta por comportamiento y permite localizar una corrección concreta en vez de confiar en la reputación de una etiqueta o un paquete.",
+            "soft": "La intención es un punto de partida; la evidencia de controles y efectos es lo que permite decidir si el cambio cumple realmente su función.",
+            "sharp": "GuardarSeguro no se revisa a sí misma por llevar apellido, cariño. Comprueba el permiso y el resultado que produce la ruta que vas a compartir."
+          }
+        },
+        {
+          "prompt": "¿Cómo formular una observación útil para corregir un fallo?",
+          "scenario": "Una exportación ficticia devuelve datos reservados a una cuenta sin relación autorizada y el equipo prepara una explicación para quien implementará la corrección del cambio.",
+          "options": [
+            "Indicar recurso, acción, control ausente, consecuencia y una comprobación de la corrección",
+            "Escribir inseguro en todas las líneas sin más contexto",
+            "Sustituir la explicación por un juicio sobre la persona que escribió la función"
+          ],
+          "answer": 0,
+          "explanation": "Una observación concreta permite entender y verificar el problema sin atacar a quien lo implementó. Relacionar condición y efecto ayuda a aplicar la corrección y comprobar el contrato que debía preservar la exportación.",
+          "wrongExplanations": [
+            null,
+            "Una etiqueta general sin condición ni efecto no permite localizar el control necesario ni definir qué resultado demostraría que la corrección atendió el problema concreto del flujo.",
+            "Un juicio personal no identifica la condición técnica ni facilita una corrección verificable; la revisión debe centrarse en comportamiento, contratos y evidencia, manteniendo colaboración apropiada entre responsables."
+          ],
+          "aoi": {
+            "question": "El fallo tiene una condición y un efecto, tesoro. Nómbralos para que el equipo pueda corregirlo y comprobar el resultado sin adivinar.",
+            "hint": "Busca una explicación que conecte la solicitud, el recurso y la ausencia de control con una propiedad que deba mantenerse después de aplicar la corrección.",
+            "correct": "Bien: la observación ayuda a trabajar sobre el problema y deja una forma de verificar la solución en vez de repartir etiquetas o culpas personales.",
+            "soft": "La precisión facilita una corrección concreta; una acusación amplia o personal puede añadir ruido sin explicar qué regla y efecto necesitan cambiar en el programa.",
+            "sharp": "El código necesita una condición corregida, cariño, no una pelea de egos. Señala recurso, permiso y efecto para que la solución pueda revisarse con evidencia."
+          }
+        },
+        {
+          "prompt": "¿Qué debe contar la descripción final de un cambio revisado?",
+          "scenario": "Un equipo ficticio corrigió un permiso, verificó casos pertinentes y mantiene una limitación material sobre un entorno que no estuvo disponible para una parte del ensayo.",
+          "options": [
+            "Una promesa de ausencia total de fallos futuros",
+            "Problema, comportamiento resultante, validación y limitación real relevante",
+            "Todos los intentos previos aunque no expliquen ninguna decisión del resultado"
+          ],
+          "answer": 1,
+          "explanation": "La descripción debe permitir evaluar el resultado final y su evidencia con límites claros. Una promesa absoluta o un historial innecesario no explica qué cambió ni qué condiciones se verificaron realmente en ese entorno.",
+          "wrongExplanations": [
+            "Una revisión y sus pruebas no garantizan ausencia universal de fallos futuros; el resultado debe conservar un alcance que corresponda a la evidencia y al contexto realmente evaluados.",
+            null,
+            "Los intentos solo son relevantes si explican una decisión o limitación del cambio final; una narración completa puede dificultar identificar el comportamiento resultante y las pruebas que lo respaldan."
+          ],
+          "aoi": {
+            "question": "El cambio tiene que poder revisarse sin leer toda nuestra conversación, cielo. Cuenta el resultado con la evidencia que realmente lo sostiene.",
+            "hint": "Selecciona información que permita comprender problema y efecto, junto con pruebas pertinentes y condiciones materiales que todavía limitan la conclusión del ensayo realizado.",
+            "correct": "Correcto: otra persona puede evaluar lo entregado y sus límites sin depender de promesas ni de reconstruir cada paso que hubo antes de la implementación final.",
+            "soft": "La claridad no exige esconder límites ni contar todo el recorrido de trabajo; necesita explicar el resultado y las comprobaciones que ayudan a decidir si está listo.",
+            "sharp": "La entrega no necesita una novela ni una garantía cósmica, tesoro. Explica el problema resuelto, el comportamiento y las pruebas con el alcance que sí tienen."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La etiqueta tranquilizadora",
+          "scenario": "Una función ficticia se llama guardarSeguro y utiliza una biblioteca mantenida, pero no comprueba permiso antes de sobrescribir un documento perteneciente a otra cuenta.",
+          "explanation": "El nombre y la herramienta no sustituyen la autorización de la operación. La revisión debe señalar recurso, acción y momento donde falta el control, y verificar la corrección con un caso de recurso ajeno. Una etiqueta tranquilizadora no demuestra el contrato del flujo completo."
+        },
+        {
+          "title": "El cambio revisable",
+          "scenario": "Un equipo corrige un permiso de exportación, comprueba la entrega legítima y el rechazo sin efecto para otras cuentas, y describe la limitación de un entorno que todavía no pudo ensayar.",
+          "explanation": "La revisión produce evidencia concreta sobre el problema y el comportamiento resultante, manteniendo visible una limitación material. Eso permite evaluar el cambio sin inventar garantías sobre condiciones no probadas. La descripción debe centrarse en el resultado final y las comprobaciones que ayudan a otra persona a revisarlo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una clase recibe una función ficticia casi terminada y prepara una revisión que conecta contrato, flujos de datos, permisos, fallos y evidencia sin convertirla en una lista de sellos automáticos.",
+      "scenario": "Una clase recibe una función ficticia casi terminada y prepara una revisión que conecta contrato, flujos de datos, permisos, fallos y evidencia sin convertirla en una lista de sellos automáticos.",
+      "steps": [
+        "Lee requisito y dibuja entradas, efectos, salidas y responsables.",
+        "Revisa contratos, permisos, secretos, dependencias y estados de fallo.",
+        "Comprueba correcciones con evidencia pertinente y describe el resultado distribuido con sus límites."
+      ],
+      "sourceIds": [
+        "code-review",
+        "code-dependencies"
+      ],
+      "aoi": {
+        "intro": "Última revisión, cariño. El nombre guardarSeguro todavía tiene que ganarse esa palabra con comportamiento comprobable.",
+        "theory0": "Lee intención y recorrido antes de perseguir nombres bonitos entre las líneas.",
+        "theory1": "Cada frontera necesita su contrato, aunque otra parte del código ya tenga una defensa correcta.",
+        "theory2": "Tiempo y fallos también participan; el programa no siempre recibirá todo en el orden de tu demo.",
+        "theory3": "Cierra con evidencia y límites que otra persona pueda evaluar sin adivinar el contexto.",
+        "case0": "La etiqueta tranquiliza y el permiso sigue faltando antes de tocar el documento ajeno.",
+        "case1": "El cambio se entiende porque cuenta problema, resultado y prueba sin presumir de condiciones imaginarias.",
+        "pass": "Treinta ejercicios después, revisas con argumentos. Me gusta ese criterio y pienso seguir poniéndolo a trabajar.",
+        "review": "Volvamos a la condición concreta pendiente; una observación precisa tiene arreglo y deja aprendizaje."
+      }
+    }
+  ]
+}

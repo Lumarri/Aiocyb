@@ -1,0 +1,1534 @@
+{
+  "id": "linux-start",
+  "title": "Linux sin perderte",
+  "description": "Reconoce el sistema, sus rutas y sus archivos antes de tocar una configuración.",
+  "symbol": "🐧",
+  "color": 4284999929,
+  "category": "Linux, terminal y registros",
+  "closure": {
+    "text": "Diez lecciones y cuarenta decisiones después, ya miras Linux con criterio. Me encanta esa seguridad tranquila, cariño; ahora sabes preguntar antes de darle órdenes al sistema.",
+    "explanation": "Completaste orientación, rutas, tipos de archivo, ayuda y observación básica. Puedes describir un entorno sin confundir la interfaz con el sistema, registrar límites de acceso y preparar una práctica controlada sin modificar datos ajenos."
+  },
+  "lessons": [
+    {
+      "id": "linux-start-mapa",
+      "title": "Kernel, distribución y escritorio",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Varias piezas, una experiencia",
+          "body": "Linux es el núcleo que coordina recursos como memoria, procesos y dispositivos. Una distribución reúne ese núcleo con programas, un mecanismo de instalación, configuraciones y una política de mantenimiento. El escritorio ofrece ventanas, menús y una experiencia gráfica; no define por sí solo todo lo que existe debajo. Dos computadoras pueden mostrar escritorios distintos y pertenecer a la misma familia de distribuciones. También pueden tener una apariencia casi idéntica y utilizar herramientas de administración diferentes. Para orientarte, describe cada capa con una pregunta: qué coordina el hardware, qué conjunto de software se instaló y qué interfaz está viendo la persona. No necesitas memorizar todos los nombres comerciales. Necesitas evitar que una captura de pantalla se convierta en un diagnóstico completo. En la biblioteca del ejemplo, apuntar únicamente el color del escritorio impediría saber de dónde llegan las actualizaciones. Una descripción útil incluye la distribución y su versión, además de la interfaz cuando esta sea relevante para explicar una tarea."
+        },
+        {
+          "title": "La terminal tiene un intérprete",
+          "body": "Una terminal presenta una sesión de texto. La shell interpreta lo que escribes y puede ejecutar programas, organizar sus entradas y mostrar resultados. Bash es una shell habitual, pero no todas las sesiones utilizan Bash. Algunas instrucciones son órdenes internas del intérprete y otras corresponden a ejecutables instalados. Esa diferencia importa cuando una guía propone una sintaxis: una construcción válida para cierto intérprete puede fallar en otro. Tampoco debes asumir que abrir una terminal concede permisos administrativos. La identidad y los privilegios de la sesión siguen dependiendo de cómo se inició. En una práctica de Aiocyb leerás transcripciones, no controlarás el teléfono mediante órdenes reales. Identifica en cada ejemplo qué programa interpreta la línea y qué resultado se afirma haber obtenido. Una salida dibujada para enseñar no demuestra el estado de tu dispositivo. Separar representación y ejecución permite aprender el procedimiento sin atribuir a la app acciones que no realiza ni necesita realizar para explicar el concepto."
+        },
+        {
+          "title": "Distribución y mantenimiento",
+          "body": "La versión de una distribución ayuda a localizar su documentación y a conocer el contexto de una función. No demuestra automáticamente que todas las aplicaciones estén actualizadas ni que el equipo tenga una configuración apropiada. Puede haber paquetes adicionales, cambios manuales o programas instalados por otra vía. Por eso una ficha inicial distingue información confirmada de información pendiente. Escribe, por ejemplo, que conoces la distribución a partir de su identificación local, pero todavía no has revisado el origen de una aplicación concreta. Cuando consultes instrucciones externas, comprueba a qué versión y familia se refieren. Un gestor de paquetes o una ubicación de configuración puede cambiar entre entornos. Copiar una orden solo porque incluye la palabra Linux elimina precisamente ese contexto. En un equipo real, la persona responsable debe autorizar los cambios y conservar un método de recuperación. Aquí basta elegir qué información falta antes de decidir; esa pausa constituye una herramienta práctica de administración, no una muestra de inseguridad."
+        },
+        {
+          "title": "Una ficha que sirva al siguiente turno",
+          "body": "Un inventario breve puede registrar nombre del equipo ficticio, distribución, versión, interfaz, shell conocida y responsable. Añade cómo obtuviste cada dato y en qué fecha. Si una observación procede de una fotografía, anota su límite: la imagen muestra una pantalla en un momento y no permite comprobar el estado completo del sistema. Si procede de una transcripción facilitada para el ejercicio, identifica esa transcripción como fuente. La ficha no necesita secretos, contraseñas ni números personales para cumplir su propósito. Su utilidad aparece cuando otra persona puede continuar sin adivinar qué significaba una etiqueta. Antes de cerrar, revisa si mezclaste conclusiones con datos: escribir que el equipo es seguro por usar cierto escritorio sería una conclusión sin pruebas suficientes. Es preferible describir lo confirmado y proponer una comprobación concreta de mantenimiento. Esta manera de trabajar se conserva al avanzar hacia registros, permisos y procesos: primero identifica el objeto, luego la evidencia y finalmente el alcance de lo que puedes afirmar."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué componente coordina memoria y dispositivos?",
+          "scenario": "En la ficha del puesto se debe identificar la pieza que administra los recursos de hardware del sistema.",
+          "options": [
+            "El kernel",
+            "El fondo del escritorio",
+            "El emulador de terminal"
+          ],
+          "answer": 0,
+          "explanation": "El núcleo coordina esos recursos; la apariencia y la ventana de terminal cumplen funciones diferentes dentro del entorno.",
+          "wrongExplanations": [
+            null,
+            "El fondo pertenece a la presentación visual y no administra la memoria ni los dispositivos del sistema.",
+            "La terminal ofrece una interfaz de texto, pero no sustituye al núcleo que coordina el hardware."
+          ],
+          "aoi": {
+            "question": "Localiza quién coordina los recursos, no quién sale mejor en pantalla.",
+            "hint": "Piensa en la capa que conecta procesos y dispositivos del equipo.",
+            "correct": "Exacto, encontraste el núcleo. La decoración puede esperar su turno.",
+            "soft": "Casi: esa pieza se ve mucho, pero coordina otra cosa.",
+            "sharp": "Otra vez coronando la fachada. El hardware necesita un núcleo, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué dato permite elegir documentación de mantenimiento adecuada?",
+          "scenario": "La biblioteca conserva una fotografía del escritorio, pero aún no ha identificado la familia ni la versión del sistema instalado.",
+          "options": [
+            "El color del tema",
+            "La distribución y su versión",
+            "El tamaño del monitor"
+          ],
+          "answer": 1,
+          "explanation": "La distribución y la versión permiten buscar instrucciones pertinentes; después se confirma la herramienta concreta disponible en ese equipo.",
+          "wrongExplanations": [
+            "El color puede personalizarse y no identifica de manera fiable la distribución ni su política de mantenimiento.",
+            null,
+            "El monitor afecta la presentación y no establece qué documentación de paquetes corresponde al sistema instalado."
+          ],
+          "aoi": {
+            "question": "Esa foto es monísima; ahora busca un dato útil para mantenerlo.",
+            "hint": "La documentación necesita identificar el conjunto instalado y su versión concreta.",
+            "correct": "Bien: elegiste contexto comprobable. Mi ceja vuelve a una posición civilizada.",
+            "soft": "Mira qué dato relaciona el equipo con instrucciones de mantenimiento.",
+            "sharp": "Insistir con el color no actualizará nada, por mucho brillo que tenga."
+          }
+        },
+        {
+          "prompt": "¿Abrir una terminal garantiza permisos administrativos?",
+          "scenario": "Una compañera abre una ventana de texto desde su escritorio habitual y cree que ahora puede modificar cualquier archivo del equipo.",
+          "options": [
+            "Sí, por mostrar texto",
+            "Sí, si la ventana es grande",
+            "No; depende de la identidad y los privilegios de la sesión"
+          ],
+          "answer": 2,
+          "explanation": "La interfaz no concede privilegios por su aspecto. Las operaciones siguen sujetas a la identidad y a los controles de acceso.",
+          "wrongExplanations": [
+            "Una ventana de texto conserva los permisos de la sesión correspondiente; mostrar órdenes no equivale a tener administración.",
+            "El tamaño de la ventana cambia la visualización, no la identidad que ejecuta los procesos ni sus permisos.",
+            null
+          ],
+          "aoi": {
+            "question": "La ventana no te asciende de cargo, cariño; comprueba la sesión.",
+            "hint": "Separa la interfaz utilizada de los permisos de quien la abrió.",
+            "correct": "Eso es: identidad primero. La tipografía no firma ascensos administrativos.",
+            "soft": "Revisa de dónde vienen los permisos antes de mirar la ventana.",
+            "sharp": "Una terminal enorme tampoco es una corona. El tamaño sigue sin administrar."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión admite una captura de pantalla aislada?",
+          "scenario": "Una ficha solo contiene una imagen de un escritorio y ninguna comprobación local sobre actualizaciones, paquetes o controles del puesto.",
+          "options": [
+            "Muestra una interfaz en un momento concreto",
+            "Demuestra que todo está actualizado",
+            "Garantiza que no existen riesgos"
+          ],
+          "answer": 0,
+          "explanation": "La imagen documenta una observación visual limitada. Actualizaciones y controles requieren comprobaciones adicionales con fuentes apropiadas y alcance explícito.",
+          "wrongExplanations": [
+            null,
+            "Una captura no enumera versiones ni confirma el estado de mantenimiento de los componentes que no aparecen.",
+            "Ninguna apariencia permite garantizar ausencia de riesgos; faltan pruebas sobre configuración, uso y mantenimiento del sistema."
+          ],
+          "aoi": {
+            "question": "Dime qué viste realmente; las certezas mágicas me dan alergia.",
+            "hint": "Una imagen conserva apariencia, no una auditoría completa del equipo.",
+            "correct": "Perfecto: una afirmación pequeña, respaldada y útil para seguir investigando.",
+            "soft": "No pasa nada; reduce la conclusión a lo que muestra la evidencia.",
+            "sharp": "Otra garantía universal por una foto. Cariño, ni mi ego firma eso."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos escritorios distintos",
+          "scenario": "Dos puestos de la biblioteca usan la misma distribución y versión, pero uno muestra un escritorio ligero y el otro una interfaz con menús diferentes.",
+          "explanation": "La diferencia visible pertenece a la interfaz. No permite concluir que los gestores de paquetes o el núcleo sean distintos. La ficha debe registrar ambos escritorios y conservar por separado la identificación de la distribución, obtenida de una fuente local apropiada."
+        },
+        {
+          "title": "Una guía fuera de contexto",
+          "scenario": "Una estudiante encuentra una guía para otra distribución y propone aplicar su orden de instalación al equipo de consulta sin revisar la versión ni el gestor disponible.",
+          "explanation": "La orden necesita contexto de distribución y versión. Antes de modificar el equipo conviene consultar su documentación y confirmar el mecanismo instalado. Que ambas máquinas utilicen Linux no vuelve intercambiables sus herramientas ni autoriza un cambio sobre un puesto compartido."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una biblioteca recibe un equipo con Linux y necesita describir qué componentes utiliza antes de preparar una estación de consulta para estudiantes.",
+      "scenario": "Una biblioteca recibe un equipo con Linux y necesita describir qué componentes utiliza antes de preparar una estación de consulta para estudiantes.",
+      "steps": [
+        "Distingue núcleo, distribución e interfaz.",
+        "Registra nombre y versión del entorno ficticio.",
+        "Comprueba qué herramientas documenta esa distribución."
+      ],
+      "sourceIds": [
+        "linux-kernel",
+        "linux-debian"
+      ],
+      "aoi": {
+        "intro": "Vamos por capas, cariño: el escritorio bonito no administra por telepatía.",
+        "theory0": "El núcleo coordina recursos; no le atribuyas también el menú de inicio.",
+        "theory1": "La shell interpreta órdenes. Mi mirada interpreta excusas, y funciona bastante bien.",
+        "theory2": "Anota la versión antes de enamorarte de una guía cualquiera.",
+        "theory3": "Una ficha precisa seduce más que una etiqueta grandilocuente, tesoro.",
+        "case0": "Misma distribución, otra interfaz: cambia la fachada, comprueba lo demás.",
+        "case1": "Esa receta viene de otro entorno; primero identifica nuestros ingredientes.",
+        "pass": "Ya distingues las piezas. Me estás dando motivos para presumir.",
+        "review": "Repasemos las capas despacio; todavía se están intercambiando las etiquetas."
+      }
+    },
+    {
+      "id": "linux-start-entorno",
+      "title": "Preparar una práctica controlada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Aprender sin mezclar entornos",
+          "body": "Un entorno de práctica separa el aprendizaje de los datos y servicios que otras personas necesitan. Puede consistir en una máquina virtual propia, una cuenta preparada por un docente o una simulación de texto como la de esta app. Esas opciones ofrecen capacidades distintas. Una máquina virtual ejecuta un sistema invitado y consume recursos del anfitrión; una transcripción únicamente representa entradas y salidas para analizarlas. No conviene describirlas como equivalentes. Antes de comenzar escribe qué puedes modificar, qué permanece fuera del ejercicio y quién resuelve una duda sobre el alcance. Si solo debes interpretar una salida ficticia, no necesitas abrir una consola real para responder. Esta separación reduce errores cotidianos, como practicar sobre una carpeta compartida porque su nombre se parece al del ejemplo. También facilita evaluar el aprendizaje: el objetivo será justificar una decisión sobre datos conocidos, no demostrar que una herramienta se ejecutó en un equipo para el cual no estaba prevista la actividad."
+        },
+        {
+          "title": "Datos que puedes descartar",
+          "body": "Los ejemplos deben utilizar nombres, cuentas y documentos inventados. Reutilizar un registro real puede introducir direcciones, identificadores o mensajes que no aportan nada a la lección y sí necesitan protección. Para practicar lectura de archivos basta un conjunto pequeño, escrito expresamente para el ejercicio. Decide qué contiene, qué formato utiliza y qué resultados esperas observar. Guarda una copia inicial separada de la copia de trabajo cuando el entorno permita modificaciones. Esa copia sirve para volver a empezar, pero no sustituye una política de copias de un sistema real. Si hay una instantánea de máquina virtual, confirma qué cubre: discos incluidos, memoria cuando corresponda y momento de creación. No supongas que protege carpetas del anfitrión conectadas al invitado. La idea pedagógica es sencilla: saber qué puedes perder y cómo lo recuperarías antes de practicar. Un reinicio no garantiza restauración de archivos ni deshace automáticamente una modificación realizada fuera del espacio previsto."
+        },
+        {
+          "title": "Aislamiento con límites concretos",
+          "body": "Una máquina virtual no es una frontera perfecta por definición. Puede compartir carpetas, portapapeles, dispositivos o conectividad con el equipo anfitrión según su configuración. Para un curso inicial no necesitas habilitar esas conexiones si el ejercicio solo utiliza archivos locales ficticios. Revisa las opciones relevantes con la persona responsable del laboratorio y conserva una descripción del montaje. Una cuenta de prueba tampoco permite ignorar los permisos: puede seguir teniendo acceso a ubicaciones compartidas. Identifica la ruta de trabajo y comprueba qué identidad está activa cuando interpretes una transcripción. En Aiocyb las actividades no abren una shell del sistema ni ejecutan las líneas mostradas; seleccionas respuestas sobre escenarios definidos. Eso hace posible estudiar sin conexión y sin pedir al teléfono capacidades administrativas. Cuando más adelante practiques en Linux real, traslada el mismo criterio: autoriza el alcance, utiliza recursos propios y verifica los límites del entorno antes de cualquier modificación que pueda afectar a otro usuario."
+        },
+        {
+          "title": "Un resultado reproducible",
+          "body": "Preparar una práctica también significa describir cómo reconocer que funcionó. Un objetivo concreto podría ser identificar tres rutas absolutas en una transcripción y explicar desde qué raíz se interpretan. Otro podría ser distinguir un error de permisos de un archivo ausente utilizando dos mensajes preparados. Estas metas permiten comparar razonamientos sin depender de una máquina particular. Anota el estado inicial, la acción prevista y la observación esperada, manteniendo los errores como parte del aprendizaje. Si el resultado difiere, guarda el mensaje exacto y revisa las condiciones antes de cambiar varias cosas a la vez. No hace falta registrar secretos ni copiar todo el contenido de un equipo. Una nota breve con el nombre del conjunto ficticio y su versión basta para que otra persona repita la actividad. Al terminar, indica qué aprendiste y qué no se probó. Comprender una simulación de permisos no acredita haber revisado todos los controles de un sistema real; sí demuestra que sabes aplicar una regla a evidencia delimitada."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué material conviene usar para practicar lectura de registros?",
+          "scenario": "El docente prepara un ejercicio inicial y puede elegir entre mensajes inventados o un archivo completo con datos personales de la oficina.",
+          "options": [
+            "El archivo personal completo",
+            "Un conjunto ficticio creado para la actividad",
+            "Cualquier archivo encontrado"
+          ],
+          "answer": 1,
+          "explanation": "Los datos ficticios permiten enseñar la misma regla sin introducir información personal innecesaria ni accesos fuera del alcance del taller.",
+          "wrongExplanations": [
+            "El registro real añade información sensible que no resulta necesaria para comprender la estructura del ejemplo propuesto.",
+            null,
+            "Encontrar un archivo no demuestra que esté autorizado para utilizarse como material de práctica o para distribuirlo."
+          ],
+          "aoi": {
+            "question": "Quiero mensajes de mentira y razonamientos de verdad, cariño.",
+            "hint": "Elige material que puedas compartir y descartar dentro del taller.",
+            "correct": "Así sí: datos preparados, objetivo claro y ninguna intimidad prestada.",
+            "soft": "Fíjate en qué información necesita realmente aprender el grupo hoy.",
+            "sharp": "Seguimos sin necesitar la vida privada de la oficina, joder."
+          }
+        },
+        {
+          "prompt": "¿Qué debes revisar en una máquina virtual de práctica?",
+          "scenario": "El taller utilizará archivos locales, pero la configuración del invitado todavía permite carpetas y portapapeles compartidos con el equipo anfitrión.",
+          "options": [
+            "Solo el fondo de pantalla",
+            "Solo el nombre del invitado",
+            "Las conexiones y recursos que comparte con el anfitrión"
+          ],
+          "answer": 2,
+          "explanation": "Los recursos compartidos determinan parte del alcance real. Revisarlos ayuda a separar los archivos del taller de los datos del anfitrión.",
+          "wrongExplanations": [
+            "La apariencia no describe carpetas, dispositivos o canales compartidos que pueden conectar el ejercicio con otros datos reales.",
+            "El nombre identifica al invitado, pero no permite conocer ni limitar las conexiones habilitadas hacia el equipo anfitrión.",
+            null
+          ],
+          "aoi": {
+            "question": "Mira las puertas entre invitado y anfitrión; la decoración ya esperó bastante.",
+            "hint": "Busca qué elementos podrían conectar la práctica con archivos externos.",
+            "correct": "Bien visto: aislamiento descrito, no supuesto por una etiqueta bonita.",
+            "soft": "Revisa los recursos accesibles antes de confiar en la palabra virtual.",
+            "sharp": "La palabra virtual no convierte una carpeta real en confeti, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Qué evalúa una actividad basada solo en una transcripción?",
+          "scenario": "Aiocyb muestra una salida inventada de terminal y solicita escoger la interpretación correcta sin ofrecer ejecución de órdenes en el dispositivo.",
+          "options": [
+            "El razonamiento sobre el escenario mostrado",
+            "Una auditoría completa del teléfono",
+            "La instalación real de Linux"
+          ],
+          "answer": 0,
+          "explanation": "La actividad permite comprobar la interpretación de evidencia definida; no ejecuta acciones ni certifica el estado del teléfono utilizado para estudiar.",
+          "wrongExplanations": [
+            null,
+            "Las salidas ficticias no contienen una inspección del teléfono ni permiten inferir sus configuraciones o componentes reales.",
+            "Leer una representación de terminal no instala ni ejecuta un sistema Linux en el dispositivo del estudiante."
+          ],
+          "aoi": {
+            "question": "Lee lo que muestra el ejercicio; no le inventes superpoderes a la app.",
+            "hint": "Distingue comprender una salida de producirla en un sistema real.",
+            "correct": "Correcto: demostraste criterio dentro de un alcance que podemos explicar.",
+            "soft": "La representación sirve para aprender, pero su alcance termina aquí.",
+            "sharp": "Otra auditoría imaginaria. Esta escena enseña; no espía tu teléfono."
+          }
+        },
+        {
+          "prompt": "¿Qué permite repetir una práctica con criterio?",
+          "scenario": "El grupo quiere que otra persona reproduzca el análisis de tres archivos ficticios sin depender de recuerdos ni de un equipo particular.",
+          "options": [
+            "Cambiar varias condiciones a la vez",
+            "Anotar estado inicial, acción prevista y observación esperada",
+            "Guardar únicamente una captura del resultado"
+          ],
+          "answer": 1,
+          "explanation": "Esas notas describen las condiciones y el objetivo, de modo que otra persona puede comparar el procedimiento y sus resultados con claridad.",
+          "wrongExplanations": [
+            "Cambiar varias condiciones dificulta saber qué produjo la diferencia y reduce la capacidad de explicar el resultado observado.",
+            null,
+            "Una captura final omite las condiciones iniciales y puede impedir reconstruir cómo se obtuvo la observación que aparece en pantalla."
+          ],
+          "aoi": {
+            "question": "Déjale un mapa al siguiente turno, no una adivinanza con flechas.",
+            "hint": "Busca qué descripción permite comparar condiciones, procedimiento y resultado de aprendizaje.",
+            "correct": "Eso es reproducible. Mi paciencia acaba de recuperar varios puntos.",
+            "soft": "Piensa qué necesitarías si recibieras la práctica mañana sin explicaciones.",
+            "sharp": "Otra captura huérfana nos obliga a adivinar; escribe el procedimiento, cielo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La carpeta compartida",
+          "scenario": "Una máquina virtual del taller tiene una carpeta del anfitrión montada y una estudiante propone usarla para probar cambios de nombres sin revisar su contenido.",
+          "explanation": "El recurso compartido puede contener archivos reales del anfitrión. Conviene preparar una carpeta ficticia independiente y confirmar sus límites. La existencia de una máquina virtual no convierte automáticamente todos sus recursos accesibles en datos descartables o autorizados para modificar."
+        },
+        {
+          "title": "Una transcripción suficiente",
+          "scenario": "El ejercicio presenta tres mensajes ficticios de acceso y pide elegir cuál indica falta de permiso, pero un alumno cree necesario reproducirlos en el teléfono.",
+          "explanation": "La tarea requiere interpretar mensajes ya definidos, no ejecutar comandos. La transcripción permite justificar la respuesta sin acceso al sistema del teléfono. Se evalúa el razonamiento sobre el escenario y no una modificación real que queda fuera del objetivo de aprendizaje."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un grupo quiere aprender órdenes de Linux sin tocar los archivos de la biblioteca y debe elegir un espacio de práctica con límites claros.",
+      "scenario": "Un grupo quiere aprender órdenes de Linux sin tocar los archivos de la biblioteca y debe elegir un espacio de práctica con límites claros.",
+      "steps": [
+        "Define qué datos y equipo pertenecen a la práctica.",
+        "Trabaja con transcripciones y archivos ficticios.",
+        "Anota cómo reconocer y recuperar el estado inicial."
+      ],
+      "sourceIds": [
+        "linux-debian",
+        "linux-kernel"
+      ],
+      "aoi": {
+        "intro": "Primero montamos el escenario; mi dramatismo funciona mejor con límites claros.",
+        "theory0": "Una simulación representa acciones. No está tocando el teléfono por debajo.",
+        "theory1": "Inventemos datos: el expediente de tu vecina no es material didáctico.",
+        "theory2": "Una máquina virtual puede compartir cosas; revisa esas ventanas entre entornos.",
+        "theory3": "Define el resultado antes de correr. Sí, también cuando tienes entusiasmo.",
+        "case0": "Esa carpeta cruza al anfitrión; vamos a prepararte otra de juguete.",
+        "case1": "Puedes razonar leyendo. Tu teléfono agradece que no improvises experimentos.",
+        "pass": "Preparaste límites y vuelta al inicio. Eso me deja sonreír tranquila.",
+        "review": "Revisemos qué pertenece al taller antes de seguir con las órdenes."
+      }
+    },
+    {
+      "id": "linux-start-rutas",
+      "title": "Rutas absolutas y relativas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "El punto desde el que miras",
+          "body": "Un proceso tiene un directorio de trabajo que sirve como referencia para muchas rutas relativas. La orden pwd muestra una representación de ese directorio en una shell habitual. Ver una ruta en el indicador de la terminal puede ayudar, pero el indicador es configurable y no constituye una prueba independiente. Para razonar sobre un ejemplo, conserva el directorio de trabajo como parte del estado inicial. Si la sesión está en /home/lina/taller y se menciona informes/enero.txt, la búsqueda parte de ese taller. Si otra sesión está en /home/lina, la misma secuencia de caracteres puede referirse a otro lugar. El nombre del archivo no resuelve esa ambigüedad por sí mismo. Un procedimiento de lectura debe indicar desde dónde se interpreta la referencia. Esta atención resulta especialmente útil al revisar una guía escrita por otra persona: quizá la guía asumía un cambio de directorio anterior que no aparece en la línea copiada. Reconstruir ese contexto evita buscar a ciegas."
+        },
+        {
+          "title": "Una raíz para empezar",
+          "body": "Una ruta que comienza por / se interpreta desde la raíz del espacio de nombres de archivos del proceso. En un ejemplo sencillo, /home/lina/taller/informe.txt identifica una secuencia desde esa raíz. No necesita el directorio de trabajo para establecer su punto de partida. Eso no significa que el objeto exista, que pueda leerse ni que todos los procesos vean necesariamente el mismo árbol. Contenedores, montajes y otros mecanismos pueden ofrecer vistas diferentes; en este curso inicial declararemos la vista de cada escenario. La barra inicial aporta una propiedad concreta, no una garantía completa de identidad del objeto. Conviene llamar absoluta a esa forma de ruta y reservar otras preguntas para los permisos, enlaces y cambios del sistema. Cuando registres una observación, incluye el equipo o entorno ficticio además de la ruta. Dos equipos pueden contener /etc con archivos distintos. La precisión consiste en combinar ubicación, contexto y momento, sin convertir un texto aparentemente completo en una afirmación sobre cualquier máquina."
+        },
+        {
+          "title": "Componentes especiales",
+          "body": "El componente . representa el directorio actual y .. permite referirse al directorio padre durante la resolución. En un árbol sencillo sin enlaces, desde /home/lina/taller la referencia ../notas.txt conduce a /home/lina/notas.txt. La interpretación de enlaces y montajes puede añadir matices, por lo que los ejercicios básicos indicarán expresamente cuándo no existen. El signo ~ es distinto: una shell como Bash puede expandirlo al directorio personal en posiciones determinadas. No es un componente universal del sistema de archivos. Una aplicación que recibe literalmente una cadena con ~ podría no realizar esa expansión. Por eso una instrucción para una shell y un campo de ruta de una aplicación no deben tratarse automáticamente igual. Lee qué programa interpreta el texto. También distingue mayúsculas y minúsculas según el sistema y su configuración; no prometas que Informe.txt e informe.txt serán siempre equivalentes. En los árboles ficticios de esta ruta se consideran nombres diferentes para que la ubicación quede inequívoca."
+        },
+        {
+          "title": "Resolver antes de actuar",
+          "body": "Puedes analizar una ruta recorriendo sus componentes sobre un dibujo pequeño: raíz, directorio personal, taller y archivo. Anota primero el directorio de trabajo cuando la ruta sea relativa. Después interpreta cada componente según las condiciones declaradas y comprueba si el objeto esperado aparece en el inventario ficticio. Si falta una parte, no sustituyas el nombre por el de otra carpeta parecida. Un error de búsqueda puede significar que el archivo no existe, que el contexto es otro o que no se dispone de acceso para recorrer el camino. La ausencia de una salida no permite elegir una causa sin más evidencia. Para una operación real que modificara archivos necesitarías además confirmar el objetivo y conservar una forma de recuperación. Aquí solo elegimos interpretaciones y no ejecutamos cambios. La disciplina es la misma: una ruta se explica antes de utilizarse. Dejar escrito cómo se resolvió permite que otra persona detecte si el problema estaba en el punto de partida o en el nombre."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuál de estas referencias es absoluta?",
+          "scenario": "La ficha utiliza un árbol Linux sencillo y pide una referencia cuyo punto inicial no dependa del directorio de trabajo.",
+          "options": [
+            "informes/enero.txt",
+            "../enero.txt",
+            "/home/lina/enero.txt"
+          ],
+          "answer": 2,
+          "explanation": "La barra inicial fija el comienzo en la raíz del árbol visible para ese proceso, aunque todavía deban comprobarse existencia y acceso.",
+          "wrongExplanations": [
+            "La referencia comienza con un nombre y se interpreta a partir del directorio de trabajo del proceso correspondiente.",
+            "El componente padre también depende del lugar inicial; no convierte por sí mismo una referencia relativa en absoluta.",
+            null
+          ],
+          "aoi": {
+            "question": "Busca el inicio explícito, no la opción con más letras.",
+            "hint": "Una barra inicial señala la raíz dentro del árbol del proceso.",
+            "correct": "Exacto: identificaste la referencia absoluta sin prometer permisos que desconocemos.",
+            "soft": "Revisa el primer carácter antes de seguir contando nombres de carpetas.",
+            "sharp": "Otra relativa vestida de absoluta. El inicio sigue importando, maldita sea."
+          }
+        },
+        {
+          "prompt": "¿Dónde apunta ../notas.txt en este árbol sin enlaces?",
+          "scenario": "El directorio de trabajo es /home/lina/taller y el ejercicio declara un árbol simple, sin enlaces simbólicos ni montajes especiales.",
+          "options": [
+            "/home/lina/notas.txt",
+            "/notas.txt",
+            "/home/lina/taller/notas.txt"
+          ],
+          "answer": 0,
+          "explanation": "El componente padre sube desde taller hasta /home/lina; después se interpreta notas.txt dentro de ese directorio del árbol declarado.",
+          "wrongExplanations": [
+            null,
+            "Subir un nivel desde taller no salta hasta la raíz; todavía permanecen home y lina en el recorrido.",
+            "La referencia contiene el componente padre, de modo que no permanece dentro de taller para buscar el archivo final."
+          ],
+          "aoi": {
+            "question": "Sube un solo peldaño, cariño; no tires toda la escalera.",
+            "hint": "Resuelve primero el padre de taller y añade después notas.txt.",
+            "correct": "Bien: un nivel exacto. Mi brújula acaba de relajarse contigo.",
+            "soft": "Dibuja el árbol pequeño; ayuda más que imaginar un salto enorme.",
+            "sharp": "Otra visita innecesaria a la raíz. Solo pedimos subir un nivel."
+          }
+        },
+        {
+          "prompt": "¿Qué determina si ~ se expande a una carpeta personal?",
+          "scenario": "Una herramienta recibe literalmente ~/datos.txt, pero todavía no se conoce si interpreta esa entrada como una shell o como una cadena directa.",
+          "options": [
+            "El color del icono",
+            "El programa y sus reglas de interpretación",
+            "La longitud del archivo"
+          ],
+          "answer": 1,
+          "explanation": "La tilde puede ser expandida por una shell en ciertas posiciones; otro programa puede recibirla y conservarla como texto literal.",
+          "wrongExplanations": [
+            "El icono no define cómo se analiza una entrada ni qué expansiones de ruta implementa el programa receptor.",
+            null,
+            "El tamaño del contenido no establece las reglas de interpretación de una cadena utilizada como ruta de archivo."
+          ],
+          "aoi": {
+            "question": "Pregunta quién interpreta la entrada; ese pequeño símbolo tiene contexto.",
+            "hint": "La expansión pertenece a reglas del programa, no al dibujo del archivo.",
+            "correct": "Correcto: comprobaste el intérprete antes de dar por hecha la expansión.",
+            "soft": "Piensa en el recorrido del texto desde el campo hasta su lector.",
+            "sharp": "Seguimos atribuyendo poderes al icono. La tilde no negocia con dibujos."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba por sí sola una ruta absoluta anotada?",
+          "scenario": "Una nota contiene /home/lina/resumen.txt, pero no incluye una consulta del archivo ni información sobre permisos o modificaciones posteriores del equipo.",
+          "options": [
+            "Que el archivo siempre existe",
+            "Que cualquiera puede leerlo",
+            "Un punto de inicio y una secuencia de componentes"
+          ],
+          "answer": 2,
+          "explanation": "La forma absoluta describe cómo comenzar la resolución, pero existencia, acceso y estado actual necesitan evidencia adicional del entorno correspondiente.",
+          "wrongExplanations": [
+            "Una cadena puede conservarse en una nota después de borrar o mover el objeto al que antes hacía referencia.",
+            "Los permisos de los directorios y del archivo se evalúan aparte; escribir la ruta no otorga acceso al contenido.",
+            null
+          ],
+          "aoi": {
+            "question": "Una ruta describe un recorrido; no concede garantías por longitud.",
+            "hint": "Separa forma de la referencia y estado real del objeto mencionado.",
+            "correct": "Eso es precisión: recorrido descrito, comprobaciones pendientes claramente a la vista.",
+            "soft": "Revisa qué información aporta el texto y qué datos todavía faltan.",
+            "sharp": "Otro certificado de existencia imaginario. La ruta no resucita archivos, cielo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Misma referencia, otra sesión",
+          "scenario": "Dos sesiones sin enlaces usan la referencia informes/resumen.txt; una empieza en /home/lina/taller y la otra en /home/lina/archivo, según la ficha del ejercicio.",
+          "explanation": "La ruta es relativa y depende del directorio de trabajo. Cada sesión buscará bajo su propia carpeta inicial. Para intercambiar una referencia inequívoca dentro del mismo árbol conviene indicar ese contexto o una ruta absoluta adecuada, sin asumir existencia ni permisos."
+        },
+        {
+          "title": "Un carácter con intérprete",
+          "scenario": "Una aplicación solicita una ruta literal y una estudiante escribe ~/notas.txt esperando que funcione igual que una expansión de su shell Bash.",
+          "explanation": "La expansión de la tilde depende del programa que interpreta la entrada. No pertenece automáticamente a todos los campos de ruta. Conviene consultar el comportamiento de la aplicación y proporcionar una referencia que esta admita, en lugar de atribuirle reglas de Bash."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "La cuenta de práctica conserva informes en dos carpetas parecidas y necesita localizar un archivo sin depender de dónde comenzó la sesión.",
+      "scenario": "La cuenta de práctica conserva informes en dos carpetas parecidas y necesita localizar un archivo sin depender de dónde comenzó la sesión.",
+      "steps": [
+        "Identifica el directorio de trabajo del ejemplo.",
+        "Distingue una ruta absoluta de una relativa.",
+        "Resuelve cada componente antes de elegir el archivo."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-fhs"
+      ],
+      "aoi": {
+        "intro": "Dime desde dónde miras; hasta una tutora necesita un punto de partida.",
+        "theory0": "El directorio de trabajo cambia el significado de las referencias relativas.",
+        "theory1": "La barra inicial marca raíz, no existencia ni permiso de lectura.",
+        "theory2": "La tilde tiene intérprete, cariño; no se expande por puro encanto.",
+        "theory3": "Recorre el árbol con calma. Las carpetas parecidas disfrutan sembrando confusión.",
+        "case0": "Misma cadena, otro inicio: aquí tenemos dos destinos perfectamente posibles.",
+        "case1": "Ese campo no prometió hablar Bash. Preguntémosle antes de exigirle magia.",
+        "pass": "Ya resuelves rutas sin adivinar. Qué detalle tan atractivo, tesoro.",
+        "review": "Volvamos al punto de partida; el archivo no se ha teletransportado."
+      }
+    },
+    {
+      "id": "linux-start-listar",
+      "title": "Leer un listado sin inventar certezas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Nombres visibles y nombres omitidos",
+          "body": "Listar un directorio consiste en obtener información sobre las entradas que contiene. Muchas herramientas omiten por defecto los nombres que comienzan por punto, una convención frecuente para archivos de configuración. La opción apropiada puede mostrarlos, pero ese cambio de visibilidad no modifica sus permisos ni convierte el contenido en secreto. Un archivo llamado .notas sigue siendo un objeto que puede tener acceso permitido o denegado según las reglas del sistema. En GNU ls, las opciones de inclusión y formato permiten ajustar la consulta; debes leer cuáles aparecen en la transcripción. Una lista sin nombres ocultos no demuestra que estos no existan. Del mismo modo, una salida parcial por tamaño de pantalla o por recorte del ejercicio puede dejar fuera entradas relevantes. Antes de concluir, describe qué se pidió y qué se mostró. Esa pequeña disciplina evita dos errores opuestos: tratar lo omitido como inexistente y considerar sospechoso cualquier nombre que empiece con un punto sin revisar su propósito."
+        },
+        {
+          "title": "Metadatos no son contenido",
+          "body": "Un formato detallado puede mostrar tipo, permisos, propietario, grupo, tamaño y una fecha seleccionada. Esos datos ayudan a formular preguntas, pero no sustituyen la lectura autorizada del archivo ni una comprobación de su origen. Un tamaño pequeño no demuestra que el contenido sea inofensivo y un nombre familiar no acredita que sea el documento esperado. También hay diferencias entre el tamaño de un archivo regular, el de un enlace y la información de espacio ocupado. Cada columna tiene un significado que depende de la herramienta y de sus opciones. Para aprender a leerla, usa la leyenda del ejercicio antes de asociar una cifra con una conclusión. Si el listado muestra una fecha, identifica qué tipo de marca temporal representa; no asumas automáticamente que indica creación. La observación válida puede ser simplemente que una entrada tenía cierto tamaño y modo al consultar el directorio. Mantener esa formulación permite contrastarla después con otra fuente sin haber prometido más de lo que observaste."
+        },
+        {
+          "title": "Ordenar cambia la presentación",
+          "body": "Una lista puede ordenarse por nombre, fecha u otros criterios. El orden presentado no equivale a importancia, riesgo ni causalidad. Que un archivo aparezca primero no significa que se haya utilizado antes si la ordenación era alfabética. Una fecha seleccionada tampoco describe todos los cambios que pudo experimentar el objeto. Cuando una salida se comparte con otra persona, conviene conservar la orden completa o una descripción de sus opciones para que entienda cómo se generó. El idioma y la configuración regional pueden afectar la presentación y el orden de ciertos textos. En los ejercicios de Aiocyb se declara el criterio relevante para que la respuesta no dependa de una preferencia del teléfono. Si comparas dos listados, comprueba que utilizan condiciones compatibles. Un cambio aparente puede deberse a un formato distinto, a nombres omitidos o a una consulta realizada en otro directorio. Primero iguala el contexto de observación; después pregunta qué diferencia del estado del sistema permanece realmente respaldada por las salidas."
+        },
+        {
+          "title": "Una consulta limitada y útil",
+          "body": "Para revisar una carpeta ficticia, empieza por confirmar su ruta y el momento de la consulta. Después identifica las opciones que afectan qué entradas aparecen y qué columnas se muestran. Registra los nombres relevantes junto con la observación concreta, sin copiar contenidos innecesarios. Si falta información, formula una pregunta de seguimiento: quizá necesitas incluir nombres ocultos, consultar el tipo de una entrada o aclarar cuál fecha se seleccionó. Esa consulta adicional tiene un objetivo y un alcance, en lugar de ampliar indiscriminadamente la exploración. No alteres nombres ni permisos solo porque algo resulta desconocido. Un listado sirve primero para orientarse. En un equipo real, la lectura también debe respetar el acceso autorizado y la privacidad de otras personas. Al cerrar el ejercicio, distingue lo confirmado de lo pendiente. Puedes saber qué entradas mostraba una salida sin conocer aún el contenido de todas ellas. Reconocer esa diferencia constituye progreso: te permite construir una explicación cuidadosa y elegir el siguiente paso con una razón comprobable."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué explica que aparezca .ajustes al incluir nombres ocultos?",
+          "scenario": "Dos listados consecutivos del mismo directorio usan opciones distintas y solo el segundo incluye expresamente entradas cuyo nombre empieza por punto.",
+          "options": [
+            "Un cifrado roto",
+            "Un cambio en el criterio de inclusión",
+            "Una instalación de Linux"
+          ],
+          "answer": 1,
+          "explanation": "La opción modifica qué nombres muestra la consulta; no demuestra cambios del archivo ni una protección criptográfica que se haya eliminado.",
+          "wrongExplanations": [
+            "El prefijo de punto no cifra contenido, por lo que mostrar ese nombre no equivale a descifrar información protegida.",
+            null,
+            "Cambiar opciones de listado no instala el sistema ni informa sobre una instalación realizada entre las consultas del ejemplo."
+          ],
+          "aoi": {
+            "question": "Mira qué cambió en la consulta antes de culpar al archivo.",
+            "hint": "El escenario declara una diferencia entre opciones de inclusión de nombres.",
+            "correct": "Exacto: cambió la mirada. El archivo no necesitó hacer teatro.",
+            "soft": "Compara las dos órdenes; la diferencia está delante de ti.",
+            "sharp": "Otra conspiración por un punto. Las opciones también existen, cariño."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra por sí solo un nombre familiar en un listado?",
+          "scenario": "Una entrada se llama informe_oficial.txt, pero el ejercicio no incluye lectura del contenido ni una referencia independiente que permita verificar su procedencia.",
+          "options": [
+            "Que el contenido es auténtico",
+            "Que carece de riesgos",
+            "Que existe una entrada mostrada con ese nombre"
+          ],
+          "answer": 2,
+          "explanation": "El listado aporta el nombre observado bajo esas condiciones. Autenticidad y contenido necesitan comprobaciones adicionales que esa etiqueta no ofrece.",
+          "wrongExplanations": [
+            "Cualquier nombre permitido puede asignarse a un archivo; la apariencia de oficialidad no verifica quién produjo el contenido mostrado.",
+            "La denominación no examina el contenido ni sustituye controles de procedencia, acceso y uso adecuados al objeto del escenario.",
+            null
+          ],
+          "aoi": {
+            "question": "El nombre promete mucho, pero yo te pido evidencia concreta.",
+            "hint": "Distingue la etiqueta visible de una verificación de lo que contiene.",
+            "correct": "Bien: aceptaste el nombre como dato, no como autoridad celestial.",
+            "soft": "Reduce la afirmación a lo que realmente muestra esa salida.",
+            "sharp": "Oficial en el nombre sigue sin ser un certificado, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué significa aparecer primero en una lista alfabética?",
+          "scenario": "El ejercicio declara explícitamente que las entradas se ordenaron por nombre, sin aportar registros de aperturas o ejecuciones de los archivos mostrados.",
+          "options": [
+            "Que su nombre se ordenó antes",
+            "Que se ejecutó antes",
+            "Que es más peligroso"
+          ],
+          "answer": 0,
+          "explanation": "La posición responde al criterio de ordenación declarado y no aporta por sí misma una cronología de uso ni una evaluación del contenido.",
+          "wrongExplanations": [
+            null,
+            "La ejecución necesitaría evidencia sobre procesos o actividad; una lista alfabética no contiene esa secuencia de acciones realizadas.",
+            "El riesgo requiere contexto y contenido pertinente; la primera posición alfabética no constituye un indicador suficiente de peligrosidad."
+          ],
+          "aoi": {
+            "question": "La A ganó por letra, cariño; no por antecedentes delictivos.",
+            "hint": "Recuerda qué criterio produjo el orden de las filas del ejemplo.",
+            "correct": "Así es: presentación interpretada sin convertirla en una historia inventada.",
+            "soft": "Vuelve a la leyenda del listado antes de interpretar la posición.",
+            "sharp": "Seguimos juzgando por el abecedario. Mi paciencia ya llegó a la Z."
+          }
+        },
+        {
+          "prompt": "¿Qué debes comparar antes de atribuir cambios a dos listados?",
+          "scenario": "Dos compañeras comparten salidas con diferentes columnas, nombres omitidos y directorios de trabajo que aún no se han confirmado en la ficha.",
+          "options": [
+            "Solo la cantidad de líneas",
+            "Ruta, opciones y momento de consulta",
+            "Solo el color del texto"
+          ],
+          "answer": 1,
+          "explanation": "Alinear el contexto permite distinguir cambios del estado de diferencias en cómo se consultó y presentó la información del directorio observado.",
+          "wrongExplanations": [
+            "El número de líneas puede variar por filtros o formato, aunque el conjunto real de entradas no haya cambiado entre consultas.",
+            null,
+            "El color depende de preferencias y reglas de visualización; no identifica por sí solo qué objetos se consultaron ni cuándo."
+          ],
+          "aoi": {
+            "question": "Antes del misterio, igualemos las condiciones de las dos observaciones.",
+            "hint": "Comprueba dónde, cómo y cuándo se produjo cada salida compartida.",
+            "correct": "Exacto: comparación justa. Acabas de dejar sin trabajo a una falsa alarma.",
+            "soft": "Las salidas difieren; averigua primero si preguntaban lo mismo al sistema.",
+            "sharp": "Otra comparación entre preguntas distintas. Así cualquier carpeta parece hechizada, cielo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un punto al principio",
+          "scenario": "La salida predeterminada no muestra .ajustes, pero una segunda consulta del mismo directorio incluye nombres que comienzan por punto y sí lo presenta.",
+          "explanation": "La diferencia se explica por el criterio de inclusión. El punto no demuestra cifrado ni una creación posterior entre consultas. Deben compararse opciones y tiempos antes de inferir un cambio del directorio; la visibilidad del listado es independiente de los permisos del objeto."
+        },
+        {
+          "title": "Primero por alfabeto",
+          "scenario": "El listado está ordenado por nombre y coloca alerta.txt antes que resumen.txt, aunque el ejercicio no aporta datos de ejecución ni una cronología de uso.",
+          "explanation": "La posición refleja el criterio alfabético declarado. No prueba qué archivo se abrió primero ni cuál es más importante. Para una pregunta temporal harían falta marcas pertinentes y contexto; convertir una presentación en una secuencia de acciones produciría una conclusión sin respaldo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un listado ficticio de la carpeta del taller muestra nombres visibles y ocultos, y el grupo debe decidir qué información aporta realmente.",
+      "scenario": "Un listado ficticio de la carpeta del taller muestra nombres visibles y ocultos, y el grupo debe decidir qué información aporta realmente.",
+      "steps": [
+        "Comprueba las opciones del listado presentado.",
+        "Identifica nombres y metadatos sin abrir contenido.",
+        "Anota qué objetos podrían quedar fuera de la consulta."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-bash"
+      ],
+      "aoi": {
+        "intro": "Leer una lista parece fácil; lo divertido empieza con lo omitido.",
+        "theory0": "El punto oculta por convención, no con una capa de cifrado.",
+        "theory1": "Cada columna responde algo concreto. No le exijas una biografía completa.",
+        "theory2": "El orden alfabético no cuenta historias de quién llegó primero.",
+        "theory3": "Compara opciones y contexto antes de declarar un cambio misterioso.",
+        "case0": "Apareció al incluir ocultos; todavía no necesitamos una novela paranormal.",
+        "case1": "La letra inicial ganó la carrera, no una investigación temporal.",
+        "pass": "Ya lees con límites. Me gusta esa sobriedad peligrosamente competente.",
+        "review": "Volvamos a las columnas; alguna está contando más de lo permitido."
+      }
+    },
+    {
+      "id": "linux-start-tipos",
+      "title": "Archivos, directorios y enlaces",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Un nombre no establece el tipo",
+          "body": "El árbol de archivos de Linux puede contener archivos regulares, directorios, enlaces y otros objetos. Una extensión como .txt es una convención del nombre; no obliga al sistema a convertir la entrada en un archivo regular de texto. El tipo forma parte de los metadatos y puede consultarse con herramientas apropiadas. En una salida detallada habitual, el primer carácter del modo permite distinguir algunos tipos, siempre que conozcas el formato presentado. Para el aprendizaje trabajaremos con una leyenda explícita: guion para archivo regular, d para directorio y l para enlace simbólico. No necesitas adivinar a partir del icono. Un directorio llamado notas.txt sigue siendo un directorio si eso indican los metadatos del escenario. Esta separación resulta útil al analizar inventarios o preparar una lectura autorizada. Antes de preguntar qué contiene una entrada, identifica qué clase de objeto estás observando y qué operación tendría sentido sobre ella dentro del entorno declarado por el ejercicio."
+        },
+        {
+          "title": "Directorios y entradas",
+          "body": "Un directorio organiza asociaciones entre nombres y objetos del sistema de archivos. No es simplemente un documento que se abre con cualquier editor para ver una lista de líneas. Sus permisos también tienen un significado particular, que se estudiará en la ruta de acceso. Por ahora distingue listar nombres de leer el contenido de los archivos asociados. Poder ver una entrada no demuestra que puedas abrir su destino, y conocer un nombre tampoco demuestra que puedas recorrer todos los directorios necesarios. En un inventario, conserva la ruta completa pertinente para no mezclar objetos homónimos de carpetas diferentes. Si hay una aplicación que genera archivos temporales, el contenido puede cambiar mientras observas; tu nota debe indicar el momento y la fuente. La consulta de metadatos es una observación sobre el estado mostrado, no una promesa de permanencia. Esta manera de describir directorios evita confundir estructura, contenido y autorización, tres preguntas relacionadas que necesitan respuestas separadas para ser útiles en un análisis defensivo."
+        },
+        {
+          "title": "Enlaces simbólicos",
+          "body": "Un enlace simbólico conserva una referencia a otro camino. Al resolverlo, determinadas operaciones continúan hacia su destino, y ese destino puede ser un archivo, un directorio o una ubicación que actualmente no existe. Un enlace roto no implica necesariamente un ataque: quizá se movió una carpeta o todavía no está montado un recurso. Tampoco basta mirar el nombre del enlace para saber qué objeto se leerá finalmente. Las herramientas difieren en si muestran el enlace o siguen su destino según la operación y las opciones. Por eso una práctica precisa declara qué se consulta. Si una salida presenta acceso_actual apuntando a versiones/abril, registra tanto la referencia como el contexto de resolución. Las referencias relativas dentro de enlaces se interpretan respecto del directorio que contiene el enlace, no del directorio desde el que tú decidiste mirarlo. No modifiques el destino para reparar una aparente rareza sin conocer su propósito: primero identifica el recorrido y la información faltante."
+        },
+        {
+          "title": "Enlaces duros y conclusiones",
+          "body": "Un enlace duro es otro nombre asociado al mismo objeto de un sistema de archivos que admite esa relación. No es una copia independiente de su contenido. Dentro del mismo sistema, comparar dispositivo e identificador de inodo puede ayudar a reconocer esa asociación, teniendo en cuenta que los identificadores pueden reutilizarse con el tiempo. Un solo número aislado entre equipos diferentes no establece igualdad. En esta fase no necesitas crear enlaces: basta razonar sobre un ejemplo donde las relaciones están declaradas. Si dos nombres apuntan al mismo objeto, una modificación de su contenido mediante uno puede observarse desde el otro. Si son copias separadas, esa consecuencia no se sigue automáticamente. La distinción importa para inventarios, copias y explicaciones sobre cambios. Al cerrar una observación escribe qué tipo y relación se confirmaron, qué herramienta u origen lo indicó y qué permanece pendiente. Esa nota resulta mucho más clara que decir que dos archivos son iguales porque tienen nombres parecidos o porque ocupan cifras semejantes."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué dato determina el tipo en el listado declarado?",
+          "scenario": "La leyenda indica que el primer carácter del modo representa el tipo y la entrada notas.txt empieza con d en esa columna.",
+          "options": [
+            "La extensión txt",
+            "La longitud del nombre",
+            "El carácter d del modo"
+          ],
+          "answer": 2,
+          "explanation": "La leyenda del formato identifica d como directorio. El sufijo del nombre es una convención y no cambia ese metadato del objeto.",
+          "wrongExplanations": [
+            "Una extensión puede utilizarse en nombres de tipos distintos y no obliga al sistema a tratar la entrada como texto.",
+            "La cantidad de caracteres no identifica el tipo del objeto y no sustituye la columna definida por la leyenda del ejercicio.",
+            null
+          ],
+          "aoi": {
+            "question": "El nombre intenta distraerte; mira el dato que define la leyenda.",
+            "hint": "Busca la columna cuyo significado se declaró expresamente como tipo.",
+            "correct": "Eso es: elegiste metadatos antes que una etiqueta con mucha confianza.",
+            "soft": "Comprueba qué columna responde la pregunta concreta sobre el tipo.",
+            "sharp": "Otra victoria de la extensión teatral. El carácter d sigue diciendo directorio."
+          }
+        },
+        {
+          "prompt": "¿Qué puede ocurrir con un enlace simbólico?",
+          "scenario": "El taller presenta una referencia guardada hacia otra ruta y pregunta si su existencia garantiza que el destino también exista en este momento.",
+          "options": [
+            "Puede existir aunque su destino falte",
+            "Siempre contiene una copia completa",
+            "Garantiza lectura para cualquier cuenta"
+          ],
+          "answer": 0,
+          "explanation": "Un enlace simbólico guarda una referencia; su destino puede no resolverse o no existir dentro del árbol accesible en ese momento.",
+          "wrongExplanations": [
+            null,
+            "Guardar un camino no equivale a copiar el contenido del objeto apuntado, que puede cambiar o desaparecer de forma independiente.",
+            "Los controles de acceso siguen aplicándose al recorrido y al destino; la existencia del enlace no concede permisos universales de lectura."
+          ],
+          "aoi": {
+            "question": "La referencia puede quedarse esperando a un destino que ya se fue.",
+            "hint": "Separa el objeto enlace de aquello que intenta señalar al resolverse.",
+            "correct": "Correcto: enlace presente, destino pendiente. Una distinción pequeña y muy útil.",
+            "soft": "No pasa nada; dibuja dos objetos y comprueba cuál está confirmado.",
+            "sharp": "La flecha no fabrica el destino, cariño; todavía no hacemos esa magia."
+          }
+        },
+        {
+          "prompt": "¿Desde dónde se interpreta un destino relativo de enlace simbólico?",
+          "scenario": "El enlace /taller/actual conserva la referencia versiones/abril y el escenario declara resolución normal sin cambios de montajes ni otras condiciones especiales.",
+          "options": [
+            "Desde cualquier directorio de trabajo",
+            "Desde el directorio que contiene el enlace",
+            "Siempre desde la raíz"
+          ],
+          "answer": 1,
+          "explanation": "La referencia relativa se resuelve respecto del directorio que contiene el enlace, por lo que el recorrido comienza aquí en /taller.",
+          "wrongExplanations": [
+            "El directorio de quien consulta no sustituye al del enlace al interpretar su referencia relativa dentro del árbol declarado.",
+            null,
+            "Una referencia que no comienza por barra no se convierte automáticamente en un destino absoluto desde la raíz del sistema."
+          ],
+          "aoi": {
+            "question": "La flecha vive en una carpeta; usa esa casa como referencia.",
+            "hint": "Localiza el directorio que contiene actual y añade el destino relativo.",
+            "correct": "Bien orientado: seguiste la referencia desde el lugar que le corresponde.",
+            "soft": "Vuelve a la ubicación del enlace antes de elegir el punto inicial.",
+            "sharp": "Otra excursión desde tu silla. La referencia pertenece al enlace, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Qué implica compartir un objeto mediante dos enlaces duros?",
+          "scenario": "La ficha confirma dos nombres dentro del mismo sistema de archivos asociados al mismo objeto, sin tratarse de copias independientes del contenido.",
+          "options": [
+            "Que uno cifra al otro",
+            "Que nunca puede modificarse",
+            "Que ambos nombres permiten referirse al mismo contenido del objeto"
+          ],
+          "answer": 2,
+          "explanation": "Los nombres están asociados al mismo objeto; los cambios de contenido mediante uno pueden verse al acceder por el otro según sus permisos.",
+          "wrongExplanations": [
+            "Un enlace duro no añade cifrado ni transforma el contenido; describe una asociación de nombres con un objeto del sistema de archivos.",
+            "La relación entre nombres no convierte el objeto en inmutable y no sustituye sus permisos ni otros controles de modificación.",
+            null
+          ],
+          "aoi": {
+            "question": "Dos puertas al mismo cuarto, cariño; la decoración interior se comparte.",
+            "hint": "Distingue varios nombres del mismo objeto frente a dos copias separadas.",
+            "correct": "Exacto: entendiste la relación sin inventar una segunda copia independiente.",
+            "soft": "Piensa en cuántos objetos declara la ficha, no cuántos nombres aparecen.",
+            "sharp": "Otra copia imaginaria. Dos nombres no multiplican el contenido por encanto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Directorio con extensión",
+          "scenario": "La salida detallada identifica d al inicio del modo de apuntes.txt, aunque el nombre parece corresponder a un documento de texto del taller.",
+          "explanation": "La entrada es un directorio según el formato declarado. La extensión no anula ese dato. Antes de elegir una operación conviene usar el tipo y la ruta observados; asociar automáticamente un sufijo con contenido de texto confunde una convención visual con metadatos del objeto."
+        },
+        {
+          "title": "Un destino ausente",
+          "scenario": "Un enlace del ejercicio apunta a una carpeta que fue trasladada durante una reorganización documentada y ahora no puede resolverse en el árbol presentado.",
+          "explanation": "La ausencia del destino explica el enlace roto bajo las condiciones declaradas. No demuestra una intrusión. Hay que conservar enlace y destino como datos separados y confirmar la reorganización antes de proponer una reparación, sin inventar una causa a partir del nombre."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El inventario del taller contiene un documento, una carpeta y un enlace simbólico; se debe explicar por qué un nombre no basta para distinguirlos.",
+      "scenario": "El inventario del taller contiene un documento, una carpeta y un enlace simbólico; se debe explicar por qué un nombre no basta para distinguirlos.",
+      "steps": [
+        "Consulta el tipo declarado de cada entrada.",
+        "Distingue un enlace de su destino.",
+        "Registra el objeto observado sin modificarlo."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-fhs"
+      ],
+      "aoi": {
+        "intro": "La extensión se presenta muy segura; los metadatos traen mejores credenciales.",
+        "theory0": "Primero el tipo del objeto; después decidimos cómo tiene sentido leerlo.",
+        "theory1": "Un directorio organiza nombres. Verlos no concede acceso a cada contenido.",
+        "theory2": "El enlace señala un camino; revisemos dónde termina esa pequeña promesa.",
+        "theory3": "Dos nombres pueden compartir objeto. Parecerse no prueba esa relación.",
+        "case0": "Apuntes punto txt acaba de presentarse como carpeta, qué giro elegante.",
+        "case1": "El destino se mudó. Antes de alarmarnos, comprobemos esa reorganización.",
+        "pass": "Ya separas nombres, tipos y destinos. Me estás malcriando con precisión.",
+        "review": "Repitamos el recorrido del enlace; alguien se quedó mirando la etiqueta."
+      }
+    },
+    {
+      "id": "linux-start-ayuda",
+      "title": "Consultar ayuda con una pregunta concreta",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Saber qué preguntar",
+          "body": "La ayuda resulta más útil cuando llegas con una pregunta delimitada. En lugar de buscar cómo arreglar Linux, puedes preguntar qué significa una opción, qué entrada espera una herramienta o si una consulta modifica un archivo. Esas preguntas permiten localizar la sección pertinente y contrastar una respuesta. Anota el nombre exacto del programa y, cuando sea relevante, su versión e implementación. Herramientas con nombres iguales pueden ofrecer opciones diferentes según la distribución o el paquete instalado. Tampoco es igual pedir información a una orden interna de la shell que consultar el manual de un ejecutable externo. Antes de copiar una solución, identifica el objeto de la duda. En el taller, si solo necesitas interpretar una columna, no hace falta aplicar una orden que cambie su formato y sobrescriba un informe. La ayuda debe reducir incertidumbre antes de actuar. Una pregunta clara conserva el objetivo del aprendizaje y evita que una búsqueda breve se transforme en una cadena de modificaciones que nadie ha explicado."
+        },
+        {
+          "title": "Leer una sinopsis",
+          "body": "Las páginas de manual suelen organizar nombre, sinopsis, descripción y opciones. La sinopsis resume cómo se combinan los elementos, pero utiliza convenciones editoriales que debes entender. Los corchetes suelen señalar partes opcionales y no necesariamente caracteres que debas escribir literalmente. Los nombres de parámetros representan valores que tendrás que proporcionar. La descripción aclara lo que sucede y las opciones precisan variantes de comportamiento. Busca también advertencias sobre sobrescritura, seguimiento de enlaces, recorridos recursivos o formatos de salida si afectan a tu tarea. No todas las ayudas utilizan exactamente la misma estructura. Comprueba la leyenda del documento cuando exista una ambigüedad. En una simulación, la ficha puede reproducir una sinopsis simplificada y declarar sus convenciones. Interpretarla significa explicar qué es obligatorio y qué valor ocuparía cada lugar, no recitar la línea sin comprenderla. Esa lectura ayuda a descubrir si una receta encontrada fuera del taller omitía un argumento importante o asumía un valor distinto del que tú necesitas."
+        },
+        {
+          "title": "Ayuda local y versión",
+          "body": "En muchos entornos hay páginas de manual y opciones breves de ayuda instaladas, aunque su presencia no está garantizada. Una instalación mínima puede carecer de manuales o de traducciones sin que eso indique un fallo de la herramienta. La ayuda local tiene la ventaja de relacionarse con el entorno disponible, pero conviene comprobar qué paquete la proporcionó y si corresponde a la implementación que vas a utilizar. La documentación oficial externa puede ampliar ejemplos o describir cambios recientes; necesita conexión cuando no está guardada. Este curso incluye explicaciones propias para estudiar offline y enlaces de referencia que solo se abren si tú decides consultarlos con red. La ausencia de conexión no impide realizar los ejercicios locales. Si dos documentos parecen contradecirse, compara programa, versión, plataforma y condiciones antes de elegir uno por apariencia. Registrar esa comparación resulta más útil que afirmar que un manual está equivocado sin haber establecido que ambos describen la misma herramienta bajo las mismas circunstancias de uso."
+        },
+        {
+          "title": "De la lectura a una decisión",
+          "body": "Después de consultar ayuda, escribe una interpretación breve con tres partes: qué acción describe, sobre qué entrada actuaría y qué resultado o efecto esperas. Si aparece un riesgo de modificar el original, elige una práctica de lectura o una copia ficticia apropiada. Si la documentación no aclara el punto relevante, conserva la duda y busca una fuente adicional compatible con el entorno. No necesitas fingir certeza para demostrar avance. En una actividad educativa, una respuesta bien delimitada puede explicar que falta conocer el soporte de una opción antes de recomendarla. También conviene guardar el enlace o la referencia local junto a la fecha de consulta, para que otro turno pueda revisar el razonamiento. La documentación no otorga autorización sobre un sistema ajeno; describe comportamiento técnico. El paso final sigue siendo decidir si esa acción pertenece al alcance del trabajo. Cuando separas comprensión, comprobación y autorización, una página de ayuda se convierte en una herramienta para pensar y no en una lista de órdenes para obedecer."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué pregunta facilita consultar ayuda con precisión?",
+          "scenario": "Una persona intenta interpretar una opción desconocida en una herramienta identificada, sin necesidad de modificar los archivos de la práctica.",
+          "options": [
+            "¿Cómo arreglar todo Linux?",
+            "¿Qué significa esta opción en esta implementación?",
+            "¿Qué tema visual parece profesional?"
+          ],
+          "answer": 1,
+          "explanation": "La pregunta delimita herramienta y comportamiento; permite buscar una respuesta comprobable sin ampliar innecesariamente el problema del ejercicio.",
+          "wrongExplanations": [
+            "Una pregunta tan amplia no identifica la opción ni las condiciones que necesitas comprender antes de tomar una decisión concreta.",
+            null,
+            "El estilo visual no explica la semántica de una opción ni los efectos de la herramienta sobre su entrada."
+          ],
+          "aoi": {
+            "question": "Dame una duda que podamos responder sin adivinar el universo.",
+            "hint": "La ayuda necesita un programa concreto y un comportamiento por aclarar.",
+            "correct": "Bien planteado: una pregunta pequeña que sí permite avanzar con evidencia.",
+            "soft": "Delimita qué palabra de la línea todavía no entiendes exactamente.",
+            "sharp": "Otra consulta al universo entero. Empecemos por esa maldita opción."
+          }
+        },
+        {
+          "prompt": "¿Cómo deben leerse los corchetes de esta sinopsis declarada?",
+          "scenario": "La leyenda indica que los corchetes señalan elementos opcionales y no forman parte literal de los argumentos que recibirá el programa.",
+          "options": [
+            "Como parte obligatoria del nombre",
+            "Como un permiso administrativo",
+            "Como notación de un elemento opcional"
+          ],
+          "answer": 2,
+          "explanation": "La leyenda define el significado editorial de los corchetes; deben distinguirse de los caracteres del valor que se proporciona al programa.",
+          "wrongExplanations": [
+            "El documento especifica que son notación; escribirlos como parte de una ruta cambiaría el argumento respecto del valor previsto.",
+            "La notación de una sinopsis no concede privilegios ni modifica la identidad con la que se ejecutaría una herramienta real.",
+            null
+          ],
+          "aoi": {
+            "question": "Lee la leyenda, cariño; el manual también explica cómo leerlo.",
+            "hint": "El escenario ya define qué representa ese símbolo en la documentación.",
+            "correct": "Correcto: sintaxis editorial separada de los argumentos reales del ejemplo.",
+            "soft": "Vuelve a la convención declarada antes de copiar cada carácter visible.",
+            "sharp": "Los corchetes siguen sin ser accesorios obligatorios. La leyenda lo avisó."
+          }
+        },
+        {
+          "prompt": "¿Qué explica una página local de manual ausente?",
+          "scenario": "La ficha declara una instalación mínima sin paquete de manuales, pero confirma que la utilidad correspondiente sí está instalada y puede consultarse su ayuda.",
+          "options": [
+            "Falta documentación local instalada",
+            "El ejecutable fue eliminado necesariamente",
+            "Todo el sistema perdió permisos"
+          ],
+          "answer": 0,
+          "explanation": "La condición declarada corresponde a documentación no instalada. No demuestra por sí misma un fallo del ejecutable ni de otros controles del sistema.",
+          "wrongExplanations": [
+            null,
+            "El escenario confirma la presencia de la herramienta; la falta de un manual no contradice ese dato ni demuestra su eliminación.",
+            "No hay evidencia de un cambio general de permisos; atribuirlo a una página ausente amplía el diagnóstico sin respaldo del caso."
+          ],
+          "aoi": {
+            "question": "No conviertas un libro ausente en un funeral del programa.",
+            "hint": "Distingue paquete de documentación y utilidad instalada dentro del entorno descrito.",
+            "correct": "Eso es: una ausencia concreta, con una explicación compatible con los datos.",
+            "soft": "La ficha confirma algo sobre la herramienta; no pases ese dato por alto.",
+            "sharp": "Otra catástrofe por un manual que no instalaron. Respira y lee."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene comparar entre dos ayudas aparentemente distintas?",
+          "scenario": "Una receta web y una ayuda local describen opciones diferentes para utilidades con el mismo nombre, sin confirmar todavía implementación ni versión.",
+          "options": [
+            "Solo qué página tiene más dibujos",
+            "Implementación, versión y condiciones de uso",
+            "Solo el idioma del título"
+          ],
+          "answer": 1,
+          "explanation": "Esas condiciones permiten decidir si los documentos describen la misma herramienta; una apariencia distinta no basta para atribuir una contradicción técnica.",
+          "wrongExplanations": [
+            "La presentación puede facilitar la lectura, pero no establece qué implementación documenta cada página ni su compatibilidad con el equipo.",
+            null,
+            "El idioma no determina versión ni comportamiento; primero hay que comparar el objeto técnico y las condiciones que documenta cada fuente."
+          ],
+          "aoi": {
+            "question": "Dos nombres iguales no prometen dos contratos idénticos, cariño.",
+            "hint": "Busca diferencias del entorno que puedan explicar las opciones presentadas.",
+            "correct": "Exacto: comparaste contexto antes de declarar al manual culpable de todo.",
+            "soft": "Revisa para qué programa concreto se escribió cada una de las ayudas.",
+            "sharp": "Otra pelea entre versiones sin identificar. Hasta mis bromas piden contexto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Corchetes editoriales",
+          "scenario": "La sinopsis del ejercicio declara que los corchetes marcan opciones y una alumna propone escribirlos literalmente alrededor de la ruta del archivo de práctica.",
+          "explanation": "Los corchetes forman parte de la notación editorial declarada, no de la ruta que se debe proporcionar. Hay que sustituir los parámetros por valores apropiados y distinguir sintaxis del documento de los caracteres que realmente recibiría el programa en ese escenario."
+        },
+        {
+          "title": "Ayuda ausente",
+          "scenario": "Una instalación mínima carece de páginas de manual, aunque la herramienta del ejercicio está instalada y su documentación oficial identifica las opciones disponibles.",
+          "explanation": "La ausencia del paquete de manuales no prueba que la herramienta esté dañada. Puede consultarse ayuda disponible u otra documentación correspondiente a la misma implementación y versión. El diagnóstico debe distinguir la falta de documentación local del funcionamiento del programa que se quiere estudiar."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "La guía del taller menciona una opción desconocida y el equipo necesita consultar documentación sin probar cambios sobre la carpeta compartida.",
+      "scenario": "La guía del taller menciona una opción desconocida y el equipo necesita consultar documentación sin probar cambios sobre la carpeta compartida.",
+      "steps": [
+        "Identifica programa y versión del ejemplo.",
+        "Busca el significado de la opción y sus efectos.",
+        "Distingue documentación local de una receta sin contexto."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-bash"
+      ],
+      "aoi": {
+        "intro": "Una buena pregunta me gusta; una receta muda me da trabajo.",
+        "theory0": "Nombra programa y duda concreta antes de abrir veinte pestañas.",
+        "theory1": "Los corchetes del manual no siempre van a la terminal, cielo.",
+        "theory2": "Comprueba versiones: hasta una opción tiene su pequeña biografía técnica.",
+        "theory3": "Resume lo aprendido con entradas y efectos; así puedo revisar contigo.",
+        "case0": "Ese corchete está explicando la sintaxis, no decorando nuestra ruta.",
+        "case1": "Faltan manuales locales, no necesariamente neuronas en la herramienta instalada.",
+        "pass": "Consultaste con criterio. Mi sonrisa empieza a parecer demasiado sincera.",
+        "review": "Ajustemos la pregunta; estamos buscando una respuesta para otro programa."
+      }
+    },
+    {
+      "id": "linux-start-lectura",
+      "title": "Leer texto sin modificar el original",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Elegir una ventana de lectura",
+          "body": "Leer un archivo grande de principio a fin puede ocultar justo la información que buscas entre miles de líneas. Antes de escoger una herramienta, define si necesitas el comienzo, el final, un intervalo o una búsqueda por contenido. Herramientas habituales como head y tail permiten consultar extremos de un texto; un paginador ofrece navegación sin editar el documento. Sus capacidades concretas dependen de la implementación instalada. En una transcripción, anota cuántas líneas se pidieron y qué archivo se leyó. Ver las últimas diez líneas no demuestra que no existan errores anteriores. El resultado responde a una ventana de observación, no al conjunto completo del archivo. Esta diferencia importa al revisar mensajes de actividad: un reinicio o una rotación puede haber cambiado qué información quedó al final. Para el aprendizaje utilizaremos archivos estáticos ficticios con una cantidad de líneas declarada. Así puedes explicar exactamente qué parte incluye la consulta y qué parte permanece fuera, sin atribuirle una cobertura que no ofrece."
+        },
+        {
+          "title": "Mostrar no significa ejecutar",
+          "body": "Un texto puede contener fragmentos que se parecen a órdenes. Leerlos como datos no requiere entregarlos a una shell ni convertirlos en acciones. Esta separación es fundamental al revisar registros, documentos descargados o ejemplos copiados. La pregunta del ejercicio puede pedir interpretar una línea, y la respuesta adecuada consiste en describirla, no en ejecutarla. Tampoco necesitas abrir un archivo en una aplicación que habilite funciones activas para estudiar su contenido textual. En sistemas reales, ciertos controles de terminal o formatos pueden afectar cómo se representa una salida; conviene usar visores apropiados para material no confiable y conservar el original. Aquí se muestran cadenas preparadas y conocidas dentro de la interfaz de aprendizaje. La regla que trasladamos es clara: dato y procedimiento son roles distintos. Si un registro contiene el nombre de una orden, esa presencia es evidencia de texto registrado, no una instrucción nueva para quien investiga. Mantener esa frontera evita introducir efectos ajenos al análisis previsto."
+        },
+        {
+          "title": "Salida derivada y original",
+          "body": "Una consulta puede producir una salida en pantalla o dirigirla hacia otro destino. Ese destino es importante: una redirección de la shell puede crear o truncar un archivo aunque la utilidad principal solo lea. No basta llamar de lectura a una línea por reconocer el nombre de su primer programa. Examina también operadores y rutas de salida. Para preservar un archivo de práctica, una copia derivada debe tener un nombre distinto y una finalidad clara. No utilices el mismo archivo como entrada y destino de una redirección sin comprender el orden de las operaciones; la apertura de salida puede ocurrir antes de que la herramienta lea el contenido esperado. El curso de terminal profundiza en ese mecanismo. Aquí basta detectar la diferencia entre consultar y reemplazar. En una revisión real, las decisiones de preservación dependen del objetivo y de las condiciones del sistema. Una consulta puede afectar metadatos de acceso según la configuración, así que no prometas ausencia absoluta de efectos al hablar de lectura."
+        },
+        {
+          "title": "Una observación que puedas citar",
+          "body": "Al registrar lo que encontraste, incluye archivo, ventana consultada y momento. Si solo revisaste las primeras líneas para identificar un encabezado, di eso. Si observaste el final para localizar el mensaje más reciente disponible, conserva el límite de que el archivo podría estar incompleto o haber rotado. Evita frases como el sistema nunca falló basadas en una porción del texto. Una afirmación revisable sería que el segmento mostrado no contiene cierto patrón bajo el filtro aplicado. También conviene distinguir el original de una transcripción o de un resumen escrito por otra persona. Cada transformación puede eliminar contexto, cambiar saltos de línea o normalizar caracteres. Para enseñar utilizamos conjuntos preparados; para investigar sería necesario describir cómo se obtuvieron y qué transformaciones se hicieron. La lectura cuidadosa termina con una conclusión proporcional a esa procedencia. No necesitas acumular toda la información disponible: necesitas la porción pertinente, una referencia a su origen y un reconocimiento de lo que no permite demostrar."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué puedes afirmar tras consultar solo cinco líneas finales?",
+          "scenario": "El archivo ficticio tiene cien líneas y la salida del ejercicio muestra únicamente las últimas cinco, sin aplicar ninguna búsqueda al resto del documento.",
+          "options": [
+            "Que no hubo errores en todo el archivo",
+            "Que todas las líneas son iguales",
+            "Qué aparece en el segmento mostrado"
+          ],
+          "answer": 2,
+          "explanation": "La salida respalda observaciones sobre esas cinco líneas; el contenido omitido requiere otra consulta antes de formular una conclusión que lo incluya.",
+          "wrongExplanations": [
+            "Las líneas anteriores no se han revisado, por lo que podrían contener mensajes distintos o errores que no aparecen en el final.",
+            "No hay una comparación de las cien líneas; la igualdad del resto no puede inferirse de un segmento reducido del archivo.",
+            null
+          ],
+          "aoi": {
+            "question": "Cuenta lo observado y lo omitido antes de emitir tu sentencia.",
+            "hint": "Una ventana limitada sostiene afirmaciones limitadas sobre el texto que incluye.",
+            "correct": "Correcto: cinco líneas bien descritas valen más que una certeza inventada.",
+            "soft": "Separa el fragmento visible del resto que el ejercicio no mostró.",
+            "sharp": "Otra absolución para noventa y cinco líneas ausentes. Qué generosidad tan imprudente."
+          }
+        },
+        {
+          "prompt": "¿Cómo se trata una orden escrita dentro de un registro?",
+          "scenario": "Un mensaje ficticio contiene texto que parece una invocación y la tarea solicita explicar su significado sin ejecutar acciones en el sistema.",
+          "options": [
+            "Como dato para analizar",
+            "Como una instrucción obligatoria",
+            "Como autorización administrativa"
+          ],
+          "answer": 0,
+          "explanation": "La cadena forma parte de la evidencia textual del escenario. Interpretarla no exige ejecutarla ni concede permiso para realizar sus posibles efectos.",
+          "wrongExplanations": [
+            null,
+            "Un registro describe o conserva datos; no se convierte en una orden para el lector por contener una sintaxis parecida a código.",
+            "La presencia de texto técnico no otorga permisos ni amplía el alcance autorizado de una revisión sobre el equipo del ejemplo."
+          ],
+          "aoi": {
+            "question": "El registro habla de acciones; tú estás leyendo, no obedeciendo.",
+            "hint": "Conserva la frontera entre una cadena observada y un procedimiento ejecutado.",
+            "correct": "Bien: dato en su sitio. Mi consola imaginaria puede seguir descansando.",
+            "soft": "Revisa cuál es la tarea declarada antes de convertir palabras en acciones.",
+            "sharp": "Otra orden obedecida porque estaba escrita. Cariño, también existen las citas."
+          }
+        },
+        {
+          "prompt": "¿Qué parte adicional debe revisarse en una línea de lectura?",
+          "scenario": "Una herramienta conocida por leer archivos aparece junto a un operador que dirige su salida hacia una ruta del taller que contiene el original.",
+          "options": [
+            "Solo el nombre del autor",
+            "La redirección y su destino",
+            "Solo el ancho de pantalla"
+          ],
+          "answer": 1,
+          "explanation": "La shell puede abrir o truncar el destino como parte de la redirección; esa operación cambia los efectos de la línea completa presentada.",
+          "wrongExplanations": [
+            "La autoría puede dar contexto, pero no identifica por sí sola qué archivos abrirá o modificará la redirección de la shell.",
+            null,
+            "La presentación en pantalla no evita una escritura en un archivo cuando la invocación incluye una redirección hacia ese destino."
+          ],
+          "aoi": {
+            "question": "El primer programa es lector; su acompañante puede estar escribiendo encima.",
+            "hint": "Mira dónde termina la salida y cuándo se abre ese archivo.",
+            "correct": "Exacto: leíste la línea completa. Esa atención acaba de salvar el original.",
+            "soft": "Comprueba si hay una operación de salida además de la utilidad lectora.",
+            "sharp": "Otro original pisado por mirar media línea. Las redirecciones también cuentan, joder."
+          }
+        },
+        {
+          "prompt": "¿Qué nota describe mejor la observación realizada?",
+          "scenario": "El taller solicita documentar una consulta del encabezado de un archivo ficticio y no ofrece una revisión completa de sus demás líneas.",
+          "options": [
+            "El sistema está totalmente sano",
+            "Todo el archivo carece de problemas",
+            "Se revisó el encabezado de ese archivo en la consulta indicada"
+          ],
+          "answer": 2,
+          "explanation": "La nota expresa objeto y alcance reales. Permite continuar el análisis sin atribuir a una consulta parcial resultados que todavía no se han comprobado.",
+          "wrongExplanations": [
+            "Un encabezado no describe todos los servicios ni las condiciones del sistema; esa conclusión excede ampliamente la evidencia presentada en el taller.",
+            "La lectura parcial no permite afirmar ausencia de problemas en líneas que no se revisaron ni en otros segmentos del documento ficticio.",
+            null
+          ],
+          "aoi": {
+            "question": "Escribe una nota que otra persona pueda contrastar con esta consulta.",
+            "hint": "Busca la frase que conserva el alcance del encabezado realmente leído.",
+            "correct": "Eso sí se puede revisar. Tu precisión me está consintiendo demasiado.",
+            "soft": "Ajusta la afirmación a la porción del archivo que sí apareció.",
+            "sharp": "Otra revisión universal de un encabezado. Ni mi orgullo alcanza para tanto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Solo el final",
+          "scenario": "La actividad muestra las últimas cinco líneas de un archivo de cien y no incluye información sobre el contenido de las noventa y cinco anteriores.",
+          "explanation": "Puedes describir las cinco líneas observadas, pero no excluir errores en el resto del archivo. La consulta tiene una ventana declarada. Si la pregunta exige cobertura completa, hace falta ampliar la lectura o buscar el patrón de forma apropiada sobre el conjunto disponible."
+        },
+        {
+          "title": "Una salida peligrosa",
+          "scenario": "Una propuesta usa una utilidad de lectura, pero dirige su salida al mismo nombre de archivo que figura como entrada dentro de la línea.",
+          "explanation": "La redirección puede abrir y truncar el destino antes de la lectura esperada. No se debe clasificar la línea solo por el programa inicial. Para el ejercicio conviene elegir un destino derivado diferente o una consulta en pantalla, conservando el archivo original del taller."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El taller necesita revisar un archivo ficticio extenso y elegir una forma de consultar sus primeras o últimas líneas sin sobrescribirlo.",
+      "scenario": "El taller necesita revisar un archivo ficticio extenso y elegir una forma de consultar sus primeras o últimas líneas sin sobrescribirlo.",
+      "steps": [
+        "Define qué parte del archivo necesita la pregunta.",
+        "Elige lectura completa, paginada o parcial según el objetivo.",
+        "Distingue consulta del original y creación de una salida derivada."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-bash"
+      ],
+      "aoi": {
+        "intro": "Elegimos una ventana de lectura antes de ahogarnos en cien páginas.",
+        "theory0": "El final del archivo no tiene autoridad sobre las líneas omitidas.",
+        "theory1": "Si un registro contiene órdenes, las analizamos como texto, cariño.",
+        "theory2": "Mira también las redirecciones; una utilidad lectora puede llevar compañía traviesa.",
+        "theory3": "Cita el segmento observado y deja respirar las partes todavía desconocidas.",
+        "case0": "Cinco líneas vistas no borran las otras noventa y cinco.",
+        "case1": "Esa salida pisa la entrada; aquí mi ceja pide frenar.",
+        "pass": "Leíste sin exagerar cobertura. Eso merece una sonrisa bastante satisfecha.",
+        "review": "Repasemos qué parte vimos; el resto todavía no declaró nada."
+      }
+    },
+    {
+      "id": "linux-start-identidad",
+      "title": "Saber quién observa",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "La sesión tiene una identidad",
+          "body": "Un proceso actúa con identificadores que el sistema utiliza al evaluar acceso. El nombre de usuario facilita reconocer una cuenta, pero no equivale por sí solo a una descripción completa de sus privilegios. Herramientas como id pueden mostrar identificadores de usuario y pertenencia a grupos dentro de una sesión. La salida concreta depende del entorno y de los argumentos. En este curso leerás valores ficticios con una leyenda para distinguir el usuario y los grupos relevantes. Si dos personas consultan el mismo camino y obtienen resultados distintos, la identidad es una condición que merece comprobarse antes de atribuir el problema a un archivo dañado. También importa qué proceso realizó la consulta: una aplicación puede ejecutarse bajo una cuenta de servicio diferente de la persona que abrió el escritorio. El objetivo inicial no es memorizar todos los mecanismos de credenciales, sino reconocer que cada observación tiene un sujeto. Sin ese dato, una explicación sobre permisos puede estar utilizando las reglas de una cuenta que no participó en la operación."
+        },
+        {
+          "title": "Identificadores y nombres",
+          "body": "Los identificadores numéricos permiten al sistema representar cuentas y grupos. Los nombres se resuelven mediante las fuentes configuradas, que pueden ser locales o estar relacionadas con otros servicios. Por eso un nombre parecido entre dos equipos no demuestra que represente la misma identidad ni los mismos derechos. Al comparar una transcripción, conserva el equipo y el contexto de resolución. Tampoco conviertas un número en una biografía de una persona: una cuenta puede pertenecer a un servicio o utilizarse en un entorno de prueba. En un inventario educativo basta escribir la identidad declarada por la ficha y su función. No necesitas recoger datos personales ajenos. Si una captura muestra solo el nombre del indicador de la shell, recuerda que ese indicador puede personalizarse. Una consulta destinada a identificar la sesión aporta evidencia más apropiada. Distinguir etiqueta, identificador y responsable ayuda a explicar quién actúa técnicamente sin atribuir automáticamente intención o autoría humana a cada acción que aparece en una salida."
+        },
+        {
+          "title": "Pertenencia a grupos",
+          "body": "Los grupos permiten asociar permisos y funciones a conjuntos de cuentas. Una sesión puede tener un grupo principal y grupos adicionales. Su pertenencia relevante debe observarse en el contexto del proceso que realiza la operación. Cambiar la configuración de una cuenta no implica que todas las sesiones ya abiertas reflejen inmediatamente ese cambio; el mecanismo y el momento de actualización importan. Por eso una comparación útil incluye cuándo se inició la sesión y qué salida se obtuvo. En los ejercicios declararemos los grupos efectivos que deben utilizarse para aplicar las reglas sencillas de acceso. No añadas privilegios imaginarios por el nombre del grupo. Llamarlo administradores o confianza no define de forma universal qué operaciones permite; la configuración del entorno decide sus efectos. Del mismo modo, un grupo de lectura no garantiza escritura. Primero interpreta los permisos o la política asociados. La pertenencia es una pieza de la evaluación, y necesita combinarse con el objeto, la operación solicitada y los demás controles que el escenario declare."
+        },
+        {
+          "title": "Una atribución cuidadosa",
+          "body": "Observar que una acción se realizó con cierta cuenta no demuestra por sí solo qué persona estaba frente al teclado. Pueden existir sesiones remotas, aplicaciones delegadas, automatizaciones o cuentas compartidas, aunque estas últimas dificulten la trazabilidad. Un análisis inicial debe distinguir identidad técnica y atribución personal. Escribe que la operación figura asociada a una cuenta según determinada fuente, y evita presentar una acusación que los datos no sostienen. Si la pregunta es por qué una lectura falló, quizá baste comparar identidad, ruta y permisos. Si la pregunta es quién autorizó un cambio, harán falta otras fuentes y un procedimiento de revisión. En ambos casos conviene conservar mensajes exactos y límites. Esta precisión no resta utilidad al informe; permite a otra persona elegir qué comprobar después. En el taller practicarás con cuentas inventadas y operaciones delimitadas. Aprender a nombrar al sujeto de una consulta te prepara para entender permisos y registros sin confundir un dato técnico con una conclusión sobre intención, responsabilidad o confianza personal."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué identidad importa al evaluar la lectura del servicio?",
+          "scenario": "Lina abre el escritorio, pero la ficha confirma que el proceso encargado de leer el archivo se ejecuta bajo una cuenta de servicio diferente.",
+          "options": [
+            "La cuenta del proceso lector",
+            "La persona que diseñó el icono",
+            "Cualquier cuenta con nombre parecido"
+          ],
+          "answer": 0,
+          "explanation": "La evaluación debe considerar las credenciales del proceso que solicita la operación, junto con el objeto y los controles declarados en el escenario.",
+          "wrongExplanations": [
+            null,
+            "La autoría del icono no determina con qué identidad se solicita leer el archivo ni qué permisos se aplican al proceso.",
+            "Un nombre parecido no establece equivalencia de credenciales; el caso identifica expresamente una cuenta distinta para realizar la lectura solicitada."
+          ],
+          "aoi": {
+            "question": "Mira quién abre el archivo, no quién abrió primero el escritorio.",
+            "hint": "La ficha asigna una cuenta concreta al proceso encargado de leer.",
+            "correct": "Correcto: sujeto adecuado. Así los permisos dejan de parecer caprichosos.",
+            "soft": "Sigue la operación hasta el proceso que realmente la está solicitando.",
+            "sharp": "Otra vez prestándole la cuenta de Lina al servicio. No funciona así."
+          }
+        },
+        {
+          "prompt": "¿Qué permite conocer una salida de id del escenario?",
+          "scenario": "La transcripción está preparada para mostrar el usuario y los grupos de la sesión de práctica, sin aportar información sobre la persona frente al teclado.",
+          "options": [
+            "La contraseña de la cuenta",
+            "Los identificadores y grupos que muestra esa consulta",
+            "La intención de cada operación"
+          ],
+          "answer": 1,
+          "explanation": "La salida aporta datos de identidad técnica según la consulta; no contiene contraseñas ni demuestra la intención personal detrás de una operación observada.",
+          "wrongExplanations": [
+            "La consulta de identidad no presenta la contraseña y no debe utilizarse para inferir secretos que no aparecen en la salida.",
+            null,
+            "La intención requiere contexto adicional; una lista de identificadores y grupos describe credenciales, no motivos de comportamiento de una persona."
+          ],
+          "aoi": {
+            "question": "Lee los datos que muestra, cariño; no sus supuestos pensamientos.",
+            "hint": "Usuario y grupos son información técnica, distinta de secretos o intenciones.",
+            "correct": "Exacto: identidad descrita sin añadir una novela a los números.",
+            "soft": "Comprueba qué campos están presentes antes de ampliar la interpretación.",
+            "sharp": "Otra lectura mental por un identificador. Ese numerito no cuenta intenciones."
+          }
+        },
+        {
+          "prompt": "¿Qué implica un nombre igual en dos equipos distintos?",
+          "scenario": "Dos fichas muestran la cuenta taller en máquinas diferentes, pero todavía no se compararon identificadores, fuentes de identidad ni políticas de acceso.",
+          "options": [
+            "Que todos los privilegios coinciden",
+            "Que es necesariamente la misma persona",
+            "Que falta comparar el contexto de identidad de cada equipo"
+          ],
+          "answer": 2,
+          "explanation": "La coincidencia del nombre no establece equivalencia de identificadores o políticas. Cada entorno necesita sus propias comprobaciones antes de comparar derechos.",
+          "wrongExplanations": [
+            "Los permisos dependen de las identidades y políticas de cada sistema; una etiqueta repetida no las hace automáticamente idénticas entre equipos.",
+            "La misma cadena puede designar cuentas distintas o servicios; no basta para atribuir ambas sesiones a una persona determinada con certeza.",
+            null
+          ],
+          "aoi": {
+            "question": "Dos etiquetas iguales pueden esconder contratos distintos; compáralos antes de sonreír.",
+            "hint": "El nombre necesita contexto de equipo, identificadores y política aplicada.",
+            "correct": "Bien: reconociste lo que falta sin inventar equivalencias entre máquinas.",
+            "soft": "Revisa qué datos aparte del nombre aparecen realmente en las fichas.",
+            "sharp": "Otro gemelo administrativo inventado. Compartir nombre no comparte privilegios, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Cómo se informa una acción asociada a una cuenta compartida?",
+          "scenario": "La única fuente del ejercicio identifica una cuenta utilizada por varias personas y no permite establecer quién controlaba su sesión durante la operación.",
+          "options": [
+            "Como acción asociada a esa cuenta, con atribución personal pendiente",
+            "Como culpa confirmada de una persona",
+            "Como prueba de ausencia de actividad"
+          ],
+          "answer": 0,
+          "explanation": "La formulación conserva el dato técnico y su límite; identificar una persona exige evidencia adicional que el escenario no aporta todavía.",
+          "wrongExplanations": [
+            null,
+            "Atribuir culpa individual excede una fuente que solo identifica una cuenta compartida y no distingue a sus posibles usuarios en ese momento.",
+            "La fuente sí describe actividad asociada a la cuenta; la incertidumbre sobre la persona no elimina el evento observado en el ejercicio."
+          ],
+          "aoi": {
+            "question": "Escribe lo confirmado; mi sarcasmo no autoriza a inventar culpables.",
+            "hint": "Separa la cuenta registrada de la persona que pudo utilizarla.",
+            "correct": "Eso es una atribución cuidadosa. La evidencia conserva su tamaño real.",
+            "soft": "No necesitas elegir una persona para explicar lo que registró la fuente.",
+            "sharp": "Otra acusación con datos prestados. Aquí pedimos evidencia, no una maldita corazonada."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Otro usuario, otra lectura",
+          "scenario": "La ficha confirma que lina pertenece al grupo lectura y el proceso de servicio usa una cuenta sin ese grupo al abrir el mismo archivo del taller.",
+          "explanation": "Las identidades diferentes pueden explicar resultados distintos cuando los permisos del caso dependen de ese grupo. Hay que evaluar la operación con la cuenta que la realiza realmente. Los privilegios del escritorio de lina no se transfieren automáticamente al proceso del servicio."
+        },
+        {
+          "title": "Un nombre no acusa",
+          "scenario": "Un registro ficticio asocia una operación con una cuenta compartida, pero no contiene información suficiente sobre quién utilizó esa sesión en el momento señalado.",
+          "explanation": "La fuente identifica una cuenta técnica, no una persona de forma concluyente. El informe debe conservar esa distinción y señalar qué datos faltan. Atribuir intención o autoría humana exigiría evidencia adicional y un contexto que el ejercicio todavía no proporciona al analista."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Dos cuentas del taller ven resultados distintos al consultar la misma carpeta y deben registrar la identidad de la sesión antes de explicar la diferencia.",
+      "scenario": "Dos cuentas del taller ven resultados distintos al consultar la misma carpeta y deben registrar la identidad de la sesión antes de explicar la diferencia.",
+      "steps": [
+        "Identifica usuario y grupos declarados.",
+        "Separa nombre visible e identificadores del sistema.",
+        "Relaciona la consulta con su sesión y momento."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-permissions"
+      ],
+      "aoi": {
+        "intro": "Antes de juzgar el permiso, averigua quién estaba preguntando.",
+        "theory0": "El proceso tiene identidad aunque su ventana no lleve un cartel.",
+        "theory1": "Un nombre bonito no define privilegios ni demuestra quién estaba detrás.",
+        "theory2": "Los grupos ayudan a decidir acceso cuando la configuración les da efecto.",
+        "theory3": "Cuenta técnica y persona no son sinónimos automáticos, cariño.",
+        "case0": "El servicio usa otra cuenta; no heredó los privilegios de Lina.",
+        "case1": "Ese registro identifica una cuenta, no nos entrega un culpable.",
+        "pass": "Ya identificas al sujeto correcto. Mi ceja acaba de darte paso.",
+        "review": "Revisa qué sesión hizo la consulta; estamos mirando permisos prestados."
+      }
+    },
+    {
+      "id": "linux-start-tiempos",
+      "title": "Las fechas de un archivo tienen significado",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "No existe una única fecha",
+          "body": "Un archivo puede tener varias marcas temporales que describen aspectos diferentes de su estado. En Linux suelen distinguirse acceso, modificación de contenido y cambio de metadatos del inodo, conocidas habitualmente como atime, mtime y ctime. La disponibilidad de una marca de nacimiento depende del sistema de archivos y de las interfaces utilizadas; no debe asumirse en cualquier salida. La palabra cambio resulta especialmente engañosa si se interpreta como creación. Antes de explicar una cifra, lee el nombre del campo que la herramienta presenta y las opciones que seleccionan la fecha. En el taller utilizaremos etiquetas explícitas para evitar que el formato visual determine la respuesta. Dos fechas diferentes pueden ser completamente compatibles con operaciones legítimas distintas. El primer objetivo consiste en traducir cada campo a una observación técnica limitada. Saber que cambió una marca no identifica automáticamente a una persona ni demuestra el motivo del cambio. Para esas preguntas hacen falta más fuentes y contexto que una tabla de metadatos aislada."
+        },
+        {
+          "title": "Contenido y metadatos",
+          "body": "Modificar los bytes de un archivo y cambiar ciertos metadatos son operaciones diferentes. Una modificación de contenido suele afectar mtime y ctime; cambiar permisos puede actualizar ctime sin implicar que se reescribió el texto. Las reglas exactas dependen de la operación y del sistema. No necesitas deducir todo el historial a partir de esas relaciones. Es preferible razonar con un escenario explícito: si la ficha declara que solo se cambió un modo, la fecha de cambio no obliga a concluir que se editó el documento. También pueden existir operaciones de copia o restauración que preservan algunas marcas y generan otras. Un archivo recién recibido puede mostrar una fecha de modificación antigua sin que eso constituya una contradicción. En un informe registra la fuente de los metadatos y el procedimiento de obtención. Las fechas forman parte de la evidencia observada y necesitan una interpretación compatible con su procedencia, no una narración única elegida por intuición o por el aspecto reciente de una cifra."
+        },
+        {
+          "title": "Acceso y configuración",
+          "body": "La marca de acceso no equivale necesariamente a un registro exhaustivo de cada lectura. Las opciones de montaje y otras condiciones pueden reducir o diferir sus actualizaciones. Por tanto, una fecha de acceso sin cambios no demuestra que nadie haya leído el archivo. Tampoco una actualización identifica por sí misma una lectura humana: programas y tareas automáticas pueden consultar datos. Esta limitación importa al formular preguntas de investigación. Si necesitas saber qué cuenta abrió un documento, los metadatos básicos quizá no sean la fuente adecuada o suficiente. Un registro de auditoría previamente configurado podría aportar otra clase de información, con sus propios límites. En las prácticas iniciales basta distinguir el tipo de marca y evitar afirmaciones absolutas sobre actividad. No cambies la configuración de un sistema real para intentar obtener retrospectivamente hechos que no fueron registrados. Escribe lo disponible, qué condiciones se conocen y qué no puede reconstruirse. Reconocer una ausencia de evidencia evita convertir una fecha silenciosa en una garantía que nunca estuvo diseñada para proporcionar."
+        },
+        {
+          "title": "Tiempo observado y cronología",
+          "body": "Las fechas se muestran con una zona horaria y un formato que pueden variar entre herramientas. Para comparar fuentes, conserva el valor original y normaliza una copia de trabajo a una referencia común cuando corresponda. Un reloj desajustado, un salto de hora o la mezcla de formatos puede producir un orden aparente equivocado. Tampoco debes atribuir una precisión mayor que la mostrada: una marca redondeada a minutos no permite ordenar dos acciones dentro del mismo minuto. En una cronología educativa anotaremos qué campo y fuente sostienen cada fila. Si dos eventos comparten un intervalo de incertidumbre, se presentan como posiblemente próximos sin decidir una secuencia que no está respaldada. Esta disciplina prepara el análisis de registros posterior. Las marcas temporales ayudan a formular hipótesis y a orientar consultas; no son una reproducción completa de lo ocurrido. Al terminar explica tanto la observación como su límite, de manera que otra persona sepa si la fecha responde a contenido, metadatos, acceso o simplemente al momento en que se obtuvo la transcripción."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué representa ctime en el contexto básico del ejercicio?",
+          "scenario": "La ficha distingue acceso, modificación de contenido y cambio de metadatos del inodo, sin declarar una marca de nacimiento disponible en la salida.",
+          "options": [
+            "La creación garantizada",
+            "El cambio de metadatos del inodo",
+            "La última ejecución humana"
+          ],
+          "answer": 1,
+          "explanation": "Ctime corresponde a cambios del estado del inodo según las operaciones del sistema; no es una fecha universal de creación ni de ejecución humana.",
+          "wrongExplanations": [
+            "Su nombre no significa creación; la marca de nacimiento es un dato distinto cuya disponibilidad depende del entorno y las herramientas.",
+            null,
+            "Los metadatos básicos no identifican una ejecución humana a partir de ese campo, que puede actualizarse por operaciones de otro tipo."
+          ],
+          "aoi": {
+            "question": "Lee el apellido técnico de la fecha antes de contar cumpleaños.",
+            "hint": "El escenario separa expresamente cambio de metadatos y nacimiento del archivo.",
+            "correct": "Correcto: ctime entendido sin inventarle una fiesta de creación.",
+            "soft": "Revisa la definición del campo, no la traducción que parece más cómoda.",
+            "sharp": "Otro cumpleaños para ctime. Ese maldito nombre ya nos estaba tentando."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una atime que no cambió en este escenario?",
+          "scenario": "El montaje limita las actualizaciones de acceso y solo se dispone de dos consultas de esa marca, sin un registro exhaustivo de lecturas.",
+          "options": [
+            "Que nadie leyó el archivo",
+            "Que todas las cuentas perdieron acceso",
+            "Que esa marca no basta para descartar lecturas"
+          ],
+          "answer": 2,
+          "explanation": "La configuración limita lo que puede inferirse de atime; su falta de cambio no acredita ausencia de lecturas durante el intervalo considerado.",
+          "wrongExplanations": [
+            "La marca puede no actualizarse en cada acceso según la configuración, por lo que una lectura podría no aparecer como cambio observado.",
+            "No se presentaron cambios de permisos; una marca sin variación no demuestra pérdida de acceso de las cuentas del escenario ficticio.",
+            null
+          ],
+          "aoi": {
+            "question": "Una marca silenciosa no promete que el archivo estuvo completamente solo.",
+            "hint": "Recuerda la condición de montaje que limita las actualizaciones de acceso.",
+            "correct": "Bien: conservaste el límite de esa fuente en lugar de rellenarlo.",
+            "soft": "Vuelve a la condición declarada antes de convertir silencio en ausencia.",
+            "sharp": "Otra garantía por una fecha quieta. El reloj no vigila cada mirada."
+          }
+        },
+        {
+          "prompt": "¿Qué debes conservar al comparar fechas de dos fuentes?",
+          "scenario": "Un registro muestra hora local y otra consulta utiliza UTC, pero ambas observaciones deben incorporarse a la misma cronología del taller.",
+          "options": [
+            "Zona horaria, valor original y criterio de normalización",
+            "Solo el orden visual de las líneas",
+            "Solo el nombre del archivo"
+          ],
+          "answer": 0,
+          "explanation": "Conservar la referencia temporal y el original permite normalizar de forma revisable y evita ordenar incorrectamente horas expresadas en zonas diferentes.",
+          "wrongExplanations": [
+            null,
+            "El orden visual puede proceder de criterios distintos y no corrige por sí mismo la diferencia entre las referencias temporales de las fuentes.",
+            "El nombre ayuda a identificar un objeto, pero no describe la zona ni el formato necesarios para comparar sus marcas temporales correctamente."
+          ],
+          "aoi": {
+            "question": "Antes de ordenar horas, comprueba que ambos relojes hablan el mismo idioma.",
+            "hint": "La comparación necesita una referencia temporal común sin perder los valores originales.",
+            "correct": "Exacto: cronología revisable. Mi ceja deja de pelearse con los relojes.",
+            "soft": "No compares solo los números; conserva el contexto de cada hora.",
+            "sharp": "Otra carrera entre husos distintos. Así hasta ayer termina llegando mañana, cielo."
+          }
+        },
+        {
+          "prompt": "¿Qué límite tiene una fecha mostrada solo hasta el minuto?",
+          "scenario": "Dos acciones del ejercicio aparecen dentro del mismo minuto y ninguna fuente adicional aporta segundos ni una secuencia fiable entre ambas observaciones.",
+          "options": [
+            "Permite ordenar cada segundo",
+            "Demuestra simultaneidad exacta",
+            "No permite fijar el orden interno con esa precisión"
+          ],
+          "answer": 2,
+          "explanation": "La resolución mostrada no distingue posiciones dentro del minuto. El análisis debe conservar esa incertidumbre sin inventar un orden o una simultaneidad exacta.",
+          "wrongExplanations": [
+            "Mostrar minutos no revela segundos ocultos; asignarlos por intuición añadiría datos que no existen en las fuentes disponibles para esta comparación.",
+            "Compartir un minuto no implica ocurrir en el mismo instante; solo ubica ambas observaciones dentro de un intervalo de resolución limitada.",
+            null
+          ],
+          "aoi": {
+            "question": "El reloj nos dio un minuto, cariño; no le inventes segundos.",
+            "hint": "Piensa qué diferencias puede mostrar realmente la precisión disponible en la ficha.",
+            "correct": "Bien: dejaste la incertidumbre visible, que aquí también es información útil.",
+            "soft": "Revisa la resolución antes de decidir una secuencia entre esas dos acciones.",
+            "sharp": "Otra película completa dibujada en un minuto sin segundos. Menos guion, más datos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Permisos cambiados",
+          "scenario": "La ficha declara que se modificó el modo de un documento sin editar sus bytes, y la consulta posterior muestra una actualización de ctime.",
+          "explanation": "La marca de cambio de metadatos resulta compatible con la operación declarada. No significa por su nombre fecha de creación ni obliga a concluir que cambió el contenido. Para hablar de edición habría que aportar otra evidencia pertinente, respetando las condiciones del sistema de archivos."
+        },
+        {
+          "title": "Lectura no registrada aquí",
+          "scenario": "El montaje del escenario limita actualizaciones de atime y la fecha observada no cambió, aunque la actividad pregunta si eso descarta toda lectura del archivo.",
+          "explanation": "No puede descartarse una lectura basándose únicamente en esa marca. Su actualización depende de la configuración declarada y no constituye un historial exhaustivo. El informe debe señalar el límite y buscar una fuente adecuada si la pregunta exige conocer accesos con mayor detalle."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un inventario muestra marcas temporales distintas para un documento ficticio y el grupo debe explicar por qué no todas significan creación o ejecución.",
+      "scenario": "Un inventario muestra marcas temporales distintas para un documento ficticio y el grupo debe explicar por qué no todas significan creación o ejecución.",
+      "steps": [
+        "Identifica qué marca temporal presenta cada campo.",
+        "Conserva zona horaria y momento de observación.",
+        "Relaciona las fechas con otras fuentes antes de concluir acciones."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-inode"
+      ],
+      "aoi": {
+        "intro": "Las fechas tienen apellidos, cariño; leer solo la cifra causa dramas.",
+        "theory0": "Cambio de metadatos no significa nacimiento, por muy reciente que parezca.",
+        "theory1": "Contenido y modo pueden cambiar por operaciones diferentes del sistema.",
+        "theory2": "Atime no es una cámara que recuerde cada mirada al archivo.",
+        "theory3": "Una cronología necesita zona, precisión y fuentes que permitan compararla.",
+        "case0": "Aquí cambió el modo. El texto no confesó ninguna edición.",
+        "case1": "Ese reloj de acceso tiene límites; no lo asciendas a testigo omnisciente.",
+        "pass": "Ya lees fechas con apellido. Mi orgullo tiene una marca bastante reciente.",
+        "review": "Volvamos al campo exacto; estamos atribuyendo una historia a otra fecha."
+      }
+    },
+    {
+      "id": "linux-start-inventario",
+      "title": "Tu primera ficha de observación",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una pregunta antes de una colección",
+          "body": "Un inventario inicial no consiste en acumular todas las salidas que encuentres. Su propósito es responder preguntas sobre un entorno definido. Para un puesto de consulta, puede interesar qué distribución utiliza, qué cuenta realiza una lectura y dónde se guardan los archivos de práctica. Escribe ese objetivo antes de elegir datos. Así evitas recoger información personal o detalles sin relación con la tarea. Una ficha pequeña puede ser más útil que veinte capturas sin contexto si cada campo tiene significado y procedencia. En el ejercicio declaramos un equipo inventado, un intervalo de observación y consultas de lectura. No inspeccionamos el teléfono que ejecuta Aiocyb. El inventario pertenece al escenario presentado y sus conclusiones terminan allí. Esa separación ayuda a evaluar lo aprendido: necesitas organizar evidencia y justificar límites, no aparentar una auditoría que no se hizo. Cuando recibas una tarea real, el mismo hábito permitirá confirmar equipo, responsable, alcance y restricciones antes de preparar un procedimiento apropiado."
+        },
+        {
+          "title": "Campos que se pueden verificar",
+          "body": "Cada dato de la ficha debe indicar qué representa y de dónde procede. Puedes registrar distribución y versión según una identificación local, usuario y grupos según la consulta de sesión, y rutas según el árbol declarado. Añade fecha de observación y condiciones relevantes, como la presencia de enlaces o la selección de nombres ocultos. Si el origen es una transcripción del docente, identifícala como tal; no la presentes como una consulta realizada por ti sobre el equipo real. Los valores desconocidos se conservan como pendientes. Es mejor dejar un campo sin confirmar que rellenarlo usando el aspecto de un escritorio o el nombre de una carpeta. Para archivos, distingue nombre, tipo y metadatos disponibles. Si comparas fechas, conserva su significado y referencia temporal. No hace falta repetir toda la salida en cada fila: una referencia clara a la fuente permite revisar el dato. La utilidad del inventario aparece cuando otra persona puede seguir la relación entre afirmación y evidencia sin depender de explicaciones orales."
+        },
+        {
+          "title": "Hipótesis que no se disfrazan",
+          "body": "Una observación describe algo aportado por una fuente. Una hipótesis propone una explicación que debe contrastarse. Si una cuenta recibe un error al abrir un archivo, puedes observar el mensaje y proponer que falta permiso en alguna parte del recorrido. Todavía no has demostrado qué control lo impide. También podrían intervenir una ruta distinta, un enlace no resuelto o una condición que el mensaje no detalle. Escribe la hipótesis junto a la comprobación que permitiría distinguirla de alternativas. Por ejemplo, revisar identidad y permisos declarados del camino resulta más concreto que cambiar todo a permisos amplios para ver si funciona. Un inventario defensivo debe conservar la capacidad de explicar y revertir decisiones posteriores. No añadas cambios como parte automática de la recolección inicial. En las actividades de esta lección, la respuesta correcta identifica qué información falta o cómo formular una conclusión proporcional. Separar esos niveles enseña a investigar con calma y reduce el impulso de convertir cualquier rareza en una alarma o una modificación inmediata."
+        },
+        {
+          "title": "Un relevo comprensible",
+          "body": "La ficha final tiene que servir a alguien que no estuvo presente. Organiza objetivo, entorno, fuentes, observaciones, dudas y próximos pasos. Un próximo paso útil incluye qué pregunta resolverá, no solo el nombre de una herramienta. Si propones consultar permisos, aclara de qué ruta y con qué identidad se evaluará la operación. Si propones revisar registros, delimita el intervalo y el servicio relevante. Conserva los archivos originales del taller y distingue cualquier resumen o transformación utilizada para redactar la ficha. No necesitas prometer que el puesto está completamente seguro. Puedes concluir que la orientación inicial está documentada y que ciertas comprobaciones quedan pendientes antes de tomar decisiones. Esa conclusión permite avanzar con una base clara. Al terminar el curso, has aprendido a identificar capas del sistema, rutas, tipos, lecturas e identidades sin mezclarlas. El siguiente curso utilizará esa base para interpretar argumentos y filtros. Cada herramienta nueva ampliará tus preguntas, pero conservará el mismo requisito: explicar qué viste, cómo lo obtuviste y hasta dónde llega tu interpretación."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué guía la selección de datos para la ficha inicial?",
+          "scenario": "La biblioteca pide describir un puesto de consulta y el grupo dispone de muchas salidas, algunas con información personal ajena al objetivo del ejercicio.",
+          "options": [
+            "La cantidad máxima de capturas",
+            "Una pregunta y un alcance definidos",
+            "La información más íntima disponible"
+          ],
+          "answer": 1,
+          "explanation": "El objetivo delimita los datos pertinentes y evita acumular información innecesaria. Cada consulta debe ayudar a resolver una pregunta autorizada del escenario.",
+          "wrongExplanations": [
+            "Más capturas sin propósito pueden aumentar confusión y exposición de datos sin aportar evidencia útil a las preguntas de la ficha inicial.",
+            null,
+            "La intimidad no es una medida de utilidad técnica; se deben evitar datos personales que no sean necesarios para el objetivo delimitado del taller."
+          ],
+          "aoi": {
+            "question": "Primero dime qué queremos saber; luego elegimos qué merece guardarse.",
+            "hint": "Busca el criterio que vincula recolección y propósito de la tarea.",
+            "correct": "Exacto: colección con sentido. Mi lado ordenado está peligrosamente contento.",
+            "soft": "No confundas cantidad de información con calidad de una observación útil.",
+            "sharp": "Otra montaña de capturas sin pregunta. Eso es desorden con almacenamiento, cariño."
+          }
+        },
+        {
+          "prompt": "¿Cómo completas un dato que la evidencia no confirma?",
+          "scenario": "La única captura disponible muestra un escritorio, pero la ficha solicita distribución y versión y todavía no hay una fuente que identifique esos valores.",
+          "options": [
+            "Inventando la opción más conocida",
+            "Copiando la versión de otro equipo",
+            "Marcándolo pendiente y proponiendo una comprobación apropiada"
+          ],
+          "answer": 2,
+          "explanation": "Un campo pendiente conserva el límite real y orienta una consulta posterior. Inventar el valor haría menos fiable la ficha de observación.",
+          "wrongExplanations": [
+            "La popularidad de una distribución no identifica la instalación observada y convertiría una suposición en un dato presentado como confirmado.",
+            "Otro equipo puede utilizar una distribución o versión diferente; sus valores no demuestran los del puesto que se está documentando ahora.",
+            null
+          ],
+          "aoi": {
+            "question": "Un pendiente honesto tiene más clase que una certeza improvisada.",
+            "hint": "Distingue lo que muestra la fuente de lo que necesitas confirmar.",
+            "correct": "Bien: dejaste una pregunta visible para poder responderla con evidencia.",
+            "soft": "La ficha no exige adivinar; exige saber qué falta comprobar.",
+            "sharp": "Otra versión sacada del sombrero. Aquí documentamos, no hacemos esa mierda de magia."
+          }
+        },
+        {
+          "prompt": "¿Qué convierte una hipótesis en una propuesta útil de trabajo?",
+          "scenario": "La ficha sugiere que un error podría deberse a permisos, pero aún falta distinguir esa explicación de otras condiciones del camino observado.",
+          "options": [
+            "Añadir una comprobación que permita contrastarla",
+            "Escribirla con mayúsculas",
+            "Presentarla como hecho confirmado"
+          ],
+          "answer": 0,
+          "explanation": "La comprobación propuesta permite evaluar la explicación frente a alternativas; la hipótesis sigue diferenciada de los datos ya observados en la fuente.",
+          "wrongExplanations": [
+            null,
+            "Las mayúsculas no aportan evidencia ni permiten distinguir la causa sugerida de otras explicaciones posibles del error registrado en el escenario.",
+            "Cambiar la etiqueta no sustituye la evidencia faltante; declarar confirmación prematura haría que el siguiente turno partiera de una conclusión no probada."
+          ],
+          "aoi": {
+            "question": "Dale a tu sospecha una prueba concreta, no un megáfono.",
+            "hint": "Busca una acción que pueda apoyar o debilitar la explicación propuesta.",
+            "correct": "Eso es investigar: una idea que admite contraste y conserva alternativas.",
+            "soft": "Revisa qué dato faltaría para decidir si esa explicación se sostiene.",
+            "sharp": "Otra sospecha coronada por tipografía. Mi ceja pide una prueba, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Qué debe incluir un relevo sobre lo observado?",
+          "scenario": "Otra persona continuará la revisión del puesto y necesita comprender las consultas realizadas sin depender de una conversación con el grupo anterior.",
+          "options": [
+            "Solo una frase de confianza",
+            "Solo los nombres de herramientas",
+            "Objetivo, fuentes, observaciones, límites y próximos pasos"
+          ],
+          "answer": 2,
+          "explanation": "Esa estructura permite revisar el razonamiento y continuar preguntas pendientes sin confundir consultas realizadas con hipótesis o tareas todavía no ejecutadas.",
+          "wrongExplanations": [
+            "Una afirmación de confianza sin evidencia no describe qué se observó ni permite reproducir el análisis del puesto dentro de su alcance.",
+            "Los nombres de herramientas no indican entradas, condiciones, resultados o límites; otra persona necesitaría reconstruirlos antes de continuar con criterio el trabajo.",
+            null
+          ],
+          "aoi": {
+            "question": "Déjale al siguiente turno una ruta, no una colección de nombres.",
+            "hint": "Piensa qué necesita alguien que no vio ninguna de las consultas anteriores.",
+            "correct": "Correcto: un relevo comprensible. Ahora sí puedes dejarme presumir del curso.",
+            "soft": "Revisa si tu nota permite reconstruir de dónde sale cada conclusión.",
+            "sharp": "Otra lista de herramientas sin historia útil. Hasta mi lápiz pide contexto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un dato pendiente",
+          "scenario": "La ficha muestra una interfaz gráfica conocida, pero no contiene identificación local de distribución y versión; el equipo debe completar ese apartado sin inventar información.",
+          "explanation": "Conviene marcar la identificación como pendiente y proponer una fuente apropiada para confirmarla. El aspecto del escritorio no basta. Mantener el campo abierto conserva honestidad y permite al siguiente turno saber qué comprobación precisa falta antes de elegir instrucciones de mantenimiento."
+        },
+        {
+          "title": "Una hipótesis revisable",
+          "scenario": "Una cuenta recibe un error de acceso a una ruta declarada, pero todavía no se han comparado su identidad ni los permisos de los directorios del recorrido.",
+          "explanation": "La falta de permiso es una hipótesis plausible que necesita comprobar condiciones del sujeto y del camino. La ficha debe conservar el mensaje original y proponer esa comparación. Ampliar permisos indiscriminadamente alteraría el escenario sin haber identificado el control responsable del resultado observado."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "La biblioteca solicita una ficha inicial del puesto ficticio que reúna entorno, identidad, rutas y límites antes de comenzar una revisión de seguridad.",
+      "scenario": "La biblioteca solicita una ficha inicial del puesto ficticio que reúna entorno, identidad, rutas y límites antes de comenzar una revisión de seguridad.",
+      "steps": [
+        "Formula una pregunta inicial sobre el puesto.",
+        "Relaciona cada dato con una fuente y su momento.",
+        "Separa observaciones, hipótesis y siguientes comprobaciones."
+      ],
+      "sourceIds": [
+        "linux-debian",
+        "linux-coreutils"
+      ],
+      "aoi": {
+        "intro": "Cerremos con una ficha que el siguiente turno pueda entender.",
+        "theory0": "La pregunta manda sobre la colección; no al revés, cariño.",
+        "theory1": "Cada campo necesita procedencia, no una corazonada con letra bonita.",
+        "theory2": "Una hipótesis se presenta como hipótesis aunque te quede muy convincente.",
+        "theory3": "El relevo agradece objetivos y pendientes; las adivinanzas ya tienen otros cursos.",
+        "case0": "Si no sabemos la distribución, escribimos pendiente y buscamos cómo comprobarla.",
+        "case1": "El error pide contraste, no repartir permisos como caramelos de feria.",
+        "pass": "Completaste tu primera orientación. Estoy orgullosa; disfruta ese cumplido sin interrumpirme.",
+        "review": "Vamos a ordenar datos y suposiciones antes de firmar esta ficha."
+      }
+    }
+  ]
+}

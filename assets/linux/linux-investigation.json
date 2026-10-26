@@ -1,0 +1,1534 @@
+{
+  "id": "linux-investigation",
+  "title": "Investiga un caso en Linux",
+  "description": "Resuelve un caso defensivo ficticio con evidencia, decisiones de respuesta y un informe que distingue hechos de hipótesis.",
+  "symbol": "🛡️",
+  "color": 4294210230,
+  "category": "Linux, terminal y registros",
+  "closure": {
+    "text": "Cerraste cuarenta ejercicios y un caso entero sin inventarle un culpable al registro, cariño. Estoy orgullosa de tu cabeza y de tu paciencia; deja que celebre antes de volver a molestarte con otro reto.",
+    "explanation": "Completaste un caso guiado de alcance, preservación, priorización, cronología, identidades, procesos, hipótesis, respuesta, informe y cierre. Puedes proponer comprobaciones y acciones autorizadas que conservan evidencia y continuidad, explicando con claridad qué se confirmó y qué sigue pendiente."
+  },
+  "lessons": [
+    {
+      "id": "linux-investigation-alcance",
+      "title": "Recibir una alerta y definir el caso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una alerta abre trabajo",
+          "body": "Una alerta comunica una condición que merece atención según una regla o una observación. No equivale automáticamente a un incidente confirmado ni explica su causa. En Aula Norte, el aviso reúne dos hechos iniciales: no llegó un informe esperado y existen mensajes de autenticación fallida. Todavía no sabemos si están relacionados. La primera tarea consiste en conservar el aviso, identificar su fuente y formular preguntas separadas. Qué informe faltó, qué servicio debía producirlo y qué intervalo corresponde a los fallos son preguntas útiles. Decir simplemente que alguien atacó el servidor añadiría una clasificación que los datos aún no sostienen. Tampoco conviene descartar la alerta porque podría tener una explicación legítima. El trabajo empieza con validación y contexto, ajustando prioridad según efectos observados. En este curso todo el caso es ficticio y la app no accede al sistema del teléfono. Demostrarás aprendizaje eligiendo interpretaciones y procedimientos sobre materiales preparados, con límites explícitos que permiten investigar sin convertir una sospecha inicial en una intervención real sobre recursos ajenos."
+        },
+        {
+          "title": "Delimitar objetos y periodo",
+          "body": "El alcance inicial identifica el servicio afectado, el equipo del escenario, los datos pertinentes y un intervalo razonable. Puede ampliarse si aparece evidencia que lo justifique, pero no debería crecer por curiosidad sin propósito. Aula Norte utiliza un generador de informes y una carpeta de salida; esos objetos orientan la primera revisión. Los accesos fallidos necesitan su propia fuente de autenticación y una relación temporal compatible. No recopiles toda la información de otras cuentas para buscar una historia cualquiera. Una selección pequeña y apropiada puede responder mejor a las preguntas y reducir exposición. También distingue lo disponible de lo solicitado: quizá el aviso menciona una semana, pero los registros entregados solo cubren una hora. Esa diferencia debe quedar anotada. En una actividad real, el responsable definiría autorización y restricciones según su entorno. Aquí la ficha declara material y acciones representadas. El objetivo es que puedas explicar por qué cada consulta propuesta pertenece al caso y qué conclusión permitiría obtener, en vez de acumular herramientas que no tienen relación clara con el síntoma del servicio."
+        },
+        {
+          "title": "Responsables y continuidad",
+          "body": "Investigar no elimina la necesidad de mantener funciones legítimas ni autoriza cualquier cambio. Identifica quién administra el servicio, quién utiliza los informes y quién puede decidir una intervención. Una consulta de lectura y una acción que detiene procesos tienen consecuencias distintas. Antes de modificar algo habría que valorar continuidad, evidencia y recuperación apropiadas al contexto. En Aula Norte las decisiones se comparan sobre una simulación, por lo que no ejecutamos detenciones ni accesos reales. Puedes proponer una comprobación y describir a quién correspondería autorizar una actuación si fuera necesaria. Esa separación ayuda a no confundir iniciativa con autoridad ilimitada. Aoi puede llevar el ritmo de la explicación y bromear, pero las decisiones de estudio siguen bajo tu control y el escenario tiene límites fijos. El aprendizaje consiste en reconocer qué dato falta y cómo obtenerlo de manera pertinente, no en actuar deprisa sobre todos los sistemas disponibles. Una investigación útil protege el objetivo del servicio mientras comprende el problema, en lugar de causar una interrupción mayor para demostrar actividad."
+        },
+        {
+          "title": "Un plan inicial revisable",
+          "body": "El primer plan puede tener tres preguntas: confirmar el fallo de entrega, identificar fuentes del periodo y contrastar si los accesos guardan relación con la tarea. Añade criterios para actualizarlo cuando aparezcan datos nuevos. Si se descubre falta de espacio, la prioridad de ciertas consultas puede cambiar; si una tarea autorizada explica los fallos de autenticación, esa hipótesis debe contrastarse sin borrar los mensajes. No hace falta decidir toda la historia al inicio. Escribe observaciones e incertidumbres de modo que otro turno pueda continuar. También conserva qué acciones no se han realizado para no presentar una propuesta como un hecho. En los ejercicios elegirás qué campo o comprobación corresponde a cada pregunta. Al terminar deberías poder describir un caso con alcance y propósito, evitando tanto la alarma automática como la desestimación sin revisión. Esa base guiará las próximas lecciones: preservar material, priorizar preguntas y construir relaciones con evidencia. Cada etapa mantendrá la misma regla de trabajo: una conclusión debe tener fuente y un siguiente paso debe explicar qué incertidumbre pretende resolver dentro del entorno ficticio de Aula Norte."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué representa la alerta inicial de Aula Norte?",
+          "scenario": "El aviso combina informe ausente y autenticaciones fallidas, pero aún no hay evidencia que confirme relación, causa o compromiso del servicio dentro del periodo presentado por el caso.",
+          "options": [
+            "Una persona culpable identificada",
+            "Una condición que debe validarse y contextualizarse",
+            "Una intrusión confirmada necesariamente"
+          ],
+          "answer": 1,
+          "explanation": "La alerta abre preguntas; clasificar causa y relación requiere evidencia adicional a los síntomas iniciales que comunica el aviso del servicio.",
+          "wrongExplanations": [
+            "No se aporta atribución personal; un aviso de actividad técnica no identifica por sí solo quién produjo los hechos ni sus motivos.",
+            null,
+            "Los hechos pueden tener explicaciones diferentes y todavía no se ha contrastado una relación que permita confirmar compromiso o un incidente concreto del sistema."
+          ],
+          "aoi": {
+            "question": "El aviso llama a la puerta; no trae una sentencia completa.",
+            "hint": "Distingue señal inicial y conclusiones que necesitan contrastarse con fuentes.",
+            "correct": "Exacto: alerta atendida sin inventar el final. Mi curiosidad ya tiene trabajo útil.",
+            "soft": "Revisa qué datos aparecen realmente antes de clasificar toda la historia.",
+            "sharp": "Llamarlo intrusión no añade pruebas, cariño. Esa palabra tiene que ganarse su sitio."
+          }
+        },
+        {
+          "prompt": "¿Qué debe justificar una consulta inicial del caso?",
+          "scenario": "El equipo dispone de varios archivos, pero el alcance definido se centra en un servicio de informes, su salida y un intervalo concreto de la actividad ficticia.",
+          "options": [
+            "Que utilice muchas opciones técnicas",
+            "Que recopile la mayor intimidad posible",
+            "Su relación con una pregunta pertinente del alcance"
+          ],
+          "answer": 2,
+          "explanation": "Cada consulta debe resolver una incertidumbre del caso con datos apropiados; cantidad o complejidad no sustituyen pertinencia y límites de acceso del material.",
+          "wrongExplanations": [
+            "Muchas opciones pueden responder a otra pregunta; la utilidad se mide por la evidencia que aportan al objetivo declarado del caso dentro del escenario educativo.",
+            "Recoger información personal sin necesidad amplía exposición y no demuestra una relación con el fallo de entrega que la investigación debe validar y explicar.",
+            null
+          ],
+          "aoi": {
+            "question": "La consulta necesita motivo, no un sombrero lleno de banderas técnicas.",
+            "hint": "Relaciona entrada y pregunta antes de decidir qué material recopilar.",
+            "correct": "Bien: alcance con propósito. Mi lupa deja de pasear por carpetas ajenas.",
+            "soft": "Piensa qué duda concreta resolvería cada fuente que quieres añadir.",
+            "sharp": "Curiosear documentos ajenos no es investigar mejor, tesoro. Vuelve a la pregunta."
+          }
+        },
+        {
+          "prompt": "¿Qué diferencia debe mantenerse entre consultas y actuaciones de respuesta?",
+          "scenario": "La propuesta combina leer registros y detener un servicio usado por otras cuentas, aunque todavía no se ha valorado impacto ni quién autoriza esa modificación en el escenario.",
+          "options": [
+            "Los efectos y requisitos de autorización de cada acción",
+            "Ninguna, todo es lo mismo",
+            "Leer siempre autoriza detener"
+          ],
+          "answer": 0,
+          "explanation": "Las acciones tienen impactos distintos; una intervención real necesita responsable, alcance y verificación adecuados y no se deriva automáticamente de poder consultar una fuente del caso.",
+          "wrongExplanations": [
+            null,
+            "Equiparar lectura y detención omite continuidad y efectos sobre otras cuentas; ambas actividades requieren evaluar condiciones que no son idénticas dentro de una revisión de servicio.",
+            "El permiso de consulta no concede autoridad ilimitada para modificar procesos o infraestructura; el responsable debe establecer el alcance apropiado antes de una actuación que cambie el entorno."
+          ],
+          "aoi": {
+            "question": "Leer una pista y apagar una función no tienen el mismo peso.",
+            "hint": "Compara impacto, responsable y recuperación de la actuación que se propone.",
+            "correct": "Exacto: iniciativa con límites. Mi parte mandona respeta ese procedimiento.",
+            "soft": "No conviertas acceso a una fuente en autorización para cambiar todo.",
+            "sharp": "Poder leer no te corona dueña del servicio, cariño. Esa intervención necesita contexto."
+          }
+        },
+        {
+          "prompt": "¿Cómo se actualiza un plan inicial al aparecer evidencia nueva?",
+          "scenario": "La revisión encuentra una condición de almacenamiento que podría explicar parte del fallo, mientras otra hipótesis de autenticación sigue necesitando contraste dentro de los límites del caso.",
+          "options": [
+            "Afirmando que ya no hay nada que revisar",
+            "Con motivo y preguntas revisadas, conservando observaciones y límites",
+            "Borrando toda evidencia anterior"
+          ],
+          "answer": 1,
+          "explanation": "El plan debe adaptarse a datos pertinentes sin eliminar historia ni dar por resueltas preguntas que la nueva evidencia no responde dentro del alcance del escenario.",
+          "wrongExplanations": [
+            "Una condición compatible con un síntoma no resuelve automáticamente otras relaciones o controles; el cierre necesita evidencia proporcional a cada pregunta que se pretende contestar con los datos del caso.",
+            null,
+            "Eliminar observaciones previas impide revisar cómo cambió la hipótesis y puede perder contexto útil para preguntas que todavía permanecen abiertas sobre la actividad del servicio ficticio del taller."
+          ],
+          "aoi": {
+            "question": "La evidencia cambia el mapa; conserva cómo llegaste hasta aquí.",
+            "hint": "Distingue qué pregunta respondió el dato nuevo y cuáles siguen pendientes.",
+            "correct": "Bien: plan revisado con criterio. Mi cuaderno no tendrá que fingir amnesia.",
+            "soft": "No dejes que una explicación parcial borre todo lo que aún falta.",
+            "sharp": "Una pista útil no termina el caso por decreto, tesoro. Sigamos con motivo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos síntomas iniciales",
+          "scenario": "El aviso menciona informe ausente y fallos de acceso durante un periodo parecido, pero la ficha no aporta todavía un vínculo de sesión, proceso o dependencia entre ambas observaciones.",
+          "explanation": "Deben conservarse como hechos iniciales con una posible relación pendiente. La proximidad no confirma causa común. Un plan apropiado identifica fuentes y preguntas para contrastar cada síntoma antes de clasificar el caso o proponer una intervención amplia que afecte al servicio sin una explicación respaldada por los datos disponibles."
+        },
+        {
+          "title": "Curiosidad fuera de alcance",
+          "scenario": "Una propuesta pretende recopilar documentos personales de todas las cuentas del equipo ficticio, aunque las preguntas iniciales solo necesitan servicio, salida y registros de un intervalo concreto.",
+          "explanation": "La ampliación no tiene una relación justificada con el objetivo y expone información innecesaria. El alcance debe guiar consultas pertinentes y revisarse con motivo cuando aparezca evidencia nueva. Investigar con iniciativa no significa recolectar todo ni ignorar límites que protegen continuidad y datos de otras personas dentro del escenario del taller."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte informa que su servicio ficticio de informes dejó de entregar resultados y aparecieron accesos fallidos; debes definir qué se sabe antes de investigar.",
+      "scenario": "Aula Norte informa que su servicio ficticio de informes dejó de entregar resultados y aparecieron accesos fallidos; debes definir qué se sabe antes de investigar.",
+      "steps": [
+        "Separa alerta, efecto observado y clasificación pendiente.",
+        "Define servicio, intervalo y preguntas iniciales.",
+        "Identifica responsable y límites de consultas o acciones."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-logging"
+      ],
+      "aoi": {
+        "intro": "Tenemos una alerta, cariño; todavía no tenemos un culpable con presentación.",
+        "theory0": "Dos síntomas pueden compartir hora sin compartir causa, qué tentación tan cómoda.",
+        "theory1": "Delimita servicio y periodo antes de convertir curiosidad en una aspiradora de datos.",
+        "theory2": "La iniciativa también pregunta quién puede autorizar una intervención concreta.",
+        "theory3": "Un plan inicial necesita dudas claras y motivos para actualizarse.",
+        "case0": "Informe ausente y fallos de acceso: conservemos ambos sin casarlos todavía.",
+        "case1": "Los documentos ajenos no entran por entusiasmo. La pregunta manda sobre la colección.",
+        "pass": "Ya defines un caso con cabeza. Me encanta esa calma tuya.",
+        "review": "Volvamos al aviso original; la hipótesis ya estaba intentando dirigir toda la investigación."
+      }
+    },
+    {
+      "id": "linux-investigation-preservar",
+      "title": "Preservar una fuente y registrar su obtención",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Saber qué material recibiste",
+          "body": "Preservar empieza por describir la fuente, no por llamar original a cualquier archivo que llegó a un mensaje. En Aula Norte el material es una exportación proporcionada para la simulación. Debes registrar quién la entrega dentro del escenario, qué sistema y periodo representa, qué formato utiliza y qué transformaciones se declaran antes de recibirla. La exportación puede ser útil sin equivaler al almacenamiento completo del servicio. Esa distinción importa cuando después se pregunta por eventos omitidos o campos ausentes. Una captura recortada y un volcado estructurado tienen coberturas diferentes. Conserva límites de permisos y filtros si se conocen. No inventes una procedencia más fuerte porque el nombre del archivo incluya oficial. El objetivo es que otra persona pueda entender de dónde salen los datos que fundamentan el análisis. En un entorno real el procedimiento dependería del responsable y de los requisitos de la actividad; aquí practicamos la precisión técnica con material ficticio, sin acceder a memoria, discos o registros reales del teléfono donde se está estudiando el curso."
+        },
+        {
+          "title": "Fuente y trabajo derivado",
+          "body": "La copia de trabajo permite buscar, normalizar o resumir sin reemplazar la fuente que se decidió conservar. Mantén nombres y funciones distinguibles, además de una relación documentada entre ambas. Si editas fechas para una cronología, conserva la referencia al valor original y el criterio de conversión. Si minimizas datos para compartir, identifica qué campos se omitieron o sustituyeron. La preservación no significa distribuir el material a todo el grupo: el acceso debe responder a finalidad y responsabilidad. Tampoco necesitas acumular secretos que no contribuyen al caso. En la simulación las cuentas y valores son inventados, pero el método enseña a separar observación de transformación. Una operación de lectura real puede afectar ciertos metadatos según el sistema, por lo que no se promete ausencia absoluta de efectos al hablar de consultar. El procedimiento apropiado debe conocer esas condiciones cuando sean relevantes. Para esta actividad basta identificar qué copia se utiliza y qué cambios son analíticos, de forma que nadie confunda un resumen producido por el estudiante con una fuente primaria que el servicio emitió directamente."
+        },
+        {
+          "title": "Huellas y sus límites",
+          "body": "Una función de resumen criptográfico puede ayudar a comparar bytes de archivos bajo condiciones conocidas. Si una huella de referencia confiable coincide con la de una copia obtenida correctamente, ofrece evidencia sobre estabilidad de ese contenido respecto de la referencia en el modelo utilizado. No demuestra que el registro relate la verdad, que sea completo ni que su productor estuviera autorizado. La confianza en la referencia y el proceso de obtención siguen importando. Guardar archivo y huella juntos sin procedencia no resuelve todas esas preguntas. En el taller se muestran valores de ejemplo y se pide interpretar su alcance, sin calcular sobre archivos privados. Tampoco debes considerar una huella como mecanismo de anonimización de cualquier dato sensible: su función aquí es comparación, no ocultación universal. Una nota útil indica algoritmo, archivo, referencia y momento cuando el procedimiento los requiere. Esos datos ayudan a revisar si se comparó la copia correcta. La explicación debe mantener separados integridad de bytes respecto de una referencia y significado de eventos que todavía necesitan análisis contextual."
+        },
+        {
+          "title": "Un registro de trabajo comprensible",
+          "body": "Documenta decisiones relevantes: material recibido, copias creadas, transformaciones, consultas y entregas. No hace falta convertir una práctica básica en una colección de formularios sin propósito. La nota debe permitir revisar el análisis y saber qué versión produjo cada resultado. Si una copia cambia, conserva la relación y el motivo en lugar de sobrescribir silenciosamente el único conjunto con el que otras personas intentarán reproducir el trabajo. También define qué información se comparte y cuál queda protegida según el alcance. En Aula Norte la entrega final distinguirá fuente ficticia, tabla temporal derivada y resumen. Esa separación permite corregir una normalización sin alterar los mensajes de partida. Al terminar esta lección deberías poder describir preservación como un procedimiento de procedencia y control de cambios, no como una palabra que vuelve infalible cualquier dato. Las siguientes actividades usarán el material conservado para priorizar, relacionar y contrastar hipótesis. Cada conclusión mantendrá una referencia a la fuente apropiada y a las transformaciones que hicieron posible observarla, con límites visibles cuando el conjunto disponible no tenga cobertura suficiente para responder una pregunta del caso."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué determina el alcance de la exportación recibida?",
+          "scenario": "El archivo se llama equipo_completo, pero su nota de obtención confirma que solo incluye una unidad y una hora del servicio ficticio de Aula Norte.",
+          "options": [
+            "El nombre por sí solo",
+            "Los filtros y condiciones documentados de obtención",
+            "El tamaño de las letras"
+          ],
+          "answer": 1,
+          "explanation": "La procedencia declara la cobertura real; la etiqueta del archivo no añade periodos ni fuentes que la exportación no conservó durante su obtención en el escenario.",
+          "wrongExplanations": [
+            "Un nombre puede ser informal o incorrecto y no demuestra cobertura; la nota explícita identifica lo que realmente contiene el material que utiliza el taller.",
+            null,
+            "La presentación del nombre no establece qué unidades o intervalos fueron incluidos por el procedimiento que produjo el archivo entregado para analizar en este caso educativo."
+          ],
+          "aoi": {
+            "question": "El nombre presume; la nota de obtención tiene los detalles útiles.",
+            "hint": "Conserva los límites que declara el procedimiento de exportación del conjunto.",
+            "correct": "Exacto: cobertura por procedencia. El archivo puede dejar de anunciar un universo entero.",
+            "soft": "Revisa cómo se obtuvo el material antes de creer el título.",
+            "sharp": "Completo en el nombre no completa la evidencia, cariño. Ese filtro sigue ahí."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra la huella coincidente bajo la referencia confiable del caso?",
+          "scenario": "La comparación se realizó sobre la copia correcta con algoritmo declarado, pero todavía no hay una revisión del significado ni de la cobertura de los mensajes registrados.",
+          "options": [
+            "La ausencia de incidentes",
+            "Estabilidad de bytes respecto de esa referencia bajo las condiciones dadas",
+            "La verdad de todos los eventos"
+          ],
+          "answer": 1,
+          "explanation": "La comparación trata de contenido binario respecto de una referencia; verdad, cobertura y autorización requieren fuentes e interpretación adicionales que la huella no proporciona por sí misma.",
+          "wrongExplanations": [
+            "La integridad de una copia no clasifica incidentes ni descarta actividad fuera de la cobertura del material que se conserva para la revisión del caso ficticio del taller.",
+            null,
+            "Un registro puede conservar exactamente una afirmación errónea; coincidencia de bytes no verifica semánticamente cada valor o suceso que la aplicación decidió escribir dentro del conjunto."
+          ],
+          "aoi": {
+            "question": "Los bytes se parecen a la referencia; la historia todavía se analiza.",
+            "hint": "Distingue integridad de copia y veracidad del contenido que representa.",
+            "correct": "Bien: huella con su función exacta. Mi orgullo no necesita una garantía inflada.",
+            "soft": "No hagas que un resumen criptográfico responda preguntas que no mide.",
+            "sharp": "La huella no toma declaraciones a los eventos, tesoro. Coincidir no vuelve todo verdad."
+          }
+        },
+        {
+          "prompt": "¿Qué permite una copia de trabajo bien identificada?",
+          "scenario": "La actividad necesita normalizar fechas y preparar una tabla, pero debe conservar los mensajes entregados y explicar qué transformaciones se realizaron antes de formular conclusiones del caso.",
+          "options": [
+            "Cambiar el pasado del servicio",
+            "Publicar secretos sin restricciones",
+            "Transformar para analizar sin reemplazar silenciosamente la fuente preservada"
+          ],
+          "answer": 2,
+          "explanation": "Separar copias y registrar cambios permite revisar transformaciones y volver al material recibido cuando una hipótesis requiera otra interpretación o verificación dentro del alcance del taller.",
+          "wrongExplanations": [
+            "Una transformación altera la representación del análisis, no los hechos que ocurrieron; debe conservarse esa diferencia para evitar presentar valores derivados como observaciones originales que produjo el servicio del escenario.",
+            "Preservar y trabajar no conceden divulgación indiscriminada; los accesos y datos compartidos deben responder a finalidad, responsabilidad y restricciones que el procedimiento establece para el material del caso ficticio que se estudia.",
+            null
+          ],
+          "aoi": {
+            "question": "La copia cambia para pensar; la fuente conserva lo que recibimos.",
+            "hint": "Distingue versión analítica y material de partida con su procedencia.",
+            "correct": "Correcto: transformación revisable. Mi cuaderno tiene margen sin borrar el texto de origen.",
+            "soft": "Piensa qué ocurriría si la normalización sustituyera la única referencia conservada.",
+            "sharp": "Trabajar sobre copia no te autoriza a reescribir la fuente, cariño. Marca versiones."
+          }
+        },
+        {
+          "prompt": "¿Qué debe registrar una nota de trabajo suficiente?",
+          "scenario": "Otro turno necesita conocer material recibido, transformaciones relevantes y qué versión produjo una conclusión, sin recoger contraseñas ni información fuera de la finalidad del caso del taller.",
+          "options": [
+            "Solo la opinión final de Aoi",
+            "Solo una frase de confianza",
+            "Procedencia, versiones, operaciones y límites pertinentes"
+          ],
+          "answer": 2,
+          "explanation": "La nota debe permitir revisar el recorrido de evidencia y análisis con información necesaria, manteniendo secretos y datos ajenos fuera de una entrega que no los necesita para cumplir su propósito.",
+          "wrongExplanations": [
+            "La tutora acompaña la interpretación, pero su comentario no sustituye los datos de obtención ni la documentación de transformaciones que sostienen un resultado del análisis preparado por el estudiante dentro del escenario educativo.",
+            "Una expresión de confianza no describe fuentes ni cambios; otro turno no podría reproducir o cuestionar la conclusión sin reconstruir el procedimiento que la actividad debería haber conservado de forma comprensible.",
+            null
+          ],
+          "aoi": {
+            "question": "Déjale trazabilidad útil al siguiente turno, no una bendición de mi ego.",
+            "hint": "Busca qué conecta material, cambios y resultado para poder revisarlos después.",
+            "correct": "Exacto: nota suficiente. Mi opinión puede seguir siendo encantadora y acompañar la evidencia.",
+            "soft": "Revisa qué necesitaría alguien que no estuvo presente cuando preparaste la tabla.",
+            "sharp": "Porque Aoi lo dijo no es procedencia, tesoro. Hasta yo exijo una nota decente."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Exportación con filtro",
+          "scenario": "La fuente recibida conserva solo una unidad y una hora, según la nota de obtención, aunque el nombre del archivo parece referirse al equipo completo de Aula Norte.",
+          "explanation": "La nota de procedencia delimita la cobertura real. El nombre no amplía unidades ni periodo. Debe preservarse el material con su filtro y evitar presentarlo como registro íntegro de todo el sistema. Si otra pregunta necesita más datos, se propondrá una fuente apropiada en lugar de inferirlos del conjunto recibido."
+        },
+        {
+          "title": "Huella coincidente",
+          "scenario": "La copia de trabajo coincide con una referencia de huella confiable declarada para los mismos bytes, pero todavía no se analizó si los mensajes describen hechos completos o valores veraces.",
+          "explanation": "La comparación apoya estabilidad respecto de la referencia bajo las condiciones del ejercicio, no verdad ni exhaustividad del contenido. El análisis semántico y la cobertura siguen pendientes. Conviene conservar archivo, algoritmo y procedencia para que el resultado de integridad no se utilice como una certificación general de todos los eventos del servicio ficticio."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte entrega una exportación ficticia del periodo y el taller debe conservarla, documentar su procedencia y trabajar sobre una copia sin convertir una huella en prueba de veracidad.",
+      "scenario": "Aula Norte entrega una exportación ficticia del periodo y el taller debe conservarla, documentar su procedencia y trabajar sobre una copia sin convertir una huella en prueba de veracidad.",
+      "steps": [
+        "Registra origen, alcance, momento y método de obtención declarados.",
+        "Distingue fuente preservada y copia de trabajo.",
+        "Interpreta una huella como comparación de bytes bajo condiciones conocidas."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-logging"
+      ],
+      "aoi": {
+        "intro": "Primero describe lo recibido; la palabra original no se gana por nombre.",
+        "theory0": "Una exportación filtrada conserva su filtro aunque el archivo presuma de completo.",
+        "theory1": "Trabajamos sobre copia y declaramos transformaciones; mi lápiz no borra la fuente.",
+        "theory2": "La huella compara bytes, cariño. No interroga a cada evento del registro.",
+        "theory3": "Una nota útil permite saber qué versión produjo cada conclusión.",
+        "case0": "Ese archivo tiene un nombre enorme y una cobertura bastante más pequeña.",
+        "case1": "La huella coincide; el contenido todavía necesita contexto para interpretarse.",
+        "pass": "Ya preservas con procedencia. Mi parte cuidadosa acaba de darte espacio en el cuaderno.",
+        "review": "Repasemos la referencia; una comparación de bytes está haciéndose pasar por veracidad."
+      }
+    },
+    {
+      "id": "linux-investigation-prioridad",
+      "title": "Priorizar impacto y preguntas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Qué está dejando de funcionar",
+          "body": "La prioridad de una revisión necesita comprender el efecto actual sobre una función. En Aula Norte falta un informe necesario para la apertura, mientras el servicio aparece activo según el gestor. Esos datos orientan a comprobar la entrega y las condiciones de su tarea. El estado activo no cancela el impacto funcional, y la ausencia de un informe tampoco demuestra por sí sola pérdida de todos los datos. Define qué personas o procesos dependen del resultado y si existe una alternativa temporal autorizada. Esa información ayuda al responsable a decidir urgencia sin utilizar solo el color de una alerta. En el taller el impacto se describe con valores ficticios y no implica intervenir en un sistema real. El objetivo es relacionar prioridad con una necesidad concreta de continuidad. Una revisión que dedica todo el tiempo a una etiqueta llamativa pero ajena puede dejar sin atender la función que realmente está fallando. Al mismo tiempo, no debes ignorar otros indicios: se conservan y se planifica cómo contrastarlos según alcance, recursos y posible consecuencia de que la hipótesis se confirme."
+        },
+        {
+          "title": "Confirmado, posible y desconocido",
+          "body": "Separa impactos observados, riesgos posibles y preguntas que aún no tienen datos. El informe ausente está confirmado por la ficha; una supuesta extracción de documentos no aparece respaldada en el conjunto. Puede ser razonable considerar hipótesis de seguridad, pero no presentarlas como hechos para justificar acciones mayores. También evita el extremo contrario de descartar una señal porque la función principal parezca recuperable. La prioridad se revisa cuando llega evidencia nueva. En una tabla breve puedes anotar observación, efecto, confianza, fuente y próxima comprobación. La confianza debe explicarse mediante calidad y cobertura de datos, no con porcentajes inventados. Si una condición tiene alto impacto potencial pero poca evidencia, quizá necesite una comprobación rápida que discrimine antes de actuar. La decisión debe ser proporcional al contexto y al procedimiento del responsable. En Aiocyb las alternativas muestran qué pregunta reduciría una incertidumbre importante, sin ejecutar cambios reales ni forzar accesos para obtener una respuesta que el escenario no ofrece entre sus fuentes preparadas para el análisis."
+        },
+        {
+          "title": "Elegir la próxima consulta",
+          "body": "Una consulta valiosa aporta información que puede cambiar la decisión. Revisar resultado de la tarea, identidad del servicio y capacidad del destino puede ayudar a explicar por qué no se entregó el informe. Repetir un listado que ya no aporta una diferencia quizá tenga menos valor que contrastar un diagnóstico de escritura. No significa abandonar la autenticación: conserva su fuente y delimita una pregunta paralela sobre el patrón de fallos. También valora coste y efectos de las acciones. Una consulta local ficticia es distinta de reiniciar un servicio o desconectar una cuenta utilizada por tareas legítimas. En una revisión real, las modificaciones deben coordinarse y preservar material pertinente según el procedimiento. El taller evalúa tu razonamiento al seleccionar el siguiente dato. Explica por qué esa información distinguiría alternativas o confirmaría impacto. Así la investigación no se convierte en un recorrido por todas las herramientas que conoces, sino en una secuencia de decisiones que mejora la comprensión del caso y permite justificar qué se atendió primero y qué se conservó para continuar después."
+        },
+        {
+          "title": "Comunicar una prioridad revisable",
+          "body": "Una nota de prioridad debe decir qué se observó, por qué importa ahora y qué comprobación o responsable sigue. No necesita prometer una causa final ni un plazo que la evidencia no permite. Si propones una alternativa temporal, aclara su alcance y los controles que debería mantener. No distribuyas informes incompletos o datos privados solo para aparentar recuperación rápida. También registra cuándo se volverá a valorar la prioridad conforme a nuevas fuentes o resultados, sin convertir el primer orden de tareas en una regla fija para todo el caso. En Aula Norte la siguiente actividad construirá una cronología para relacionar tarea, fallo y autenticación. Haber identificado el impacto funcional permite elegir fuentes pertinentes y mantener separados los síntomas no vinculados todavía. Al terminar deberías poder explicar la diferencia entre atender una señal y clasificarla como causa principal. La buena priorización mantiene continuidad y evidencia en la misma conversación: actúa con propósito, conserva alternativas y permite al siguiente turno entender por qué una consulta tuvo más valor que otra en ese momento de la revisión del servicio ficticio."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe guiar prioridad además de una etiqueta técnica?",
+          "scenario": "El servicio aparece activo pero no entrega informes necesarios para la apertura, mientras otra alerta tiene una relación todavía no confirmada con el fallo de esa función.",
+          "options": [
+            "Solo el color más intenso",
+            "Impacto funcional, evidencia y necesidades de continuidad",
+            "Una acusación personal temprana"
+          ],
+          "answer": 1,
+          "explanation": "La prioridad debe vincular efectos y contexto, conservando otras señales sin permitir que una clasificación técnica aislada responda por todas las necesidades del caso.",
+          "wrongExplanations": [
+            "El color es presentación y no describe dependencia del informe, alcance o confianza de la relación entre síntomas que la revisión necesita contrastar con sus fuentes.",
+            null,
+            "No hay atribución personal suficiente; elegir un culpable no ayuda a validar la función afectada ni a decidir qué consulta aportaría evidencia útil para continuar con criterio el análisis."
+          ],
+          "aoi": {
+            "question": "El informe falta de verdad; la etiqueta todavía no explica por qué.",
+            "hint": "Relaciona consecuencia observada y preguntas que pueden ayudar a recuperar la función.",
+            "correct": "Correcto: prioridad con propósito. Mi mirada afilada prefiere eso a competir por dramatismo.",
+            "soft": "No dejes que la presentación sustituya la evaluación del efecto sobre el servicio.",
+            "sharp": "El mensaje más rojo no dirige el caso por decreto, cariño. Mira qué está fallando."
+          }
+        },
+        {
+          "prompt": "¿Cómo debe tratarse una extracción de datos sin evidencia en el conjunto?",
+          "scenario": "La fuente confirma una entrega fallida y accesos rechazados, pero ninguna observación disponible demuestra que se copiaron documentos fuera del servicio durante ese periodo del caso.",
+          "options": [
+            "Como hecho confirmado",
+            "Como ausencia de todo riesgo",
+            "Como hipótesis no confirmada que requiere evidencia pertinente"
+          ],
+          "answer": 2,
+          "explanation": "La posibilidad no debe presentarse como observación. Puede orientar una pregunta, manteniendo el límite de que el conjunto no confirma ese efecto dentro del alcance que se ha revisado para la actividad.",
+          "wrongExplanations": [
+            "Afirmarlo añadiría un impacto que las fuentes no sostienen; el informe debe separar hechos y escenarios posibles antes de recomendar acciones que podrían ampliar interrupciones del servicio ficticio del taller.",
+            "No confirmar una hipótesis no elimina todos los riesgos; significa que falta evidencia para esa afirmación concreta y que la prioridad puede revisarse si aparecen datos adecuados que cambien la valoración del caso.",
+            null
+          ],
+          "aoi": {
+            "question": "Una hipótesis puede existir sin disfrazarse de dato observado del servicio.",
+            "hint": "Conserva qué fuente necesitarías para afirmar ese impacto concreto aquí.",
+            "correct": "Bien: posibilidad etiquetada. La historia sigue esperando pruebas en vez de aplausos.",
+            "soft": "Revisa qué observación sostendría la extracción que alguien está dando por hecha.",
+            "sharp": "Imaginarlo no lo confirma, tesoro. La evidencia no se escribe a fuerza de miedo."
+          }
+        },
+        {
+          "prompt": "¿Qué hace valiosa una próxima consulta del caso?",
+          "scenario": "El grupo puede repetir una condición ya conocida o comprobar un recurso relacionado con el diagnóstico que todavía distingue dos explicaciones del fallo de entrega de informes.",
+          "options": [
+            "Que tenga el nombre más largo",
+            "Que produzca más pantallas",
+            "Que pueda reducir una incertidumbre relevante para la decisión"
+          ],
+          "answer": 2,
+          "explanation": "La utilidad depende de qué pregunta resuelve y cómo podría cambiar la interpretación o la actuación apropiada dentro del alcance autorizado del caso.",
+          "wrongExplanations": [
+            "El nombre no mide valor analítico y no demuestra relación entre la herramienta y el recurso que el síntoma necesita comprobar con evidencia pertinente del escenario del taller.",
+            "Más salida puede aumentar ruido sin distinguir hipótesis; debe seleccionarse material por su relación con la pregunta y no por volumen o apariencia técnica de la consulta propuesta al estudiante.",
+            null
+          ],
+          "aoi": {
+            "question": "Busca el dato que haga trabajar a la decisión, no a la impresora.",
+            "hint": "La consulta debe diferenciar explicaciones o confirmar un efecto importante.",
+            "correct": "Exacto: información con valor. Mi cuaderno acaba de ahorrar varias páginas de ruido.",
+            "soft": "Piensa qué cambiaría si conocieras el resultado de cada propuesta.",
+            "sharp": "Más pantallas no son más criterio, cariño. La siguiente pregunta necesita hacer algo útil."
+          }
+        },
+        {
+          "prompt": "¿Cómo se conserva la prioridad al recibir nuevas observaciones?",
+          "scenario": "El orden inicial de tareas se estableció con datos parciales y la cronología posterior podría confirmar o debilitar una relación que afecte a continuidad y respuesta del servicio.",
+          "options": [
+            "Actualizándola con motivo y fuentes, manteniendo la trazabilidad",
+            "Borrando todas las dudas anteriores",
+            "Como un orden imposible de revisar"
+          ],
+          "answer": 0,
+          "explanation": "La valoración debe adaptarse a evidencia pertinente y conservar por qué cambió, sin convertir hipótesis antiguas en hechos ni perder contexto que todavía pueda necesitarse para revisar decisiones del caso.",
+          "wrongExplanations": [
+            null,
+            "Eliminar dudas sin explicar cómo se resolvieron reduce capacidad de revisar la investigación; la trazabilidad debe mostrar qué dato respondió cada pregunta y cuáles siguieron pendientes después de modificar la prioridad del trabajo del taller.",
+            "Un orden rígido puede ignorar cambios relevantes de impacto o confianza; las primeras decisiones se toman con información limitada y necesitan revisión cuando las fuentes del escenario aportan condiciones nuevas al análisis."
+          ],
+          "aoi": {
+            "question": "La evidencia puede cambiar la agenda; que deje una nota del motivo.",
+            "hint": "Relaciona la revisión de prioridad y la observación nueva que la justifica.",
+            "correct": "Correcto: decisión revisable. Mi lado mandón acepta que los datos cambien el plan.",
+            "soft": "No confundas una agenda clara con una agenda que nunca aprende.",
+            "sharp": "Aferrarse al primer orden por orgullo es un mal capricho, tesoro. Actualiza con pruebas."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Etiqueta llamativa",
+          "scenario": "Un aviso de autenticación tiene prioridad técnica alta, pero la ficha confirma impacto de entrega de informes y no aporta todavía una relación entre ambos síntomas del caso.",
+          "explanation": "Hay que conservar el aviso y valorar su posible importancia, sin dejar que el nivel sustituya la evaluación funcional. Una comprobación del fallo de entrega puede ser prioritaria mientras se contrasta el patrón de acceso. La decisión debe explicar impacto y datos disponibles, no competir por la palabra más alarmante del conjunto."
+        },
+        {
+          "title": "Consulta discriminante",
+          "scenario": "El grupo ya sabe que la unidad está activa y dispone de un diagnóstico de escritura pendiente de relacionar con el montaje del destino, pero propone repetir solo el estado de actividad.",
+          "explanation": "Repetir lo conocido puede aportar poco frente a comprobar el recurso que permitiría distinguir la causa del fallo funcional. Conviene elegir la consulta por la decisión que puede cambiar. El estado de unidad conserva utilidad, pero no reemplaza la evidencia de almacenamiento o acceso que el síntoma requiere revisar para continuar el caso."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte necesita los informes para su apertura y conserva un aviso de acceso fallido sin relación confirmada; debes ordenar la revisión según impacto y evidencia.",
+      "scenario": "Aula Norte necesita los informes para su apertura y conserva un aviso de acceso fallido sin relación confirmada; debes ordenar la revisión según impacto y evidencia.",
+      "steps": [
+        "Identifica función afectada y necesidades de continuidad.",
+        "Distingue impacto observado y escenarios todavía hipotéticos.",
+        "Prioriza comprobaciones que reduzcan incertidumbre relevante sin destruir fuentes."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-systemctl"
+      ],
+      "aoi": {
+        "intro": "La prioridad necesita impacto, no una competición de mensajes rojos.",
+        "theory0": "El servicio está activo y no entrega; ambas cosas pueden ser verdad.",
+        "theory1": "Lo observado y lo hipotético tienen que llevar etiquetas diferentes.",
+        "theory2": "El siguiente dato debería poder cambiar una decisión, cariño.",
+        "theory3": "Una prioridad se revisa con evidencia; no se convierte en capricho eterno.",
+        "case0": "La etiqueta grita, pero la función necesita una comprobación propia.",
+        "case1": "Ya conocemos la actividad. Ese diagnóstico de escritura merece otra mirada.",
+        "pass": "Ya ordenas preguntas con criterio. Mi paciencia se siente bastante bien atendida.",
+        "review": "Volvamos al efecto real; una hipótesis estaba ocupando el lugar de un impacto confirmado."
+      }
+    },
+    {
+      "id": "linux-investigation-cronologia",
+      "title": "Construir la secuencia del caso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Elegir la referencia temporal",
+          "body": "La cronología de Aula Norte comienza con fuentes que utilizan representaciones distintas. La tarea aparece a las 14:00 UTC y un error de escritura a las 09:03 en una zona declarada UTC menos cinco. Al expresar ambos sobre la misma referencia, el segundo corresponde a las 14:03 UTC bajo las condiciones del ejercicio. Esa conversión permite comparar horas, pero no demuestra por sí sola que la tarea causara el error ni corrige un reloj desajustado. La ficha declara que los relojes pertinentes son compatibles para esta comparación inicial. Conserva esa condición junto con los valores originales. No utilices la zona del teléfono como sustituto de la que corresponde a la fuente ficticia. La visualización pertenece a tu dispositivo; el evento del caso tiene su propio contexto. Una tabla temporal útil explica campo, fuente, valor original y normalización. Así otro turno puede revisar la aritmética y detectar si un error de conversión estaba produciendo una secuencia aparente que el material realmente no sostenía para el servicio investigado."
+        },
+        {
+          "title": "Orden observado y huecos",
+          "body": "El conjunto puede mostrar inicio de tarea y un fallo posterior sin conservar todos los mensajes intermedios. No rellenes ese espacio con una ejecución imaginada. La secuencia conocida delimita qué se observó y en qué intervalo podrían faltar datos. Si hay una recepción tardía, conserva la diferencia entre momento declarado y almacenamiento. Si dos entradas comparten la precisión de un minuto, no les asignes segundos para construir una historia más cómoda. En el taller algunos campos están preparados para confirmar un orden parcial, mientras otras relaciones quedan abiertas. Ese resultado es válido si se explica con claridad. Una cronología no tiene que ser una narración completa para ser útil: puede orientar la siguiente consulta y señalar qué fuente permitiría precisar una relación. También evita sumar copias de un mensaje como si fueran nuevas acciones. La procedencia y la unidad del registro siguen siendo necesarias aunque ahora estés ordenando por tiempo. Una fila de tabla debe representar una observación identificable, no cualquier línea visual que quedó tras un recorte o una exportación del journal."
+        },
+        {
+          "title": "Vincular con referencias pertinentes",
+          "body": "Para relacionar la tarea y el fallo de escritura necesitas campos compatibles, como unidad, instancia o identificador declarado por el escenario. La cercanía de tres minutos aporta contexto, pero no sustituye esa relación. Si el error pertenece a otra unidad o a una ruta diferente, la hipótesis cambia. En Aula Norte las siguientes fuentes permitirán contrastar identidad y destino antes de elegir causa. Mantén la cronología como una herramienta de preguntas: qué ocurrió antes según los datos, qué comparte contexto y qué no se puede unir todavía. No conviertas una flecha temporal en una flecha causal sin explicación. También conserva si la fuente describe tiempo de recepción, porque una cola podría alterar el orden visual del material. El análisis debe usar la referencia adecuada a cada afirmación. En una revisión real, esa disciplina ayuda a coordinar responsables y evita acciones basadas en una secuencia mal interpretada. Aquí se aprende offline con conjuntos cerrados, sin inspeccionar relojes o registros reales ni ejecutar consultas sobre la red del dispositivo donde estudias el caso."
+        },
+        {
+          "title": "Una tabla que permita revisión",
+          "body": "La entrega puede organizar filas con observación, fuente, tiempo original, referencia común y límites. Añade un identificador de la entrada o una referencia clara al fragmento, sin copiar datos innecesarios de otras cuentas. Si una normalización cambia formato o zona, decláralo en la copia derivada y conserva la fuente. La conclusión puede indicar que el fallo registrado ocurrió después del inicio de tarea bajo las condiciones declaradas, dejando pendiente si corresponde a la misma operación. Esa frase aporta una secuencia útil sin prometer toda la causa. Al terminar revisa aritmética, unidad y precisión. Una tabla bonita con una conversión incorrecta sigue siendo un análisis equivocado, por lo que comparar algunos ejemplos manualmente tiene valor. La siguiente lección añadirá patrones de identidad para contrastar si los accesos fallidos se relacionan con el servicio de informes o con otra tarea. La cronología quedará como base revisable, capaz de incorporar evidencia nueva sin borrar los huecos ni convertir en hechos las hipótesis que solo parecían encajar cuando todas las líneas se miraban sobre la misma pantalla del taller."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué hora UTC corresponde a 09:03 en UTC−5 bajo la ficha?",
+          "scenario": "El escenario declara la zona y no requiere corregir un desfase adicional, por lo que solo se transforma la referencia temporal del mensaje ficticio para compararlo con la tarea.",
+          "options": [
+            "09:03 UTC necesariamente",
+            "04:03 UTC",
+            "14:03 UTC"
+          ],
+          "answer": 2,
+          "explanation": "La referencia UTC está cinco horas por delante de esa hora local; conservar original y zona permite revisar la conversión del caso.",
+          "wrongExplanations": [
+            "La zona local es diferente de UTC; mantener la cifra sin transformar no alinea las referencias que necesita comparar la cronología del taller.",
+            "Restar cinco invierte la transformación solicitada y situaría el evento en otra referencia distinta de la declarada por la fuente del ejercicio.",
+            null
+          ],
+          "aoi": {
+            "question": "Los relojes tienen cinco horas de diferencia en esta ficha concreta.",
+            "hint": "Conviértelo a la referencia común manteniendo visible el dato original.",
+            "correct": "Exacto: catorce cero tres. La secuencia ya no depende de una zona prestada.",
+            "soft": "Revisa el signo de la zona antes de sumar o restar horas.",
+            "sharp": "Esa zona no cambia por mirar el móvil, cariño. Haz la maldita conversión con contexto."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra el orden tarea 14:00 y error 14:03 por sí solo?",
+          "scenario": "Ambas horas están normalizadas, pero todavía no se ha confirmado unidad, instancia o destino que relacione el error con aquella ejecución del servicio ficticio de informes.",
+          "options": [
+            "Causalidad completa",
+            "La persona responsable de ambos",
+            "Una secuencia temporal bajo las condiciones, con relación pendiente"
+          ],
+          "answer": 2,
+          "explanation": "El orden aporta contexto, pero confirmar pertenencia o causa necesita campos y fuentes pertinentes que el conjunto todavía no ha vinculado de forma suficiente.",
+          "wrongExplanations": [
+            "La proximidad no excluye tareas independientes; falta una relación técnica que permita sostener que el error corresponde a la ejecución inicial del servicio del caso.",
+            "Las fechas no atribuyen personas ni intención; la cronología describe observaciones de fuentes que necesitan otro contexto si la pregunta requiere identificar actividad humana.",
+            null
+          ],
+          "aoi": {
+            "question": "Antes y después no se convierten solos en porque ocurrió esto.",
+            "hint": "Distingue secuencia temporal y relación técnica que todavía falta confirmar.",
+            "correct": "Bien: cronología sin causalidad prestada. Mi lápiz deja una flecha pendiente con gusto.",
+            "soft": "Mira qué dato uniría realmente los eventos más allá de la hora.",
+            "sharp": "Tres minutos no son un certificado de causa, tesoro. La historia necesita otra pieza."
+          }
+        },
+        {
+          "prompt": "¿Qué se hace con dos acciones sin orden interno suficiente?",
+          "scenario": "Las fuentes solo muestran el mismo minuto y no aportan una secuencia fiable, por lo que la diferencia de segundos no existe en el material preparado para la revisión.",
+          "options": [
+            "Asignar segundos plausibles",
+            "Declarar simultaneidad exacta",
+            "Mantener la incertidumbre explícita del orden"
+          ],
+          "answer": 2,
+          "explanation": "La resolución disponible limita la afirmación temporal; no permite elegir un orden ni simultaneidad exacta sin una fuente adicional que lo sostenga en el escenario.",
+          "wrongExplanations": [
+            "Inventar segundos cambia la evidencia y daría al siguiente turno una precisión que ninguna consulta del caso produjo ni verificó durante la actividad educativa del taller.",
+            "Compartir minuto no significa coincidir en el mismo instante; ambas acciones pueden ocupar posiciones distintas que la representación no permite distinguir con los datos actuales de la fuente.",
+            null
+          ],
+          "aoi": {
+            "question": "El minuto es lo que tenemos; la imaginación no aporta resolución.",
+            "hint": "Conserva lo que la precisión disponible deja sin decidir aquí.",
+            "correct": "Correcto: incertidumbre visible. La tabla puede ser útil sin fingir segundos mágicos.",
+            "soft": "No conviertas la falta de detalle en un dato exacto inventado.",
+            "sharp": "Poner segundos bonitos sigue siendo inventar, cariño. La tabla no necesita ese maquillaje."
+          }
+        },
+        {
+          "prompt": "¿Qué debe acompañar una tabla temporal derivada?",
+          "scenario": "El estudiante normaliza valores para comparar fuentes y entregará el análisis a otra persona que necesita revisar conversiones y límites sin conocer cómo se preparó cada fila.",
+          "options": [
+            "Una promesa de que todo está exacto",
+            "Solo el orden final",
+            "Valores originales, referencias de fuente y reglas de transformación"
+          ],
+          "answer": 2,
+          "explanation": "Esos datos permiten revisar la cronología y separar tiempos originales de derivados, conservando precisión y procedencia necesarias para interpretar relaciones del caso sin asumir garantías adicionales que no se comprobaron.",
+          "wrongExplanations": [
+            "La exactitud requiere evidencia y condiciones explícitas; prometerla no sustituye conservar de dónde salió cada valor ni cómo se transformó al construir la tabla sobre el material ficticio del taller.",
+            "Una secuencia aislada no explica zona, campo ni cobertura, y podría ocultar errores de conversión o huecos relevantes que el siguiente turno necesitaría conocer antes de utilizarla para tomar decisiones.",
+            null
+          ],
+          "aoi": {
+            "question": "Déjale al siguiente turno las cuentas y sus referencias, no solo el dibujo.",
+            "hint": "Busca qué permite comprobar cada fila sin adivinar su origen.",
+            "correct": "Exacto: cronología revisable. Mi orgullo ya tiene hora y procedencia para celebrarlo.",
+            "soft": "Piensa qué necesitarías para corregir una zona equivocada en esa entrega.",
+            "sharp": "Porque quedó ordenado no significa que esté bien, tesoro. Conserva las referencias."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Conversión declarada",
+          "scenario": "El mensaje del error indica 09:03 con zona UTC menos cinco y la ficha confirma que no hay otro ajuste de reloj que aplicar a ese valor dentro del escenario.",
+          "explanation": "La referencia común es 14:03 UTC. Deben conservarse el valor original y la condición del reloj para revisar la conversión. La normalización ayuda a ordenar con la tarea de 14:00, pero no demuestra por sí misma que ambos eventos pertenezcan a la misma operación ni que exista causalidad entre ellos."
+        },
+        {
+          "title": "Minuto compartido",
+          "scenario": "Dos mensajes del periodo aparecen con precisión de minuto y sin identificadores adicionales que permitan ordenar internamente sus acciones, aunque una persona quiera ubicarlos con segundos diferentes en la tabla.",
+          "explanation": "La tabla debe mantener el orden interno como no determinado bajo esas fuentes. Inventar segundos daría una precisión falsa. Puede proponerse otra fuente pertinente si la relación importa, conservando la distinción entre lo que la cronología ya apoya y lo que todavía requiere evidencia adicional del caso ficticio de Aula Norte."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte entrega una tarea a las 14:00 UTC y un mensaje local a las 09:03 con zona UTC−5; debes ordenar el material conservando origen y precisión.",
+      "scenario": "Aula Norte entrega una tarea a las 14:00 UTC y un mensaje local a las 09:03 con zona UTC−5; debes ordenar el material conservando origen y precisión.",
+      "steps": [
+        "Identifica campo, zona y cobertura de cada fecha.",
+        "Normaliza una copia sin reemplazar valores originales.",
+        "Separa orden confirmado y relaciones causales aún pendientes."
+      ],
+      "sourceIds": [
+        "linux-journal-fields",
+        "linux-journal"
+      ],
+      "aoi": {
+        "intro": "Hagamos que los relojes hablen en la misma referencia antes de discutir.",
+        "theory0": "La zona pertenece a la fuente, no al teléfono que muestra el ejercicio.",
+        "theory1": "Los huecos siguen siendo huecos aunque la tabla tenga filas muy bonitas.",
+        "theory2": "Tres minutos de distancia no firman parentesco causal entre mensajes.",
+        "theory3": "La cronología debe dejar revisar la conversión y la procedencia.",
+        "case0": "Nueve cero tres en menos cinco se encuentra con catorce cero tres UTC.",
+        "case1": "Si faltan segundos, no los inventamos para que la historia parezca más elegante.",
+        "pass": "Ya ordenas sin fingir precisión. Eso me parece una habilidad bastante seductora.",
+        "review": "Revisemos la referencia temporal; una hora local está compitiendo sin convertirse."
+      }
+    },
+    {
+      "id": "linux-investigation-cuentas",
+      "title": "Contrastar un patrón de cuentas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "La cuenta correcta para cada acción",
+          "body": "La investigación dispone ahora de un dato adicional: los fallos de autenticación corresponden a una cuenta de archivo y la tarea que debía generar informes utiliza otra identidad de servicio. Esa diferencia no demuestra que nunca exista relación entre funciones, pero impide tratarlas automáticamente como la misma operación. Debes registrar la identidad de cada observación y qué fuente la sostiene. Un nombre dentro de texto libre tiene otra procedencia que un campo técnico apropiado del registro; la ficha declara cuáles se utilizaron para esta comparación. Tampoco una cuenta identifica por sí sola una persona presente. El objetivo es contrastar la hipótesis inicial con datos que pueden debilitarla. Si el informe faltó mientras otra tarea reintentaba autenticación, quizá tengamos dos problemas separados. Mantén esa posibilidad y busca dependencias reales antes de unirlos por cercanía temporal. En Aula Norte las actividades se resuelven con material inventado, sin probar credenciales ni acceder a sesiones reales. Lo que se evalúa es tu capacidad para conservar sujeto, función y fuente al construir una explicación sobre el servicio."
+        },
+        {
+          "title": "Periodicidad y cambios conocidos",
+          "body": "Los fallos aparecen con una periodicidad compatible con una tarea de archivo. La ficha también conserva un cambio autorizado de credencial ocurrido antes del periodo. Esa combinación ofrece una explicación posible: la tarea podría seguir usando una referencia anterior. Todavía conviene comprobar su configuración o resultado pertinente bajo el procedimiento del responsable. No publiques credenciales para demostrarlo ni intentes utilizarlas en otra cuenta. El análisis necesita saber si el cambio se aplicó al componente adecuado, no conocer el secreto en una nota compartida. La periodicidad es un indicio útil cuando se relaciona con calendario y función, pero no una garantía de legitimidad universal. Una tarea autorizada puede tener errores o coexistir con actividad ajena. Conserva qué parte del patrón se explica y qué cobertura no se revisó. La conclusión adecuada puede separar una corrección de mantenimiento de la investigación del informe ausente, evitando que un síntoma llamativo absorba toda la revisión cuando las fuentes apuntan a identidades y funciones distintas del entorno ficticio del taller."
+        },
+        {
+          "title": "Buscar relaciones sin forzarlas",
+          "body": "Para vincular cuentas y tareas necesitas dependencias o campos pertinentes: qué servicio utiliza qué credencial, qué recurso solicita y qué resultado debía producir. El hecho de compartir equipo no hace que cualquier fallo explique cualquier otra función. Si la tarea de informes no depende del acceso de archivo según el contrato del escenario, la hipótesis de causa común se debilita. Debes conservar esa condición y no presentarla como regla universal de todos los despliegues. En otro sistema podría existir una dependencia distinta. La documentación del caso permite responder aquí. También revisa si los tiempos y el conjunto tienen cobertura suficiente para la afirmación; un fragmento podría omitir una etapa relevante. Si la fuente confirma independencia funcional, puedes proponer tratar los fallos por su responsable y continuar con almacenamiento o permisos para el informe. Esa decisión no descarta seguridad sin mirar; ajusta la investigación a evidencia nueva. Un análisis riguroso permite abandonar una historia atractiva cuando los datos no la sostienen, aunque la primera impresión hubiera parecido una explicación muy elegante para todos los síntomas a la vez."
+        },
+        {
+          "title": "Comunicar un patrón explicado parcialmente",
+          "body": "El informe intermedio debe distinguir mensajes observados, relación con la tarea autorizada y comprobaciones todavía necesarias. Puedes indicar que la periodicidad y el cambio de credencial son compatibles con una configuración pendiente, dejando explícito qué fuente confirmaría esa causa. Si se verifica, se propone una corrección limitada al componente y una prueba de que cesan los fallos esperados sin afectar otras funciones. La entrega no necesita secretos ni atribuciones personales para ser útil. Tampoco debe decir que todo el equipo está limpio porque un patrón obtuvo una explicación legítima. La investigación del informe continúa con sus propios datos. En Aiocyb elegirás una interpretación y una siguiente comprobación, mientras Aoi reaccionará al error concreto si mezclas identidades o confundes una hipótesis compatible con causa confirmada. Al terminar deberías poder usar información que contradice tu intuición inicial de manera constructiva. Ese hábito prepara la siguiente lección, donde procesos y sockets exigirán la misma atención a instancia, momento y función para no convertir nombres o números repetidos en relaciones que el material disponible todavía no permite demostrar."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué aporta confirmar identidades distintas sin dependencia funcional aquí?",
+          "scenario": "La ficha declara que los informes no requieren el acceso de archivo y que los fallos pertenecen a esa segunda tarea, aunque ocurren en el mismo equipo y periodo.",
+          "options": [
+            "Evidencia que debilita vincular esos fallos con la entrega ausente",
+            "Una persona culpable de ambas tareas",
+            "Una causa común confirmada"
+          ],
+          "answer": 0,
+          "explanation": "Las identidades y el contrato separan funciones en este caso; la coincidencia temporal no sostiene por sí sola una explicación causal que contradice esa relación declarada por las fuentes del taller.",
+          "wrongExplanations": [
+            null,
+            "Las cuentas técnicas no identifican por sí solas una persona ni asignan responsabilidad sobre ambas tareas; la atribución personal necesitaría evidencia adicional distinta de esta comparación de identidades y funciones que aporta el caso del servicio ficticio.",
+            "La documentación no establece dependencia y los mensajes pertenecen a otra función, por lo que afirmar causa común ignoraría una condición pertinente que la revisión acaba de confirmar dentro del alcance del escenario educativo."
+          ],
+          "aoi": {
+            "question": "La evidencia acaba de discutir nuestra historia; dejémosla terminar la frase.",
+            "hint": "Relaciona sujeto y función con la dependencia que declara el escenario.",
+            "correct": "Exacto: hipótesis ajustada. Mi orgullo acepta perder una teoría si gana el criterio.",
+            "soft": "No uses compartir equipo como sustituto de una dependencia funcional comprobada.",
+            "sharp": "Misma máquina no significa mismo problema, cariño. Aquí las tareas tienen contratos distintos."
+          }
+        },
+        {
+          "prompt": "¿Cómo se trata la explicación de credencial antigua antes de verificar configuración?",
+          "scenario": "El patrón coincide con una tarea y un cambio autorizado, pero no se ha confirmado todavía la referencia usada por el componente durante los intentos registrados.",
+          "options": [
+            "Como prueba de ausencia de otros problemas",
+            "Como hipótesis compatible con una comprobación específica pendiente",
+            "Como certeza completa"
+          ],
+          "answer": 1,
+          "explanation": "El contexto apoya una posibilidad, pero la causa requiere contrastar configuración o resultado pertinente; el informe debe conservar ese límite mientras continúa la revisión del caso.",
+          "wrongExplanations": [
+            "Una explicación parcial no cubre toda la actividad del equipo ni descarta problemas independientes que no se han revisado dentro de esta comparación de tarea, calendario y cambio de credencial del servicio del taller.",
+            null,
+            "La coincidencia no demuestra qué referencia estaba activa; faltan datos del componente para separar esa explicación de otras condiciones compatibles con los fallos que recoge el conjunto del escenario ficticio."
+          ],
+          "aoi": {
+            "question": "Encaja no significa confirmado, cariño. Dale una comprobación que pueda responder.",
+            "hint": "Distingue compatibilidad del patrón y evidencia de la configuración realmente usada.",
+            "correct": "Bien: hipótesis con siguiente paso. Mi cuaderno conserva espacio para confirmarla con criterio.",
+            "soft": "Pregunta qué dato del componente falta antes de escribir la causa final.",
+            "sharp": "Que quede bonita la teoría no la confirma, tesoro. Falta mirar su referencia real."
+          }
+        },
+        {
+          "prompt": "¿Qué debe evitarse al comprobar una referencia de credencial de tarea?",
+          "scenario": "El análisis necesita confirmar si el componente usa una configuración anterior, pero la entrega compartida no requiere conocer ni divulgar el valor secreto utilizado para autenticar esa función.",
+          "options": [
+            "Publicar secretos o probarlos fuera del alcance del caso",
+            "Identificar el componente responsable",
+            "Revisar un resultado autorizado de la tarea"
+          ],
+          "answer": 0,
+          "explanation": "La comprobación puede centrarse en configuración y efecto sin divulgar secretos; usarlos fuera de alcance ampliaría exposición y acciones que la actividad no requiere ni autoriza para resolver la pregunta del escenario.",
+          "wrongExplanations": [
+            null,
+            "Conocer el componente permite dirigir una consulta pertinente y no constituye por sí solo una exposición del secreto que la nota no necesita incluir para revisar el patrón de autenticación del caso del taller.",
+            "Un resultado obtenido conforme al procedimiento puede ayudar a contrastar la hipótesis y verificar una corrección limitada, conservando identidad, momento y alcance sin publicar credenciales a los destinatarios de la muestra compartida por el grupo."
+          ],
+          "aoi": {
+            "question": "Comprobar la referencia no significa repartir el secreto por la mesa.",
+            "hint": "Separa la información necesaria y el valor que no necesitamos divulgar.",
+            "correct": "Correcto: verificación discreta. Esa inteligencia tuya mantiene las llaves en su sitio.",
+            "soft": "Piensa qué acción expone o utiliza el secreto sin necesidad para la pregunta.",
+            "sharp": "La contraseña no tiene que venir al grupo de estudio, cariño. Se queda protegida."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión respeta un patrón legítimo explicado dentro de su alcance?",
+          "scenario": "La revisión confirma un problema de mantenimiento en la tarea de archivo, pero no ha terminado la investigación del informe ni inspeccionado toda la actividad del sistema ficticio.",
+          "options": [
+            "Ese patrón tiene una explicación confirmada, con otras preguntas separadas",
+            "Nunca hubo un fallo real",
+            "Todo el equipo está garantizado seguro"
+          ],
+          "answer": 0,
+          "explanation": "La conclusión debe limitarse al patrón y fuentes revisados. Resolver esa pregunta no elimina otras funciones o controles pendientes ni transforma una revisión parcial en garantía completa sobre el equipo de Aula Norte.",
+          "wrongExplanations": [
+            null,
+            "Los fallos de autenticación existieron según la fuente; una explicación de mantenimiento no borra el síntoma observado ni garantiza que las otras tareas funcionaran correctamente durante el intervalo que se está revisando con el material del caso.",
+            "El conjunto no cubre toda la actividad ni todos los controles; una causa legítima para un patrón no aporta evidencia universal sobre preguntas distintas que siguen abiertas en la investigación del caso educativo del taller."
+          ],
+          "aoi": {
+            "question": "Una pregunta resuelta no borra las demás del cuaderno, tesoro.",
+            "hint": "Conserva qué parte del caso confirmó esa evidencia y cuál sigue abierta.",
+            "correct": "Exacto: progreso con límites. Mi sonrisa celebra una pieza, no finge haber terminado todo.",
+            "soft": "No conviertas una explicación concreta en un certificado para cada función del sistema.",
+            "sharp": "Arreglar archivo no absolvió al universo, cariño. El informe todavía merece su propia respuesta."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Otra identidad",
+          "scenario": "La ficha confirma cuentas distintas para archivo e informes y declara que la generación de informes no necesita la autenticación de la tarea de archivo durante ese periodo del caso.",
+          "explanation": "La hipótesis de que esos fallos causaron la entrega ausente queda debilitada bajo ese contrato. Deben conservarse como un problema separado y continuar la revisión funcional del informe. Compartir equipo y horario no reemplaza una dependencia que las fuentes del escenario explícitamente no establecen entre ambas tareas del servicio."
+        },
+        {
+          "title": "Referencia antigua",
+          "scenario": "Los intentos periódicos coinciden con una tarea autorizada y un cambio de credencial previo, pero todavía no se verificó qué referencia utiliza su configuración actual del entorno ficticio de Aula Norte.",
+          "explanation": "La explicación es compatible y merece una comprobación específica, no divulgar ni probar secretos fuera de alcance. El responsable puede revisar la configuración pertinente y el resultado de una ejecución autorizada. Hasta entonces, el informe debe mantener la diferencia entre patrón observado e hipótesis de mantenimiento pendiente de confirmar con evidencia del componente."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte identifica fallos periódicos de una cuenta de archivo y una tarea de informes con otra identidad; debes revisar si los accesos explican realmente la entrega fallida.",
+      "scenario": "Aula Norte identifica fallos periódicos de una cuenta de archivo y una tarea de informes con otra identidad; debes revisar si los accesos explican realmente la entrega fallida.",
+      "steps": [
+        "Relaciona mensajes con cuentas y funciones declaradas.",
+        "Comprueba cambios autorizados y periodicidad pertinente.",
+        "Mantén separadas coincidencia temporal y relación con la tarea de informes."
+      ],
+      "sourceIds": [
+        "linux-ssh",
+        "linux-journal-fields"
+      ],
+      "aoi": {
+        "intro": "La cuenta de archivo y la de informes no son la misma invitada.",
+        "theory0": "Primero asigna cada mensaje a su identidad y función del escenario.",
+        "theory1": "La periodicidad ayuda cuando la unes al calendario y a cambios conocidos.",
+        "theory2": "Si el contrato separa tareas, no las cases porque compartan equipo.",
+        "theory3": "Explicar un patrón no certifica todo el sistema; conserva el alcance.",
+        "case0": "La generación no depende de ese acceso. Nuestra primera historia pierde fuerza.",
+        "case1": "Una referencia antigua encaja, pero falta comprobar la configuración que la usa.",
+        "pass": "Ya dejas que la evidencia contradiga tu intuición. Eso me resulta irresistible.",
+        "review": "Repasemos las cuentas; una estaba cargando con el fallo de otra tarea."
+      }
+    },
+    {
+      "id": "linux-investigation-relaciones",
+      "title": "Procesos, sockets y contexto del caso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Instancias antes de relaciones",
+          "body": "Una captura muestra un proceso de informes con cierto PID y otra, obtenida más tarde, utiliza el mismo número en información de un socket. Antes de unirlas necesitas comprobar si corresponden a la misma instancia y contexto. El identificador puede reutilizarse después de una terminación, y las fuentes pueden tener cobertura o permisos distintos. Conserva equipo, arranque, momento y tiempo de inicio cuando estén disponibles. Un nombre parecido tampoco demuestra continuidad ni procedencia auténtica del ejecutable. En el caso de Aula Norte, la ficha indica qué campos se conocen y cuáles faltan para que elijas una interpretación proporcional. No necesitas observar procesos reales del teléfono ni realizar conexiones. La actividad enseña a usar datos de instancia para sostener vínculos entre fuentes, sin convertir cualquier número compartido en un identificador permanente. Si la relación no se puede confirmar, puede quedar como hipótesis con una consulta pendiente. Esa respuesta es mejor que presentar una asociación falsa y utilizarla después para recomendar una intervención sobre un proceso legítimo que no participó en la operación que se estaba investigando."
+        },
+        {
+          "title": "Qué muestra un socket",
+          "body": "Una salida de ss describe sockets seleccionados según opciones, protocolo, estado y permisos. Una conexión establecida y una escucha son situaciones diferentes que necesitan su contexto. Un puerto conocido no identifica infaliblemente una aplicación y una dirección no atribuye una persona. Si la consulta incluye proceso, comprueba qué garantías y visibilidad tiene ese campo. Su ausencia puede depender de permisos o formato, no de que el socket carezca de un programa asociado. También distingue el espacio de nombres de red si el escenario lo declara, porque dos vistas del sistema pueden mostrar conjuntos diferentes. En la práctica las fuentes son inventadas y no se escanean redes. La pregunta se centra en qué relación puede sostenerse con lo disponible. Una conexión puede ser coherente con una dependencia autorizada del servicio o merecer comprobación adicional, pero no demuestra por sí sola transferencia de documentos ni contenido de un intercambio. Esa clase de afirmación requiere fuentes y alcance distintos. Mantener el dato en su función evita que una fila de red aparentemente llamativa arrastre toda la investigación hacia una historia de extracción que nadie ha probado."
+        },
+        {
+          "title": "Comparar con función esperada",
+          "body": "El servicio de informes puede necesitar una conexión local o una dependencia documentada según el diseño de Aula Norte. Compara la observación con ese contrato y con cambios autorizados del periodo. Una diferencia abre preguntas sobre destino, identidad y función; no autoriza terminar el proceso o bloquear comunicaciones sin valorar impacto. Si el contexto confirma una actualización legítima y una conexión esperada, la hipótesis de anomalía puede debilitarse. Si falta información, conserva la incertidumbre y elige una comprobación pertinente. También evita usar una lista de programas permitidos como garantía de que toda actividad bajo esos nombres es apropiada. El comportamiento real necesita evidencia. En el taller cada alternativa explica qué campo falta o qué condición sostiene una relación. La revisión no depende de reconocer nombres intimidantes. Depende de formular una pregunta que las fuentes puedan responder y de distinguir el estado técnico de una conexión de la autorización y significado de la operación que la aplicación realiza mediante ella dentro del alcance del caso ficticio de Aula Norte."
+        },
+        {
+          "title": "Una relación revisable",
+          "body": "La nota final de esta etapa debe indicar qué proceso se observó, qué socket aparece y por qué se consideran vinculados o no. Si hay diferencias temporales o un PID reutilizado, conserva ese límite en lugar de ocultarlo para simplificar el dibujo. Una representación útil puede mostrar relaciones confirmadas y otras pendientes, siempre con referencias a fuentes. No dibujes una flecha de salida de datos solo porque el estado del socket sea establecido: ese estado no describe por sí mismo qué contenido viajó ni si el intercambio tuvo éxito funcional. Tampoco concluyas ausencia de red por una consulta limitada que no incluyó el protocolo o momento adecuados. En Aiocyb el ejercicio se resuelve sobre conjuntos pequeños con condiciones declaradas. Al terminar deberías poder explicar una unión de fuentes con contexto de instancia y evitar clasificaciones por nombre, puerto o dirección aislados. La siguiente lección construirá una tabla de hipótesis para el fallo de informe utilizando estos límites, de modo que las relaciones confirmadas ayuden a decidir y las dudas no se conviertan silenciosamente en hechos al pasar de una captura a un resumen del análisis."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué impide unir las capturas solo por el mismo PID aquí?",
+          "scenario": "La ficha confirma que la primera instancia terminó y que el número aparece después con otro tiempo de inicio y una función diferente dentro del mismo equipo ficticio.",
+          "options": [
+            "Que el nombre es corto",
+            "Que el identificador puede corresponder a otra instancia",
+            "Que todo socket es falso"
+          ],
+          "answer": 1,
+          "explanation": "La reutilización declarada rompe la continuidad supuesta; el vínculo necesita contexto de instancia compatible y no basta compartir el número en momentos diferentes de observación del sistema del caso.",
+          "wrongExplanations": [
+            "La longitud del nombre no explica continuidad; la evidencia relevante está en terminación e inicio de las instancias que presentan las fuentes temporales del entorno ficticio de Aula Norte.",
+            null,
+            "No hay una declaración de falsedad general de sockets; el límite consiste en asociar correctamente la fila de red con el proceso que existía en ese instante dentro del escenario que analiza el taller."
+          ],
+          "aoi": {
+            "question": "El número regresó, pero su historia empezó otra vez, cariño.",
+            "hint": "Compara inicios y terminación antes de usar el PID como vínculo.",
+            "correct": "Exacto: instancias separadas. Esa flecha ya puede buscar un fundamento mejor.",
+            "soft": "No dejes que una coincidencia numérica borre lo que dice la ficha temporal.",
+            "sharp": "Mismo PID no significa mismo actor eterno, tesoro. Aquí terminó el anterior."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra un socket establecido por sí solo?",
+          "scenario": "La fila aporta un estado técnico y un destino, pero no contiene información sobre bytes de documentos, autorización de la operación ni resultado funcional de la aplicación del caso.",
+          "options": [
+            "Extracción confirmada de informes",
+            "La persona exacta que lo utilizó",
+            "El estado observado, con significado de contenido pendiente"
+          ],
+          "answer": 2,
+          "explanation": "El estado no revela por sí mismo contenido ni legitimidad; esas preguntas requieren otras fuentes y contexto apropiados que la consulta de sockets no presenta en este conjunto del taller.",
+          "wrongExplanations": [
+            "Una conexión no demuestra qué información viajó ni su relación con documentos del caso; afirmar extracción añadiría un efecto que necesita evidencia distinta de la fila de estado técnico observada por el grupo.",
+            "La dirección y el estado no identifican una persona de forma concluyente; la atribución humana exige relaciones y controles que el escenario no aporta mediante esta salida de red preparada para aprender a interpretarla.",
+            null
+          ],
+          "aoi": {
+            "question": "El socket está establecido; su conversación todavía no apareció en el expediente.",
+            "hint": "Distingue conexión técnica y evidencia sobre contenido o autorización del intercambio.",
+            "correct": "Bien: estado en su alcance. Mi lado curioso no inventará paquetes con documentos dentro.",
+            "soft": "Revisa qué campos de esa fila realmente describen los datos transmitidos.",
+            "sharp": "Establecido no significa exfiltrando, cariño. Esa película necesita otra evidencia, no más miedo."
+          }
+        },
+        {
+          "prompt": "¿Qué aporta una dependencia documentada y una instancia compatible?",
+          "scenario": "La conexión coincide con la función esperada y la cuenta del servicio según las fuentes del mismo contexto, sin aportar una revisión completa de todo su intercambio.",
+          "options": [
+            "Garantía universal de seguridad",
+            "Prueba de que nunca hubo tráfico",
+            "Contexto que puede explicar la observación, conservando límites"
+          ],
+          "answer": 2,
+          "explanation": "El contrato y la instancia ayudan a contrastar legitimidad esperada, pero no certifican contenido ni salud completa. La conclusión debe conservar lo que las fuentes realmente permiten observar sobre esa relación del servicio.",
+          "wrongExplanations": [
+            "Una relación coherente no cubre todos los controles ni toda actividad; afirmar seguridad universal excedería el contexto de instancia y función que la ficha utiliza para interpretar esta conexión concreta del caso educativo del taller.",
+            "La fuente sí describe una conexión; una explicación legítima no elimina su existencia ni transforma la ausencia de contenido detallado en prueba de que nunca hubo comunicaciones dentro del periodo del escenario que se analiza.",
+            null
+          ],
+          "aoi": {
+            "question": "Una explicación coherente ayuda; no hace falta inflarla hasta garantía total.",
+            "hint": "Relaciona el contrato con la observación sin inventar cobertura del contenido.",
+            "correct": "Correcto: contexto útil, límites visibles. Mi sonrisa tiene buenos motivos para aparecer.",
+            "soft": "No confundas explicar una fila y verificar todo el comportamiento de una aplicación.",
+            "sharp": "Que encaje no bendice cada byte, tesoro. El contrato ayuda y sus límites también importan."
+          }
+        },
+        {
+          "prompt": "¿Qué debe incluir la nota de relaciones entre procesos y sockets?",
+          "scenario": "Otro turno necesita revisar qué vínculo se confirmó y por qué, mientras algunas capturas tienen momentos distintos y campos limitados por sus opciones o permisos de consulta.",
+          "options": [
+            "Solo una flecha bonita",
+            "Fuentes, contexto de instancia y vínculos confirmados o pendientes",
+            "Una acusación por puerto desconocido"
+          ],
+          "answer": 1,
+          "explanation": "La nota permite entender la base de cada relación y evita presentar coincidencias temporales o numéricas como hechos de continuidad que no han sido respaldados por los datos del caso.",
+          "wrongExplanations": [
+            "Una representación sin fuentes no permite valorar momentos, identidad o cobertura y puede ocultar justamente la incertidumbre que el análisis debe conservar al comparar instancias con información de red del escenario ficticio del taller.",
+            null,
+            "Un puerto no atribuye intención ni identidad de persona; esa clasificación requeriría contexto y evidencia que una cifra desconocida no aporta a la investigación del fallo de informes de Aula Norte."
+          ],
+          "aoi": {
+            "question": "Las flechas también necesitan referencias; mi lápiz no firma por intuición.",
+            "hint": "Distingue vínculo probado y pregunta que sigue abierta al unir fuentes.",
+            "correct": "Exacto: relaciones revisables. El diagrama ya no presume más de lo que sabe.",
+            "soft": "Pregunta qué dato sostiene cada unión antes de dejarla en el informe.",
+            "sharp": "Un puerto raro no es culpable con matrícula, cariño. Esa flecha necesita contexto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Número reutilizado",
+          "scenario": "El PID de la primera captura pertenece a un proceso que ya terminó y el segundo conjunto muestra el mismo número con otro tiempo de inicio declarado por la ficha del entorno ficticio.",
+          "explanation": "Las fuentes describen instancias distintas y no deben unirse solo por el número. Hay que conservar el cambio de contexto y buscar otra evidencia si la pregunta necesita relacionar la conexión con la tarea anterior. Una asociación errónea podría orientar el análisis hacia actividad que no corresponde a aquella ejecución del servicio."
+        },
+        {
+          "title": "Conexión esperada",
+          "scenario": "La captura compatible muestra una conexión a una dependencia documentada del servicio y la identidad e instancia coinciden con el contexto autorizado que declara el caso del taller.",
+          "explanation": "La observación puede ser coherente con el funcionamiento esperado, sin demostrar por sí sola contenido ni éxito completo del intercambio. El informe debe describir esa relación y mantener límites. Una conexión establecida no se convierte automáticamente en prueba de extracción o de salud funcional de toda la aplicación que usa esa dependencia."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte aporta una captura de procesos y otra de sockets con momentos diferentes; debes decidir qué vínculos son válidos y cuáles requieren más datos.",
+      "scenario": "Aula Norte aporta una captura de procesos y otra de sockets con momentos diferentes; debes decidir qué vínculos son válidos y cuáles requieren más datos.",
+      "steps": [
+        "Compara equipo, instante, arranque e inicio de instancia.",
+        "Distingue nombre de programa, PID y función esperada.",
+        "Relaciona sockets y procesos solo bajo cobertura compatible."
+      ],
+      "sourceIds": [
+        "linux-proc",
+        "linux-ss"
+      ],
+      "aoi": {
+        "intro": "Los números repetidos seducen a las flechas; comprobemos la instancia primero.",
+        "theory0": "PID, momento y arranque necesitan ir juntos cuando unimos capturas.",
+        "theory1": "Un socket dice su estado, no qué secretos viajaron en su interior.",
+        "theory2": "La función esperada orienta el contraste sin garantizar toda actividad.",
+        "theory3": "Dibuja solo relaciones que puedas explicar con fuentes compatibles del caso.",
+        "case0": "Ese PID volvió con otro inicio. No es el mismo actor de antes.",
+        "case1": "La dependencia está documentada; la conexión todavía no cuenta todo el intercambio.",
+        "pass": "Ya relacionas sin inventar tráfico. Mi ojo metálico está bastante orgulloso.",
+        "review": "Repasemos las instancias; una flecha está uniendo dos momentos como si nada hubiera cambiado."
+      }
+    },
+    {
+      "id": "linux-investigation-hipotesis",
+      "title": "Comparar causas con una tabla de evidencia",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Hipótesis con consecuencias observables",
+          "body": "Una hipótesis útil explica un síntoma y permite buscar datos que podrían apoyarla o debilitarla. Para el informe ausente, el taller compara tres posibilidades: falta de acceso, capacidad del destino agotada o una entrada necesaria ausente. No basta nombrarlas. Escribe qué observación esperarías bajo cada una y qué fuente puede comprobarla. Si falta acceso, necesitas identidad y controles del recorrido y la operación. Si falta capacidad, interesa el montaje correcto y sus límites. Si falta entrada, revisa qué objeto requiere la tarea y si estaba disponible bajo su contrato. La tabla de hipótesis organiza esas relaciones sin exigir que todo el caso tenga una causa única desde el principio. También evita cambiar el objetivo para que la primera intuición siempre gane. En Aula Norte utilizamos datos ficticios y un conjunto cerrado. No se realizan modificaciones para provocar errores reales ni se prueban accesos sobre otras cuentas. El aprendizaje consiste en elegir evidencia pertinente y mantener clara la diferencia entre una posibilidad razonable y una explicación que el material ya permite sostener con suficiente contexto."
+        },
+        {
+          "title": "Relacionar el diagnóstico correcto",
+          "body": "El nuevo mensaje de escritura pertenece a la unidad de informes, identifica su destino y aparece dentro del intervalo compatible con la ejecución. La consulta del montaje confirma capacidad disponible agotada en ese recurso, mientras la ficha excluye cuotas y declara inodos disponibles para concentrarse en el límite de bytes. Esa combinación apoya la explicación de almacenamiento bajo las condiciones del escenario. Una cifra de otro volumen no tendría el mismo valor para esta operación. Tampoco bastaría encontrar la frase sin espacio en un comentario de prueba de otra unidad. La relación entre mensaje, sujeto y objeto permite evaluar la causa, no solo el parecido de palabras. Conserva esas referencias en la tabla. Si una fuente fuera parcial o tuviera otra hora, habría que mantener el límite y buscar una comprobación adicional. El objetivo no es exigir certeza imposible para actuar, sino vincular la conclusión con observaciones que respondan realmente a la operación fallida y que otras personas puedan revisar sin depender de cómo Aoi presentó la explicación en el aula offline."
+        },
+        {
+          "title": "Evidencia contraria y alcance",
+          "body": "La revisión del caso también declara que los controles de acceso pertinentes permiten crear en el destino bajo el modelo evaluado, y que la entrada requerida estaba presente. Esos datos debilitan las alternativas concretas, pero deben conservarse con su alcance. No conviertas una comprobación de acceso en prueba de ausencia de cualquier política o problema imaginable fuera del entorno declarado. Del mismo modo, una entrada presente no garantiza toda su semántica si esa no fue la pregunta. La tabla puede indicar qué hipótesis pierde apoyo y por qué. Si existen mecanismos no revisados, quedan como límites y no se borran para simplificar el informe. Una conclusión proporcionada explica que la capacidad es la causa mejor respaldada del fallo de escritura representado en el conjunto. No añade una historia de ataque o responsabilidad humana que las fuentes no sostienen. Este contraste es una habilidad central del análisis: aceptar los datos que debilitan una explicación favorita y usar la incertidumbre restante para planificar el siguiente paso, en vez de esconderla detrás de una frase que suene definitiva."
+        },
+        {
+          "title": "De la explicación a una propuesta",
+          "body": "Una causa respaldada orienta una actuación, pero no concede por sí misma autorización para borrar datos o cambiar recursos. La respuesta debe considerar responsable, retención, continuidad y recuperación. Antes de liberar capacidad, se identifican productos que pueden tratarse conforme a la política y se preserva material pertinente del caso. Después se verifica la operación de informes y las restricciones importantes. En la simulación elegirás propuestas descriptivas sin alterar archivos reales. Una comprobación posterior compatible puede fortalecer que la corrección atendió el síntoma, siempre que se registren otras condiciones que hayan cambiado a la vez. No afirmes causa exacta únicamente porque el servicio funcionó después de varias modificaciones simultáneas. La tabla de evidencia debe conservar el recorrido desde hipótesis hasta decisión. Al cerrar esta lección deberías poder explicar por qué una causa tiene más apoyo que otras y qué límites acompañan la conclusión. Las próximas actividades utilizarán esa base para planificar respuesta y comunicar el hallazgo, manteniendo separados el problema funcional confirmado y los fallos de autenticación que la investigación trató como una pregunta distinta del mismo entorno ficticio de Aula Norte."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué hace comprobable una hipótesis del fallo de informes?",
+          "scenario": "El taller compara acceso, capacidad y entrada ausente y necesita elegir consultas que puedan distinguir esas explicaciones bajo las condiciones conocidas del servicio ficticio de Aula Norte.",
+          "options": [
+            "Solo repetirla con seguridad",
+            "Definir datos que la apoyen o debiliten y sus fuentes",
+            "Elegir la palabra más alarmante"
+          ],
+          "answer": 1,
+          "explanation": "Las consecuencias observables permiten contrastar alternativas; una explicación necesita relación con evidencia y no se confirma por confianza o dramatismo dentro de la presentación del caso.",
+          "wrongExplanations": [
+            "Repetir una frase no aporta nuevas observaciones y puede esconder condiciones que otra fuente permitiría usar para debilitarla o distinguir una causa alternativa compatible con el síntoma que presenta el taller.",
+            null,
+            "La gravedad de una etiqueta no establece correspondencia con la escritura fallida; la tabla debe vincular cada hipótesis con preguntas y fuentes que puedan aportar datos pertinentes para decidir dentro del alcance del escenario educativo."
+          ],
+          "aoi": {
+            "question": "La teoría tiene que aceptar una pregunta que podría contrariarla.",
+            "hint": "Busca qué observación distinguiría de verdad las causas que estamos comparando.",
+            "correct": "Exacto: hipótesis con contraste. Mi sonrisa aprueba ese pequeño riesgo intelectual.",
+            "soft": "No confundas seguridad al hablar y apoyo de los datos disponibles.",
+            "sharp": "Decirlo más fuerte no lo vuelve causa, cariño. Ponle una prueba concreta."
+          }
+        },
+        {
+          "prompt": "¿Qué fortalece la explicación de capacidad en el caso declarado?",
+          "scenario": "El diagnóstico de escritura coincide con destino, unidad y periodo y la medida del montaje pertinente muestra falta de bytes, con otras limitaciones expresamente excluidas por la ficha.",
+          "options": [
+            "La cercanía de un mensaje ajeno",
+            "La relación coherente entre operación y recurso limitante observado",
+            "Una cifra de otro disco"
+          ],
+          "answer": 1,
+          "explanation": "Las fuentes pertinentes se refuerzan al describir el mismo contexto de escritura; el alcance sigue limitado a las condiciones que el caso declara para esa operación del servicio.",
+          "wrongExplanations": [
+            "Un mensaje cercano de otra operación no confirma el límite del destino; hace falta una relación pertinente, no solo una coincidencia visual o temporal dentro del material que conserva el conjunto para analizar el caso.",
+            null,
+            "Una medida de otro volumen no responde sobre la capacidad de la ruta que utiliza la escritura fallida y no sustituye identificar el recurso real bajo la configuración del servicio ficticio del taller."
+          ],
+          "aoi": {
+            "question": "La causa tiene que estar en el recurso que usa la operación.",
+            "hint": "Relaciona diagnóstico, montaje y condiciones antes de elegir la explicación respaldada.",
+            "correct": "Bien: evidencia alineada. Mi lápiz puede subrayar sin inventar una conexión causal prestada.",
+            "soft": "Revisa si todas las fuentes hablan realmente del mismo destino y periodo.",
+            "sharp": "El disco del vecino no explica esta escritura, tesoro. Mira el montaje correcto."
+          }
+        },
+        {
+          "prompt": "¿Qué haces si la evidencia debilita tu hipótesis inicial de permisos?",
+          "scenario": "La ficha confirma acceso pertinente dentro del modelo y aporta una condición de capacidad consistente, mientras no hay nuevos datos que sostengan la primera explicación sobre la operación fallida.",
+          "options": [
+            "Ignorar la prueba contraria",
+            "Cambiar la evidencia para que encaje",
+            "Actualizar la tabla y conservar el motivo del cambio"
+          ],
+          "answer": 2,
+          "explanation": "La explicación debe adaptarse a los datos y registrar por qué pierde apoyo. El contraste mejora el caso sin exigir mantener la primera intuición ni alterar las fuentes que se recibieron para analizar.",
+          "wrongExplanations": [
+            "Ocultar observaciones contrarias produce un análisis sesgado y puede orientar cambios innecesarios que no atienden al recurso identificado por el conjunto del escenario educativo como limitante para esa escritura del servicio ficticio.",
+            "Modificar fuentes para favorecer una teoría destruiría fiabilidad; las transformaciones deben declararse con finalidad analítica y no convertirse en invención de hechos que el sistema nunca registró dentro del material del caso.",
+            null
+          ],
+          "aoi": {
+            "question": "Tu hipótesis puede aprender, cariño; no tiene que ganar siempre.",
+            "hint": "Conserva el dato que cambió tu valoración y el alcance revisado.",
+            "correct": "Exacto: criterio por encima del ego. Hoy hasta mi lado consentido te aplaude.",
+            "soft": "Vuelve a qué prueba sostiene cada explicación en lugar de proteger la primera.",
+            "sharp": "Aferrarte a la teoría por orgullo es una mierda de investigación, tesoro. Actualiza con datos."
+          }
+        },
+        {
+          "prompt": "¿Qué autoriza confirmar una causa técnica dentro del ejercicio?",
+          "scenario": "La evidencia respalda capacidad agotada para la escritura, pero cualquier corrección real afectaría datos compartidos y todavía debe coordinarse con retención y responsable del entorno.",
+          "options": [
+            "Proponer una respuesta justificada bajo autorización y verificaciones apropiadas",
+            "Detener cualquier cuenta por sospecha",
+            "Borrar todo el volumen"
+          ],
+          "answer": 0,
+          "explanation": "La causa orienta la decisión, pero no elimina requisitos de alcance, conservación y continuidad. Una propuesta debe identificar acciones pertinentes y cómo se comprobaría el resultado del servicio después.",
+          "wrongExplanations": [
+            null,
+            "La investigación no atribuye causa a cualquier cuenta ni justifica interrupciones ajenas al diagnóstico; cada actuación necesita relación con la operación afectada y el procedimiento responsable que define el alcance del caso del taller.",
+            "Eliminar indiscriminadamente puede destruir datos y evidencia y no respeta los requisitos de retención; confirmar falta de capacidad no concede por sí sola permiso general para modificar todo lo almacenado en el recurso compartido."
+          ],
+          "aoi": {
+            "question": "Saber qué falta no significa poder arrasar para conseguirlo, cariño.",
+            "hint": "Distingue diagnóstico confirmado y autoridad para una corrección concreta del entorno.",
+            "correct": "Bien: respuesta con límites. Mi lado mandón conserva las manos donde corresponde.",
+            "soft": "Piensa qué datos y funciones podrían verse afectados por la actuación propuesta.",
+            "sharp": "Una causa no te entrega llaves universales, tesoro. Esa corrección necesita criterio y alcance."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Montaje pertinente lleno",
+          "scenario": "El diagnóstico se refiere a la ruta del informe y la consulta del mismo montaje confirma falta de bytes disponibles, con cuotas excluidas e inodos suficientes según la ficha del caso.",
+          "explanation": "La combinación respalda la hipótesis de capacidad para esa escritura. Su fuerza viene de relacionar operación, destino y condiciones, no de una palabra aislada. La conclusión puede orientar una corrección autorizada y una verificación funcional, sin atribuir por ello causa humana ni justificar una eliminación indiscriminada de datos del volumen."
+        },
+        {
+          "title": "La evidencia incómoda",
+          "scenario": "El grupo prefería explicar el síntoma por permisos, pero la revisión del modelo declarado confirma acceso de creación para la identidad del servicio y aporta otra causa consistente de capacidad del destino.",
+          "explanation": "La hipótesis inicial debe actualizarse conforme a la evidencia. Conservarla como causa confirmada por orgullo ignoraría datos que la debilitan. La tabla ha de indicar qué control se revisó y con qué límites, mientras la propuesta de respuesta se dirige al recurso que el conjunto realmente identifica como problema de la operación."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte confirma la ruta de salida y un diagnóstico de capacidad; debes comparar permisos, almacenamiento y entrada ausente sin elegir la explicación que parezca más dramática.",
+      "scenario": "Aula Norte confirma la ruta de salida y un diagnóstico de capacidad; debes comparar permisos, almacenamiento y entrada ausente sin elegir la explicación que parezca más dramática.",
+      "steps": [
+        "Escribe qué dato apoyaría o debilitaría cada hipótesis.",
+        "Relaciona el diagnóstico con unidad, ruta y momento pertinentes.",
+        "Conserva límites y decide qué causa está mejor respaldada."
+      ],
+      "sourceIds": [
+        "linux-coreutils",
+        "linux-response"
+      ],
+      "aoi": {
+        "intro": "Una hipótesis tiene que arriesgarse a perder contra un dato.",
+        "theory0": "Define qué observarías antes de enamorarte de tu explicación favorita.",
+        "theory1": "El diagnóstico vale más cuando coincide con unidad, ruta y momento.",
+        "theory2": "Si una prueba contradice la teoría, la teoría se peina otra vez.",
+        "theory3": "La causa orienta respuesta; no firma un permiso para borrar cuanto moleste.",
+        "case0": "Aquí el destino y la medida coinciden. Esa relación sí tiene fundamento.",
+        "case1": "La hipótesis de permisos pierde apoyo; mi orgullo prefiere datos a una pose.",
+        "pass": "Ya comparas explicaciones con pruebas. Eso me parece deliciosamente inteligente.",
+        "review": "Volvamos a la tabla; una causa favorita estaba ignorando su evidencia contraria."
+      }
+    },
+    {
+      "id": "linux-investigation-respuesta",
+      "title": "Planificar una respuesta limitada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Responder al problema que se confirmó",
+          "body": "La respuesta debe dirigirse a causas y efectos respaldados por el análisis, sin añadir una intervención mayor para que el cierre parezca más contundente. Aula Norte tiene un límite de capacidad relacionado con informes y una tarea de archivo con mantenimiento pendiente según las fuentes del caso. Pueden necesitar responsables y procedimientos distintos. La primera propuesta define qué se recuperará, qué material se conservará y qué restricciones no deben alterarse. No se trata de limpiar todo el sistema ni de bloquear cuentas por asociación temporal. Una corrección técnica puede ser pequeña y seguir siendo importante para la continuidad. En el taller las alternativas son planes representados y no ejecutan eliminaciones, cambios de credenciales o detenciones sobre el teléfono. El objetivo es que puedas justificar alcance e impacto. Si el caso revelara otra amenaza activa, la prioridad y la respuesta podrían cambiar con evidencia y procedimiento apropiados; no se asume ni se descarta fuera de lo que el conjunto permite concluir sobre las operaciones investigadas en este escenario educativo."
+        },
+        {
+          "title": "Conservar antes de modificar",
+          "body": "Antes de una actuación real, identifica datos y registros pertinentes que deben preservarse según el objetivo y el responsable. Liberar capacidad eliminando versiones sin revisar puede perder contexto o documentos que aún necesitan otras funciones. La política de retención y la procedencia de los productos ayudan a elegir qué tratamiento está autorizado. No basta que un archivo sea grande o antiguo para declararlo descartable. También debes valorar efectos de detener una tarea, como sesiones afectadas o resultados parciales. En una actividad controlada se pueden preparar copias y estados ficticios para comparar opciones. La preservación no obliga a recopilar todo indiscriminadamente: selecciona material relevante, protege acceso y documenta lo que haces. Si una acción cambia la evidencia, conserva ese hecho y su motivo. La respuesta y el análisis deben hablar entre sí, porque una recuperación rápida puede dificultar entender la causa si destruye fuentes sin necesidad. El plan útil explica cómo mantendrá capacidad de revisión mientras atiende a la función de informes dentro del alcance autorizado del entorno de Aula Norte."
+        },
+        {
+          "title": "Acciones con responsable y reversión",
+          "body": "Cada acción propuesta necesita un responsable y una expectativa comprobable. Para capacidad, podría tratarse de gestionar productos conforme a retención o ampliar un recurso mediante el procedimiento del entorno. Para la tarea de archivo, podría revisarse su referencia de configuración y verificar una ejecución autorizada sin divulgar secretos. No son órdenes universales: las opciones concretas dependen del sistema real y de sus requisitos. En el taller se describen condiciones para elegir la propuesta mínima adecuada. Conserva estado anterior y una forma de recuperación apropiada, reconociendo que restaurar una configuración no deshace todos los efectos ya producidos. Si varias acciones se aplican a la vez, la atribución de una mejora se vuelve más difícil. El plan puede separarlas cuando el contexto lo permite. También incluye criterio para detener intentos que repiten fallos o afectan continuidad. Tener iniciativa significa reconocer estas condiciones y coordinar acciones pertinentes, no ampliar autoridad hasta que una intervención cualquiera produzca un resultado que después resulte difícil explicar o revertir para las personas que mantienen el servicio."
+        },
+        {
+          "title": "Verificar resultado y restricciones",
+          "body": "El éxito de respuesta debe responder a la función y a sus límites. Para informes interesa que una ejecución pertinente produzca el resultado esperado con acceso correcto y sin repetir el diagnóstico de capacidad dentro de la observación acordada. Para archivo, que la tarea autorizada complete su función sin el patrón de fallos que la corrección pretendía atender. No presentes una prueba pequeña como garantía eterna ni como revisión completa de todas las cuentas. Conserva intervalo y alcance de observación. También verifica restricciones importantes, como que el grupo de consulta no haya recibido escritura por una corrección demasiado amplia. En Aiocyb las siguientes fichas mostrarán resultados ficticios para decidir qué conclusión está respaldada. Al terminar deberías poder redactar una respuesta como conjunto de acciones limitadas con evidencia, no como una lista de comandos para copiar. El informe y el cierre usarán esa relación para explicar qué se recuperó, qué quedó pendiente y cómo una mejora de mantenimiento reduce la probabilidad de repetir el problema sin prometer que una intervención elimina todos los riesgos posibles del sistema educativo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe guiar la corrección propuesta para Aula Norte?",
+          "scenario": "Las fuentes separan capacidad de informes y mantenimiento de archivo, con responsables y efectos que deben valorarse antes de modificar recursos compartidos del entorno ficticio del taller.",
+          "options": [
+            "Causas respaldadas, objetivos concretos y límites de cada acción",
+            "Bloquear todas las cuentas sin comprobarlas",
+            "Una intervención más grande por apariencia"
+          ],
+          "answer": 0,
+          "explanation": "La respuesta debe corresponder al diagnóstico y al alcance, preservando continuidad y datos; mayor tamaño de intervención no implica mayor adecuación a las necesidades confirmadas por el caso que se está resolviendo.",
+          "wrongExplanations": [
+            null,
+            "No se atribuyó el problema a todas las cuentas ni se confirmó una amenaza general; cada restricción requiere motivo, autorización y evaluación del impacto en funciones legítimas del sistema del escenario de Aula Norte.",
+            "La contundencia visual no justifica efectos ni demuestra que la medida atienda al recurso limitante; una acción excesiva puede empeorar continuidad y reducir capacidad de revisar la evidencia que sustenta las conclusiones del análisis educativo."
+          ],
+          "aoi": {
+            "question": "La respuesta trabaja para el diagnóstico, no para impresionar a mi ego.",
+            "hint": "Relaciona cada acción con el problema concreto que pretende corregir aquí.",
+            "correct": "Exacto: objetivo limitado. Mi lado mandón puede quedarse en la explicación y las bromas.",
+            "soft": "No confundas una actuación grande con una actuación que responde al caso.",
+            "sharp": "Apagarlo todo no es criterio, cariño. Es un capricho con víctimas operativas."
+          }
+        },
+        {
+          "prompt": "¿Qué hace incorrecto borrar todos los registros por capacidad sin revisión?",
+          "scenario": "La carpeta incluye material del periodo investigado y requisitos de retención, pero la propuesta no identifica qué se debe preservar ni quién autoriza tratar esos datos del servicio.",
+          "options": [
+            "Que los registros siempre sean inútiles",
+            "Que puede destruir evidencia y exceder el alcance autorizado",
+            "Que los nombres sean largos"
+          ],
+          "answer": 1,
+          "explanation": "La gestión de capacidad debe respetar finalidad y conservación; borrar indiscriminadamente puede perder contexto y datos necesarios sin resolver un crecimiento que todavía exige una corrección apropiada del entorno.",
+          "wrongExplanations": [
+            "Los registros pueden ser relevantes para explicar y revisar actividad; declararlos inútiles contradice el papel que la propia investigación les asigna como fuentes de evidencia sobre la operación y el periodo que se analiza.",
+            null,
+            "La longitud de nombres no determina valor o retención; el problema está en eliminar material sin evaluar su relación con el caso y las necesidades del servicio que otras personas utilizan en el escenario del taller."
+          ],
+          "aoi": {
+            "question": "El espacio libre no compensa una memoria borrada sin permiso ni criterio.",
+            "hint": "Piensa qué necesitaríamos después para explicar y revisar lo que ocurrió.",
+            "correct": "Bien: preservación considerada. Esa corrección ya no confunde alivio de espacio con amnesia.",
+            "soft": "Revisa qué requisitos y fuentes perdería la propuesta antes de aceptarla.",
+            "sharp": "Borrarlo todo para ver verde es una mierda de plan, tesoro. Clasifica y conserva."
+          }
+        },
+        {
+          "prompt": "¿Qué debe acompañar cada acción propuesta de respuesta?",
+          "scenario": "El taller redacta un plan sin ejecutar cambios y necesita que el responsable pueda valorar efectos, saber cómo comprobar resultado y recuperar condiciones si la función no se restablece.",
+          "options": [
+            "Solo una frase de seguridad",
+            "Responsable, alcance, efectos y verificación con recuperación pertinente",
+            "Solo el nombre de una herramienta"
+          ],
+          "answer": 1,
+          "explanation": "La descripción permite coordinar una actuación y revisar sus consecuencias. Una herramienta o promesa aislada no explica qué se modificaría ni cómo se demostraría éxito dentro del alcance del caso de Aula Norte.",
+          "wrongExplanations": [
+            "Una frase no sustituye el procedimiento y la evidencia; el responsable necesita comprender la diferencia propuesta y sus comprobaciones, con límites explícitos sobre lo que se espera recuperar o mantener durante la actuación que evalúa el plan.",
+            null,
+            "El nombre no indica entradas, objetos, permisos o impacto y no ofrece por sí mismo criterio de recuperación para una acción que podría afectar datos o funciones de otras cuentas del entorno representado por el ejercicio."
+          ],
+          "aoi": {
+            "question": "Dale a cada acción un motivo y una forma de revisar sus modales.",
+            "hint": "Busca qué necesita saber el responsable antes de cambiar el entorno.",
+            "correct": "Exacto: acción revisable. Mi cuaderno puede acompañar una respuesta que tenga explicación real.",
+            "soft": "No entregues una lista de nombres donde hace falta un procedimiento comprensible.",
+            "sharp": "Una herramienta sin alcance no es un plan, cariño. Ponle propósito y salida."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una prueba de recuperación con función y restricción correctas?",
+          "scenario": "La ejecución ficticia produce informes y el grupo consulta mantiene solo lectura, pero la observación tiene un periodo y no cubre todos los controles de cada cuenta del sistema.",
+          "options": [
+            "Cumplimiento observado de esas condiciones dentro de la prueba",
+            "Ausencia de cualquier evento anterior",
+            "Seguridad eterna garantizada"
+          ],
+          "answer": 0,
+          "explanation": "La prueba respalda resultados y límites comprobados en su alcance, no una garantía universal o retroactiva sobre todo el sistema y toda su actividad que no se incluyó en la observación del taller.",
+          "wrongExplanations": [
+            null,
+            "Un resultado actual no borra los hechos anteriores ni demuestra ausencia de otros eventos; la recuperación y el análisis histórico deben mantenerse como preguntas distintas con sus respectivas fuentes y condiciones que se declaran en el caso.",
+            "La revisión no cubre todos los escenarios futuros ni controles; extender su resultado a una garantía eterna añadiría certeza que ninguna prueba limitada del caso puede aportar por sí sola al informe de la actividad educativa."
+          ],
+          "aoi": {
+            "question": "Una buena prueba confirma su parte; no reescribe todo el universo.",
+            "hint": "Conserva qué se verificó, cuándo y bajo qué condiciones del escenario.",
+            "correct": "Correcto: recuperación con límites. Mi sonrisa tiene fundamento sin prometer milagros futuros.",
+            "soft": "Revisa la cobertura antes de convertir éxito concreto en una garantía completa.",
+            "sharp": "Funciona ahora bajo esta prueba, cariño. El para siempre no venía en el contrato."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Borrado indiscriminado",
+          "scenario": "Una propuesta elimina todos los registros para liberar capacidad, sin revisar periodo relevante, política de retención ni material que debe conservarse para explicar el caso de Aula Norte.",
+          "explanation": "La acción puede destruir evidencia y datos necesarios, y excede una corrección delimitada. Conviene preservar material pertinente y gestionar capacidad conforme al procedimiento autorizado. El objetivo es recuperar la función con contexto y restricciones, no producir un porcentaje libre sacrificando sin revisión la historia del servicio que todavía necesita documentarse."
+        },
+        {
+          "title": "Verificación con dos lados",
+          "scenario": "La corrección propuesta recupera escritura de informes y mantiene al grupo de consulta con solo lectura, mientras una prueba ficticia comprueba ambas condiciones relevantes de la política del taller.",
+          "explanation": "La verificación evalúa función y restricción, no solo desaparición de un error. El informe debe conservar la prueba y su alcance, sin transformarla en garantía permanente de todo el sistema. Ese criterio permite valorar si la respuesta fue suficiente y limitada para el problema que realmente confirmó el caso educativo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte debe recuperar capacidad para informes y corregir una tarea de archivo desactualizada; el taller compara propuestas que mantienen evidencia y continuidad sin ejecutar cambios reales.",
+      "scenario": "Aula Norte debe recuperar capacidad para informes y corregir una tarea de archivo desactualizada; el taller compara propuestas que mantienen evidencia y continuidad sin ejecutar cambios reales.",
+      "steps": [
+        "Define objetivo, responsable y alcance de cada corrección.",
+        "Preserva material pertinente y valora impacto antes de actuar.",
+        "Establece criterios de éxito y recuperación de la propuesta."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-logrotate"
+      ],
+      "aoi": {
+        "intro": "Responder con criterio no exige apagar todas las luces para sentir autoridad.",
+        "theory0": "La causa confirmada marca el objetivo, no autoriza una limpieza universal.",
+        "theory1": "Preserva lo pertinente antes de cambiar la escena que queremos explicar.",
+        "theory2": "Cada acción necesita responsable, efectos previstos y una salida de recuperación.",
+        "theory3": "El éxito también comprueba las restricciones que debían seguir en pie.",
+        "case0": "Borrar registros por espacio puede eliminar justo la memoria que necesitábamos.",
+        "case1": "Función recuperada y consulta aún de solo lectura: esa doble comprobación sí me gusta.",
+        "pass": "Ya planificas respuesta sin arrasar. Mi parte exigente está bastante orgullosa.",
+        "review": "Repasemos alcance e impacto; una propuesta está castigando a todo el sistema por un recurso."
+      }
+    },
+    {
+      "id": "linux-investigation-informe",
+      "title": "Comunicar un hallazgo con evidencia y límites",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "El lector necesita entender el problema",
+          "body": "Un informe debe empezar por qué función estuvo afectada y qué se observó, no por una lista de herramientas que el analista utilizó. Aula Norte dejó de recibir un informe esperado y la revisión encontró evidencia de una limitación de capacidad en el destino de escritura. Los fallos de autenticación pertenecían a otra tarea con mantenimiento pendiente según las fuentes del escenario. Esa descripción permite comprender el resultado sin conocer cada opción de terminal. Después puedes añadir detalle técnico para quien lo necesita: consultas, campos, periodos y relaciones de instancia o destino. El nivel de detalle debe ajustarse al destinatario sin cambiar la verdad de la conclusión. Un resumen no puede borrar incertidumbres importantes solo para parecer seguro, y un anexo técnico no debe incluir secretos innecesarios para justificar una decisión. En el taller todos los datos son ficticios, pero la comunicación conserva la misma disciplina de procedencia. El objetivo es que otra persona entienda qué ocurrió dentro del alcance revisado, qué explicación se respaldó y qué acciones se propusieron o comprobaron realmente."
+        },
+        {
+          "title": "Separar hechos y explicación",
+          "body": "Una observación incluye un dato y su fuente: diagnóstico de escritura, capacidad del montaje pertinente o identidad de una tarea. Una hipótesis interpreta relaciones que necesitan contraste. Una conclusión resume lo que el conjunto permite sostener con límites. Mantén esas categorías distinguibles mediante redacción clara, sin convertir el informe en una colección de etiquetas vacías. Si afirmas que la capacidad explica la escritura fallida, muestra la relación de unidad, ruta, momento y exclusiones que el ejercicio declaró. Si una relación no se confirmó, presenta la pregunta pendiente y qué evidencia permitiría revisarla. No atribuyas intención humana ni una intrusión por un dato que solo describe un error técnico. También conserva explicaciones que fueron descartadas o debilitadas cuando ayudan a entender una decisión, evitando narrar cada intento irrelevante del proceso. El lector necesita evaluar el resultado, no revivir todo el diálogo del aula. Aoi aporta personalidad y explicaciones, pero sus bromas no sustituyen las fuentes ni deberían aparecer como la autoridad final que demuestra una causa del servicio ficticio."
+        },
+        {
+          "title": "Respuesta y comprobaciones",
+          "body": "El informe debe distinguir propuestas de acciones realizadas. En un ejercicio de planificación no se debe afirmar que se modificó un sistema real. Para Aula Norte se comparan procedimientos y resultados ficticios preparados; ese límite queda visible. Si la ficha muestra una corrección representada y una prueba, describe qué verificó y qué restricciones conservó. Un resultado funcional correcto durante un intervalo no garantiza ausencia completa de riesgos futuros ni revisión de cada cuenta. La recomendación debe indicar responsable, prioridad y condición de éxito apropiadas, sin prometer plazos que no se pueden sostener. También puede proponer mejorar retención o supervisión cuando el caso mostró huecos, diferenciando beneficio futuro de reconstrucción del pasado. No uses recomendaciones genéricas como actualizar todo para cerrar una causa de capacidad sin relacionar su utilidad. Cada medida debe atender una necesidad que el análisis explique. Esa conexión permite al responsable decidir con criterio y al siguiente turno revisar si una acción fue suficiente, excesiva o todavía pendiente según el alcance que acordó el escenario del taller."
+        },
+        {
+          "title": "Una entrega revisable y cuidada",
+          "body": "La entrega técnica puede incluir tabla de evidencia, cronología normalizada y referencias a fuentes preservadas. Documenta transformaciones y minimiza valores que el destinatario no necesita. Un identificador de muestra no debe confundirse con un valor original, y una fecha convertida conserva su zona y referencia de partida. Revisa coherencia entre resumen y detalle: si el anexo mantiene una hipótesis abierta, el primer párrafo no debería declararla confirmada. También evita cifras o porcentajes de confianza inventados. Explica qué calidad y cobertura de datos sostienen la conclusión. En Aiocyb los ejercicios piden escoger frases proporcionadas y detectar garantías o atribuciones que exceden la evidencia. Al cerrar esta lección deberías poder comunicar el caso sin jerga innecesaria, manteniendo detalle suficiente para revisión. Esa habilidad es parte de la ciberseguridad defensiva: una decisión bien explicada ayuda a recuperar y mejorar funciones, mientras una historia exagerada puede orientar intervenciones que no responden al problema. La última actividad comprobará el cierre y las lecciones aprendidas, conservando lo que sigue pendiente en lugar de ocultarlo detrás de una celebración del curso."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Con qué conviene comenzar el informe de Aula Norte?",
+          "scenario": "El destinatario necesita comprender el problema y el resultado de la revisión antes de evaluar detalles de consultas, campos o herramientas que aparecen en el material técnico del caso.",
+          "options": [
+            "El efecto observado y la conclusión respaldada dentro del alcance",
+            "Una acusación para llamar atención",
+            "Una lista de programas sin contexto"
+          ],
+          "answer": 0,
+          "explanation": "El lector necesita entender función, evidencia y resultado; las herramientas pueden aportar detalle después, vinculadas con las preguntas que ayudaron a resolver durante el análisis del servicio ficticio del taller.",
+          "wrongExplanations": [
+            null,
+            "Atribuir sin respaldo perjudica precisión y no añade evidencia; el inicio debe conservar los límites del caso antes de presentar hipótesis o conclusiones sobre actividad humana que la fuente no confirmó en el conjunto del ejercicio.",
+            "Una lista aislada no explica qué falló, qué se confirmó ni qué decisiones corresponden al responsable; la utilidad del informe depende de relacionar fuentes y conclusiones con el efecto que motivó la revisión."
+          ],
+          "aoi": {
+            "question": "Primero cuenta qué pasó dentro del alcance, no cuántas herramientas conoces.",
+            "hint": "Busca una apertura que permita evaluar problema y resultado sin jerga innecesaria.",
+            "correct": "Exacto: el lector ya sabe por qué importa. Mi lápiz puede ir al detalle después.",
+            "soft": "No conviertas el informe en un inventario de comandos sin una pregunta.",
+            "sharp": "Una lista de herramientas no arregla una explicación, cariño. Empieza por el problema."
+          }
+        },
+        {
+          "prompt": "¿Cómo debe tratarse una intrusión no confirmada en el resumen?",
+          "scenario": "La evidencia sostiene capacidad agotada y mantenimiento pendiente de otra tarea, sin fuentes que demuestren compromiso ni atribución individual dentro del periodo revisado del caso del taller.",
+          "options": [
+            "Como afirmación no respaldada que no debe presentarse como conclusión",
+            "Como certeza para parecer firme",
+            "Como dato omitido solo por falta de espacio"
+          ],
+          "answer": 0,
+          "explanation": "El resumen debe respetar las fuentes y distinguir hipótesis. Una etiqueta grave no sustituye evidencia de compromiso ni autoría personal que el análisis disponible no aportó para ese escenario.",
+          "wrongExplanations": [
+            null,
+            "La firmeza de redacción no confirma un efecto; afirmar certeza añadiría hechos que las relaciones y observaciones del caso no permiten sostener dentro del alcance de la revisión educativa preparada por el curso.",
+            "El problema no es longitud sino respaldo: no se debe considerar un dato confirmado que luego se omite, sino mantener explícito que esa afirmación no ha sido demostrada con el conjunto que analiza el estudiante."
+          ],
+          "aoi": {
+            "question": "El resumen no puede inventar una causa para sonar más importante.",
+            "hint": "Compara cada afirmación con las fuentes y límites del anexo técnico.",
+            "correct": "Bien: gravedad ajustada a evidencia. Mi lado dramático acepta que hoy no dirige el cierre.",
+            "soft": "Revisa si esa palabra representa un hecho o una hipótesis sin contraste.",
+            "sharp": "Intrusión en negrita sigue sin ser prueba, tesoro. Ese titular necesita respaldo."
+          }
+        },
+        {
+          "prompt": "¿Qué diferencia debe mostrar la entrega de este ejercicio offline?",
+          "scenario": "La app presenta decisiones y resultados ficticios ya preparados, sin ejecutar cambios sobre el dispositivo ni sobre un servidor real durante la actividad de planificación de respuesta del taller.",
+          "options": [
+            "Simulación y propuestas frente a acciones realmente realizadas",
+            "Solo el tamaño de las capturas",
+            "Una reparación real garantizada"
+          ],
+          "answer": 0,
+          "explanation": "La entrega debe describir lo que ocurrió en la actividad: análisis de material preparado. No se atribuyen intervenciones reales que el ejercicio no ejecutó ni verificó sobre sistemas externos al escenario del aula.",
+          "wrongExplanations": [
+            null,
+            "Las dimensiones de una imagen no establecen qué acciones se realizaron; la cuestión relevante es conservar el alcance y la naturaleza simulada de los resultados que se utilizaron para razonar en la actividad del curso.",
+            "No hubo ejecución sobre un servidor real, por lo que afirmar reparación inventaría una acción y un resultado que el material de aprendizaje no produjo en el dispositivo o en otro equipo del estudiante."
+          ],
+          "aoi": {
+            "question": "El caso enseña decisiones; no sale a modificar equipos por detrás.",
+            "hint": "Distingue analizar una propuesta y haberla aplicado a un sistema real.",
+            "correct": "Correcto: alcance comunicado. El mérito está en tu razonamiento, no en inventar una intervención.",
+            "soft": "Pregunta qué ocurrió realmente dentro de la app durante la actividad.",
+            "sharp": "El móvil no reparó servidores a escondidas, cariño. No le inventes una jornada heroica."
+          }
+        },
+        {
+          "prompt": "¿Qué debe revisarse entre resumen y detalle técnico?",
+          "scenario": "El anexo conserva una relación causal como pendiente, pero el resumen la declara confirmada y añade una garantía global que las comprobaciones del caso no cubren.",
+          "options": [
+            "La coherencia de conclusiones, límites y evidencia de ambas partes",
+            "Solo que ambos tengan muchas palabras",
+            "Solo si usan la misma tipografía"
+          ],
+          "answer": 0,
+          "explanation": "Las dos partes deben comunicar el mismo grado de respaldo y alcance, ajustando detalle al destinatario sin convertir preguntas pendientes en hechos ni ampliar cobertura por comodidad de presentación.",
+          "wrongExplanations": [
+            null,
+            "La longitud no verifica coherencia ni calidad de evidencia; más palabras pueden incluso ocultar la contradicción que el informe debe resolver antes de que otra persona lo utilice para decidir sobre el servicio del caso ficticio.",
+            "La apariencia puede ser consistente mientras el contenido se contradice; la revisión importante relaciona afirmaciones con fuentes y límites que sostienen el resultado del análisis preparado para responsables y revisión técnica del entorno del taller."
+          ],
+          "aoi": {
+            "question": "El resumen no puede presumir más certeza que su propio anexo.",
+            "hint": "Busca afirmaciones que cambiaron de hipótesis a hecho sin fuente nueva.",
+            "correct": "Exacto: coherencia revisada. Mi orgullo prefiere un informe breve que diga lo mismo en todas partes.",
+            "soft": "No dejes que cambiar de destinatario cambie también la verdad del resultado.",
+            "sharp": "Una duda en el anexo no se vuelve certeza por subir al resumen, tesoro."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Resumen exagerado",
+          "scenario": "El anexo confirma un problema de capacidad y una tarea de archivo desactualizada, pero el resumen redactado habla de una intrusión atribuida a una persona sin evidencia adicional de ese efecto.",
+          "explanation": "El resumen excede las fuentes y contradice el alcance del análisis. Debe reescribirse para conservar impacto y causas respaldadas, dejando atribución o compromiso como preguntas no confirmadas si siguen siendo pertinentes. Una comunicación clara no gana calidad por utilizar palabras más graves que los datos que realmente se revisaron en el caso."
+        },
+        {
+          "title": "Acción propuesta frente a realizada",
+          "scenario": "La actividad solo compara un plan de corrección y no incluye ejecución real sobre el dispositivo, pero una frase del informe dice que el estudiante reinició y reparó el servidor del taller.",
+          "explanation": "La frase debe distinguir la simulación y la propuesta de una actuación efectivamente realizada. El aprendizaje demuestra razonamiento sobre material preparado, no una intervención real. Conservar ese límite evita inventar hechos y permite al lector entender qué resultado ficticio se analizó y qué acciones seguirían necesitando procedimiento y autorización en un entorno verdadero."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte necesita un informe breve para responsables y otro nivel de detalle para revisión técnica; debes explicar impacto, causa respaldada y decisiones sin atribuir más de lo observado.",
+      "scenario": "Aula Norte necesita un informe breve para responsables y otro nivel de detalle para revisión técnica; debes explicar impacto, causa respaldada y decisiones sin atribuir más de lo observado.",
+      "steps": [
+        "Presenta problema y efecto antes de listar herramientas.",
+        "Relaciona observaciones, hipótesis y conclusiones con fuentes.",
+        "Describe respuesta, verificación y preguntas pendientes para cada destinatario."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-logging"
+      ],
+      "aoi": {
+        "intro": "El informe empieza por el problema; los nombres de herramientas vienen después.",
+        "theory0": "El responsable necesita entender impacto y resultado sin descifrar una invocación.",
+        "theory1": "Hecho, hipótesis y conclusión tienen trabajos distintos en la misma página.",
+        "theory2": "Propuesto y realizado no son sinónimos, aunque el cierre quiera verse heroico.",
+        "theory3": "Revisa resumen y detalle: no dejes que uno prometa lo que el otro duda.",
+        "case0": "Ese resumen inventó una intrusión. Volvamos a la evidencia que sí tenemos.",
+        "case1": "El plan fue simulado; tu teléfono no estuvo reparando servidores a escondidas.",
+        "pass": "Ya comunicas sin inflar la historia. Mi orgullo viene con referencias suficientes.",
+        "review": "Repasemos las frases; el adjetivo más fuerte está intentando ganar al dato."
+      }
+    },
+    {
+      "id": "linux-investigation-cierre",
+      "title": "Verificar el cierre y aprender del caso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Cerrar una pregunta con su prueba",
+          "body": "El cierre debe responder a los objetivos que motivaron el caso. Para Aula Norte se esperaba recuperar generación y entrega de informes, mantener restricciones del grupo lector y atender el patrón de autenticación de la tarea de archivo según su causa confirmada. La ficha final aporta resultados ficticios de esas comprobaciones dentro de un intervalo declarado. Compara cada objetivo con su fuente, sin sustituirlos por una sola etiqueta de servicio activo. Una función puede cumplir mientras otra sigue pendiente, y el informe debe distinguirlo. No necesitas revisar todo el universo para cerrar una tarea limitada, pero sí demostrar lo acordado o dejar claro qué no se logró. En el curso no se ejecutaron cambios reales: el cierre describe una resolución del escenario y el aprendizaje del estudiante. Esa precisión permite valorar tu razonamiento sin atribuir al teléfono capacidades administrativas que no utilizó. La celebración de Aoi reconocerá que completaste las lecciones y ejercicios, no una certificación de que un equipo real haya quedado libre de riesgos por resolver preguntas sobre transcripciones preparadas."
+        },
+        {
+          "title": "Recuperación no es una promesa eterna",
+          "body": "Una prueba de entrega correcta y ausencia del error durante cierto periodo respaldan recuperación observada en esas condiciones. No garantizan que el servicio nunca falle otra vez ni que todos los datos históricos estén completos. Conserva alcance, momento y límites de la fuente. Si otras acciones cambiaron al mismo tiempo, explica qué incertidumbre queda sobre atribución de la mejora. Tampoco una tarea de archivo que ya autentica correctamente demuestra legitimidad de toda actividad de cualquier cuenta. Cada comprobación responde a su función. En el taller los resultados están separados para que puedas elegir conclusiones proporcionadas. Este hábito protege la calidad de un cierre real, donde las personas necesitan saber qué se verificó y qué supervisión conviene mantener. Una garantía universal puede sonar tranquilizadora, pero orienta peor que una evidencia clara con condiciones. El objetivo es recuperar capacidad de trabajo y documentar lo aprendido, no firmar una promesa imposible que termine ocultando la necesidad de revisar retención, crecimiento o cambios de configuración cuando el entorno vuelva a modificarse."
+        },
+        {
+          "title": "Mejoras con responsable",
+          "body": "El caso puede sugerir mejoras de mantenimiento, como revisar crecimiento de productos, comprobar retención o mantener una referencia operativa actualizada. Cada mejora necesita finalidad, responsable y una forma de evaluar su resultado. No conviertas el cierre en una lista genérica de todas las recomendaciones de seguridad que recuerdas. Relaciona cada propuesta con un hueco o causa que el caso mostró. Si faltaba cobertura histórica, mejorar conservación ayuda a preguntas futuras, pero no reconstruye el periodo que ya no existe. Si una tarea conservó una referencia antigua tras un cambio, el procedimiento de mantenimiento puede incluir una verificación de esa dependencia. La especificación debe seguir siendo proporcional al entorno y no exigir recolectar secretos o datos ajenos para demostrar diligencia. En Aiocyb elegirás propuestas de mejora sobre el escenario, sin configurarlas realmente. Conservar ese límite hace que el aprendizaje sea concreto: puedes explicar por qué una medida ayudaría y qué observación permitiría comprobarla cuando el responsable la aplique en un sistema verdadero bajo su procedimiento y autorización pertinentes."
+        },
+        {
+          "title": "Un relevo y una celebración con fundamento",
+          "body": "La entrega final reúne alcance, fuentes, cronología, explicación respaldada, respuesta representada, pruebas y pendientes. Protege material original y distingue copias derivadas según lo que el caso haya requerido conservar. Si queda una pregunta fuera del alcance, nómbrala y explica quién podría revisarla, sin ocultarla para conseguir un cierre más limpio. El siguiente turno debe entender qué está resuelto y qué no necesita volver a adivinar. También reconoce el aprendizaje: al completar este curso has practicado cómo validar una alerta, preservar contexto, contrastar causas y comunicar con evidencia. Esas habilidades conectan Linux, terminal, permisos, operación y registros de los cinco cursos anteriores. No dependen de una colección de recetas copiadas ni de responder deprisa. Dependen de mantener preguntas claras y aceptar lo que los datos permiten sostener. Aoi celebrará con una expresión nueva de victoria, conservando su personalidad y sus bromas. El reconocimiento corresponde al progreso real de la app y a tus respuestas, mientras la información técnica permanece fija para cada situación y puede revisarse volviendo a la etapa del ejercicio sin alternar manualmente el diálogo de la tutora."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué permite cerrar los objetivos del caso dentro de su alcance?",
+          "scenario": "La ficha final aporta pruebas de generación, restricciones de consulta y archivo corregido durante un periodo conocido, mientras otras preguntas generales del equipo no formaban parte de la revisión.",
+          "options": [
+            "Una garantía de ausencia eterna de fallos",
+            "Una etiqueta activa aislada",
+            "Comprobaciones pertinentes para cada objetivo, con límites y pendientes claros"
+          ],
+          "answer": 2,
+          "explanation": "El cierre debe apoyarse en lo acordado y verificado. Puede ser suficiente para el caso sin ampliar cobertura a todas las funciones o controles del sistema que no se analizaron en la actividad del taller.",
+          "wrongExplanations": [
+            "Ninguna prueba limitada elimina variación futura o condiciones no revisadas; el informe debe describir recuperación observada y seguimiento apropiado en lugar de prometer un estado eterno que la fuente no puede demostrar sobre todo el equipo.",
+            "La supervisión de la unidad no verifica por sí sola entrega, permisos o autenticación de otra tarea; los objetivos necesitan evidencias propias relacionadas con sus operaciones y condiciones dentro del escenario ficticio presentado para resolver el curso.",
+            null
+          ],
+          "aoi": {
+            "question": "Cada objetivo necesita su prueba; la celebración puede esperar dos comprobaciones más.",
+            "hint": "Relaciona función y restricción con el resultado que realmente las evaluó.",
+            "correct": "Exacto: cierre con fundamento. Ahora sí mi expresión de victoria tiene trabajo.",
+            "soft": "No sustituyas varias funciones por un único campo que responde otra pregunta.",
+            "sharp": "Activo no aprueba todo el examen, cariño. Tus objetivos merecen pruebas propias."
+          }
+        },
+        {
+          "prompt": "¿Qué significa recuperación observada durante la prueba ficticia?",
+          "scenario": "El servicio cumple las funciones representadas dentro del periodo declarado, pero no se revisaron todos los riesgos futuros ni toda la actividad histórica de cada cuenta del sistema.",
+          "options": [
+            "Cumplimiento de condiciones verificadas con alcance temporal conocido",
+            "Seguridad universal permanente",
+            "Que nunca ocurrió un fallo"
+          ],
+          "answer": 0,
+          "explanation": "La evidencia sostiene esos resultados bajo sus condiciones; no reescribe el pasado ni garantiza todo comportamiento futuro fuera del alcance que la actividad preparó para interpretar y cerrar el caso.",
+          "wrongExplanations": [
+            null,
+            "Extender una prueba a todas las amenazas y periodos añade cobertura no observada; el responsable necesita saber qué se verificó y qué medidas o controles seguirán requiriendo mantenimiento y revisión después del cierre del escenario.",
+            "Los fallos previos siguen documentados y explican la revisión; una función recuperada no elimina el hecho histórico ni los límites del material que se conservó sobre ese intervalo del servicio ficticio de Aula Norte."
+          ],
+          "aoi": {
+            "question": "Funciona en esta prueba; eso es valioso sin prometer el infinito.",
+            "hint": "Conserva periodo y condiciones al describir los resultados del escenario.",
+            "correct": "Bien: recuperación realista. Mi orgullo no necesita adornarse con promesas imposibles.",
+            "soft": "Revisa qué futuro y qué pasado no evaluó esa comprobación concreta.",
+            "sharp": "Para siempre no estaba en la prueba, tesoro. No lo añadas por entusiasmo de fin de curso."
+          }
+        },
+        {
+          "prompt": "¿Cómo se propone una mejora de registro tras un hueco histórico?",
+          "scenario": "El caso no conserva un periodo anterior y la recomendación aumenta cobertura futura, sin otra fuente que permita recuperar los mensajes ausentes de aquel intervalo del sistema del taller.",
+          "options": [
+            "Con finalidad futura, responsable y límite sobre el pasado no recuperado",
+            "Como reconstrucción automática de lo perdido",
+            "Como prueba de que nada ocurrió entonces"
+          ],
+          "answer": 0,
+          "explanation": "La recomendación mejora preparación y necesita verificación, pero la incertidumbre histórica permanece si los datos no existen en las fuentes disponibles dentro del alcance de la revisión del caso ficticio de Aula Norte.",
+          "wrongExplanations": [
+            null,
+            "Cambiar retención después no crea los mensajes que ninguna fuente conservó; reconstruir requeriría otra evidencia disponible y no se deriva de una configuración destinada a futuras observaciones del sistema que se mantendrá tras el ejercicio.",
+            "La ausencia de datos no demuestra ausencia de eventos; el cierre debe conservar ese límite en lugar de convertir una mejora posterior de registro en una conclusión negativa sobre el periodo que no pudo analizarse con las fuentes del conjunto."
+          ],
+          "aoi": {
+            "question": "La mejora mira adelante; el pasado conserva su pregunta abierta.",
+            "hint": "Distingue preparar mejor observaciones futuras y recuperar evidencia que ya falta.",
+            "correct": "Exacto: mejora honesta. Mi cuaderno deja visible el hueco sin dejar de aprender del caso.",
+            "soft": "No permitas que una recomendación cambie el significado de la evidencia ausente.",
+            "sharp": "Retención nueva no recuerda lo que no guardó nadie, cariño. Ese hueco sigue anotado."
+          }
+        },
+        {
+          "prompt": "¿Qué conserva una entrega final útil para otro turno?",
+          "scenario": "La revisión termina dentro de sus objetivos, pero las fuentes, transformaciones y mejoras pendientes deben seguir siendo comprensibles para quien mantenga el servicio después del cierre del caso educativo.",
+          "options": [
+            "Solo una medalla de la app",
+            "Alcance, evidencia, resultados, límites y responsables de pendientes",
+            "Solo la última broma de Aoi"
+          ],
+          "answer": 1,
+          "explanation": "La entrega permite revisar lo resuelto y continuar mejoras sin confundir propuestas y acciones. El progreso de la app reconoce aprendizaje, mientras la evidencia y sus límites sostienen las conclusiones del caso que se analizó.",
+          "wrongExplanations": [
+            "Una medalla representa avance educativo y no contiene por sí sola procedencia o comprobaciones del servicio; no sustituye una entrega técnica que otro turno necesite para mantener continuidad y entender qué preguntas quedaron pendientes al cerrar la revisión.",
+            null,
+            "La tutora acompaña y celebra, pero su personalidad no reemplaza fuentes ni responsabilidades; el relevo debe conservar los datos necesarios para revisar decisiones aunque otra persona no haya leído el diálogo del aula preparado para el ejercicio del curso."
+          ],
+          "aoi": {
+            "question": "Mi última broma puede acompañar la nota, pero no hacer su trabajo.",
+            "hint": "Busca lo que permite continuar con evidencia sin depender de nuestra conversación.",
+            "correct": "Exacto: relevo completo. Ahora sí, terminaste este curso y me dejaste presumir con fundamento.",
+            "soft": "No confundas reconocimiento de estudio y documentación del servicio que representa el caso.",
+            "sharp": "Porque Aoi sonrió no es un informe, tesoro. Pero después de documentar, vaya si celebro."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Objetivos comprobados",
+          "scenario": "La ficha final muestra generación correcta de informes, lectura del grupo sin escritura y una ejecución de archivo sin el fallo anterior, dentro del periodo y condiciones que declara el escenario.",
+          "explanation": "Esas pruebas respaldan los objetivos concretos observados. El cierre debe conservar fuente y alcance, sin presentarse como garantía eterna o revisión completa de toda actividad del equipo. Los pendientes y mejoras pueden acompañar una resolución útil del caso cuando se distingue claramente qué se verificó y qué requiere seguimiento posterior por su responsable."
+        },
+        {
+          "title": "Mejora de conservación",
+          "scenario": "La revisión propone ampliar cobertura futura de registros tras detectar un hueco histórico, pero el periodo ausente ya no está disponible en ninguna fuente que conserve el conjunto del taller.",
+          "explanation": "La mejora debe describirse como preparación para futuras preguntas, con responsable y criterio de verificación. No recupera por sí misma datos pasados. El cierre conserva ese límite y explica qué incertidumbre histórica queda, evitando que una recomendación parezca resolver retrospectivamente una ausencia de evidencia que el caso nunca pudo reconstruir."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Aula Norte presenta resultados ficticios de recuperación de informes y corrección de archivo; debes decidir qué permite cerrar la revisión y qué mejoras o límites deben conservarse.",
+      "scenario": "Aula Norte presenta resultados ficticios de recuperación de informes y corrección de archivo; debes decidir qué permite cerrar la revisión y qué mejoras o límites deben conservarse.",
+      "steps": [
+        "Compara cada objetivo con una comprobación pertinente.",
+        "Distingue recuperación observada y garantía universal.",
+        "Registra pendientes, responsable de mejoras y referencias para el siguiente turno."
+      ],
+      "sourceIds": [
+        "linux-response",
+        "linux-systemctl"
+      ],
+      "aoi": {
+        "intro": "Cerramos cuando los objetivos tienen pruebas, no cuando me aburro del caso.",
+        "theory0": "La etiqueta activo no reemplaza cada comprobación funcional que acordamos.",
+        "theory1": "Recuperado aquí y ahora no promete perfecto para siempre, cariño.",
+        "theory2": "Las mejoras necesitan responsable y motivo, no una lista de deseos técnicos.",
+        "theory3": "Deja un relevo claro; el siguiente turno merece menos adivinanzas.",
+        "case0": "Tres objetivos comprobados con sus límites: esa sí es una victoria que celebro.",
+        "case1": "La nueva retención ayudará después. El hueco histórico sigue necesitando su nota.",
+        "pass": "Terminaste el caso con evidencia y criterio. Ven, déjame presumir de ti un momento.",
+        "review": "Revisemos el cierre; una celebración no puede borrar los pendientes que aún importan."
+      }
+    }
+  ]
+}

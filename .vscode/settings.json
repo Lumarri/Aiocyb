@@ -1,0 +1,7 @@
+{
+  "cmake.configureOnOpen": false,
+  "cmake.configureOnEdit": false,
+  "cmake.ignoreCMakeListsMissing": true,
+  "cmake.showConfigureWithDebuggerNotification": false,
+  "cmake.buildDirectory": "${workspaceFolder}/build/windows/cmake-tools"
+}

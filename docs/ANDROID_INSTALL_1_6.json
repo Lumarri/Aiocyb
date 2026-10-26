@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "version": "1.6.0+8",
+  "package": "com.aiocyb.aiocyb",
+  "status": "not_attempted",
+  "reason": "adb devices -l returned no connected devices at completion.",
+  "visualVerificationOnHardware": false,
+  "lastConfirmedInstallation": "1.5.0+7",
+  "lastConfirmedInstallationReport": "docs/ANDROID_INSTALL_1_5.json",
+  "apk": "build/app/outputs/flutter-apk/app-release.apk"
+}

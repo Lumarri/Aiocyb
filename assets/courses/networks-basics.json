@@ -1,0 +1,1930 @@
+{
+  "id": "networks-basics",
+  "title": "Redes desde cero",
+  "description": "Comprende cómo se conectan tus dispositivos y aprende a describir problemas sin adivinar.",
+  "category": "Redes",
+  "symbol": "04",
+  "color": 4283958720,
+  "lessons": [
+    {
+      "id": "networks-basics-red",
+      "title": "Una red conecta recursos",
+      "minutes": 3,
+      "intro": "Reconoce qué convierte varios dispositivos en una red y distingue la comunicación entre ellos de la conexión con servicios externos como internet.",
+      "sections": [
+        {
+          "title": "Compartir requiere comunicación",
+          "body": "Una red permite que dispositivos intercambien datos mediante conexiones y reglas comunes. Puede unir solamente una computadora y una impresora, sin acceso a internet. Los equipos necesitan un medio para comunicarse, como cable o radio, y protocolos que organicen el intercambio. Estar cerca físicamente no basta: dos teléfonos apagados sobre una mesa no forman por sí solos una red. El objetivo es comunicar recursos de manera controlada."
+        }
+      ],
+      "steps": [
+        "Identifica dos dispositivos propios que intercambien información.",
+        "Señala si se comunican por cable o mediante radio."
+      ],
+      "scenario": "En un aula ficticia, una computadora envía documentos a una impresora mediante un cable de red. El edificio no tiene conexión al proveedor de internet ese día.",
+      "questions": [
+        {
+          "prompt": "¿Puede existir una red aunque no tenga acceso a internet?",
+          "options": [
+            "Sí, sus dispositivos pueden comunicarse localmente",
+            "No, internet es obligatorio",
+            "Solo si todos tienen una pantalla"
+          ],
+          "answer": 0,
+          "explanation": "La comunicación local ya constituye una red. Internet conecta muchas redes entre sí, pero no es un requisito para que una computadora intercambie datos con una impresora.",
+          "wrongExplanations": [
+            null,
+            "Esta opción confunde una red local con internet. Los dispositivos pueden intercambiar datos dentro del aula aunque el enlace al proveedor esté desconectado o no exista.",
+            "Las pantallas no determinan si existe una red. Una impresora o un sensor pueden comunicarse sin pantalla; importan sus conexiones y las reglas usadas para intercambiar información."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy uniremos dos puntos sin invocar magia, cariño. Una red pequeña también merece una explicación con carácter.",
+        "theory": "La impresora puede conversar con tu computadora sin pedir permiso a internet; qué independencia tan apropiada para empezar.",
+        "hint": "Observa quién necesita hablar con quién en el aula; no añadas destinos externos que el caso nunca menciona.",
+        "correct": "Exacto: comunicación local. El proveedor puede tomarse vacaciones y esos dos dispositivos todavía tienen algo útil que contarse.",
+        "soft": "Casi; revisemos si el documento necesita abandonar el aula. El tamaño de la conexión no decide este concepto.",
+        "sharp": "Internet no patentó las conversaciones digitales, carajo. Esa impresora no necesita recorrer el planeta para recibir una tarea.",
+        "pass": "Primera conexión entendida. Ya podemos mirar una red pequeña sin confundirla con toda la maldita internet, y me gusta.",
+        "review": "Volvamos al intercambio entre dos dispositivos. Te acompaño a separar conexión local de servicios externos sin ninguna prisa."
+      }
+    },
+    {
+      "id": "networks-basics-terminales",
+      "title": "Los extremos de la conversación",
+      "minutes": 3,
+      "intro": "Identifica dispositivos finales y reconoce que teléfonos, impresoras y sensores pueden originar o recibir información, aunque tengan funciones muy diferentes dentro de una red.",
+      "sections": [
+        {
+          "title": "Quién usa los datos",
+          "body": "Un dispositivo final participa como origen o destino de comunicaciones. Un portátil solicita una página, una impresora recibe trabajos y un sensor envía mediciones. No todos los terminales tienen teclado o pantalla. Se diferencian de equipos intermediarios, cuya función principal es trasladar tráfico entre conexiones. Un mismo aparato puede cumplir varios papeles, pero identificar qué hace en una situación ayuda a dibujar el recorrido de los datos."
+        }
+      ],
+      "steps": [
+        "Enumera dos dispositivos que utilicen información en tu entorno.",
+        "Describe qué datos envía o recibe cada uno."
+      ],
+      "scenario": "Una estación meteorológica doméstica ficticia mide temperatura y envía lecturas a una aplicación. Entre ambos hay un equipo que distribuye conexiones, pero el sensor no tiene pantalla.",
+      "questions": [
+        {
+          "prompt": "¿Por qué el sensor puede ser un dispositivo final?",
+          "options": [
+            "Porque ocupa más espacio que el router",
+            "Porque origina datos que otra aplicación recibe",
+            "Porque todos los sensores funcionan sin conexiones"
+          ],
+          "answer": 1,
+          "explanation": "El sensor participa como origen de información y por eso actúa como dispositivo final. Su tamaño y la ausencia de pantalla no cambian ese papel dentro de la comunicación.",
+          "wrongExplanations": [
+            "El tamaño físico no define la función de red. Un sensor pequeño puede originar mediciones, mientras un equipo mayor solo intermedia entre conexiones sin consumir esos datos.",
+            null,
+            "Un sensor puede necesitar una conexión para transmitir sus mediciones. Ser dispositivo final describe su papel como origen o destino, no una supuesta ausencia de comunicación con otros."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "No todos los protagonistas llevan pantalla, precioso. Hasta un sensor diminuto puede traer noticias interesantes a nuestra conversación digital.",
+        "theory": "Mira la función del aparato, no su peinado tecnológico: producir mediciones ya lo convierte en participante de la comunicación.",
+        "hint": "Busca cuál equipo produce la información del caso. Los accesorios visibles no explican el papel que estamos estudiando.",
+        "correct": "Bien visto: el sensor origina las lecturas. Un protagonista discreto, y aun así bastante más útil que presumir antenas.",
+        "soft": "Vamos a mirar qué hace el sensor con sus mediciones. Su aspecto no necesita decidir la respuesta por nosotros.",
+        "sharp": "Ese termómetro no necesita una pantalla gigante para tener voz, joder. Las mediciones ya salen de alguna parte.",
+        "pass": "Ya reconoces a quienes envían y reciben datos. Mi inventario de protagonistas acaba de ponerse mucho más interesante contigo.",
+        "review": "Revisemos origen y destino con ejemplos cotidianos. Un teléfono, una impresora y un sensor pueden ayudarte a distinguir funciones."
+      }
+    },
+    {
+      "id": "networks-basics-local",
+      "title": "Comunicar dentro de casa",
+      "minutes": 3,
+      "intro": "Distingue el intercambio local de datos del acceso a un servicio remoto y evita atribuir cualquier funcionamiento de la red al proveedor de internet.",
+      "sections": [
+        {
+          "title": "Cerca en la red",
+          "body": "Una red local permite comunicar dispositivos dentro de un entorno limitado, como una vivienda. Compartir una impresora o acceder a archivos de otro equipo puede realizarse sin salir a internet, según la configuración y los permisos. Que el enlace externo falle no implica que todos los servicios locales desaparezcan. También puede ocurrir lo contrario: internet funciona, pero un recurso compartido está apagado o no autoriza el acceso."
+        }
+      ],
+      "steps": [
+        "Elige un recurso compartido de un ejemplo ficticio.",
+        "Decide si su uso exige llegar a un servidor externo."
+      ],
+      "scenario": "La conexión externa de una casa ficticia se interrumpe. El portátil y una impresora permanecen encendidos y conectados a la misma red, con permisos correctos para imprimir.",
+      "questions": [
+        {
+          "prompt": "¿Qué puede seguir funcionando en esas condiciones?",
+          "options": [
+            "Una videollamada con un servidor externo",
+            "Una página nueva alojada fuera de casa",
+            "Enviar un trabajo a la impresora local"
+          ],
+          "answer": 2,
+          "explanation": "La impresora puede recibir datos dentro de la red de la vivienda sin utilizar el enlace externo. El caso especifica que los equipos siguen conectados y tienen permisos adecuados.",
+          "wrongExplanations": [
+            "La videollamada descrita necesita alcanzar un servicio externo. Si el enlace del hogar a internet está interrumpido, la conectividad local por sí sola no permite mantener ese acceso.",
+            "Abrir una página nueva alojada fuera requiere llegar a otros equipos mediante internet. Que la red doméstica siga activa no restablece automáticamente el enlace externo que el caso declara interrumpido.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy la casa sigue conversando aunque internet cierre la puerta. Me encanta una red que sabe mantenerse ocupada localmente.",
+        "theory": "Separar dentro y fuera evita culpar al proveedor por cada impresora malhumorada; para quejas teatrales ya estoy yo aquí.",
+        "hint": "Dibuja la vivienda como un límite. Pregúntate qué opción necesita cruzarlo para encontrar al equipo que responde al servicio.",
+        "correct": "Esa impresora tiene todo lo necesario dentro. La conexión externa cayó, pero no se llevó consigo cada conversación doméstica.",
+        "soft": "Comprueba dónde está el destino de cada comunicación. Hay una diferencia importante entre un recurso doméstico y un servidor remoto.",
+        "sharp": "El proveedor no tiene secuestrada tu impresora local, carajo. Sigue el destino del documento antes de acusar a medio planeta.",
+        "pass": "Dominaste el mapa doméstico. Ya puedes preguntar dónde vive el servicio antes de lanzar una queja con fuegos artificiales.",
+        "review": "Volvamos a localizar los destinos. Si identificas qué está dentro de casa, la dependencia del enlace externo quedará más clara."
+      }
+    },
+    {
+      "id": "networks-basics-internet",
+      "title": "Internet enlaza redes",
+      "minutes": 3,
+      "intro": "Comprende internet como una interconexión de redes independientes y diferencia esa infraestructura de una aplicación, una página web o una marca comercial concreta.",
+      "sections": [
+        {
+          "title": "Muchas redes, reglas compartidas",
+          "body": "Internet conecta numerosas redes que intercambian datos utilizando protocolos comunes. Tu proveedor conecta tu entorno con otras redes, donde pueden estar servicios de mensajería, páginas y aplicaciones. La web es uno de los usos de esa infraestructura, no su definición completa. Diferentes organizaciones administran partes del recorrido. Por ello, una avería en una plataforma puede dejar ese servicio inaccesible sin que toda la conectividad de internet haya desaparecido."
+        }
+      ],
+      "steps": [
+        "Nombra una aplicación que use internet y que no sea una página web.",
+        "Distingue el servicio de la infraestructura que permite alcanzarlo."
+      ],
+      "scenario": "En una ciudad ficticia falla la plataforma de videos de una empresa. Las personas todavía envían mensajes mediante otro servicio y consultan páginas de organizaciones distintas sin problemas.",
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra que otros servicios sigan funcionando?",
+          "options": [
+            "El fallo de una plataforma no implica que todo internet haya caído",
+            "Todas las empresas comparten el mismo servidor",
+            "Los mensajes nunca utilizan redes"
+          ],
+          "answer": 0,
+          "explanation": "Internet permite llegar a servicios diferentes administrados en redes distintas. La indisponibilidad de una plataforma puede ser un problema limitado a ella, mientras otras comunicaciones continúan funcionando normalmente.",
+          "wrongExplanations": [
+            null,
+            "Las empresas pueden operar infraestructuras y redes diferentes. El caso muestra precisamente que una plataforma falla mientras otros servicios siguen disponibles, sin exigir que compartan un único servidor.",
+            "La mensajería de internet intercambia datos mediante redes. Que continúe funcionando es una señal útil de conectividad hacia ese servicio, no una prueba de que los mensajes eviten la infraestructura."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Internet es bastante más grande que esa aplicación que siempre reclama atención. Vamos a quitarle un poco de protagonismo, cariño.",
+        "theory": "Una plataforma puede desmayarse sola mientras las demás siguen bailando. Mi diagnóstico exige saber quién cayó realmente en esta fiesta.",
+        "hint": "Compara el alcance del fallo con las comunicaciones que todavía funcionan; no extiendas una avería más allá de la evidencia.",
+        "correct": "Exactamente: plataforma caída no equivale a internet desaparecido. Un diagnóstico con límites merece una sonrisa especialmente satisfecha de mi parte.",
+        "soft": "Mira los servicios que siguen respondiendo. Esa evidencia permite describir el problema con más precisión antes de elegir una explicación.",
+        "sharp": "Una aplicación estornuda y ya declarabas muerto todo internet. Vaya funeral desproporcionado, joder; revisemos quién sigue respirando datos por ahí.",
+        "pass": "Ya diferencias infraestructura y servicio. El próximo drama de una aplicación tendrá que esforzarse más para confundirte con su actuación.",
+        "review": "Pensemos en una carretera que lleva a varios destinos. Un destino cerrado no demuestra que todas las rutas estén bloqueadas."
+      }
+    },
+    {
+      "id": "networks-basics-lan-wan",
+      "title": "LAN y WAN describen alcance",
+      "minutes": 3,
+      "intro": "Relaciona LAN y WAN con el alcance de una conexión y comprende por qué una organización puede comunicar varias redes locales distribuidas entre sedes.",
+      "sections": [
+        {
+          "title": "Del edificio a otras sedes",
+          "body": "Una LAN es una red de alcance local, como la de una oficina o vivienda. Una WAN conecta redes a distancias mayores, por ejemplo entre sucursales. Estos términos describen alcance y organización de la conectividad, no garantizan una velocidad concreta ni indican por sí mismos que una conexión sea segura. Una empresa puede tener varias LAN enlazadas mediante servicios de un proveedor y aplicar controles adicionales para proteger sus comunicaciones."
+        }
+      ],
+      "steps": [
+        "Imagina dos oficinas propias en ciudades diferentes.",
+        "Separa la red interna de cada oficina del enlace entre ambas."
+      ],
+      "scenario": "Una biblioteca ficticia tiene equipos conectados dentro de cada edificio y un enlace entre sedes de ciudades diferentes. El personal distingue las conexiones internas del servicio que une las sedes.",
+      "questions": [
+        {
+          "prompt": "¿Qué papel tiene el enlace entre sedes distantes?",
+          "options": [
+            "Es necesariamente una pantalla compartida",
+            "Conecta redes locales como parte de una WAN",
+            "Demuestra que todos los dispositivos están juntos"
+          ],
+          "answer": 1,
+          "explanation": "El enlace une redes que están en ubicaciones diferentes, por lo que corresponde al alcance de una WAN. Las conexiones dentro de cada edificio pueden seguir formando sus propias LAN.",
+          "wrongExplanations": [
+            "Compartir una pantalla es una función de una aplicación, no la descripción del enlace entre ciudades. El caso trata del alcance de redes que conectan distintas sedes de la organización.",
+            null,
+            "Los equipos permanecen distribuidos en varios edificios y ciudades. El enlace los comunica a distancia; no cambia su ubicación física ni convierte todas las sedes en un único espacio local."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Vamos a viajar entre sedes sin mover el sillón. Las siglas intimidan menos cuando les dibujas un mapa con intención.",
+        "theory": "Local y distante hablan de alcance, cariño. Ninguna sigla trae velocidad milagrosa ni seguridad certificada pegada a sus tres letras.",
+        "hint": "Observa qué conecta el enlace señalado y dónde están sus extremos; el contenido de los mensajes no define este alcance.",
+        "correct": "Bien: conectaste las sedes sin fingir que comparten habitación. La WAN hace de enlace entre esos entornos locales que identificaste.",
+        "soft": "Separar los edificios del enlace puede ayudarte. Piensa qué parte permanece dentro de una sede y cuál cruza la distancia.",
+        "sharp": "Dos ciudades no se meten en el mismo armario de red porque nos venga cómodo, carajo. El alcance también cuenta.",
+        "pass": "Mapa comprendido: redes dentro de sedes y conexiones entre ellas. Mi ojo cibernético celebra ese orden geográfico tan razonable contigo.",
+        "review": "Dibujemos un círculo por edificio y una línea entre ciudades. Esa separación visual hará que las siglas tengan una función clara."
+      }
+    },
+    {
+      "id": "networks-basics-cliente-servidor",
+      "title": "Pedir y responder",
+      "minutes": 3,
+      "intro": "Reconoce los papeles de cliente y servidor en una comunicación y entiende que esas funciones dependen de lo que hace el programa en cada intercambio.",
+      "sections": [
+        {
+          "title": "Funciones de una conversación",
+          "body": "En el modelo cliente-servidor, un cliente solicita un servicio y un servidor atiende peticiones. Un navegador puede pedir una página y un programa remoto devolverla. Son funciones, no etiquetas permanentes de tamaño o precio: una computadora personal puede ofrecer un servicio en una red autorizada. Un servidor tampoco tiene que mostrar una pantalla al usuario. Identificar quién solicita y quién responde ayuda a describir fallos sin confundir los participantes."
+        }
+      ],
+      "steps": [
+        "Describe una petición de página usando palabras sencillas.",
+        "Marca el programa que solicita y el que responde."
+      ],
+      "scenario": "En una práctica ficticia, un navegador pide el catálogo de una biblioteca. Un programa del edificio recibe esa petición y devuelve los datos, aunque el equipo no tiene pantalla conectada.",
+      "questions": [
+        {
+          "prompt": "¿Qué actúa como cliente en este intercambio?",
+          "options": [
+            "El edificio completo porque guarda libros",
+            "Cualquier programa que tenga una pantalla bonita",
+            "El navegador que solicita el catálogo"
+          ],
+          "answer": 2,
+          "explanation": "El navegador cumple la función de cliente al iniciar la petición del catálogo. El programa que recibe y atiende esa solicitud actúa como servidor, independientemente del aspecto físico de los equipos.",
+          "wrongExplanations": [
+            "Un edificio es una ubicación, no el programa que solicita el servicio descrito. Para reconocer al cliente debes seguir la petición concreta del catálogo y ver qué aplicación la inicia.",
+            "El diseño visual no define el papel de cliente. Un programa sin interfaz gráfica también puede solicitar servicios; aquí importa quién realiza la petición y quién devuelve la respuesta.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Uno pide y otro responde; sorprendentemente, no estoy describiendo mis caprichos. Vamos a identificar las funciones de esta conversación técnica.",
+        "theory": "Cliente y servidor son papeles del intercambio. Ni la carcasa cara ni una pantalla brillante reparten esos puestos por nosotros.",
+        "hint": "Sigue la petición del catálogo desde su origen. Pregúntate qué programa decide solicitarlo y cuál prepara los datos de vuelta.",
+        "correct": "El navegador pidió el catálogo: cliente localizado. Me gusta cuando sigues acciones concretas en vez de juzgar aparatos por su apariencia.",
+        "soft": "Relee quién envía la solicitud. No necesitamos evaluar el precio del equipo ni su decoración para asignar esta función de red.",
+        "sharp": "Un edificio no pulsa pedir catálogo por voluntad propia, joder. Busquemos el programa que inicia la conversación y dejemos la arquitectura descansar.",
+        "pass": "Ya puedes repartir los papeles sin casting dramático. Pedir y atender son pistas bastante mejores que mirar la carcasa del dispositivo.",
+        "review": "Representemos el intercambio con dos flechas: solicitud y respuesta. Localizar quién empieza la petición te ayudará a reconocer al cliente correctamente."
+      }
+    },
+    {
+      "id": "networks-basics-pares",
+      "title": "Compartir entre pares",
+      "minutes": 3,
+      "intro": "Comprende el intercambio entre pares y reconoce que un dispositivo puede compartir recursos y solicitarlos, sin que eso elimine permisos ni medidas de protección.",
+      "sections": [
+        {
+          "title": "Los papeles pueden alternarse",
+          "body": "En un modelo entre pares, los participantes pueden ofrecer y solicitar recursos. Dos computadoras autorizadas podrían compartir carpetas entre sí, de modo que ambas cumplen funciones de cliente y servidor según el intercambio. Esto no significa acceso público ni ausencia de controles. Cada recurso necesita permisos apropiados y las aplicaciones pueden incorporar componentes centrales. El modelo describe la relación entre participantes; no garantiza privacidad, legalidad o seguridad de lo que compartan."
+        }
+      ],
+      "steps": [
+        "Imagina dos equipos propios con carpetas de práctica.",
+        "Describe cómo cada equipo podría pedir y ofrecer un documento."
+      ],
+      "scenario": "Dos estudiantes ficticios usan equipos propios y carpetas autorizadas para intercambiar apuntes. Cada computadora puede solicitar archivos de la otra y también ofrecer los suyos mediante permisos específicos.",
+      "questions": [
+        {
+          "prompt": "¿Qué caracteriza este intercambio entre pares?",
+          "options": [
+            "Ambos participantes pueden solicitar y ofrecer recursos",
+            "Todos los archivos se vuelven públicos automáticamente",
+            "Desaparece la necesidad de comprobar permisos"
+          ],
+          "answer": 0,
+          "explanation": "Los equipos alternan funciones según la operación: uno pide un archivo y el otro lo ofrece. Ese modelo no elimina la obligación de controlar quién accede a cada recurso compartido.",
+          "wrongExplanations": [
+            null,
+            "El intercambio entre pares no exige publicar todos los archivos. La visibilidad y el acceso dependen de las funciones de la aplicación y de los permisos configurados por sus participantes.",
+            "Compartir entre pares también requiere autorización. Permitir acceso a otra computadora no significa que cualquier persona pueda leer o modificar todos los documentos almacenados en esos equipos personales."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy todos pueden pedir y ofrecer, aunque mi ego prefiera recibir atenciones. Observemos qué significa compartir de verdad entre participantes autorizados.",
+        "theory": "Cambiar de papel no abre todas las puertas. Un intercambio entre pares sigue necesitando permisos, incluso si los equipos son amigos.",
+        "hint": "Mira si los roles permanecen fijos o cambian según el archivo solicitado. No deduzcas permisos universales solo por compartir entre equipos.",
+        "correct": "Exacto: cualquiera de los dos puede pedir y ofrecer. Esa flexibilidad no viene acompañada de una llave maestra para todos los documentos.",
+        "soft": "Revisemos el comportamiento de ambos equipos. Compartir recursos y dejar archivos públicos son decisiones diferentes que conviene mantener separadas en este caso.",
+        "sharp": "Entre pares no significa barra libre de documentos, carajo. La amistad digital no revoca los permisos de nadie por decreto cósmico.",
+        "pass": "Papeles flexibles, permisos claros: combinación bastante atractiva para una red ordenada. Ya reconoces el modelo sin regalar acceso a medio vecindario.",
+        "review": "Imagina que cada computadora ofrece una carpeta distinta y pide otra. Esa alternancia explica el modelo sin cambiar las autorizaciones necesarias."
+      }
+    },
+    {
+      "id": "networks-basics-adaptador",
+      "title": "La interfaz de red",
+      "minutes": 3,
+      "intro": "Identifica el adaptador como interfaz de conexión y reconoce que un dispositivo puede disponer de varias interfaces, con estados y propiedades que se revisan por separado.",
+      "sections": [
+        {
+          "title": "Cada conexión tiene su interfaz",
+          "body": "Una interfaz de red permite al dispositivo conectarse a un medio. Un portátil puede tener un adaptador Ethernet para cable y otro inalámbrico para Wi-Fi. Cada interfaz puede estar activada, desactivada o sin enlace y dispone de propiedades propias. Tener una conexión funcionando no demuestra que la otra también funcione. Al diagnosticar conviene identificar qué interfaz se está utilizando antes de cambiar ajustes o interpretar direcciones que pertenecen a conexiones distintas."
+        }
+      ],
+      "steps": [
+        "Localiza el listado de conexiones en un dispositivo propio.",
+        "Distingue la interfaz activa de las que no tienen enlace."
+      ],
+      "scenario": "Un portátil ficticio navega mediante Wi-Fi, pero su cable está desconectado. En los ajustes aparecen dos adaptadores distintos y solo la interfaz inalámbrica indica una conexión activa en ese momento.",
+      "questions": [
+        {
+          "prompt": "¿Qué debe revisarse antes de diagnosticar esa conexión?",
+          "options": [
+            "El color del fondo de pantalla",
+            "Qué interfaz está usando realmente el tráfico",
+            "Si todos los adaptadores tienen el mismo nombre"
+          ],
+          "answer": 1,
+          "explanation": "Identificar la interfaz utilizada permite consultar el estado y los datos relevantes de esa conexión. El adaptador Ethernet desconectado no explica por sí mismo un problema en la sesión inalámbrica activa.",
+          "wrongExplanations": [
+            "El fondo de pantalla no determina qué adaptador transporta los datos. Debes observar el estado de las interfaces para distinguir la conexión activa de otra que esté desconectada o deshabilitada.",
+            null,
+            "Los adaptadores pueden tener nombres diferentes y cumplir funciones distintas sin problema. Lo importante es identificar cuál está activo para el tráfico que quieres analizar, no igualar sus etiquetas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Tu portátil puede tener más de una puerta de red. Vamos a mirar cuál está abierta antes de culpar a la equivocada.",
+        "theory": "Wi-Fi funcionando no resucita un cable desconectado, precioso. Cada interfaz merece su propio diagnóstico, aunque compartan carcasa y batería contigo.",
+        "hint": "Observa los estados de los adaptadores y relaciónalos con el medio conectado. Una etiqueta visual ajena a la red no aporta evidencia.",
+        "correct": "Interfaz activa identificada: ahora sí miramos la puerta correcta. Los otros adaptadores pueden quedarse tranquilos mientras revisamos esta conversación concreta.",
+        "soft": "Hay dos conexiones posibles, pero solo una está activa. Separemos sus estados antes de atribuir el problema al primer nombre del listado.",
+        "sharp": "El cable desenchufado no puede declarar sobre cada paquete inalámbrico, joder. Primero identifiquemos por dónde está saliendo realmente la conversación.",
+        "pass": "Ya diferencias interfaces dentro del mismo equipo. Tu diagnóstico acaba de ganar precisión y mi ceja acaba de perder un motivo de protesta.",
+        "review": "Volvamos a emparejar cada adaptador con su medio. Identificar Wi-Fi y cable por separado ayudará a leer correctamente sus estados."
+      }
+    },
+    {
+      "id": "networks-basics-ethernet",
+      "title": "Ethernet lleva datos por cable",
+      "minutes": 3,
+      "intro": "Reconoce Ethernet como tecnología de red habitual y diferencia la presencia de un cable conectado de la confirmación de que todos los servicios funcionan correctamente.",
+      "sections": [
+        {
+          "title": "Una conexión necesita más que el cable",
+          "body": "Ethernet organiza comunicaciones de red y suele utilizar cables de cobre en redes locales. Conectar el cable correctamente puede establecer un enlace entre interfaces compatibles, pero no prueba acceso a internet ni autorización para usar cualquier servicio. El equipo todavía necesita una configuración adecuada y un destino disponible. Las luces de enlace ayudan a observar la conexión física, aunque su significado depende del aparato y deben interpretarse junto con los indicadores del sistema."
+        }
+      ],
+      "steps": [
+        "Observa un cable de red propio sin modificar conexiones ajenas.",
+        "Relaciona el indicador de enlace con el estado mostrado por el sistema."
+      ],
+      "scenario": "Una computadora ficticia tiene cable Ethernet conectado y muestra enlace activo. Sin embargo, el servidor del catálogo está apagado, mientras otros dispositivos de la oficina continúan comunicándose entre sí normalmente.",
+      "questions": [
+        {
+          "prompt": "¿Qué confirma principalmente el enlace Ethernet activo?",
+          "options": [
+            "Que todos los servicios remotos funcionan",
+            "Que ninguna cuenta necesita contraseña",
+            "Que hay conexión de enlace con el equipo del otro extremo"
+          ],
+          "answer": 2,
+          "explanation": "El estado de enlace informa sobre la conexión entre interfaces. No garantiza que un servidor esté encendido, que internet sea accesible o que una cuenta tenga autorización para utilizar un servicio.",
+          "wrongExplanations": [
+            "Un enlace activo no verifica cada destino remoto. El servidor del caso está apagado, por lo que su servicio puede fallar aunque la conexión física y otras comunicaciones locales funcionen correctamente.",
+            "Las credenciales y autorizaciones pertenecen al control de acceso de los servicios. Conectar Ethernet no elimina esas comprobaciones ni concede permisos universales sobre cuentas o recursos de la red.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "El cable es útil, pero no hace milagros, cariño. Hoy evitaremos atribuirle superpoderes por el simple hecho de estar enchufado.",
+        "theory": "Una luz de enlace no es un certificado de felicidad universal. El servidor apagado seguirá ignorándonos con una disciplina bastante irritante.",
+        "hint": "Limita la conclusión a lo que observa el indicador. Después piensa qué otras condiciones necesita el catálogo para responder a una solicitud.",
+        "correct": "Eso confirma el enlace, no todos los servicios. Ya estás interpretando una señal sin inventarle poderes que el fabricante nunca prometió.",
+        "soft": "La luz aporta información, pero su alcance es limitado. Pensemos qué parte de la conexión está comprobando realmente en este ejemplo.",
+        "sharp": "Un LED no resucita servidores ni firma autorizaciones, carajo. Dejemos de pedirle al cable un trabajo que pertenece a otros componentes.",
+        "pass": "Conexión física comprendida y milagros descartados. Me gusta cómo separas evidencias pequeñas de conclusiones gigantes antes de que aparezca el siguiente fallo.",
+        "review": "Imagina el enlace como una puerta conectada. Todavía necesitas que el servicio del destino exista y pueda atenderte cuando llegues allí."
+      }
+    },
+    {
+      "id": "networks-basics-conectores",
+      "title": "Conectores y daños visibles",
+      "minutes": 3,
+      "intro": "Aprende a revisar visualmente un cable de cobre propio y evita forzar conectores o confundir un daño físico evidente con un problema de permisos digitales.",
+      "sections": [
+        {
+          "title": "Revisión sin fuerza bruta",
+          "body": "Los conectores de red deben encajar en puertos compatibles sin aplicar fuerza excesiva. En cableado de cobre doméstico son habituales conectores modulares conocidos comúnmente como RJ45. Una pestaña rota, un cable muy aplastado o contactos dañados pueden contribuir a pérdidas de enlace. Inspecciona únicamente equipos propios o autorizados y evita tocar cableado eléctrico. Si hay daño, reemplazar el cable con uno adecuado suele ser preferible a improvisar reparaciones sin conocimientos."
+        }
+      ],
+      "steps": [
+        "Inspecciona visualmente un cable propio y su pestaña.",
+        "Si observas daño, planifica sustituirlo por un cable compatible sin forzar el puerto."
+      ],
+      "scenario": "En una mesa ficticia, el cable de una computadora pierde contacto al moverse. Su pestaña está rota y el sistema alterna entre enlace activo y desconectado durante la práctica autorizada.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es una comprobación inicial razonable?",
+          "options": [
+            "Revisar el cable y probar uno compatible en buen estado",
+            "Introducir el conector con herramientas a la fuerza",
+            "Cambiar las contraseñas de todos los usuarios"
+          ],
+          "answer": 0,
+          "explanation": "La evidencia apunta a una conexión física inestable. Inspeccionar y sustituir un cable propio dañado por uno compatible permite comprobar esa posibilidad sin forzar el puerto ni modificar permisos de usuarios.",
+          "wrongExplanations": [
+            null,
+            "Forzar el conector puede dañar el puerto o empeorar el problema. Un equipo autorizado debe revisarse con cuidado, usando conectores compatibles y reemplazando elementos dañados en lugar de aplicar herramientas o presión excesiva.",
+            "Cambiar contraseñas no repara una pestaña rota ni estabiliza un contacto físico. La comprobación debe corresponder a los síntomas observados antes de modificar configuraciones que afectan a otras personas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Mi brazo aguanta arañazos; tu puerto no necesita una pelea. Hoy revisamos conectores con ojos atentos y cero fuerza teatral.",
+        "theory": "Un clic ausente y una pestaña rota cuentan una historia física. No la conviertas en una tragedia de contraseñas sin motivo.",
+        "hint": "Relaciona el movimiento del cable con el cambio del indicador. El primer paso debería comprobar esa relación sin añadir daños nuevos.",
+        "correct": "Revisión y cable compatible: buena elección. Le diste al síntoma una comprobación proporcional, sin convertir el puerto en un campo de batalla.",
+        "soft": "Observa qué cambia justo cuando mueves el cable. Esa coincidencia ofrece una pista concreta antes de tocar ajustes de cuentas o servicios.",
+        "sharp": "El puerto no pidió terapia con alicates, joder. Si el conector está roto, más fuerza solo puede agravar esta pequeña telenovela física.",
+        "pass": "Inspección sensata completada. Ya sabes que un daño visible merece atención concreta antes de culpar al software por todos los males del escritorio.",
+        "review": "Repasemos el síntoma y su momento: el enlace cambia al mover el cable. Busca una prueba sencilla que examine esa causa posible."
+      }
+    },
+    {
+      "id": "networks-basics-fibra",
+      "title": "Fibra: señales de luz",
+      "minutes": 3,
+      "intro": "Reconoce la fibra óptica como medio de transmisión y aprende que su capacidad para transportar luz no sustituye los controles de acceso ni el cifrado.",
+      "sections": [
+        {
+          "title": "Otro medio, funciones distintas",
+          "body": "La fibra óptica transporta señales mediante luz y se utiliza en enlaces locales y de larga distancia. Puede ofrecer buenas capacidades y resistir interferencias electromagnéticas que afectan al cobre, según el equipo y el enlace. Eso no convierte sus datos en secretos automáticamente: privacidad y autorización siguen necesitando medidas apropiadas. Sus conectores requieren cuidado. No mires directamente dentro de puertos o extremos ópticos ni intentes repararlos sin personal capacitado y autorización."
+        }
+      ],
+      "steps": [
+        "Identifica la fibra solamente mediante etiquetas o documentación del equipo.",
+        "Distingue el medio utilizado de las medidas que protegen la información."
+      ],
+      "scenario": "Una oficina ficticia cambia un enlace de cobre por fibra óptica. Una persona afirma que ya no necesitan proteger cuentas porque los datos viajan usando señales de luz entre los equipos.",
+      "questions": [
+        {
+          "prompt": "¿Qué afirmación corrige esa conclusión?",
+          "options": [
+            "La luz elimina cualquier necesidad de autorización",
+            "El medio físico no reemplaza autenticación ni cifrado",
+            "Toda fibra funciona sin equipos en los extremos"
+          ],
+          "answer": 1,
+          "explanation": "La fibra describe cómo se transmiten señales, pero no determina quién puede acceder ni cómo se protege el contenido. Autenticación y cifrado cumplen funciones distintas que siguen siendo necesarias según el servicio.",
+          "wrongExplanations": [
+            "La autorización controla qué acciones puede realizar una persona o cuenta. Cambiar el medio de transmisión a luz no concede ni restringe automáticamente esos permisos dentro de las aplicaciones utilizadas.",
+            null,
+            "La fibra necesita componentes adecuados para transmitir y recibir señales ópticas. El medio no actúa solo ni sustituye las funciones de los equipos o los controles de seguridad de los servicios."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy viajamos con luz, precioso, pero sin cuentos de invulnerabilidad. Un cable elegante también necesita una explicación con los pies puestos.",
+        "theory": "La fibra puede evitar ciertas interferencias; no puede decidir quién merece leer tus documentos. Hasta mis reflejos cian tienen límites de trabajo.",
+        "hint": "Separa la forma de transportar señales de las reglas que permiten acceder a información. Son decisiones diferentes dentro de esta oficina.",
+        "correct": "Medio y protección separados: respuesta precisa. La luz hace su trabajo sin usurpar el puesto de contraseñas, permisos y cifrado bien elegidos.",
+        "soft": "La fibra cambia cómo viaja la señal. Revisemos si eso modifica por sí mismo quién puede usar una cuenta en el servicio.",
+        "sharp": "Brillar no convierte un cable en guardia de seguridad, carajo. Si bastara con luz bonita, yo ya habría blindado el planeta entero.",
+        "pass": "Entendiste la fibra sin convertirla en amuleto. Me encanta cuando un avance técnico conserva una descripción clara y libre de promesas imposibles.",
+        "review": "Volvamos a distinguir transmisión, acceso y protección del contenido. Cada función necesita su propia explicación y no depende solo del tipo de cable."
+      }
+    },
+    {
+      "id": "networks-basics-radio",
+      "title": "La radio es un medio compartido",
+      "minutes": 3,
+      "intro": "Comprende que las conexiones inalámbricas usan radio y que obstáculos, distancia y otras transmisiones pueden afectar el enlace sin demostrar una intrusión en tus cuentas.",
+      "sections": [
+        {
+          "title": "El entorno también comunica",
+          "body": "Una conexión inalámbrica transmite señales por radio entre interfaces compatibles. Las condiciones del entorno influyen: paredes, distancia y otras emisiones pueden reducir la calidad del enlace. Tener señal no equivale a tener acceso a internet, porque todavía intervienen configuración y servicios externos. Tampoco cualquier degradación implica un ataque. Antes de concluir una causa, observa cuándo ocurre el problema y compara ubicaciones permitidas sin modificar redes que no administras ni intentar interceptar comunicaciones ajenas."
+        }
+      ],
+      "steps": [
+        "Observa un indicador de señal en un equipo propio.",
+        "Compara su estado en dos ubicaciones permitidas sin cambiar la configuración."
+      ],
+      "scenario": "En una casa ficticia, el portátil pierde calidad de conexión al pasar detrás de varias paredes. Cerca del punto de acceso vuelve a funcionar mejor sin cambiar ninguna contraseña ni aplicación.",
+      "questions": [
+        {
+          "prompt": "¿Qué explicación es compatible con esas observaciones?",
+          "options": [
+            "Una contraseña se vuelve más corta detrás de paredes",
+            "Siempre hay un atacante cuando baja la señal",
+            "Los obstáculos y la distancia pueden afectar la radio"
+          ],
+          "answer": 2,
+          "explanation": "El cambio de ubicación coincide con variaciones del enlace inalámbrico. Paredes y distancia pueden influir en la señal; estas observaciones no demuestran por sí solas un compromiso de cuentas o una intrusión.",
+          "wrongExplanations": [
+            "La longitud de una contraseña no cambia por mover un portátil. Los síntomas del caso dependen de ubicación y obstáculos, por lo que conviene distinguir autenticación de condiciones de transmisión inalámbrica.",
+            "Una señal degradada tiene varias causas posibles, entre ellas obstáculos y distancia. Afirmar siempre un ataque excede la evidencia; primero deben compararse las condiciones del enlace sin inventar una causa confirmada.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Tu señal tiene que convivir con paredes bastante poco simpáticas. Hoy observaremos el entorno sin acusar automáticamente al vecindario de conspiración digital.",
+        "theory": "La radio no atraviesa cualquier obstáculo con mi misma insolencia. Distancia y materiales pueden cambiar la calidad de una conexión perfectamente autorizada.",
+        "hint": "Compara lo que cambia entre ambas ubicaciones y lo que permanece igual. Esa diferencia aporta una pista física que puedes analizar con calma.",
+        "correct": "Obstáculos y distancia encajan con la evidencia. Un diagnóstico prudente resulta más atractivo que inventar villanos cada vez que cae una barra de señal.",
+        "soft": "Miremos el cambio de ubicación antes de elegir una causa. La contraseña y las aplicaciones permanecen iguales durante las dos observaciones del caso.",
+        "sharp": "Una pared no hackeó tu cuenta, joder. Primero expliquemos cómo viaja la radio antes de montar un juicio contra toda la maldita calle.",
+        "pass": "Ya relacionas entorno y enlace sin confundir señal con seguridad de cuentas. Mis antenas imaginarias celebran esa precisión mientras seguimos aprendiendo juntos.",
+        "review": "Repasemos la ruta física de la señal. Observar distancia y obstáculos puede explicar variaciones sin asegurar todavía una causa única para todos los problemas."
+      }
+    },
+    {
+      "id": "networks-basics-switch",
+      "title": "El switch une equipos locales",
+      "minutes": 3,
+      "intro": "Identifica la función habitual de un switch dentro de una red local y comprende que conectar equipos a sus puertos no crea automáticamente acceso a internet.",
+      "sections": [
+        {
+          "title": "Interconexión dentro de una red",
+          "body": "Un switch conecta equipos de una red local y reenvía tramas entre sus puertos usando información de enlace, habitualmente direcciones MAC. Puede aprender dónde aparecen determinadas direcciones para dirigir tráfico de manera adecuada. No es simplemente un enchufe de internet: la salida a otras redes depende de funciones adicionales, normalmente proporcionadas por un router. Existen switches con capacidades diferentes, por lo que conviene describir la función usada y no atribuir todas las características a cualquier modelo."
+        }
+      ],
+      "steps": [
+        "Dibuja tres equipos conectados a un switch ficticio.",
+        "Separa ese enlace local de una posible salida a otras redes."
+      ],
+      "scenario": "Tres computadoras ficticias intercambian archivos a través de un switch. Ningún equipo proporciona salida a otras redes y no hay un enlace contratado que conecte ese conjunto con un proveedor externo.",
+      "questions": [
+        {
+          "prompt": "¿Qué función está cumpliendo principalmente el switch?",
+          "options": [
+            "Conectar equipos para intercambiar tráfico dentro de la red local",
+            "Crear una suscripción automática al proveedor",
+            "Convertir todas las computadoras en servidores web públicos"
+          ],
+          "answer": 0,
+          "explanation": "El switch interconecta los equipos locales y reenvía su tráfico de enlace. Tener puertos conectados no contrata internet ni publica servicios; esas funciones requieren otras condiciones y configuraciones adicionales.",
+          "wrongExplanations": [
+            null,
+            "Un switch no contrata servicios externos por conectar equipos. El caso no tiene salida a otras redes, aunque la comunicación entre las computadoras locales pueda funcionar mediante sus puertos.",
+            "Conectar un dispositivo no publica automáticamente un servidor web. Ofrecer servicios requiere programas y configuración, mientras el switch del caso está cumpliendo la función de interconectar equipos dentro de la red."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "El switch reparte conexiones locales con más disciplina que una reunión de grupo. Vamos a reconocer su oficio sin ascenderlo a proveedor universal.",
+        "theory": "Muchos puertos no equivalen a internet infinito, cariño. Ese equipo ayuda a comunicar dispositivos locales y necesita contexto para hacer algo más ambicioso.",
+        "hint": "Observa dónde están los equipos conectados y qué enlaces faltan. La pregunta pide la función que el caso sí muestra funcionando claramente.",
+        "correct": "Conexión local: ese es su papel aquí. Las tres computadoras pueden conversar sin que el switch invente una salida externa de la nada.",
+        "soft": "Separaremos los puertos locales del enlace a otras redes. El caso muestra una función concreta y no incluye una conexión contratada con un proveedor.",
+        "sharp": "El switch no imprime contratos de internet por sus rejillas, carajo. Tiene puertos para comunicar equipos, no una oficina comercial secreta dentro de la carcasa.",
+        "pass": "Switch identificado sin poderes inventados. Ya puedes dibujar una pequeña red y explicar quién conecta sus equipos antes de hablar de destinos externos.",
+        "review": "Imagina los puertos como conexiones dentro del mismo entorno. Después añade por separado el equipo que permitiría llegar a redes diferentes cuando exista esa salida."
+      }
+    },
+    {
+      "id": "networks-basics-mac",
+      "title": "MAC identifica una interfaz en el enlace",
+      "minutes": 3,
+      "intro": "Reconoce para qué se utiliza una dirección MAC y evita tratarla como una identificación personal infalible o como prueba suficiente de que un dispositivo es confiable.",
+      "sections": [
+        {
+          "title": "Una dirección no demuestra confianza",
+          "body": "Las direcciones MAC se utilizan en comunicaciones de enlace, como Ethernet y Wi-Fi, para identificar interfaces dentro de ese contexto. Un dispositivo con varias interfaces puede tener varias direcciones. Además, algunos sistemas usan direcciones aleatorias y ciertas configuraciones permiten modificarlas. Por ello, una MAC no es una identidad humana permanente ni una contraseña. Puede ayudar a administrar la red, pero por sí sola no demuestra quién controla un equipo ni garantiza que sea legítimo."
+        }
+      ],
+      "steps": [
+        "Localiza una dirección física en los ajustes de un equipo propio.",
+        "Distingue ese identificador de las credenciales que autorizan un acceso."
+      ],
+      "scenario": "En una práctica doméstica ficticia aparece una MAC conocida en una lista de equipos. Una persona concluye que eso garantiza la identidad del usuario y elimina cualquier necesidad de autenticación del servicio.",
+      "questions": [
+        {
+          "prompt": "¿Qué limitación tiene esa conclusión?",
+          "options": [
+            "Una MAC siempre contiene el nombre legal del dueño",
+            "La MAC por sí sola no demuestra identidad ni confianza",
+            "Las interfaces nunca utilizan identificadores de enlace"
+          ],
+          "answer": 1,
+          "explanation": "La dirección MAC es un identificador de enlace y puede variar o modificarse en ciertos entornos. Reconocerla en una lista no sustituye comprobar la identidad y autorización requeridas por un servicio.",
+          "wrongExplanations": [
+            "Una MAC no incorpora de forma obligatoria el nombre legal de su propietario. Identifica una interfaz en determinado contexto y no permite deducir por sí sola qué persona controla ese equipo.",
+            null,
+            "Las interfaces sí pueden utilizar identificadores MAC para comunicarse en el enlace. El error del caso consiste en convertir ese dato en prueba de identidad y confianza, no en negar su existencia."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy una dirección tiene nombre propio, pero no carnet de persona. Voy a pinchar esa burbuja de confianza con bastante delicadeza por ahora.",
+        "theory": "Conocer una MAC no equivale a conocer a su dueño. Mi sonrisa también es reconocible y aun así exijo comprobar permisos cuando corresponde.",
+        "hint": "Piensa si un identificador técnico y una prueba de identidad cumplen el mismo papel. Revisa qué cambios permiten algunos sistemas en sus interfaces.",
+        "correct": "Bien: identificador de enlace, no certificado de confianza. Ya le pusiste límites al dato antes de que intentara suplantar una autenticación completa.",
+        "soft": "La dirección ayuda a reconocer una interfaz en contexto. Revisemos por qué eso no demuestra necesariamente qué persona está usando el dispositivo en ese momento.",
+        "sharp": "Una MAC no viene firmada por el notario de internet, joder. No le entreguemos todos los permisos por aparecer familiar en una lista de dispositivos.",
+        "pass": "Identificador comprendido y confianza bajo control. Me gusta esa costumbre tuya de preguntar qué demuestra realmente un dato antes de concederle autoridad automática.",
+        "review": "Comparemos identificador, persona y autorización con ejemplos separados. Distinguir esas tres ideas aclara por qué una dirección conocida no basta para permitir cualquier acción."
+      }
+    },
+    {
+      "id": "networks-basics-router",
+      "title": "El router comunica redes diferentes",
+      "minutes": 3,
+      "intro": "Distingue la función de un router de la de un switch y reconoce que la conectividad entre redes depende de decisiones de encaminamiento y configuración.",
+      "sections": [
+        {
+          "title": "Elegir hacia dónde reenviar",
+          "body": "Un router interconecta redes y decide a qué siguiente enlace reenviar paquetes según información de encaminamiento. En casa suele comunicar la red doméstica con la del proveedor, aunque un router puede conectar otros tipos de redes. No significa que el camino sea siempre directo o que todos los destinos estén permitidos. Sus rutas y controles determinan lo que puede alcanzar. La función de conectar redes es diferente de conectar interfaces dentro de una misma red local."
+        }
+      ],
+      "steps": [
+        "Dibuja dos redes distintas en una hoja.",
+        "Coloca entre ellas un equipo que proporcione encaminamiento autorizado."
+      ],
+      "scenario": "Un laboratorio ficticio tiene una red para equipos de administración y otra para dispositivos de práctica. Un equipo autorizado recibe paquetes de una red y decide cómo reenviarlos hacia la otra.",
+      "questions": [
+        {
+          "prompt": "¿Qué función realiza ese equipo entre las dos redes?",
+          "options": [
+            "Mostrar páginas del navegador",
+            "Guardar todas las contraseñas de usuarios",
+            "Encaminar tráfico como un router"
+          ],
+          "answer": 2,
+          "explanation": "El equipo está tomando decisiones para reenviar paquetes entre redes diferentes, que es la función de encaminamiento. Eso no implica mostrar páginas ni almacenar las credenciales personales de quienes utilizan esas redes.",
+          "wrongExplanations": [
+            "Mostrar páginas corresponde al uso de una aplicación como el navegador. El caso describe un equipo que interconecta redes y elige por dónde reenviar paquetes, una función diferente a presentar contenido.",
+            "Guardar contraseñas no explica el reenvío entre redes. Un router usa información de encaminamiento y puede aplicar controles, pero no necesita almacenar todas las credenciales de usuarios para cumplir la función descrita.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Si los datos cambian de red, alguien debe indicar el siguiente paso. Nuestro router trabaja con rutas, sin necesitar una capa de superhéroe.",
+        "theory": "Un switch conecta equipos locales; el router comunica redes. Mi ceja disfruta cuando cada aparato recibe una tarea concreta y una descripción sin fantasías.",
+        "hint": "Fíjate en que existen dos redes distintas. Busca la opción relacionada con trasladar paquetes entre ellas, sin añadir funciones de aplicaciones o credenciales personales.",
+        "correct": "Encaminamiento localizado. El equipo elige cómo reenviar entre redes y no necesita hacerse pasar por navegador ni convertirse en cajón universal de contraseñas personales.",
+        "soft": "El detalle importante es la separación entre redes. Volvamos a la acción de decidir el siguiente enlace antes de escoger una función.",
+        "sharp": "El router no navega por diversión ni colecciona secretos como estampitas, carajo. Está moviendo paquetes entre redes; le basta con tener claro ese trabajo aquí.",
+        "pass": "Ya distingues conectar equipos y conectar redes. Ese pequeño salto conceptual permite dibujar recorridos con mucha menos confusión y me tiene bastante satisfecha contigo.",
+        "review": "Dibuja una frontera entre las dos redes del caso. Después busca qué función permite que un paquete cruce esa frontera mediante decisiones de reenvío autorizadas."
+      }
+    },
+    {
+      "id": "networks-basics-gateway",
+      "title": "La salida hacia otras redes",
+      "minutes": 3,
+      "intro": "Reconoce la puerta de enlace predeterminada como referencia para alcanzar destinos externos a la red local y comprende que no representa cualquier servidor o aplicación.",
+      "sections": [
+        {
+          "title": "Un siguiente salto habitual",
+          "body": "Cuando un equipo necesita enviar tráfico a un destino que no considera local, normalmente utiliza una puerta de enlace predeterminada si no hay una ruta más específica. Esa puerta suele ser un router accesible desde su red. No es necesariamente el servidor final y no garantiza que todo el trayecto funcione. El tráfico local puede seguir funcionando aunque la puerta esté mal configurada, por lo que distinguir destinos internos y externos ayuda a interpretar síntomas."
+        }
+      ],
+      "steps": [
+        "Localiza la puerta de enlace indicada en una conexión propia.",
+        "Relaciona esa dirección con la salida de la red y no con cada servicio remoto."
+      ],
+      "scenario": "Una computadora ficticia comparte archivos con otra de su red, pero no alcanza destinos externos. La revisión autorizada detecta que la puerta de enlace configurada apunta a una dirección incorrecta para ese entorno.",
+      "questions": [
+        {
+          "prompt": "¿Qué problema puede explicar esa puerta incorrecta?",
+          "options": [
+            "El fallo al salir a otras redes aunque lo local funcione",
+            "Que todos los archivos locales cambien de contenido",
+            "Que la pantalla pierda resolución"
+          ],
+          "answer": 0,
+          "explanation": "Una puerta de enlace incorrecta puede impedir el reenvío a destinos fuera de la red local. Las comunicaciones entre equipos locales no siempre requieren pasar por esa puerta y pueden continuar funcionando.",
+          "wrongExplanations": [
+            null,
+            "La puerta de enlace dirige tráfico y no reescribe automáticamente el contenido de todos los archivos locales. El síntoma relevante del caso es la diferencia entre acceso interno y destinos externos.",
+            "La resolución de pantalla es una propiedad de visualización, no una consecuencia directa de configurar la puerta de enlace. El caso describe dificultades para alcanzar otras redes, no un fallo gráfico."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy buscamos la salida del barrio digital. La puerta de enlace no es el destino de todos tus mensajes, aunque reciba bastante tráfico hacia fuera.",
+        "theory": "Puedes hablar con el vecino y tener mal indicada la salida. Esa diferencia explica bastantes misterios sin exigir que reiniciemos medio universo digital juntos.",
+        "hint": "Compara el destino local con los destinos externos. Pregúntate qué parte del recorrido necesitan unos y los otros no necesariamente utilizan durante el intercambio.",
+        "correct": "Ese fallo de salida encaja con una puerta incorrecta. Los recursos locales podían conversar mientras el camino a otras redes quedaba mal indicado.",
+        "soft": "La clave está en separar lo local de lo externo. La puerta interviene en ciertos recorridos, no en todos los aspectos del dispositivo.",
+        "sharp": "Una puerta de enlace no remodela tu pantalla ni edita tareas por despecho, joder. Su drama empieza al intentar salir hacia redes diferentes.",
+        "pass": "Salida identificada sin confundirla con el destino final. Cada vez describes mejor dónde empieza un problema antes de atribuirle una causa demasiado grande.",
+        "review": "Volvamos al mapa: dos equipos cercanos y una salida. Comprueba qué comunicación la cruza para entender por qué puede fallar solamente una parte."
+      }
+    },
+    {
+      "id": "networks-basics-modem-ont",
+      "title": "El acceso del proveedor",
+      "minutes": 3,
+      "intro": "Diferencia el equipo que termina el acceso del proveedor de otras funciones domésticas y reconoce que módem u ONT no son nombres intercambiables para cualquier dispositivo.",
+      "sections": [
+        {
+          "title": "Adaptar el enlace de acceso",
+          "body": "El acceso contratado puede llegar mediante tecnologías diferentes. Un módem se asocia a determinados medios de acceso y una ONT termina una conexión óptica en despliegues de fibra. Estos equipos adaptan o terminan el enlace del proveedor para ofrecer interfaces utilizables en el hogar, según el servicio. Algunas funciones pueden estar integradas en la misma carcasa que el router o el Wi-Fi. Para identificarlas conviene consultar etiquetas y documentación, no deducirlas únicamente por la forma o las antenas."
+        }
+      ],
+      "steps": [
+        "Consulta una etiqueta o documentación propia sin desconectar el enlace.",
+        "Identifica si el acceso indicado es óptico u otro medio del proveedor."
+      ],
+      "scenario": "En una vivienda ficticia entra un cable de fibra en un equipo etiquetado como ONT. Desde allí sale una conexión hacia un router independiente que distribuye el acceso entre los dispositivos de la casa.",
+      "questions": [
+        {
+          "prompt": "¿Qué función cumple la ONT en ese montaje?",
+          "options": [
+            "Reemplazar todos los permisos de las aplicaciones",
+            "Terminar el acceso óptico del proveedor",
+            "Guardar por obligación todos los archivos personales"
+          ],
+          "answer": 1,
+          "explanation": "La ONT termina el enlace óptico del servicio descrito y proporciona la conexión correspondiente hacia el equipo doméstico. El router independiente cumple después otras funciones para comunicar y organizar la red de la vivienda.",
+          "wrongExplanations": [
+            "Los permisos de las aplicaciones siguen dependiendo de sus controles de acceso. Terminar una conexión de fibra no decide quién puede leer documentos ni autoriza automáticamente todas las acciones de cada usuario.",
+            null,
+            "La función descrita es terminar el enlace del proveedor, no almacenar archivos personales. Un equipo puede integrar funciones adicionales según su diseño, pero no se debe atribuir almacenamiento universal a todas las ONT."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy miraremos la entrada del proveedor sin desenchufar nada por curiosidad. Mi gusto por el drama no necesita dejar incomunicada toda la vivienda para aprender.",
+        "theory": "ONT, router y Wi-Fi pueden convivir o venir separados. Las etiquetas y la documentación explican sus funciones mejor que cualquier suposición sobre antenas.",
+        "hint": "Sigue el cable que llega desde el proveedor y observa su descripción. La pregunta trata del acceso óptico, no de permisos de aplicaciones.",
+        "correct": "Terminación óptica: ONT identificada por su función. Después el router hace su parte, sin convertir todas las cajas en el mismo aparato misterioso.",
+        "soft": "Distingamos el enlace que entra en casa de los servicios posteriores. El nombre ONT aporta una pista sobre esa conexión de acceso del ejemplo.",
+        "sharp": "La ONT no administra tus romances ni colecciona archivos, carajo. Termina el acceso óptico; dejemos que cumpla su oficio sin inventarle una biografía entera.",
+        "pass": "Entrada del proveedor reconocida con cuidado. Ya puedes interpretar un montaje doméstico sin llamar router a cualquier caja con cables y una presencia intimidante.",
+        "review": "Repasemos el orden: acceso óptico, terminación y distribución doméstica. Separar esas etapas permite reconocer funciones aunque algunos modelos del proveedor integren varias de ellas."
+      }
+    },
+    {
+      "id": "networks-basics-ap",
+      "title": "El punto de acceso inalámbrico",
+      "minutes": 3,
+      "intro": "Identifica el punto de acceso como puente habitual entre dispositivos inalámbricos y la red local y evita confundir la disponibilidad de radio con el servicio externo de internet.",
+      "sections": [
+        {
+          "title": "Una entrada inalámbrica a la red",
+          "body": "Un punto de acceso permite que clientes inalámbricos se conecten a una red. Habitualmente enlaza esas comunicaciones con una infraestructura local cableada, aunque existen despliegues distintos. Su función no implica contratar internet ni sustituir todas las tareas de un router. Puede estar integrado en un equipo doméstico o ser independiente. Si tiene señal pero falla la salida externa, los clientes podrían seguir conectados al punto de acceso sin conseguir alcanzar servicios remotos a través del proveedor."
+        }
+      ],
+      "steps": [
+        "Dibuja un teléfono comunicado por radio con un punto de acceso.",
+        "Añade por separado la salida que permitiría llegar a redes externas."
+      ],
+      "scenario": "Un punto de acceso ficticio sigue anunciando su red y acepta al teléfono autorizado. El enlace del proveedor está interrumpido, por lo que las páginas externas nuevas no cargan aunque aparezca conexión inalámbrica.",
+      "questions": [
+        {
+          "prompt": "¿Por qué puede haber conexión Wi-Fi sin navegación externa?",
+          "options": [
+            "Porque Wi-Fi garantiza que cualquier servidor está encendido",
+            "Porque los teléfonos conectados nunca envían datos",
+            "Porque el enlace inalámbrico y la salida a internet son partes distintas"
+          ],
+          "answer": 2,
+          "explanation": "El teléfono puede estar unido al punto de acceso mientras la conexión hacia el proveedor no funciona. Asociarse a la red inalámbrica no garantiza que el resto del recorrido hasta una página esté disponible.",
+          "wrongExplanations": [
+            "Wi-Fi describe una conexión inalámbrica, no el estado de todos los servidores del mundo. Un servidor puede estar apagado o una salida fallar aunque el cliente mantenga su enlace con el punto de acceso.",
+            "Un teléfono conectado sí puede intercambiar información. La dificultad del caso no es una imposibilidad general de enviar datos, sino la interrupción de la salida externa que necesitan las páginas nuevas solicitadas por su navegador.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Las barras de Wi-Fi tienen un trabajo concreto, cariño. Impediremos que se autoproclamen prueba de que todo el camino a internet funciona perfectamente.",
+        "theory": "El punto de acceso te recibe, pero no garantiza el humor del proveedor. Una bienvenida inalámbrica y un destino remoto disponible son condiciones diferentes.",
+        "hint": "Divide el recorrido en enlace inalámbrico y salida externa. Busca qué parte confirma el teléfono y qué parte declara averiada nuestro caso sin añadir supuestos.",
+        "correct": "Enlace y salida separados correctamente. El punto de acceso puede recibir al teléfono mientras el proveedor deja sin camino las peticiones hacia páginas externas.",
+        "soft": "El teléfono sí logra unirse a la red. Revisemos qué tramo diferente necesita para alcanzar las páginas externas sin culpar a todos los componentes.",
+        "sharp": "Las barritas no garantizan todo internet, joder. Encontrar la puerta inalámbrica no asegura que el proveedor haya dejado abierto el camino hacia tus servidores favoritos.",
+        "pass": "Reconoces la conexión inalámbrica sin exigirle certificar servicios externos. Ese límite del indicador te ahorrará confusiones cuando una aplicación proteste y sigas viendo conectado.",
+        "review": "Volvamos al teléfono, al punto de acceso y al proveedor. Marca qué enlace está disponible y cuál falla para explicar la navegación externa ausente."
+      }
+    },
+    {
+      "id": "networks-basics-integracion",
+      "title": "Una caja puede reunir funciones",
+      "minutes": 3,
+      "intro": "Reconoce que un equipo doméstico puede integrar router, switch y punto de acceso, y aprende a describir cada función sin asumir que todas fallan al mismo tiempo.",
+      "sections": [
+        {
+          "title": "La carcasa no define un solo papel",
+          "body": "Muchos equipos domésticos reúnen varias funciones: puertos para interconectar dispositivos locales, radio para acceso inalámbrico y encaminamiento hacia otras redes. Algunas instalaciones añaden también la terminación del enlace del proveedor. Aunque compartan alimentación y carcasa, esas funciones se pueden analizar por separado. Si el Wi-Fi falla pero un equipo cableado navega, conviene observar la parte inalámbrica antes de concluir que todo el aparato dejó de funcionar. Consulta siempre su documentación específica para reconocer capacidades reales."
+        }
+      ],
+      "steps": [
+        "Enumera las funciones visibles de un equipo doméstico propio.",
+        "Relaciona cada conexión con radio, enlace local o salida externa."
+      ],
+      "scenario": "En un hogar ficticio, una caja reúne puertos Ethernet y acceso Wi-Fi. La computadora cableada navega correctamente, pero el teléfono no encuentra la red inalámbrica que antes aparecía en su lista.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene analizar primero según esos síntomas?",
+          "options": [
+            "La función inalámbrica, sin asumir una caída de todas las funciones",
+            "El tamaño de cada documento almacenado",
+            "Una avería obligatoria en todos los servidores de internet"
+          ],
+          "answer": 0,
+          "explanation": "La navegación del equipo cableado muestra que otras partes del montaje siguen funcionando. La ausencia de la red anunciada orienta primero a revisar la función inalámbrica y sus ajustes mediante el acceso autorizado disponible.",
+          "wrongExplanations": [
+            null,
+            "El tamaño de los documentos no explica que deje de aparecer una red inalámbrica en la lista del teléfono. El síntoma corresponde a descubrir o anunciar la conexión, antes de transferir los archivos que pudiera utilizar una aplicación.",
+            "Una avería en todos los servidores no encaja con la computadora que sigue navegando. La evidencia permite limitar la investigación a la parte inalámbrica antes de atribuir el problema a todo internet o a cada componente del equipo integrado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Una carcasa puede tener varios oficios, como yo cuando enseño y molesto. Separaremos sus funciones para no diagnosticar a ciegas por compartir el plástico.",
+        "theory": "Radio, puertos y encaminamiento conviven sin ser la misma tarea. Mi tribunal técnico pide mirar pruebas antes de condenar toda la caja por un síntoma.",
+        "hint": "Compara qué medio usa cada dispositivo y qué sigue funcionando. Esa diferencia permite reducir la revisión sin declarar una avería universal que nadie ha demostrado.",
+        "correct": "Primero la función inalámbrica: bien delimitado. El equipo cableado aporta evidencia útil, así que no mandaremos toda la caja al funeral tecnológico todavía, cariño.",
+        "soft": "Hay una pista positiva: el equipo con cable navega. Úsala para separar funciones antes de concluir que toda la carcasa ha dejado de funcionar.",
+        "sharp": "Una caja con varios oficios no presenta dimisión colectiva cuando una antena protesta, carajo. Mira qué funciona antes de declarar un apagón mundial por costumbre.",
+        "pass": "Funciones separadas con criterio. Aprovechar lo que funciona para investigar lo que falla me seduce bastante más que reiniciar todo con los ojos cerrados.",
+        "review": "Dibujemos las funciones dentro de la carcasa como cajas distintas. Conecta cada dispositivo a su función y marca el único síntoma que describe el caso."
+      }
+    },
+    {
+      "id": "networks-basics-tramas-paquetes",
+      "title": "Datos dentro de otras unidades",
+      "minutes": 3,
+      "intro": "Diferencia de manera inicial tramas y paquetes y comprende que una misma comunicación utiliza unidades y direcciones distintas según la parte del recorrido que se esté describiendo.",
+      "sections": [
+        {
+          "title": "Enlace y viaje entre redes",
+          "body": "Las redes organizan los datos en unidades para transportarlos. Una trama pertenece al intercambio de enlace, como Ethernet, y puede llevar dentro un paquete IP. El paquete contiene información que permite enviarlo entre redes, mientras la trama corresponde al enlace utilizado en un tramo. Al cruzar un router puede cambiar la envoltura de enlace para el siguiente tramo. No necesitas memorizar todos los campos para empezar: basta distinguir el contenido transportado de las envolturas usadas según la función."
+        }
+      ],
+      "steps": [
+        "Dibuja un paquete dentro de una trama como dos cajas anidadas.",
+        "Marca el enlace local y un router que comunique con otra red."
+      ],
+      "scenario": "En una simulación ficticia, un paquete IP sale de Ethernet y cruza un router hacia otro enlace. El contenido continúa, pero la envoltura del enlace anterior no es su única forma de transporte durante el recorrido.",
+      "questions": [
+        {
+          "prompt": "¿Qué idea describe mejor ese cambio de tramo?",
+          "options": [
+            "La trama inicial debe ser idéntica en cada red posible",
+            "La envoltura de enlace puede cambiar mientras se reenvía el paquete",
+            "El router convierte cualquier paquete en una fotografía"
+          ],
+          "answer": 1,
+          "explanation": "Las tramas corresponden a cada enlace y el router puede preparar una envoltura adecuada para el siguiente tramo. El paquete IP permite describir el envío entre redes sin exigir una única trama idéntica de principio a fin.",
+          "wrongExplanations": [
+            "La trama pertenece al enlace concreto y puede utilizar direcciones y formato adecuados a ese tramo. Exigir que sea idéntica durante todo el recorrido confunde la envoltura local con el envío del paquete entre redes distintas a través de routers.",
+            null,
+            "Encaminar no convierte el contenido arbitrariamente en una fotografía. El router procesa información necesaria para reenviar el paquete y utiliza una envoltura apropiada al siguiente enlace, manteniendo la función de transportar la comunicación hacia su destino según las rutas disponibles."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Pondremos una caja dentro de otra, precioso. Los datos llevan información de transporte que cumple trabajos diferentes según la parte del recorrido que describamos juntos.",
+        "theory": "La trama viste al enlace y el paquete organiza el viaje IP. Cambiar la envoltura no significa inventar otro documento por capricho del router.",
+        "hint": "Imagina un envío que cambia de vehículo sin perder su propósito. Distingue lo útil para un tramo de lo que describe el recorrido entre redes.",
+        "correct": "Envoltura variable: buena lectura. Cada tramo necesita entregar el paquete, así que no exigiremos al primer sobre sobrevivir intacto como una reliquia sagrada del trayecto.",
+        "soft": "Separemos las cajas: una corresponde al enlace y otra al envío IP. Esa diferencia permite entender qué prepara el router al pasar al siguiente tramo.",
+        "sharp": "La primera trama no tiene contrato vitalicio con todo el viaje, joder. Exigir la misma etiqueta local en cada tramo mezcla trabajos diferentes sin necesidad.",
+        "pass": "Tramas y paquetes tienen lugares distintos en tu mapa. Separar funciones importa más que recitar todos sus campos de memoria para presumir frente al teclado.",
+        "review": "Dibuja una caja dentro de otra y dos enlaces separados por un router. Distingue la entrega de cada tramo del paquete que se está transportando."
+      }
+    },
+    {
+      "id": "networks-basics-protocolo",
+      "title": "Protocolos: reglas para entenderse",
+      "minutes": 3,
+      "intro": "Comprende un protocolo como conjunto de reglas para intercambiar información y reconoce que compartir un medio físico no basta para que dos aplicaciones entiendan sus mensajes.",
+      "sections": [
+        {
+          "title": "Hablar con reglas compatibles",
+          "body": "Un protocolo define reglas de comunicación, como el formato de mensajes y las acciones esperadas al recibirlos. Dos aplicaciones pueden usar la misma red y no comprenderse si esperan protocolos distintos. La compatibilidad requiere más que conectar cables: cada participante debe interpretar correctamente el intercambio correspondiente. Las redes combinan protocolos con funciones diferentes para transportar y utilizar información. Un estándar facilita que implementaciones compatibles de distintos fabricantes puedan comunicarse sin necesitar exactamente el mismo modelo de aparato."
+        }
+      ],
+      "steps": [
+        "Imagina dos programas que intercambian mensajes con formatos distintos.",
+        "Explica por qué compartir un cable no les enseña a interpretarlos."
+      ],
+      "scenario": "Dos aplicaciones ficticias están conectadas correctamente, pero una envía mensajes con reglas que la otra no reconoce. Los equipos pueden comunicarse con otros servicios y no muestran problemas físicos de enlace.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene comprobar en este intercambio?",
+          "options": [
+            "Que las aplicaciones usen protocolos compatibles",
+            "Que ambos monitores tengan el mismo tamaño",
+            "Que el cable cambie el idioma de los mensajes automáticamente"
+          ],
+          "answer": 0,
+          "explanation": "El enlace puede transportar datos sin que la aplicación receptora entienda su formato. Comprobar compatibilidad de protocolos permite revisar las reglas del intercambio en vez de atribuir todo problema al cable.",
+          "wrongExplanations": [
+            null,
+            "El tamaño del monitor no determina las reglas de comunicación entre programas. Los síntomas indican que las aplicaciones esperan mensajes diferentes, aunque la conectividad física y otros servicios estén funcionando correctamente.",
+            "Un cable transporta señales y no traduce automáticamente cualquier protocolo de aplicación. Los programas necesitan reglas compatibles o un mecanismo de adaptación adecuado; la conexión física por sí sola no garantiza comprensión."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Conectarse no significa entenderse, cariño. Pondremos reglas a la conversación para que los mensajes dejen de parecer discusiones entre aparatos tercos.",
+        "theory": "El cable puede llevar palabras incomprensibles. Los protocolos necesitan formatos y respuestas reconocibles para que sus participantes interpreten correctamente lo recibido.",
+        "hint": "El enlace funciona. Busca qué debe coincidir entre programas para interpretar mensajes, sin cambiar propiedades físicas que el caso no declara averiadas.",
+        "correct": "Reglas compatibles: encontraste el punto. Transportar mensajes y comprenderlos son trabajos distintos, incluso cuando dos aplicaciones comparten una conexión física perfectamente funcional.",
+        "soft": "No parece faltar conexión física. Revisemos qué espera recibir cada programa y si ambos interpretan los mensajes usando reglas compatibles durante el intercambio.",
+        "sharp": "Un cable no traduce ocurrencias por telepatía, joder. Si los programas esperan reglas distintas, conectar más fuerte no les regalará comprensión entre sí.",
+        "pass": "Protocolo entendido sin ceremonia. Ya distingues transportar mensajes de comprenderlos, y muchos fallos aparentemente misteriosos empiezan a convertirse en preguntas bastante más concretas.",
+        "review": "Imagina dos participantes usando convenciones distintas para responder. La conexión existe, pero necesitan reglas compartidas para interpretar el intercambio sin malentendidos entre ambos."
+      }
+    },
+    {
+      "id": "networks-basics-encapsulacion",
+      "title": "Encapsular añade información útil",
+      "minutes": 3,
+      "intro": "Reconoce la encapsulación como organización de datos con información adicional y diferencia ese proceso del cifrado, sin asumir que una envoltura técnica oculta el contenido a terceros.",
+      "sections": [
+        {
+          "title": "Etiquetar no es ocultar",
+          "body": "Al preparar una comunicación, distintas funciones añaden información de control a los datos. Ese proceso se llama encapsulación y permite organizar entregas, identificar protocolos o indicar destinos según la capa utilizada. Puede compararse con colocar etiquetas a un envío. No equivale a cifrado: añadir cabeceras no hace ilegible el contenido automáticamente. Para proteger la confidencialidad se requieren mecanismos adecuados, además de que los datos estén organizados correctamente para su transporte por la red."
+        }
+      ],
+      "steps": [
+        "Dibuja un mensaje rodeado de dos etiquetas de transporte.",
+        "Distingue esas etiquetas de una transformación que oculte el contenido."
+      ],
+      "scenario": "Una aplicación ficticia añade información de control antes de enviar datos por la red. Su documentación llama encapsulación a ese paso, pero no indica que utilice mecanismos para cifrar el contenido enviado.",
+      "questions": [
+        {
+          "prompt": "¿Qué puede afirmarse sobre la encapsulación descrita?",
+          "options": [
+            "Garantiza secreto absoluto aunque no exista cifrado",
+            "Organiza el transporte, pero no garantiza ocultar el contenido",
+            "Elimina la necesidad de identificar destinos"
+          ],
+          "answer": 1,
+          "explanation": "La encapsulación añade estructura e información de control para transportar los datos. No demuestra que el contenido se haya cifrado; confidencialidad y organización del envío son funciones diferentes que deben comprobarse por separado.",
+          "wrongExplanations": [
+            "Añadir envolturas de protocolo no vuelve secreto el contenido por sí solo. Para afirmar confidencialidad debes conocer las protecciones utilizadas y sus límites, no inferir cifrado únicamente de la palabra encapsulación.",
+            null,
+            "La información de destino puede formar parte de las cabeceras que organizan el transporte. Encapsular no elimina esa necesidad; ayuda precisamente a que las funciones de red interpreten y entreguen los datos correctamente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Envolveremos mensajes sin vender misterio barato. Una etiqueta ayuda al reparto y puede dejar el contenido perfectamente comprensible para quien acceda al envío.",
+        "theory": "Un sobre conceptual no equivale a cifrado, precioso. Las cabeceras organizan el transporte; no les regalemos una capa de invisibilidad por simple cortesía.",
+        "hint": "Pregunta qué hace el proceso: añadir información de control y ocultar contenido son trabajos diferentes, aunque ambos puedan participar en una misma comunicación.",
+        "correct": "Organización y secreto separados. La encapsulación prepara el transporte; la confidencialidad necesita mecanismos que no aparecen por escribir una palabra elegante en documentación.",
+        "soft": "El caso describe información añadida para comunicar. Comprobemos si menciona una protección del contenido antes de concluir que todos los datos quedan necesariamente ocultos.",
+        "sharp": "Pegar etiquetas no convierte un mensaje en una fortaleza, carajo. No me vendas confidencialidad imaginaria solo porque el paquete lleva unas cabeceras muy técnicas.",
+        "pass": "Encapsulación comprendida sin confundir envoltura con secreto. Tu vocabulario acaba de ganar una distinción importante y mi ceja se muestra especialmente satisfecha contigo.",
+        "review": "Comparemos una etiqueta de envío y un texto cifrado. Una organiza la entrega; el otro protege la representación del contenido bajo determinadas condiciones."
+      }
+    },
+    {
+      "id": "networks-basics-capas",
+      "title": "Las capas separan trabajos",
+      "minutes": 3,
+      "intro": "Utiliza las capas como modelo para ordenar funciones de comunicación y aprende a distinguir fallos de enlace, transporte y aplicación sin convertir el modelo en una receta infalible.",
+      "sections": [
+        {
+          "title": "Un mapa para preguntar mejor",
+          "body": "Los modelos por capas separan funciones para facilitar el estudio y diagnóstico de redes. Por ejemplo, puedes distinguir el medio y enlace, el envío entre redes, el transporte entre procesos y el servicio de aplicación. Estas divisiones son una herramienta conceptual, no cajas físicas obligatorias dentro de cada dispositivo. Una aplicación puede fallar aunque existan conectividad y transporte adecuados. Seguir las funciones ayuda a formular comprobaciones concretas y evita cambiar toda la configuración ante un único síntoma."
+        }
+      ],
+      "steps": [
+        "Coloca cable, encaminamiento y aplicación en tres grupos funcionales.",
+        "Describe qué grupo revisarías si solo falla un programa concreto."
+      ],
+      "scenario": "En una práctica ficticia, varias páginas cargan y la conexión permanece estable. Solo una aplicación presenta un mensaje propio de error al acceder, mientras otros servicios del mismo equipo continúan funcionando con normalidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué aporta pensar por capas en este caso?",
+          "options": [
+            "Demostrar que cualquier error siempre está en el cable",
+            "Obligar a reemplazar todos los dispositivos de la red",
+            "Separar funciones y comenzar comprobaciones acordes al síntoma"
+          ],
+          "answer": 2,
+          "explanation": "El modelo ayuda a acotar preguntas según lo que funciona y lo que falla. No prueba por sí solo una causa, pero evita tratar un error de una aplicación como caída automática de toda la red.",
+          "wrongExplanations": [
+            "El modelo no obliga a culpar al medio físico. Que otras páginas funcionen ofrece evidencia para investigar funciones específicas; todavía deben realizarse comprobaciones antes de atribuir el error a un componente determinado.",
+            "Pensar por capas organiza el diagnóstico, no exige sustituir aparatos indiscriminadamente. Reemplazar toda la red sin comprobar el alcance del problema ignora la evidencia de los otros servicios que siguen funcionando en el equipo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Ordenaremos funciones en capas sin construir una torre de palabritas. El modelo debe ayudarte a preguntar, no servir para presumir delante del router.",
+        "theory": "Las capas organizan funciones. No necesitas abrir la carcasa buscando pisos diminutos con empleados vestidos según el protocolo que atienden dentro del aparato.",
+        "hint": "Observa que varios servicios funcionan. Busca una estrategia que use esa evidencia para reducir preguntas, sin declarar culpable a un componente todavía no comprobado.",
+        "correct": "Separar funciones permite investigar con criterio. El modelo no adivina causas, pero evita tratar el error de una aplicación como un colapso universal inmediato.",
+        "soft": "Las capas organizan preguntas útiles. Veamos qué sabemos del comportamiento antes de elegir una acción que cambie innecesariamente todos los componentes del montaje disponible.",
+        "sharp": "No desmontes medio planeta porque una app hizo pucheros, joder. Las capas acotan el problema; no organizan un funeral obligatorio por cada componente conectado.",
+        "pass": "Modelo útil conseguido. Separas funciones sin recitarlas como un conjuro, y eso vale más que memorizar siglas con una mirada excesivamente solemne ante el teclado.",
+        "review": "Agrupemos síntomas por función y conservemos lo que funciona como evidencia. Así entenderás por qué las capas orientan comprobaciones sin prometer diagnósticos automáticos perfectos."
+      }
+    },
+    {
+      "id": "networks-basics-tcp",
+      "title": "TCP organiza una entrega fiable",
+      "minutes": 3,
+      "intro": "Reconoce el objetivo de TCP al transportar datos entre aplicaciones y distingue sus mecanismos de orden y retransmisión de la protección del contenido mediante cifrado u otras medidas.",
+      "sections": [
+        {
+          "title": "Ordenar y recuperar lo perdido",
+          "body": "TCP proporciona a las aplicaciones un flujo de bytes ordenado y utiliza mecanismos como confirmaciones y retransmisiones para afrontar pérdidas. También regula el envío según condiciones de la comunicación. Eso no significa que una conexión siempre termine con éxito: pueden ocurrir fallos o agotarse el tiempo de espera. TCP tampoco cifra por sí mismo el contenido. La fiabilidad del transporte y la confidencialidad son propiedades distintas que pueden combinarse mediante otros protocolos adecuados para el servicio utilizado."
+        }
+      ],
+      "steps": [
+        "Imagina un documento dividido en partes para su transporte.",
+        "Separa volver a pedir una parte perdida de ocultar su contenido."
+      ],
+      "scenario": "En una simulación ficticia, una comunicación TCP detecta que faltan datos y utiliza retransmisiones. Una persona observa ese mecanismo y afirma que, por eso, todo el contenido ya está cifrado frente a terceros.",
+      "questions": [
+        {
+          "prompt": "¿Qué distinción corrige la afirmación?",
+          "options": [
+            "Retransmitir y ordenar datos no equivale a cifrar su contenido",
+            "TCP garantiza que nunca habrá un fallo",
+            "El cifrado consiste en enviar todos los datos una sola vez"
+          ],
+          "answer": 0,
+          "explanation": "TCP ofrece mecanismos para entregar un flujo ordenado y afrontar pérdidas. Esos mecanismos no convierten el contenido en secreto; el cifrado requiere otras protecciones, y una conexión todavía puede fallar por distintas causas.",
+          "wrongExplanations": [
+            null,
+            "Los mecanismos de TCP no garantizan éxito absoluto. La conexión puede fallar o agotar esperas; además, esa posibilidad es diferente de decidir si el contenido viaja protegido mediante un protocolo de cifrado adecuado.",
+            "Cifrar consiste en proteger la representación del contenido con mecanismos criptográficos, no en determinar cuántas veces se transmite. Una comunicación cifrada también puede necesitar retransmisiones cuando su transporte detecta pérdidas durante el recorrido."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "TCP cuidará el orden de las piezas, cariño. No confundiremos ese trabajo de transporte con ocultar automáticamente el contenido frente a posibles miradas ajenas.",
+        "theory": "Pedir una pieza perdida no la vuelve secreta. TCP tiene un trabajo de transporte; el cifrado necesita mecanismos propios para proteger la comunicación utilizada.",
+        "hint": "Identifica qué problema atienden las retransmisiones. Después compáralo con proteger la representación del contenido para que no pueda entenderlo cualquiera que acceda al intercambio.",
+        "correct": "Fiabilidad y secreto separados: preciso. TCP atiende orden y pérdidas; las protecciones criptográficas siguen siendo otra función que debemos comprobar sin inventar garantías adicionales.",
+        "soft": "La afirmación mezcla funciones. Revisemos qué hace repetir datos perdidos y qué haría falta para afirmar que su contenido está protegido frente a terceros.",
+        "sharp": "Reenviar un mensaje no lo vuelve invisible, carajo. TCP no lanzó polvo mágico de confidencialidad sobre cada byte porque faltaba una parte del envío.",
+        "pass": "TCP tiene límites claros en tu mapa. Entender fiabilidad sin atribuirle cifrado automático evita una confusión importante y merece una sonrisa especialmente satisfecha conmigo.",
+        "review": "Comparemos ordenar piezas y ocultar lo que muestran. Distinguir esos objetivos aclara qué ofrece TCP y qué protecciones adicionales puede necesitar una aplicación."
+      }
+    },
+    {
+      "id": "networks-basics-udp",
+      "title": "UDP no añade entrega garantizada",
+      "minutes": 3,
+      "intro": "Comprende que UDP envía datagramas sin ofrecer por sí mismo las mismas garantías de orden y retransmisión de TCP, y evita concluir que sus aplicaciones carecen de protección.",
+      "sections": [
+        {
+          "title": "Un transporte, otras responsabilidades",
+          "body": "UDP transporta datagramas sin establecer un flujo fiable y ordenado como TCP. No añade por sí mismo retransmisiones para garantizar que cada mensaje llegue. Las aplicaciones pueden preferir esa base para ciertos usos y añadir sus propios mecanismos cuando los necesitan. Utilizar UDP no implica que la comunicación sea maliciosa ni que resulte imposible cifrarla. Conviene separar las funciones del transporte de las protecciones o controles que un protocolo de aplicación pueda implementar encima."
+        }
+      ],
+      "steps": [
+        "Distingue un mensaje enviado de un mensaje cuya recepción se confirma.",
+        "Identifica qué responsabilidades adicionales podría asumir una aplicación."
+      ],
+      "scenario": "Una aplicación ficticia usa UDP y aplica sus propios controles de comunicación. Una persona concluye que toda información transportada de esa forma es insegura y que ninguna protección puede existir en niveles superiores del intercambio.",
+      "questions": [
+        {
+          "prompt": "¿Qué afirmación es más precisa?",
+          "options": [
+            "UDP demuestra que el usuario está atacando",
+            "La aplicación puede añadir mecanismos y protección sobre UDP",
+            "UDP incluye siempre todas las garantías de TCP"
+          ],
+          "answer": 1,
+          "explanation": "UDP no proporciona las mismas funciones de entrega fiable y ordenada de TCP. Sin embargo, protocolos superiores pueden añadir controles o cifrado; el transporte utilizado no basta para juzgar por sí solo toda la protección.",
+          "wrongExplanations": [
+            "UDP es un protocolo de transporte utilizado por aplicaciones legítimas. Su presencia no demuestra una intención maliciosa; para valorar un comportamiento hay que considerar el servicio, el contexto y las protecciones realmente implementadas en la comunicación.",
+            null,
+            "UDP no incorpora por sí mismo un flujo fiable y ordenado equivalente al de TCP. Si una aplicación necesita funciones adicionales, puede implementarlas mediante sus propios mecanismos o protocolos superiores según sus requisitos de comunicación."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "UDP trae otro reparto de responsabilidades, precioso. Lo entenderemos sin convertir cada datagrama en sospechoso por no parecerse al transporte que acabamos de conocer.",
+        "theory": "Menos funciones de transporte no equivale a ninguna protección posible. La aplicación puede añadir mecanismos propios y merece una evaluación concreta de su comportamiento.",
+        "hint": "Distingue lo que ofrece UDP de lo que puede implementar la aplicación. Evita juzgar todo el intercambio únicamente por el nombre de su transporte.",
+        "correct": "La aplicación puede añadir mecanismos: exacto. UDP tiene límites, pero no prohíbe controles ni cifrado en protocolos superiores que aprovechen ese transporte para comunicarse.",
+        "soft": "Revisemos el alcance de la afirmación. Que UDP no aporte ciertas garantías no impide que un protocolo superior construya funciones adicionales sobre ese transporte.",
+        "sharp": "Un datagrama no es delincuente por no vestir traje TCP, joder. Mira los mecanismos de la aplicación antes de condenar cualquier comunicación con esas letras.",
+        "pass": "UDP entendido sin prejuicios. Sabes que una función ausente en una capa puede existir en otra, y esa distinción permitirá evaluar servicios con mejor criterio.",
+        "review": "Dibuja transporte y aplicación en recuadros separados. Anota qué no ofrece UDP por sí mismo y deja espacio para funciones añadidas por protocolos superiores."
+      }
+    },
+    {
+      "id": "networks-basics-puertos",
+      "title": "Puertos lógicos y servicios",
+      "minutes": 3,
+      "intro": "Distingue un puerto lógico de un conector físico y comprende que los números de transporte ayudan a dirigir comunicaciones hacia procesos sin demostrar por sí solos la legitimidad del servicio.",
+      "sections": [
+        {
+          "title": "El número no es un agujero físico",
+          "body": "En transportes como TCP y UDP, los números de puerto ayudan a identificar extremos de comunicación asociados con procesos o servicios. No son los conectores donde enchufas cables. Algunos números se asocian habitualmente a ciertos servicios, pero un número conocido no garantiza que el programa sea auténtico o seguro. Un equipo puede mantener varias comunicaciones al mismo tiempo usando diferentes combinaciones de direcciones y puertos. Interpretar estos datos requiere contexto y autorización para revisar el entorno correspondiente."
+        }
+      ],
+      "steps": [
+        "Compara un conector Ethernet con un número de puerto de transporte ficticio.",
+        "Explica qué identifica cada uno sin probar servicios ajenos."
+      ],
+      "scenario": "En una explicación ficticia aparece un servicio que usa TCP con un número de puerto conocido. Una persona busca ese número escrito en los conectores del portátil y asume que representa un agujero físico concreto de la carcasa.",
+      "questions": [
+        {
+          "prompt": "¿Cómo se diferencia ese puerto TCP de un conector?",
+          "options": [
+            "Se puede tocar físicamente en el cable",
+            "Garantiza la honestidad del programa que lo usa",
+            "Es un identificador lógico de comunicación, no un enchufe"
+          ],
+          "answer": 2,
+          "explanation": "El puerto de transporte es un número utilizado para distinguir extremos de comunicación. No corresponde directamente a un conector físico y no certifica la legitimidad de la aplicación que utiliza ese número dentro del intercambio observado.",
+          "wrongExplanations": [
+            "El número de puerto TCP forma parte de información lógica del transporte. Los conectores pertenecen al medio físico; confundirlos lleva a buscar en la carcasa un dato que organiza comunicaciones entre procesos y servicios del sistema.",
+            "Un servicio puede usar un número conocido sin ser necesariamente legítimo. La confianza exige comprobar identidad, configuración y protecciones apropiadas; el número de puerto por sí solo no certifica que el programa sea honesto o autorizado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Hoy puerto es un número, no un enchufe, cariño. Mi brazo agradece aclararlo antes de intentar conectar conceptos a golpes en la carcasa del portátil.",
+        "theory": "Un puerto lógico organiza comunicaciones entre procesos. No tiene pestaña de plástico ni certifica la honestidad del programa por utilizar un número que conozcamos.",
+        "hint": "Separa transporte y conector físico. Busca una función numérica del intercambio, sin atribuirle características que puedes tocar o garantías de confianza ajenas al concepto.",
+        "correct": "Identificador lógico: bien situado. El puerto ayuda a distinguir comunicaciones, pero no aparece como un enchufe dedicado ni convierte al programa en ciudadano ejemplar.",
+        "soft": "La palabra puerto tiene usos diferentes. Distingamos el conector que puedes tocar del número que identifica un extremo de comunicación en el transporte utilizado.",
+        "sharp": "El puerto TCP no es otro agujero de la carcasa, carajo. Si cada número exigiera un enchufe, necesitarías un edificio entero para este portátil.",
+        "pass": "Puertos físicos y lógicos dejaron de compartir cajón por accidente. Esa distinción te permitirá leer explicaciones de servicios sin convertir cada número en hardware.",
+        "review": "Dibuja un conector y un número dentro de un mensaje. Uno participa en la conexión física; el otro ayuda a organizar comunicaciones de transporte."
+      }
+    },
+    {
+      "id": "networks-basics-ancho-banda",
+      "title": "Capacidad de un enlace",
+      "minutes": 3,
+      "intro": "Comprende el ancho de banda como capacidad de transferencia en un contexto de red y distingue esa capacidad de la cantidad de datos que una aplicación consigue transferir realmente.",
+      "sections": [
+        {
+          "title": "Capacidad no equivale a resultado",
+          "body": "En este contexto, ancho de banda se utiliza para expresar la capacidad de transferencia de un enlace, normalmente en bits por segundo. No indica que una aplicación siempre alcance esa cifra. El resultado depende del recorrido, la carga, los protocolos y las capacidades de otros equipos o servicios. Una conexión con mayor capacidad puede transportar más datos, pero no elimina automáticamente retrasos. Comparar cifras exige saber qué se midió y si se habla de capacidad teórica o rendimiento observado."
+        }
+      ],
+      "steps": [
+        "Identifica una cifra ficticia de capacidad expresada en Mbps.",
+        "Distingue esa capacidad de una medición real realizada por una aplicación."
+      ],
+      "scenario": "Una conexión ficticia anuncia una capacidad alta, pero una descarga obtiene un resultado menor. El archivo llega desde un servidor lejano y el recorrido incluye varios enlaces y equipos con capacidades diferentes a la contratada.",
+      "questions": [
+        {
+          "prompt": "¿Por qué la cifra anunciada no garantiza esa descarga exacta?",
+          "options": [
+            "El rendimiento depende también del resto del recorrido y del servicio",
+            "Cada archivo modifica la capacidad física a voluntad",
+            "La capacidad anunciada mide siempre el tiempo de respuesta del servidor"
+          ],
+          "answer": 0,
+          "explanation": "La capacidad de un enlace no determina por sí sola el resultado de extremo a extremo. Otros enlaces, equipos, carga y condiciones del servicio pueden limitar la transferencia real que observa la aplicación durante la descarga.",
+          "wrongExplanations": [
+            null,
+            "Un archivo no decide modificar físicamente la capacidad del enlace a voluntad. La diferencia entre capacidad y resultado se explica observando las condiciones de transferencia y los límites de los componentes que participan en el recorrido de la comunicación.",
+            "La capacidad expresada en bits por segundo no es una medida de tiempo de respuesta. El servidor puede introducir retrasos o límites propios, pero esas propiedades deben distinguirse del volumen que un enlace puede transferir por unidad de tiempo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Una cifra grande queda preciosa en el anuncio, cariño. Veremos qué promete antes de exigirle que acelere cada servidor del planeta por simple cortesía comercial.",
+        "theory": "La capacidad de un tramo no gobierna los demás. Un enlace ancho puede esperar a otro componente menos generoso situado dentro del recorrido de comunicación.",
+        "hint": "Imagina varios tramos con capacidades diferentes. Distingue la cifra anunciada para uno del resultado completo que obtiene la aplicación al utilizar todo el recorrido.",
+        "correct": "Capacidad local y resultado global separados. Miraste el recorrido completo antes de exigirle a un enlace controlar cada servidor y cada tramo intermedio disponible.",
+        "soft": "Revisemos qué mide la cifra anunciada y qué mide la descarga. El caso incluye otros enlaces y un servidor que también pueden influir en ella.",
+        "sharp": "El folleto no gobierna cada servidor, joder. Mira qué enlace se anuncia antes de exigirle que controle todo el recorrido que utiliza una descarga remota.",
+        "pass": "Ya puedes leer capacidad sin confundirla con rendimiento garantizado. El anuncio perdió una oportunidad de impresionarte únicamente con cifras enormes y promesas poco delimitadas.",
+        "review": "Dibuja tramos de capacidades distintas y un servidor al final. Distingue la cifra de un tramo del resultado que obtiene la transferencia completa entre extremos."
+      }
+    },
+    {
+      "id": "networks-basics-rendimiento",
+      "title": "Rendimiento observado",
+      "minutes": 3,
+      "intro": "Reconoce el rendimiento como resultado de una transferencia real y aprende a comparar mediciones con condiciones conocidas, sin convertir una prueba aislada en diagnóstico definitivo de toda la conexión.",
+      "sections": [
+        {
+          "title": "Medir necesita contexto",
+          "body": "El rendimiento observado expresa cuántos datos se transfieren realmente durante un intervalo y bajo determinadas condiciones. Puede variar con el servidor elegido, la actividad simultánea y el medio de acceso. Una prueba aislada no identifica automáticamente la causa de un resultado bajo. Para comparar, utiliza condiciones similares, anota si hay otras transferencias y distingue la interfaz usada. También conviene registrar la hora y repetir de forma razonable, sin saturar servicios ni probar equipos ajenos."
+        }
+      ],
+      "steps": [
+        "Diseña dos pruebas comparables sobre tu propia conexión sin ejecutarlas obligatoriamente.",
+        "Anota medio de conexión y actividad simultánea que controlarías."
+      ],
+      "scenario": "Dos pruebas ficticias muestran resultados diferentes: una usa cable sin otras transferencias y otra Wi-Fi mientras varios equipos descargan archivos. Una persona concluye que ambas pruebas miden condiciones idénticas y permiten culpar automáticamente al proveedor.",
+      "questions": [
+        {
+          "prompt": "¿Qué falta antes de comparar directamente esos resultados?",
+          "options": [
+            "Suponer que todos los servidores siempre responden igual",
+            "Revisar las condiciones distintas de cada medición",
+            "Cambiar el nombre de la carpeta de descargas"
+          ],
+          "answer": 1,
+          "explanation": "Las mediciones usan medios y actividad simultánea diferentes, por lo que no permiten una comparación directa sin contexto. Controlar y registrar condiciones ayuda a interpretar el resultado antes de atribuir una causa concreta al proveedor o a la red.",
+          "wrongExplanations": [
+            "Los servidores pueden tener cargas y límites diferentes. Suponer que responden igual elimina contexto importante; una comparación útil revisa condiciones observables, en lugar de asumir un comportamiento idéntico en cada prueba.",
+            null,
+            "El nombre de una carpeta no controla el medio de conexión ni la carga simultánea del caso. Cambiarlo no hace comparables las mediciones; conviene registrar y ajustar las condiciones que realmente influyen en la transferencia observada durante las pruebas autorizadas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Medir está bien; comparar peras con antenas, bastante menos. Pondremos contexto al rendimiento para interpretar números obtenidos en condiciones que no son necesariamente equivalentes.",
+        "theory": "El resultado pertenece a unas condiciones concretas. Si cambias medio y carga, cambia la escena; mi lado investigador necesita conocer esos detalles antes de concluir.",
+        "hint": "Enumera qué cambió entre las pruebas antes de buscar culpables. Una comparación útil debe considerar esas diferencias en lugar de enfrentar dos cifras sin contexto.",
+        "correct": "Condiciones revisadas: buena ciencia doméstica. Medio y actividad simultánea ayudan a interpretar diferencias sin condenar automáticamente al proveedor por resultados obtenidos bajo circunstancias diferentes.",
+        "soft": "Miremos cómo se realizó cada prueba. Los cambios de medio y carga importan antes de compararlas como si la situación hubiera permanecido completamente igual.",
+        "sharp": "No presentes escenas distintas como gemelas, carajo. Cable y descargas alrededor no firman las mismas condiciones; revisa el contexto antes de convertir cifras en acusaciones.",
+        "pass": "Ahora una medición tiene apellido: medio, carga y momento. Tus comparaciones serán más útiles y tus discusiones con el router necesitarán bastante menos dramatismo innecesario.",
+        "review": "Pon las condiciones de las pruebas en dos columnas. Marca qué cambió y piensa cómo mantenerlo parecido antes de atribuir una causa concreta al resultado."
+      }
+    },
+    {
+      "id": "networks-basics-latencia",
+      "title": "Latencia: tiempo de espera",
+      "minutes": 3,
+      "intro": "Distingue el tiempo de demora de la capacidad de transferencia y reconoce por qué una comunicación puede transportar grandes volúmenes mientras sus respuestas interactivas siguen teniendo retrasos perceptibles.",
+      "sections": [
+        {
+          "title": "Llegar tarde no es llevar poco",
+          "body": "La latencia describe un tiempo de demora en una comunicación. Puede medirse en un sentido o como ida y vuelta, por lo que conviene saber qué representa cada valor. Depende de factores como distancia, procesamiento y espera en equipos intermedios. Una conexión con mucha capacidad todavía puede presentar latencia apreciable. En actividades interactivas, una respuesta tardía puede resultar molesta aunque la descarga de archivos grandes alcance un buen ritmo durante una transferencia continua."
+        }
+      ],
+      "steps": [
+        "Distingue cuánto tarda una respuesta de cuántos datos llegan por segundo.",
+        "Piensa en una actividad interactiva donde la demora importe."
+      ],
+      "scenario": "En una simulación ficticia, un archivo grande se descarga con buen ritmo, pero cada acción de una herramienta remota tarda en recibir respuesta. El servicio está lejos y el recorrido añade demora a las interacciones entre ambos equipos.",
+      "questions": [
+        {
+          "prompt": "¿Qué propiedad ayuda a describir esa demora de respuesta?",
+          "options": [
+            "El color del cable de red",
+            "El nombre del usuario conectado",
+            "La latencia de la comunicación"
+          ],
+          "answer": 2,
+          "explanation": "La latencia describe demora, mientras el ritmo de una transferencia refleja otra dimensión del funcionamiento. Un archivo puede descargarse con buen rendimiento y las acciones interactivas seguir sufriendo tiempos de respuesta apreciables por el recorrido y el servicio.",
+          "wrongExplanations": [
+            "El color del cable no mide el tiempo de respuesta. El caso contrasta transferencia y demora interactiva, por lo que necesitas una propiedad temporal y no una característica de apariencia física.",
+            "El nombre del usuario no cuantifica la demora entre acción y respuesta. Para describir ese comportamiento se utiliza una medida temporal, independiente de cómo esté etiquetada la cuenta que participa en el servicio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Llegar tarde y transportar poco son problemas distintos, cariño. Hoy pondremos nombre a la espera sin culpar automáticamente a la capacidad de la conexión utilizada.",
+        "theory": "Un camión enorme puede tardar aunque lleve mucho. La latencia describe demora, no cuántos datos caben; una interacción necesita respuestas que lleguen a tiempo.",
+        "hint": "Observa el tiempo entre una acción y su respuesta. Busca una propiedad temporal, separándola de cuánto contenido puede llegar durante una transferencia continua de archivos.",
+        "correct": "Demora localizada: latencia. Puedes explicar una interacción tardía junto a una descarga con buen ritmo sin tratar ambos resultados como una contradicción imposible de resolver.",
+        "soft": "La descarga y la interacción muestran dimensiones diferentes. Revisemos si la pregunta pide volumen por segundo o tiempo hasta recibir respuesta después de una acción.",
+        "sharp": "Que quepan muchos datos no significa que lleguen sin espera, joder. La capacidad no acorta distancias mágicamente ni elimina cada cola del camino al servidor.",
+        "pass": "Cantidad y tiempo ya no viven mezclados en una palabra vaga. Esa distinción permitirá describir una comunicación mejor antes de pedir milagros a otra cifra.",
+        "review": "Dibuja un bloque de datos y un reloj entre petición y respuesta. Mantener ambas imágenes separadas aclara qué dimensión describe el síntoma interactivo del caso."
+      }
+    },
+    {
+      "id": "networks-basics-jitter",
+      "title": "Variación de la demora",
+      "minutes": 3,
+      "intro": "Reconoce el jitter como variación temporal entre entregas y comprende por qué una comunicación en tiempo real puede verse afectada por retrasos irregulares aunque su demora media parezca aceptable.",
+      "sections": [
+        {
+          "title": "El ritmo también importa",
+          "body": "El jitter expresa variación de la demora entre paquetes o entregas en una comunicación, según la medición utilizada. Un flujo de audio necesita un ritmo razonablemente regular para reproducirse de forma continua. Las aplicaciones pueden usar almacenamiento temporal para compensar variaciones, pero ese recurso tiene límites y puede añadir espera. Conviene distinguir demora elevada constante de cambios irregulares: ambos pueden afectar una experiencia, aunque describan comportamientos diferentes y no permitan atribuir por sí solos una causa única."
+        }
+      ],
+      "steps": [
+        "Imagina varias entregas con intervalos iguales y otras con intervalos variables.",
+        "Describe cuál de las dos secuencias mantiene un ritmo más regular."
+      ],
+      "scenario": "En una llamada ficticia, los datos de audio llegan unas veces pronto y otras con retraso notable. La aplicación intenta compensarlo, pero la variación hace difícil reproducir la conversación de forma continua sin añadir espera adicional.",
+      "questions": [
+        {
+          "prompt": "¿Qué término describe la variación de esos tiempos de llegada?",
+          "options": [
+            "Jitter o variación de la demora",
+            "El tamaño físico del micrófono",
+            "Una contraseña de mayor longitud"
+          ],
+          "answer": 0,
+          "explanation": "El jitter se refiere a variaciones temporales del flujo observado. La irregularidad de llegada puede afectar al audio en tiempo real, aunque una demora constante equivalente al promedio tuviera un comportamiento distinto para la aplicación que intenta reproducirlo.",
+          "wrongExplanations": [
+            null,
+            "El tamaño del micrófono no mide irregularidad de entrega. El caso describe cambios en tiempos de llegada de datos, no dimensiones del dispositivo que capturó el sonido para enviarlo por la red.",
+            "La longitud de una contraseña no describe intervalos de llegada. Autenticación y comportamiento temporal son funciones distintas; el audio irregular debe analizarse con propiedades de la comunicación observada en la llamada ficticia."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "La conversación tropieza por falta de ritmo, no de encanto. Nombraremos esa variación temporal sin culpar al micrófono por ser pequeño y bastante poco presumido.",
+        "theory": "Llegar siempre tarde y llegar con horarios impredecibles no es igual. El audio puede resentirse por variaciones que una media aparentemente tranquila no muestra completamente.",
+        "hint": "Compara unas llegadas con otras, además del promedio. Busca una propiedad de la variación temporal y deja aparte características del equipo o de su autenticación.",
+        "correct": "Variación reconocida: jitter. Identificaste una propiedad temporal del flujo sin exigirle al micrófono cambiar de tamaño para arreglar diferencias de llegada en los datos.",
+        "soft": "El caso describe que unas partes tardan más que otras. Revisemos esa irregularidad antes de elegir una característica física o una credencial de la aplicación.",
+        "sharp": "El micrófono no decide el horario de cada paquete según su estatura, carajo. Observa los tiempos antes de mandar a comprar accesorios sin ninguna comprobación.",
+        "pass": "Ritmo y demora tienen descripciones distintas en tu mapa. Podrás hablar de audio con precisión sin esconder síntomas diferentes dentro de un simple va lento.",
+        "review": "Compara llegadas igualmente tardías con otras muy desiguales. La segunda secuencia muestra una variación que un promedio puede ocultar, sin demostrar todavía una causa concreta."
+      }
+    },
+    {
+      "id": "networks-basics-perdidas",
+      "title": "Cuando faltan datos",
+      "minutes": 3,
+      "intro": "Reconoce la pérdida de paquetes como un resultado observable y distingue su efecto de sus posibles causas, sin asumir automáticamente ataques o errores en el contenido original enviado.",
+      "sections": [
+        {
+          "title": "Perder no identifica una causa",
+          "body": "La pérdida de paquetes significa que algunos envíos no llegan como se esperaba dentro de la observación realizada. Puede relacionarse con congestión, errores de enlace u otras condiciones, pero el dato por sí solo no identifica una causa. Las aplicaciones reaccionan de maneras diferentes: algunas retransmiten y otras pueden mostrar cortes o degradación. Conviene registrar cómo se midió la pérdida y qué tráfico se observó, evitando extender el resultado de una prueba aislada a cualquier servicio de la red."
+        }
+      ],
+      "steps": [
+        "Distingue observar una pérdida de afirmar por qué ocurrió.",
+        "Anota qué comunicación y condiciones describe una medición ficticia."
+      ],
+      "scenario": "Una prueba ficticia indica que faltaron algunos envíos durante un intervalo. El informe no contiene más análisis, pero alguien concluye que existe un atacante y que todos los servicios están dañados de forma permanente.",
+      "questions": [
+        {
+          "prompt": "¿Qué conclusión permite esa observación por sí sola?",
+          "options": [
+            "Confirma un ataque contra todos los dispositivos",
+            "Siempre demuestra un error en cada contraseña",
+            "Describe pérdida observada, pero requiere comprobar la causa"
+          ],
+          "answer": 2,
+          "explanation": "El resultado indica que faltaron envíos en esa medición concreta. Para explicar por qué ocurrió se necesitan comprobaciones adicionales; pérdida, alcance y causa no deben convertirse automáticamente en una sola afirmación sobre toda la red.",
+          "wrongExplanations": [
+            "La pérdida tiene distintas causas posibles y la prueba no identifica una intención maliciosa. Afirmar un ataque general sobre todos los equipos excede tanto la información disponible como el alcance de la observación realizada en ese intervalo.",
+            "Las contraseñas controlan autenticación y no explican automáticamente una medición de paquetes perdidos. El resultado temporal de una comunicación debe analizarse en su contexto antes de cambiar credenciales o atribuirle un problema de acceso de usuarios.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Algunos datos faltaron a la cita, cariño. Vamos a describirlo sin inventarles una conspiración antes de buscar evidencia suficiente sobre el intercambio.",
+        "theory": "Perder paquetes cuenta lo observado, no la biografía del culpable. Mi detective interior exige pruebas adicionales antes de declarar un ataque a la red.",
+        "hint": "Separa resultado medido y explicación propuesta. Pregunta qué aporta realmente el informe y qué conclusiones añade otra persona sin comprobarlas en esa observación concreta.",
+        "correct": "Pérdida observada y causa pendiente: preciso. No convertiste una medición limitada en una acusación gigantesca que abarque todos los equipos y servicios de la red.",
+        "soft": "La prueba muestra un resultado concreto. Revisemos si identifica también su causa antes de aceptar una explicación que afecta a todos los dispositivos del caso.",
+        "sharp": "Un paquete perdido no trae confesión del villano, carajo. No escribas una novela de intrusos donde solo tenemos una medición limitada que necesita más comprobaciones.",
+        "pass": "Describes pérdidas sin inventar causas. Esa prudencia evita cambios innecesarios y hará tus próximos diagnósticos bastante más útiles que un susto automático por cualquier cifra.",
+        "review": "Separemos qué pasó, dónde se midió y por qué pudo pasar. Son preguntas distintas y no todas tienen respuesta con la evidencia disponible hasta ahora."
+      }
+    },
+    {
+      "id": "networks-basics-duplex",
+      "title": "Enviar y recibir simultáneamente",
+      "minutes": 3,
+      "intro": "Comprende el significado básico de dúplex completo y diferencia la posibilidad de transmitir en ambos sentidos a la vez de una garantía sobre capacidad o seguridad del enlace.",
+      "sections": [
+        {
+          "title": "Dos sentidos, una propiedad concreta",
+          "body": "Una conexión de dúplex completo permite enviar y recibir simultáneamente en ambos sentidos. Esto describe una propiedad del enlace, no una promesa de que cualquier aplicación alcance una cifra concreta. Las interfaces compatibles suelen negociar parámetros de funcionamiento, y ajustes incorrectos pueden producir problemas en ciertos entornos. Para principiantes conviene observar el estado indicado y consultar documentación antes de forzar valores. Tampoco la simultaneidad sustituye autenticación, cifrado o controles de acceso de los servicios utilizados."
+        }
+      ],
+      "steps": [
+        "Dibuja dos flechas simultáneas entre dos interfaces ficticias.",
+        "Distingue esa propiedad del contenido y la autorización de la comunicación."
+      ],
+      "scenario": "Dos interfaces ficticias indican dúplex completo y pueden transmitir en ambos sentidos al mismo tiempo. Un estudiante cree que esa propiedad también demuestra que la aplicación remota responde siempre rápido y está protegida contra cualquier acceso indebido.",
+      "questions": [
+        {
+          "prompt": "¿Qué describe realmente el dúplex completo?",
+          "options": [
+            "Envío y recepción simultáneos en el enlace",
+            "Confidencialidad automática de todas las aplicaciones",
+            "Una garantía de respuesta instantánea del servidor"
+          ],
+          "answer": 0,
+          "explanation": "El término describe la posibilidad de comunicar en los dos sentidos simultáneamente. No determina por sí solo la demora del servidor ni ofrece controles de identidad o protección del contenido en cada aplicación que utilice el enlace.",
+          "wrongExplanations": [
+            null,
+            "El cifrado y los controles de acceso son funciones distintas de permitir transmisiones simultáneas. Un enlace de dúplex completo puede transportar diferentes aplicaciones, y la protección de cada una debe comprobarse mediante sus mecanismos específicos de seguridad.",
+            "La respuesta de un servidor también depende de distancia, carga y procesamiento. Que el enlace permita ambos sentidos simultáneos no elimina esos factores ni convierte cada solicitud de aplicación en una respuesta instantánea garantizada para sus usuarios."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Las dos direcciones hablarán a la vez, pero con reglas. No confundamos esa propiedad del enlace con milagros de velocidad o protección para cualquier aplicación.",
+        "theory": "Enviar y recibir simultáneamente describe dúplex completo. Ni mis dos brazos prometen que cada servidor responda sin demora por simple entusiasmo de sus interfaces.",
+        "hint": "Observa las flechas del enlace y limita la conclusión a esa propiedad. Las garantías sobre servidores o contenido necesitan información que el caso no aporta.",
+        "correct": "Dos sentidos simultáneos: función delimitada. Las aplicaciones todavía conservan trabajos propios, sin recibir garantías imaginarias por el estado que indican estas interfaces del ejemplo.",
+        "soft": "El concepto explica cómo comunican las interfaces. Revisemos si añade promesas de seguridad o respuestas del servidor que no forman parte de su definición.",
+        "sharp": "Dúplex completo no firma garantías cósmicas sobre cada aplicación, joder. Dos sentidos simultáneos ya son trabajo suficiente sin exigir cifrado y respuestas instantáneas para todos.",
+        "pass": "Propiedad entendida con límites claros. Saber qué describe un parámetro y qué queda fuera de él evita conclusiones espectaculares pero técnicamente insostenibles sobre cualquier conexión.",
+        "review": "Dibuja dos flechas contrarias activas al mismo tiempo. Esa imagen explica el concepto sin añadir velocidad infinita, permisos universales o protección automática del contenido transportado."
+      }
+    },
+    {
+      "id": "networks-basics-cuello-botella",
+      "title": "El tramo que limita",
+      "minutes": 3,
+      "intro": "Identifica la idea de cuello de botella y comprende por qué mejorar un componente que no limita el recorrido puede no aumentar el rendimiento que observa una aplicación.",
+      "sections": [
+        {
+          "title": "El límite puede estar en otro lugar",
+          "body": "Un cuello de botella es un recurso que limita el resultado del conjunto bajo determinadas condiciones. En una transferencia puede estar en un enlace, un equipo o el servicio remoto. Aumentar la capacidad de otra parte no elimina necesariamente ese límite. La ubicación puede cambiar con la carga y el tipo de actividad. Por ello, antes de comprar equipos o modificar la red, conviene reunir evidencia sobre el recorrido y observar qué componente impide aprovechar las demás capacidades disponibles."
+        }
+      ],
+      "steps": [
+        "Dibuja tres tramos con capacidades distintas en una transferencia ficticia.",
+        "Identifica qué mejora necesitaría evidencia antes de realizar una compra."
+      ],
+      "scenario": "En una simulación ficticia, el servicio remoto limita cada descarga a una cifra baja. El enlace doméstico ya dispone de más capacidad, pero alguien propone reemplazar el cable para eliminar automáticamente el límite impuesto por ese servicio.",
+      "questions": [
+        {
+          "prompt": "¿Por qué cambiar ese cable podría no mejorar la descarga?",
+          "options": [
+            "Porque todos los cables tienen siempre capacidad infinita",
+            "Porque el límite descrito está en el servicio remoto",
+            "Porque las aplicaciones no utilizan ninguna red"
+          ],
+          "answer": 1,
+          "explanation": "El caso sitúa el límite en el servicio, no en el cable doméstico. Mejorar otro componente no elimina esa restricción, aunque la sustitución pudiera ser útil en situaciones distintas respaldadas por evidencia sobre un problema del cable.",
+          "wrongExplanations": [
+            "Los cables no tienen capacidad infinita: sus características y el equipo imponen límites. Aquí no se describe que el cable sea el componente limitante, por lo que debes atender a la restricción concreta del servicio remoto.",
+            null,
+            "La descarga sí utiliza una red y recorre varios componentes. El problema es atribuir el límite a una parte que ya tiene capacidad suficiente, ignorando que el servicio remoto restringe expresamente el resultado descrito en la simulación."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Antes de comprar otro cable, cariño, busquemos quién impone el límite. Mi vanidad no necesita que tu bolsillo financie un diagnóstico equivocado de esta descarga.",
+        "theory": "Una parte más rápida no obliga a la lenta a obedecer. El cuello de botella merece evidencia, no compras impulsivas con luces y promesas bonitas.",
+        "hint": "El escenario identifica una restricción del servicio. Pregúntate si sustituir un componente doméstico modifica realmente la decisión que ese servicio aplica durante la descarga observada.",
+        "correct": "Límite remoto reconocido. No gastaste dinero arreglando desde casa una restricción que el servicio mantiene por su cuenta; mi sonrisa aprueba ese criterio técnico concreto.",
+        "soft": "Miremos dónde coloca el caso la limitación. Después revisa si la acción modifica ese componente o solamente otra parte que ya tiene capacidad suficiente disponible.",
+        "sharp": "Un cable nuevo no negocia límites con el servidor por seducción, carajo. Primero localiza la restricción y después hablamos de compras con un fundamento real.",
+        "pass": "Cuello de botella comprendido. Sabes pedir evidencia antes de mejorar una pieza que quizá no limite el resultado que quieres cambiar en la transferencia.",
+        "review": "Marquemos el límite descrito dentro del recorrido. Comparar su ubicación con la mejora propuesta explica por qué sustituir otro componente podría no modificar esa descarga."
+      }
+    },
+    {
+      "id": "networks-basics-recorrido",
+      "title": "Un trayecto puede cambiar",
+      "minutes": 3,
+      "intro": "Comprende que los datos atraviesan varios enlaces y que sus rutas pueden cambiar, evitando imaginar un cable directo e invariable entre cada aplicación y su servidor remoto.",
+      "sections": [
+        {
+          "title": "Muchos siguientes saltos",
+          "body": "Una comunicación entre redes suele pasar por varios equipos de encaminamiento. Cada uno elige cómo reenviar según sus rutas y condiciones conocidas. El recorrido puede cambiar por decisiones de red, mantenimiento o disponibilidad, y el camino de vuelta no tiene por qué coincidir exactamente con el de ida. Esto no implica por sí mismo un incidente. Para interpretar un trayecto observado debes conocer las limitaciones de la herramienta utilizada y evitar concluir que cada cambio identifica una amenaza o una avería."
+        }
+      ],
+      "steps": [
+        "Dibuja dos recorridos posibles entre una red y un servicio ficticio.",
+        "Distingue cambiar de camino de cambiar el contenido de la comunicación."
+      ],
+      "scenario": "Una organización ficticia modifica su encaminamiento durante mantenimiento y el tráfico usa otro recorrido autorizado. El servicio continúa respondiendo, pero una persona asegura que cualquier cambio de trayecto demuestra manipulación maliciosa de los documentos enviados.",
+      "questions": [
+        {
+          "prompt": "¿Qué puede afirmarse sobre el cambio descrito?",
+          "options": [
+            "Siempre demuestra que alguien alteró los documentos",
+            "Solo ocurre si todos los routers son idénticos",
+            "Puede ser una decisión legítima de encaminamiento"
+          ],
+          "answer": 2,
+          "explanation": "Las rutas pueden modificarse por mantenimiento y otras decisiones legítimas. Observar otro recorrido no demuestra por sí solo cambios de contenido; esa acusación requeriría evidencia adicional sobre la integridad de la información o el incidente supuesto por la persona.",
+          "wrongExplanations": [
+            "Un cambio de camino no prueba una alteración de documentos. El caso señala mantenimiento autorizado y servicio disponible; atribuir manipulación exige información adicional distinta de la variación observada en el trayecto de los datos.",
+            "Los equipos no necesitan ser idénticos para aplicar rutas diferentes. El encaminamiento utiliza reglas y protocolos compatibles; el cambio de recorrido depende de decisiones y condiciones de red, no de una obligación de compartir modelo físico entre todos los routers.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Los datos no siempre toman la misma calle, precioso. Un cambio de recorrido necesita contexto antes de convertirse en noticia alarmante con villanos y música.",
+        "theory": "Una ruta puede cambiar sin que el documento reciba maquillaje clandestino. Camino e integridad son cosas distintas y mi ceja exige pruebas antes de mezclarlas.",
+        "hint": "El caso explica un mantenimiento autorizado. Separa cambiar el camino de cambiar los datos y observa qué conclusión añade la persona sin aportar otra evidencia.",
+        "correct": "Cambio legítimo posible: lectura prudente. No acusaste a los routers de reescribir documentos por tomar otra calle durante un mantenimiento que la organización autorizó explícitamente.",
+        "soft": "Miremos qué cambió: otro recorrido, pero ninguna alteración del contenido descrita. Separar ambos hechos evita asumir un incidente que no está demostrado en el caso.",
+        "sharp": "Cambiar de calle no convierte un paquete en falsificador, joder. Si acusas de editar documentos, trae pruebas del contenido y no solamente un mapa distinto.",
+        "pass": "Trayectos variables comprendidos. Puedes aceptar varios caminos sin declarar un incidente automático; esa prudencia permitirá describir observaciones de encaminamiento con más precisión y menos sustos.",
+        "review": "Dibuja dos rutas entre los mismos extremos y conserva el documento. La comparación distingue camino e integridad antes de pedir evidencia sobre una manipulación real."
+      }
+    },
+    {
+      "id": "networks-basics-permisos",
+      "title": "Conectar no es tener permiso",
+      "minutes": 3,
+      "intro": "Distingue conectividad de autorización y comprende que poder llegar a un recurso no otorga el derecho de consultar, modificar o copiar su información sin permiso de su responsable.",
+      "sections": [
+        {
+          "title": "Alcanzable no significa autorizado",
+          "body": "La conectividad permite intentar comunicarse con un recurso, pero sus permisos determinan qué acciones están autorizadas. Puedes alcanzar un servidor y aun así no tener derecho a leer sus documentos. Una carpeta visible o una respuesta de red tampoco conceden permiso para probar accesos ajenos. En prácticas educativas trabaja con recursos propios, simulados o expresamente autorizados. Si encuentras exposición accidental de información, evita explorar su contenido y comunica el hallazgo por un canal adecuado siguiendo las normas aplicables del entorno."
+        }
+      ],
+      "steps": [
+        "Separa ver un recurso de tener permiso para abrirlo.",
+        "Define un entorno propio o ficticio para cualquier práctica de acceso."
+      ],
+      "scenario": "Una estudiante ficticia ve una carpeta de otra organización en un listado de recursos disponibles. No recibió autorización ni necesita esos documentos para su actividad, pero piensa que aparecer en la lista le concede derecho a copiarlos todos.",
+      "questions": [
+        {
+          "prompt": "¿Qué debe recordar antes de actuar?",
+          "options": [
+            "La visibilidad no equivale a autorización para acceder o copiar",
+            "Todo recurso alcanzable pertenece a quien lo encuentre",
+            "Las carpetas visibles no pueden contener información sensible"
+          ],
+          "answer": 0,
+          "explanation": "Descubrir un recurso no concede permisos sobre sus datos. Sin autorización, debe evitar explorar o copiar información ajena y comunicar una posible exposición mediante el canal adecuado de la organización, siguiendo sus procedimientos para que el responsable pueda revisarla.",
+          "wrongExplanations": [
+            null,
+            "Alcanzar un recurso no transfiere su propiedad ni los derechos de acceso. La autorización depende del responsable y del uso permitido; encontrar información expuesta no habilita automáticamente su copia ni su exploración por quien la descubre en una red.",
+            "Una carpeta visible puede contener información sensible por configuración incorrecta u otras causas. Su aparición en una lista no demuestra que sea pública ni elimina la necesidad de autorización antes de abrir o copiar archivos que pertenecen a otra organización."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Ver una puerta no significa poder entrar, cariño. Pondremos límites a la curiosidad para que aprender redes no termine explorando recursos ajenos sin ninguna autorización.",
+        "theory": "Alcanzar un servidor y tener permiso son funciones distintas. Mi lengua tiene poco filtro, pero las prácticas necesitan límites claros antes de tocar información ajena.",
+        "hint": "Pregunta quién autorizó la acción, no solamente si aparece la carpeta. La decisión requiere permisos y propiedad aunque técnicamente puedas intentar conectarte al recurso observado.",
+        "correct": "Visibilidad sin permiso no basta: entendido. Aprender con criterio conserva límites claros; un listado accidental no invita a copiar documentos que nadie autorizó a explorar.",
+        "soft": "La carpeta aparece, pero revisemos la autorización. La pregunta no pide si técnicamente se puede intentar, sino si encontrarla concede derechos sobre su información almacenada.",
+        "sharp": "La carpeta no firmó una invitación por dejarse ver, carajo. Poder llegar no te corona dueño; practica con recursos propios o autorizados sin inventar permisos.",
+        "pass": "Conectividad y autorización separadas. Esa frontera permite aprender con iniciativa y límites claros, usando sistemas propios o aprobados sin explorar información ajena a la actividad.",
+        "review": "Responde por separado: puedo llegar, tengo permiso y para qué acción. Ninguna posibilidad técnica sustituye la autorización del responsable para acceder a recursos o datos."
+      }
+    },
+    {
+      "id": "networks-basics-firewall",
+      "title": "Filtrar tráfico con reglas",
+      "minutes": 3,
+      "intro": "Reconoce el propósito de un firewall y distingue permitir una comunicación de certificar que su contenido es honesto, correcto o autorizado para cualquier actividad de una aplicación concreta.",
+      "sections": [
+        {
+          "title": "Una política necesita contexto",
+          "body": "Un firewall aplica reglas para permitir o bloquear tráfico según criterios disponibles, como direcciones, puertos o estado de conexiones, dependiendo del producto. Puede estar en un equipo o entre redes. Su decisión no demuestra por sí sola que cada contenido permitido sea legítimo. También necesita una configuración adecuada y mantenimiento. Ante un bloqueo, conviene consultar al responsable y revisar el objetivo de la regla, evitando desactivar todas las protecciones solo para conseguir que una aplicación funcione sin investigar el motivo."
+        }
+      ],
+      "steps": [
+        "Describe una regla ficticia que permita solo un servicio necesario.",
+        "Separa la autorización de tráfico de la confianza en su contenido."
+      ],
+      "scenario": "Un firewall ficticio permite la conexión necesaria para una aplicación de trabajo. Una persona cree que ese permiso demuestra que todos los mensajes recibidos por ella son honestos y que ya no hace falta verificar solicitudes sospechosas de datos personales.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debe recordarse?",
+          "options": [
+            "Permitir tráfico demuestra que todo usuario es honesto",
+            "El filtrado no certifica por sí solo cada contenido permitido",
+            "Un firewall solo sirve para cambiar fondos de pantalla"
+          ],
+          "answer": 1,
+          "explanation": "La regla determina si cierto tráfico está permitido bajo sus criterios. No sustituye la evaluación del contenido ni garantiza que una petición recibida sea legítima, por lo que siguen siendo importantes autenticación, verificación y hábitos adecuados en la aplicación.",
+          "wrongExplanations": [
+            "Permitir una conexión no verifica todas las intenciones de sus participantes. Un usuario o servicio puede enviar contenido engañoso por una comunicación permitida, de modo que deben mantenerse controles adecuados de identidad, permisos y comprobación de solicitudes inesperadas.",
+            null,
+            "El firewall aplica políticas de comunicación y no decora la pantalla. Su filtrado ayuda a limitar tráfico, aunque esas decisiones no certifiquen automáticamente la legitimidad de todos los contenidos que una aplicación reciba."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Un guardia revisará reglas de tráfico, precioso. No le pediremos leer el alma de cada mensaje permitido ni certificar honestidad universal por abrir una comunicación.",
+        "theory": "El firewall tiene criterios, no telepatía moral. Permitir un camino no convierte cada petición en legítima; sigue siendo necesario comprobar solicitudes sospechosas dentro del servicio.",
+        "hint": "Distingue una decisión sobre tráfico de una conclusión sobre contenido. Busca una opción que respete ese límite sin añadir capacidades que la descripción nunca promete.",
+        "correct": "Filtrar no certifica mensajes: exacto. La política controla comunicaciones, pero no absuelve una petición sospechosa por cruzar un camino permitido dentro de esa red.",
+        "soft": "La regla permite comunicarse. Revisemos si demuestra honestidad de cada mensaje; separar funciones evita atribuir al firewall garantías que dependen de otros controles de seguridad.",
+        "sharp": "Un permiso de tráfico no bautiza de santo cada mensaje, joder. El firewall filtra criterios; no lee la conciencia de quien pide tus datos sonriente.",
+        "pass": "Firewall entendido con límites claros. Valoras el filtrado sin eliminar verificación de mensajes y conservas defensas complementarias en vez de confiar todo a una barrera.",
+        "review": "Compara permitir tráfico con pedir datos personales. La primera decisión controla comunicación; la segunda todavía necesita evaluación de legitimidad antes de que compartas información sensible."
+      }
+    },
+    {
+      "id": "networks-basics-segmentacion",
+      "title": "Separar redes limita el alcance",
+      "minutes": 3,
+      "intro": "Comprende la segmentación como separación organizada de grupos y reconoce que necesita reglas entre ellos para reducir accesos innecesarios, sin prometer aislamiento absoluto por cambiar nombres visibles de conexiones.",
+      "sections": [
+        {
+          "title": "Grupos con relaciones controladas",
+          "body": "Segmentar consiste en dividir una red en grupos con límites y políticas para sus comunicaciones. Puede ayudar a separar actividades o reducir accesos innecesarios, como mantener dispositivos de pruebas apartados de equipos administrativos. La separación requiere configuración y controles reales: poner nombres distintos a dos conexiones no demuestra aislamiento. También conviene definir qué intercambios necesarios se permiten entre segmentos. No garantiza seguridad absoluta, pero facilita aplicar reglas acordes con la función y el nivel de confianza de cada grupo."
+        }
+      ],
+      "steps": [
+        "Dibuja grupos ficticios para administración y prácticas.",
+        "Define un intercambio necesario y otros que no deberían estar permitidos."
+      ],
+      "scenario": "Una academia ficticia quiere separar equipos de prácticas de sus archivos administrativos. Alguien propone cambiar solamente los nombres visibles de las conexiones y afirma que, sin configurar límites ni reglas, eso ya impide cualquier acceso entre ambos grupos de trabajo.",
+      "questions": [
+        {
+          "prompt": "¿Qué falta para una separación efectiva?",
+          "options": [
+            "Cambiar el color de todos los escritorios",
+            "Escribir nombres más largos para los grupos",
+            "Configurar límites y reglas reales de comunicación"
+          ],
+          "answer": 2,
+          "explanation": "La segmentación requiere separación técnica y políticas coherentes con los accesos necesarios. Los nombres ayudan a organizar, pero no prueban que exista un límite que impida comunicaciones no deseadas entre equipos de prácticas y recursos administrativos de la academia.",
+          "wrongExplanations": [
+            "Cambiar colores no controla el tráfico entre grupos. Para reducir accesos innecesarios se necesitan mecanismos de separación y reglas aplicadas a la comunicación, además de comprobar que la configuración cumple el objetivo previsto para cada conjunto de dispositivos.",
+            "Cambiar colores no controla tráfico entre grupos. Se necesitan mecanismos de separación y reglas aplicadas a las comunicaciones, además de comprobar que la configuración cumple el objetivo previsto para cada conjunto de dispositivos.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Pondremos fronteras útiles entre grupos, cariño. Los nombres bonitos orientan, pero no levantan barreras técnicas por escribirlos con entusiasmo en una pantalla sin configurar controles.",
+        "theory": "Llamar laboratorio a un grupo no bloquea accesos por cortesía cósmica. La segmentación necesita límites y políticas reales que permitan lo necesario sin regalar comunicaciones.",
+        "hint": "Observa qué cambia en la propuesta y qué controles declara ausentes. Busca una separación que afecte a las comunicaciones, no solamente a sus etiquetas visibles.",
+        "correct": "Límites y reglas reales: respuesta con sustancia. Etiquetar organiza, pero configurar y comprobar la separación permite reducir accesos no deseados entre prácticas y administración.",
+        "soft": "Cambiar nombres ordena la vista, pero revisemos si modifica comunicaciones. Si no hay límites aplicados, falta una parte técnica para conseguir la separación que desean.",
+        "sharp": "Una etiqueta laboratorio peligroso no levanta muros, carajo. Los nombres no bloquean paquetes por intimidación; necesitas políticas reales antes de prometer separación de recursos internos.",
+        "pass": "Separación entendida como configuración. Pides reglas y comprobaciones cuando alguien promete aislamiento por etiquetas; mi ceja aprueba la diferencia entre intención y control real.",
+        "review": "Dibuja dos grupos y reglas para cruzar su frontera. El límite debe existir y comprobarse en la configuración, además de aparecer dibujado en tu mapa."
+      }
+    },
+    {
+      "id": "networks-basics-invitados",
+      "title": "Acceso de invitados con límites",
+      "minutes": 3,
+      "intro": "Relaciona una red de invitados con necesidades de acceso limitadas y aprende que su nombre no demuestra aislamiento, por lo que deben comprobarse las funciones disponibles y la configuración autorizada.",
+      "sections": [
+        {
+          "title": "Dar lo necesario, separar lo privado",
+          "body": "Una red de invitados puede ofrecer a visitantes una conexión sin concederles el mismo acceso a recursos privados del hogar o la organización. Su comportamiento depende de las capacidades del equipo y de la configuración aplicada. Algunas opciones separan invitados de la red interna o entre sí, pero no conviene asumirlas por el nombre. Consulta documentación y realiza comprobaciones autorizadas con recursos de prueba, definiendo qué servicios necesitan los invitados y evitando compartir credenciales de administración o accesos personales innecesarios."
+        }
+      ],
+      "steps": [
+        "Describe qué necesita un visitante ficticio y qué recurso privado no debería usar.",
+        "Identifica qué ajuste o documentación comprobarías para confirmar esa separación."
+      ],
+      "scenario": "Una familia ficticia crea una conexión llamada Invitados para quienes solo necesitan internet. No revisó si permite acceder al almacenamiento privado y cree que el nombre garantiza separación completa entre los dispositivos conectados.",
+      "questions": [
+        {
+          "prompt": "¿Qué deberían comprobar?",
+          "options": [
+            "Las capacidades y ajustes reales de aislamiento de esa red",
+            "Si todos los visitantes prefieren el mismo navegador",
+            "Que el nombre Invitados tenga suficientes letras"
+          ],
+          "answer": 0,
+          "explanation": "El aislamiento depende de funciones y configuración, no únicamente de una etiqueta. Deben revisar la documentación y comprobar de forma autorizada que los invitados reciben el acceso necesario sin alcanzar recursos privados que se desea mantener separados en el hogar.",
+          "wrongExplanations": [
+            null,
+            "El navegador preferido no determina la separación entre redes. Para limitar acceso al almacenamiento privado se requieren capacidades y ajustes adecuados, además de comprobar que el resultado coincide con las necesidades definidas por sus responsables.",
+            "La longitud del nombre no implementa aislamiento. Una red llamada Invitados puede conservar accesos no deseados si sus controles no están configurados; la revisión debe centrarse en funciones reales, no en la etiqueta visible."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "La hospitalidad no exige regalar documentos, precioso. Definiremos necesidades y recursos privados antes de confiar ciegamente en el nombre que muestra una conexión doméstica.",
+        "theory": "La etiqueta invita, pero la configuración limita. Mi lado consentido puede pedirlo todo; tu red no tiene obligación de conceder acceso a cada recurso privado.",
+        "hint": "Distingue nombre y función aplicada. Busca qué demuestra límites entre visitantes y recursos privados, más allá de preferencias personales o letras dentro de una etiqueta.",
+        "correct": "Ajustes y capacidades reales: ese es el criterio. La hospitalidad mejora cuando la visita recibe lo necesario sin que el almacenamiento entre en el tour.",
+        "soft": "El nombre identifica la conexión, pero no confirma sus límites. Revisemos qué funciones separan recursos privados antes de aceptar que la etiqueta garantiza aislamiento completo.",
+        "sharp": "Invitados no ordena al universo apartarse de tus documentos, joder. Revisa ajustes antes de ofrecer un paseo accidental por el almacenamiento familiar a cada visitante.",
+        "pass": "Invitados con límites verificables: concepto conseguido. Puedes ser amable sin asumir que una etiqueta protege archivos; la configuración y sus resultados siguen necesitando atención concreta.",
+        "review": "Escribe qué necesita la visita y qué permanecerá privado. Identifica el ajuste que aplica esa diferencia y cómo comprobarlo con recursos de prueba propios."
+      }
+    },
+    {
+      "id": "networks-basics-mapa",
+      "title": "Dibujar antes de cambiar",
+      "minutes": 3,
+      "intro": "Aprende a construir un mapa sencillo de red con dispositivos, enlaces y salida externa, distinguiendo información conocida de suposiciones para planificar comprobaciones con menos confusión y cambios innecesarios en equipos propios.",
+      "sections": [
+        {
+          "title": "Un dibujo con evidencia",
+          "body": "Un mapa inicial puede mostrar dispositivos finales, equipos intermediarios y conexiones conocidas. No necesita símbolos complejos: nombres claros y líneas con el medio utilizado suelen bastar. Marca también qué datos desconoces, en vez de inventar enlaces o funciones. Señalar dónde aparece el síntoma y qué sigue funcionando facilita explicar el problema a soporte. Evita incluir contraseñas o publicar detalles sensibles de la red. El objetivo es ordenar la evidencia para decidir una siguiente comprobación autorizada y proporcionada."
+        }
+      ],
+      "steps": [
+        "Dibuja un equipo propio, su enlace local y una salida externa conocida.",
+        "Marca con una pregunta cualquier conexión o función que no hayas confirmado."
+      ],
+      "scenario": "Un estudiante ficticio dibuja equipos que nunca confirmó para explicar un fallo. Omite el medio utilizado por el dispositivo afectado y mezcla conexiones conocidas con rutas imaginadas sin distinguirlas de la evidencia disponible para soporte.",
+      "questions": [
+        {
+          "prompt": "¿Qué mejora haría más útil el mapa?",
+          "options": [
+            "Añadir contraseñas reales a cada dispositivo",
+            "Distinguir conexiones confirmadas, síntomas y datos desconocidos",
+            "Usar más símbolos aunque no se conozcan sus funciones"
+          ],
+          "answer": 1,
+          "explanation": "Un mapa útil separa observaciones de suposiciones y localiza el síntoma. Mostrar medio de conexión, enlaces conocidos y dudas ayuda a comunicar el problema y elegir comprobaciones, sin divulgar credenciales ni inventar una infraestructura que nadie ha confirmado todavía.",
+          "wrongExplanations": [
+            "Las contraseñas no son necesarias para explicar la estructura del enlace y aumentan exposición si el dibujo se comparte. El mapa debe ordenar dispositivos, conexiones y síntomas, manteniendo fuera los secretos que autorizan acceso a cuentas o administración de equipos.",
+            null,
+            "La complejidad visual no reemplaza información comprobada. Añadir símbolos sin conocer su función puede confundir más a soporte; conviene usar nombres sencillos y marcar dudas sobre equipos o enlaces antes que presentarlos como hechos confirmados del montaje de red."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Dibujaremos sin concurso artístico, cariño. Necesito hechos, conexiones claras y dudas reconocidas; un castillo de aparatos imaginarios solo obligaría a soporte a adivinar nuestro problema.",
+        "theory": "Una pregunta honesta vale más que un router inventado. El mapa ordena evidencia; mis dotes teatrales ya cubren la ficción necesaria sin añadir infraestructura imaginaria.",
+        "hint": "Pregunta qué está comprobado y qué es supuesto. La mejora debe distinguirlos y localizar el síntoma sin añadir secretos o símbolos que oculten la información.",
+        "correct": "Evidencia y dudas separadas: mapa útil. Soporte puede seguir conexiones sin novelas de aparatos inventados ni credenciales innecesarias para comprender el alcance del problema observado.",
+        "soft": "El dibujo necesita información confiable, no más secretos. Revisemos qué conexiones conoce el estudiante y dónde ocurre el fallo antes de inventar otra infraestructura completa.",
+        "sharp": "Un router imaginario no ayuda al soporte, carajo. Si desconoces dónde va una línea, márcala como duda; decorar el mapa no repara una red real.",
+        "pass": "Mapa sencillo y honesto conseguido. Explicas conexiones confirmadas y preguntas pendientes, una herramienta más valiosa que coleccionar símbolos vistosos cuyo significado todavía no has comprobado.",
+        "review": "Empieza por el equipo afectado y su enlace conocido. Añade lo confirmado y marca dudas; no necesitas inventar saltos externos para comunicar un síntoma."
+      }
+    },
+    {
+      "id": "networks-basics-diagnostico",
+      "title": "Comprobar una cosa cada vez",
+      "minutes": 3,
+      "intro": "Aplica una secuencia básica de diagnóstico que observa alcance, conserva evidencia y cambia un elemento cada vez, recurriendo al responsable cuando no tienes autorización o conocimientos suficientes para intervenir en la configuración real.",
+      "sections": [
+        {
+          "title": "Método antes de improvisación",
+          "body": "Un diagnóstico inicial empieza describiendo el síntoma y su alcance: qué falla, desde cuándo y qué sigue funcionando. Después formula una comprobación concreta que sea segura y autorizada. Si cambias muchas cosas a la vez, resulta difícil saber cuál influyó y puedes introducir problemas nuevos. Registra los cambios y cómo revertirlos. No desactives protecciones generales por comodidad. Cuando el equipo pertenece a una organización, sigue su procedimiento y comparte observaciones claras sin entregar contraseñas ni borrar información útil para soporte."
+        }
+      ],
+      "steps": [
+        "Escribe el síntoma y una función que sí continúe operativa.",
+        "Propón una comprobación autorizada y anota cómo conservarías el estado previo."
+      ],
+      "scenario": "Una persona ficticia modifica opciones y desactiva controles simultáneamente para resolver una aplicación. Después no recuerda el estado original ni cuál de los cambios alteró el comportamiento que necesita explicar a soporte.",
+      "questions": [
+        {
+          "prompt": "¿Qué método habría permitido interpretar mejor el resultado?",
+          "options": [
+            "Cambiar tantas opciones como sea posible sin anotarlas",
+            "Borrar todos los mensajes antes de pedir ayuda",
+            "Comprobar una hipótesis cada vez y registrar los cambios"
+          ],
+          "answer": 2,
+          "explanation": "Una comprobación cada vez permite relacionar una acción con su resultado y facilita revertir cambios. Registrar observaciones ayuda a soporte, mientras modificar múltiples opciones sin control puede ocultar la causa o añadir problemas nuevos a la situación inicial descrita.",
+          "wrongExplanations": [
+            "Cambiar muchas opciones simultáneamente impide saber qué acción influyó y dificulta volver al estado anterior. El método útil reduce variables, conserva observaciones y limita las intervenciones a comprobaciones autorizadas que correspondan con el síntoma real de la aplicación afectada.",
+            "Borrar mensajes elimina contexto útil y no resuelve por sí mismo el fallo. Es preferible conservar información relevante, registrar los cambios realizados y evitar compartir credenciales o datos sensibles que no sean necesarios para soporte.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "network",
+      "aoi": {
+        "intro": "Terminaremos con método, precioso. Antes de tocar diez botones por nervios, haremos una pregunta comprobable y conservaremos suficiente contexto para interpretar su resultado con cuidado.",
+        "theory": "Si cambias todo, el culpable puede esconderse entre tus decisiones. Una comprobación cada vez deja menos disfraces al error y facilita volver al estado anterior.",
+        "hint": "Busca cómo relacionar cada acción con su efecto. Necesitamos interpretar resultados y conservar contexto, sin ocultar mensajes ni multiplicar cambios que nadie podrá explicar.",
+        "correct": "Una hipótesis, una comprobación y un registro: excelente. El error tendrá menos escondites y soporte recibirá hechos útiles en vez de confesiones de botones aleatorios.",
+        "soft": "Piensa qué acción produjo un cambio. Si modificas todo junto, esa relación desaparece; separar pruebas y registrar resultados permite entender mucho mejor lo ocurrido.",
+        "sharp": "Diez botones por segundo no son método, carajo. Si borras el contexto, ni mi ojo cibernético sabrá qué cambió por cada ocurrencia nueva que aplicaste.",
+        "pass": "Redes completado con criterio y sin maltratar al router. Describes conexiones y síntomas con mejores preguntas, además de reconocer cuándo detenerte y pedir ayuda autorizada.",
+        "review": "Escribe un síntoma y una hipótesis. Anota comprobación, resultado esperado y forma de volver atrás; ese guion mantiene el aprendizaje ordenado y evita cambios innecesarios."
+      }
+    }
+  ]
+}

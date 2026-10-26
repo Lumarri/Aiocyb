@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "d-incorrect-0-0-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Enviar la clave para evitar un supuesto cierre le entrega justo lo que pide el mensaje. Menudo servicio de atención: empieza solicitando la llave de tu casa digital.",
+      "explanation": "Una contraseña enviada al impostor deja de ser un secreto. La acción segura es abrir el servicio por tu cuenta y contrastar el aviso allí, sin responder con credenciales al correo sospechoso."
+    },
+    {
+      "id": "d-incorrect-0-2-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Reenviar el susto no lo investiga. Ahora tu amigo también tiene una trampa en la bandeja, y el supuesto problema sigue sin verificarse. Nos faltó una comprobación.",
+      "explanation": "Reenviar el correo conserva sus enlaces y su presión, sin añadir ninguna prueba de autenticidad. La comprobación debe realizarse por una vía independiente y el reporte debe seguir el canal de la organización."
+    },
+    {
+      "id": "d-incorrect-1-0-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Una clave fácil para todo es muy cómoda, sí; también le ahorra trabajo a quien consiga una copia. Qué generosidad tan mal dirigida, joder.",
+      "explanation": "Reutilizar una clave permite que una filtración afecte otros accesos. Las contraseñas distintas limitan esa propagación, mientras MFA añade una comprobación que no se sustituye haciendo la contraseña más fácil de recordar."
+    },
+    {
+      "id": "d-incorrect-1-2-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Cambiar el nombre de usuario puede mover la etiqueta, pero deja las condiciones débiles de acceso donde estaban. El ladrón no necesita apreciar tu nuevo apodo.",
+      "explanation": "El nombre de usuario no convierte una clave compartida en exclusiva ni añade MFA. La protección del acceso depende de las credenciales, la verificación adicional y una recuperación que siga bajo tu control."
+    },
+    {
+      "id": "d-incorrect-2-0-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Reducir las actualizaciones a cambios de color es juzgar el taller por la pintura de la puerta. Debajo también se reparan errores que afectan a la seguridad.",
+      "explanation": "Los parches pueden corregir errores explotables, aunque no modifiquen la apariencia. Instalar versiones oficiales y mantener el dispositivo actualizado atiende vulnerabilidades que un simple cambio de colores no permite evaluar."
+    },
+    {
+      "id": "d-incorrect-2-2-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Actualizar no fabrica una copia de tus tareas. Si borras el proyecto después, tener los menús al día no lo invoca de vuelta. Ojalá la informática fuera tan consentida.",
+      "explanation": "Un parche y una copia cumplen funciones separadas: uno repara software y la otra permite recuperar datos. Ambos hacen falta cuando perder un proyecto y sufrir una vulnerabilidad son riesgos posibles."
+    },
+    {
+      "id": "d-incorrect-3-0-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 3,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Guardar todo únicamente en el mismo equipo comparte demasiados problemas: robo, avería o pérdida del disco. Dos archivos juntos no negocian mejor con una mochila desaparecida.",
+      "explanation": "Una copia que desaparece con el equipo no resuelve su pérdida. Usa otra ubicación protegida y comprueba una restauración, para saber que conservaste el contenido y no solo una referencia al archivo."
+    },
+    {
+      "id": "d-incorrect-3-1-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 3,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "La papelera no es tu caja fuerte; está hecha para terminar vaciándose. Poner allí el único rescate convierte un clic rutinario en una despedida bastante estúpida del archivo.",
+      "explanation": "La papelera está pensada como paso hacia la eliminación y puede vaciarse automáticamente. Una estrategia de recuperación necesita una copia conservada aparte y una prueba real de que sus archivos todavía abren."
+    },
+    {
+      "id": "d-incorrect-4-1-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 4,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Aprobar por reflejo anula precisamente la comprobación adicional. La cuenta pregunta si reconoces esa entrada; no está recogiendo votos para una fiesta a la que debas invitar a todos.",
+      "explanation": "La aprobación MFA autoriza un intento concreto. Si no lo iniciaste, recházalo y revisa sesiones y credenciales desde el servicio oficial; pulsar aceptar para quitar el aviso puede dar entrada a otra persona."
+    },
+    {
+      "id": "d-incorrect-4-2-repeat",
+      "lessonId": "diagnostic",
+      "stage": "incorrect",
+      "anchor": 4,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Compartir el código convierte tu segunda puerta en un favor al visitante. Que alguien se presente como técnico no le da derecho a pedir esa prueba de acceso.",
+      "explanation": "Los códigos de verificación sirven para demostrar control durante un acceso. Entregarlos a un supuesto técnico puede completar el inicio de sesión de otra persona; usa únicamente el flujo oficial que tú comenzaste."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "version": "1.5.0+7",
+  "apk": "build/releases/aiocyb-1.5.0+7-arm64.apk",
+  "bytes": 69699913,
+  "sha256": "5ff41642382efc8280014d313ff8aebbf2f66e195d6d71655a287124fb608970",
+  "portraits": 16,
+  "course_covers": 5,
+  "course_interface_source_files": [
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "135df998866eeeb8f77d3707d0d594705a6bd552f66f69e3a37c32f6795b1abd"
+    },
+    {
+      "path": "lib/src/screens/course_catalog.dart",
+      "sha256": "c59a1a775eb778574962bbd1f44a39896a336c1ad48195a5a77fda077e5000a7"
+    },
+    {
+      "path": "lib/src/screens/course_overview.dart",
+      "sha256": "84a0d24fd539cd73d7ef33519e094fbfe23bef2e4979bc929feadf9b158988f5"
+    },
+    {
+      "path": "lib/src/screens/lesson_studio.dart",
+      "sha256": "42c198bb6419cf29974bb2b48f2c33671bfff3607d3108e231c1b1a2d956f439"
+    },
+    {
+      "path": "lib/src/screens/lesson_navigation.dart",
+      "sha256": "e33eacfd67cfd0d4e3b87ab59dce066df885d5679117c1cbb3bf443acb84182f"
+    },
+    {
+      "path": "lib/src/widgets/course_visuals.dart",
+      "sha256": "6491c252dff526e4067578b1bdf999d16366d622cc8ae287c8f31f568df9c3b5"
+    },
+    {
+      "path": "lib/src/widgets/common.dart",
+      "sha256": "4365c4091be1e73075497b458dbe040b5a5b0a6dc553c88e1177b0b8cb8a5edf"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "b5920ea2391e871407de51d6de1f187ce10489394278c451faf8dff47e170136"
+    }
+  ],
+  "course_cover_files": [
+    "assets/artwork/defense-v1.png",
+    "assets/artwork/linux-v1.png",
+    "assets/artwork/networks-v1.png",
+    "assets/artwork/recovery-v1.png",
+    "assets/artwork/secure-build-v1.png"
+  ],
+  "dialogue_assets": 6,
+  "editorial_dialogues": 585,
+  "courses": 25,
+  "lessons": 430,
+  "exercises": 930,
+  "starter_exercises": {
+    "foundations": 30,
+    "identity": 30,
+    "phishing": 30
+  },
+  "malware_courses": 6,
+  "malware_lessons": 60,
+  "malware_exercises": 240,
+  "malware_explained_cases": 120,
+  "malware_theory_words": 38984,
+  "malware_authored_aoi_lines": 1746,
+  "secure_courses": 4,
+  "secure_lessons": 40,
+  "secure_exercises": 120,
+  "secure_explained_cases": 80,
+  "secure_theory_words": 27038,
+  "secure_authored_aoi_lines": 964,
+  "linux_courses": 6,
+  "linux_lessons": 60,
+  "linux_exercises": 240,
+  "linux_explained_cases": 120,
+  "linux_theory_words": 40097,
+  "linux_authored_aoi_lines": 1746,
+  "offline_labs": 4,
+  "lab_stages": 12,
+  "lab_authored_aoi_lines": 52,
+  "compiled_lesson_ids": 430,
+  "missing_lesson_ids": [],
+  "flutter_abis": [
+    "arm64-v8a"
+  ],
+  "internet_permission": false,
+  "minimum_sdk": 24,
+  "target_sdk": 36
+}

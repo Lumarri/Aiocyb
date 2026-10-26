@@ -1,0 +1,501 @@
+{
+  "partial_check": false,
+  "courses": 6,
+  "lessons": 60,
+  "exercises": 240,
+  "explained_cases": 120,
+  "theory_words": 40097,
+  "minimum_theory_words_per_lesson": 623,
+  "maximum_theory_words_per_lesson": 711,
+  "authored_aoi_lines": 1746,
+  "unique_aoi_lines": 1746,
+  "answer_explanations": 720,
+  "academy_courses": 25,
+  "academy_lessons": 430,
+  "academy_exercises": 930,
+  "lesson_details": [
+    {
+      "id": "linux-start-mapa",
+      "theory_words": 634,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-entorno",
+      "theory_words": 623,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-rutas",
+      "theory_words": 631,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-listar",
+      "theory_words": 642,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-tipos",
+      "theory_words": 633,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-ayuda",
+      "theory_words": 646,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-lectura",
+      "theory_words": 640,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-identidad",
+      "theory_words": 656,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-tiempos",
+      "theory_words": 659,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-start-inventario",
+      "theory_words": 653,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-argumentos",
+      "theory_words": 642,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-comillas",
+      "theory_words": 644,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-patrones",
+      "theory_words": 649,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-flujos",
+      "theory_words": 671,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-buscar",
+      "theory_words": 657,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-regex",
+      "theory_words": 658,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-contar",
+      "theory_words": 648,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-campos",
+      "theory_words": 647,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-estados",
+      "theory_words": 672,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "terminal-tools-procedimiento",
+      "theory_words": 655,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-modos",
+      "theory_words": 662,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-directorios",
+      "theory_words": 659,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-cambios",
+      "theory_words": 665,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-umask",
+      "theory_words": 678,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-propiedad",
+      "theory_words": 672,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-delegar",
+      "theory_words": 664,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-acl",
+      "theory_words": 679,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-enlaces",
+      "theory_words": 673,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-diagnostico",
+      "theory_words": 662,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-access-revision",
+      "theory_words": 677,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-procesos",
+      "theory_words": 671,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-recursos",
+      "theory_words": 677,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-servicios",
+      "theory_words": 667,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-unidades",
+      "theory_words": 688,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-temporizadores",
+      "theory_words": 648,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-paquetes",
+      "theory_words": 681,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-almacenamiento",
+      "theory_words": 665,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-red-local",
+      "theory_words": 669,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-configuracion",
+      "theory_words": 677,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-operations-referencia",
+      "theory_words": 669,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-fuentes",
+      "theory_words": 678,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-campos",
+      "theory_words": 681,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-tiempo",
+      "theory_words": 679,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-consultas",
+      "theory_words": 692,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-prioridad",
+      "theory_words": 686,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-autenticacion",
+      "theory_words": 669,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-web",
+      "theory_words": 694,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-retencion",
+      "theory_words": 690,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-minimizar",
+      "theory_words": 684,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "log-analysis-correlacion",
+      "theory_words": 674,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-alcance",
+      "theory_words": 687,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-preservar",
+      "theory_words": 691,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-prioridad",
+      "theory_words": 690,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-cronologia",
+      "theory_words": 685,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-cuentas",
+      "theory_words": 688,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-relaciones",
+      "theory_words": 711,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-hipotesis",
+      "theory_words": 702,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-respuesta",
+      "theory_words": 684,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-informe",
+      "theory_words": 684,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    },
+    {
+      "id": "linux-investigation-cierre",
+      "theory_words": 685,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 4
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/linux/linux-start.json",
+      "sha256": "1a737104c14ce58ecd1feeae167e015f29423dbe472598ca2a4cd629200a22e9",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/terminal-tools.json",
+      "sha256": "a81b2e86d995d17dcc990b539aafc6e21e66927fde1c0b92a8441e68d6fc0a5f",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/linux-access.json",
+      "sha256": "dcb757b729e82ab23776c618ee400c6a668ee56e3345026090e6dbe2d2c2cf3a",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/linux-operations.json",
+      "sha256": "dfd11d2d6fd5acb3115238fc34b744eb89447d03196c67711331a848725b16c1",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/log-analysis.json",
+      "sha256": "45a9f2d54f5eb26f788a32c3f630e42e6c8e1098e97f81d4178c292f53d18f8e",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/linux-investigation.json",
+      "sha256": "95ca09c21d43eefd26a6097960fd2cc78349daa923ba1bce73d18b73a73867b1",
+      "lessons": 10,
+      "exercises": 40
+    },
+    {
+      "path": "assets/linux/linux-start.md",
+      "sha256": "41dd160cbd00f1015f623c6c7ff1fa1527bb45c8fbb1d29ed7853622d0809f2f"
+    },
+    {
+      "path": "assets/linux/terminal-tools.md",
+      "sha256": "dee2a6b25e93b7626e140c0fcf6724a32b639f271b522f0d0403a2b7e4348e4c"
+    },
+    {
+      "path": "assets/linux/linux-access.md",
+      "sha256": "f1a4a8e11e0f8378d1cbf10fbf598250582440ab723ab9837515420a5fe3a4b0"
+    },
+    {
+      "path": "assets/linux/linux-operations.md",
+      "sha256": "1bb32a189094410669bc21ae97611fa4851ede6cf2d813bdb86ac1cd4628f572"
+    },
+    {
+      "path": "assets/linux/log-analysis.md",
+      "sha256": "19f14bdfa769e288447f52c3b07701f1876ce5f70569b6540c974a7f16d93509"
+    },
+    {
+      "path": "assets/linux/linux-investigation.md",
+      "sha256": "196da58b342326e989511b604a9babbfd50ebea7722f303fbb1f54bc151f99ee"
+    }
+  ],
+  "errors": []
+}

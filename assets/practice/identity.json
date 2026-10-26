@@ -1,0 +1,801 @@
+{
+  "courseId": "identity",
+  "lessons": [
+    {
+      "id": "identity-practice-secretos-independientes",
+      "title": "Separar secretos de verdad",
+      "minutes": 5,
+      "intro": "Practica cómo distinguir contraseñas independientes de variaciones previsibles y decide qué cuentas quedan relacionadas cuando una credencial se comparte con otros servicios o personas.",
+      "sections": [
+        {
+          "title": "Una relación que conviene romper",
+          "body": "Una contraseña única no es solamente una versión con otra fecha o el nombre del servicio al final. Es un secreto independiente que no permite deducir los accesos de otras cuentas a partir de una base compartida. La importancia aparente de un sitio tampoco elimina el riesgo: una cuenta secundaria puede exponer una credencial utilizada en el correo. Si necesitas entregar un acceso autorizado a otra persona, no reutilices allí tus secretos personales. Un gestor facilita crear valores diferentes sin memorizar una colección imposible."
+        }
+      ],
+      "steps": [
+        "Identifica relaciones entre cuentas sin escribir sus claves reales.",
+        "Prepara secretos independientes y decide dónde guardarlos de forma protegida."
+      ],
+      "scenario": "Organizas tus cuentas y encuentras un patrón común entre correo, compras y una herramienta compartida. Todas funcionan, pero quieres separar riesgos antes de que una exposición en uno de esos contextos alcance a los demás.",
+      "questions": [
+        {
+          "prompt": "¿Qué propuesta rompe mejor la relación predecible entre cuentas?",
+          "scenario": "Lucía utiliza una misma base y añade el nombre de cada tienda. Quiere mejorar esa separación sin escribir sus contraseñas aquí y dispone de un gestor que puede generar secretos nuevos para cada cuenta.",
+          "options": [
+            "Generar valores independientes para cada servicio",
+            "Conservar la base y cambiar solo la tienda del final",
+            "Utilizar el mismo secreto largo en todos los servicios"
+          ],
+          "answer": 0,
+          "explanation": "Los valores generados de forma independiente evitan conservar una receta común entre servicios. Una base larga con etiquetas distintas sigue teniendo una relación predecible, y reutilizar un secreto mantiene conectados los riesgos de las cuentas.",
+          "wrongExplanations": [
+            null,
+            "Cambiar la etiqueta conserva la receta que relaciona las contraseñas. Si alguien conoce una, podría inferir cómo construir otras; genera valores independientes y guárdalos asociados a sus servicios en el gestor.",
+            "La longitud no elimina el problema de reutilización. Si el mismo secreto protege todos los servicios, una exposición puede permitir probarlo en los demás; combina longitud con independencia para cada cuenta."
+          ],
+          "aoi": {
+            "question": "La receta tiene nombres distintos, cariño; compara las propuestas para saber cuál elimina realmente esa relación entre los secretos de Lucía.",
+            "hint": "Imagina que alguien aprende una contraseña y descubre su patrón; piensa qué propuesta evita inferir los demás accesos a partir de esa información.",
+            "correct": "Exacto: independencia real, tesoro; la receta compartida se retiró y cada cuenta tendrá un secreto que no depende del resto de la colección.",
+            "soft": "Las etiquetas diferentes parecen separar mucho; mira ahora qué parte común permitiría reconocer la misma receta en los accesos que acabas de comparar.",
+            "sharp": "Poner otra tienda al final no le hizo cirugía al secreto, carajo; la base sigue saludando desde todas las cuentas que intentábamos separar."
+          }
+        },
+        {
+          "prompt": "¿Por qué conviene separar también la contraseña del foro?",
+          "scenario": "Diego participa poco en un foro de aficiones y considera que allí no hay nada importante. Sin embargo, utiliza el mismo secreto en el correo donde recibe enlaces de recuperación de otras cuentas personales.",
+          "options": [
+            "Porque el precio de su computadora decide la seguridad del foro",
+            "Porque una exposición del foro podría afectar al correo que comparte la credencial",
+            "Porque entrar pocas veces vuelve imposible cualquier filtración"
+          ],
+          "answer": 1,
+          "explanation": "El riesgo de reutilización depende de compartir el secreto, no de cuánto utilizas el foro. Una credencial expuesta allí puede probarse contra el correo, aunque el proveedor del correo no haya sufrido la misma filtración.",
+          "wrongExplanations": [
+            "El precio del dispositivo no decide si dos servicios comparten una credencial. La relación importante es usar el mismo secreto en el foro y el correo, por lo que conviene separar ambos accesos.",
+            null,
+            "Utilizar poco una cuenta no garantiza que su proveedor nunca exponga credenciales. Si comparte contraseña con el correo, esa relación mantiene un riesgo aunque Diego visite el foro de manera muy ocasional."
+          ],
+          "aoi": {
+            "question": "El foro parece secundario, tesoro; revisa con qué otra cuenta comparte su llave antes de valorar las consecuencias de una posible exposición.",
+            "hint": "Sigue la credencial entre servicios en lugar de contar visitas al foro; pregunta dónde más podría funcionar si dejara de ser privada.",
+            "correct": "Bien: viste el puente hacia el correo, cariño; una afición pequeña no debería llevar una copia de la llave de tus recuperaciones personales.",
+            "soft": "Es comprensible fijarse en la importancia del foro; añade ahora qué otra cuenta acepta exactamente el mismo secreto y vuelve a comparar las opciones.",
+            "sharp": "El foro no protege al correo por parecer poca cosa, joder; la misma llave sigue abriendo dos puertas aunque una tenga menos visitas."
+          }
+        },
+        {
+          "prompt": "¿Qué secreto debería preparar para ese acceso compartido autorizado?",
+          "scenario": "Mara debe compartir una cuenta de un proyecto mediante el procedimiento permitido por su equipo. Para recordarla, propone poner la misma contraseña que usa en su cuenta personal de almacenamiento de fotografías.",
+          "options": [
+            "La contraseña de sus fotografías porque ya la recuerda",
+            "La misma contraseña personal con una letra adicional",
+            "Un secreto propio del proyecto que no reutilice credenciales personales"
+          ],
+          "answer": 2,
+          "explanation": "La autorización para compartir un acceso del proyecto no incluye conocer las credenciales personales de Mara. Prepara un secreto independiente y respeta el procedimiento del equipo para distribuirlo únicamente a las personas que deban utilizar esa cuenta.",
+          "wrongExplanations": [
+            "Quien recibe el acceso autorizado del proyecto no necesita conocer el secreto de las fotografías personales. Reutilizarlo conecta ambos ámbitos; prepara una credencial independiente y utiliza el canal de distribución permitido por el equipo.",
+            "Añadir una letra mantiene una relación predecible con la contraseña personal que intentas conservar privada. El acceso compartido necesita un secreto independiente, además de un procedimiento autorizado para entregarlo a las personas del proyecto.",
+            null
+          ],
+          "aoi": {
+            "question": "El proyecto tiene permiso para compartir acceso, cariño; compara qué propuesta mantiene ese permiso separado de las fotografías personales de Mara.",
+            "hint": "Distingue la cuenta autorizada para el equipo y el recurso personal; piensa qué debería poder conocer alguien que participa solamente en el proyecto.",
+            "correct": "Exacto: secreto del proyecto, tesoro; compartir una tarea no entregó también acceso potencial a los recuerdos privados que Mara guarda en otra cuenta.",
+            "soft": "Recordarla es cómodo, pero revisa quién recibirá esa clave; el permiso del proyecto no alcanza automáticamente las credenciales de los otros servicios personales.",
+            "sharp": "El proyecto no viene con álbum privado de regalo, carajo; separemos el secreto en lugar de poner otra letra al mismo problema."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisco-basics"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Vamos a separar relaciones incómodas, cariño; tus contraseñas merecen independencia aunque la memoria intente reunirlas todas bajo la misma receta familiar.",
+        "theory": "La exclusividad de un secreto tiene consecuencias prácticas; me gusta más que una etiqueta distinta pegada al mismo patrón que ya conocen otras cuentas.",
+        "pass": "Refuerzo completado: ya puedes buscar relaciones entre credenciales y romperlas con secretos independientes, sin compartir aquí ninguna contraseña que utilices realmente.",
+        "review": "Repasa qué personas o servicios conocen cada secreto; distinguir esas relaciones permite decidir dónde una variación sigue conservando un riesgo compartido entre cuentas."
+      }
+    },
+    {
+      "id": "identity-practice-gestor-con-criterio",
+      "title": "Un gestor que acompaña tus decisiones",
+      "minutes": 5,
+      "intro": "Practica el uso de un gestor ante dominios inesperados, credenciales repetidas y archivos exportados para reducir trabajo manual sin atribuir a la herramienta decisiones de confianza que debes comprobar.",
+      "sections": [
+        {
+          "title": "Organizar no significa obedecer cualquier pantalla",
+          "body": "El gestor facilita generar, guardar y utilizar credenciales independientes. Sus avisos y asociaciones con servicios son útiles, pero debes verificar el destino cuando algo no coincide con lo esperado. También puede ayudarte a localizar repeticiones para planificar cambios mediante cada servicio oficial. Revisa las funciones reales de tu herramienta sin asumir que todas son iguales. Si exportas datos, comprueba el formato: un archivo legible que contiene secretos merece protección especial y no debe circular como un documento corriente por chats o carpetas compartidas."
+        }
+      ],
+      "steps": [
+        "Comprueba dominio y cuenta cuando el gestor no encuentre la asociación esperada.",
+        "Revisa duplicados y exportaciones sin copiar secretos a lugares públicos."
+      ],
+      "scenario": "Preparas el gestor para varias cuentas y aparecen tres tareas distintas: una página no coincide, algunas claves están repetidas y una migración produce un archivo legible con credenciales que necesitas tratar con cuidado.",
+      "questions": [
+        {
+          "prompt": "¿Qué haces antes de copiar manualmente la contraseña?",
+          "scenario": "El gestor no ofrece la entrada de tu academia en una página cuyo dominio termina en acceso-ajeno.test. Tú esperabas academia.example, ambos ficticios, y el formulario insiste en que pegues la clave para corregir un supuesto fallo.",
+          "options": [
+            "Pegar el secreto porque el formulario lo exige",
+            "Verificar el dominio y abrir por tu cuenta el acceso oficial esperado",
+            "Publicar la entrada del gestor para que el formulario la encuentre"
+          ],
+          "answer": 1,
+          "explanation": "La ausencia de asociación no prueba por sí sola un ataque, pero el dominio distinto requiere verificar el destino. Abre el acceso oficial por una ruta conocida antes de entregar una credencial que pertenece a otro servicio.",
+          "wrongExplanations": [
+            "La petición del formulario no demuestra que controle el servicio esperado. Copiar manualmente el secreto puede entregarlo a un dominio ajeno; comprueba la dirección y utiliza un acceso oficial independiente antes de introducirlo.",
+            null,
+            "Publicar una entrada del gestor expone sus secretos y no corrige la asociación legítima con un sitio. Verifica el dominio y conserva las credenciales dentro de los contextos de acceso que realmente les corresponden."
+          ],
+          "aoi": {
+            "question": "El formulario culpa al gestor, cariño; revisa la dirección antes de aceptar que una pantalla desconocida decide dónde corresponde pegar ese secreto.",
+            "hint": "Compara el servicio esperado y el dominio mostrado; pregunta qué evidencia falta para relacionar esa página con la entrada guardada en tu gestor.",
+            "correct": "Bien: destino comprobado, tesoro; el formulario no consiguió una credencial ajena solo por acusar a la herramienta de estar funcionando mal esa mañana.",
+            "soft": "La falta de autocompletado puede confundir; añade el dominio distinto al análisis y busca una referencia independiente antes de copiar manualmente el acceso.",
+            "sharp": "El formulario no se volvió academia por regañar al gestor, carajo; verifiquemos la dirección antes de premiar su teatro con una contraseña ajena."
+          }
+        },
+        {
+          "prompt": "¿Cómo conviertes esa revisión en una mejora real?",
+          "scenario": "Tu gestor señala que tres cuentas propias usan una contraseña idéntica. Puedes entrar oficialmente a cada servicio y planificar cambios, pero una persona propone limitarse a cambiar el color de las entradas dentro de la bóveda.",
+          "options": [
+            "Cambiar solo los colores de las entradas guardadas",
+            "Borrar los nombres para dejar de ver la repetición",
+            "Cambiar las credenciales en los servicios y guardar sus valores independientes"
+          ],
+          "answer": 2,
+          "explanation": "Modificar la organización visual del gestor no cambia lo que cada servicio acepta para autenticarte. Sustituye las credenciales mediante los accesos oficiales y guarda correctamente los nuevos valores independientes asociados a sus respectivas cuentas.",
+          "wrongExplanations": [
+            "Los colores ayudan a organizar entradas y no sustituyen una contraseña en el servicio remoto. La mejora requiere cambiar allí la credencial y conservar después el nuevo valor independiente en la entrada correspondiente del gestor.",
+            "Ocultar los nombres elimina contexto útil sin romper la reutilización. Identifica cada servicio, cambia su contraseña por un valor independiente mediante el acceso oficial y actualiza la entrada adecuada para mantener el inventario comprensible.",
+            null
+          ],
+          "aoi": {
+            "question": "El aviso encontró una repetición, tesoro; compara qué propuesta cambia realmente la autenticación y cuál solamente maquilla la lista que estás mirando dentro del gestor.",
+            "hint": "Distingue la copia guardada y la contraseña que acepta cada servicio; busca qué pasos harían que ambas reflejaran una mejora verdadera del acceso.",
+            "correct": "Exacto: cambio en el servicio y entrada actualizada, cariño; el inventario ya acompaña secretos independientes en lugar de decorar una repetición que seguía intacta.",
+            "soft": "Organizar la bóveda puede ayudar, pero revisa qué acepta todavía cada servicio; una mejora visual no altera automáticamente su contraseña de acceso fuera del gestor.",
+            "sharp": "El color bonito no cambió la cerradura, joder; actualicemos las credenciales donde se utilizan antes de coronar un maquillaje como solución de la reutilización."
+          }
+        },
+        {
+          "prompt": "¿Cómo debes tratar ese archivo durante la migración?",
+          "scenario": "Al migrar tu gestor generas un archivo legible que contiene contraseñas ficticias de prueba. Un compañero propone aplicarlo igual a tus credenciales reales y subir luego el archivo completo a una carpeta pública para encontrarlo fácilmente.",
+          "options": [
+            "Proteger el archivo y seguir el procedimiento oficial sin publicarlo",
+            "Publicarlo porque exportar vuelve inocentes los secretos",
+            "Enviar una copia completa a cualquier grupo que ofrezca ayuda"
+          ],
+          "answer": 0,
+          "explanation": "Una exportación legible puede contener los mismos secretos que protege la bóveda. Sigue la migración oficial, restringe acceso y comprueba qué copias deben conservarse o retirarse después, sin convertir el archivo en contenido público por comodidad.",
+          "wrongExplanations": [
+            null,
+            "Exportar cambia el formato y no elimina la sensibilidad del contenido. Si el archivo incluye contraseñas legibles, publicarlo puede exponerlas; mantén protección y sigue las instrucciones oficiales de migración y gestión de copias.",
+            "Entregar el archivo completo a un grupo distribuye secretos que no necesitan para una consulta general. Describe el problema sin credenciales y utiliza soporte oficial para revisar el procedimiento de migración y las copias generadas."
+          ],
+          "aoi": {
+            "question": "El archivo salió de la bóveda, cariño; ahora decide qué cuidado merece su contenido antes de convertir la migración en una exposición de secretos.",
+            "hint": "Piensa qué información puede leer alguien que obtiene esa exportación; el nombre de archivo no determina por sí solo si su contenido sigue siendo sensible.",
+            "correct": "Bien: exportación protegida, tesoro; mover secretos a otro formato no los convirtió en un documento apropiado para publicar junto a una consulta del procedimiento.",
+            "soft": "Encontrar el archivo fácilmente resulta cómodo; añade quién más podría leerlo en una carpeta pública antes de decidir dónde conservar una copia que contiene credenciales.",
+            "sharp": "Exportar no lavó los secretos, carajo; el archivo legible no necesita alfombra roja pública, sino un procedimiento de migración que controle quién puede consultarlo."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisco-phishing"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "El gestor quita trabajo, tesoro; hoy aprenderás a acompañarlo con criterio cuando una dirección no encaja o los secretos cambian de formato durante una migración.",
+        "theory": "Una herramienta útil organiza y avisa sin decidir por ti dónde entregar credenciales; revisa destinos y copias antes de confundir automatización con confianza universal en cada pantalla.",
+        "pass": "Práctica del gestor completada: puedes verificar asociaciones, resolver repeticiones y cuidar exportaciones sin tratar sus avisos como magia ni publicar información que sigue siendo sensible fuera de la bóveda.",
+        "review": "Relaciona destino, contraseña remota y exportación; distinguir sus ubicaciones ayuda a corregir cada problema sin convertir una ayuda del gestor en exposición de secretos."
+      }
+    },
+    {
+      "id": "identity-practice-frase-maestra",
+      "title": "Cuidar la entrada de la bóveda",
+      "minutes": 5,
+      "intro": "Evalúa cómo proteger el acceso principal del gestor mediante una frase robusta e independiente, manteniendo sus secretos fuera de mensajes inesperados y procedimientos de ayuda que no puedas verificar.",
+      "sections": [
+        {
+          "title": "Concentrar esfuerzo donde corresponde",
+          "body": "El gestor puede reunir muchas credenciales, por lo que su acceso principal merece atención especial. Una frase larga no debe basarse únicamente en datos públicos o expresiones previsibles, y no conviene reutilizarla en otros servicios. Utiliza el método de autenticación y las opciones adicionales que ofrezca tu herramienta. Prepara su recuperación conforme a las instrucciones oficiales, porque las funciones varían. Ningún mensaje inesperado que pida dictar la frase completa debe sustituir una consulta iniciada por ti mediante el canal legítimo del proveedor."
+        }
+      ],
+      "steps": [
+        "Revisa si la frase principal depende de información pública o de otro servicio.",
+        "Consulta autenticación adicional y recuperación oficiales del gestor sin compartir la frase real."
+      ],
+      "scenario": "Quieres reforzar la entrada de la bóveda y comparar tres decisiones: cómo construir una frase, dónde evitar reutilizarla y qué hacer ante un supuesto soporte que intenta conocer el secreto completo mediante un mensaje inesperado.",
+      "questions": [
+        {
+          "prompt": "¿Qué criterio ayuda más a evitar una frase predecible?",
+          "scenario": "La biografía pública de Leo incluye su cita favorita y nombres familiares. Piensa usar esa cita conocida como frase maestra, aunque también puede preparar una frase larga con palabras seleccionadas de manera independiente y guardarla en su memoria.",
+          "options": [
+            "Elegir la cita porque ya aparece públicamente",
+            "Añadir solo el año actual a la cita conocida",
+            "Buscar longitud e imprevisibilidad sin apoyarse en datos públicos conocidos"
+          ],
+          "answer": 2,
+          "explanation": "La longitud ayuda cuando no conserva un patrón fácilmente predecible a partir de información pública. Busca una frase robusta e independiente y evita que su construcción dependa de la cita o los datos que Leo ya publica.",
+          "wrongExplanations": [
+            "Una expresión publicada puede resultar fácil de asociar con Leo y probar como secreto. La frase principal necesita resistencia a predicción, no simplemente familiaridad; evita basarla en datos conocidos y combina longitud con selección independiente.",
+            "Añadir el año mantiene la cita pública como base reconocible y una modificación previsible. La protección mejora al elegir una frase larga sin esa dependencia, en lugar de conservar el mismo patrón acompañado de una fecha común.",
+            null
+          ],
+          "aoi": {
+            "question": "La cita tiene admiradores, cariño; ahora compara qué construcción merece proteger la bóveda sin basarse en lo que cualquiera puede leer en la biografía de Leo.",
+            "hint": "Imagina qué podría reunir una persona leyendo el perfil público; relaciona esa información con la facilidad de predecir cada propuesta antes de escoger una frase principal.",
+            "correct": "Exacto: longitud con imprevisibilidad, tesoro; la frase principal no necesita convertir una cita pública en un secreto que otros podrían reconocer con una búsqueda sencilla.",
+            "soft": "Una frase recordable ayuda, pero no basta si la construcción ya es conocida; revisa qué información del perfil permitiría anticipar la propuesta que elegiste para la bóveda.",
+            "sharp": "La cita pública no se volvió clandestina por mudarse al gestor, carajo; ni el año le regaló una identidad secreta que nadie pudiera imaginar al verla en el perfil."
+          }
+        },
+        {
+          "prompt": "¿Por qué debe conservar un secreto distinto para el gestor?",
+          "scenario": "Sara utiliza una frase robusta en su cuenta laboral y quiere repetirla para abrir su gestor personal. El servicio laboral está fuera de su control directo y allí ya comparten procesos de recuperación definidos por la organización.",
+          "options": [
+            "Porque la robustez desaparece matemáticamente al utilizar letras iguales",
+            "Porque reutilizarla conectaría la bóveda con una exposición de ese otro servicio",
+            "Porque el gestor debe abrirse siempre sin autenticación"
+          ],
+          "answer": 1,
+          "explanation": "Una frase fuerte sigue creando relación entre servicios cuando se reutiliza. Si se expone en el contexto laboral, también puede comprometer el secreto que protege la bóveda; mantenerlo independiente separa esos dos ámbitos de autenticación.",
+          "wrongExplanations": [
+            "El problema no es una pérdida mágica de longitud, sino compartir el mismo secreto entre contextos. Una exposición en el servicio laboral puede revelar el acceso de la bóveda, por lo que conviene mantenerlos independientes.",
+            null,
+            "El gestor necesita un acceso protegido según sus funciones disponibles; dejarlo sin autenticación no resuelve reutilización. Utiliza una frase principal independiente y añade las protecciones adicionales que admita la herramienta cuando corresponda a tu configuración."
+          ],
+          "aoi": {
+            "question": "La frase ya trabaja en otro servicio, tesoro; evalúa qué relación crearía darle también la entrada de la bóveda personal que guarda tantas credenciales diferentes.",
+            "hint": "Piensa dónde podría dejar de ser privada esa frase y qué otro acceso aceptaría el mismo secreto si Sara decide reutilizarlo para ambas funciones de autenticación.",
+            "correct": "Bien: separaste contextos, cariño; una frase robusta no necesita pluriempleo entre la organización y la bóveda personal para mantener una protección que podamos entender y revisar.",
+            "soft": "La robustez de la frase no es la única propiedad; revisa ahora la independencia entre servicios y qué ocurriría si uno de esos contextos expusiera el secreto compartido.",
+            "sharp": "Fuerte no significa inmune al pluriempleo, joder; el mismo secreto sigue conectando dos accesos aunque presuma de longitud y se crea preparado para cualquier exposición del servicio laboral."
+          }
+        },
+        {
+          "prompt": "¿Qué respuesta mantiene protegida la frase principal?",
+          "scenario": "Un mensaje no solicitado afirma que el soporte del gestor necesita la frase maestra completa para comprobar la bóveda. No has abierto ninguna incidencia y puedes consultar la documentación y contactar al proveedor por una ruta oficial que ya conoces.",
+          "options": [
+            "No entregarla y comprobar la solicitud mediante el canal oficial iniciado por ti",
+            "Dictarla porque el mensaje utiliza el logotipo del gestor",
+            "Enviar una captura de toda la bóveda para ahorrar tiempo al remitente"
+          ],
+          "answer": 0,
+          "explanation": "El mensaje inesperado no demuestra autorización para conocer la frase principal. Mantén el secreto y verifica mediante documentación y soporte oficiales iniciados por ti, sin entregar credenciales o capturas que amplíen la exposición durante la consulta.",
+          "wrongExplanations": [
+            null,
+            "Un logotipo puede copiarse y no acredita a quien solicita el secreto. Como no iniciaste la incidencia, conserva la frase privada y verifica el procedimiento mediante una ruta oficial independiente del propio mensaje recibido.",
+            "Una captura completa puede exponer credenciales y detalles que el remitente no necesita para demostrar su identidad. No amplíes información compartida; inicia una consulta legítima para verificar el aviso sin entregar los secretos de la bóveda."
+          ],
+          "aoi": {
+            "question": "El supuesto soporte apareció con demasiada curiosidad, cariño; compara qué respuesta permite aclarar el aviso sin entregar la entrada principal ni el contenido de la bóveda personal que intenta revisar.",
+            "hint": "Distingue identidad anunciada y comprobada; piensa qué ruta controlas para verificar el procedimiento sin utilizar el mensaje recibido como su única justificación.",
+            "correct": "Exacto: secreto contigo y consulta propia, tesoro; el logotipo no consiguió autorización para conocer la frase ni para examinar el contenido de la bóveda.",
+            "soft": "La apariencia de soporte convence; comprueba si abriste una incidencia y qué referencia independiente verifica la petición antes de compartir información del acceso principal.",
+            "sharp": "El logo no se graduó de soporte, carajo; una captura sería el buffet del farsante, así que comprobemos su historia sin regalar la bóveda."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisco-phishing"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Hoy cuidamos la entrada principal, tesoro; mi curiosidad no necesita conocerla para enseñarte a separar longitud, imprevisibilidad e independencia de una frase que protege el resto de tus credenciales personales.",
+        "theory": "La bóveda merece una entrada propia; revisa las opciones oficiales sin entregar secretos a una apariencia de soporte que todavía no verificaste independientemente.",
+        "pass": "Distingues robustez, reutilización y ayuda verificable; conserva la frase privada y prepara recuperación oficial antes de necesitarla durante un problema de acceso al gestor.",
+        "review": "Repasa qué hace predecible la frase, qué relación crea reutilizarla y quién solicita conocerla; cada pregunta identifica una decisión distinta sobre el acceso principal."
+      }
+    },
+    {
+      "id": "identity-practice-factores-y-metodos",
+      "title": "Factores distintos, métodos distintos",
+      "minutes": 5,
+      "intro": "Compara categorías de autenticación y propiedades de métodos disponibles para elegir protección adicional con criterio, sin contar pantallas ni tratar todas las formas de verificación como si fueran idénticas.",
+      "sections": [
+        {
+          "title": "Entender qué demuestra cada prueba",
+          "body": "Los factores se distinguen por el tipo de evidencia: conocimiento, posesión o características biométricas. Pedir dos datos memorizados no cambia automáticamente de categoría. Además, distintos métodos pueden resistir de forma diferente el phishing. Las passkeys y llaves de seguridad pueden ofrecer resistencia basada en su funcionamiento, mientras un código introducido manualmente puede entregarse en una página falsa. Esto no implica que cualquier método adicional sea inútil: compara opciones disponibles, entiende sus límites y protege también los procedimientos de recuperación que acompañan al acceso."
+        }
+      ],
+      "steps": [
+        "Clasifica qué demuestra cada prueba sin contar solamente formularios.",
+        "Compara métodos oficiales disponibles y conserva sus opciones de recuperación protegidas."
+      ],
+      "scenario": "Revisas tres servicios con opciones diferentes: uno anuncia dos factores pero pide dos secretos memorizados, otro ofrece métodos resistentes al phishing y un tercero solo dispone de códigos SMS como protección adicional para sus usuarios.",
+      "questions": [
+        {
+          "prompt": "¿Qué duda tiene sentido plantear sobre esa etiqueta?",
+          "scenario": "Un portal anuncia MFA porque solicita una contraseña y después un PIN que el usuario debe recordar. No interviene un objeto poseído ni una característica biométrica; el servicio simplemente pide dos secretos conocidos en pantallas consecutivas.",
+          "options": [
+            "Ambas pruebas son conocimiento y dos pantallas no demuestran categorías distintas",
+            "La segunda pantalla transforma siempre el PIN en biometría",
+            "El número de pasos garantiza resistencia a cualquier phishing"
+          ],
+          "answer": 0,
+          "explanation": "Contraseña y PIN memorizado pertenecen al conocimiento. El número de pantallas no demuestra factores diferentes ni resistencia universal; para evaluar la combinación identifica qué tipo de evidencia aporta realmente cada parte del proceso de autenticación descrito.",
+          "wrongExplanations": [
+            null,
+            "Un PIN que recuerdas no se convierte en biometría por aparecer después de otra pantalla. Sigue siendo conocimiento, así que debes evaluar categorías de prueba y no solamente el orden en que el formulario solicita información.",
+            "La cantidad de pasos no garantiza resistencia al phishing ni factores distintos. En el caso ambas pruebas son secretos memorizados; clasifica la evidencia y revisa las propiedades reales del método antes de confiar en la etiqueta comercial."
+          ],
+          "aoi": {
+            "question": "El portal presume de dos pantallas, cariño; evalúa qué demuestra cada secreto antes de aplaudir la etiqueta que intenta vender como autenticación multifactor.",
+            "hint": "Clasifica cada dato por lo que prueba sobre la persona; después revisa si cambiar de pantalla cambia también esa categoría de evidencia dentro del acceso.",
+            "correct": "Exacto: dos conocimientos no inventaron otra categoría, tesoro; el formulario conserva sus pasos sin recibir por eso una propiedad que todavía no demuestra con ese procedimiento.",
+            "soft": "Contar pantallas resulta natural; cambia ahora la pregunta y observa qué evidencia presenta cada dato, en lugar de cuántas veces debes escribirlo durante el acceso al portal.",
+            "sharp": "El PIN no desarrolló huellas por aparecer en segunda pantalla, carajo; clasifiquemos pruebas antes de aceptar una etiqueta con más publicidad que evidencia sobre sus supuestos factores distintos."
+          }
+        },
+        {
+          "prompt": "¿Qué propiedad conviene valorar al comparar esas opciones?",
+          "scenario": "Tu servicio ofrece passkeys, llaves de seguridad y códigos que debes introducir manualmente. Buscas reducir la exposición a páginas de suplantación y quieres elegir con información, sin afirmar que una opción vuelve imposible cualquier incidente de cuenta.",
+          "options": [
+            "La promesa de que todo método es idéntico frente al phishing",
+            "Solo el color del botón que inicia cada configuración",
+            "La resistencia al phishing de los métodos y sus procedimientos de recuperación"
+          ],
+          "answer": 2,
+          "explanation": "Las passkeys y llaves de seguridad pueden aportar resistencia al phishing que un código introducido manualmente no ofrece del mismo modo. Compara también compatibilidad y recuperación, evitando presentar esa propiedad como inmunidad total ante cualquier incidente de la cuenta.",
+          "wrongExplanations": [
+            "Los métodos no son idénticos frente a la suplantación. Una passkey o llave puede vincular la autenticación al servicio correspondiente, mientras un código manual puede entregarse a un sitio falso; revisa propiedades y recuperación de cada opción.",
+            "El aspecto del botón no explica cómo funciona el método ni cómo recuperarás acceso. Revisa resistencia al phishing, compatibilidad e instrucciones oficiales antes de decidir qué opción se ajusta a la protección que necesitas configurar.",
+            null
+          ],
+          "aoi": {
+            "question": "Las opciones hacen trabajos diferentes, tesoro; compara su defensa frente a páginas falsas sin coronar ninguna como una promesa absoluta contra todo incidente posible de cuenta.",
+            "hint": "Piensa qué podría conseguir una página falsa si te convence de escribir un código; relaciona esa situación con las propiedades que documenta cada método disponible para el servicio.",
+            "correct": "Bien: propiedades y recuperación, cariño; elegiste una comparación útil sin convertir resistencia al phishing en el anuncio de que la cuenta quedó fuera del alcance de cualquier otro problema.",
+            "soft": "Es fácil tratar todos los métodos como una sola capa; revisa cómo funciona cada prueba y qué pasaría al intentar utilizarla desde una página que no corresponde al servicio legítimo.",
+            "sharp": "El botón guapo no espanta al phishing, joder; leamos funcionamiento y recuperación antes de elegir por los brillos que el menú utiliza para presentar seguridad."
+          }
+        },
+        {
+          "prompt": "¿Cómo interpretas la opción disponible sin exagerarla?",
+          "scenario": "Una cuenta propia solo permite añadir un código SMS y todavía usa únicamente contraseña. Estás revisando sus opciones oficiales, sabes que los códigos pueden ser objeto de engaños y quieres mejorar la protección sin inventar que ese método sea infalible.",
+          "options": [
+            "Declarar que cualquier SMS elimina todos los riesgos de acceso",
+            "Reconocer que añade protección con límites y revisar opciones disponibles con el tiempo",
+            "Compartir el código con cualquier llamada que diga ser soporte"
+          ],
+          "answer": 1,
+          "explanation": "El SMS puede añadir protección respecto a usar solo contraseña, aunque no ofrece la misma resistencia al phishing que otros métodos. Activa opciones oficiales comprendidas, conserva recuperación y revisa alternativas cuando el servicio las incorpore para sus usuarios.",
+          "wrongExplanations": [
+            "Un código SMS no elimina todo riesgo ni vuelve legítima una petición inesperada. Aporta una protección concreta con límites; sigue verificando solicitudes, conserva códigos privados y revisa métodos resistentes al phishing cuando estén disponibles en el servicio.",
+            null,
+            "El código es una prueba de acceso y no debe dictarse a llamadas inesperadas. Mantén su uso dentro del proceso oficial iniciado por ti y consulta soporte mediante una ruta independiente si algo no corresponde a tu actividad."
+          ],
+          "aoi": {
+            "question": "El servicio tiene una opción limitada, cariño; valórala sin confundir una mejora concreta con protección perfecta contra cualquier intento futuro de acceso a la cuenta.",
+            "hint": "Compara la situación previa y la opción adicional; identifica qué cambia y qué límites conservarías al utilizar ese método oficial para proteger la cuenta.",
+            "correct": "Exacto: mejora con límites, tesoro; aprovechamos una opción comprendida sin coronar al SMS como invencible ni dejar de revisar otras alternativas cuando estén disponibles.",
+            "soft": "Distingue útil e infalible; revisa qué añade el código y qué hábitos siguen importando cuando alguien intenta obtenerlo mediante contactos que no iniciaste.",
+            "sharp": "El SMS no se volvió superhéroe, carajo; añade protección y todavía exige criterio para no regalar la prueba a un supuesto soporte que aparece inesperadamente."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-mfa",
+        "cisa-habits"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Hoy contamos evidencias, tesoro, no pantallas; después compararemos métodos sin borrar diferencias de phishing, compatibilidad y recuperación entre las opciones disponibles en cada servicio.",
+        "theory": "Las opciones pueden parecerse y funcionar distinto; conocer sus propiedades evita prometer invulnerabilidad o descartar una mejora simplemente porque conserva límites ante otros problemas.",
+        "pass": "Clasificas factores y propiedades concretas; utiliza esa precisión al revisar opciones oficiales sin depender del número de pantallas ni de una etiqueta comercial demasiado absoluta.",
+        "review": "Repasa categoría, funcionamiento y recuperación por separado; explica qué aporta cada método para elegir según evidencia y necesidades, sin contar únicamente las pantallas del procedimiento."
+      }
+    },
+    {
+      "id": "identity-practice-peticiones-con-contexto",
+      "title": "Autorizaciones que necesitan contexto",
+      "minutes": 5,
+      "intro": "Relaciona cada aprobación con una acción propia y practica cómo verificar números, responder después de una aceptación accidental y distinguir un aviso legítimo de un mensaje que intenta obtener códigos.",
+      "sections": [
+        {
+          "title": "La aprobación corresponde a una acción concreta",
+          "body": "Una petición de autenticación necesita relacionarse con un acceso que tú reconoces. Cuando el método pide comparar números, utiliza únicamente el proceso oficial que iniciaste y verifica que las referencias correspondan entre tus propias pantallas. Un número dictado por otra persona no sustituye ese contexto. Si aceptaste algo por error, revisa la cuenta cuanto antes mediante el servicio oficial y busca ayuda si pertenece a una organización. Los avisos por correo también pueden imitar rechazos o cancelaciones para conseguir nuevas pruebas de acceso."
+        }
+      ],
+      "steps": [
+        "Relaciona la solicitud con tu acceso iniciado y sus referencias propias.",
+        "Revisa oficialmente una aprobación accidental y evita tramitarla mediante un contacto inesperado."
+      ],
+      "scenario": "Durante el estudio llegan mensajes de autenticación con historias diferentes: un número aparece en un acceso propio, recuerdas una aceptación accidental y un correo propone cancelar otra solicitud entregándole un código de verificación que no deberías compartir.",
+      "questions": [
+        {
+          "prompt": "¿Con qué referencia debes comparar el número?",
+          "scenario": "Inicias un acceso oficial que muestra una referencia numérica para aprobarlo. Simultáneamente, una llamada inesperada dicta otro número y exige seleccionarlo para acelerar la sesión que estás abriendo desde tu propio equipo.",
+          "options": [
+            "Con el número que dicta la llamada inesperada",
+            "Con cualquier número si desaparece antes el aviso",
+            "Con la referencia de tu propio proceso oficial iniciado"
+          ],
+          "answer": 2,
+          "explanation": "La comparación pertenece al inicio de sesión que tú iniciaste, no a instrucciones de una llamada inesperada. Comprueba tus propias pantallas y detente si las referencias o el contexto no corresponden antes de conceder autorización al acceso.",
+          "wrongExplanations": [
+            "El número que otra persona dicta no demuestra relación con tu acceso ni legitima su llamada. La referencia debe proceder de tu proceso oficial iniciado; si algo no coincide, detén la aprobación y consulta el servicio por una ruta independiente.",
+            "Elegir un número solo para cerrar el aviso sustituye verificación por comodidad y puede conceder un permiso ajeno. Relaciona las referencias de tus propias pantallas oficiales antes de aprobar cualquier inicio de sesión que el método te pida confirmar.",
+            null
+          ],
+          "aoi": {
+            "question": "Tu pantalla tiene una referencia, cariño; la llamada trae otra historia y necesita justificar por qué intenta dirigir una aprobación que pertenece a tu propio acceso oficial.",
+            "hint": "Identifica quién inició el proceso y de dónde sale cada número; compara qué referencia mantiene una relación comprobable con la sesión que tú estás intentando abrir en el servicio legítimo.",
+            "correct": "Exacto: referencia propia, tesoro; la llamada no obtuvo mando sobre una aprobación que debe corresponder al proceso oficial que acabas de iniciar voluntariamente desde tus pantallas conocidas.",
+            "soft": "Los dos números pueden confundirse bajo presión; separa el acceso que controlas y la instrucción recibida por llamada antes de decidir qué referencia verifica realmente esa aprobación que tienes delante.",
+            "sharp": "La llamada no se convirtió en pantalla oficial por hablar deprisa, carajo; el número necesita contexto propio, no obediencia a un desconocido que intenta dirigir tu acceso."
+          }
+        },
+        {
+          "prompt": "¿Qué haces después de advertir esa aceptación accidental?",
+          "scenario": "Aceptaste por descuido una solicitud no iniciada mientras estudiabas. Aún entras oficialmente en la cuenta organizativa y recuerdas la hora aproximada, pero no has revisado actividad o sesiones ni informado al responsable.",
+          "options": [
+            "Entrar por el canal oficial, revisar seguridad y avisar al responsable",
+            "Confiar en que cerrar la notificación revoca siempre la sesión",
+            "Esperar varios días sin revisar nada para no alarmar a nadie"
+          ],
+          "answer": 0,
+          "explanation": "La aprobación accidental merece una revisión pronta por el acceso oficial y comunicación al responsable si es organizativa. Examina actividad, sesiones y métodos según el procedimiento; cerrar la notificación no demuestra que cualquier autorización concedida haya quedado revocada automáticamente.",
+          "wrongExplanations": [
+            null,
+            "Cerrar un aviso no garantiza revocar una autorización o sesión ya concedida. Revisa el acceso mediante el servicio oficial, registra la hora aproximada y comunica lo ocurrido al responsable cuando la cuenta pertenece a una organización.",
+            "Esperar no aporta control sobre una aprobación que no correspondía a tu acción. Actúa por el canal oficial y avisa al responsable para revisar actividad y aplicar el procedimiento adecuado sin inventar que la falta de avisos confirma seguridad."
+          ],
+          "aoi": {
+            "question": "La aceptación ocurrió, tesoro; identifica qué propuesta revisa la autorización real en lugar de tratar solamente el aviso que desaparece de la pantalla del dispositivo.",
+            "hint": "Separa interfaz y permisos que pudo conceder el servicio; busca cómo evaluar esos efectos desde el acceso oficial antes de afirmar que la aprobación quedó revocada.",
+            "correct": "Bien: revisión y aviso, cariño; el error aporta información para responder sin fingir que cerrar una notificación retiró automáticamente lo que la aprobación pudo autorizar.",
+            "soft": "Aceptar por descuido puede pasar; comprueba consecuencias y explica el contexto al responsable, sin adivinar que cerrar una pantalla deshizo toda autorización del servicio.",
+            "sharp": "Cerrar no es viajar en el tiempo, joder; revisemos la cuenta antes de regalar poderes de revocación a un gesto de interfaz que no los demuestra."
+          }
+        },
+        {
+          "prompt": "¿Cómo verificas esa supuesta cancelación?",
+          "scenario": "Un correo ofrece cancelar un supuesto intento ajeno si respondes con un código. No iniciaste sesión y puedes abrir la aplicación oficial para revisar actividad sin depender de ese mensaje inesperado.",
+          "options": [
+            "Responder con el código para demostrar que quieres cancelar",
+            "Comprobar la cuenta desde la aplicación oficial sin entregar códigos al remitente",
+            "Reenviar el código a otras personas para que decidan por ti"
+          ],
+          "answer": 1,
+          "explanation": "La palabra cancelar no legitima una petición de códigos ni demuestra quién envió el mensaje. Comprueba actividad y avisos mediante el servicio oficial iniciado por ti y mantén privadas las pruebas de autenticación que el remitente intenta obtener con su historia.",
+          "wrongExplanations": [
+            "Responder con un código puede entregar una prueba útil para autenticar, aunque el correo lo presente como cancelación. Verifica el aviso en la aplicación oficial y no dejes que el propio mensaje justifique recibir tus secretos por una finalidad que no has comprobado independientemente.",
+            null,
+            "Distribuir el código amplía la exposición y no verifica el mensaje ni cancela necesariamente un acceso. Conserva la prueba privada y consulta la actividad mediante el canal oficial, pidiendo ayuda al responsable sin compartir credenciales o códigos de autenticación."
+          ],
+          "aoi": {
+            "question": "El correo dice cancelar, cariño; observa qué intenta conseguir antes de dejar que su historia determine dónde entregar una prueba que puede permitir acceso a la cuenta.",
+            "hint": "Separa la acción prometida y el dato solicitado; piensa qué referencia independiente permitiría comprobar el aviso sin entregar al remitente la información que pide.",
+            "correct": "Exacto: revisión oficial y códigos contigo, tesoro; cancelar no se convirtió en una justificación para recibir secretos cuando todavía no hemos comprobado quién envió el mensaje.",
+            "soft": "El verbo cancelar tranquiliza cuando el aviso asusta; revisa qué entregarías y a quién antes de responder sin una comprobación independiente dentro del servicio.",
+            "sharp": "Decir cancelar no vistió de soporte al farsante, carajo; revisemos por nuestra ruta y dejemos su teatro sin la prueba de acceso que intentaba obtener."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-mfa",
+        "cisco-phishing"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Las aprobaciones necesitan contexto, tesoro; ni números dictados ni botones de cancelar justifican automáticamente dirigir un acceso que no corresponde a una acción propia reconocida.",
+        "theory": "Antes y después de aprobar importa el contexto; revisa efectos reales sin confundir cerrar avisos con revocar sesiones ni verbos tranquilizadores con permiso para recibir códigos.",
+        "pass": "Comparas referencias, revisas errores y verificas mensajes conservando códigos; mantén procedimientos oficiales para que la presión de una llamada no sustituya el contexto de la cuenta.",
+        "review": "Identifica quién inició el proceso, qué pudo autorizarse y qué solicita el mensaje; esas piezas orientan una revisión oficial sin conceder autoridad automática a la interfaz."
+      }
+    },
+    {
+      "id": "identity-practice-recuperacion-preparada",
+      "title": "Recuperar sin repartir llaves",
+      "minutes": 5,
+      "intro": "Practica la actualización de alternativas de recuperación y el uso de códigos mediante procedimientos oficiales para conservar acceso legítimo cuando falte el dispositivo habitual o cambien los datos asociados a la cuenta.",
+      "sections": [
+        {
+          "title": "Una alternativa necesita seguir vigente",
+          "body": "La recuperación debe conservarse privada, accesible para ti y conforme a las reglas del servicio. Algunos proveedores permiten regenerar códigos e indican qué ocurre con los anteriores; lee esa información antes de guardar nuevas copias. Un correo o teléfono de recuperación antiguo puede dejar de estar bajo tu control y necesita revisión. Si pierdes el dispositivo habitual, utiliza el procedimiento oficial con las alternativas preparadas, sin dictar códigos a contactos inesperados. Preparar recuperación no significa desactivar todas las protecciones para evitar cualquier esfuerzo futuro."
+        }
+      ],
+      "steps": [
+        "Comprueba que los canales de recuperación sigan bajo tu control.",
+        "Consulta vigencia y sustitución de códigos en las instrucciones del servicio.",
+        "Localiza una alternativa protegida que no dependa únicamente del dispositivo que podría faltar."
+      ],
+      "scenario": "Revisas la recuperación antes de un viaje: un servicio renueva códigos, otro conserva un correo antiguo y quieres saber cómo utilizar una alternativa oficial si pierdes el teléfono sin convertir esos secretos de emergencia en información para supuestos ayudantes.",
+      "questions": [
+        {
+          "prompt": "¿Qué copia debes preparar después de esa renovación?",
+          "scenario": "El servicio informa explícitamente que al generar una nueva serie de códigos los anteriores dejan de funcionar. Acabas de renovarlos y tu copia protegida todavía contiene solamente la serie antigua que habías guardado durante la instalación inicial.",
+          "options": [
+            "Actualizar la copia protegida con la serie vigente según las instrucciones",
+            "Conservar solo los códigos antiguos porque tienen más antigüedad",
+            "Publicar ambas series para que el soporte elija por ti"
+          ],
+          "answer": 0,
+          "explanation": "El caso indica que la serie anterior queda invalidada, por lo que la copia de recuperación debe actualizarse con los códigos vigentes. Sigue las instrucciones para gestionar copias antiguas y conserva la nueva información protegida, sin publicarla para una consulta.",
+          "wrongExplanations": [
+            null,
+            "La antigüedad no conserva validez cuando el servicio informa que esa serie fue invalidada. Actualiza la copia protegida con los códigos vigentes y sigue el procedimiento oficial para gestionar material anterior que ya no sirve para recuperar el acceso.",
+            "Publicar códigos expone pruebas de recuperación y no es necesario para identificar la serie válida. El servicio ya explicó la sustitución; conserva la copia vigente protegida y consulta soporte sin entregar códigos completos a un grupo o espacio público."
+          ],
+          "aoi": {
+            "question": "Hay una serie nueva, cariño; relaciona la advertencia del servicio y la copia que todavía conservas antes de confiarle tu próximo rescate.",
+            "hint": "Observa qué cambió explícitamente sobre la vigencia; después pregunta qué información debería contener una alternativa que esperas utilizar cuando falte el acceso habitual.",
+            "correct": "Exacto: copia vigente y protegida, tesoro; la antigüedad no recibió poderes para devolver validez a una serie que el servicio ya retiró oficialmente.",
+            "soft": "Conservar una copia es buena idea; revisa ahora si sigue siendo la serie que el proveedor acepta después de la renovación que acabas de realizar.",
+            "sharp": "Los códigos viejos no cobran vida por nostalgia, carajo; el servicio explicó su invalidez y la copia necesita algo más útil que antigüedad."
+          }
+        },
+        {
+          "prompt": "¿Cómo utilizas la alternativa preparada sin entregársela al desconocido?",
+          "scenario": "Perdiste el teléfono habitual y conservas una copia protegida de recuperación accesible desde otro dispositivo de confianza. Una llamada inesperada ofrece ayudarte si dictas un código, aunque puedes abrir el procedimiento oficial del servicio por tu propia cuenta.",
+          "options": [
+            "Dictar el código a la llamada para ahorrar pasos",
+            "Usar la recuperación oficial iniciada por ti y mantener privados los códigos",
+            "Publicar los códigos en la biografía para no perderlos otra vez"
+          ],
+          "answer": 1,
+          "explanation": "La alternativa debe utilizarse dentro del proceso oficial de recuperación que inicias tú, no entregarse a una llamada inesperada. Un dispositivo de confianza y la copia preparada permiten seguir las instrucciones del proveedor sin repartir pruebas que podrían facilitar acceso a otra persona.",
+          "wrongExplanations": [
+            "La oferta de ayuda no verifica la identidad de quien llama ni su necesidad de recibir un código. Mantén las pruebas privadas y utiliza el procedimiento oficial que puedes abrir desde un dispositivo de confianza con tu copia de recuperación.",
+            null,
+            "Una biografía pública convierte las pruebas de recuperación en información disponible para terceros. Conserva la copia protegida y úsala únicamente en el proceso oficial; evitar pérdidas futuras no justifica publicar secretos que pueden ayudar a acceder a la cuenta."
+          ],
+          "aoi": {
+            "question": "La copia está preparada, tesoro; elige cómo usarla sin permitir que una llamada inesperada se convierta en destinataria de tus pruebas de recuperación.",
+            "hint": "Distingue el proceso que tú abres en el servicio y la petición que llega por teléfono; piensa dónde puedes verificar realmente el procedimiento antes de utilizar la alternativa.",
+            "correct": "Bien: recuperación propia, cariño; el código cumple su trabajo en el servicio oficial y no se convierte en una propina para la persona que llamó sin haberla solicitado.",
+            "soft": "Querer ayuda es comprensible cuando falta el teléfono; utiliza las referencias que controlas para comprobar el proceso sin compartir el secreto con quien apareció ofreciendo resolverlo rápidamente.",
+            "sharp": "La llamada no se ganó tus códigos por tener iniciativa, joder; la copia sirve para recuperar oficialmente, no para ofrecer secretos a voces convincentes e inesperadas."
+          }
+        },
+        {
+          "prompt": "¿Qué revisión corrige esa dependencia de recuperación?",
+          "scenario": "Una cuenta personal sigue enviando recuperación a tu antiguo correo laboral, al que ya no accedes. Puedes entrar normalmente y el servicio permite actualizar ese dato por su procedimiento oficial con una dirección que todavía controlas.",
+          "options": [
+            "Dejarlo intacto porque hoy aún puedes iniciar sesión",
+            "Desactivar toda autenticación para no necesitar recuperación",
+            "Actualizar y proteger un canal bajo tu control mediante el proceso oficial"
+          ],
+          "answer": 2,
+          "explanation": "La recuperación debe apuntar a un canal legítimo que sigas controlando y protegiendo. Poder entrar hoy no garantiza disponer del antiguo correo cuando lo necesites; actualízalo mediante el servicio oficial y verifica los cambios según sus instrucciones.",
+          "wrongExplanations": [
+            "El acceso actual no demuestra que puedas recuperar la cuenta mañana mediante un correo que ya no controlas. Aprovecha la sesión legítima para revisar y actualizar el canal de recuperación por el procedimiento oficial del proveedor.",
+            "Retirar toda autenticación no resuelve correctamente una dirección de recuperación antigua y elimina protecciones. Mantén el acceso protegido y utiliza el procedimiento oficial para sustituir el canal por otro que realmente siga bajo tu control.",
+            null
+          ],
+          "aoi": {
+            "question": "La recuperación todavía escribe al antiguo trabajo, cariño; decide qué cambio conserva una alternativa útil sin sacrificar las protecciones de la cuenta personal que sí puedes administrar hoy.",
+            "hint": "Diferencia poder entrar ahora y poder utilizar el canal de emergencia después; revisa quién controla realmente la dirección que recibirá las instrucciones de recuperación cuando falte la sesión habitual.",
+            "correct": "Exacto: canal propio y protegido, tesoro; el correo antiguo deja de sostener una promesa de rescate que ya no podrías cumplir cuando necesitases volver.",
+            "soft": "Que hoy funcione tranquiliza; piensa si podrías leer esa dirección cuando debieras demostrar control durante una futura recuperación, en lugar de valorar solamente la sesión actual.",
+            "sharp": "El antiguo correo no vuelve porque la sesión siga abierta, carajo; revisemos el rescate antes de confiar en una puerta donde ya no tienes control."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-mfa",
+        "cisa-habits",
+        "cisco-phishing"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Comprobamos el rescate, tesoro; una copia privada debe seguir vigente y un canal debe permanecer bajo tu control para ayudar cuando falte el acceso habitual.",
+        "theory": "La recuperación necesita mantenimiento; revisa vigencia y control sin permitir que una llamada inesperada sustituya el proceso oficial por una conversación donde desconoces al destinatario.",
+        "pass": "Actualizas alternativas y las utilizas oficialmente; conserva recuperación protegida para no depender de códigos antiguos, un teléfono perdido o una dirección que dejó de pertenecerte.",
+        "review": "Comprueba vigencia, disponibilidad y origen del proceso; esas preguntas preparan una alternativa real sin entregar secretos a contactos inesperados ni depender de canales que ya no controlas."
+      }
+    },
+    {
+      "id": "identity-practice-sesiones-dispositivos",
+      "title": "Reconocer y cerrar sesiones",
+      "minutes": 5,
+      "intro": "Interpreta sesiones y dispositivos con contexto para distinguir actividad propia, investigar accesos no reconocidos y terminar el uso de una cuenta en un equipo prestado mediante acciones que realmente afectan a su autenticación.",
+      "sections": [
+        {
+          "title": "La sesión no es solo una ventana",
+          "body": "Una cuenta puede mantener varias sesiones de navegadores o aplicaciones, incluso en un mismo dispositivo. Los detalles mostrados por el proveedor ayudan a revisar actividad, pero nombres y ubicaciones aproximadas no identifican infaliblemente a una persona. Compara horarios, equipos y acciones conocidas antes de concluir. Cuando un acceso siga sin reconocerse, utiliza los controles oficiales y el procedimiento de seguridad. Cerrar una pestaña no equivale necesariamente a cerrar sesión; al utilizar un equipo prestado, termina el acceso explícitamente y revisa su estado si existe alguna duda."
+        }
+      ],
+      "steps": [
+        "Compara detalles de sesiones con tus equipos y actividades conocidas.",
+        "Utiliza controles oficiales para cerrar accesos y revisar los que no reconozcas."
+      ],
+      "scenario": "La cuenta muestra varias sesiones y necesitas entenderlas sin atribuir cada entrada a una persona distinta. También quieres terminar correctamente un acceso prestado y evaluar una ubicación aproximada que no coincide exactamente con el lugar donde te encuentras ahora.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación evita una conclusión precipitada?",
+          "scenario": "Tu cuenta muestra dos sesiones con el mismo portátil: una del navegador y otra de una aplicación que utilizaste hoy. Reconoces sus horarios, pero una persona afirma que dos sesiones demuestran necesariamente dos intrusos diferentes dentro de la cuenta.",
+          "options": [
+            "Cada sesión demuestra una persona atacante distinta",
+            "Una cuenta puede tener varias sesiones propias y conviene comparar contexto",
+            "Las aplicaciones jamás pueden mantener sesiones de una cuenta"
+          ],
+          "answer": 1,
+          "explanation": "El mismo dispositivo puede mantener sesiones de aplicaciones o navegadores diferentes. Los horarios y usos reconocidos aportan contexto; el número de entradas no demuestra por sí solo cuántas personas entraron ni que exista una intrusión en la cuenta.",
+          "wrongExplanations": [
+            "Una sesión no equivale automáticamente a una persona distinta ni a un acceso malicioso. Compara aplicación, dispositivo y horario con tus acciones conocidas antes de atribuir una entrada a alguien ajeno al uso legítimo de la cuenta.",
+            null,
+            "Las aplicaciones pueden mantener accesos autenticados y aparecer como sesiones según el servicio. Revisa los detalles que ofrece el proveedor y contrástalos con tus usos, en lugar de negar esa posibilidad por no tratarse de una ventana del navegador."
+          ],
+          "aoi": {
+            "question": "Dos entradas y un portátil, cariño; comparemos las acciones conocidas antes de convertir la lista en una reunión de intrusos que todavía nadie ha demostrado.",
+            "hint": "Relaciona cada entrada con navegador, aplicación y horario; piensa si contar sesiones permite por sí solo contar personas que actúan detrás de ellas.",
+            "correct": "Exacto: contexto propio, tesoro; el navegador y la aplicación pueden explicar dos sesiones sin que el contador haya descubierto automáticamente a dos visitantes maliciosos.",
+            "soft": "La lista puede inquietar por su cantidad; revisa qué aplicaciones utilizaste y a qué hora antes de decidir quién podría estar representado en cada entrada.",
+            "sharp": "El contador no redactó una lista de villanos, carajo; dos sesiones pueden salir del mismo portátil sin que nadie haya organizado una fiesta dentro de tu cuenta."
+          }
+        },
+        {
+          "prompt": "¿Cómo utilizas esa ubicación sin exagerar su precisión?",
+          "scenario": "El panel muestra una ubicación aproximada distinta del barrio donde estás. El horario coincide con tu uso desde datos móviles y todavía no has comparado navegador ni dispositivo con los detalles disponibles de esa sesión de tu cuenta personal.",
+          "options": [
+            "Usarla como una pista y contrastar otros detalles oficiales de la sesión",
+            "Declarar que identifica exactamente la casa de quien entró",
+            "Publicar la ubicación y acusar a una persona sin más información"
+          ],
+          "answer": 0,
+          "explanation": "Una ubicación aproximada no identifica una vivienda ni una persona y puede diferir de tu posición real. Contrasta dispositivo, horario y actividad; si el acceso sigue sin reconocerse, utiliza los controles y el soporte oficiales para revisar la cuenta.",
+          "wrongExplanations": [
+            null,
+            "El panel indica una aproximación y no una identidad o dirección exacta. No conviertas ese dato en certeza sobre un domicilio; reúne contexto de dispositivo, horario y actividad antes de evaluar si la sesión es propia o requiere revisión.",
+            "Acusar públicamente a alguien con una ubicación aproximada no demuestra quién accedió y añade exposición innecesaria. Conserva datos pertinentes y utiliza herramientas o soporte oficiales para investigar una sesión que siga sin explicación tras comparar el contexto conocido."
+          ],
+          "aoi": {
+            "question": "El mapa ofrece una pista, tesoro; valora cuánto demuestra antes de tratar una ubicación aproximada como un domicilio exacto o una identidad personal comprobada.",
+            "hint": "Observa la precisión indicada y los otros detalles disponibles; compara esas piezas con tu actividad sin atribuir a la ubicación información que no contiene.",
+            "correct": "Bien: pista con contexto, cariño; el mapa no recibió identidad personal y todavía podemos comparar equipo y horario con tu uso conocido desde datos móviles.",
+            "soft": "Una diferencia de lugar preocupa; revisa que el dato es aproximado y compáralo con otros detalles antes de atribuirlo a una persona o vivienda concreta.",
+            "sharp": "El mapa no se graduó de detective, joder; una aproximación no señala puertas ni culpables y merece contraste antes de publicar acusaciones con más entusiasmo que datos."
+          }
+        },
+        {
+          "prompt": "¿Qué acción termina de forma adecuada ese acceso prestado?",
+          "scenario": "Utilizaste tu cuenta en un ordenador prestado y cerraste solamente la pestaña. Al volver a abrir el servicio, la sesión sigue iniciada; todavía tienes acceso al equipo y puedes usar las opciones oficiales de cerrar sesión.",
+          "options": [
+            "Confiar en que cambiar el tamaño de la ventana revoca el acceso",
+            "Dejarla abierta porque ya cerraste una pestaña antes",
+            "Cerrar sesión explícitamente y revisar su estado si queda alguna duda"
+          ],
+          "answer": 2,
+          "explanation": "El caso demuestra que cerrar la pestaña no terminó la autenticación. Utiliza la opción explícita de cerrar sesión y revisa accesos mediante los controles del servicio cuando haya dudas, sin dejar una cuenta personal disponible en un equipo prestado.",
+          "wrongExplanations": [
+            "El tamaño de la ventana no revoca la autenticación de la cuenta. Como el servicio sigue abierto al regresar, utiliza su control de cerrar sesión y comprueba el estado del acceso antes de devolver el equipo a su propietario.",
+            "El cierre anterior de una pestaña no terminó esta sesión y ya tienes evidencia de que continúa activa. Finaliza explícitamente el acceso mediante la opción del servicio y revisa sesiones si necesitas confirmar que el equipo dejó de estar autorizado.",
+            null
+          ],
+          "aoi": {
+            "question": "La pestaña se fue y la sesión quedó, cariño; elige una acción sobre la autenticación real antes de devolver el ordenador utilizado para tu tarea temporal.",
+            "hint": "Separa ventana y estado del servicio; la reapertura muestra qué resultado no produjo el gesto de interfaz que realizaste al terminar tu tarea en el equipo.",
+            "correct": "Exacto: cierre de sesión, tesoro; terminamos el acceso y no solo la ventana para evitar que el ordenador prestado conserve tu cuenta disponible después de utilizarlo.",
+            "soft": "Cerrar pestañas parece despedirse; revisa lo que mostró la reapertura y busca el control que cambia la autenticación antes de considerar terminado el acceso prestado.",
+            "sharp": "La pestaña no se llevó la sesión de vacaciones, carajo; el servicio lo demostró al abrirse otra vez, así que cerremos el acceso antes de devolver el ordenador."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisco-basics"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Leeremos accesos con contexto, tesoro; listas, mapas y ventanas cuentan cosas diferentes sin convertirse automáticamente en identidades perfectas o pruebas universales sobre quién utiliza la cuenta.",
+        "theory": "Compara detalles y utiliza controles oficiales; cantidad no equivale a personas, ubicación aproximada no identifica domicilios y cerrar una pestaña no garantiza terminar la autenticación.",
+        "pass": "Reconoces contexto y cierras acceso explícitamente; investiga diferencias con herramientas oficiales sin atribuciones personales basadas únicamente en etiquetas o mapas que no ofrecen precisión absoluta.",
+        "review": "Relaciona horario, aplicación y equipo con tu actividad; identifica después qué control termina la autenticación cuando necesitas retirar acceso, sin limitarte a cambiar la interfaz."
+      }
+    },
+    {
+      "id": "identity-practice-respuesta-filtracion",
+      "title": "Una filtración con una respuesta concreta",
+      "minutes": 5,
+      "intro": "Practica cómo verificar avisos de exposición, ajustar la respuesta al alcance conocido y revisar puertas de recuperación para que un cambio de contraseña no se convierta en una falsa sensación de recuperación completa.",
+      "sections": [
+        {
+          "title": "Aviso, alcance y control de la cuenta",
+          "body": "Un mensaje sobre una filtración también puede utilizarse como señuelo. Comprueba el aviso mediante el servicio oficial y actúa desde un dispositivo de confianza, sin instalar verificadores desconocidos ni entregar credenciales al enlace recibido. La respuesta debe corresponder al alcance: revisa la cuenta afectada y las que reutilicen el secreto, sin inventar una exposición idéntica de todos los servicios. Examina sesiones, métodos y recuperación, porque sustituir la contraseña no garantiza corregir otros cambios. Si es una cuenta organizativa, informa al responsable y sigue su procedimiento de recuperación."
+        }
+      ],
+      "steps": [
+        "Verifica el aviso entrando por tu cuenta al servicio oficial.",
+        "Determina dónde se utilizaba la credencial afectada y revisa esos accesos.",
+        "Comprueba sesiones, recuperación y métodos adicionales antes de considerar terminada la respuesta."
+      ],
+      "scenario": "Te llega un aviso de filtración y quieres comprobarlo sin obedecer al mensaje. Después debes distinguir una cuenta con contraseña única y una recuperación alterada que todavía necesita revisión aunque ya se haya sustituido su secreto de acceso.",
+      "questions": [
+        {
+          "prompt": "¿Cómo verificas el aviso antes de instalar algo?",
+          "scenario": "Un correo anuncia una filtración de tu tienda y pide descargar un comprobador para saber si estás afectado. Puedes entrar directamente al servicio oficial desde un dispositivo de confianza sin usar ese enlace ni entregar credenciales al remitente.",
+          "options": [
+            "Instalar el comprobador por la urgencia del correo",
+            "Dictar tu contraseña para que el remitente revise la exposición",
+            "Consultar el servicio oficial por una ruta propia antes de aceptar descargas"
+          ],
+          "answer": 2,
+          "explanation": "El anuncio no autentica al remitente ni legitima una descarga. Comprueba información y medidas en el servicio oficial iniciado por ti, utilizando un dispositivo de confianza y evitando que el propio mensaje determine dónde entregar credenciales o instalar software.",
+          "wrongExplanations": [
+            "La urgencia no demuestra que el archivo proceda del servicio ni que haga falta instalarlo. Abre el acceso oficial por tu cuenta y consulta allí el aviso antes de aceptar una descarga que podría añadir otra exposición al supuesto incidente.",
+            "La contraseña completa no es necesaria para que un remitente inesperado demuestre que el aviso es legítimo. Mantén secretos privados y verifica el estado mediante el servicio oficial, sin dar al mensaje una autoridad que todavía no has comprobado.",
+            null
+          ],
+          "aoi": {
+            "question": "El aviso trae una descarga, cariño; revisa qué evidencia falta antes de permitir que su urgencia elija software y destino de tus credenciales.",
+            "hint": "Compara la ruta propuesta por el correo y un acceso que tú puedes abrir; piensa cuál permite comprobar el aviso sin obedecerlo primero.",
+            "correct": "Exacto: verificación independiente, tesoro; el correo no consiguió instalar un supuesto comprobador antes de demostrar que existe un procedimiento legítimo para ese aviso.",
+            "soft": "El anuncio puede preocupar mucho; separa el incidente que describe y la descarga que exige antes de aceptar ambas cosas como un único proceso oficial.",
+            "sharp": "Decir filtración no convirtió al archivo en medicina, carajo; comprobemos por nuestra ruta antes de instalar una supuesta cura que nadie verificó todavía."
+          }
+        },
+        {
+          "prompt": "¿Cómo ajustas la respuesta al alcance que conoces?",
+          "scenario": "La tienda confirma exposición de una contraseña usada solo allí. Tus otras cuentas tienen secretos independientes y no hay datos de otro compromiso; debes responder sin afirmar que todos los accesos quedaron filtrados automáticamente.",
+          "options": [
+            "Atender la cuenta afectada y revisar evidencia sin afirmar idéntica exposición de las demás",
+            "Declarar que todos los secretos independientes quedaron necesariamente filtrados",
+            "Limitarte a cambiar el avatar y conservar la credencial expuesta"
+          ],
+          "answer": 0,
+          "explanation": "La clave única limita la relación entre servicios, aunque la cuenta afectada requiere respuesta y revisión. Cambia allí la credencial y examina actividad y recuperación, manteniendo conclusiones sobre otras cuentas acordes con la evidencia disponible en este caso concreto.",
+          "wrongExplanations": [
+            null,
+            "Una contraseña expuesta no revela automáticamente los secretos independientes de otras cuentas. Revisa la cuenta afectada y cualquier evidencia adicional, sin afirmar que todos los servicios sufrieron la misma exposición únicamente por compartir propietario.",
+            "El avatar no invalida el secreto confirmado como expuesto. Debes actuar sobre la credencial y revisar accesos y recuperación de la cuenta afectada, aunque su contraseña única ayude a limitar la propagación a otros servicios independientes."
+          ],
+          "aoi": {
+            "question": "La clave era exclusiva, tesoro; compara qué respuesta atiende la exposición confirmada sin atribuir a todos los demás servicios exactamente el mismo incidente.",
+            "hint": "Distingue el secreto que dejó de ser privado y los valores independientes que usan otras cuentas; relaciona cada afirmación con los datos del escenario.",
+            "correct": "Bien: alcance y acción, cariño; la cuenta recibe atención sin que la filtración herede por arte de magia las contraseñas diferentes de todos tus otros servicios.",
+            "soft": "Una exposición puede generar alarma; revisa qué contraseña está afectada y qué relación real conserva con el resto antes de extender la conclusión a cada cuenta personal.",
+            "sharp": "La tienda no se llevó todas las claves independientes en una maleta imaginaria, joder; respondamos al alcance conocido sin olvidar que su propia credencial sí necesita una sustitución real."
+          }
+        },
+        {
+          "prompt": "¿Qué falta revisar antes de dar la recuperación por terminada?",
+          "scenario": "Después de una exposición cambiaste tu contraseña, pero el panel conserva una dirección de recuperación que no reconoces. Todavía puedes entrar mediante el servicio oficial y necesitas devolver el control de esa opción según sus instrucciones de seguridad.",
+          "options": [
+            "Ignorar el dato porque el cambio de contraseña corrige todo automáticamente",
+            "Revisar y corregir recuperación y otros accesos por el procedimiento oficial",
+            "Cambiar la foto para que la dirección ajena deje de funcionar"
+          ],
+          "answer": 1,
+          "explanation": "Un canal de recuperación no reconocido es una vía que requiere revisión específica. Cambiar la contraseña no demuestra corregirlo; sigue las instrucciones oficiales para restablecer control y examina sesiones y métodos, solicitando soporte cuando corresponda al alcance del problema.",
+          "wrongExplanations": [
+            "La contraseña y los canales de recuperación son elementos diferentes y un cambio no demuestra arreglar automáticamente el otro. Revisa el dato desconocido, los accesos y los métodos mediante el procedimiento oficial antes de considerar recuperado el control completo.",
+            null,
+            "La foto no modifica dónde se envían instrucciones de recuperación ni revoca permisos. Utiliza los controles oficiales para revisar y corregir la dirección ajena, además de examinar sesiones y métodos que pudieran seguir requiriendo atención."
+          ],
+          "aoi": {
+            "question": "La contraseña cambió y quedó otra puerta, cariño; decide qué revisión necesita esa dirección desconocida antes de celebrar un control que todavía no está completamente comprobado.",
+            "hint": "Relaciona cada ajuste con su función; pregunta si sustituir la credencial demuestra también que los canales de recuperación quedaron bajo tu control legítimo después del incidente.",
+            "correct": "Exacto: recuperación revisada, tesoro; la nueva contraseña no recibió el mérito por un ajuste distinto que todavía necesitaba corrección y comprobación mediante las opciones oficiales de la cuenta.",
+            "soft": "Cambiar la clave importa; añade el canal desconocido para identificar qué otra función necesita revisión antes de considerar completo el regreso al control legítimo de la cuenta.",
+            "sharp": "La clave nueva no adoptó mágicamente la dirección ajena, carajo; revisemos esa otra puerta antes de celebrar una recuperación que todavía conserva un dato incómodo en el panel."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisa-mfa",
+        "cisco-phishing"
+      ],
+      "diagram": "identity",
+      "aoi": {
+        "intro": "Responderemos con precisión, tesoro; verificaremos avisos y alcance sin instalar por alarma ni atribuir a una contraseña nueva cambios de recuperación que todavía necesitan revisión independiente.",
+        "theory": "Distingue mensaje, credencial y control de cuenta; la evidencia evita tanto declarar todas las cuentas perdidas como celebrar un arreglo completo tras un único cambio parcial.",
+        "pass": "Verificas avisos y ajustas respuesta y recuperación; conserva canales oficiales y dispositivos de confianza sin permitir que la alarma dicte descargas o conclusiones universales sobre tus cuentas.",
+        "review": "Identifica aviso, secreto y vías de acceso pendientes; vincula cada acción con hechos para responder mediante un procedimiento concreto sin alarmismo ni celebraciones prematuras del control recuperado."
+      }
+    }
+  ]
+}

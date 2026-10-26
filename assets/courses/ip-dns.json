@@ -1,0 +1,1938 @@
+{
+  "id": "ip-dns",
+  "title": "IP y DNS sin misterio",
+  "description": "Aprende a leer direcciones, entender nombres y diagnosticar la resolución con criterio y sin exponer tus datos.",
+  "category": "Redes y navegación",
+  "symbol": "05",
+  "color": 4289324543,
+  "lessons": [
+    {
+      "id": "ip-dns-interfaz",
+      "title": "Una dirección para una interfaz",
+      "minutes": 3,
+      "intro": "Reconoce la dirección IP como dato de una interfaz en un contexto de red y evita confundirla con el nombre permanente de una persona o dispositivo.",
+      "sections": [
+        {
+          "title": "Contexto antes de identidad",
+          "body": "Una dirección IP identifica una interfaz dentro de un contexto de comunicación y permite dirigir paquetes. Un equipo puede tener varias interfaces y más de una dirección, y esas direcciones pueden cambiar. Por eso no es correcto tratar una IP como identidad humana permanente. Al revisar ajustes, observa a qué conexión pertenecen y en qué momento se obtuvieron. Esto evita mezclar datos de una conexión inalámbrica con los de otra interfaz que está desconectada."
+        }
+      ],
+      "steps": [
+        "Localiza las propiedades de una conexión propia sin compartir capturas privadas.",
+        "Relaciona la dirección mostrada con su interfaz y estado."
+      ],
+      "scenario": "Un portátil ficticio muestra datos diferentes para Wi-Fi y cable. La interfaz inalámbrica está activa y la otra desconectada, pero una persona interpreta cualquier dirección del listado como identidad fija de quien usa el dispositivo.",
+      "questions": [
+        {
+          "prompt": "¿Cómo conviene interpretar la IP mostrada?",
+          "options": [
+            "Como dirección de una interfaz en su contexto de red",
+            "Como nombre legal inmutable del usuario",
+            "Como contraseña que permite abrir cualquier servicio"
+          ],
+          "answer": 0,
+          "explanation": "La IP ayuda a dirigir comunicaciones y debe relacionarse con interfaz, red y momento. Un equipo puede tener varias direcciones, y ninguna demuestra por sí sola la identidad legal de la persona que lo utiliza.",
+          "wrongExplanations": [
+            null,
+            "La dirección puede cambiar y pertenecer a distintas interfaces o conexiones. No codifica obligatoriamente el nombre legal de una persona ni basta para identificar quién estaba utilizando el equipo en un momento concreto.",
+            "Una IP es información de direccionamiento, no una credencial universal. Conocerla no concede autorización para usar servicios, y cada recurso conserva sus propios requisitos de identidad, permisos y protección según su configuración."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Ponemos dirección a una conexión, cariño. No vamos a convertir cada número de red en una biografía del usuario.",
+        "theory": "Una interfaz puede tener su dirección y otra una distinta. Antes de comparar números, mira a qué conexión pertenecen.",
+        "hint": "Relaciona cada dato con la interfaz que describe. Después distingue dirección, identidad personal y credenciales para acceder al servicio.",
+        "correct": "Dirección con contexto: buena lectura. No convertiste un dato técnico en carnet personal ni en contraseña para todos los recursos.",
+        "soft": "Revisemos a qué interfaz pertenece el dato. Tener varias conexiones posibles explica que aparezcan direcciones distintas en el mismo listado.",
+        "sharp": "Una IP no trae notario incorporado, carajo. Ubica su contexto antes de regalarle una identidad humana y permisos universales.",
+        "pass": "Direcciones e identidades separadas. Ese límite evitará que un número te convenza de saber más sobre una persona de lo que demuestra.",
+        "review": "Dibuja cada interfaz con su dirección. Esa relación aclara el dato mejor que imaginar un nombre humano permanente entre sus números."
+      }
+    },
+    {
+      "id": "ip-dns-ipv4",
+      "title": "Leer una dirección IPv4",
+      "minutes": 3,
+      "intro": "Reconoce la estructura habitual de una dirección IPv4 y diferencia sus cuatro grupos numéricos de otros datos como puertos, nombres de dominio o contraseñas de acceso.",
+      "sections": [
+        {
+          "title": "Cuatro grupos con límites",
+          "body": "Una dirección IPv4 tiene treinta y dos bits y suele escribirse como cuatro números decimales separados por puntos. Cada grupo admite valores de cero a doscientos cincuenta y cinco. Esa forma ayuda a reconocer errores evidentes al copiar una dirección, aunque escribirla correctamente no demuestra que esté asignada o sea alcanzable. Un número de puerto, si aparece en un contexto de servicio, es otro dato. En esta app utilizamos ejemplos de documentación o redes privadas ficticias."
+        }
+      ],
+      "steps": [
+        "Separa en cuatro grupos la dirección ficticia 192.0.2.10.",
+        "Comprueba que cada grupo encaja en el intervalo decimal indicado."
+      ],
+      "scenario": "Una hoja ficticia compara 192.0.2.10 con 192.0.999.10 como formatos IPv4. El docente recuerda que ambos son ejemplos escritos para aprender y que no se debe probar acceso a equipos ajenos.",
+      "questions": [
+        {
+          "prompt": "¿Qué error de formato presenta 192.0.999.10?",
+          "options": [
+            "Tiene puntos entre grupos",
+            "Uno de sus grupos supera el valor máximo permitido",
+            "No incluye el nombre legal del usuario"
+          ],
+          "answer": 1,
+          "explanation": "Cada grupo decimal de IPv4 representa ocho bits y no puede superar doscientos cincuenta y cinco. El valor 999 incumple ese límite; reconocer el formato no requiere conectarse a ninguna dirección real.",
+          "wrongExplanations": [
+            "Los puntos son precisamente los separadores habituales entre los cuatro grupos decimales de una IPv4. El problema señalado está en un valor fuera de intervalo, no en utilizar la puntuación que corresponde a esa notación.",
+            null,
+            "Una dirección IPv4 no necesita incluir nombres personales. Su estructura se basa en cuatro grupos numéricos; añadir una identidad humana no corregiría el valor que supera el máximo permitido en el ejemplo de la hoja."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Cuatro grupos y límites claros, precioso. Leer IPv4 empieza por reconocer su forma antes de discutir destinos o permisos del servicio.",
+        "theory": "Cada grupo tiene un techo. Mi ego puede exagerar; los ocho bits de un grupo no negocian su capacidad numérica.",
+        "hint": "Cuenta los grupos y revisa sus valores. Una notación necesita cumplir ambas condiciones antes de que podamos interpretarla como este formato.",
+        "correct": "Valor fuera de rango localizado. Comprobaste la escritura sin conectarte a nada y sin confundir formato correcto con destino disponible.",
+        "soft": "La cantidad de grupos parece adecuada. Revisemos también el valor permitido en cada casilla antes de buscar otra explicación al error.",
+        "sharp": "El 999 no cabe por tener autoestima, joder. Los límites de ocho bits no aceptan sobornos ni entusiasmo del escritor.",
+        "pass": "Formato reconocido. Detectar una dirección mal escrita es una comprobación útil que puedes hacer sin enviar tráfico ni cambiar ajustes reales.",
+        "review": "Pon cada grupo en una casilla y compara sus límites. Separar cantidad y valor ayuda a localizar el problema escrito."
+      }
+    },
+    {
+      "id": "ip-dns-ipv6",
+      "title": "Otra forma: IPv6",
+      "minutes": 3,
+      "intro": "Reconoce la notación general de IPv6 y comprende que una representación más larga no demuestra mayor riesgo, cifrado automático o más derechos sobre los servicios de una red.",
+      "sections": [
+        {
+          "title": "Más espacio de direcciones",
+          "body": "IPv6 utiliza direcciones de ciento veintiocho bits, normalmente representadas en grupos hexadecimales separados por dos puntos. Los dígitos hexadecimales incluyen números y letras de la a a la f. Su espacio de direcciones es mucho mayor que el de IPv4. Eso no implica cifrado automático ni confianza universal en los equipos. Para aprender usamos el prefijo de documentación 2001:db8::/32, que identifica ejemplos y no un servicio público al que debas intentar conectarte."
+        }
+      ],
+      "steps": [
+        "Reconoce los separadores de 2001:db8:1:2::10 como ejemplo didáctico.",
+        "Separa el tipo de dirección de cualquier afirmación sobre protección."
+      ],
+      "scenario": "Una explicación ficticia presenta 2001:db8::10 como dirección de documentación IPv6. Una persona ve letras y separadores diferentes, y concluye que ese aspecto extraño demuestra una intrusión en lugar de otro formato de direccionamiento.",
+      "questions": [
+        {
+          "prompt": "¿Qué explica las letras y los dos puntos del ejemplo?",
+          "options": [
+            "Una contraseña publicada por el usuario",
+            "La prueba suficiente de una infección",
+            "La notación hexadecimal habitual de IPv6"
+          ],
+          "answer": 2,
+          "explanation": "IPv6 se escribe habitualmente mediante grupos hexadecimales separados por dos puntos. Las letras permitidas forman parte de esa notación; su presencia no demuestra infección ni convierte una dirección de ejemplo en una contraseña de usuario.",
+          "wrongExplanations": [
+            "Una dirección IPv6 es información de direccionamiento y no una contraseña por contener letras. Su formato hexadecimal tiene reglas propias; interpretar cualquier cadena alfanumérica como credencial confunde funciones diferentes dentro de una comunicación de red.",
+            "El formato de una dirección no demuestra una infección. IPv6 utiliza legítimamente letras hexadecimales y dos puntos; para afirmar un incidente hacen falta señales y análisis adicionales que no aparecen en la explicación ficticia de este ejercicio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-ipv6",
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Aparecerán letras sin que el router esté poseído, cariño. IPv6 merece una presentación menos dramática que una falsa alarma de intrusión.",
+        "theory": "Los caracteres hexadecimales trabajan legalmente aquí. No son mensajes secretos; forman parte de una notación distinta con reglas concretas de escritura.",
+        "hint": "Compara separadores y caracteres con la teoría. No confundas un formato nuevo con evidencia de incidentes que el caso nunca describe.",
+        "correct": "Hexadecimal reconocido sin alarma. Las letras pertenecen al formato y no constituyen una confesión de malware escondida en una ficha.",
+        "soft": "Lo desconocido no es automáticamente peligroso. Revisemos los caracteres permitidos antes de convertir una dirección nueva en otra clase de dato.",
+        "sharp": "Una letra no es un demonio digital, carajo. IPv6 usa hexadecimal; no declares infección porque el direccionamiento también lleva consonantes.",
+        "pass": "IPv6 dejó de parecer conjuro. Reconoces su forma sin imaginar amenazas ni atribuirle cifrado automático por usar otra familia de direcciones.",
+        "review": "Volvamos a grupos y separadores. Reconocer ese patrón basta por ahora, sin memorizar direcciones ni interpretar cada letra como mensaje humano."
+      }
+    },
+    {
+      "id": "ip-dns-comprimir",
+      "title": "Abreviar ceros sin cambiar dirección",
+      "minutes": 3,
+      "intro": "Comprende una regla inicial de abreviación IPv6 y reconoce que dos escrituras distintas pueden representar la misma dirección, sin que eso implique duplicación de equipos o cambios de identidad.",
+      "sections": [
+        {
+          "title": "Escribir menos, representar lo mismo",
+          "body": "IPv6 permite omitir ceros iniciales de cada grupo y sustituir una secuencia continua de grupos enteros a cero por dos puntos dobles. Esa sustitución solo puede aparecer una vez en una dirección para evitar ambigüedad al reconstruirla. Por ejemplo, 2001:db8:0:0:0:0:0:10 puede escribirse 2001:db8::10. Ambas representan el mismo valor en este ejemplo de documentación. Abreviar la escritura no cambia la dirección ni demuestra que exista un equipo adicional en la red."
+        }
+      ],
+      "steps": [
+        "Compara las dos escrituras del ejemplo sin conectarte a ninguna.",
+        "Identifica qué secuencia de grupos cero representa el doble separador."
+      ],
+      "scenario": "En una ficha ficticia aparecen 2001:db8:0:0:0:0:0:10 y 2001:db8::10. Una persona cree que la diferencia de longitud obliga a tratarlas como dos destinos distintos, aunque la explicación muestra qué ceros se abreviaron.",
+      "questions": [
+        {
+          "prompt": "¿Cómo se relacionan esas escrituras del ejemplo?",
+          "options": [
+            "Representan la misma dirección IPv6 con distinta abreviación",
+            "Una es una contraseña y la otra un usuario",
+            "Tener menos caracteres siempre crea un destino diferente"
+          ],
+          "answer": 0,
+          "explanation": "La segunda forma abrevia los grupos consecutivos a cero de la primera. Reconstruirlos muestra el mismo valor IPv6; una diferencia de representación escrita no implica por sí sola un cambio de destino o de equipo en la red.",
+          "wrongExplanations": [
+            null,
+            "Las dos cadenas representan direcciones IPv6 de documentación. La abreviación no cambia su función ni convierte una de ellas en credencial; para compararlas debes aplicar las reglas de escritura y reconstruir los grupos omitidos correctamente.",
+            "IPv6 permite abreviaciones que conservan el valor original. Contar caracteres no basta para distinguir direcciones: primero debes interpretar ceros iniciales y la secuencia de grupos cero representada por los dos puntos dobles de la forma abreviada."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-ipv6",
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Recortaremos ceros sin fabricar destinos, precioso. Una escritura abreviada puede seguir representando exactamente la dirección que ya estaba en la ficha.",
+        "theory": "El doble separador resume grupos cero. Mi chaqueta cambia de pliegues y tampoco me convierte en otra tutora por ese detalle.",
+        "hint": "Reconstruye los grupos omitidos y compara valores. La longitud visible del texto no basta para decidir si aparecieron dos destinos distintos.",
+        "correct": "Mismo valor, otra escritura: exacto. Aplicaste la regla antes de contar equipos imaginarios a partir del espacio que ocupa una dirección.",
+        "soft": "El texto se acortó, pero revisemos qué grupos representa. Las reglas permiten reducir escritura sin inventar un nuevo valor de dirección.",
+        "sharp": "Abreviar ceros no reproduce servidores como conejos, joder. Expande primero la notación antes de organizar un censo imaginario de máquinas nuevas.",
+        "pass": "Abreviación entendida. Ya puedes comparar estas formas por su valor en lugar de exigirles ocupar exactamente el mismo espacio visual.",
+        "review": "Sustituye el doble separador por los ceros que representa. Reconstruir la escritura permite comparar sin depender solo de la apariencia."
+      }
+    },
+    {
+      "id": "ip-dns-doble-pila",
+      "title": "IPv4 e IPv6 pueden convivir",
+      "minutes": 3,
+      "intro": "Reconoce la doble pila como coexistencia de IPv4 e IPv6 y evita concluir que ver ambas familias en una conexión demuestra duplicación maliciosa o que todos los destinos funcionan por igual.",
+      "sections": [
+        {
+          "title": "Dos familias, disponibilidad distinta",
+          "body": "Un equipo con doble pila puede utilizar IPv4 e IPv6. La aplicación y la red deciden cómo alcanzar un destino según su configuración y disponibilidad, de modo que tener ambas familias no significa usar las dos para cada intercambio. Un problema puede afectar una familia mientras la otra funciona. Al revisar síntomas conviene registrar cuál se utilizó y evitar desactivar funciones al azar. La presencia de varias direcciones no demuestra por sí sola un incidente ni un duplicado indebido del dispositivo."
+        }
+      ],
+      "steps": [
+        "Busca en una ficha ficticia campos separados para IPv4 e IPv6.",
+        "Distingue tener soporte para ambas familias de utilizar ambas en cada solicitud."
+      ],
+      "scenario": "Un equipo ficticio muestra direcciones IPv4 e IPv6. Una aplicación alcanza cierto servicio por una familia, pero otra prueba sobre la familia distinta falla, y alguien interpreta que tener ambas direcciones es la causa suficiente de un ataque confirmado.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación respeta la idea de doble pila?",
+          "options": [
+            "Ambas familias siempre funcionan idénticamente en cada servicio",
+            "IPv4 e IPv6 pueden coexistir y tener condiciones distintas",
+            "Dos familias demuestran automáticamente un dispositivo duplicado"
+          ],
+          "answer": 1,
+          "explanation": "La doble pila permite utilizar ambas familias, sin garantizar el mismo resultado para todos los destinos. Separar qué familia participó en cada prueba ayuda a interpretar síntomas antes de desactivar funciones o atribuir incidentes que no están demostrados.",
+          "wrongExplanations": [
+            "Las familias pueden tener rutas, configuración y disponibilidad diferentes. Contar con ambas no garantiza que un servicio responda de igual modo por IPv4 e IPv6, por lo que conviene identificar qué camino utiliza cada comunicación observada.",
+            null,
+            "Un equipo legítimo puede disponer de direcciones de ambas familias y varias interfaces. Esa coexistencia no demuestra duplicación maliciosa; la conclusión requeriría evidencia adicional distinta del simple listado de direcciones en los ajustes de su conexión."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Dos familias pueden compartir equipo sin pelear la herencia, cariño. Hoy entenderemos esa convivencia antes de sospechar de cada dirección adicional.",
+        "theory": "IPv4 e IPv6 pueden tener condiciones distintas. Compartir ajustes no obliga a ambos caminos a funcionar igual frente a todos los destinos.",
+        "hint": "Separa las familias disponibles de la utilizada en cada prueba. Observa qué dato falta antes de generalizar el resultado de una conexión.",
+        "correct": "Coexistencia con diferencias: bien visto. No inventaste intrusos ni exigiste que todas las pruebas de ambas familias respondieran idénticamente por obligación.",
+        "soft": "Ver ambas familias puede ser normal. Revisemos qué utilizó cada comunicación antes de interpretar el listado como evidencia suficiente de algún incidente.",
+        "sharp": "Dos familias no organizan una invasión por duplicado, carajo. Mira qué usa la prueba antes de culpar a las direcciones del equipo.",
+        "pass": "Doble pila comprendida. Puedes registrar qué familia interviene sin apagar funciones por intuición ni declarar un incidente ante una configuración legítima.",
+        "review": "Dibuja dos caminos posibles y marca el usado por cada prueba. Así distingues convivencia y disponibilidad sin añadir conclusiones de seguridad imaginarias."
+      }
+    },
+    {
+      "id": "ip-dns-privadas",
+      "title": "Direcciones privadas reutilizables",
+      "minutes": 3,
+      "intro": "Identifica los rangos privados IPv4 y comprende que varias redes independientes pueden reutilizarlos, sin que una coincidencia de números demuestre que los equipos pertenecen al mismo lugar o a una misma persona.",
+      "sections": [
+        {
+          "title": "Los números necesitan un ámbito",
+          "body": "IPv4 reserva rangos para uso privado: 10.0.0.0/8, 172.16.0.0/12 y 192.168.0.0/16. Se utilizan dentro de redes y pueden repetirse en entornos independientes. No se anuncian como destinos públicos ordinarios en internet. Por eso, encontrar la misma dirección privada en dos casas no demuestra que sea el mismo equipo. También debes considerar la red a la que pertenece cada dirección. Usar un rango privado no cifra datos ni sustituye las políticas de acceso que necesitan los recursos."
+        }
+      ],
+      "steps": [
+        "Reconoce 192.168.1.20 como ejemplo dentro de un rango privado.",
+        "Imagina dos hogares independientes que puedan utilizar ese mismo número."
+      ],
+      "scenario": "Dos viviendas ficticias muestran un dispositivo con 192.168.1.20 en sus respectivas redes independientes. Una persona concluye que ambos listados prueban un único equipo compartido entre las casas, sin examinar el contexto donde se asignó cada dirección.",
+      "questions": [
+        {
+          "prompt": "¿Por qué esa coincidencia no prueba que sea el mismo equipo?",
+          "options": [
+            "Las direcciones privadas incluyen nombres únicos de personas",
+            "Una casa no puede tener dispositivos conectados",
+            "Los rangos privados pueden reutilizarse en redes independientes"
+          ],
+          "answer": 2,
+          "explanation": "Las redes privadas independientes pueden asignar los mismos números sin que correspondan al mismo dispositivo. Para interpretar la dirección necesitas su ámbito de red y otros datos, no solamente comparar la cadena que aparece en cada listado doméstico.",
+          "wrongExplanations": [
+            "Una dirección privada no contiene obligatoriamente un nombre de persona ni una identidad global única. Puede repetirse en redes independientes, por lo que su significado necesita el contexto de la conexión y no demuestra quién controla un equipo concreto.",
+            "Una vivienda puede tener múltiples dispositivos y asignaciones privadas de manera legítima. El caso no cuestiona esa posibilidad; muestra que un número repetido en dos ámbitos independientes no permite concluir que todos se refieran al mismo equipo físico.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-addresses",
+        "iana-ipv4"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Un número privado puede vivir en muchas casas, precioso. Su barrio digital importa antes de imaginar una identidad mundial sin contexto.",
+        "theory": "Reutilizar números entre redes independientes puede ser normal. Mi ceja necesita conocer el ámbito antes de acusar a la impresora de teletransporte.",
+        "hint": "Observa que son redes independientes. Compara ese contexto con la función del rango antes de decidir qué demuestra la coincidencia numérica.",
+        "correct": "Ámbito reconocido. Dos listados con el mismo número no bastan para identificar una sola máquina cuando las redes privadas son independientes.",
+        "soft": "Los números coinciden, pero las redes están separadas. Revisemos el propósito del rango antes de deducir que ambos listados representan el mismo aparato.",
+        "sharp": "La impresora no aprendió teletransporte, joder. Un número privado puede repetirse en otro barrio digital sin que ambos equipos sean idénticos.",
+        "pass": "Rangos privados con contexto: entendido. Una coincidencia numérica ya no te convence de reconocer el mismo dispositivo a escala mundial.",
+        "review": "Dibuja una red por hogar y repite el número. Mantener esos ámbitos separados explica por qué la coincidencia no demuestra identidad física."
+      }
+    },
+    {
+      "id": "ip-dns-publicas",
+      "title": "Pública no significa abierta a todos",
+      "minutes": 3,
+      "intro": "Distingue el alcance público de una dirección de la autorización para acceder a servicios y evita interpretar la posibilidad de encaminamiento como permiso para realizar pruebas sobre equipos de otras personas u organizaciones.",
+      "sections": [
+        {
+          "title": "Alcance y permiso siguen separados",
+          "body": "Una dirección pública global puede participar en comunicaciones encaminadas por internet, según su asignación y las rutas disponibles. Eso no significa que todos sus servicios estén abiertos ni que cualquier persona tenga autorización para revisarlos. Los controles de acceso y filtrado siguen siendo necesarios. También existen rangos especiales que no deben confundirse con direcciones públicas ordinarias. En aprendizaje utiliza recursos propios, simulados o autorizados y no pruebes destinos encontrados al azar solo porque parezcan públicamente alcanzables desde tu conexión."
+        }
+      ],
+      "steps": [
+        "Distingue poder encaminar hacia un destino de tener permiso para usarlo.",
+        "Elige únicamente ejemplos o recursos propios para cualquier práctica futura."
+      ],
+      "scenario": "Una ficha describe una dirección como pública. Un estudiante cree que eso permite intentar entrar a cualquier servicio de la organización, aunque su responsable nunca autorizó pruebas de acceso sobre esos recursos.",
+      "questions": [
+        {
+          "prompt": "¿Qué significa realmente pública en este contexto?",
+          "options": [
+            "Describe alcance, sin conceder permisos universales sobre servicios",
+            "Demuestra que ninguna cuenta necesita autenticación",
+            "Autoriza cualquier prueba sobre el equipo sin consultar a nadie"
+          ],
+          "answer": 0,
+          "explanation": "El alcance público describe direccionamiento y encaminamiento, no derechos de acceso. La autorización depende del responsable y del servicio; una dirección alcanzable no concede permiso para explorar o modificar recursos ajenos.",
+          "wrongExplanations": [
+            null,
+            "Una dirección pública puede ofrecer servicios con autenticación y controles estrictos. El término no elimina requisitos de usuario o permisos; debes separar la posibilidad de comunicación del derecho a utilizar cada recurso disponible en el equipo que participa en internet.",
+            "Ninguna autorización de pruebas se deduce solo de una dirección pública. El aprendizaje debe limitarse a entornos propios, simulados o expresamente aprobados, porque la conectividad no concede derechos sobre sistemas de personas u organizaciones ajenas al ejercicio de estudio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-addresses",
+        "iana-ipv4"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Pública no significa autoservicio universal, cariño. Separaremos alcance y permisos antes de interpretar una dirección como invitación que nadie envió para explorar.",
+        "theory": "Una ruta no entrega llaves de cada servicio. Mi descaro es conversacional; las prácticas reales siguen necesitando autorización de quien administra los recursos.",
+        "hint": "Pregunta si la palabra describe conectividad o una decisión sobre acceso. No añadas permisos que el responsable del servicio nunca concedió en el caso.",
+        "correct": "Alcance sin permiso universal: exacto. Distinguiste una posibilidad técnica de una autorización y conservaste las prácticas dentro de recursos propios o aprobados.",
+        "soft": "La dirección habla de alcance. Revisemos quién autoriza utilizar el servicio antes de deducir qué acciones puede realizar cualquier estudiante que lo encuentre.",
+        "sharp": "Pública no significa roba las llaves, carajo. Una ruta no firma permisos por su dueño ni te nombra administrador de cualquier servicio alcanzable.",
+        "pass": "Direcciones públicas comprendidas con límites. Puedes describir conectividad con iniciativa y mantener las prácticas dentro del ámbito que tienes permiso para revisar.",
+        "review": "Compara llegar a una puerta con tener permiso para abrirla. Esa diferencia separa alcance técnico y autorización sin complicar todavía el ejemplo."
+      }
+    },
+    {
+      "id": "ip-dns-documentacion",
+      "title": "Ejemplos que no señalan víctimas",
+      "minutes": 3,
+      "intro": "Reconoce direcciones reservadas para documentación y comprende por qué un ejemplo educativo no señala servicios reales ni solicita pruebas sobre sistemas de otras personas sin autorización.",
+      "sections": [
+        {
+          "title": "Números para explicar, no para invadir",
+          "body": "Los rangos 192.0.2.0/24, 198.51.100.0/24 y 203.0.113.0/24 están reservados para documentación IPv4. Para IPv6 se utiliza 2001:db8::/32 con ese propósito. Sirven para escribir ejemplos sin señalar servicios reales elegidos al azar. No son destinos públicos ordinarios que debas esperar alcanzar al leer una lección. Los nombres terminados en .example o .test también pueden aparecer en ejercicios ficticios. Esta separación deja claro qué se estudia y evita confundir el ejemplo con autorización para intervenir en sistemas ajenos."
+        }
+      ],
+      "steps": [
+        "Reconoce 203.0.113.8 como dirección de una ficha didáctica.",
+        "Trata los datos del ejemplo como material explicativo sin intentar acceder."
+      ],
+      "scenario": "Una lección ficticia utiliza 203.0.113.8 para representar un servidor y avisa que pertenece a un rango de documentación. Un estudiante cree que la práctica exige conectarse a ese número y que fallar demostraría una avería de su conexión real doméstica.",
+      "questions": [
+        {
+          "prompt": "¿Cómo debe interpretarse ese número en la lección?",
+          "options": [
+            "Como prueba de que un servicio real está abierto a cualquiera",
+            "Como ejemplo de documentación sin obligación de conectarse",
+            "Como contraseña temporal de la aplicación educativa"
+          ],
+          "answer": 1,
+          "explanation": "El rango representa un servidor ficticio y está reservado para documentación. No alcanzarlo no diagnostica tu conexión ni exige probar sistemas reales ajenos para completar una actividad que se resuelve interpretando la ficha.",
+          "wrongExplanations": [
+            "Una dirección de documentación no acredita un servicio real abierto. La ficha explica conceptos sin señalar sistemas ajenos; convertirla en permiso de acceso añade una condición que el material no solicita ni demuestra.",
+            null,
+            "El número representa direccionamiento en un ejemplo, no una credencial de acceso. La app utiliza información ficticia para explicar funciones de red y no necesita que el estudiante introduzca o utilice contraseñas reales al completar la actividad de esta lección."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-ipv4",
+        "iana-ipv6"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Los ejemplos llevan matrícula de ficción, precioso. Usar rangos reservados permite explicar sin señalar servicios reales como supuestos objetivos disponibles para cualquiera.",
+        "theory": "Una dirección didáctica no promete un servidor atento. Si no responde, no deduzcas avería del hogar antes de reconocer qué representa.",
+        "hint": "Relee el propósito del rango. Distingue representar un servidor de exigir que exista un destino real disponible para completar este ejercicio escrito.",
+        "correct": "Ejemplo de documentación reconocido. No lo convertiste en contrato de conectividad ni en invitación a un sistema que el material nunca afirmó ofrecer.",
+        "soft": "El rango tiene un propósito especial. Revisemos si la ficha representa una idea o solicita comprobar un servicio real que deba responder fuera de ella.",
+        "sharp": "El servidor de cartón no te debe una respuesta, joder. Un ejemplo numérico enseña; no diagnostica al proveedor ni promete destinos reales disponibles.",
+        "pass": "Reconoces números preparados para enseñar. Así puedes resolver prácticas sin tratar cada dirección impresa como un destino que debas explorar desde tu red.",
+        "review": "Vuelve a la etiqueta de documentación y al objetivo. Representar un concepto no exige que la dirección se comporte como servicio público real."
+      }
+    },
+    {
+      "id": "ip-dns-loopback",
+      "title": "Loopback se queda en el equipo",
+      "minutes": 3,
+      "intro": "Reconoce el propósito de loopback y comprende que una comunicación dirigida al propio equipo no demuestra el estado del router, del proveedor o de cualquier servidor externo.",
+      "sections": [
+        {
+          "title": "Una vuelta interna",
+          "body": "Las direcciones de loopback permiten que un equipo se comunique consigo mismo mediante su pila de red. Son habituales 127.0.0.1 en IPv4 y ::1 en IPv6. Esa comunicación no necesita atravesar la conexión física hacia el router. Por eso, que un servicio local responda en loopback no demuestra que internet o un servidor remoto estén disponibles. Puede ser útil en desarrollo o comprobaciones autorizadas, siempre entendiendo qué parte local se está observando y qué recorrido externo todavía no se ha puesto a prueba."
+        }
+      ],
+      "steps": [
+        "Relaciona 127.0.0.1 y ::1 con el propio equipo en una ficha ficticia.",
+        "Distingue esa vuelta local del trayecto que necesitaría un servicio externo."
+      ],
+      "scenario": "Un programa responde mediante 127.0.0.1 en un portátil sin conexiones externas activas. Una persona afirma que esa respuesta demuestra que el proveedor funciona y que cualquier servidor remoto debe estar disponible para el navegador.",
+      "questions": [
+        {
+          "prompt": "¿Qué confirma realmente esa respuesta local?",
+          "options": [
+            "Que cualquier servidor externo está encendido",
+            "Que el enlace del proveedor no puede fallar",
+            "Una comunicación dentro del propio equipo, no el trayecto externo"
+          ],
+          "answer": 2,
+          "explanation": "Loopback utiliza un recorrido interno y no verifica enlaces hacia otros dispositivos. La respuesta muestra funcionamiento de esa comunicación local, pero no basta para afirmar disponibilidad del router, del proveedor o de los destinos remotos.",
+          "wrongExplanations": [
+            "Un servidor externo no participa necesariamente en loopback. El programa puede responder dentro del portátil sin enlace físico, por lo que ese resultado no demuestra el estado de los destinos de internet que necesita el navegador.",
+            "Loopback no necesita atravesar el enlace del proveedor. Su respuesta no elimina una posible avería externa; hacen falta comprobaciones distintas para describir la conexión hacia otros dispositivos o servicios fuera del equipo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-ipv4",
+        "iana-ipv6"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "El equipo hablará consigo mismo sin que lo juzgue, cariño. Esa vuelta interna tiene nombre y límites que no incluyen visitar internet.",
+        "theory": "Loopback se queda dentro del equipo. Su respuesta no salió a revisar el router ni puede informar del humor actual del proveedor.",
+        "hint": "Sigue el recorrido de la dirección. Pregunta si fue necesario abandonar el equipo antes de aceptar conclusiones sobre destinos externos al dispositivo.",
+        "correct": "Comunicación interna reconocida. La vuelta por loopback conserva su alcance y no se convirtió en una excursión imaginaria por todos los servicios externos.",
+        "soft": "La respuesta existe, pero revisemos por dónde viajó. Un recorrido interno no comprueba necesariamente los enlaces que llevarían hacia otros equipos.",
+        "sharp": "Responderse a sí mismo no convierte al portátil en inspector mundial, carajo. Loopback no visitó al proveedor para certificar toda su infraestructura.",
+        "pass": "Loopback comprendido con límites. Puedes reconocer una respuesta local sin atribuirle comprobaciones sobre enlaces que nunca formaron parte de ese intercambio.",
+        "review": "Dibuja una flecha interna y otra hacia fuera. Comparar recorridos aclara qué demuestra la respuesta y qué parte todavía quedaría pendiente de comprobar."
+      }
+    },
+    {
+      "id": "ip-dns-enlace-local",
+      "title": "Una dirección de enlace local IPv4",
+      "minutes": 3,
+      "intro": "Reconoce el rango de enlace local IPv4 y comprende que puede orientar una revisión de configuración, sin demostrar por sí solo una infección o una causa única del fallo.",
+      "sections": [
+        {
+          "title": "Una pista que necesita contexto",
+          "body": "IPv4 dispone del rango 169.254.0.0/16 para direcciones de enlace local. Algunos sistemas lo utilizan automáticamente cuando no obtienen otra configuración mediante DHCP, aunque el comportamiento depende del entorno. Estas direcciones no son una salida normal a redes externas. Si aparece una al esperar una asignación habitual, revisa el estado de conexión y solicita ayuda autorizada sobre DHCP. No significa automáticamente que exista malware y tampoco justifica modificar direcciones ajenas o cambiar parámetros al azar sin conservar el estado previo del equipo."
+        }
+      ],
+      "steps": [
+        "Reconoce 169.254.20.30 como ejemplo de enlace local dentro de una ficha.",
+        "Describe qué contexto consultarías si esperabas una asignación normal por DHCP."
+      ],
+      "scenario": "Un portátil esperaba configuración automática, pero muestra 169.254.20.30 y no alcanza servicios externos. Una persona afirma que el prefijo confirma infección y propone cambiar direcciones ajenas sin consultar al responsable del entorno.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación inicial es más prudente?",
+          "options": [
+            "Revisar conexión y asignación automática sin afirmar malware solo por el prefijo",
+            "La dirección confirma un ataque y autoriza tocar cualquier equipo",
+            "El prefijo garantiza navegación externa aunque no haya puerta de enlace"
+          ],
+          "answer": 0,
+          "explanation": "En este contexto, el enlace local orienta una revisión de conexión y asignación automática. No identifica por sí solo malware ni autoriza cambios ajenos; las comprobaciones deben limitarse al equipo propio o gestionado con permiso.",
+          "wrongExplanations": [
+            null,
+            "El rango tiene uso legítimo y no demuestra malware. Tampoco autoriza modificar otros dispositivos: las comprobaciones deben respetar propiedad y administración, conservando información útil para revisar el problema de asignación automática con su responsable.",
+            "El enlace local no proporciona una salida normal hacia otras redes. Su prefijo no demuestra puerta ni configuración para navegar; deben revisarse los parámetros que el equipo esperaba obtener automáticamente antes de prometer acceso externo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iana-ipv4"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Ese prefijo es una pista, precioso. Miraremos el contexto antes de convertir una asignación inesperada en sentencia de infección del equipo.",
+        "theory": "Una dirección de enlace local puede aparecer legítimamente. La pregunta útil es qué configuración esperaba el equipo y cómo debía obtener sus parámetros.",
+        "hint": "El caso menciona asignación automática esperada. Relaciona ese detalle con el prefijo observado sin saltar a una causa que todavía no está comprobada.",
+        "correct": "Contexto primero: buena prudencia. No declaraste malware por un rango legítimo ni tocaste otros equipos para investigar la asignación que esperaba este cliente.",
+        "soft": "Revisemos alcance y configuración esperada. El prefijo orienta preguntas, pero no basta para confirmar una causa maliciosa ni justificar cambios en dispositivos ajenos.",
+        "sharp": "El prefijo no confesó ser malware, joder. Investiga la asignación esperada antes de cambiar números del vecindario como si fueras administrador universal.",
+        "pass": "Enlace local reconocido sin falsas sentencias. Sabes usar el dato como pista contextual y pedir ayuda antes de alterar configuraciones que no administras.",
+        "review": "Separa rango especial, parámetros esperados y causa desconocida. Esas piezas permiten formular una comprobación autorizada sin declarar un incidente que nadie ha confirmado."
+      }
+    },
+    {
+      "id": "ip-dns-prefijo",
+      "title": "Un prefijo agrupa direcciones",
+      "minutes": 3,
+      "intro": "Comprende el prefijo de red como información que agrupa direcciones y reconoce que una dirección aislada no siempre permite decidir qué destinos se consideran locales en su configuración.",
+      "sections": [
+        {
+          "title": "La barra aporta contexto",
+          "body": "Una dirección puede acompañarse de una longitud de prefijo escrita tras una barra. Esa longitud indica cuántos bits iniciales se utilizan para describir la parte de red en ese contexto. No es un número de equipos ni una contraseña. Conocer dirección y prefijo ayuda a determinar qué destinos se consideran locales según la configuración. No necesitas calcular todos los casos para empezar: primero reconoce que el dato existe y que omitirlo puede dejar incompleta una descripción de conectividad."
+        }
+      ],
+      "steps": [
+        "Separa dirección y longitud de prefijo en 192.168.10.20/24.",
+        "Describe qué parte del dato añade contexto sobre la red."
+      ],
+      "scenario": "Una ficha ficticia muestra 192.168.10.20/24. Una persona interpreta el número después de la barra como cantidad exacta de computadoras conectadas, aunque el material lo presenta como longitud del prefijo usado para describir la red.",
+      "questions": [
+        {
+          "prompt": "¿Qué representa /24 en esa notación?",
+          "options": [
+            "La contraseña del router",
+            "La longitud del prefijo de red en bits",
+            "El número exacto de usuarios conectados"
+          ],
+          "answer": 1,
+          "explanation": "La barra expresa una longitud de prefijo en bits. No cuenta usuarios ni contiene credenciales; forma parte de la información necesaria para interpretar cómo la dirección se agrupa dentro de esa configuración de red.",
+          "wrongExplanations": [
+            "Una longitud de prefijo es un parámetro de direccionamiento y no una credencial. Leer /24 no permite entrar al router ni reemplaza los requisitos de autenticación y permisos de su administración.",
+            null,
+            "El valor indica bits del prefijo, no dispositivos presentes. La ocupación real depende de asignaciones y equipos conectados; no se obtiene contando el número escrito después de la barra en esa dirección de ejemplo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Esa barra no separa una fracción del precio, cariño. Vamos a leer el dato que añade contexto a la dirección.",
+        "theory": "El prefijo agrupa direcciones según bits iniciales. No está contando personas conectadas ni escondiendo una clave maestra detrás de la barra.",
+        "hint": "Mira qué parámetro acompaña a la dirección y cómo lo define la teoría. No confundas un dato de configuración con ocupación real del entorno.",
+        "correct": "Longitud del prefijo: concepto reconocido. El número describe parte de la configuración y no necesita coincidir con la cantidad de usuarios presentes.",
+        "soft": "Hay varias clases de números en una red. Revisemos qué significa este después de la barra antes de interpretarlo como contraseña o contador.",
+        "sharp": "La barra no hizo inventario de estudiantes, carajo. El número tiene un papel de direccionamiento, aunque parezca cómodo convertirlo en censo del aula.",
+        "pass": "Ya identificas el prefijo sin contar usuarios imaginarios. Tu lectura de parámetros ganó contexto y mi lado técnico quedó bastante satisfecho con ese avance.",
+        "review": "Separa dirección, longitud y cantidad de equipos como tres conceptos. Esa distinción aclara qué afirma realmente la notación que muestra la ficha."
+      }
+    },
+    {
+      "id": "ip-dns-mascara",
+      "title": "Máscara IPv4 y /24",
+      "minutes": 3,
+      "intro": "Relaciona la máscara IPv4 con la longitud de prefijo mediante un ejemplo sencillo y evita tratar ambas notaciones equivalentes como si fueran direcciones de dos dispositivos distintos dentro de una red local.",
+      "sections": [
+        {
+          "title": "Dos maneras de expresar el límite",
+          "body": "En IPv4, la máscara de subred expresa qué bits corresponden al prefijo utilizado para agrupar direcciones. La máscara 255.255.255.0 equivale a /24 en el ejemplo básico porque sus primeros veinticuatro bits están establecidos. Son formas de describir una configuración, no dos equipos diferentes. Una máscara incorrecta puede alterar qué destinos considera locales el sistema. No cambies ese valor por probar en una red administrada: observa los datos autorizados y consulta al responsable si no coincide con lo esperado."
+        }
+      ],
+      "steps": [
+        "Asocia 255.255.255.0 con /24 en la ficha didáctica.",
+        "Distingue ese parámetro de la dirección asignada al dispositivo."
+      ],
+      "scenario": "Un ejercicio ficticio presenta una interfaz con la máscara 255.255.255.0 y también escribe /24 para la misma configuración. Una estudiante cree que encontró dos aparatos nuevos porque aparecen dos cadenas diferentes al lado de la dirección.",
+      "questions": [
+        {
+          "prompt": "¿Cómo se relacionan esos dos datos del ejemplo?",
+          "options": [
+            "Uno permite conocer la contraseña del otro",
+            "Son dos servidores remotos necesariamente distintos",
+            "Expresan la misma longitud de prefijo IPv4"
+          ],
+          "answer": 2,
+          "explanation": "La máscara indicada representa veinticuatro bits de prefijo y puede escribirse como /24. Ambas notaciones describen el mismo parámetro del ejemplo, sin añadir equipos ni cambiar la dirección que tiene asignada la interfaz.",
+          "wrongExplanations": [
+            "Ni una máscara ni una longitud de prefijo son contraseñas. Son parámetros de direccionamiento; conocer su equivalencia no concede acceso a la administración del equipo ni permite deducir credenciales de un servidor de la red.",
+            "El ejercicio describe una única configuración mediante dos notaciones equivalentes. Interpretarlas como servidores confunde parámetros de red con destinos; primero debes reconocer el papel de máscara y prefijo antes de contar dispositivos a partir de esas cadenas.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Dos escrituras pueden contar la misma configuración, precioso. Hoy la máscara y el prefijo dejarán de parecer dos aparatos que nadie invitó.",
+        "theory": "Una máscara expresa un límite de bits, no otro servidor. Cambiar la presentación de un parámetro no añade equipos al dibujo de red.",
+        "hint": "Relaciona ambas notaciones con la explicación de bits del ejemplo. Después pregunta si la ficha está describiendo destinos o una propiedad de configuración.",
+        "correct": "Equivalencia entendida. No hiciste aparecer servidores extra por encontrar dos notaciones para el mismo parámetro; mi inventario de fantasmas digitales queda vacío.",
+        "soft": "Las cadenas se ven distintas, pero revisemos qué representan. Un dato puede expresarse de más de una manera sin duplicar los dispositivos del entorno.",
+        "sharp": "La máscara no parió otro servidor, joder. Antes de contar máquinas, mira si dos cadenas solo están describiendo el mismo límite de la configuración.",
+        "pass": "Máscara y prefijo conectados en tu mapa. Ya puedes leer el ejemplo sin confundir sus parámetros con identidades de aparatos nuevos dentro del laboratorio.",
+        "review": "Vuelve al límite de veinticuatro bits y sus dos escrituras. Comparar significado en lugar de apariencia ayuda a reconocer la equivalencia del ejemplo."
+      }
+    },
+    {
+      "id": "ip-dns-misma-red",
+      "title": "Comparar destinos con el prefijo",
+      "minutes": 3,
+      "intro": "Aplica un ejemplo IPv4 sencillo con /24 para distinguir destinos del mismo prefijo y comprende que compartir una parte del número no demuestra por sí solo autorización sobre los servicios de esos equipos.",
+      "sections": [
+        {
+          "title": "La comparación depende del contexto",
+          "body": "En un ejemplo sencillo con 192.168.10.20/24, el prefijo está formado por los primeros veinticuatro bits, que en esta notación corresponden a 192.168.10. Por eso 192.168.10.30 comparte ese prefijo y 192.168.11.30 no. Esta comparación depende de usar /24: no generalices contando puntos para cualquier longitud. Determinar qué parece local ayuda a elegir un recorrido, pero no autoriza accesos ni asegura que el dispositivo exista, responda o ofrezca el servicio que una aplicación necesita utilizar."
+        }
+      ],
+      "steps": [
+        "Compara 192.168.10.30 con el prefijo de 192.168.10.20/24.",
+        "Repite con 192.168.11.30 sin enviar tráfico a ningún equipo."
+      ],
+      "scenario": "Una interfaz ficticia usa 192.168.10.20/24 y una hoja ofrece dos posibles destinos: 192.168.10.30 y 192.168.11.30. El ejercicio solo pide comparar el prefijo y no supone que esos equipos existan ni estén autorizados para acceso.",
+      "questions": [
+        {
+          "prompt": "¿Qué destino comparte el prefijo /24 del ejemplo?",
+          "options": [
+            "192.168.10.30",
+            "192.168.11.30",
+            "Ambos, sin importar la longitud del prefijo"
+          ],
+          "answer": 0,
+          "explanation": "Con /24, los tres primeros grupos forman el prefijo de este ejemplo IPv4. 192.168.10.30 coincide con 192.168.10, mientras el otro destino cambia el tercer grupo y no comparte ese mismo prefijo específico.",
+          "wrongExplanations": [
+            null,
+            "192.168.11.30 cambia el tercer grupo del prefijo /24 usado en el caso. Que comparta 192.168 no basta aquí; la comparación debe incluir todos los bits indicados por la longitud configurada en la interfaz ficticia.",
+            "La longitud sí importa para decidir qué parte se compara. En este caso /24 incluye tres grupos completos, de modo que el cambio de 10 a 11 separa los prefijos y no permite considerar ambos destinos equivalentes."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Compararemos prefijos sin llamar a nadie, cariño. Leer el contexto basta para este ejercicio y nos evita convertir una hoja didáctica en tráfico innecesario.",
+        "theory": "En este caso concreto /24 fija qué grupos comparamos. La regla del ejemplo no debe disfrazarse de receta universal para todas las longitudes.",
+        "hint": "Utiliza la longitud indicada antes de comparar valores. Observa dónde cambia cada destino y qué parte exige mantener igual la configuración de esta ficha.",
+        "correct": "Coincidencia del prefijo localizada. Usaste el contexto concreto en vez de decidir por dos grupos parecidos o inventar una regla para cualquier máscara posible.",
+        "soft": "Miremos exactamente cuántos bits incluye el prefijo del caso. Compartir solo una parte visual del número puede ser insuficiente para la comparación solicitada.",
+        "sharp": "Dos grupos parecidos no firman parentesco universal, carajo. Lee la longitud configurada antes de meter todos los números familiares en el mismo saco local.",
+        "pass": "Comparación resuelta con contexto. Saber dónde acaba el prefijo evita decisiones por parecido superficial y prepara preguntas mejores sobre el recorrido de los datos.",
+        "review": "Dibuja una línea donde termina el prefijo del ejemplo. Después compara los destinos a ese lado sin generalizar todavía a otras longitudes."
+      }
+    },
+    {
+      "id": "ip-dns-gateway",
+      "title": "Dirección local y puerta de enlace",
+      "minutes": 3,
+      "intro": "Distingue la dirección propia de la puerta de enlace y comprende que esta última suele servir como siguiente salto para destinos externos, sin convertirse en la identidad de todos los servidores visitados por una aplicación.",
+      "sections": [
+        {
+          "title": "El primer salto no es cada destino",
+          "body": "La dirección propia identifica la interfaz en su red, mientras la puerta de enlace predeterminada indica un siguiente salto habitual para tráfico que no corresponde a rutas más específicas. Suele ser un router accesible desde el mismo entorno local. No es la dirección de cada página ni una cuenta de usuario. Una configuración incorrecta puede dejar funcionando comunicaciones locales y dificultar las externas. Observar ambos campos por separado ayuda a explicar ese síntoma sin atribuirlo automáticamente al servidor de una aplicación remota."
+        }
+      ],
+      "steps": [
+        "Separa dirección propia y puerta de enlace en una ficha de conexión ficticia.",
+        "Dibuja el equipo, la salida y un destino externo como tres elementos."
+      ],
+      "scenario": "Una computadora ficticia alcanza una impresora local, pero no sale a otras redes. Su ficha muestra una dirección propia correcta y una puerta de enlace equivocada, y alguien propone renombrar todos los archivos para arreglar el recorrido externo.",
+      "questions": [
+        {
+          "prompt": "¿Qué parámetro está relacionado con esa salida equivocada?",
+          "options": [
+            "El nombre de cada archivo local",
+            "La puerta de enlace predeterminada",
+            "La imagen de perfil del usuario"
+          ],
+          "answer": 1,
+          "explanation": "La puerta de enlace orienta el reenvío hacia destinos externos cuando corresponde utilizarla. Si está equivocada, la conectividad local puede continuar mientras falla esa salida; renombrar archivos o cambiar una imagen de perfil no corrige ese parámetro.",
+          "wrongExplanations": [
+            "Los nombres de archivos no determinan el siguiente salto de red del equipo. El caso identifica una puerta incorrecta; cambiar documentos añade trabajo sin corregir la configuración que está relacionada con la dificultad de salir a redes externas.",
+            null,
+            "La imagen de perfil no configura el encaminamiento. La evidencia está en la puerta de enlace indicada por la ficha; conviene revisar ese dato con autorización en vez de modificar elementos de apariencia que no explican el síntoma de salida."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Una dirección te sitúa y otra señala salida, precioso. Separaremos ambas para no culpar a los archivos de un camino externo mal indicado.",
+        "theory": "La puerta no es cada servidor visitado. Sirve como siguiente salto habitual cuando corresponde, aunque el destino final tenga una dirección completamente diferente.",
+        "hint": "El caso distingue acceso local y salida externa. Busca qué parámetro participa en ese segundo recorrido, dejando aparte nombres y elementos visuales del equipo.",
+        "correct": "Puerta de enlace localizada. La impresora local podía responder mientras la salida estaba mal indicada; dos resultados distintos que ahora tienen una explicación coherente.",
+        "soft": "El síntoma afecta al recorrido externo. Revisemos qué campo orienta esa salida antes de cambiar documentos o imágenes que no definen el siguiente salto.",
+        "sharp": "Renombrar tareas no recoloca una puerta de enlace, joder. Dale al síntoma una comprobación de red en lugar de decorar archivos inocentes del equipo.",
+        "pass": "Dirección propia y salida separadas. Ya puedes explicar por qué algunas comunicaciones continúan funcionando aunque falte un siguiente salto correcto para alcanzar otras redes.",
+        "review": "Representa equipo, salida y destino como tres puntos. Esa separación revela qué dato guía el comienzo del recorrido hacia una red diferente."
+      }
+    },
+    {
+      "id": "ip-dns-dhcp",
+      "title": "DHCP entrega configuración",
+      "minutes": 3,
+      "intro": "Reconoce DHCP como mecanismo para obtener parámetros de red automáticamente y distingue esa función de traducir nombres de dominio o autorizar el acceso a cuentas de correo y otros servicios protegidos por credenciales propias.",
+      "sections": [
+        {
+          "title": "Pedir parámetros, no contraseñas personales",
+          "body": "DHCP permite obtener automáticamente parámetros de red, como una dirección IP y opciones sobre puerta de enlace o servidores DNS, según el entorno. Evita tener que escribir cada dato manualmente en todos los clientes. Eso no significa que cualquier configuración recibida sea infalible ni que la asignación autentique todas las aplicaciones del equipo. Si algo no coincide con lo esperado, revisa el contexto autorizado y consulta al responsable. Configurar una dirección es una función distinta de resolver nombres o iniciar sesión en servicios personales."
+        }
+      ],
+      "steps": [
+        "Busca la etiqueta de asignación automática en una ficha ficticia.",
+        "Separa parámetros de red de contraseñas de aplicaciones."
+      ],
+      "scenario": "Un equipo obtiene dirección, puerta y datos DNS automáticamente en una red autorizada. Una persona afirma que DHCP debe publicar las contraseñas personales de todos los usuarios para poder entregar esos parámetros al cliente.",
+      "questions": [
+        {
+          "prompt": "¿Qué función describe mejor DHCP en este caso?",
+          "options": [
+            "Publicar credenciales de correo de todos los clientes",
+            "Traducir obligatoriamente cada nombre de página web",
+            "Proporcionar parámetros de red de forma automática"
+          ],
+          "answer": 2,
+          "explanation": "El servicio entrega configuración de red al cliente, según las opciones disponibles. No necesita publicar credenciales personales para asignar esos parámetros, y la traducción de nombres corresponde a otra función que puede utilizar los datos DNS entregados en la configuración.",
+          "wrongExplanations": [
+            "Las credenciales personales no forman parte de una obligación de publicar contraseñas para obtener configuración DHCP. Dirección y opciones de red son datos distintos; compartir secretos de aplicaciones añadiría una exposición que el funcionamiento descrito no requiere ni justifica.",
+            "DHCP puede informar qué servidores DNS utilizar, pero no equivale a resolver cada nombre. Asignar parámetros y traducir nombres son funciones diferentes, aunque colaboren en la conectividad de un equipo que utiliza servicios externos.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Hoy el equipo pedirá configuración sin rellenar formularios eternos, cariño. Eso no implica entregar las contraseñas personales como entrada obligatoria al servicio.",
+        "theory": "DHCP facilita parámetros. Saber dónde consultar DNS no equivale a resolver cada nombre ni iniciar sesión en todas las aplicaciones que utilizan esa red.",
+        "hint": "Separa los parámetros recibidos de las tareas que otros servicios realizan después. La opción debe describir el papel mostrado y no añadir intercambio de secretos.",
+        "correct": "Configuración automática reconocida. El servicio entrega datos de red sin necesitar publicar contraseñas personales ni asumir cada función que utilizarán después las aplicaciones.",
+        "soft": "Observemos qué recibió el cliente al conectarse. Son parámetros distintos de las credenciales que una aplicación podría pedir cuando el usuario intente usar su servicio.",
+        "sharp": "DHCP no exige una confesión de todas tus claves, carajo. Direcciones y opciones de red no justifican publicar secretos de correo para configurar el equipo.",
+        "pass": "Asignación automática comprendida. Ya puedes explicar quién entrega parámetros sin confundir esa ayuda con resolver nombres o autenticar cada aplicación que utiliza la conexión.",
+        "review": "Dibuja la entrega de parámetros y luego dos servicios distintos que los utilizan. Separar esas acciones aclara el oficio de DHCP en el ejemplo."
+      }
+    },
+    {
+      "id": "ip-dns-concesion",
+      "title": "La asignación puede tener plazo",
+      "minutes": 3,
+      "intro": "Comprende la concesión DHCP como asignación con duración y reconoce que una dirección puede renovarse o cambiar, sin interpretar cada variación legítima como identidad nueva o compromiso confirmado del equipo que solicita configuración automática.",
+      "sections": [
+        {
+          "title": "Tiempo de uso y renovación",
+          "body": "En DHCP, una concesión permite utilizar una asignación durante un periodo determinado. El cliente puede intentar renovarla siguiendo el protocolo y las condiciones del entorno. La dirección puede mantenerse o cambiar según disponibilidad y política, por lo que no debes construir una identidad humana permanente a partir del número observado. El plazo de la concesión tampoco es un contador para borrar archivos. Registrar cuándo se obtuvo una configuración ayuda a comparar observaciones sin mezclar estados de momentos distintos de la misma conexión."
+        }
+      ],
+      "steps": [
+        "Identifica fechas de asignación y vencimiento en una ficha ficticia.",
+        "Distingue renovar configuración de cambiar documentos del equipo."
+      ],
+      "scenario": "Dos capturas de una conexión, tomadas en días diferentes, muestran asignaciones DHCP distintas. El equipo obtuvo nuevas concesiones válidas, pero alguien concluye que esa diferencia prueba que otra persona tomó control de sus archivos.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación admite la existencia de concesiones?",
+          "options": [
+            "Una dirección puede cambiar legítimamente al obtener nueva configuración",
+            "Cada renovación borra todos los documentos",
+            "Las concesiones convierten la IP en nombre humano inmutable"
+          ],
+          "answer": 0,
+          "explanation": "Las asignaciones tienen un contexto temporal y pueden cambiar legítimamente. La diferencia entre capturas no demuestra acceso a archivos; conviene comparar las concesiones antes de atribuir una causa ajena al funcionamiento normal del entorno.",
+          "wrongExplanations": [
+            null,
+            "Renovar una concesión cambia parámetros de red y no consiste en borrar documentos. Para afirmar pérdida de archivos se necesitaría evidencia específica de ese efecto, que no aparece por observar otra asignación en las capturas.",
+            "Precisamente la concesión permite entender que la dirección depende de una asignación y un momento. No constituye una identidad humana inmutable y debe interpretarse junto con la interfaz y el contexto de red al comparar estados de la conexión ficticia."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Las asignaciones también tienen calendario, precioso. Una dirección puede renovarse sin que el equipo cambie de dueño ni los documentos tengan una crisis existencial.",
+        "theory": "La concesión permite usar configuración durante un plazo. Su renovación no es una orden de borrado ni una identidad personal permanente escrita en números.",
+        "hint": "Compara cuándo se tomaron las capturas y qué permite una concesión. Evita convertir un cambio numérico en prueba suficiente de acceso ajeno a los archivos.",
+        "correct": "Cambio legítimo posible: bien visto. Conservaste el contexto temporal de la asignación en lugar de declarar acceso a archivos por dos capturas con números diferentes.",
+        "soft": "Las capturas pertenecen a momentos distintos. Revisemos qué puede ocurrir al obtener otra concesión antes de atribuir una causa que los datos todavía no demuestran.",
+        "sharp": "Renovar una concesión no organiza un motín de archivos, joder. El plazo corresponde a configuración de red, no a borrar documentos por decreto del calendario.",
+        "pass": "Concesiones entendidas con tiempo y contexto. Ya sabes comparar asignaciones sin exigir que una dirección numérica permanezca eternamente ligada al mismo usuario del equipo.",
+        "review": "Pon las capturas en una línea temporal. Después separa cambios de parámetros de cualquier afirmación sobre documentos o personas que todavía necesitaría otra evidencia."
+      }
+    },
+    {
+      "id": "ip-dns-estatica",
+      "title": "Configurar manualmente requiere coordinación",
+      "minutes": 3,
+      "intro": "Distingue asignación manual y automática y comprende por qué elegir una dirección al azar puede provocar problemas, aunque su formato sea correcto en una red administrada.",
+      "sections": [
+        {
+          "title": "No basta encontrar un número bonito",
+          "body": "Una configuración manual fija parámetros definidos por quien administra el equipo, en lugar de obtenerlos mediante un mecanismo automático. Debe ser compatible con el diseño de la red y evitar direcciones ya utilizadas o reservadas. No basta escribir un formato válido: prefijo, puerta y DNS también deben corresponder al entorno. Si una organización usa políticas de asignación, consulta sus instrucciones antes de cambiar valores. Para aprender puedes comparar fichas ficticias sin modificar la conexión real ni afectar a otros dispositivos."
+        }
+      ],
+      "steps": [
+        "Distingue una ficha manual de otra automática sin aplicar cambios reales.",
+        "Enumera dirección, prefijo, puerta y DNS como datos que requieren contexto."
+      ],
+      "scenario": "Un estudiante elige una dirección manual porque le gusta su último número. No consulta el plan ni las reservas y cree que un formato válido basta para asegurar conectividad sin afectar otros equipos del laboratorio.",
+      "questions": [
+        {
+          "prompt": "¿Qué falta en su decisión?",
+          "options": [
+            "Un nombre de archivo más atractivo",
+            "Coordinación con la configuración y asignaciones de la red",
+            "Usar el mismo número en todos los equipos"
+          ],
+          "answer": 1,
+          "explanation": "La asignación manual debe respetar el diseño, evitar conflictos y utilizar parámetros compatibles. Un formato válido no demuestra disponibilidad ni autorización: el estudiante necesita instrucciones del responsable antes de modificar la conexión real del laboratorio.",
+          "wrongExplanations": [
+            "El nombre de un archivo no determina disponibilidad de direcciones ni compatibilidad de red. La revisión necesaria se refiere a asignaciones, reservas y parámetros, no a etiquetas locales que no configuran el tráfico del equipo.",
+            null,
+            "Asignar la misma dirección a todos puede generar conflictos y no resuelve la falta de coordinación. Cada configuración debe corresponder al plan de red y las instrucciones del responsable, en vez de copiar números por comodidad a varios dispositivos conectados."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Elegir números bonitos no es administrar una red, cariño. La configuración manual necesita contexto y coordinación antes de convertir una preferencia personal en problema colectivo.",
+        "theory": "Una dirección válida puede estar ocupada o reservada. Mis gustos son caprichosos; los parámetros del laboratorio deben respetar un plan que no dependa de ellos.",
+        "hint": "Pregunta quién administra las asignaciones y qué parámetros exige el entorno. Tener formato correcto es solo una condición, no toda la comprobación necesaria del caso.",
+        "correct": "Coordinación primero: elección sensata. Respetaste asignaciones y parámetros antes de tratar una dirección aparentemente bonita como si estuviera disponible y autorizada para cualquier dispositivo.",
+        "soft": "El número tiene forma válida, pero revisemos disponibilidad y configuración. El laboratorio pertenece a un entorno administrado donde no basta elegir por gusto un valor.",
+        "sharp": "El último número no se reserva por enamoramiento, carajo. Consulta el plan antes de plantar una dirección porque combina bien con tu estado de ánimo.",
+        "pass": "Configuración manual entendida como decisión coordinada. Ya puedes reconocer por qué formato, disponibilidad y autorización deben comprobarse juntos antes de modificar un equipo real.",
+        "review": "Compara una ficha completa con una elección improvisada. Marca los parámetros que faltan y quién puede confirmar que la dirección corresponde al plan del laboratorio."
+      }
+    },
+    {
+      "id": "ip-dns-conflicto",
+      "title": "Dos equipos y una dirección en conflicto",
+      "minutes": 3,
+      "intro": "Reconoce un conflicto de direcciones como problema de asignación dentro de un mismo ámbito y distingue esa situación de la reutilización legítima del mismo número en redes privadas totalmente independientes sin comunicación directa entre sí.",
+      "sections": [
+        {
+          "title": "El ámbito cambia la conclusión",
+          "body": "Cuando dos equipos usan indebidamente la misma dirección en el mismo ámbito local, pueden aparecer conflictos y comportamientos de conectividad inestables. No es la misma situación que reutilizar un número privado en hogares separados. La comprobación necesita contexto: interfaces, asignaciones y política del entorno. Evita resolverlo modificando dispositivos ajenos al azar. En una red administrada, informa al responsable y aporta la advertencia o configuración observada sin divulgar credenciales. El objetivo es corregir asignaciones de manera coordinada y conservar claridad sobre los cambios."
+        }
+      ],
+      "steps": [
+        "Compara dos equipos del mismo segmento con dos hogares independientes.",
+        "Explica por qué el contexto altera la interpretación de un número repetido."
+      ],
+      "scenario": "Dos equipos del mismo segmento recibieron manualmente el mismo número y aparece un conflicto. Una persona los compara con hogares independientes y decide que toda coincidencia es inofensiva, sin revisar las asignaciones reales del laboratorio.",
+      "questions": [
+        {
+          "prompt": "¿Qué diferencia importa en este caso?",
+          "options": [
+            "El color de los teclados de cada equipo",
+            "Que los usuarios tengan nombres de distinta longitud",
+            "Ambos usan la misma dirección dentro del mismo ámbito local"
+          ],
+          "answer": 2,
+          "explanation": "Reutilizar números entre redes independientes no equivale a duplicarlos indebidamente dentro del mismo ámbito. La advertencia debe revisarse con el responsable para corregir asignaciones coordinadamente, evitando cambios desordenados en otros dispositivos que comparten esa red.",
+          "wrongExplanations": [
+            "El color del teclado no define el ámbito de asignación ni explica la advertencia de conflicto. Debes observar que ambos equipos comparten el mismo segmento y usan el mismo número, una situación distinta de dos hogares privados independientes.",
+            "La longitud de nombres de usuario no resuelve direccionamiento duplicado. El dato relevante es el ámbito local compartido; la coordinación debe atender equipos y configuración, no diferencias de apariencia entre etiquetas de cuentas que los utilizan.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Un número repetido necesita escenario, precioso. Dos hogares separados y dos equipos vecinos no cuentan la misma historia cuando hablamos de asignaciones de red.",
+        "theory": "Compartir indebidamente una dirección en el mismo ámbito puede generar conflictos. El parecido con redes privadas independientes no borra esa diferencia de contexto del caso.",
+        "hint": "Localiza los equipos antes de comparar números. La pregunta destaca si comparten ámbito o pertenecen a redes independientes que pueden reutilizar asignaciones sin ese conflicto.",
+        "correct": "Mismo ámbito reconocido. Distinguiste el conflicto local de la reutilización entre entornos independientes y dejaste la corrección de asignaciones bajo la coordinación del responsable.",
+        "soft": "Los números son iguales, pero importa dónde se usan. Revisemos si ambos equipos comparten ámbito antes de aplicar el ejemplo de hogares completamente independientes.",
+        "sharp": "Dos vecinos peleando la misma dirección no son hogares independientes, joder. El contexto evita usar una regla legítima para ignorar un conflicto local de asignaciones.",
+        "pass": "Conflicto y reutilización separados con criterio. Ya sabes que una coincidencia necesita ámbito y que corregirla exige coordinación, no cambios aleatorios en otros dispositivos.",
+        "review": "Dibuja el segmento compartido y luego dos redes independientes. Comparar esas escenas explica por qué una misma coincidencia numérica puede tener consecuencias diferentes."
+      }
+    },
+    {
+      "id": "ip-dns-nat",
+      "title": "NAT traduce direcciones",
+      "minutes": 3,
+      "intro": "Comprende el papel básico de NAT en algunos accesos IPv4 y evita confundir traducción de direcciones con cifrado, anonimato completo o autorización universal para usar recursos que pertenecen a otras personas conectadas a internet.",
+      "sections": [
+        {
+          "title": "Traducir no garantiza ocultarlo todo",
+          "body": "NAT puede cambiar información de direccionamiento al pasar tráfico entre ámbitos de red. En hogares IPv4 es habitual que varios equipos compartan un acceso público mediante traducción y registros de conexiones. Su comportamiento depende del dispositivo y la configuración. No equivale a cifrado del contenido ni garantiza anonimato. Tampoco sustituye políticas de filtrado o seguridad de aplicaciones. Varias conexiones pueden parecer procedentes de una dirección externa compartida, por lo que esa observación aislada no identifica necesariamente a una persona concreta dentro del hogar."
+        }
+      ],
+      "steps": [
+        "Dibuja dos equipos privados y una salida compartida en un ejemplo ficticio.",
+        "Distingue traducir direcciones de proteger el contenido de los mensajes."
+      ],
+      "scenario": "Dos dispositivos comparten salida IPv4 mediante NAT. Una persona afirma que todos sus mensajes quedaron cifrados y ningún servicio puede identificar actividades, aunque los usuarios inicien sesión en cuentas personales dentro de las aplicaciones utilizadas.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debe reconocerse en esa afirmación?",
+          "options": [
+            "NAT no equivale a cifrado ni garantiza anonimato completo",
+            "NAT elimina las cuentas de todas las aplicaciones",
+            "Una dirección compartida identifica siempre una persona única"
+          ],
+          "answer": 0,
+          "explanation": "Traducir direccionamiento no cifra mensajes ni oculta todas las actividades. Los servicios pueden reconocer cuentas y registrar datos; además, una salida compartida no atribuye automáticamente cada acción a una persona concreta dentro del hogar del ejemplo.",
+          "wrongExplanations": [
+            null,
+            "Las aplicaciones conservan sus cuentas y mecanismos de identificación aunque el acceso utilice NAT. Traducir direcciones no elimina sesiones de usuario ni impide que un servicio relacione acciones con una cuenta que inicia sesión por esa conexión externa compartida.",
+            "Una salida compartida puede representar distintos dispositivos y usuarios. Atribuir una acción requiere más contexto que la dirección externa; NAT no la convierte en identidad humana exclusiva y permanente de una persona del hogar conectado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Traduciremos direcciones sin prometer invisibilidad, cariño. Compartir una salida no borra las cuentas con las que decides presentarte a cada servicio que utilizas.",
+        "theory": "NAT modifica información de direccionamiento, no la conciencia del servidor. Las aplicaciones pueden seguir reconociendo usuarios y el contenido necesita sus propias protecciones criptográficas.",
+        "hint": "Separa traducir direcciones, cifrar e identificar cuentas. La afirmación adecuada respeta esas funciones distintas sin convertir una salida compartida en garantía absoluta de privacidad personal.",
+        "correct": "Traducción sin anonimato garantizado: preciso. No atribuiste a NAT poderes de cifrado ni supusiste que los servicios olvidan las cuentas con las que inicias sesión.",
+        "soft": "El caso describe una salida compartida. Revisemos qué cambia NAT antes de afirmar que protege todo contenido o elimina cada forma de identificación de aplicaciones.",
+        "sharp": "NAT no borra tu nombre cuando entras a una cuenta, carajo. Traducir direcciones no convierte al servicio en amnésico por obediencia al router de casa.",
+        "pass": "NAT comprendido sin milagros de privacidad. Puedes explicar la salida común sin atribuirle cifrado automático ni identidad exclusiva de una persona dentro del hogar.",
+        "review": "Dibuja dos usuarios, una salida y dos sesiones de aplicación. Mantener esas piezas separadas aclara por qué compartir dirección no equivale a desaparecer del servicio."
+      }
+    },
+    {
+      "id": "ip-dns-identidad",
+      "title": "Una IP no cuenta toda la historia",
+      "minutes": 3,
+      "intro": "Integra los límites de asignaciones dinámicas, redes privadas y salidas compartidas para interpretar una IP con prudencia, sin convertir un dato aislado en prueba infalible de identidad.",
+      "sections": [
+        {
+          "title": "Atribuir requiere más contexto",
+          "body": "Una observación de dirección IP necesita contexto temporal y de red. Las asignaciones pueden cambiar, las direcciones privadas repetirse y varias personas compartir una salida. Eso no convierte el dato en inútil: ayuda a describir comunicaciones junto con información adicional obtenida legítimamente. Sin embargo, no basta para afirmar quién realizó una acción ni permite localizar con precisión absoluta una vivienda. Evita publicar datos o acusaciones basadas solo en ese número y sigue procedimientos adecuados al comunicar posibles incidentes al responsable del servicio o de la red."
+        }
+      ],
+      "steps": [
+        "Enumera dos motivos por los que una IP no identifica por sí sola a una persona.",
+        "Distingue describir una conexión de atribuir responsabilidad por una acción."
+      ],
+      "scenario": "Un registro muestra una salida compartida con asignación variable. Una persona publica que ese número identifica sin duda al integrante responsable de una acción, sin relacionarlo con momentos, cuentas u otras evidencias obtenidas legítimamente.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación es más responsable?",
+          "options": [
+            "Publicar nombres basándose únicamente en el número",
+            "Usar la IP como dato contextual, sin atribución personal automática",
+            "Suponer que cualquier registro de IP carece siempre de utilidad"
+          ],
+          "answer": 1,
+          "explanation": "La dirección aporta información de conexión, pero necesita contexto y otras evidencias. Una salida compartida o dinámica no identifica por sí sola al autor; una acusación personal automática excede lo que demuestra este registro de red.",
+          "wrongExplanations": [
+            "Una dirección aislada no justifica publicar nombres. Distintos usuarios pueden compartir salida y la asignación puede cambiar; atribuir responsabilidad requiere un procedimiento con contexto y evidencia adicional obtenida legítimamente, revisada por quien corresponda en ese entorno.",
+            null,
+            "Reconocer límites no hace inútil al dato. Una IP puede describir conexiones junto con contexto temporal y otras evidencias, aunque no deba tratarse como prueba personal infalible ni como permiso para publicar acusaciones sin fundamento suficiente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Un número aislado no merece juicio público, precioso. Añadiremos contexto antes de convertir una observación de red en acusación personal que el registro no demuestra.",
+        "theory": "Tiempo, asignaciones y salidas compartidas cambian la interpretación. El dato puede servir, pero no sustituye toda la evidencia necesaria para atribuir una acción a alguien.",
+        "hint": "Observa qué falta sobre momento y usuarios de la salida. La respuesta debe conservar utilidad sin afirmar una identidad humana que el registro no prueba.",
+        "correct": "Dato útil con límites: bien pensado. Conservaste la IP como contexto sin transformarla en sentencia personal ni desecharla porque no cuenta toda la historia.",
+        "soft": "Reconocer límites no obliga a ignorar el registro. Revisemos qué aporta y qué no demuestra antes de decidir cómo comunicar la observación a su responsable.",
+        "sharp": "La IP no declaró bajo juramento quién tocó el teclado, joder. No publiques una acusación donde solo tenemos una conexión compartida y contexto todavía incompleto.",
+        "pass": "Contexto e identidad separados. Describes conexiones sin fabricar certeza humana a partir de un número que necesita información adicional legítima para interpretar el caso.",
+        "review": "Resume dato, contexto disponible y conclusión pendiente. Esa separación permite usar información de red sin atribuir a una persona lo que todavía no está demostrado."
+      }
+    },
+    {
+      "id": "ip-dns-nombres",
+      "title": "DNS relaciona nombres y datos",
+      "minutes": 3,
+      "intro": "Reconoce el propósito de DNS al utilizar nombres y distingue resolver información de comprobar disponibilidad, honestidad o permisos de una aplicación que intenta comunicarse con el destino.",
+      "sections": [
+        {
+          "title": "Encontrar información asociada",
+          "body": "DNS permite consultar información asociada a nombres de dominio, como direcciones que una aplicación puede utilizar para comunicarse. No es una lista única guardada en tu navegador: participan distintos componentes y puede haber respuestas en caché. Resolver un nombre no demuestra que el servicio responda ni que sea legítimo. La aplicación todavía necesita comunicarse con el destino y comprobar las protecciones correspondientes. Por eso, un problema de resolución y una página que rechaza un inicio de sesión son situaciones diferentes que requieren preguntas distintas."
+        }
+      ],
+      "steps": [
+        "Separa el nombre ficticio aula.example de una dirección que podría representar su destino.",
+        "Distingue obtener información DNS de abrir correctamente un servicio."
+      ],
+      "scenario": "DNS devuelve información para aula.example en una ficha ficticia. Sin probar el servicio, una persona afirma que eso demuestra disponibilidad, honestidad y permiso de todos los usuarios para leer cualquier documento interno del sitio.",
+      "questions": [
+        {
+          "prompt": "¿Qué confirma principalmente la respuesta DNS descrita?",
+          "options": [
+            "Que todos los documentos son públicos",
+            "Que la página nunca puede engañar",
+            "Que se obtuvo información asociada al nombre consultado"
+          ],
+          "answer": 2,
+          "explanation": "DNS proporciona datos relacionados con el nombre, no garantías sobre cada contenido o aplicación. Disponibilidad, legitimidad y autorización requieren comprobaciones distintas después de obtener la información que permite intentar comunicarse con ese destino.",
+          "wrongExplanations": [
+            "Los permisos dependen del servicio y su responsable, no de que un nombre resuelva. Una respuesta DNS no publica archivos privados ni autoriza a todas las personas a consultar documentos internos de una organización.",
+            "Un nombre que resuelve puede conducir a un sitio legítimo o engañoso. DNS no evalúa todas sus peticiones; siguen siendo necesarios controles de identidad, verificación de solicitudes y protecciones adecuadas al utilizar el servicio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Un nombre puede orientarte sin garantizar honestidad, cariño. Separaremos resolver información y confiar en cualquier servicio que responde después.",
+        "theory": "DNS relaciona nombres y datos. No inspecciona por cortesía cada formulario que una página te presenta al intentar usar su aplicación.",
+        "hint": "Pregunta qué información devuelve la consulta. Después distingue ese resultado de disponibilidad, permisos y legitimidad del servicio que pudiera utilizarla.",
+        "correct": "Datos asociados al nombre: exacto. No concediste permisos ni un certificado de honestidad a una simple respuesta de resolución del ejemplo.",
+        "soft": "Resolver aporta un dato útil, pero revisemos qué afirma realmente. Llegar al servicio y confiar en sus peticiones son cuestiones distintas.",
+        "sharp": "DNS no canoniza cada formulario, carajo. Encontrar una dirección no obliga a entregar tus datos a cualquiera que abra una página.",
+        "pass": "Resolución y confianza separadas. Ya puedes explicar el primer paso sin convertirlo en garantía universal sobre todos los contenidos del destino.",
+        "review": "Dibuja obtener datos y usar el servicio como pasos distintos. Esa separación aclara qué demuestra la respuesta antes de intentar cualquier comunicación."
+      }
+    },
+    {
+      "id": "ip-dns-url",
+      "title": "Nombre, ruta y protocolo no son iguales",
+      "minutes": 3,
+      "intro": "Distingue nombre, esquema y ruta dentro de una URL y reconoce que una consulta DNS habitual de direcciones no utiliza necesariamente la cadena completa que muestra el navegador.",
+      "sections": [
+        {
+          "title": "Leer una URL por partes",
+          "body": "En https://aula.example/cursos, https indica el esquema utilizado y aula.example es el nombre del servidor que la aplicación puede resolver. /cursos es una ruta que se utiliza al solicitar el recurso web. Son componentes diferentes y no todos forman parte de una consulta DNS habitual de direcciones. Esta distinción ayuda a describir fallos: que el nombre resuelva no demuestra que exista una ruta concreta. Los ejemplos de esta lección son ficticios y no requieren navegación ni envío de datos a servicios externos."
+        }
+      ],
+      "steps": [
+        "Separa esquema, nombre y ruta en la URL ficticia https://aula.example/cursos.",
+        "Identifica qué parte representa el nombre que se resolvería."
+      ],
+      "scenario": "Un ejercicio muestra https://aula.example/cursos y pregunta qué nombre resolvería DNS. Una persona elige /cursos porque cree que cualquier palabra final de una URL representa el dominio principal, sin distinguir las funciones de sus componentes.",
+      "questions": [
+        {
+          "prompt": "¿Qué parte es el nombre del servidor en esa URL?",
+          "options": [
+            "aula.example",
+            "/cursos",
+            "https:// por sí solo"
+          ],
+          "answer": 0,
+          "explanation": "aula.example identifica al servidor en esta URL. El esquema indica cómo se accede y la ruta señala un recurso de la aplicación; no son dominios alternativos que deban confundirse con el nombre consultado.",
+          "wrongExplanations": [
+            null,
+            "/cursos es una ruta de recurso web, no el nombre del servidor. Elegirla como dominio mezcla el contenido solicitado por la aplicación con el identificador sobre el que una consulta DNS habitual buscaría información.",
+            "https indica el esquema y no identifica un servidor concreto. La resolución requiere el nombre aula.example; escoger solamente el esquema deja fuera el dato sobre el que la aplicación necesita obtener información DNS para conectarse."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Leeremos la URL por partes, precioso. Ni el esquema ni la ruta necesitan disfrazarse de nombre para tener una función útil.",
+        "theory": "Cada componente tiene oficio. La ruta pide un recurso y el nombre identifica al servidor dentro del ejemplo que estamos leyendo.",
+        "hint": "Separa la cadena en componentes y compara sus funciones. Busca el identificador del servidor, dejando aparte cómo se accede y qué recurso se solicita.",
+        "correct": "Nombre localizado. No mandaste a la ruta a hacer un trabajo de dominio ni confundiste el esquema con un servidor concreto.",
+        "soft": "La posición al final no basta. Revisemos los separadores y la función de cada componente antes de elegir qué nombre se resolvería.",
+        "sharp": "La ruta no hereda el dominio por salir al final, joder. Cada parte de la URL conserva su función y sus límites.",
+        "pass": "URL desarmada con criterio. Puedes señalar nombre y recurso sin atribuir a DNS cada parte de la cadena que aparece en pantalla.",
+        "review": "Marca esquema, nombre y ruta con etiquetas distintas. Reconocer sus funciones ayuda a entender qué consulta requiere información de nombres."
+      }
+    },
+    {
+      "id": "ip-dns-jerarquia",
+      "title": "Nombres organizados por niveles",
+      "minutes": 3,
+      "intro": "Comprende la jerarquía de etiquetas DNS y evita atribuir propiedad a un dominio solo porque una palabra familiar aparezca en cualquier posición de su nombre completo.",
+      "sections": [
+        {
+          "title": "Las etiquetas tienen posición",
+          "body": "Un nombre DNS se organiza en etiquetas separadas por puntos dentro de una jerarquía. En material.aula.example, material es una etiqueta dentro de aula.example. La posición importa: aula.example.otro.test no queda bajo aula.example solo por contener esas palabras a la izquierda. En ese ejemplo simplificado pertenece a la jerarquía de otro.test. Para evaluar pertenencia lee el nombre completo, no un fragmento llamativo. Esta lectura complementa otras comprobaciones y no reemplaza la verificación de identidad del sitio o la autorización de sus mensajes."
+        }
+      ],
+      "steps": [
+        "Separa en etiquetas los nombres ficticios material.aula.example y aula.example.otro.test.",
+        "Observa qué nombres quedan a la derecha de las etiquetas que reconoces."
+      ],
+      "scenario": "Un mensaje dirige a aula.example.otro.test y destaca aula.example. Una persona ignora las etiquetas restantes y atribuye el destino a la academia, aunque la jerarquía presentada coloca el fragmento conocido dentro de otro.test en ese nombre.",
+      "questions": [
+        {
+          "prompt": "¿Bajo qué dominio del ejemplo está aula.example.otro.test?",
+          "options": [
+            "aula.example por aparecer al principio",
+            "otro.test según la jerarquía mostrada",
+            "El nombre visible de quien envió el mensaje"
+          ],
+          "answer": 1,
+          "explanation": "Aquí aula.example aparece como etiquetas dentro de otro.test. Reconocer una palabra inicial no cambia la pertenencia del nombre completo; leer su jerarquía evita convertir un fragmento familiar en prueba de propiedad del sitio mostrado.",
+          "wrongExplanations": [
+            "Las etiquetas iniciales pueden imitar palabras conocidas sin pertenecer al dominio que parecen representar. Aquí aula.example está a la izquierda de otro.test; resaltarlo no convierte el destino en parte de la academia que el mensaje intenta sugerir.",
+            null,
+            "El remitente visible no define la jerarquía del enlace. Debes examinar el nombre completo del destino y distinguirlo del texto con el que alguien se presenta o describe la organización que dice representar en pantalla."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Una palabra familiar puede colarse en un nombre ajeno, cariño. Hoy miraremos la posición antes de confiar en un fragmento destacado.",
+        "theory": "Las etiquetas iniciales no compran el dominio de su derecha. Mi ceja pide leer todo el nombre antes de atribuirle pertenencia.",
+        "hint": "Sigue las etiquetas hasta el final del nombre completo. No permitas que un fragmento conocido decida por sí solo la jerarquía del destino.",
+        "correct": "Jerarquía bien leída. Las palabras familiares quedaron en su posición real sin apropiarse del dominio que las contiene dentro del ejemplo.",
+        "soft": "El fragmento parece conocido, pero no está solo. Revisemos qué aparece a su derecha antes de decidir a qué jerarquía pertenece.",
+        "sharp": "Escribir academia al principio no compra el resto del dominio, carajo. El nombre completo no obedece al resaltado tramposo del mensaje.",
+        "pass": "Ya lees pertenencia con el nombre completo. Esa costumbre reduce el poder de palabras familiares usadas para distraerte del destino real.",
+        "review": "Separa cada etiqueta y reconstruye la jerarquía. La posición importa más que reconocer una palabra atractiva o el nombre visible del remitente."
+      }
+    },
+    {
+      "id": "ip-dns-cliente",
+      "title": "El cliente inicia la consulta",
+      "minutes": 3,
+      "intro": "Reconoce el componente cliente de resolución y comprende que una aplicación puede utilizar el sistema o mecanismos propios, por lo que distintas consultas del equipo no siguen necesariamente el mismo camino.",
+      "sections": [
+        {
+          "title": "La aplicación pide información",
+          "body": "Una aplicación puede solicitar al sistema que resuelva un nombre mediante sus componentes cliente, o utilizar mecanismos propios según su diseño y configuración. El cliente consulta a un servicio de resolución cuando no dispone de una respuesta utilizable. No tiene por qué contactar directamente a cada servidor de la jerarquía DNS. Esta separación ayuda a explicar por qué revisar solo una preferencia no siempre describe el comportamiento de todas las aplicaciones. Observa configuración y alcance antes de concluir quién recibió una consulta concreta del equipo."
+        }
+      ],
+      "steps": [
+        "Dibuja una aplicación y un componente cliente del sistema como funciones separadas.",
+        "Añade un servicio de resolución al que podría dirigirse una consulta."
+      ],
+      "scenario": "Una aplicación pide resolver un nombre al sistema y otra tiene ajustes propios. Una persona asume que ambas consultan al mismo destinatario solo por compartir equipo, sin comprobar cómo realizan realmente sus búsquedas de nombres.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene comprobar antes de afirmar que ambas usan el mismo resolver?",
+          "options": [
+            "El tamaño de sus iconos de inicio",
+            "La contraseña del documento que está abierto",
+            "Cómo configura y realiza la resolución cada aplicación"
+          ],
+          "answer": 2,
+          "explanation": "Usar el sistema o mecanismos propios puede cambiar el destinatario de consultas. Revisa configuración y alcance de cada aplicación antes de atribuir todo el tráfico DNS del equipo a una sola preferencia que podría ser limitada.",
+          "wrongExplanations": [
+            "El tamaño del icono no explica cómo resuelve una aplicación. Sus funciones y configuración pueden utilizar el sistema o mecanismos propios; para conocer el comportamiento real debes revisar esos datos y no detalles de apariencia.",
+            "La contraseña del documento no identifica al resolver. Revisarla añadiría exposición sin explicar cómo consulta nombres cada aplicación; la comprobación pertinente se refiere a su mecanismo y configuración DNS, no a credenciales privadas de contenido.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "La consulta empieza en una aplicación, precioso. Averiguaremos qué mecanismo utiliza antes de afirmar que todos los programas siguen el mismo camino.",
+        "theory": "El sistema puede ayudar a resolver, pero algunas aplicaciones tienen mecanismos propios. Compartir equipo no obliga a compartir cada preferencia de resolución.",
+        "hint": "Compara qué configuración utiliza cada programa. Busca información sobre su mecanismo real y evita deducir comportamiento técnico a partir de detalles visuales.",
+        "correct": "Mecanismo de cada aplicación: buena comprobación. La conclusión necesita configuración, no una suposición basada en que los programas comparten el mismo portátil.",
+        "soft": "Las aplicaciones conviven, pero podrían resolver de maneras distintas. Revisemos sus ajustes antes de atribuir todas las consultas al mismo destinatario.",
+        "sharp": "Compartir escritorio no firma un pacto de resolver idéntico, joder. Mira la configuración de cada aplicación antes de inventar unanimidad técnica.",
+        "pass": "Cliente de resolución entendido. Puedes preguntar cómo opera cada programa sin asumir que una preferencia describe toda la actividad del equipo.",
+        "review": "Dibuja ambas aplicaciones con caminos separados posibles. Después marca qué documentación confirmaría si usan el sistema o una configuración propia."
+      }
+    },
+    {
+      "id": "ip-dns-recursivo",
+      "title": "El resolver busca una respuesta",
+      "minutes": 3,
+      "intro": "Identifica el papel de un resolver recursivo y comprende que puede consultar información o utilizar caché para responder, sin ser necesariamente el administrador de todos los dominios sobre los que recibe preguntas de sus usuarios.",
+      "sections": [
+        {
+          "title": "Buscar no es administrar cada nombre",
+          "body": "Un resolver recursivo recibe consultas y busca la información necesaria para responder según su función y política. Puede utilizar respuestas almacenadas o seguir la jerarquía consultando otros servidores. No es el propietario de todos los dominios por los que preguntan sus clientes. El servidor autoritativo de una zona tiene otro papel relacionado con sus datos publicados. Distinguir ambas funciones permite entender por qué un servicio de resolución ayuda con muchos nombres sin administrar todos los sitios que finalmente utiliza una aplicación."
+        }
+      ],
+      "steps": [
+        "Dibuja una consulta del cliente a un resolver.",
+        "Separa buscar una respuesta de publicar los datos de cada dominio."
+      ],
+      "scenario": "Un servicio responde consultas sobre numerosos nombres. Una persona cree que por devolver direcciones debe ser dueño de todos esos dominios, sin distinguir la búsqueda de información para clientes de publicar registros de zonas propias.",
+      "questions": [
+        {
+          "prompt": "¿Qué función explica que responda sobre tantos nombres?",
+          "options": [
+            "Actúa como resolver que busca o reutiliza información DNS",
+            "Es propietario obligatorio de cada sitio consultado",
+            "Convierte todas las páginas en archivos del cliente"
+          ],
+          "answer": 0,
+          "explanation": "El resolver busca información o reutiliza respuestas válidas en caché. Atender muchos nombres no lo convierte en dueño de todos ellos: resolución recursiva y publicación autoritativa son funciones distintas dentro de la obtención de datos DNS.",
+          "wrongExplanations": [
+            null,
+            "Recibir consultas no transfiere propiedad de dominios. Un resolver puede localizar muchos servicios con información ajena y caché, sin administrar los registros publicados por los responsables de cada zona sobre la que preguntan sus clientes.",
+            "Resolver no copia todas las páginas ni transforma el servicio en archivos locales. Devuelve información DNS para que la aplicación intente comunicarse y solicite después los recursos que necesita al servicio de destino según su funcionamiento."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Nuestro resolver busca respuestas sin comprar todos los dominios, cariño. Un servicio puede ayudar con muchos nombres sin ser dueño de ninguno.",
+        "theory": "Buscar información y publicarla son papeles distintos. Resolver muchas consultas no convierte al buscador en propietario de los sitios que ayuda a localizar.",
+        "hint": "Observa si el servicio mantiene todos los dominios o busca datos para clientes. La pregunta pide su función, no una supuesta propiedad universal.",
+        "correct": "Función de resolver reconocida. Buscar o reutilizar datos permite atender muchos nombres sin administrar todas las zonas que las aplicaciones desean consultar.",
+        "soft": "Recibir preguntas no implica poseer los destinos. Revisemos cómo busca la información y qué papel cumplen quienes publican los registros correspondientes.",
+        "sharp": "El resolver no compró medio internet por responderte, carajo. Encontrar información ajena no convierte automáticamente al buscador en dueño del dominio.",
+        "pass": "Resolver y propietario separados. Ya puedes seguir una búsqueda sin atribuir al servicio autoridad sobre cada página que termina utilizando el cliente.",
+        "review": "Pon buscador y publicador en cajas distintas. Esa separación aclara quién ayuda al cliente y quién administra los datos de cada zona."
+      }
+    },
+    {
+      "id": "ip-dns-autoritativo",
+      "title": "Quien publica los datos de una zona",
+      "minutes": 3,
+      "intro": "Reconoce un servidor autoritativo y distingue publicar datos de una zona de buscar respuestas para clientes, evitando confundir autoridad DNS con honestidad garantizada del contenido web.",
+      "sections": [
+        {
+          "title": "Autoridad sobre registros concretos",
+          "body": "Un servidor autoritativo responde con información de las zonas que tiene a su cargo, conforme a los datos publicados para ellas. Su papel es diferente al de un resolver que busca información para un cliente sobre muchos nombres. La palabra autoritativo describe una función DNS, no una certificación de que el sitio web asociado sea honesto. Quien administra una zona puede publicar registros para sus servicios, mientras la aplicación todavía necesita verificar la identidad y seguridad del destino antes de intercambiar información sensible."
+        }
+      ],
+      "steps": [
+        "Distingue resolver recursivo y servidor autoritativo en un dibujo de consulta.",
+        "Relaciona publicación de registros con una zona y no con todos los dominios existentes."
+      ],
+      "scenario": "Un servidor es autoritativo para aula.example y publica sus registros. Una persona interpreta esa función como garantía de honestidad de todas las páginas y decide ignorar peticiones sospechosas de datos cuando utiliza servicios asociados al nombre.",
+      "questions": [
+        {
+          "prompt": "¿Qué describe autoritativo en este contexto?",
+          "options": [
+            "Un sitio incapaz de engañar a cualquier usuario",
+            "Un servidor responsable de responder sobre datos de sus zonas",
+            "Una contraseña que debe compartirse por correo"
+          ],
+          "answer": 1,
+          "explanation": "La autoridad describe publicar y responder sobre datos DNS de zonas concretas. No certifica contenido web ni autoriza solicitudes; legitimidad del servicio y coherencia de mensajes requieren otros controles y contexto antes de compartir datos sensibles.",
+          "wrongExplanations": [
+            "La autoridad DNS no evalúa moralmente todas las páginas asociadas. Describe responsabilidad sobre registros de una zona; el servicio web sigue necesitando verificaciones de identidad y solicitudes coherentes antes de que una persona comparta información sensible.",
+            null,
+            "Autoritativo es una función del servidor, no una credencial para enviar por correo. Compartir contraseñas no ayuda a explicar quién publica datos de la zona y añadiría exposición innecesaria al utilizar un servicio en ese entorno."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Autoritativo suena imponente, precioso. Hoy aclararemos sobre qué tiene autoridad antes de regalarle un certificado de honestidad para cada contenido web.",
+        "theory": "El servidor publica datos de zonas a su cargo. Esa responsabilidad DNS no inspecciona la intención de todos los formularios asociados con sus nombres.",
+        "hint": "Relaciona autoridad con los registros de una zona. Separa esa función técnica de juzgar contenido o pedir credenciales por un canal cualquiera.",
+        "correct": "Autoridad sobre datos de zonas: preciso. No convertiste una función DNS en garantía moral sobre las páginas que usan esos nombres publicados.",
+        "soft": "La palabra describe una responsabilidad técnica. Revisemos qué datos gestiona el servidor antes de confiar automáticamente en cualquier petición de la página asociada.",
+        "sharp": "Autoritativo no significa santo patrono de los formularios, joder. Publicar datos DNS no bendice cada solicitud que aparece en una web.",
+        "pass": "Servidor autoritativo entendido con límites. Sabes distinguir publicación de registros y evaluación de contenido sin dejarte dominar por una palabra técnicamente solemne.",
+        "review": "Dibuja la zona y sus registros a cargo del servidor. Mantén fuera del dibujo cualquier garantía de honestidad que su función no ofrece."
+      }
+    },
+    {
+      "id": "ip-dns-delegacion",
+      "title": "La jerarquía puede indicar dónde preguntar",
+      "minutes": 3,
+      "intro": "Comprende la delegación en una búsqueda DNS y evita imaginar que una máquina central almacena todas las direcciones finales o que cada usuario debe conocer personalmente todos los servidores.",
+      "sections": [
+        {
+          "title": "Seguir referencias de autoridad",
+          "body": "La búsqueda DNS puede recorrer una jerarquía donde algunos servidores indican qué otros servidores conocen una parte más específica del nombre. Esa delegación ayuda a distribuir responsabilidades entre zonas, en lugar de guardar todos los datos finales en una única máquina universal. Un resolver puede seguir estas referencias cuando necesita información y no dispone de una respuesta válida almacenada. Es un modelo simplificado: la caché y las delegaciones ya conocidas pueden evitar repetir parte del recorrido en cada consulta de una aplicación."
+        }
+      ],
+      "steps": [
+        "Dibuja una búsqueda con referencias hacia una zona más específica.",
+        "Marca qué pasos podrían evitarse si el resolver ya conserva información válida."
+      ],
+      "scenario": "Una animación muestra referencias sucesivas hasta una zona. Un estudiante cree que todas las consultas repiten cada paso y que una única máquina central conserva cada dirección final, ignorando distribución de responsabilidades y datos ya conocidos.",
+      "questions": [
+        {
+          "prompt": "¿Qué idea corrige esa interpretación?",
+          "options": [
+            "DNS necesita que cada usuario memorice toda la jerarquía",
+            "Todas las consultas ignoran cualquier respuesta almacenada",
+            "Las responsabilidades se distribuyen y la caché puede acortar la búsqueda"
+          ],
+          "answer": 2,
+          "explanation": "La jerarquía distribuye autoridad y la caché puede evitar pasos repetidos. El dibujo representa un recorrido posible, no una secuencia idéntica obligatoria para toda consulta ni una máquina central que almacene cada dirección final del mundo.",
+          "wrongExplanations": [
+            "El usuario no necesita memorizar cada servidor. Los componentes de resolución pueden seguir consultas y referencias; comprender la jerarquía no implica construir manualmente el recorrido cada vez que una aplicación solicita información sobre un nombre.",
+            "La caché permite reutilizar información válida y evitar partes del recorrido. Ignorarla convierte una animación en regla falsa; la búsqueda depende de lo que ya sabe el componente que resuelve y de los datos que necesita.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "La búsqueda puede pedir indicaciones, cariño. No exige que memorices cada servidor ni que una máquina universal guarde todos los destinos finales.",
+        "theory": "Delegar reparte responsabilidades y la caché evita trabajo repetido. El dibujo completo explica posibilidades, no una ceremonia obligatoria para cada consulta cotidiana.",
+        "hint": "Considera qué información ya conoce el resolver. No supongas que cada flecha del diagrama debe recorrerse de nuevo en cualquier consulta.",
+        "correct": "Distribución y caché reconocidas. La jerarquía puede orientar búsquedas sin convertirse en una única máquina con cada dirección final del planeta.",
+        "soft": "El dibujo simplifica un proceso posible. Revisemos cómo los datos ya conocidos cambian la necesidad de repetir pasos antes de aceptar una regla absoluta.",
+        "sharp": "La raíz no necesita un cajón con toda la maldita web, carajo. Las referencias distribuyen trabajo y la memoria evita paseos innecesarios.",
+        "pass": "Delegación comprendida sin central mágica. Ya puedes seguir referencias y recordar que lo almacenado puede acortar una consulta posterior de la aplicación.",
+        "review": "Separa responsabilidad distribuida y pasos reutilizados. Ambas ideas explican por qué un recorrido de ejemplo no se repite íntegro en toda búsqueda."
+      }
+    },
+    {
+      "id": "ip-dns-cache",
+      "title": "Recordar respuestas evita repetir trabajo",
+      "minutes": 3,
+      "intro": "Reconoce la caché DNS como información temporal reutilizable y comprende que una respuesta rápida no exige una consulta nueva al autoritativo ni implica copiar todo el sitio web.",
+      "sections": [
+        {
+          "title": "Conservar con límites",
+          "body": "Distintos componentes pueden mantener información DNS temporalmente, como el sistema, una aplicación o un resolver. Reutilizar una respuesta válida reduce consultas y puede acelerar el acceso a datos del nombre. Esa memoria tiene límites y políticas de validez; no significa que los registros sean permanentes ni que se haya guardado el contenido completo del sitio web. Al comparar respuestas de momentos o componentes diferentes, considera qué información podía estar almacenada antes de concluir que una diferencia demuestra manipulación o un servidor averiado."
+        }
+      ],
+      "steps": [
+        "Dibuja una respuesta guardada temporalmente en un resolver ficticio.",
+        "Distingue datos DNS conservados del contenido completo de una página web."
+      ],
+      "scenario": "Un resolver devuelve rápidamente datos válidos almacenados en caché. Una persona afirma que la rapidez prueba una búsqueda nueva por toda la jerarquía y contacto directo con el autoritativo en cada consulta de la aplicación.",
+      "questions": [
+        {
+          "prompt": "¿Qué puede explicar esa respuesta rápida?",
+          "options": [
+            "Reutilización temporal de información DNS válida almacenada",
+            "Una garantía de que todo el sitio quedó copiado en el equipo",
+            "El borrado automático de todos los servidores de la jerarquía"
+          ],
+          "answer": 0,
+          "explanation": "La información válida almacenada puede permitir responder sin repetir la búsqueda completa. La caché conserva datos DNS con límites; no garantiza copiar todas las páginas ni exige contactar de nuevo al autoritativo cada vez que alguien pregunta.",
+          "wrongExplanations": [
+            null,
+            "Guardar registros DNS no copia el sitio completo. Esa información puede ayudar a localizar un servicio, mientras páginas, documentos y acciones de aplicación requieren comunicaciones distintas para obtenerse o ejecutarse en el destino que responde al usuario.",
+            "La caché no elimina servidores de la jerarquía. Conservan sus funciones aunque una consulta no los contacte de nuevo, porque el resolver ya dispone de datos válidos para atender al cliente que pregunta sobre ese nombre."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "El resolver puede recordar sin volverse adivino, precioso. Reutilizar datos válidos evita trabajo y no copia automáticamente cada página en tu equipo.",
+        "theory": "La caché conserva información temporalmente. Una respuesta rápida puede venir de memoria, no de una visita nueva al autoritativo por cada consulta.",
+        "hint": "Pregunta si el dato ya estaba disponible. Distingue recordar registros de descargar páginas completas o eliminar servidores de la jerarquía que continúa existiendo.",
+        "correct": "Información reutilizada: bien visto. La respuesta rápida no exigió repetir el recorrido y tampoco convirtió la caché en copia completa del sitio.",
+        "soft": "La rapidez tiene varias explicaciones posibles. Revisemos el papel de los datos guardados antes de afirmar que se repitió cada paso de búsqueda.",
+        "sharp": "Recordar un registro no es tragarse todo el sitio, joder. La caché DNS guarda datos pertinentes, no una internet de bolsillo por consulta.",
+        "pass": "Caché entendida con alcance temporal. Puedes explicar una respuesta rápida sin imaginar consultas nuevas obligatorias ni un archivo completo de todos los contenidos.",
+        "review": "Dibuja una respuesta guardada y una consulta posterior. Después distingue qué información puede reutilizarse de los contenidos que todavía solicitaría la aplicación."
+      }
+    },
+    {
+      "id": "ip-dns-ttl",
+      "title": "TTL limita la memoria de una respuesta",
+      "minutes": 3,
+      "intro": "Comprende el TTL como límite temporal de caché DNS y distingue expirar un dato almacenado de destruir el dominio, borrar archivos personales o cambiar credenciales de una aplicación.",
+      "sections": [
+        {
+          "title": "Caduca la reutilización, no el mundo",
+          "body": "El TTL de un registro DNS indica durante cuánto tiempo puede conservarse para reutilizarlo en caché, según el comportamiento aplicable del componente. Cuando expira, una consulta posterior puede necesitar información actualizada. No significa que desaparezca el dominio ni que se borren documentos del usuario. Si cambia un registro, distintas cachés pueden conservar temporalmente respuestas anteriores dentro de sus límites. Esa situación ayuda a entender por qué una actualización no siempre se observa de manera simultánea desde todos los componentes o lugares."
+        }
+      ],
+      "steps": [
+        "Relaciona un TTL ficticio de 300 segundos con una ventana de reutilización.",
+        "Distingue expirar una entrada almacenada de eliminar el dominio que representa."
+      ],
+      "scenario": "Una zona cambia un registro y un resolver conserva temporalmente datos anteriores válidos. Una persona afirma que toda diferencia prueba un ataque y que el TTL borra el dominio al llegar a cero en cada cliente.",
+      "questions": [
+        {
+          "prompt": "¿Qué función tiene el TTL en este ejemplo?",
+          "options": [
+            "Borrar los documentos de quienes visitan el sitio",
+            "Limitar cuánto puede reutilizarse el dato almacenado en caché",
+            "Convertir cada respuesta anterior en una contraseña nueva"
+          ],
+          "answer": 1,
+          "explanation": "El TTL limita reutilizar el dato en caché. Tras un cambio pueden persistir respuestas anteriores temporalmente; vencer no destruye el dominio ni borra archivos, y una diferencia aislada necesita contexto antes de atribuirle una causa maliciosa.",
+          "wrongExplanations": [
+            "El TTL no administra documentos personales. Describe validez temporal de información guardada para resolver nombres; tratarlo como orden de borrado atribuye a un dato de caché acciones de aplicación que el mecanismo no realiza sobre archivos del equipo.",
+            null,
+            "Expirar una respuesta no genera contraseñas. La autenticación es otra función; el TTL orienta cuándo reutilizar datos DNS y cuándo puede requerirse obtener información actualizada de la zona para resolver el nombre solicitado por la aplicación."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Hoy el reloj mide memoria de datos, cariño. No va a borrar tus tareas ni destruir un dominio cuando termine una cuenta atrás.",
+        "theory": "El TTL limita reutilización en caché. Una actualización puede verse después en ciertos componentes sin que esa diferencia temporal demuestre un ataque.",
+        "hint": "Ubica qué entrada conserva el dato y durante qué intervalo. Separa su validez temporal de contraseñas, archivos y existencia del dominio consultado.",
+        "correct": "Tiempo de caché reconocido. No destruiste el dominio al vencer un contador ni confundiste datos anteriores conservados con evidencia automática de manipulación.",
+        "soft": "El plazo pertenece a una entrada DNS almacenada. Revisemos ese alcance antes de relacionarlo con archivos personales o credenciales que cumplen otras funciones.",
+        "sharp": "El TTL no llega con pala a enterrar dominios, carajo. Caduca reutilización del dato, no todo lo que te gusta del equipo.",
+        "pass": "TTL comprendido sin apocalipsis. Ya puedes considerar cachés al comparar respuestas distintas después de un cambio de registros en una zona.",
+        "review": "Pon el registro y su plazo junto al reloj. Esa imagen separa información reutilizable de la existencia del dominio que sigue teniendo otros datos."
+      }
+    },
+    {
+      "id": "ip-dns-registro-a",
+      "title": "A vincula un nombre con IPv4",
+      "minutes": 3,
+      "intro": "Identifica A como registro DNS de dirección IPv4 y evita confundir esa asociación con permisos sobre documentos, credenciales de administración o garantía de honestidad de un sitio web.",
+      "sections": [
+        {
+          "title": "Un tipo de dato específico",
+          "body": "Un registro A asocia un nombre con una dirección IPv4 dentro de los datos DNS de una zona. Una consulta puede devolver varios registros o información almacenada válida. El resultado ayuda a la aplicación a intentar llegar a un destino, pero no demuestra que su servicio esté disponible o permitido para cualquier usuario. El tipo A no describe directamente una dirección IPv6 ni una ruta web como /cursos. Para interpretar una respuesta, distingue el nombre consultado, el tipo solicitado y los datos concretos devueltos."
+        }
+      ],
+      "steps": [
+        "Relaciona un registro A ficticio de aula.example con 192.0.2.10 de documentación.",
+        "Separa dirección de destino y permisos del servicio que una aplicación utilizaría después."
+      ],
+      "scenario": "Una ficha muestra un registro A de aula.example hacia 192.0.2.10 de documentación. Una persona interpreta la letra como prueba de que todos los documentos son auténticos y públicos, aunque solo se presenta una asociación de direccionamiento.",
+      "questions": [
+        {
+          "prompt": "¿Qué información aporta directamente el registro A del ejemplo?",
+          "options": [
+            "El derecho de todos a leer archivos internos",
+            "Una contraseña maestra del servidor",
+            "Una asociación del nombre con una dirección IPv4"
+          ],
+          "answer": 2,
+          "explanation": "El registro A asocia el nombre con IPv4 y puede ayudar a localizar un destino. No determina permisos ni autentica documentos; esas propiedades pertenecen a otros mecanismos del servicio y no se deducen del tipo DNS consultado.",
+          "wrongExplanations": [
+            "Existir un registro A no publica permisos sobre documentos. DNS ayuda a localizar el destino, mientras el servicio conserva controles de acceso para decidir qué información puede consultar cada persona según su identidad y autorización correspondiente.",
+            "A no contiene contraseñas maestras por definición. Devuelve direccionamiento IPv4; tratarlo como credencial confunde localizar un servicio y autenticarse para utilizarlo, sin que la consulta conceda derechos sobre el equipo representado por una dirección de documentación.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "La letra A trae direccionamiento, precioso, no un certificado de virtudes. Vamos a leer exactamente qué dato publica antes de conceder confianza.",
+        "theory": "Un registro A asocia nombre e IPv4. Los permisos de documentos no aparecen por cortesía dentro de esa asociación que ayuda a localizar el destino.",
+        "hint": "Distingue localizar un equipo de autenticar usuarios o contenidos. La pregunta se centra en el tipo de dato que devuelve el registro.",
+        "correct": "Asociación con IPv4: correcto. El registro aporta dirección sin regalar contraseñas ni permisos sobre los documentos que pudiera ofrecer el servicio del destino.",
+        "soft": "La letra identifica un tipo de registro. Revisemos su contenido antes de atribuirle garantías sobre documentos o credenciales que requieren otros mecanismos de aplicación.",
+        "sharp": "La A no significa accede a todo, joder. Publicar una dirección no abre cada documento ni fabrica una clave maestra para entrar.",
+        "pass": "Registro A comprendido con precisión. Puedes reconocer su dato sin confundir resolución con autenticación ni convertir una dirección de documentación en permiso de acceso.",
+        "review": "Dibuja nombre, registro y dirección como una asociación. Deja separados los permisos del servicio para no exigirle al DNS tareas que no cumple."
+      }
+    },
+    {
+      "id": "ip-dns-registro-aaaa",
+      "title": "AAAA apunta a IPv6",
+      "minutes": 3,
+      "intro": "Distingue el tipo AAAA del tipo A y reconoce que una respuesta DNS puede aportar datos IPv6 sin demostrar que la conexión completa funcione por esa familia.",
+      "sections": [
+        {
+          "title": "Otra familia, otro tipo",
+          "body": "Un registro AAAA asocia un nombre con una dirección IPv6. Se diferencia del registro A, que utiliza IPv4. Un mismo nombre puede tener ambos tipos, y una aplicación puede escoger cómo conectarse según disponibilidad y configuración. Recibir una dirección AAAA no comprueba automáticamente el recorrido IPv6 hasta el servicio. Esa respuesta aporta información DNS; alcanzar el destino y completar la operación de la aplicación son pasos diferentes que pueden fallar por causas distintas."
+        }
+      ],
+      "steps": [
+        "Asocia AAAA con la dirección de documentación 2001:db8::10.",
+        "Separa obtener el dato de completar una conexión IPv6."
+      ],
+      "scenario": "Una ficha ficticia devuelve un registro AAAA con 2001:db8::10. Una persona cree que las cuatro letras significan cuatro contraseñas nuevas, aunque la explicación indica que se trata de una dirección IPv6 de documentación.",
+      "questions": [
+        {
+          "prompt": "¿Qué representa el dato de ese registro AAAA?",
+          "options": [
+            "Una dirección IPv6 asociada al nombre",
+            "Cuatro contraseñas obligatorias",
+            "La ruta /cursos de una página"
+          ],
+          "answer": 0,
+          "explanation": "AAAA identifica un tipo de registro que contiene direcciones IPv6. No cuenta contraseñas ni representa una ruta web; el dato ayuda a localizar un destino sin garantizar que la conexión posterior con su servicio tenga éxito.",
+          "wrongExplanations": [
+            null,
+            "El nombre del tipo de registro no cuenta factores ni contraseñas. AAAA contiene información IPv6, mientras las credenciales pertenecen a la autenticación del servicio y no se generan automáticamente por consultar ese registro DNS.",
+            "Una ruta como /cursos forma parte de la solicitud web y no es una dirección IPv6. El registro AAAA aporta datos de direccionamiento del nombre, una función distinta de seleccionar el recurso dentro de la aplicación."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Cuatro letras y ninguna contraseña nueva, cariño; hoy clasificamos ese registro sin dejar que su nombre convierta DNS en una ceremonia absurda.",
+        "theory": "AAAA relaciona un nombre con IPv6; recibir ese dato no demuestra que el recorrido hasta la aplicación funcione correctamente por esa familia.",
+        "hint": "Observa la forma del dato del ejemplo y compárala con una credencial o una ruta, sin interpretar las letras como cantidades.",
+        "correct": "Reconociste información de direccionamiento IPv6; ahora conserva la distinción entre obtener el dato DNS y lograr una conexión completa con el servicio.",
+        "soft": "Podemos clasificarlo despacio; mira qué tipo de dato muestra la ficha antes de atribuirle funciones de autenticación o selección de páginas.",
+        "sharp": "Las cuatro letras no están criando contraseñas, cielo; ese registro ya tiene una función técnica suficiente sin inventarle otra obligación administrativa.",
+        "pass": "Terminaste identificando AAAA sin contar secretos imaginarios; mi ceja descansa mientras tú separas resolución de nombres y funcionamiento real de la conexión.",
+        "review": "Vuelve a comparar el contenido del registro con la familia de dirección descrita; localizar información no verifica automáticamente el acceso posterior al servicio."
+      }
+    },
+    {
+      "id": "ip-dns-cname",
+      "title": "CNAME crea una referencia a otro nombre",
+      "minutes": 3,
+      "intro": "Comprende CNAME como alias DNS y distingue apuntar a otro nombre de devolver directamente una dirección IP o ejecutar una redirección de página dentro del navegador.",
+      "sections": [
+        {
+          "title": "Un nombre remite a otro",
+          "body": "Un registro CNAME indica que un nombre es alias de otro nombre canónico. Para obtener una dirección, la resolución puede necesitar consultar los datos del nombre referido. No es lo mismo que un registro A o AAAA, ni equivale por sí solo a una redirección web que cambie la URL visible. También existen restricciones de configuración para el nombre que usa CNAME. Para empezar, conserva la distinción entre referir otro nombre y publicar directamente una dirección."
+        }
+      ],
+      "steps": [
+        "Dibuja portal.aula.example apuntando mediante alias a web.aula.example.",
+        "Añade por separado la búsqueda de dirección del nombre referido."
+      ],
+      "scenario": "Un ejemplo ficticio muestra portal.aula.example como CNAME de web.aula.example. Una persona interpreta el segundo nombre como si ya fuera un número IPv4 y afirma que no puede necesitarse ninguna búsqueda adicional para obtener una dirección.",
+      "questions": [
+        {
+          "prompt": "¿Qué significa esa referencia CNAME?",
+          "options": [
+            "Publica una contraseña de administración",
+            "El nombre es alias de otro nombre",
+            "Contiene siempre una dirección IPv4 directamente"
+          ],
+          "answer": 1,
+          "explanation": "CNAME contiene una referencia a otro nombre, no una dirección por definición. La resolución puede seguir esa referencia para encontrar datos A o AAAA; un alias DNS tampoco impone por sí mismo una redirección de URL en el navegador.",
+          "wrongExplanations": [
+            "Un alias DNS no es una credencial de administración. La referencia relaciona nombres y no concede permisos para controlar el servicio; las contraseñas y controles de acceso de la aplicación deben mantenerse protegidos por mecanismos separados.",
+            null,
+            "El valor de CNAME es otro nombre, no una dirección IPv4 directa. Para obtener direccionamiento puede ser necesario continuar la resolución, por lo que esta opción confunde un alias con datos del tipo A que podría localizarse después."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "El portal tiene un alias, cariño; averigüemos a qué nombre remite sin confundir esa referencia con una dirección numérica lista para conectarse.",
+        "theory": "CNAME refiere un nombre canónico; resolver su dirección puede necesitar más información y no obliga por sí solo a cambiar la URL visible.",
+        "hint": "Compara el valor mostrado con un nombre y una dirección; piensa qué información todavía necesitarías para completar la localización del destino del ejemplo.",
+        "correct": "Distinguiste el alias de una dirección directa; esa referencia puede seguirse para buscar datos de direccionamiento sin imponer una redirección web del navegador.",
+        "soft": "Los tipos se parecen al principio; revisemos si el registro entrega un número de dirección o relaciona dos nombres antes de elegir su función.",
+        "sharp": "Ese alias no se convierte en número por mirarlo con intensidad, cielo; quitémosle el disfraz y sigamos la referencia sin inventar direcciones nuevas.",
+        "pass": "Ya puedes dibujar un nombre que remite a otro sin mezclar DNS con una orden de cambiar la página que muestra el navegador.",
+        "review": "Repasa qué contiene CNAME y qué podrían aportar después A o AAAA; una relación entre nombres y una dirección no son el mismo dato."
+      }
+    },
+    {
+      "id": "ip-dns-mx",
+      "title": "MX orienta la entrega de correo",
+      "minutes": 3,
+      "intro": "Reconoce el propósito del registro MX y comprende que la infraestructura de correo de un dominio puede ser diferente del destino usado por su página web, sin revelar contraseñas de los buzones existentes.",
+      "sections": [
+        {
+          "title": "El correo tiene su propia información",
+          "body": "Los registros MX indican servidores asociados con la recepción de correo para un dominio y pueden incluir prioridades. No son los mensajes ni las contraseñas de las personas que tienen buzón. Tampoco el destino web y el de correo deben coincidir necesariamente. Esta separación permite que una organización use servicios diferentes para funciones distintas. Consultar una referencia de correo no autoriza a leer bandejas ajenas y no demuestra que cada mensaje presentado como procedente del dominio sea legítimo."
+        }
+      ],
+      "steps": [
+        "Separa el servidor web del servidor de correo en un esquema ficticio.",
+        "Relaciona MX con recepción de correo y no con credenciales personales."
+      ],
+      "scenario": "Una academia ficticia usa un servicio para su web y otro para recibir correo. Una persona cree que eso es imposible porque todo dominio debe usar el mismo servidor y que MX debería publicar la contraseña de cada buzón.",
+      "questions": [
+        {
+          "prompt": "¿Qué papel tiene MX en ese montaje?",
+          "options": [
+            "Garantizar que todo mensaje es auténtico",
+            "Guardar el contenido privado de cada buzón",
+            "Indicar destinos asociados con la recepción de correo"
+          ],
+          "answer": 2,
+          "explanation": "MX aporta información sobre servidores de correo del dominio, independientemente del alojamiento web. No publica contraseñas ni certifica por sí solo cada mensaje; infraestructura de entrega, autenticación del usuario y verificación del correo son funciones que deben distinguirse.",
+          "wrongExplanations": [
+            "Un registro MX orienta la entrega de correo, pero no certifica la autenticidad de cada mensaje. La evaluación del remitente y otras protecciones utilizan mecanismos distintos, por lo que no debe tratarse la existencia del registro como garantía de honestidad.",
+            "El contenido de los buzones no forma parte de la función MX. Ese registro describe destinos de correo y no incluye todas las conversaciones ni las credenciales que permitirían acceder a ellas en el servicio utilizado por sus usuarios.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "La web y el correo no necesitan compartir habitación, cariño; vamos a identificar quién orienta la entrega sin registrar los secretos de cada buzón.",
+        "theory": "MX describe destinos de recepción de correo y puede expresar prioridades; no contiene conversaciones privadas ni certifica la honestidad de cada mensaje recibido.",
+        "hint": "Piensa en organizar una entrega frente a leer su contenido; busca qué papel de infraestructura tiene sentido sin conceder acceso a cuentas personales.",
+        "correct": "Ubicaste la función de entrega del correo; el alojamiento web puede ser distinto y las credenciales de los buzones siguen perteneciendo a otro ámbito.",
+        "soft": "Separemos el destino de entrega del contenido del buzón; conocer dónde llega correo no significa poder leer conversaciones ni validar cada remitente automáticamente.",
+        "sharp": "El registro no trae las contraseñas de regalo, cielo; qué jodida mudanza sería publicar las llaves de cada buzón para organizar una simple entrega.",
+        "pass": "Ya distingues correo, web y acceso personal; ese esquema permite entender servicios separados sin convertir un registro de entrega en garantía universal de mensajes auténticos.",
+        "review": "Vuelve a relacionar MX con el recorrido de entrega y mantén separadas autenticación de usuarios, contenido de buzones y comprobación de legitimidad del mensaje."
+      }
+    },
+    {
+      "id": "ip-dns-txt",
+      "title": "TXT puede publicar información legible",
+      "minutes": 3,
+      "intro": "Reconoce los registros TXT como datos que pueden ser consultables y comprende por qué no deben usarse para guardar contraseñas u otros secretos destinados a permanecer privados en una aplicación o servicio.",
+      "sections": [
+        {
+          "title": "Publicar texto no crea una caja fuerte",
+          "body": "Un registro TXT permite asociar texto a un nombre DNS y puede usarse en verificaciones o políticas de servicios. Su finalidad concreta depende del contenido y de quien lo interpreta. No es un almacén de secretos: la información publicada puede resultar consultable por otras personas según el entorno. Nunca coloques contraseñas personales suponiendo que una sigla técnica las esconderá. Distingue un valor de verificación solicitado legítimamente por un servicio de una credencial que debes mantener privada."
+        }
+      ],
+      "steps": [
+        "Clasifica una contraseña personal como dato que no debe publicarse en DNS.",
+        "Distingue texto consultable de un almacenamiento privado protegido."
+      ],
+      "scenario": "Un administrador ficticio quiere recordar una contraseña y propone ponerla en un TXT del dominio público. Cree que nadie podrá leerlo porque DNS parece una herramienta técnica usada solamente por máquinas y no por personas interesadas en la información publicada.",
+      "questions": [
+        {
+          "prompt": "¿Por qué es una mala idea usar TXT para ese secreto?",
+          "options": [
+            "El dato publicado puede ser consultable y no es almacenamiento privado",
+            "TXT cifra automáticamente toda contraseña",
+            "Los nombres de dominio impiden copiar texto"
+          ],
+          "answer": 0,
+          "explanation": "Un registro TXT puede exponer su contenido mediante consultas y no debe tratarse como caja fuerte. Las contraseñas necesitan almacenamiento y controles adecuados; una apariencia técnica no convierte datos publicados de DNS en información privada para su propietario.",
+          "wrongExplanations": [
+            null,
+            "TXT no cifra automáticamente el contenido por ser un tipo DNS. Si publicas una contraseña legible, el mecanismo no la transforma en secreto; debes usar medios de almacenamiento adecuados y evitar exponer credenciales a través de registros consultables.",
+            "Un nombre de dominio no impide leer o copiar texto de una respuesta DNS accesible. La protección de secretos depende de mecanismos apropiados, no de que el dato aparezca bajo una etiqueta técnica en un registro publicado del dominio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Un secreto dentro de DNS no se vuelve tímido por llevar siglas, cariño; revisemos qué significa publicar texto antes de usarlo como libreta privada.",
+        "theory": "TXT puede publicar información consultable para verificaciones o políticas; el tipo de registro no cifra automáticamente una contraseña ni ofrece almacenamiento privado por definición.",
+        "hint": "Compara publicar información para que un servicio la consulte con guardar un secreto; pregunta quién podría recibir ese dato mediante una consulta accesible.",
+        "correct": "Detectaste que un texto publicado puede consultarse; una etiqueta técnica no aporta el almacenamiento protegido que necesita una contraseña destinada a permanecer privada.",
+        "soft": "La apariencia técnica puede despistar; pensemos si otras personas podrían consultar el registro y qué ocurriría entonces con una contraseña escrita como texto legible.",
+        "sharp": "Poner la clave en TXT y confiar en que nadie pregunte es una caja fuerte de mierda; publiquemos verificaciones, no secretos personales por comodidad.",
+        "pass": "Ya separas un valor publicado para verificación de una credencial privada; esa diferencia evita esconder secretos en lugares diseñados para devolver información mediante consultas.",
+        "review": "Repasa quién puede consultar el dato y qué protección ofrece realmente su almacenamiento; ninguna sigla convierte por sí sola texto publicado en información secreta."
+      }
+    },
+    {
+      "id": "ip-dns-nxdomain",
+      "title": "No existe no es lo mismo que no responde",
+      "minutes": 3,
+      "intro": "Distingue una respuesta DNS que indica inexistencia de un nombre de una consulta que no recibe respuesta, y evita tratar todos los fallos de resolución como una misma causa confirmada en la red.",
+      "sections": [
+        {
+          "title": "Dos resultados, preguntas diferentes",
+          "body": "NXDOMAIN es una respuesta DNS que indica que el nombre consultado no existe según la información de la respuesta. Un tiempo de espera agotado, en cambio, significa que no se obtuvo la respuesta esperada dentro del plazo. No son resultados equivalentes. Puede haber errores de escritura, problemas de conectividad o situaciones del servicio que requieren análisis distinto. Al comunicar un fallo, conserva el mensaje exacto y el contexto sin compartir secretos, en lugar de traducir cualquier resultado automáticamente como internet roto."
+        }
+      ],
+      "steps": [
+        "Compara una ficha que indica NXDOMAIN con otra que muestra espera agotada.",
+        "Describe qué diferencia de observación comunicarías al soporte."
+      ],
+      "scenario": "Dos consultas ficticias tienen resultados distintos: una devuelve NXDOMAIN y otra agota su tiempo de espera. Una persona las resume como idénticas y elimina los mensajes originales, perdiendo detalles que podrían orientar la revisión autorizada del problema.",
+      "questions": [
+        {
+          "prompt": "¿Qué detalle conviene conservar?",
+          "options": [
+            "Solo el color de la ventana usada",
+            "El resultado exacto, porque inexistencia y falta de respuesta difieren",
+            "Una contraseña real en lugar del mensaje"
+          ],
+          "answer": 1,
+          "explanation": "El resultado distingue una respuesta de inexistencia de una consulta sin respuesta a tiempo. Conservar ese detalle ayuda a formular comprobaciones diferentes y evita atribuir una causa única sin evidencia suficiente sobre el servicio o la conectividad del caso.",
+          "wrongExplanations": [
+            "El color de la ventana no conserva el significado del resultado DNS. El soporte necesita conocer qué respuesta o error ocurrió y en qué contexto; sustituir esos datos por apariencia pierde información útil para elegir una comprobación adecuada.",
+            null,
+            "Una contraseña no es necesaria para describir esos resultados y compartirla aumenta exposición. El mensaje exacto y el contexto de la consulta ayudan a revisar la diferencia entre inexistencia y falta de respuesta sin entregar credenciales privadas de ningún servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Uno contestó que no existe y otro no contestó a tiempo, cariño; esos dos silencios aparentes necesitan conservar su diferencia antes de culpar a Internet.",
+        "theory": "NXDOMAIN es una respuesta de inexistencia del nombre; agotar la espera describe falta de respuesta oportuna, y esas observaciones justifican preguntas de diagnóstico distintas.",
+        "hint": "Mira si hubo una respuesta con significado concreto o si terminó el plazo sin recibirla; busca qué información permite conservar esa distinción para investigar.",
+        "correct": "Conservaste el resultado exacto; distinguir inexistencia y espera agotada ayuda a formular comprobaciones sin atribuir ambos casos a una sola causa inventada de conectividad.",
+        "soft": "Podemos separar las observaciones primero: una comunica algo sobre el nombre y otra sobre la respuesta no obtenida dentro del tiempo esperado para esa consulta.",
+        "sharp": "Resumirlo todo como Internet roto le ahorra trabajo al vocabulario y se lo multiplica al soporte; qué maldito negocio, conservemos el mensaje exacto del resultado.",
+        "pass": "Terminaste describiendo resultados diferentes sin borrar sus pistas; el soporte recibe contexto útil y tú evitas diagnosticar por el aspecto general de una ventana frustrante.",
+        "review": "Revisa qué llegó realmente y qué faltó durante la consulta; guardar el resultado permite decidir otra comprobación sin compartir contraseñas ni sustituir información por apariencia."
+      }
+    },
+    {
+      "id": "ip-dns-dnssec",
+      "title": "DNSSEC valida datos, no los oculta",
+      "minutes": 3,
+      "intro": "Comprende que DNSSEC valida autenticidad e integridad de datos DNS firmados y distingue esa función del cifrado de consultas, del anonimato y de la honestidad del contenido web.",
+      "sections": [
+        {
+          "title": "Firmas para verificar procedencia",
+          "body": "DNSSEC añade mecanismos de firma y validación que ayudan a comprobar autenticidad e integridad de datos DNS mediante una cadena de confianza, cuando la zona y el proceso de validación lo permiten. No cifra las consultas ni evalúa la honestidad del contenido web. Un dominio malicioso también podría tener datos firmados válidamente. Para entender su alcance, separa verificar que ciertos datos DNS no fueron alterados de confiar en todas las acciones que un sitio solicita al usuario después de resolver su nombre."
+        }
+      ],
+      "steps": [
+        "Separa una firma validable de un mensaje cifrado en un ejemplo ficticio.",
+        "Distingue datos DNS auténticos de contenido web honesto."
+      ],
+      "scenario": "Una zona publica datos firmados con DNSSEC válido. Una persona cree que eso cifra todas las consultas y obliga a confiar en cualquier formulario, aunque la firma no evalúa las peticiones de una página web.",
+      "questions": [
+        {
+          "prompt": "¿Qué aporta DNSSEC en el alcance descrito?",
+          "options": [
+            "Anonimato completo de todas las actividades web",
+            "Honestidad garantizada de cada formulario",
+            "Validación de autenticidad e integridad de datos DNS firmados"
+          ],
+          "answer": 2,
+          "explanation": "DNSSEC permite validar datos DNS con firmas y una cadena de confianza cuando corresponde. No cifra consultas ni certifica todos los contenidos del sitio; una respuesta auténtica puede pertenecer a un dominio que también formule solicitudes engañosas a sus visitantes.",
+          "wrongExplanations": [
+            "DNSSEC no ofrece anonimato completo ni oculta automáticamente las consultas. Su función es validar datos firmados; otros participantes pueden observar o procesar información según el transporte y contexto, y los servicios web conservan mecanismos propios de identificación de usuarios.",
+            "Validar datos DNS no examina formularios web. Un dominio firmado puede pedir información engañosamente; debes comprobar identidad, finalidad y coherencia de cada solicitud antes de compartir datos personales o credenciales con el servicio que responde.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "La firma tiene una tarea concreta, cariño; quitémosle el puesto imaginario de detector de estafas antes de estudiar qué datos ayuda a validar.",
+        "theory": "DNSSEC permite validar autenticidad e integridad de datos DNS firmados mediante confianza verificable; no cifra consultas ni examina la honestidad del contenido de una web.",
+        "hint": "Separa comprobar procedencia de datos, ocultar su transporte y juzgar una petición comercial; elige el alcance relacionado con firmas que la lección describe para DNS.",
+        "correct": "Reconociste validación sin confundirla con cifrado ni honestidad comercial; un dominio malicioso también podría publicar datos cuya firma se valide correctamente mediante DNSSEC.",
+        "soft": "Estas protecciones se mezclan por sus nombres; separemos comprobar datos, ocultar transporte y evaluar el contenido de la página antes de elegir el alcance.",
+        "sharp": "La firma no interroga la conciencia del formulario, cielo; qué jodida carga laboral, devolvámosla a verificar datos en vez de juzgar comerciantes.",
+        "pass": "Ya entiendes una protección sin coronarla universal; validar datos y evaluar una solicitud de contraseña siguen siendo tareas distintas que necesitan sus propias comprobaciones.",
+        "review": "Repasa confianza y firmas; una respuesta válida no demuestra que la web sea honesta ni que las consultas DNS hayan viajado cifradas."
+      }
+    },
+    {
+      "id": "ip-dns-doh",
+      "title": "DoH cifra un tramo de consultas",
+      "minutes": 3,
+      "intro": "Reconoce DoH como protección del transporte de consultas entre componentes compatibles y comprende que ese canal no elimina la confianza en el resolver ni garantiza anonimato completo.",
+      "sections": [
+        {
+          "title": "Proteger el canal tiene límites",
+          "body": "DNS sobre HTTPS, o DoH, transporta consultas y respuestas DNS mediante HTTPS entre componentes compatibles, como una aplicación y su servicio de resolución. Puede proteger ese tramo frente a lectura o modificación en tránsito bajo las garantías del canal utilizado. El resolver sigue procesando las consultas y requiere confianza. DoH no cifra automáticamente todas las comunicaciones de las páginas ni garantiza anonimato del usuario. También puede interactuar con políticas del entorno, por lo que conviene consultar al administrador antes de modificar ajustes en equipos gestionados."
+        }
+      ],
+      "steps": [
+        "Dibuja el tramo entre cliente y resolver protegido mediante HTTPS.",
+        "Marca otras comunicaciones que no quedan protegidas automáticamente por ese ajuste."
+      ],
+      "scenario": "Un navegador activa DoH con un resolver compatible. Una persona cree que esto oculta cada actividad y cifra todo contenido de todas las aplicaciones, aunque la opción solo protege determinadas consultas DNS de ese cliente.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debe reconocerse al activar DoH?",
+          "options": [
+            "El resolver sigue procesando consultas y no hay anonimato completo garantizado",
+            "Todas las aplicaciones se vuelven imposibles de identificar",
+            "DNSSEC deja de tener una función distinta"
+          ],
+          "answer": 0,
+          "explanation": "DoH protege consultas que utilizan HTTPS entre componentes compatibles, pero el resolver sigue recibiéndolas. No garantiza anonimato ni cifra todas las aplicaciones; proteger ese transporte es distinto de validar datos DNS firmados mediante el mecanismo DNSSEC.",
+          "wrongExplanations": [
+            null,
+            "DoH no elimina cuentas, sesiones u otras identificaciones de aplicaciones. Protege el tramo de consultas configurado, sin transformar todo el equipo en anónimo ni impedir que los servicios registren datos de sus interacciones con el usuario.",
+            "DNSSEC valida autenticidad e integridad de datos firmados, mientras DoH protege transporte mediante HTTPS. Pueden coexistir porque hacen trabajos distintos; activar uno no vuelve automáticamente innecesario al otro ni demuestra su aplicación a cada respuesta recibida."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mdn-doh"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Ciframos un tramo, cariño, no todas las aplicaciones; dibujemos hasta dónde llega DoH antes de permitir que un anuncio lo haga gobernar el equipo.",
+        "theory": "DoH transporta consultas DNS mediante HTTPS entre componentes compatibles; el resolver las procesa y esa función no sustituye la validación de datos mediante DNSSEC.",
+        "hint": "Identifica los extremos del canal y pregunta quién recibe la consulta para responder; no extiendas el ajuste a cada comunicación de otras aplicaciones.",
+        "correct": "Distinguiste tramo protegido y confianza en el receptor; DoH no promete anonimato completo ni cifra automáticamente todo el tráfico de las demás aplicaciones del sistema.",
+        "soft": "El cifrado puede sonar universal; revisemos qué tramo protege antes de asumir que cada aplicación del sistema adoptó la misma protección para todos sus contenidos.",
+        "sharp": "DoH no tapa todas tus aplicaciones, cielo; ese maldito canal tiene extremos concretos y uno todavía debe procesar las consultas para poder responderlas.",
+        "pass": "Ya separas transporte, receptor y validación de datos; DoH protege un alcance concreto sin borrar identidades ni sustituir automáticamente cada protección distinta del equipo.",
+        "review": "Vuelve al dibujo cliente-resolver y marca qué queda fuera; consulta al administrador antes de cambiar ajustes gestionados y confirma qué consultas usan esa opción."
+      }
+    },
+    {
+      "id": "ip-dns-confianza-resolver",
+      "title": "Elegir un resolver también es confiar",
+      "minutes": 3,
+      "intro": "Reconoce que el resolver procesa nombres consultados y valora confianza, políticas y contexto antes de aceptar una promesa absoluta de privacidad basada solamente en el cifrado del canal.",
+      "sections": [
+        {
+          "title": "El destinatario sigue recibiendo datos",
+          "body": "Quien opera el resolver procesa las consultas que recibe para responderlas. Sus prácticas de registro, uso y conservación de datos importan al valorar privacidad, además de la protección del canal. Un servicio puede ofrecer transporte cifrado sin prometer ausencia total de registros. Revisa documentación oficial y las políticas aplicables al equipo. En una organización, cambiar el resolver puede afectar nombres internos o controles previstos. La decisión debe basarse en funciones y confianza comprobables, sin presentar una preferencia como garantía universal de anonimato en internet."
+        }
+      ],
+      "steps": [
+        "Identifica qué política oficial revisarías antes de elegir un servicio ficticio.",
+        "Distingue proteger el canal de confiar en quien recibe las consultas."
+      ],
+      "scenario": "Un anuncio promete privacidad absoluta por ofrecer consultas cifradas, sin explicar registro de datos. Una persona cree que el operador no puede conocer los nombres, aunque necesita procesarlos para responder a los clientes del servicio.",
+      "questions": [
+        {
+          "prompt": "¿Qué aspecto falta valorar?",
+          "options": [
+            "El color del logotipo como prueba técnica suficiente",
+            "La confianza y políticas del operador que recibe las consultas",
+            "La longitud del nombre del navegador instalado"
+          ],
+          "answer": 1,
+          "explanation": "El canal cifrado no evita que el resolver procese nombres. Sus políticas y prácticas necesitan revisión según el contexto; un anuncio aislado no prueba ausencia de registros ni anonimato completo ante todos los participantes de la comunicación.",
+          "wrongExplanations": [
+            "Un logotipo no demuestra políticas de conservación ni límites de tratamiento. Para valorar privacidad necesitas documentación y condiciones oficiales del operador, además de funciones del canal y reglas del entorno donde se utiliza el servicio de resolución.",
+            null,
+            "La longitud del nombre del navegador no explica cómo trata consultas el operador. Importa quién recibe datos y bajo qué prácticas; cambiar etiquetas o apariencia no sustituye revisar la documentación y políticas del resolver según el contexto."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns",
+        "mdn-doh"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "El canal lleva candado y el receptor sigue recibiendo, cariño; revisemos quién procesa las consultas antes de comprar privacidad absoluta por un logotipo sonriente.",
+        "theory": "El resolver procesa nombres; sus políticas de registro y conservación importan porque cifrar el trayecto no demuestra ausencia de información en el operador que responde.",
+        "hint": "Busca información sobre quien recibe las consultas y cómo las trata; un canal protegido no significa que el destinatario ignore la petición que necesita resolver.",
+        "correct": "Revisaste operador y políticas; cifrar transporte no acredita ausencia de registros y cambiar resolver puede afectar nombres internos o controles del entorno administrado donde trabajas.",
+        "soft": "La publicidad mezcla beneficios; distingamos proteger el trayecto de confiar en el destinatario y busquemos información oficial para decidir expectativas realistas sobre ese servicio.",
+        "sharp": "El logotipo prometió privacidad y no explicó qué guarda; qué maldito optimismo comercial, pidamos políticas antes de firmarle un certificado imaginario de olvido universal.",
+        "pass": "Ya evalúas función y confianza por separado; una preferencia razonable depende del contexto y no justifica saltarse políticas necesarias para recursos internos de una organización.",
+        "review": "Repasa destinatario, conservación y contexto; documentación y reglas del equipo aportan más que un eslogan de cifrado que no describe lo que ocurre al llegar."
+      }
+    },
+    {
+      "id": "ip-dns-ajustes-aplicacion",
+      "title": "Un ajuste no cambia todo el equipo",
+      "minutes": 3,
+      "intro": "Distingue configuración DNS de una aplicación y ajustes generales del sistema, comprobando el alcance documentado antes de afirmar que todos los programas utilizan el mismo resolver o protección.",
+      "sections": [
+        {
+          "title": "El alcance pertenece al ajuste concreto",
+          "body": "Algunos navegadores y aplicaciones incorporan opciones propias de resolución, mientras otros usan las preferencias del sistema. Activar una función en un programa no implica que todo el equipo adopte ese mecanismo. También pueden existir políticas administradas y excepciones para nombres internos según la implementación. Antes de afirmar qué protege un ajuste, consulta su documentación y observa su alcance. En equipos gestionados sigue las instrucciones de la organización y evita desactivar controles o cambiar servicios de resolución sin autorización para intentar resolver un problema aislado."
+        }
+      ],
+      "steps": [
+        "Separa una preferencia del navegador de una preferencia del sistema en una ficha ficticia.",
+        "Escribe qué documentación permitiría conocer a qué consultas se aplica."
+      ],
+      "scenario": "Una persona modifica una opción DNS del navegador y anuncia protección para todas las aplicaciones. No revisa documentación ni políticas, aunque otros programas podrían usar el sistema o mecanismos propios para sus consultas de nombres.",
+      "questions": [
+        {
+          "prompt": "¿Qué debe comprobar antes de generalizar el cambio?",
+          "options": [
+            "Que el icono del navegador tenga suficiente brillo",
+            "Que las carpetas usen nombres diferentes",
+            "El alcance documentado de la opción y la configuración de otros programas"
+          ],
+          "answer": 2,
+          "explanation": "Una preferencia puede afectar solo consultas de la aplicación o seguir reglas particulares. Revisa alcance y configuración antes de afirmar un cambio global: otros programas pueden utilizar opciones diferentes bajo las políticas del entorno que administra el dispositivo.",
+          "wrongExplanations": [
+            "El brillo del icono no define qué consultas usa una función DNS. El alcance depende de documentación, implementación y políticas; una característica visual no permite concluir que todos los programas comparten el ajuste del navegador modificado en la ficha ficticia.",
+            "Los nombres de carpetas no determinan resolución DNS. La comprobación trata de preferencias y políticas; cambiar etiquetas de archivos no amplía el alcance de una función activada dentro de un navegador concreto del equipo que estamos estudiando.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mdn-doh"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Cambiaste una opción y el resto del equipo no recibió órdenes, cariño; veamos su alcance antes de anunciar una revolución para todos los programas.",
+        "theory": "Cada aplicación puede usar resolución propia o del sistema; documentación, versión y políticas determinan qué consultas afecta una opción, sin extenderla automáticamente a otros programas.",
+        "hint": "Busca evidencia sobre consultas afectadas y configuraciones de otros programas; el aspecto del navegador no demuestra que todos adopten un cambio de esa aplicación.",
+        "correct": "Comprobaste alcance antes de generalizar; una preferencia puede afectar solo ciertas consultas mientras otros programas siguen ajustes distintos según documentación y políticas del dispositivo.",
+        "soft": "Es fácil extender mentalmente el cambio; revisemos la versión concreta y distingamos aplicación, sistema y políticas antes de afirmar que todos adoptaron la misma protección.",
+        "sharp": "El navegador movió su silla y lo nombramos emperador; qué maldita promoción, leamos el alcance antes de decidir por aplicaciones que ni se enteraron.",
+        "pass": "Ya interpretas una opción por su documentación; eso evita confundir preferencias de un programa con efectos globales sobre aplicaciones que utilizan mecanismos de resolución diferentes.",
+        "review": "Repasa aplicación, sistema e instrucciones del administrador; conserva el estado previo y consulta versión y documentación antes de afirmar qué consultas afecta realmente ese ajuste."
+      }
+    },
+    {
+      "id": "ip-dns-diagnostico",
+      "title": "Investigar sin romper la configuración",
+      "minutes": 3,
+      "intro": "Organiza un diagnóstico que conserve el mensaje, el nombre y el alcance del fallo, realizando una comprobación autorizada cada vez antes de cambiar parámetros o protecciones de todo el equipo.",
+      "sections": [
+        {
+          "title": "Preguntas concretas, cambios limitados",
+          "body": "Ante un fallo de nombres, anota el mensaje, el nombre ficticio o autorizado consultado y qué otros servicios funcionan. Revisa si hay un error de escritura y distingue falta de respuesta de una respuesta negativa. Considera qué aplicación y configuración participaron. No cambies varios ajustes a la vez ni desactives protecciones generales por comodidad. Conserva el estado anterior y sigue instrucciones del responsable en equipos administrados. Los ejercicios offline permiten practicar ese razonamiento sin lanzar consultas ni probar direcciones de terceros que no han autorizado una revisión."
+        }
+      ],
+      "steps": [
+        "Resume un fallo ficticio con nombre, aplicación, resultado y alcance conocido.",
+        "Propón una única comprobación segura y describe cómo conservarías la configuración anterior."
+      ],
+      "scenario": "Una persona cambia DNS, puerta y protecciones simultáneamente porque no abre un sitio. Después pierde el estado original, aunque otros servicios funcionaban y el mensaje inicial mostraba un error de escritura en el nombre consultado.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque habría sido más útil al empezar?",
+          "options": [
+            "Conservar el mensaje, revisar el nombre y comprobar una hipótesis cada vez",
+            "Modificar cualquier red vecina hasta obtener un resultado distinto",
+            "Borrar mensajes y publicar contraseñas para pedir ayuda"
+          ],
+          "answer": 0,
+          "explanation": "Un diagnóstico debe conservar contexto y responder al síntoma. Revisar el nombre y comprobar una hipótesis cada vez facilita interpretar resultados y revertir cambios, sin intervenir en redes ajenas ni compartir secretos que no explican el fallo observado.",
+          "wrongExplanations": [
+            null,
+            "Modificar redes vecinas no está autorizado y no responde al síntoma. La comprobación debe limitarse al entorno propio o aprobado, conservando evidencia y revisando primero el nombre escrito incorrectamente por la aplicación antes de cambiar otros parámetros.",
+            "Borrar mensajes quita contexto y publicar contraseñas añade exposición. Para pedir ayuda bastan datos pertinentes y acciones realizadas, evitando secretos y utilizando el canal del responsable que puede revisar la configuración con autorización y conocimientos adecuados."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cloudflare-dns",
+        "cisco-networks"
+      ],
+      "diagram": "dns",
+      "aoi": {
+        "intro": "Última investigación, cariño: una hipótesis por turno y ninguna demolición de ajustes; conservemos el mensaje inicial sin intervenir en redes ajenas al ejercicio autorizado.",
+        "theory": "El diagnóstico conserva nombre, aplicación, resultado y alcance; revisar escritura y cambiar una cosa cada vez facilita interpretar resultados, revertir ajustes y pedir ayuda autorizada.",
+        "hint": "Compara conservar contexto con modificarlo todo; busca una secuencia que compruebe primero lo cercano al mensaje y permita volver atrás sin publicar secretos personales.",
+        "correct": "Conservaste y revisaste antes de cambiar; el nombre incorrecto aporta una pista y comprobar una hipótesis por vez permite interpretar el resultado sin perder contexto.",
+        "soft": "La frustración invita a mover ajustes; recuperemos el orden anotando el síntoma, comprobando escritura y limitando cada cambio autorizado para entender qué resultado produce.",
+        "sharp": "Cambiar cuatro cosas y borrar la pista convierte el diagnóstico en una maldita rifa; revisemos el nombre antes de culpar a toda la infraestructura.",
+        "pass": "Terminaste con método: observar, registrar, comprobar y revisar; ese orden facilita ayuda y cambios reversibles sin probar redes ajenas ni perder el síntoma inicial.",
+        "review": "Repasa el mensaje y una comprobación limitada; conserva el estado anterior y consulta al responsable antes de cambiar opciones de un equipo administrado del centro."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1947 @@
+{
+  "id": "home-wifi",
+  "title": "Wi-Fi doméstico seguro",
+  "description": "Aprende a cuidar el router, separar dispositivos y responder a problemas en tu propia red doméstica.",
+  "category": "Redes en casa",
+  "symbol": "06",
+  "color": 4283954624,
+  "lessons": [
+    {
+      "id": "home-wifi-puerta-digital",
+      "title": "El router: una puerta compartida",
+      "minutes": 3,
+      "intro": "Reconoce qué hace el router de casa y por qué una decisión sobre su configuración puede afectar a varios dispositivos conectados al mismo tiempo.",
+      "sections": [
+        {
+          "title": "Un punto de encuentro",
+          "body": "El router comunica redes y suele conectar los dispositivos de casa con internet. Muchos modelos también ofrecen el punto de acceso Wi-Fi y funciones de cortafuegos. Una contraseña de una cuenta protege ese servicio; la configuración del router protege otro ámbito. Si alguien cambia sus ajustes, puede afectar a varios equipos. Empieza identificando el aparato y su función antes de modificar opciones que no comprendes."
+        }
+      ],
+      "steps": [
+        "Localiza tu router sin desconectar cables.",
+        "Anota qué dispositivos propios dependen de su conexión."
+      ],
+      "scenario": "En casa funcionan un teléfono, una computadora y un televisor mediante el mismo aparato. Una persona propone cambiar sus ajustes sin avisar a nadie que esté utilizándolo.",
+      "questions": [
+        {
+          "prompt": "¿Por qué conviene coordinar ese cambio?",
+          "options": [
+            "Porque puede afectar a varios dispositivos",
+            "Porque cambia todas las contraseñas del correo",
+            "Porque impide para siempre usar internet"
+          ],
+          "answer": 0,
+          "explanation": "El router es un punto compartido y algunos cambios afectan a las conexiones de varios equipos. Coordinar permite guardar trabajos, prever una interrupción y comprobar después el funcionamiento.",
+          "wrongExplanations": [
+            null,
+            "La configuración del router no sustituye automáticamente las contraseñas de los servicios externos. El cambio puede afectar a conexiones compartidas, por lo que conviene coordinarlo con quienes utilizan la red.",
+            "Un cambio no implica una pérdida permanente de internet. Algunas modificaciones interrumpen temporalmente el acceso; comprender su alcance y coordinar a los usuarios permite realizarlas con mayor control."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Mira esa cajita, cariño: parece discreta y organiza media casa. Hoy conoceremos su trabajo antes de tocar botones caprichosamente.",
+        "theory": "El router coordina conexiones; no es un hechicero que cambie cada cuenta. A mí también me gusta distinguir responsabilidades.",
+        "hint": "Piensa cuántos equipos utilizan ese aparato y qué podrían estar haciendo sus dueños cuando alguien modifica la conexión.",
+        "correct": "Exacto, una puerta compartida merece coordinación. Mis caprichos pueden esperar mientras otra persona guarda el documento que estaba editando.",
+        "soft": "Vamos con calma: separa el funcionamiento de la red y el acceso a las cuentas. Son ámbitos distintos, tesoro.",
+        "sharp": "La cajita no gobierna mágicamente todos los correos, carajo. Volvamos a lo concreto: conexiones compartidas y personas trabajando.",
+        "pass": "Primera parada superada. Ya reconoces un punto importante de tu red; ahora podremos cuidarlo sin atribuirle superpoderes absurdos.",
+        "review": "Repasemos qué depende del router y qué pertenece a cada cuenta. Ese mapa hará mucho más claras tus próximas decisiones."
+      }
+    },
+    {
+      "id": "home-wifi-modem-y-router",
+      "title": "Módem, router y punto de acceso",
+      "minutes": 3,
+      "intro": "Distingue las funciones que pueden convivir en una sola caja para seguir instrucciones de tu proveedor sin confundir conexiones ni asumir nombres universales.",
+      "sections": [
+        {
+          "title": "Funciones que pueden combinarse",
+          "body": "Un módem u otro equipo de acceso enlaza con la tecnología del proveedor; un router comunica redes y un punto de acceso permite conexiones inalámbricas. A veces estas funciones conviven en un único dispositivo y otras están separadas. La apariencia no basta para identificarlas. Consulta etiquetas y documentación oficial para reconocer tu instalación. Esta distinción evita reiniciar o configurar un aparato diferente del que realmente querías revisar."
+        }
+      ],
+      "steps": [
+        "Identifica modelos y etiquetas sin publicar números privados.",
+        "Consulta el esquema de instalación del proveedor."
+      ],
+      "scenario": "Ves dos cajas conectadas en casa. Una tiene el cable del proveedor y otra emite tu Wi-Fi. Un tutorial habla de reiniciar el router, pero no distingue ambas.",
+      "questions": [
+        {
+          "prompt": "¿Qué haces antes de seguir el tutorial?",
+          "options": [
+            "Desconectar ambas al azar",
+            "Identificar sus funciones con la documentación",
+            "Suponer que cualquier caja es idéntica"
+          ],
+          "answer": 1,
+          "explanation": "Reconocer las funciones permite aplicar la instrucción al equipo adecuado. Los proveedores combinan o separan componentes, así que un dibujo genérico no demuestra cómo está montada tu instalación.",
+          "wrongExplanations": [
+            "Desconectar al azar puede interrumpir servicios innecesariamente y no ayuda a entender el procedimiento. Identifica primero qué hace cada equipo mediante sus modelos y la documentación oficial.",
+            null,
+            "Dos aparatos pueden cumplir funciones distintas aunque tengan formas parecidas. Consulta el esquema del proveedor antes de actuar para no aplicar instrucciones a un componente que no corresponde."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Dos cajas y un manojo de cables no forman un acertijo romántico. Vamos a identificar funciones, cariño, sin desenchufar por intuición.",
+        "theory": "La misma carcasa puede reunir varios trabajos. No confundas el aspecto con la función; esa costumbre también arruina muchas explicaciones.",
+        "hint": "Pregúntate qué dato te falta para saber sobre qué aparato actúa la instrucción. Resolver esa duda viene antes del reinicio.",
+        "correct": "Bien, comprobaste la instalación antes del espectáculo eléctrico. Me encanta una decisión que conserva conexiones y también un poquito de dignidad.",
+        "soft": "Es normal que los nombres confundan al principio. Mira el modelo y su documentación; después relacionamos cada función con su aparato.",
+        "sharp": "Los cables no piden una ruleta de desconexiones, joder. Identifiquemos primero el componente y dejemos el dramatismo para mis comentarios.",
+        "pass": "Ya distingues funciones aunque compartan carcasa. Esa claridad te ayudará cuando una guía describa una instalación diferente de la tuya.",
+        "review": "Vuelve al esquema del proveedor y sigue el recorrido de la conexión. Entender quién hace qué vale más que adivinar nombres."
+      }
+    },
+    {
+      "id": "home-wifi-inventario",
+      "title": "Quién vive en tu red",
+      "minutes": 3,
+      "intro": "Construye un inventario sencillo de tus dispositivos para reconocer cambios sin confundir un nombre técnico extraño con una prueba automática de intrusión.",
+      "sections": [
+        {
+          "title": "Una lista con contexto",
+          "body": "Teléfonos, televisores, impresoras y otros objetos pueden conectarse al router. Un inventario doméstico anota el tipo de equipo, su propietario y si sigue en uso. Los nombres mostrados por el router no siempre son claros y algunos dispositivos usan direcciones privadas que cambian. La lista ayuda a investigar diferencias, pero no convierte un nombre desconocido en prueba suficiente de ataque. Compara con tus equipos antes de bloquear."
+        }
+      ],
+      "steps": [
+        "Enumera tus dispositivos habituales y sus propietarios.",
+        "Relaciona los equipos con la lista de clientes del router."
+      ],
+      "scenario": "El router muestra un cliente llamado Android y nadie reconoce ese nombre. Ayer llegó una tableta nueva y todavía no habéis comparado sus datos de conexión con la lista.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es el primer análisis más útil?",
+          "options": [
+            "Anunciar inmediatamente una intrusión confirmada",
+            "Publicar los datos de todos los dispositivos",
+            "Comparar el cliente con los equipos propios"
+          ],
+          "answer": 2,
+          "explanation": "Un nombre genérico puede pertenecer a un dispositivo legítimo. Comparar la tableta y los equipos propios con el inventario ayuda a identificarlo antes de concluir que existe acceso ajeno.",
+          "wrongExplanations": [
+            "El nombre desconocido no confirma una intrusión por sí solo. Primero compara los equipos y sus datos de conexión; después investiga las diferencias que sigan sin una explicación legítima.",
+            "Publicar datos de los dispositivos no identifica al cliente y expone información innecesaria. Mantén el inventario privado y compáralo localmente con la lista mostrada por tu propio router.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Pasemos lista, tesoro. Hasta el televisor quiere conexión; conviene saber quién vive aquí antes de acusar al primer nombre feo.",
+        "theory": "Un cliente llamado Android no trae una confesión criminal adjunta. El inventario aporta contexto; mi ceja aporta supervisión bastante expresiva.",
+        "hint": "Busca una explicación comprobable dentro de los cambios recientes de casa. El nombre genérico es una pista, no una sentencia.",
+        "correct": "Exacto: comparar primero. La tableta merece identificación antes de protagonizar un thriller doméstico que nadie pidió y yo tendría que comentar.",
+        "soft": "No reconocer un nombre puede inquietar. Reúne datos de tus equipos y relaciona conexiones antes de sacar una conclusión sobre intrusos.",
+        "sharp": "Ese nombre raro no es una declaración jurada del villano, carajo. Necesitamos comparación y contexto, no una acusación decorada.",
+        "pass": "Inventario entendido. Ya puedes observar cambios con una referencia propia y evitar que cada etiqueta técnica se convierta en alarma teatral.",
+        "review": "Practica relacionando un equipo conocido con su entrada del router. Esa comparación hará que la siguiente lista parezca mucho menos misteriosa."
+      }
+    },
+    {
+      "id": "home-wifi-permisos-proveedor",
+      "title": "Un equipo propio o del proveedor",
+      "minutes": 3,
+      "intro": "Identifica quién administra el equipo y qué cambios tienes autorizados para proteger tu conexión sin interferir con servicios contratados o configuraciones gestionadas.",
+      "sections": [
+        {
+          "title": "Administración con responsabilidad",
+          "body": "El router puede ser comprado por ti o estar gestionado por el proveedor de internet. Algunas opciones se administran desde su aplicación o requieren soporte. Tener acceso físico no significa conocer las consecuencias de todos los ajustes. Revisa las condiciones y la documentación antes de modificar parámetros del enlace, telefonía o televisión. Si el equipo es compartido, acuerda los cambios con la persona responsable y conserva un procedimiento para recuperar la configuración."
+        }
+      ],
+      "steps": [
+        "Comprueba quién suministró el equipo y su documentación.",
+        "Identifica el canal oficial de soporte y las opciones permitidas."
+      ],
+      "scenario": "Quieres mejorar el Wi-Fi, pero el router también conecta el teléfono de casa. Una guía sugiere borrar todos los ajustes del proveedor sin explicar cómo recuperarlos después.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión mantiene mejor el control?",
+          "options": [
+            "Consultar el procedimiento autorizado antes de borrar ajustes",
+            "Eliminar todo sin avisar a nadie",
+            "Usar credenciales de soporte encontradas en un foro"
+          ],
+          "answer": 0,
+          "explanation": "Consultar al proveedor o responsable permite conocer dependencias y recuperación. Borrar parámetros gestionados puede afectar otros servicios, por lo que la mejora debe realizarse mediante un procedimiento autorizado y comprendido.",
+          "wrongExplanations": [
+            null,
+            "Eliminar ajustes sin comprenderlos puede dejar sin servicio el acceso, la telefonía u otras funciones. Antes de actuar, coordina con el responsable y consulta cómo conservar o recuperar la configuración.",
+            "Una credencial encontrada en un foro no demuestra autorización ni seguridad. Utiliza las opciones que el proveedor ofrece a tu cuenta y solicita soporte oficial para los cambios gestionados."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Antes de mandar en esa caja, averigüemos quién la administra. Hasta mi lado consentido reconoce que tocar servicios compartidos exige un poco de coordinación.",
+        "theory": "El aparato puede manejar internet y otros servicios. Borrar parámetros sin entenderlos crea una sorpresa pésima; prefiero reservar las sorpresas para bromear.",
+        "hint": "Piensa qué información necesitarías para recuperar el teléfono o internet si el cambio falla. ¿Quién puede explicarte el procedimiento legítimo?",
+        "correct": "Bien: primero un procedimiento autorizado. Has protegido la conexión y evitado que mi comentario sarcástico acompañe una llamada imposible desde casa.",
+        "soft": "La intención de mejorar es buena. Ahora añade información sobre quién gestiona el equipo y qué servicios dependen de sus ajustes.",
+        "sharp": "Borrar todo no es independencia técnica, joder: es quitar el mapa antes del viaje. Consultemos cómo funciona y cómo volver.",
+        "pass": "Responsabilidades claras. Puedes proponer mejoras con criterio y distinguir tus opciones de los parámetros que requieren coordinación con el proveedor.",
+        "review": "Repasa qué servicios salen del equipo y quién mantiene cada configuración. Esa respuesta debe preceder a los cambios que podrían interrumpirlos."
+      }
+    },
+    {
+      "id": "home-wifi-panel-oficial",
+      "title": "Encontrar el panel auténtico",
+      "minutes": 3,
+      "intro": "Accede a la administración desde una ruta verificada para evitar entregar credenciales del router a páginas que solamente imitan una herramienta de configuración.",
+      "sections": [
+        {
+          "title": "El acceso también se verifica",
+          "body": "La administración puede abrirse mediante una aplicación oficial o una dirección local indicada por el fabricante o proveedor. No existe una dirección universal para todos los routers. Los anuncios y mensajes con enlaces de ayuda pueden llevar a imitaciones. Consulta la etiqueta y la documentación del modelo, comprobando que corresponden a tu equipo. Evita introducir credenciales en una página solo porque su logotipo parezca familiar o prometa acelerar la conexión."
+        }
+      ],
+      "steps": [
+        "Obtén el acceso desde la documentación oficial de tu modelo.",
+        "Comprueba la aplicación o dirección antes de introducir credenciales."
+      ],
+      "scenario": "Buscas configurar el router y el primer anuncio ofrece un panel universal. Pide usuario y contraseña de administración sin mencionar tu modelo, mientras la guía oficial indica otra ruta.",
+      "questions": [
+        {
+          "prompt": "¿Qué ruta debes priorizar?",
+          "options": [
+            "El anuncio por aparecer primero",
+            "La aplicación o dirección verificada del modelo",
+            "Cualquier página con el logotipo de Wi-Fi"
+          ],
+          "answer": 1,
+          "explanation": "La documentación oficial proporciona el acceso correspondiente al equipo. Un anuncio o logotipo no acredita que una página administre tu router y podría utilizarse para recoger sus credenciales.",
+          "wrongExplanations": [
+            "La posición de un anuncio no verifica su legitimidad ni su relación con tu router. Prioriza la ruta que indica el fabricante o proveedor para ese modelo antes de identificarte.",
+            null,
+            "Un símbolo Wi-Fi es fácil de copiar y no demuestra autorización. Consulta el acceso oficial del modelo y evita entregar credenciales de administración a páginas que solo parecen convincentes."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Un panel universal que pide secretos de cualquier router suena demasiado cómodo, cariño. Vamos a encontrar la entrada auténtica antes de confiarle nada.",
+        "theory": "El logotipo no firma una garantía de honestidad. La documentación del modelo tiene más valor que un anuncio que grita soluciones milagrosas.",
+        "hint": "Relaciona la ruta de acceso con información verificable del aparato. El orden de los resultados no te dice quién controla una página.",
+        "correct": "Elegiste la entrada verificada. Precioso criterio: los secretos no se fueron detrás del primer cartel brillante que apareció prometiendo arreglarlo todo.",
+        "soft": "Es fácil confiar en el primer resultado. Comprueba ahora qué referencia conecta realmente esa dirección con tu modelo y su proveedor.",
+        "sharp": "El anuncio no se vuelve dueño legítimo del router por pagar un escaparate, carajo. Necesitamos verificación, aunque su logotipo lleve brillo.",
+        "pass": "Ya sabes localizar el panel sin depender de una búsqueda impulsiva. Esa precaución protege la entrada desde donde cambiarás los ajustes importantes.",
+        "review": "Vuelve a la etiqueta y al manual oficial. Identifica la aplicación o dirección correcta y compara qué evidencia ofrecen las otras rutas."
+      }
+    },
+    {
+      "id": "home-wifi-dos-contrasenas",
+      "title": "Clave Wi-Fi y clave de administración",
+      "minutes": 3,
+      "intro": "Distingue la contraseña para conectarse a la red de la que permite cambiar su configuración para no compartir acceso administrativo por confusión.",
+      "sections": [
+        {
+          "title": "Entrar no equivale a administrar",
+          "body": "La clave Wi-Fi permite asociar un dispositivo a la red inalámbrica. La credencial de administración permite entrar al panel y modificar ajustes del equipo. Algunos fabricantes utilizan métodos diferentes, pero las funciones siguen siendo distintas. Compartir acceso para una visita no exige entregar la administración. Revisa cuál se solicita en cada pantalla y protege ambas credenciales de manera independiente, siguiendo las opciones y documentación de tu router doméstico."
+        }
+      ],
+      "steps": [
+        "Identifica dónde se utiliza cada tipo de credencial.",
+        "Evita utilizar el mismo secreto para ambas funciones."
+      ],
+      "scenario": "Una visita necesita internet para enviar un mensaje. En lugar de ofrecer acceso de invitados, alguien propone entregarle la contraseña que abre el panel donde cambias todos los ajustes.",
+      "questions": [
+        {
+          "prompt": "¿Qué problema tiene esa propuesta?",
+          "options": [
+            "Ninguno, administrar y conectarse son idénticos",
+            "Obliga siempre a comprar otro router",
+            "Comparte una capacidad mayor de la necesaria"
+          ],
+          "answer": 2,
+          "explanation": "La visita necesita conexión, no la capacidad de modificar el router. La credencial administrativa otorga funciones diferentes y debe mantenerse protegida; una red de invitados puede servir para compartir acceso limitado.",
+          "wrongExplanations": [
+            "Conectarse mediante Wi-Fi y administrar el equipo son funciones distintas. Entregar la credencial del panel puede permitir cambios innecesarios para una visita que únicamente quiere utilizar internet.",
+            "No es necesario comprar otro aparato para distinguir credenciales. Revisa las funciones disponibles, especialmente el acceso de invitados, y conserva la administración reservada a las personas responsables del equipo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Una cosa es invitar a navegar y otra entregar el mando de la casa, tesoro. Hoy distinguimos esas dos llaves con bastante intención.",
+        "theory": "La clave inalámbrica y la administración cumplen tareas diferentes. No dejemos que una petición de internet termine convertida en una ceremonia de coronación.",
+        "hint": "Compara lo que la visita necesita hacer con lo que permite la credencial ofrecida. Fíjate en el alcance, no en su nombre.",
+        "correct": "Exacto: conexión no significa gobierno del router. La visita puede mandar su mensaje sin recibir también la posibilidad de reorganizar toda la red.",
+        "soft": "Las etiquetas pueden confundir. Mira qué pantalla abre cada credencial y qué acciones permite después; así separas ambas responsabilidades sin adivinar.",
+        "sharp": "No hace falta dar el trono para prestar una silla, joder. La visita pidió internet, no permiso para cambiar tu configuración.",
+        "pass": "Dos funciones, dos límites claros. Ya puedes compartir conectividad sin entregar por accidente la administración del equipo que sostiene la red.",
+        "review": "Imagina ambas pantallas por separado: conectar un dispositivo y cambiar ajustes. Relaciona cada credencial con la tarea antes de volver al ejercicio."
+      }
+    },
+    {
+      "id": "home-wifi-administracion-unica",
+      "title": "Proteger la cuenta administradora",
+      "minutes": 3,
+      "intro": "Sustituye credenciales administrativas iniciales cuando corresponda y protege el acceso al panel con un secreto independiente que no se reutilice en servicios externos.",
+      "sections": [
+        {
+          "title": "La llave que cambia las cerraduras",
+          "body": "Algunos equipos incluyen credenciales administrativas iniciales y otros obligan a crear una contraseña durante la instalación. Sigue el procedimiento del modelo para proteger el panel. Utiliza una contraseña larga y única, guardada en un gestor, y activa autenticación adicional si existe. No la reutilices como clave de una tienda o correo. Si el proveedor administra el equipo, consulta qué cuenta puedes proteger y qué cambios están permitidos."
+        }
+      ],
+      "steps": [
+        "Revisa cómo se protege la cuenta administrativa autorizada.",
+        "Prepara una contraseña única y guárdala de forma protegida."
+      ],
+      "scenario": "El panel todavía utiliza una credencial inicial conocida y permite cambiarla. Alguien propone sustituirla por la misma contraseña que utiliza en varias tiendas para recordarla con mayor facilidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué alternativa evita conectar esos riesgos?",
+          "options": [
+            "Usar una contraseña administrativa única",
+            "Repetir la contraseña de las tiendas",
+            "Publicar la contraseña para recordarla"
+          ],
+          "answer": 0,
+          "explanation": "Una contraseña única impide que la filtración de una tienda revele también el secreto administrativo. Guárdala en un gestor y respeta el procedimiento autorizado para mantener un acceso recuperable.",
+          "wrongExplanations": [
+            null,
+            "Reutilizar la contraseña conecta el acceso administrativo con filtraciones de otros servicios. Elige un secreto independiente y protegido para que conocer una clave de tienda no sirva también en el panel.",
+            "Publicar una contraseña elimina su confidencialidad y puede facilitar cambios no autorizados. Mantén el secreto en almacenamiento protegido y compártelo solamente con responsables que realmente necesiten administrar el equipo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La llave de administración merece trato exclusivo, cariño. No la mandemos a trabajar también en tres tiendas y un foro con aspecto cansado.",
+        "theory": "Una filtración externa no debería traer una copia de la llave del panel. Separar secretos evita ese puente tan cómodo para terceros.",
+        "hint": "Piensa qué ocurriría si una tienda perdiera su lista de accesos. Compara cuáles de las opciones mantienen independiente la administración doméstica.",
+        "correct": "Bien, exclusividad donde importa. La administración ya no depende del mismo secreto que pasea por servicios ajenos y mi paciencia lo agradece muchísimo.",
+        "soft": "Recordar todo puede resultar difícil. Un gestor permite conservar una clave independiente sin convertir la comodidad en reutilización entre servicios distintos.",
+        "sharp": "La llave que cambia las cerraduras no necesita otro empleo en una tienda, carajo. Separemos el secreto y ahorremos futuras bromas crueles.",
+        "pass": "Administración mejor protegida. Recuerda que el secreto debe ser independiente, estar guardado de forma segura y respetar las reglas del equipo gestionado.",
+        "review": "Repasa cómo se propaga una contraseña reutilizada entre servicios. Después prepara un ejemplo ficticio de administración única, sin escribir ningún secreto real aquí."
+      }
+    },
+    {
+      "id": "home-wifi-firmware",
+      "title": "El sistema que lleva dentro",
+      "minutes": 3,
+      "intro": "Comprende qué es el firmware y por qué actualizarlo mediante el canal oficial puede corregir fallos del router sin recurrir a archivos desconocidos.",
+      "sections": [
+        {
+          "title": "También necesita mantenimiento",
+          "body": "El firmware es el software que controla funciones del router. Sus actualizaciones pueden corregir vulnerabilidades y mejorar estabilidad. La instalación debe seguir el procedimiento oficial del modelo, con una conexión eléctrica estable y tiempo suficiente para completarse. No descargues archivos de sitios que prometen potencia extraordinaria. Si el proveedor gestiona las actualizaciones, comprueba su mecanismo mediante soporte oficial en lugar de instalar una versión elegida al azar."
+        }
+      ],
+      "steps": [
+        "Consulta cómo recibe firmware tu modelo.",
+        "Comprueba actualizaciones desde su aplicación o panel oficial.",
+        "Programa la instalación según las instrucciones del fabricante."
+      ],
+      "scenario": "Un foro ofrece un archivo que promete acelerar cualquier router. La aplicación oficial también muestra una actualización específica para tu modelo con instrucciones de instalación y mantenimiento del proveedor.",
+      "questions": [
+        {
+          "prompt": "¿Qué canal corresponde utilizar?",
+          "options": [
+            "El archivo universal del foro",
+            "La actualización oficial compatible con el modelo",
+            "Cualquier archivo cuyo nombre incluya seguro"
+          ],
+          "answer": 1,
+          "explanation": "El firmware debe corresponder al equipo y proceder del canal autorizado. Una promesa de velocidad no demuestra compatibilidad ni integridad; sigue las instrucciones oficiales para evitar daños y cambios desconocidos.",
+          "wrongExplanations": [
+            "Un archivo anunciado como universal puede ser incompatible o malicioso. Verifica modelo y canal autorizado; las actualizaciones del firmware deben instalarse siguiendo las instrucciones del fabricante o proveedor responsable.",
+            null,
+            "El nombre de un archivo no demuestra autenticidad ni compatibilidad. Utiliza la aplicación, panel o procedimiento oficial correspondiente a tu equipo y revisa las indicaciones antes de instalar firmware."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La cajita también lleva software, tesoro. Vamos a cuidarlo sin alimentarlo con el primer archivo milagroso que un desconocido encontró en internet.",
+        "theory": "El firmware gobierna funciones importantes. Una actualización exige origen y compatibilidad; las promesas de velocidad no son certificados, aunque vengan escritas en mayúsculas.",
+        "hint": "Relaciona cada archivo con tu modelo y con quién lo publica. La propuesta más espectacular no necesariamente aporta las comprobaciones que necesitas.",
+        "correct": "Canal oficial y modelo correcto: precioso. Dejamos el archivo milagroso sin escenario y le damos al mantenimiento una oportunidad bastante menos dramática.",
+        "soft": "Es tentador elegir la promesa rápida. Mira ahora compatibilidad, procedencia e instrucciones; esas evidencias importan más que el nombre atractivo del archivo.",
+        "sharp": "El firmware universal con poderes increíbles huele a cuento de mierda. Tu router necesita una versión compatible, no una apuesta con luces.",
+        "pass": "Ya distingues mantenimiento legítimo de promesas sueltas. Comprueba cómo se actualiza tu equipo y prepara la instalación con sus instrucciones específicas.",
+        "review": "Revisa quién mantiene el firmware y cómo reconoce el modelo. Explica después por qué un archivo de origen desconocido no ofrece la misma confianza."
+      }
+    },
+    {
+      "id": "home-wifi-actualizacion-automatica",
+      "title": "Actualizaciones sin depender del recuerdo",
+      "minutes": 3,
+      "intro": "Evalúa las actualizaciones automáticas disponibles y coordina su horario para reducir olvidos sin asumir que una opción activada elimina toda necesidad de revisión.",
+      "sections": [
+        {
+          "title": "Automatizar con seguimiento",
+          "body": "Algunos routers permiten instalar actualizaciones automáticamente o elegir una ventana de mantenimiento. Esta función reduce la dependencia de recordar cada revisión, pero debes entender cómo avisa y qué reinicios puede provocar. Si el proveedor gestiona el equipo, puede aplicar su propio calendario. Comprueba ocasionalmente el estado y los errores comunicados. Una casilla activada no demuestra que una instalación concreta haya terminado correctamente ni sustituye conocer el periodo de soporte."
+        }
+      ],
+      "steps": [
+        "Comprueba si existe actualización automática autorizada.",
+        "Revisa avisos y horarios para coordinar posibles reinicios."
+      ],
+      "scenario": "Activaste actualizaciones automáticas hace meses. Hoy el panel muestra una instalación fallida, pero alguien dice que no debes comprobar nada porque la casilla sigue activada y garantiza protección completa.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación es más precisa?",
+          "options": [
+            "La casilla demuestra que toda instalación funcionó",
+            "La automatización vuelve imposible cualquier fallo",
+            "Conviene revisar el fallo mediante el procedimiento oficial"
+          ],
+          "answer": 2,
+          "explanation": "La automatización reduce trabajo repetitivo, pero una instalación puede fallar. Revisa el aviso y sigue el procedimiento del proveedor para comprobar el estado real sin desactivar protecciones por impulso.",
+          "wrongExplanations": [
+            "La opción activada indica una preferencia, no el resultado de cada instalación. Un aviso de fallo merece revisión por el canal oficial para saber si el equipo quedó actualizado.",
+            "Los procesos automáticos también pueden fallar por problemas de conexión, compatibilidad o alimentación. Mantén seguimiento de sus avisos y utiliza el procedimiento oficial para resolver el estado mostrado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Automatizar me gusta: menos tareas olvidadas y más tiempo para mis exigencias. Pero una casilla marcada no sustituye mirar si el trabajo terminó.",
+        "theory": "La automatización ayuda con el calendario; los avisos cuentan qué pasó realmente. Son papeles diferentes, aunque ambos intenten parecer muy tranquilizadores en pantalla.",
+        "hint": "Distingue la intención de actualizar del resultado de la instalación. El mensaje de error aporta información que la casilla por sí sola no ofrece.",
+        "correct": "Exacto, revisar el fallo. Un poquito de seguimiento evita coronar una preferencia como si fuera prueba de que todos los procesos salieron perfectos.",
+        "soft": "Activar la función es útil. Ahora relaciona ese ajuste con el aviso concreto y piensa qué falta para conocer el estado real del equipo.",
+        "sharp": "La casilla no borró el error por arte de magia, joder. Hay un fallo informado; leerlo también forma parte de administrar con criterio.",
+        "pass": "Automatización entendida con sus límites. Coordina reinicios y consulta los avisos para que la comodidad siga acompañada de información sobre el estado real.",
+        "review": "Compara un ajuste habilitado y una actualización completada. Si puedes explicar la diferencia, estarás mejor preparado para interpretar cualquier aviso de mantenimiento."
+      }
+    },
+    {
+      "id": "home-wifi-fin-soporte",
+      "title": "Cuando termina el soporte",
+      "minutes": 3,
+      "intro": "Reconoce que un router puede seguir dando internet aunque haya dejado de recibir correcciones y prepara una sustitución o solución autorizada con anticipación.",
+      "sections": [
+        {
+          "title": "Funcionar no equivale a mantenerse",
+          "body": "El fabricante o proveedor puede terminar el soporte de un modelo. El aparato quizá continúe conectando, pero dejar de recibir correcciones cambia su mantenimiento de seguridad. Consulta información oficial sobre su ciclo de vida y opciones disponibles. No confíes únicamente en que las luces siguen encendidas. Si corresponde reemplazarlo, prepara la migración de configuración y dispositivos con el responsable, evitando comprar o instalar sin comprobar compatibilidad con tus servicios."
+        }
+      ],
+      "steps": [
+        "Busca el estado de soporte del modelo en su fuente oficial.",
+        "Planifica con el responsable qué hacer si ya no recibe correcciones."
+      ],
+      "scenario": "Tu router funciona, pero el fabricante anuncia que ya no recibirá actualizaciones. En casa proponen ignorar el aviso porque todavía reproduce vídeos y las luces permanecen encendidas normalmente.",
+      "questions": [
+        {
+          "prompt": "¿Qué dato debe entrar en la decisión?",
+          "options": [
+            "El fin del mantenimiento y las opciones de sustitución",
+            "Únicamente el color de sus luces",
+            "Solo que el vídeo de hoy se reproduzca"
+          ],
+          "answer": 0,
+          "explanation": "El funcionamiento diario no confirma que continúen las correcciones de seguridad. Evalúa el fin de soporte y coordina una solución compatible con el proveedor y las necesidades de la casa.",
+          "wrongExplanations": [
+            null,
+            "Las luces suelen indicar estados de funcionamiento, pero no demuestran que el fabricante mantenga el software. Comprueba el ciclo de soporte y prepara una solución autorizada cuando deje de recibir correcciones.",
+            "Reproducir un vídeo demuestra conectividad en ese momento, no mantenimiento de seguridad. El aviso oficial sobre soporte debe formar parte de la evaluación y de un plan de sustitución compatible."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Que siga encendido no significa que alguien siga reparando sus fallos, cariño. Hoy miraremos la fecha de mantenimiento detrás de esas luces tan satisfechas.",
+        "theory": "Conectividad y soporte no son sinónimos. Un aparato puede trabajar mientras sus correcciones se han jubilado; prefiero detectar esa diferencia antes del susto.",
+        "hint": "Piensa qué demuestra realmente ver un vídeo y qué información ofrece el aviso del fabricante. ¿Están respondiendo a la misma pregunta de seguridad?",
+        "correct": "Bien: miraste el soporte además de las luces. El router puede seguir cumpliendo tareas mientras su plan de mantenimiento necesita una decisión nueva.",
+        "soft": "Es comprensible confiar en lo que funciona. Añade ahora la información sobre correcciones para valorar también el mantenimiento, no solamente la conexión del día.",
+        "sharp": "Las lucecitas no redactan parches, carajo. El fabricante dijo que termina el soporte; ese dato merece más atención que un vídeo reproduciéndose sin protestar.",
+        "pass": "Has identificado un límite de vida útil que no siempre se ve. Ahora puedes preparar una transición compatible en lugar de esperar una avería.",
+        "review": "Separa estas preguntas: ¿conecta ahora y sigue recibiendo correcciones? Revisa el aviso oficial y explica por qué necesitas ambas respuestas para decidir."
+      }
+    },
+    {
+      "id": "home-wifi-wpa3",
+      "title": "WPA3 cuando es compatible",
+      "minutes": 3,
+      "intro": "Reconoce WPA3 Personal como una opción actual para proteger el enlace inalámbrico y comprueba la compatibilidad antes de cambiar el modo de tu propia red.",
+      "sections": [
+        {
+          "title": "Protección del enlace inalámbrico",
+          "body": "La seguridad Wi-Fi protege la comunicación inalámbrica entre el dispositivo y el punto de acceso. WPA3 Personal es una opción recomendada cuando router y dispositivos la admiten. La versión debe comprobarse en la configuración oficial, no deducirse por la velocidad anunciada. Antes de cambiar, revisa equipos antiguos y prepara cómo recuperar una conexión si alguno no es compatible. Esta protección no convierte automáticamente en legítimas las páginas que visites."
+        }
+      ],
+      "steps": [
+        "Comprueba qué modos admite tu router.",
+        "Revisa la compatibilidad de tus dispositivos antes del cambio."
+      ],
+      "scenario": "El router permite WPA3 Personal y todos tus equipos compatibles están identificados. Una persona confunde ese modo con una garantía de que cualquier tienda visitada desde casa será honesta.",
+      "questions": [
+        {
+          "prompt": "¿Qué describe correctamente su alcance?",
+          "options": [
+            "Certifica la honestidad de todas las tiendas",
+            "Protege el enlace Wi-Fi, con requisitos de compatibilidad",
+            "Sustituye las contraseñas de cada cuenta"
+          ],
+          "answer": 1,
+          "explanation": "WPA3 protege el enlace inalámbrico y necesita compatibilidad del equipo. No certifica negocios ni reemplaza la autenticación de tus cuentas; esas decisiones pertenecen a otras capas de seguridad.",
+          "wrongExplanations": [
+            "La protección inalámbrica no evalúa las intenciones de una tienda. Puedes visitar una página fraudulenta desde una red bien configurada, por lo que debes verificar también el destino y sus peticiones.",
+            null,
+            "Las cuentas externas mantienen sus propios procesos de acceso. Activar WPA3 no cambia sus contraseñas ni reemplaza MFA; añade protección al enlace inalámbrico entre equipos compatibles y tu punto de acceso."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple",
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Vamos a cuidar el enlace, tesoro. WPA3 tiene una tarea concreta y no merece que le inventemos poderes comerciales sobre toda página que abras.",
+        "theory": "Compatibilidad primero y promesas precisas después. Una radio protegida no convierte a cada tienda en santa; ese cuento tiene demasiada comodidad incluso para mí.",
+        "hint": "Ubica dónde actúa el modo Wi-Fi dentro del recorrido de una conexión. Compara esa ubicación con lo que afirma cada alternativa del ejercicio.",
+        "correct": "Exacto: enlace protegido y equipos compatibles. Las tiendas todavía tendrán que ganarse tu confianza; yo no les firmé un permiso universal para comportarse bien.",
+        "soft": "Has mezclado dos capas distintas. Vuelve a situar la comunicación inalámbrica y luego piensa quién responde por el servicio que visitas desde ella.",
+        "sharp": "WPA3 no convierte cada tienda en un convento honesto, joder. Protege un enlace; las intenciones del vendedor siguen necesitando otra clase de comprobación.",
+        "pass": "Ya reconoces el alcance de WPA3. Comprueba compatibilidad y conserva otras protecciones, porque una capa útil no tiene por qué resolver todos los problemas.",
+        "review": "Dibuja mentalmente dispositivo, router y página web. Señala qué tramo protege el modo inalámbrico y qué decisiones siguen dependiendo de verificar el servicio."
+      }
+    },
+    {
+      "id": "home-wifi-wpa2-aes",
+      "title": "Compatibilidad con WPA2 y AES",
+      "minutes": 3,
+      "intro": "Identifica WPA2 Personal con AES como alternativa de compatibilidad cuando WPA3 no está disponible, evitando confundir opciones modernas con modos antiguos que conservan debilidades.",
+      "sections": [
+        {
+          "title": "Leer el modo completo",
+          "body": "Si un dispositivo no admite WPA3, revisa las opciones oficiales del router para compatibilidad. WPA2 Personal con AES es una alternativa habitual cuando no puedes utilizar WPA3. No basta leer la primera parte del nombre: opciones con TKIP o protocolos antiguos tienen propiedades distintas. Consulta la documentación y evita escoger una mezcla obsoleta únicamente porque conecta más aparatos. Considera separar o sustituir dispositivos que obligan a degradar la protección."
+        }
+      ],
+      "steps": [
+        "Lee el nombre completo del modo disponible.",
+        "Compara la opción con la documentación oficial del modelo."
+      ],
+      "scenario": "Un dispositivo propio no admite WPA3. El panel ofrece WPA2 Personal con AES y otra mezcla antigua con TKIP, pero alguien aconseja elegir cualquier opción que empiece por WPA.",
+      "questions": [
+        {
+          "prompt": "¿Qué criterio conserva la distinción importante?",
+          "options": [
+            "Elegir siempre el nombre más corto",
+            "Ignorar el método de cifrado",
+            "Revisar el modo completo y evitar opciones obsoletas"
+          ],
+          "answer": 2,
+          "explanation": "Los nombres completos distinguen protocolos y métodos de cifrado. Si necesitas compatibilidad sin WPA3, revisa WPA2 Personal con AES y evita asumir que cualquier opción con letras parecidas ofrece igual protección.",
+          "wrongExplanations": [
+            "La longitud del nombre no informa sobre las propiedades del modo. Revisa protocolo y cifrado en la documentación para elegir una opción compatible sin volver innecesariamente a métodos obsoletos.",
+            "El método de cifrado forma parte de la configuración y no debe ignorarse. WPA2 con AES no equivale a una mezcla antigua con TKIP; comprueba qué admite realmente cada dispositivo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El nombre completo importa, cariño. WPA con apellidos distintos puede esconder diferencias; vamos a leerlo entero antes de dejarnos seducir por una abreviatura cómoda.",
+        "theory": "La compatibilidad requiere criterio, no bajar todas las defensas para contentar al aparato más viejo. Revisaremos qué modo usa realmente cada opción del panel.",
+        "hint": "No cuentes letras del nombre. Busca qué protocolo y cifrado describe cada opción, y relaciona esos datos con la necesidad de compatibilidad del caso.",
+        "correct": "Bien: leíste la etiqueta completa. Esa atención vale más que escoger cualquier nombre parecido y confiar en que las diferencias técnicas se comporten con educación.",
+        "soft": "Esas etiquetas pueden parecer iguales al principio. Separemos protocolo y cifrado con ayuda de la documentación antes de decidir qué protección ofrece cada alternativa.",
+        "sharp": "Que ambas opciones digan WPA no las convierte en gemelas, carajo. El apellido también cuenta; leamos antes de regalarle otra oportunidad al modo antiguo.",
+        "pass": "Puedes evaluar una alternativa compatible sin tratar todos los modos como equivalentes. Conserva la distinción entre WPA3, WPA2 con AES y opciones antiguas.",
+        "review": "Vuelve a los nombres completos del panel y compáralos con el manual. La pregunta se aclara cuando dejas de reconocer solamente las primeras letras."
+      }
+    },
+    {
+      "id": "home-wifi-protocolos-antiguos",
+      "title": "Dejar atrás WEP y WPA antiguos",
+      "minutes": 3,
+      "intro": "Reconoce cuándo un dispositivo obliga a utilizar protección inalámbrica obsoleta y busca una solución segura sin sacrificar toda la red por mantenerlo conectado.",
+      "sections": [
+        {
+          "title": "Una compatibilidad demasiado costosa",
+          "body": "WEP y las opciones WPA antiguas no deben tratarse como equivalentes a WPA3 o WPA2 con AES. Si un aparato solo funciona con protección obsoleta, existe un problema de compatibilidad que requiere una decisión. Revisa actualizaciones, una conexión alternativa autorizada o su sustitución. Activar un modo débil para toda la red afecta a otros usuarios. No conectes ese dispositivo a una red ajena ni intentes romper contraseñas para probarlo."
+        }
+      ],
+      "steps": [
+        "Comprueba los modos compatibles del dispositivo antiguo.",
+        "Busca una actualización o alternativa que no degrade la red principal."
+      ],
+      "scenario": "Una consola vieja únicamente conecta si activas WEP para toda la casa. Los equipos recientes admiten modos actuales y la documentación advierte que esa opción antigua no ofrece protección adecuada.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión evita degradar toda la red?",
+          "options": [
+            "Buscar una alternativa compatible o sustituir el equipo antiguo",
+            "Elegir WEP para todos por comodidad",
+            "Pedir la clave de otra casa sin autorización"
+          ],
+          "answer": 0,
+          "explanation": "La necesidad de un equipo antiguo no justifica debilitar todos los enlaces. Investiga alternativas autorizadas o sustitución y conserva modos adecuados para los dispositivos que sí los admiten.",
+          "wrongExplanations": [
+            null,
+            "Activar WEP para todos hace que el problema de compatibilidad afecte a la protección del conjunto. Busca una solución específica para el aparato antiguo sin degradar innecesariamente la red principal.",
+            "Utilizar otra red requiere permiso y no resuelve las limitaciones de seguridad del dispositivo. La solución debe evaluarse en tus propios equipos mediante alternativas autorizadas y modos de protección adecuados."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La consola veterana puede tener encanto, tesoro, pero no consigue rebajar la protección de todos solo por levantar una pestaña y recordar tiempos mejores.",
+        "theory": "La nostalgia no repara protocolos antiguos. Podemos buscar otra forma legítima de conectar el equipo sin obligar al resto de la casa a retroceder.",
+        "hint": "Observa quién soporta las consecuencias de cambiar el modo para un único aparato. Busca una decisión que mantenga el problema limitado a su causa.",
+        "correct": "Buena elección: resolviste la incompatibilidad concreta. El cariño por un aparato no exige que toda la red retroceda de protección.",
+        "soft": "La comodidad inmediata parece tentadora. Añade ahora el efecto sobre los otros dispositivos y evalúa una alternativa que no reduzca su protección compartida.",
+        "sharp": "WEP no rejuvenece porque la consola nos mire con nostalgia, joder. Una reliquia no merece mandar a toda la red de excursión al pasado.",
+        "pass": "Has reconocido una incompatibilidad con consecuencias colectivas. Ya puedes buscar una solución propia y autorizada sin tratar un modo obsoleto como una concesión inocente.",
+        "review": "Compara el beneficio del equipo antiguo con las consecuencias colectivas. Después identifica alternativas propias y autorizadas que mantengan una protección adecuada."
+      }
+    },
+    {
+      "id": "home-wifi-modo-mixto",
+      "title": "Entender el modo de transición",
+      "minutes": 3,
+      "intro": "Comprende por qué un modo mixto puede permitir equipos antiguos y modernos sin asumir que todos reciben automáticamente las propiedades del modo más reciente.",
+      "sections": [
+        {
+          "title": "Compatibilidad sin confundir resultados",
+          "body": "Algunos routers ofrecen un modo de transición WPA2 y WPA3 para admitir dispositivos con capacidades diferentes. Los equipos compatibles pueden utilizar WPA3 mientras otros se conectan mediante WPA2. Esto no significa que cada cliente haya pasado a usar WPA3 por aparecer su nombre en el panel. Revisa la documentación y el estado individual cuando exista. Si todos tus equipos admiten el modo actual, evalúa si puedes configurarlo sin la transición."
+        }
+      ],
+      "steps": [
+        "Consulta cómo funciona el modo mixto de tu modelo.",
+        "Comprueba qué protocolo utilizan tus dispositivos cuando el panel lo muestre."
+      ],
+      "scenario": "El router muestra WPA2/WPA3 y una tableta antigua solo admite WPA2. Una persona afirma que la tableta ya usa WPA3 porque ese nombre aparece en la configuración compartida de la red.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación es correcta?",
+          "options": [
+            "El nombre actualiza físicamente la tableta",
+            "Cada cliente usa un protocolo que realmente admite",
+            "Todos los clientes dejan de necesitar contraseña"
+          ],
+          "answer": 1,
+          "explanation": "El modo de transición admite capacidades diferentes; no añade soporte WPA3 a un dispositivo que carece de él. Comprueba el protocolo efectivo de cada cliente mediante las opciones disponibles del equipo.",
+          "wrongExplanations": [
+            "Cambiar el nombre del modo del router no añade funciones de hardware o software a la tableta. Los clientes utilizan protocolos compatibles con sus capacidades y con la configuración ofrecida.",
+            null,
+            "Un modo mixto no elimina por sí mismo la autenticación. Su función es permitir distintos protocolos compatibles, no convertir la red en un acceso abierto ni suprimir los controles de conexión."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple",
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Una etiqueta no actualiza mágicamente la tableta, cariño. Distingamos lo que ofrece el router y lo que admite cada cliente conectado.",
+        "theory": "El modo mixto reúne capacidades diferentes bajo una configuración. Esa convivencia no borra diferencias; hasta mis bromas necesitan reconocer quién puede hacer realmente cada cosa.",
+        "hint": "Recuerda qué protocolos admite la tableta del caso y pregúntate si una opción del router cambia esas capacidades por sí sola antes de elegir.",
+        "correct": "Exacto: cada cliente conserva sus capacidades reales. El panel puede ofrecer varias puertas, pero no enseña un idioma nuevo a la tableta con solo nombrarlo.",
+        "soft": "La etiqueta puede confundirte. Mira las capacidades de la tableta y sepáralas de las opciones que ofrece el router a otros dispositivos.",
+        "sharp": "El menú no trasplantó tecnología a la tableta, carajo. Compatibilidad primero; los milagros de interfaz pueden esperar fuera mientras revisamos sus capacidades.",
+        "pass": "Modo de transición comprendido. Ya sabes que una configuración compartida puede admitir protocolos distintos y que conviene comprobar qué usa realmente cada dispositivo conectado.",
+        "review": "Revisa por separado router y cliente. Anota qué ofrece uno y qué admite el otro; la intersección explica mejor la conexión que la etiqueta general."
+      }
+    },
+    {
+      "id": "home-wifi-frase-red",
+      "title": "Una frase robusta para la red",
+      "minutes": 3,
+      "intro": "Planifica una contraseña inalámbrica larga e independiente de tus cuentas para limitar su exposición y compartirla únicamente mediante procedimientos acordados por quienes administran la red.",
+      "sections": [
+        {
+          "title": "Un secreto con alcance compartido",
+          "body": "La contraseña Wi-Fi doméstica se comparte entre dispositivos autorizados y puede terminar en manos de visitas si no separas accesos. Utiliza un valor largo y difícil de predecir, siguiendo las capacidades del router, y no lo reutilices en cuentas personales. Guárdalo protegido y acuerda quién puede entregarlo. Evita basarlo en la dirección, apellido o número de teléfono. Su fortaleza no sustituye mantener actualizado el equipo ni elegir un modo inalámbrico adecuado."
+        }
+      ],
+      "steps": [
+        "Prepara una frase larga que no reutilices en cuentas.",
+        "Define dónde se guarda y quién puede compartir el acceso."
+      ],
+      "scenario": "Al instalar la red, alguien sugiere usar apellido y dirección porque todas las visitas podrán recordarlos. También propone que sea la misma clave de tu correo personal para evitar olvidos.",
+      "questions": [
+        {
+          "prompt": "¿Qué propiedad conviene buscar en su lugar?",
+          "options": [
+            "Que aparezca completa en el nombre de la red",
+            "Que todas las cuentas compartan el secreto",
+            "Que sea larga, poco predecible e independiente"
+          ],
+          "answer": 2,
+          "explanation": "Una clave larga e independiente evita patrones personales evidentes y separa la red de las cuentas. Guardarla protegida permite recordarla sin reutilizarla ni hacerla visible para cualquiera cercano.",
+          "wrongExplanations": [
+            "Incluir la contraseña en el nombre de la red la expone a personas cercanas que buscan conexión. Mantén el secreto separado de la información visible y almacénalo de forma protegida.",
+            "Reutilizar el secreto entre Wi-Fi y cuentas conecta exposiciones distintas. Alguien que reciba acceso doméstico no debería conocer por esa misma razón la contraseña de tu correo u otros servicios.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Apellido y dirección ya tienen suficiente publicidad, tesoro. La red merece un secreto independiente que no recite los datos conocidos de tu familia.",
+        "theory": "La clave compartida debe seguir siendo un secreto con reglas. Mis caprichos aceptan una contraseña larga mejor que una invitación escrita en cada dato personal.",
+        "hint": "Imagina qué podría conocer una persona cercana sin preguntarte nada. Compara esa información con lo que necesitaría para predecir la contraseña que estás considerando.",
+        "correct": "Bien: longitud, independencia y poca predicción. Una memoria ayudada por almacenamiento protegido no necesita encadenar tus cuentas a la misma contraseña compartida.",
+        "soft": "Recordarla importa, pero no es el único criterio. Añade independencia respecto a tus cuentas y evita datos personales que otras personas podrían conocer con facilidad.",
+        "sharp": "Apellido más dirección es una tarjeta de presentación, joder. Busquemos un secreto menos dispuesto a contarse solo al primer vecino que pase.",
+        "pass": "Ya puedes planificar una clave compartida sin reutilizar la de tus cuentas. Conserva reglas claras para guardarla y decidir a quién corresponde entregar acceso inalámbrico.",
+        "review": "Vuelve a separar comodidad y previsibilidad. Explica cómo un almacenamiento protegido ayuda a utilizar un secreto largo sin publicarlo ni copiarlo desde el correo personal."
+      }
+    },
+    {
+      "id": "home-wifi-nombre-privado",
+      "title": "Un nombre sin datos personales",
+      "minutes": 3,
+      "intro": "Elige un nombre de red identificable para tu hogar sin publicar detalles personales innecesarios ni confundir un nombre ingenioso con una medida técnica de protección.",
+      "sections": [
+        {
+          "title": "El SSID es visible",
+          "body": "El nombre de la red se denomina SSID y suele aparecer a dispositivos cercanos. Puedes elegir uno reconocible que no incluya apellido, dirección, teléfono u otros datos privados. No escribas la contraseña dentro del nombre. Un chiste o una advertencia tampoco impiden accesos por sí mismos. La protección depende de los modos de seguridad y la configuración, mientras un nombre prudente limita la información que anuncias al buscar conexiones alrededor."
+        }
+      ],
+      "steps": [
+        "Revisa si tu SSID contiene datos que no necesitas anunciar.",
+        "Elige un nombre neutro que puedas reconocer sin incluir secretos."
+      ],
+      "scenario": "Quieres reconocer tu red fácilmente y propones nombrarla con tu dirección completa y contraseña. Otra opción es un nombre neutro conocido por quienes viven en casa y sin datos personales añadidos.",
+      "questions": [
+        {
+          "prompt": "¿Cuál reduce la información anunciada?",
+          "options": [
+            "El nombre neutro sin datos privados",
+            "La dirección y contraseña completas",
+            "Un nombre que prometa ser imposible de atacar"
+          ],
+          "answer": 0,
+          "explanation": "Un nombre neutro permite identificar la red sin exponer datos personales ni secretos. Su elección limita información visible, aunque debes seguir configurando seguridad inalámbrica y mantenimiento por separado.",
+          "wrongExplanations": [
+            null,
+            "El nombre de red suele ser visible para dispositivos cercanos. Incluir dirección y contraseña anuncia información privada y un secreto de acceso, en lugar de conservarlos en sus contextos adecuados.",
+            "Una afirmación dentro del nombre no cambia la configuración ni demuestra resistencia a ataques. Elige un identificador prudente y aplica los controles de seguridad del router mediante su panel autorizado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "wifi-apple"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El nombre de red saluda a quienes pasan cerca, cariño. Procuremos que no recite también tu dirección y la contraseña con una sonrisa excesivamente generosa.",
+        "theory": "Un SSID puede resultar simpático sin anunciar datos privados. La protección técnica vive en otros ajustes; el nombre identifica prudentemente tu red.",
+        "hint": "Piensa quién puede leer los nombres al buscar redes cerca de casa. Compara qué información entrega cada alternativa antes de conectarse siquiera a ella.",
+        "correct": "Elegiste un nombre prudente. Podemos conservar la personalidad sin convertir el Wi-Fi en un anuncio público de dónde vivimos y qué secreto abre la puerta.",
+        "soft": "Reconocer la red importa. Revisa ahora si su etiqueta entrega a desconocidos información que no necesitan para distinguirla en una lista cercana.",
+        "sharp": "Escribir la clave en el nombre sería generosidad de mierda, tesoro. La etiqueta identifica; no tiene por qué repartir el secreto como si fueran caramelos.",
+        "pass": "SSID elegido con criterio. Ya distingues un nombre discreto de una protección técnica y puedes evitar que la lista de redes anuncie información privada innecesaria.",
+        "review": "Imagina alguien mirando redes desde la calle. Separa los datos necesarios para reconocer la tuya de la información privada que conviene guardar."
+      }
+    },
+    {
+      "id": "home-wifi-ssid-oculto",
+      "title": "Ocultar el nombre no crea un escudo",
+      "minutes": 3,
+      "intro": "Comprende por qué ocultar el SSID no sustituye la autenticación ni el cifrado y prioriza controles que realmente protegen la comunicación y los accesos inalámbricos.",
+      "sections": [
+        {
+          "title": "Discreción no equivale a protección",
+          "body": "Algunos routers permiten no anunciar el nombre de red de forma habitual. Esto no hace que la comunicación inalámbrica desaparezca ni sustituye una contraseña y un modo de seguridad adecuados. Además puede complicar la conexión de dispositivos. La recomendación actual es mantener el SSID visible y proteger la red con opciones apropiadas, como WPA3 cuando sea compatible. No midas la seguridad únicamente por si el nombre aparece en una lista cercana."
+        }
+      ],
+      "steps": [
+        "Comprueba la opción de difusión del SSID en la documentación.",
+        "Evalúa la autenticación y el modo de seguridad independientemente del nombre."
+      ],
+      "scenario": "Una guía antigua recomienda ocultar la red y afirma que entonces ya no necesitas una contraseña fuerte. El router permite WPA3 y la documentación actual desaconseja tratar la ocultación como protección adicional.",
+      "questions": [
+        {
+          "prompt": "¿Qué debes priorizar?",
+          "options": [
+            "Solo que desaparezca el nombre de la lista",
+            "Un modo de seguridad adecuado y autenticación protegida",
+            "Eliminar cualquier autenticación si ocultas el SSID"
+          ],
+          "answer": 1,
+          "explanation": "Ocultar el SSID no vuelve invisible la actividad inalámbrica ni protege por sí mismo el acceso. Prioriza configuración de seguridad actual, credenciales adecuadas y documentación vigente en lugar de esa apariencia de ocultación.",
+          "wrongExplanations": [
+            "No aparecer en una lista no demuestra que el enlace o el acceso estén protegidos. La ocultación del nombre no sustituye protocolos adecuados ni credenciales, y puede introducir dificultades de conexión.",
+            null,
+            "Retirar autenticación deja el acceso sin esa protección aunque el nombre no se anuncie habitualmente. Consulta recomendaciones actuales y configura modos adecuados con secretos protegidos cuando corresponda a tu red."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple",
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Tapar el nombre no vuelve fantasma al router, tesoro. La magia de desaparecer merece un escenario; nuestra red necesita controles con funciones bastante más concretas.",
+        "theory": "Oculto no significa cifrado ni autorizado. Esa confusión tiene confianza y poca sustancia; separemos la apariencia de los controles reales del acceso.",
+        "hint": "Pregunta qué cambia la opción: anunciar un nombre o comprobar el acceso. Compara ese alcance con la promesa que presenta la guía.",
+        "correct": "Exacto: controles reales primero. La red no ganó invencibilidad por ponerse tímida; protocolos y credenciales siguen realizando el trabajo importante de protección.",
+        "soft": "Ocultar suena protector. Revisa qué función cambia y cuál permanece igual, especialmente la autenticación y la protección de las comunicaciones entre equipos.",
+        "sharp": "El router no aprendió invisibilidad, carajo. Esconder el nombre no hace el trabajo de un protocolo adecuado ni de una credencial bien protegida.",
+        "pass": "Dejaste atrás un consejo atractivo y engañoso. Valora el alcance real de cada opción sin confundir discreción del nombre con seguridad inalámbrica.",
+        "review": "Describe qué cambia al ocultar el SSID. Consulta recomendaciones actuales y evita dar autoridad automática a una guía solamente porque parece detallada."
+      }
+    },
+    {
+      "id": "home-wifi-wps",
+      "title": "Revisar el acceso rápido WPS",
+      "minutes": 3,
+      "intro": "Identifica WPS como un mecanismo de incorporación de dispositivos y revisa si realmente lo necesitas para evitar mantener vías adicionales de acceso sin comprender su funcionamiento.",
+      "sections": [
+        {
+          "title": "Comodidad con un alcance concreto",
+          "body": "WPS facilita conectar equipos mediante mecanismos como un botón o un PIN, dependiendo del modelo. No es lo mismo que WPA3 ni describe el cifrado del enlace. Revisa la documentación para saber qué modos están habilitados. Si no lo necesitas, desactívalo cuando la configuración autorizada lo permita, especialmente las opciones basadas en PIN. Antes de cambiar, identifica cómo añadirás dispositivos legítimos mediante el procedimiento normal de tu red."
+        }
+      ],
+      "steps": [
+        "Identifica las opciones WPS disponibles en tu equipo.",
+        "Desactiva las que no necesites siguiendo la documentación autorizada."
+      ],
+      "scenario": "El panel mantiene WPS activado aunque todos los equipos se incorporan introduciendo la clave de red. Nadie sabe qué modalidades están habilitadas y confunden esa función con el modo WPA3.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión tiene sentido?",
+          "options": [
+            "Suponer que WPS y WPA3 significan lo mismo",
+            "Activar cualquier PIN encontrado en internet",
+            "Comprobar el mecanismo y desactivarlo si no se necesita"
+          ],
+          "answer": 2,
+          "explanation": "WPS es una forma de incorporar clientes, diferente del modo de protección inalámbrica. Revisa sus modalidades y conserva solo lo necesario, utilizando la documentación para desactivar opciones sin perder el procedimiento normal.",
+          "wrongExplanations": [
+            "WPS y WPA3 cumplen funciones diferentes: incorporación de dispositivos y protección inalámbrica, respectivamente. Confundirlos impide evaluar qué vía de acceso mantiene activa el router y si realmente hace falta.",
+            "Un PIN encontrado fuera del procedimiento autorizado no demuestra permiso ni seguridad. Revisa exclusivamente tu equipo y sus opciones legítimas para decidir si necesitas conservar algún mecanismo WPS habilitado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "wifi-apple"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La comodidad tiene botones, cariño, y algunos necesitan explicación. Revisemos qué acceso rápido ofrece tu router antes de dejarlo habilitado por costumbre.",
+        "theory": "WPS incorpora clientes y WPA3 protege comunicación inalámbrica. Sus nombres parecidos no justifican mezclar funciones cuando decides qué conservar en tu red.",
+        "hint": "Relaciona las vías habilitadas con tu forma habitual de conectar equipos. Pregúntate qué necesitas realmente y cómo funciona cada mecanismo disponible actualmente.",
+        "correct": "Bien: conservar lo necesario. La comodidad no tiene permiso automático para dejar vías activas si nadie puede explicar qué función siguen cumpliendo.",
+        "soft": "Las siglas pueden confundirse. Identifica la tarea de cada ajuste y decide después si esa incorporación rápida resulta necesaria para tus dispositivos.",
+        "sharp": "WPS y WPA3 no son primos intercambiables, joder. Leamos la función antes de bendecir un botón que nadie de casa recuerda haber necesitado en años.",
+        "pass": "Ahora puedes revisar modalidad y necesidad de WPS. Utiliza configuración autorizada y conserva una forma legítima de añadir dispositivos cuando cambies opciones.",
+        "review": "Repasa incorporar dispositivos frente a proteger comunicación. Consulta las modalidades reales de tu modelo antes de decidir qué vía rápida necesitas conservar."
+      }
+    },
+    {
+      "id": "home-wifi-invitados",
+      "title": "Una entrada para las visitas",
+      "minutes": 3,
+      "intro": "Utiliza una red de invitados cuando esté disponible para compartir internet sin repartir automáticamente la contraseña principal ni asumir que el aislamiento existe por el nombre del menú.",
+      "sections": [
+        {
+          "title": "Compartir con límites",
+          "body": "Una red de invitados puede ofrecer conexión con credenciales separadas de la red principal. Sus capacidades varían: revisa si permite bloquear el acceso a equipos internos y qué aislamiento aplica. No basta ponerle un nombre distinto. Configura una contraseña adecuada y comparte únicamente ese acceso con las visitas cuando corresponda. La separación facilita cambiar la clave de invitados sin tener que volver a conectar todos los dispositivos principales del hogar."
+        }
+      ],
+      "steps": [
+        "Revisa las opciones de red de invitados y acceso local.",
+        "Configura credenciales separadas y comprueba sus límites documentados."
+      ],
+      "scenario": "Una visita quiere internet y el router ofrece una red de invitados configurable. La red principal conecta una computadora con carpetas familiares; todavía no has revisado qué acceso local permite la opción nueva.",
+      "questions": [
+        {
+          "prompt": "¿Qué configuración debes comprobar?",
+          "options": [
+            "Credenciales separadas y restricciones de acceso a la red interna",
+            "Solo un nombre distinto sin revisar opciones",
+            "Que la visita reciba también la contraseña administrativa"
+          ],
+          "answer": 0,
+          "explanation": "La utilidad depende de credenciales independientes y límites reales sobre el acceso local. Revisa la documentación y las opciones del modelo, porque el nombre invitados no demuestra por sí solo aislamiento completo.",
+          "wrongExplanations": [
+            null,
+            "Un SSID diferente identifica otra red inalámbrica, pero no garantiza restricciones sobre los equipos internos. Comprueba las opciones documentadas de acceso local y separación antes de confiar en su aislamiento.",
+            "La administración permite cambiar el router y no es necesaria para una visita que quiere internet. Comparte solo el acceso correspondiente y conserva las credenciales administrativas para responsables autorizados."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Las visitas merecen conexión y tus carpetas merecen límites, tesoro. Compartamos hospitalidad sin regalar el llavero principal con una reverencia excesivamente generosa.",
+        "theory": "El cartel invitados no construye paredes. Revisa credenciales y acceso local: una recepción elegante también necesita puertas que realmente limiten las comunicaciones.",
+        "hint": "Compara nombrar una red y limitar lo que alcanzan sus clientes. El caso exige comprobar funciones además de una etiqueta diferente visible.",
+        "correct": "Exacto: credenciales separadas y límites comprobados. La visita puede navegar sin recibir capacidades innecesarias sobre los equipos que viven en tu red principal.",
+        "soft": "Crear la red es un comienzo. Revisa sus restricciones locales para conocer la separación efectiva, sin confiar ?nicamente en el nombre del menú.",
+        "sharp": "El menú no puso un muro escribiendo invitados, carajo. Verifiquemos restricciones antes de felicitar una etiqueta por un trabajo que todavía no demuestra.",
+        "pass": "Compartir ya tiene un alcance definido. Conserva credenciales independientes y comprueba controles reales para que la hospitalidad no dependa de una suposición cómoda.",
+        "review": "Distingue nombre, contraseña y acceso local. Entiende cómo combina tu modelo estas piezas antes de afirmar qué pueden alcanzar los dispositivos invitados."
+      }
+    },
+    {
+      "id": "home-wifi-verificar-aislamiento",
+      "title": "Comprobar la separación prometida",
+      "minutes": 3,
+      "intro": "Verifica las restricciones de tu red de invitados con dispositivos propios y documentación para detectar una configuración incompleta sin explorar equipos ajenos ni interpretar cualquier fallo como prueba definitiva.",
+      "sections": [
+        {
+          "title": "Una comprobación controlada",
+          "body": "El aislamiento puede limitar comunicación entre clientes invitados, acceso a la red principal o ambas cosas, según el router. Lee la descripción exacta y comprueba solo tus dispositivos con acciones normales, como intentar abrir una función que previamente compartías de forma autorizada. Un fallo puede deberse a otras configuraciones, así que combina documentación y observación. No escanees redes ajenas ni supongas que un intento fallido demuestra una separación perfecta en todos los protocolos."
+        }
+      ],
+      "steps": [
+        "Consulta qué conexiones restringe cada opción de aislamiento.",
+        "Realiza una comprobación normal únicamente entre dispositivos propios autorizados."
+      ],
+      "scenario": "Activaste aislamiento y desde tu teléfono invitado ya no abre una carpeta propia. El cortafuegos del equipo también cambió ayer, pero alguien afirma que esa única prueba garantiza separación absoluta entre todas las funciones.",
+      "questions": [
+        {
+          "prompt": "¿Qué conclusión es más cuidadosa?",
+          "options": [
+            "Una prueba demuestra aislamiento perfecto para siempre",
+            "Combinar documentación y comprobaciones para entender el alcance",
+            "Investigar dispositivos vecinos sin permiso"
+          ],
+          "answer": 1,
+          "explanation": "Una observación aporta evidencia limitada y puede tener otras causas, como el cortafuegos. Revisa qué garantiza la función y realiza pruebas autorizadas acordes a ese alcance, sin prometer aislamiento absoluto.",
+          "wrongExplanations": [
+            "Una sola conexión fallida no verifica todas las rutas ni identifica necesariamente la causa. Combina la documentación del router con comprobaciones controladas entre tus propios dispositivos para entender sus restricciones reales.",
+            null,
+            "Explorar dispositivos vecinos excede la autorización y no valida tu configuración doméstica. Limita las comprobaciones a equipos propios y funciones conocidas, consultando después la documentación para interpretar correctamente lo observado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Me gustan las promesas comprobables, cariño. Verificaremos separación con nuestros dispositivos y límites claros, sin convertir la curiosidad en una visita a equipos ajenos.",
+        "theory": "Una carpeta cerrada admite varias explicaciones. Mis cejas prefieren documentación y contexto a declarar aislamiento perfecto después de un ?nico intento fallido.",
+        "hint": "Separa lo observado y la causa atribuida. El caso menciona otro cambio; piensa qué información permitiría conocer mejor el alcance de la función.",
+        "correct": "Buena precisión: documentación y pruebas controladas. La carpeta aporta un dato, pero no tiene que sostener sola una garantía universal que nadie demostró.",
+        "soft": "La comprobación sirve con alcance limitado. Examina otras causas posibles y compárala con las restricciones que el fabricante documenta para esa opción concreta.",
+        "sharp": "Una carpeta cerrada no firmó perfección, joder. Revisemos causas antes de coronar el aislamiento; los vecinos tampoco han dado permiso para nuestras comprobaciones.",
+        "pass": "Puedes reunir evidencia dentro de tu red y mantener conclusiones proporcionadas. Una observación ?til no necesita convertirse en una promesa universal de protección.",
+        "review": "Distingue observar un fallo y demostrar su causa. Consulta qué restringe tu modelo y prepara una comprobación propia que responda justamente a esa pregunta."
+      }
+    },
+    {
+      "id": "home-wifi-objetos-conectados",
+      "title": "Un espacio para objetos conectados",
+      "minutes": 3,
+      "intro": "Evalúa separar objetos conectados de los equipos que contienen documentos personales para limitar comunicaciones innecesarias sin suponer que toda red de invitados ofrece esa función.",
+      "sections": [
+        {
+          "title": "Distintas necesidades, distintos límites",
+          "body": "Una bombilla, cámara o televisor no necesita siempre alcanzar la computadora donde guardas documentos. La segmentación permite limitar conexiones entre grupos cuando el router ofrece controles reales para ello. Identifica primero qué funciones requiere cada aparato, porque algunas aplicaciones dependen de comunicación local. Consulta si existe una red específica para objetos conectados o una opción de invitados apropiada. Separar ayuda a reducir alcance, pero no sustituye actualizar cada dispositivo."
+        }
+      ],
+      "steps": [
+        "Anota qué objetos necesitan comunicación con otros equipos.",
+        "Consulta si tu router permite una separación que conserve esas funciones."
+      ],
+      "scenario": "Una bombilla inteligente utiliza internet, pero no necesita tus carpetas familiares. El router permite aislarla de la computadora; antes de aplicar la opción, revisas si su aplicación requiere comunicación local con el teléfono.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es el objetivo de esa revisión?",
+          "options": [
+            "Dar a la bombilla acceso a todos los documentos",
+            "Eliminar para siempre cualquier actualización",
+            "Limitar comunicaciones sin romper funciones necesarias"
+          ],
+          "answer": 2,
+          "explanation": "La separación debe responder a necesidades reales del dispositivo y controles disponibles. Revisar dependencias permite limitar accesos innecesarios sin asumir que cualquier aislamiento conserva automáticamente todas las funciones de la aplicación.",
+          "wrongExplanations": [
+            "Una bombilla no necesita acceso general a documentos por el hecho de conectarse a internet. Identifica sus funciones y limita comunicaciones que no forman parte de su uso autorizado.",
+            "La segmentación no reemplaza el mantenimiento del dispositivo. Mantén sus actualizaciones mediante los canales oficiales y revisa qué conexiones necesita, en lugar de desactivar la posibilidad de recibir correcciones.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La bombilla ilumina, cariño; no necesita leer tus trabajos. Organicemos su espacio sin atribuirle una curiosidad documental bastante innecesaria.",
+        "theory": "Separar objetos requiere conocer sus dependencias. Un límite útil conserva la función legítima y evita comunicaciones que nadie necesita.",
+        "hint": "Compara lo que hace la bombilla con los recursos disponibles. Piensa qué límite conserva ese trabajo sin abrir otros caminos.",
+        "correct": "Exacto: reducir alcance con conocimiento. La luz sigue trabajando y tus documentos dejan de parecer parte del entretenimiento doméstico.",
+        "soft": "Primero identifica qué comunicación usa realmente la aplicación. Después será más fácil decidir un límite que no rompa su funcionamiento.",
+        "sharp": "La bombilla no necesita matrícula en tu carpeta de documentos, carajo. Revisemos funciones antes de repartir conexiones sin criterio alguno.",
+        "pass": "Segmentación comprendida como una decisión práctica. Revisa funciones y controles reales antes de separar tus propios grupos de dispositivos conectados.",
+        "review": "Repasa qué necesita cada aparato para funcionar. Distingue esas conexiones de los accesos sobrantes que puedes limitar mediante opciones documentadas."
+      }
+    },
+    {
+      "id": "home-wifi-impresora",
+      "title": "Compartir una impresora con límites",
+      "minutes": 3,
+      "intro": "Decide quién necesita acceder a una impresora doméstica y revisa sus funciones compartidas para evitar que una configuración cómoda exponga documentos o servicios innecesarios.",
+      "sections": [
+        {
+          "title": "Imprimir no exige compartir todo",
+          "body": "Una impresora de red puede ofrecer impresión, escaneo y un panel de administración. Cada función tiene un alcance y opciones de acceso propias. Revisa usuarios autorizados, actualizaciones y servicios que realmente utilizas. Una red aislada puede impedir imprimir desde otros equipos; no desactives toda separación sin entender esa dependencia. Busca una configuración documentada que permita la tarea necesaria y conserve protegida la administración, especialmente si la impresora guarda trabajos o documentos escaneados."
+        }
+      ],
+      "steps": [
+        "Identifica quién necesita imprimir o escanear.",
+        "Revisa los controles y servicios habilitados en la documentación de la impresora."
+      ],
+      "scenario": "Una visita solo necesita enviar un documento a imprimir. La impresora también ofrece administración y escaneos guardados; alguien propone eliminar todos los controles para resolver rápidamente un problema de conexión puntual.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque mantiene un alcance adecuado?",
+          "options": [
+            "Permitir la tarea necesaria mediante controles documentados",
+            "Abrir todas las funciones a cualquiera",
+            "Publicar los documentos guardados para facilitar acceso"
+          ],
+          "answer": 0,
+          "explanation": "El acceso debe corresponder a la tarea autorizada y a las opciones reales del equipo. Revisa cómo imprimir sin entregar también administración o documentos almacenados que la visita no necesita consultar.",
+          "wrongExplanations": [
+            null,
+            "Abrir todas las funciones supera la necesidad de imprimir y puede exponer administración o documentos. Revisa una solución específica y documentada para la tarea en lugar de retirar los controles generales.",
+            "Publicar documentos no resuelve de forma segura la conexión a la impresora. Conserva la privacidad y utiliza un procedimiento de impresión autorizado que no convierta los archivos guardados en material compartido."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La visita pidió una hoja, tesoro, no las llaves del archivo. Vamos a compartir impresión con una generosidad técnicamente más selectiva.",
+        "theory": "Impresión, escaneo y administración tienen funciones distintas. Resolver una no exige ofrecer todas las otras como regalo de bienvenida doméstica.",
+        "hint": "Fíjate en la tarea solicitada y compárala con lo que habilita cada propuesta. ¿Qué alcance tiene realmente la necesidad descrita?",
+        "correct": "Bien: tarea concreta y límites claros. La impresora puede colaborar sin convertir sus ajustes y documentos en una exposición improvisada.",
+        "soft": "El problema de conexión puede frustrar. Antes de retirar controles, distingue qué función necesitas habilitar y qué información debe conservarse protegida.",
+        "sharp": "Para imprimir una página no hace falta inaugurar un festival de accesos, joder. Una solución específica nos ahorra esa generosidad absurda.",
+        "pass": "Has aplicado límites a una función cotidiana. Consulta siempre las opciones de tu modelo antes de modificar la separación entre dispositivos domésticos.",
+        "review": "Enumera las funciones de la impresora y marca quién necesita cada una. Esa comparación aclara qué permiso conviene conservar o compartir."
+      }
+    },
+    {
+      "id": "home-wifi-camaras",
+      "title": "Cámaras sin exposición innecesaria",
+      "minutes": 3,
+      "intro": "Protege el acceso a cámaras propias mediante credenciales independientes, mantenimiento y revisión de funciones remotas para evitar publicar imágenes privadas por una configuración no comprendida.",
+      "sections": [
+        {
+          "title": "Una ventana que necesita control",
+          "body": "Una cámara conectada puede exponer imágenes sensibles y depender de una cuenta del fabricante. Protege esa cuenta con una contraseña única y MFA cuando exista, además del acceso local del dispositivo. Instala actualizaciones oficiales y revisa quién puede ver o compartir grabaciones. No abras puertos del router siguiendo instrucciones desconocidas para verla desde fuera. Comprueba primero los métodos autorizados y sus implicaciones de privacidad, incluyendo dónde se almacenan las imágenes."
+        }
+      ],
+      "steps": [
+        "Revisa cuentas autorizadas y opciones de acceso remoto de tu cámara.",
+        "Comprueba actualizaciones y protección de las credenciales asociadas."
+      ],
+      "scenario": "Quieres ver una cámara propia desde fuera de casa. Un vídeo propone abrir puertos y conservar la contraseña inicial, mientras el fabricante documenta un método de acceso con cuenta protegida y opciones de permisos.",
+      "questions": [
+        {
+          "prompt": "¿Qué debes revisar antes de habilitar acceso remoto?",
+          "options": [
+            "Solo que el vídeo tenga muchas visitas",
+            "Cuenta, permisos y procedimiento oficial de acceso",
+            "Cómo publicar imágenes sin restricciones"
+          ],
+          "answer": 1,
+          "explanation": "Las imágenes y el control remoto requieren una configuración comprendida y autorizada. Revisa credenciales, permisos, actualizaciones y el método oficial antes de crear una exposición que no necesitas o no puedes evaluar.",
+          "wrongExplanations": [
+            "La popularidad de un vídeo no verifica la seguridad de sus instrucciones para tu modelo. Consulta al fabricante y evalúa el acceso remoto, las credenciales y los permisos sobre imágenes privadas.",
+            null,
+            "Publicar imágenes no es necesario para ver una cámara de forma privada desde fuera. Mantén controles de acceso y revisa cómo funciona el procedimiento oficial, incluyendo almacenamiento y personas autorizadas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Tu cámara no necesita una audiencia accidental, cariño. Revisemos quién mira y cómo entra antes de abrirle una ventana al mundo.",
+        "theory": "La cuenta del fabricante también importa. Una imagen privada merece controles de acceso, mantenimiento y decisiones conscientes sobre dónde termina almacenada.",
+        "hint": "Piensa qué información revela la cámara y quién podría verla. Compara las pruebas de confianza que aporta cada procedimiento propuesto.",
+        "correct": "Exacto: revisar acceso y permisos. La cámara puede cumplir su función sin que una guía popular decida por ti su exposición.",
+        "soft": "La comodidad remota es útil, pero añade decisiones de privacidad. Revisa el método oficial y quién controla las credenciales antes de activarla.",
+        "sharp": "Muchas visitas no vuelven sensato abrir puertos con la clave inicial, carajo. Tus imágenes merecen más criterio que ese tutorial triunfante.",
+        "pass": "Ya sabes qué revisar antes del acceso remoto. Mantén cuentas protegidas, permisos definidos y actualizaciones oficiales para las cámaras que administras.",
+        "review": "Separa conexión remota, cuenta y grabaciones. Identifica quién controla cada parte y qué procedimiento oficial conserva el acceso limitado a personas autorizadas."
+      }
+    },
+    {
+      "id": "home-wifi-televisor",
+      "title": "El televisor también tiene ajustes",
+      "minutes": 3,
+      "intro": "Revisa actualizaciones, cuentas y funciones compartidas del televisor para tratarlo como un dispositivo conectado sin asumir que su pantalla lo vuelve ajeno a la seguridad.",
+      "sections": [
+        {
+          "title": "Más que una pantalla",
+          "body": "Un televisor conectado puede tener aplicaciones, cuentas y funciones de reproducción desde otros dispositivos. Necesita mantenimiento igual que otros equipos, aunque sus opciones sean diferentes. Consulta actualizaciones oficiales y elimina accesos que ya no utilices. Revisa quién puede enviar contenido o vincularse. Si decides separarlo en otra red, comprueba qué funciones locales dejarían de funcionar y evita instalar aplicaciones de procedencia desconocida solo para recuperar una comodidad perdida."
+        }
+      ],
+      "steps": [
+        "Revisa actualizaciones y cuentas vinculadas al televisor.",
+        "Comprueba quién puede enviar contenido y qué funciones necesitas conservar."
+      ],
+      "scenario": "En el televisor sigue vinculada una cuenta antigua y aparecen propuestas para instalar una aplicación desconocida que promete recuperar una función de envío. No has revisado todavía las opciones oficiales del fabricante.",
+      "questions": [
+        {
+          "prompt": "¿Cuál es un primer paso razonable?",
+          "options": [
+            "Instalar cualquier aplicación que prometa arreglarlo",
+            "Ignorar sus cuentas porque solo es una pantalla",
+            "Revisar cuentas, funciones y alternativas oficiales"
+          ],
+          "answer": 2,
+          "explanation": "El televisor mantiene cuentas y software que requieren revisión. Identifica qué acceso sigue siendo necesario y consulta alternativas oficiales antes de instalar una aplicación desconocida o desactivar controles por comodidad.",
+          "wrongExplanations": [
+            "Una promesa de recuperar funciones no demuestra que una aplicación sea segura o compatible. Revisa primero las opciones oficiales y mantén control sobre cuentas, procedencia del software y permisos del dispositivo.",
+            "El televisor puede guardar sesiones y ejecutar aplicaciones, por lo que sí necesita mantenimiento. Revisa sus cuentas vinculadas y funciones compartidas aunque su uso principal sea mostrar contenido en pantalla.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Esa pantalla también guarda cuentas, tesoro. Hoy miraremos detrás de las series y del menú bonito para comprobar qué accesos siguen invitados.",
+        "theory": "El televisor ejecuta aplicaciones y mantiene sesiones. No queda exento de cuidado por parecer relajado en el salón mientras otros equipos trabajan.",
+        "hint": "Busca información sobre el origen de la aplicación y los accesos existentes. El problema descrito tiene más piezas que una función ausente.",
+        "correct": "Bien, revisión antes de instalar. El televisor seguirá siendo entretenimiento sin que una promesa dudosa se gane permisos solo por resultar conveniente.",
+        "soft": "Es fácil pensar únicamente en la función que falta. Añade las cuentas abiertas y la procedencia del software para evaluar el conjunto.",
+        "sharp": "Que esté junto al sofá no lo vuelve inmune, joder. Hay cuentas y aplicaciones dentro; tratémoslas con más cuidado que al mando perdido.",
+        "pass": "Televisor incluido en el mantenimiento doméstico. Revisa sesiones, actualizaciones y funciones compartidas como partes de un dispositivo conectado con necesidades propias.",
+        "review": "Repasa qué guarda y ejecuta la pantalla. Después identifica qué opciones oficiales podrían resolver el problema sin entregar confianza automática a una aplicación desconocida."
+      }
+    },
+    {
+      "id": "home-wifi-acceso-fisico",
+      "title": "Cuidar también el acceso físico",
+      "minutes": 3,
+      "intro": "Organiza la ubicación del router para reducir manipulaciones accidentales o no autorizadas sin bloquear ventilación ni dificultar el acceso legítimo de quienes lo mantienen.",
+      "sections": [
+        {
+          "title": "El aparato no vive solo en internet",
+          "body": "Quien alcanza físicamente un router puede desconectarlo, tocar botones o leer etiquetas con información de instalación. Colócalo en un lugar apropiado, con ventilación y acceso limitado a personas autorizadas. No lo encierres de forma que se sobrecaliente ni ocultes documentación a quienes necesitan mantenerlo. Comprueba cómo funcionan sus botones antes de pulsarlos. La ubicación física complementa las credenciales y el mantenimiento; no sustituye ninguna de esas medidas de protección."
+        }
+      ],
+      "steps": [
+        "Comprueba ventilación y posibilidad de manipulación accidental.",
+        "Define quién puede tocar botones o cambiar cables del equipo."
+      ],
+      "scenario": "El router está junto a juguetes y alguien suele pulsar sus botones. Para evitarlo, proponen encerrarlo en una caja sin ventilación, aunque el manual exige mantener libres sus aberturas y espacio cercano.",
+      "questions": [
+        {
+          "prompt": "¿Qué ubicación busca un equilibrio adecuado?",
+          "options": [
+            "Un lugar ventilado y con manipulación limitada",
+            "Una caja hermética junto a una fuente de calor",
+            "Cualquier sitio donde todos pulsen botones libremente"
+          ],
+          "answer": 0,
+          "explanation": "La ubicación debe reducir manipulación indebida y conservar las condiciones de funcionamiento indicadas por el fabricante. Evitar acceso accidental no justifica un encierro que impida ventilar y pueda causar sobrecalentamiento.",
+          "wrongExplanations": [
+            null,
+            "Bloquear ventilación puede causar fallos o sobrecalentamiento y contradice el manual. Busca una ubicación que limite la manipulación sin impedir las condiciones físicas necesarias para que funcione correctamente.",
+            "Permitir pulsaciones sin conocer su función puede interrumpir servicios o cambiar estados del equipo. Define responsables y utiliza una ubicación ventilada que reduzca manipulaciones accidentales sin obstaculizar el mantenimiento legítimo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Mi curiosidad tiene carácter; los botones también tienen consecuencias, cariño. Busquemos un sitio donde el router respire y nadie lo use como juguete.",
+        "theory": "La protección física necesita equilibrio. Encerrar el equipo hasta cocinarlo sería una defensa con muy mal sentido del humor y peor ventilación.",
+        "hint": "Compara las dos necesidades del caso: limitar manipulaciones y respetar las condiciones de funcionamiento. La ubicación debe responder a ambas juntas.",
+        "correct": "Exacto, ventilación y límites. El router no tiene que elegir entre dedos curiosos y una sauna improvisada que termina arruinando su servicio doméstico.",
+        "soft": "Evitar pulsaciones es una buena intención. Añade el requisito del fabricante sobre ventilación para que la solución no genere otro problema distinto.",
+        "sharp": "No vamos a asar el router para protegerlo de un botón, carajo. Busquemos un lugar sensato antes de diseñarle esa cárcel térmica.",
+        "pass": "Ya contemplas el aparato físico además del panel. Conserva ventilación, acceso legítimo y reglas claras para evitar manipulaciones que nadie había coordinado.",
+        "review": "Revisa qué condiciones exige el manual y quién necesita mantener el equipo. Una ubicación útil protege el acceso sin sacrificar su funcionamiento normal."
+      }
+    },
+    {
+      "id": "home-wifi-admin-remota",
+      "title": "Administración desde fuera de casa",
+      "minutes": 3,
+      "intro": "Evalúa si necesitas administrar el router a distancia y diferencia esa capacidad de las actualizaciones gestionadas por el proveedor para no conservar funciones remotas sin propósito.",
+      "sections": [
+        {
+          "title": "Una capacidad que exige justificación",
+          "body": "Algunos routers permiten administrar ajustes desde internet o desde una cuenta del fabricante. No es lo mismo que conectarse al Wi-Fi local y puede ampliar dónde está disponible la administración. Revisa si lo necesitas, cómo se protege y qué indica el proveedor. Desactiva funciones remotas innecesarias cuando tengas autorización, sin bloquear por confusión el mantenimiento gestionado del servicio. Si necesitas acceso remoto, utiliza exclusivamente el procedimiento oficial y protege su cuenta."
+        }
+      ],
+      "steps": [
+        "Identifica qué función de administración remota existe y quién la utiliza.",
+        "Desactiva lo innecesario o revisa su protección según la guía oficial."
+      ],
+      "scenario": "Nadie necesita cambiar ajustes desde fuera, pero una opción expone administración remota. El proveedor también realiza mantenimiento gestionado y quieres revisar ambas funciones sin asumir que son exactamente la misma capacidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión respeta esa diferencia?",
+          "options": [
+            "Activar cualquier acceso remoto por si acaso",
+            "Revisar cada función y limitar la innecesaria autorizadamente",
+            "Compartir la cuenta administrativa públicamente"
+          ],
+          "answer": 1,
+          "explanation": "Identificar la función y su responsable evita conservar una exposición sin necesidad o interrumpir mantenimiento gestionado por confusión. Consulta la documentación y aplica cambios únicamente dentro de tu autorización.",
+          "wrongExplanations": [
+            "Activar capacidades sin necesidad amplía posibilidades de administración y exige protección adicional. Identifica primero su propósito, sus controles y el procedimiento oficial antes de decidir si deben estar disponibles.",
+            null,
+            "La cuenta administrativa puede cambiar la configuración y no debe ser pública. Mantén acceso limitado a responsables, diferencia funciones remotas y consulta al proveedor cuando el mantenimiento esté gestionado por él."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Administrar desde lejos suena elegante, tesoro. Antes de conservar esa puerta, comprobemos quién la necesita y quién se encarga realmente del mantenimiento contratado.",
+        "theory": "Acceso remoto y gestión del proveedor pueden ser funciones diferentes. Conviene identificar cada una antes de apagar todo con una sonrisa de supuesta eficiencia.",
+        "hint": "Pregunta qué permite exactamente cada opción y quién la utiliza. La palabra remoto no demuestra que dos funciones tengan el mismo propósito o responsable.",
+        "correct": "Bien: función por función, con autorización. Una revisión informada limita lo innecesario sin convertir el mantenimiento del proveedor en una víctima del entusiasmo doméstico.",
+        "soft": "La confusión entre opciones es comprensible. Mira su descripción y responsable antes de asumir que ambas abren la misma capacidad de administración desde internet.",
+        "sharp": "El botón remoto no pide una ceremonia de activar todo, joder. Necesidad y protección primero; la comodidad hipotética no justifica puertas que nadie utiliza.",
+        "pass": "Has identificado una capacidad que necesita propósito claro. Mantén la administración limitada y coordina con el proveedor cualquier cambio que afecte funciones gestionadas del servicio.",
+        "review": "Distingue acceso local, administración remota y mantenimiento gestionado. Consulta qué hace cada opción de tu modelo antes de decidir cuál necesitas conservar y proteger."
+      }
+    },
+    {
+      "id": "home-wifi-puertos",
+      "title": "No abrir puertos por una promesa",
+      "minutes": 3,
+      "intro": "Comprende que una regla de entrada puede publicar un servicio interno y exige un propósito autorizado, configuración mantenida y revisión de riesgos antes de utilizarla.",
+      "sections": [
+        {
+          "title": "Cambiar quién puede llegar",
+          "body": "Una regla de reenvío de puertos puede dirigir conexiones de internet a un servicio de un dispositivo interno. No mejora automáticamente la seguridad ni la velocidad de toda la red. Su necesidad depende de una función concreta y amplía el alcance del servicio publicado. Antes de crearla, consulta documentación, protege el servicio y entiende cómo retirarla. Si no sabes qué aplicación la requiere, no copies valores de un vídeo para experimentar en la conexión compartida."
+        }
+      ],
+      "steps": [
+        "Identifica la aplicación y la razón concreta de cualquier regla solicitada.",
+        "Consulta un procedimiento autorizado antes de modificar reglas de entrada."
+      ],
+      "scenario": "Un vídeo promete mejorar todos los juegos abriendo muchas reglas hacia tu computadora. No menciona qué servicio usas ni cómo se protege, y nadie en casa puede explicar qué conexiones nuevas permitiría.",
+      "questions": [
+        {
+          "prompt": "¿Qué haces antes de copiar esas reglas?",
+          "options": [
+            "Abrirlas todas para comprobar si ocurre algo",
+            "Publicar también el panel administrativo",
+            "Identificar necesidad, alcance y procedimiento autorizado"
+          ],
+          "answer": 2,
+          "explanation": "Una regla cambia qué tráfico puede alcanzar un servicio interno y requiere una justificación concreta. Comprende aplicación, protección y retirada antes de crear una exposición, en lugar de copiar valores genéricos.",
+          "wrongExplanations": [
+            "Abrir reglas sin propósito puede exponer servicios sin aportar el beneficio anunciado. Revisa qué necesita la aplicación y qué conexiones autoriza cada cambio antes de modificar una red compartida.",
+            "Publicar administración no es una solución genérica para juegos y añade una capacidad sensible. Mantén el panel protegido y analiza únicamente la necesidad documentada de la aplicación correspondiente, dentro de tu autorización.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Abrir puertos no es sazonar la conexión hasta que corra más, cariño. Cada regla necesita una explicación concreta antes de quedarse invitada en casa.",
+        "theory": "Una regla puede acercar internet a un servicio interno. Esa capacidad merece propósito, mantenimiento y límites; las promesas universales no hacen la configuración por nosotros.",
+        "hint": "Identifica servicio y necesidad de recibir conexiones. La información que falta importa más que el entusiasmo del vídeo prometiendo rendimiento para todo.",
+        "correct": "Exacto: comprender antes de publicar. El juego necesita una solución concreta, sin conexiones sobrantes regaladas a cualquier propuesta que prometa mejorar el rendimiento.",
+        "soft": "La promesa de rendimiento puede atraer. Ahora revisa el servicio concreto y qué alcance nuevo crea cada regla; ahí está la información necesaria para decidir.",
+        "sharp": "Abrir muchas reglas por fe no es optimizar, carajo. Necesitamos saber qué entra, hacia dónde y para qué antes de repartir accesos como confeti.",
+        "pass": "Reconoces cambios que afectan a la exposición. Consulta necesidades concretas y conserva instrucciones para proteger y retirar cualquier regla legítima que realmente necesites.",
+        "review": "Repasa qué conecta una regla y qué servicio queda detrás. Si no puedes explicar su necesidad, continúa revisando antes de copiar valores ajenos."
+      }
+    },
+    {
+      "id": "home-wifi-upnp",
+      "title": "Revisar permisos automáticos UPnP",
+      "minutes": 3,
+      "intro": "Identifica cuándo aplicaciones pueden solicitar cambios automáticos de conectividad y evalúa UPnP según necesidades reales, sin confundir esa comodidad con una protección contra accesos no deseados.",
+      "sections": [
+        {
+          "title": "Automatización que también merece límites",
+          "body": "UPnP puede facilitar que dispositivos y aplicaciones soliciten ciertas configuraciones al router, incluidas asignaciones de puertos en algunos equipos. Su funcionamiento y controles dependen del modelo. No es un modo de cifrado Wi-Fi ni una garantía de seguridad. Consulta si realmente necesitas esas funciones y desactiva lo innecesario cuando tengas autorización. Si una aplicación deja de funcionar, revisa su procedimiento oficial antes de recuperar comodidad mediante cambios automáticos que no comprendes."
+        }
+      ],
+      "steps": [
+        "Consulta qué permite UPnP en tu router y qué aplicaciones lo utilizan.",
+        "Evalúa desactivar funciones innecesarias siguiendo la documentación."
+      ],
+      "scenario": "El router mantiene UPnP activado, pero nadie sabe qué aplicaciones lo necesitan. Una persona afirma que debe permanecer siempre activo porque cifra las comunicaciones Wi-Fi y evita cualquier conexión no autorizada.",
+      "questions": [
+        {
+          "prompt": "¿Qué afirmación corrige la confusión?",
+          "options": [
+            "Es automatización de funciones que debe revisarse según necesidades",
+            "Es el nombre alternativo de WPA3",
+            "Garantiza que ninguna aplicación creará reglas de conectividad"
+          ],
+          "answer": 0,
+          "explanation": "UPnP puede facilitar configuraciones automáticas y no representa el cifrado del enlace inalámbrico. Revisa lo que permite tu equipo y qué necesitas realmente antes de mantener esa capacidad habilitada.",
+          "wrongExplanations": [
+            null,
+            "WPA3 y UPnP describen funciones distintas: protección inalámbrica y mecanismos de descubrimiento o configuración. Confundirlos impide valorar qué acciones automáticas puede solicitar una aplicación al router de casa.",
+            "En algunos equipos UPnP permite solicitar asignaciones de puertos, así que no garantiza ausencia de reglas. Consulta capacidades y controles del modelo para evaluar la función con conocimiento de su alcance."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La automatización también merece preguntas, tesoro. Revisemos qué permite UPnP antes de tratar sus siglas como un amuleto que protege cualquier conexión doméstica.",
+        "theory": "Facilitar configuraciones no equivale a cifrar Wi-Fi. Son tareas distintas y mi paciencia prefiere reconocerlas antes de decidir qué función queda habilitada.",
+        "hint": "Separa protección del enlace y cambios solicitados por aplicaciones. Pregúntate qué tarea describe el caso y cómo comprobarías su necesidad antes de responder.",
+        "correct": "Bien: automatización con propósito. Las siglas perdieron poderes imaginarios y ahora podemos evaluar las capacidades reales del modelo sin diplomas de invulnerabilidad injustificados.",
+        "soft": "Es fácil mezclar siglas. Revisa las acciones de esta función y compáralas con proteger comunicación inalámbrica; esa diferencia permite evaluar las opciones correctamente.",
+        "sharp": "UPnP no cifra por llamarse complicado, joder. Expliquemos qué configuraciones facilita y qué aplicaciones necesitan realmente esos permisos automáticos dentro de tu red.",
+        "pass": "Distingues automatización y protección inalámbrica. Conserva funciones justificadas y revisa dependencias antes de modificar cualquier ajuste que afecte la conectividad compartida del hogar.",
+        "review": "Consulta la descripción oficial de UPnP. Relaciona capacidades con aplicaciones propias y sepáralas de los controles de administración y protección del enlace inalámbrico."
+      }
+    },
+    {
+      "id": "home-wifi-cortafuegos",
+      "title": "El cortafuegos no es un adorno",
+      "minutes": 3,
+      "intro": "Reconoce el cortafuegos como una capa de control de tráfico y evita desactivarlo por instrucciones genéricas que prometen resolver problemas sin identificar la aplicación ni su necesidad.",
+      "sections": [
+        {
+          "title": "Reglas con un propósito",
+          "body": "El cortafuegos aplica reglas sobre comunicaciones permitidas y bloqueadas. El router puede incluir uno y cada computadora puede mantener el suyo; tienen posiciones y controles diferentes. No desactives ambos para resolver una dificultad de conexión sin diagnosticarla. Consulta qué necesita la aplicación y usa instrucciones oficiales, conservando restricciones apropiadas. Una protección activa no demuestra que toda cuenta o página sea segura, pero retirarla por completo elimina una capa que podría estar limitando tráfico innecesario."
+        }
+      ],
+      "steps": [
+        "Identifica los cortafuegos presentes en router y dispositivo.",
+        "Consulta una solución específica antes de retirar una protección general."
+      ],
+      "scenario": "Una aplicación no conecta y un comentario aconseja apagar todos los cortafuegos para siempre. No aporta diagnóstico, requisitos del servicio ni una regla limitada, mientras el resto de aplicaciones funciona correctamente.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque conviene priorizar?",
+          "options": [
+            "Retirar todas las protecciones permanentemente",
+            "Investigar la necesidad concreta y una solución documentada",
+            "Suponer que el cortafuegos cambia las contraseñas"
+          ],
+          "answer": 1,
+          "explanation": "Un problema concreto requiere revisar su causa y los requisitos de la aplicación. Desactivar toda protección sin diagnóstico amplía tráfico permitido y no garantiza resolver el fallo que originó la consulta.",
+          "wrongExplanations": [
+            "Retirar todos los cortafuegos elimina controles de tráfico y puede no abordar la causa del fallo. Consulta requisitos y procedimientos oficiales para una solución específica que conserve las restricciones necesarias.",
+            null,
+            "Un cortafuegos controla comunicaciones mediante reglas; no cambia automáticamente contraseñas de las cuentas. Distingue el problema de conectividad y utiliza documentación de la aplicación antes de alterar protecciones generales."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Una aplicación protesta y alguien quiere apagar defensas, cariño. Investiguemos antes de dejar que un fallo puntual gobierne la seguridad de toda la red.",
+        "theory": "Los cortafuegos controlan tráfico desde posiciones diferentes. Prefiero una solución específica a desmontar todas las puertas porque una bisagra empezó a hacer ruido.",
+        "hint": "Compara el alcance del fallo y el cambio propuesto. Pregúntate qué datos faltan para relacionar la aplicación con una protección específica antes de modificarla.",
+        "correct": "Exacto: diagnóstico y solución concreta. La aplicación merece atención, pero una queja de conexión no le entrega autoridad para retirar todos los controles domésticos.",
+        "soft": "Antes del consejo rápido, identifica aplicación y requisitos. El cambio general propuesto es mucho mayor que el problema observado y necesita una justificación concreta.",
+        "sharp": "Apagarlo todo por una aplicación es una receta de mierda. Busquemos causa antes de regalar al comentario genérico el mando sobre nuestras protecciones domésticas.",
+        "pass": "Mantienes el diagnóstico por delante del impulso. Puedes investigar un fallo sin convertir la desactivación general de controles en una respuesta automática de mantenimiento.",
+        "review": "Repasa dónde actúa cada cortafuegos y qué aplicación falla. Reúne requisitos oficiales y compara una solución limitada con retirar todos los controles de tráfico."
+      }
+    },
+    {
+      "id": "home-wifi-ipv6",
+      "title": "Comprobar también las conexiones IPv6",
+      "minutes": 3,
+      "intro": "Reconoce que un equipo puede utilizar más de una versión de protocolo de internet y revisa que las funciones de cortafuegos cubran la conectividad realmente disponible en tu red.",
+      "sections": [
+        {
+          "title": "No quedarse con media configuración",
+          "body": "Una conexión doméstica puede utilizar IPv4, IPv6 o ambas, según el proveedor y los dispositivos. Las opciones de seguridad del router deben contemplar la conectividad habilitada. No asumas que una regla pensada para una versión describe automáticamente la otra. Consulta cómo maneja el cortafuegos cada caso y evita desactivar protocolos solo por miedo a sus nombres. Si necesitas aclaraciones, pide al proveedor instrucciones sobre su configuración gestionada y el alcance de las protecciones disponibles."
+        }
+      ],
+      "steps": [
+        "Comprueba qué conectividad indica el proveedor para tu instalación.",
+        "Consulta cómo protege el cortafuegos las versiones de protocolo habilitadas."
+      ],
+      "scenario": "El proveedor activa IPv6 además de IPv4. En casa solo habéis revisado un apartado de reglas antiguas y alguien asegura que eso demuestra por sí solo cómo se controla todo el tráfico de cualquier versión.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión falta para justificar esa confianza?",
+          "options": [
+            "Elegir una contraseña que contenga IPv6",
+            "Ignorar la documentación porque internet funciona",
+            "Comprobar el alcance del cortafuegos para la conectividad habilitada"
+          ],
+          "answer": 2,
+          "explanation": "La protección debe evaluarse sobre las versiones realmente activas. Consulta el funcionamiento del cortafuegos para IPv4 e IPv6 y evita deducir toda la configuración a partir de un apartado de reglas antiguas.",
+          "wrongExplanations": [
+            "Incluir el nombre de un protocolo en una contraseña no configura controles de tráfico. Revisa las funciones del router y la documentación del proveedor para la conectividad IPv4 e IPv6 que mantiene habilitada.",
+            "Que internet funcione demuestra conectividad, no el alcance de sus reglas. Consulta cómo aplica el cortafuegos a las versiones activas y pide ayuda oficial cuando la configuración esté gestionada por el proveedor.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Otra sigla llega a casa, cariño, sin necesidad de pánico. Revisemos cómo se protege la conectividad real en lugar de inventar amenazas por nombres nuevos.",
+        "theory": "IPv4 e IPv6 pueden convivir. Importa cómo controla el router cada tráfico, no cuántas caras dramáticas ponemos al leer números distintos en el panel.",
+        "hint": "Relaciona lo que cambió con el apartado revisado. Pregúntate si esos datos describen todos los caminos de conexión que ahora tienen disponibles los dispositivos.",
+        "correct": "Bien: comprobar cobertura de controles. El protocolo no ganó absolución por funcionar ni condena por llamarse distinto; merece una revisión precisa y documentada del cortafuegos.",
+        "soft": "No necesitas memorizar direcciones. Identifica conectividad disponible y controles aplicados; esa distinción permite plantear al proveedor una pregunta ?til sobre la configuración gestionada del equipo.",
+        "sharp": "Compartir caja no protege todos los números, carajo. Revisemos los controles antes de confiar en una captura antigua del panel.",
+        "pass": "Distingues una revisión parcial de toda la conectividad. Consulta funciones documentadas y pide explicación al proveedor cuando necesites entender qué protección cubre las versiones habilitadas.",
+        "review": "Identifica versiones activas y controles documentados. Reúne información antes de desactivar protocolos por intuición o asumir que todos están protegidos igualmente."
+      }
+    },
+    {
+      "id": "home-wifi-dns",
+      "title": "Entender un cambio de DNS",
+      "minutes": 3,
+      "intro": "Reconoce que el DNS ayuda a encontrar servicios por sus nombres y verifica los cambios de configuración para no aceptar servidores sugeridos por mensajes desconocidos.",
+      "sections": [
+        {
+          "title": "Nombres y destinos",
+          "body": "El DNS permite resolver nombres de servicios hacia información necesaria para conectarse. El router puede entregar una configuración DNS a tus dispositivos o dejar esa decisión a otros ajustes. Cambiarla afecta cómo se buscan destinos, pero no garantiza anonimato ni honestidad de las páginas. Revisa cambios inesperados mediante el proveedor o fabricante. No copies direcciones de un mensaje que promete internet gratis; antes necesitas conocer quién ofrece ese servicio y por qué deberías utilizarlo."
+        }
+      ],
+      "steps": [
+        "Identifica la configuración DNS documentada para tu conexión.",
+        "Consulta cambios inesperados por el canal oficial antes de aceptarlos."
+      ],
+      "scenario": "Recibes un mensaje que promete internet gratuito si sustituyes el DNS del router por unas direcciones desconocidas. La conexión ya funciona y el proveedor no ha anunciado ningún cambio mediante su aplicación oficial.",
+      "questions": [
+        {
+          "prompt": "¿Qué haces antes de modificarlo?",
+          "options": [
+            "Verificar la propuesta y su proveedor mediante fuentes oficiales",
+            "Copiar las direcciones por la promesa gratuita",
+            "Asumir que cualquier DNS impide todas las estafas"
+          ],
+          "answer": 0,
+          "explanation": "El cambio debe tener un motivo comprendido y una procedencia verificable. Un mensaje no demuestra necesidad ni confianza; consulta información oficial antes de modificar cómo buscan destinos los dispositivos de tu red.",
+          "wrongExplanations": [
+            null,
+            "Una promesa gratuita no explica quién opera el servicio ni qué hará con las consultas. Verifica la propuesta por un canal oficial antes de cambiar una configuración que afecta a varios dispositivos.",
+            "Un DNS no certifica la honestidad de todas las páginas ni elimina el phishing. Puede tener funciones adicionales, pero deben comprobarse y no sustituyen verificar destinos, peticiones y cuentas de cada servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Internet gratis por cambiar unas direcciones suena encantador, tesoro. Primero averigüemos quién lo promete y qué decisión intenta conseguir con ese regalo.",
+        "theory": "El DNS ayuda a encontrar destinos. No otorga honestidad universal; esa corona le queda demasiado grande incluso acompañada de números muy convincentes.",
+        "hint": "Separa la promesa del mensaje y la evidencia sobre quien presta el servicio. ¿Qué necesitas conocer antes de cambiar una configuración compartida?",
+        "correct": "Bien: verificar primero. La red conservará su criterio aunque una propuesta venga envuelta en la palabra gratis y una confianza bastante presumida.",
+        "soft": "La oferta puede llamar la atención. Mira ahora quién proporciona las direcciones y por qué ese cambio sería necesario para una conexión que ya funciona.",
+        "sharp": "Gratis no es una firma de confianza, carajo. No vamos a cambiar el mapa de destinos por el primer mensaje que nos guiñe un ojo.",
+        "pass": "Ya reconoces que cambiar DNS requiere una razón y una fuente verificables. Conserva referencias oficiales para consultar cualquier modificación inesperada de tu conexión.",
+        "review": "Repasa qué función cumple DNS y qué no garantiza. Después identifica la evidencia que falta para confiar en las direcciones propuestas por ese mensaje inesperado."
+      }
+    },
+    {
+      "id": "home-wifi-registros",
+      "title": "Leer avisos sin inventar una intrusión",
+      "minutes": 3,
+      "intro": "Utiliza registros y avisos como pistas con contexto para investigar cambios propios del router sin asumir que cada mensaje técnico confirma un acceso no autorizado.",
+      "sections": [
+        {
+          "title": "Un registro necesita interpretación",
+          "body": "El router puede mostrar conexiones, reinicios, intentos bloqueados y errores del sistema. Cada modelo registra datos diferentes y puede tener límites de conservación. Una entrada aislada no siempre demuestra intrusión; revisa hora, descripción y relación con actividades conocidas. Conserva información relevante sin publicarla íntegra y consulta soporte oficial si no entiendes un aviso. No borres registros por impulso durante una investigación, porque podrías perder contexto útil para explicar lo que ocurrió."
+        }
+      ],
+      "steps": [
+        "Lee la descripción y hora del aviso sin compartir datos privados.",
+        "Relaciona el evento con cambios conocidos o consulta soporte oficial."
+      ],
+      "scenario": "El registro muestra un reinicio a la misma hora de una actualización programada. Nadie ha revisado esa relación y una persona quiere borrar todos los registros después de anunciar que el mensaje confirma una intrusión.",
+      "questions": [
+        {
+          "prompt": "¿Qué análisis aporta más contexto?",
+          "options": [
+            "Eliminar inmediatamente cualquier registro",
+            "Relacionar el evento con el mantenimiento y conservar datos útiles",
+            "Publicar credenciales junto con todos los registros"
+          ],
+          "answer": 1,
+          "explanation": "La coincidencia con mantenimiento aporta una explicación que debe comprobarse antes de concluir. Conserva el contexto relevante y consulta soporte si quedan dudas, evitando borrar evidencia o publicar información sensible sin necesidad.",
+          "wrongExplanations": [
+            "Borrar registros elimina contexto sin explicar el evento. Revisa la coincidencia con la actualización y conserva los datos relevantes para que una consulta de soporte pueda valorar lo ocurrido con información suficiente.",
+            null,
+            "Las credenciales no son necesarias para interpretar un registro y deben mantenerse privadas. Comparte únicamente información pertinente mediante soporte oficial, revisando antes qué datos identificativos contiene el material que envías."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Un aviso técnico no trae siempre música de villano, cariño. Busquemos contexto antes de concederle el papel principal de una intrusión confirmada en nuestra casa.",
+        "theory": "Los registros muestran eventos; sus causas necesitan contexto. Hora y cambios conocidos explican más que acusaciones muy seguras hechas con pocos datos y mucho entusiasmo.",
+        "hint": "Compara hora y mantenimiento. Piensa qué perderías al borrar el evento y qué datos faltan para interpretar su causa correctamente.",
+        "correct": "Exacto: contexto y conclusión medida. El reinicio tiene una explicación que comprobar sin necesitar una película de intrusión para merecer nuestra atención técnica y cuidadosa.",
+        "soft": "El mensaje puede inquietar. Revisa horarios y cambios recientes, conservando información pertinente para una explicación del soporte sin entregar credenciales.",
+        "sharp": "Borrar porque asusta es una idea de mierda. Leamos el contexto antes de destruir una pista que podría explicar el supuesto drama.",
+        "pass": "Puedes interpretar avisos con contexto. Consulta dudas por soporte oficial sin convertir automáticamente cada nombre técnico en una intrusión confirmada.",
+        "review": "Separa hechos y explicaciones. Prepara datos mínimos para soporte, evitando credenciales y detalles privados que no ayudan a interpretar el evento."
+      }
+    },
+    {
+      "id": "home-wifi-cliente-desconocido",
+      "title": "Un cliente que no reconoces",
+      "minutes": 3,
+      "intro": "Investiga una conexión desconocida con inventario y coordinación familiar para contener accesos realmente no autorizados sin bloquear por error dispositivos legítimos que aparecen con etiquetas poco claras.",
+      "sections": [
+        {
+          "title": "Comprobar antes de atribuir",
+          "body": "Un cliente desconocido puede ser un equipo propio con nombre genérico, una dirección privada nueva o un dispositivo que alguien autorizó. Compara el inventario y consulta a las personas responsables. Si sigue sin explicación, revisa el procedimiento del router para limitar acceso y actualizar credenciales cuando corresponda. Un bloqueo basado en una dirección no demuestra quién estaba detrás. Conserva observaciones y pide soporte si necesitas interpretar la actividad o restablecer una configuración confiable."
+        }
+      ],
+      "steps": [
+        "Compara el cliente con equipos propios y accesos autorizados recientes.",
+        "Consulta el procedimiento de control si la conexión sigue sin reconocerse."
+      ],
+      "scenario": "Hay un cliente nuevo y tu familia conectó ayer una tableta. Su nombre no es claro; quieres distinguir una incorporación legítima de una conexión no autorizada antes de cambiar credenciales o bloquear equipos.",
+      "questions": [
+        {
+          "prompt": "¿Qué comprobación corresponde primero?",
+          "options": [
+            "Culpar a un vecino por el nombre genérico",
+            "Desactivar la seguridad para ver más nombres",
+            "Contrastar el cliente con el inventario y los accesos recientes"
+          ],
+          "answer": 2,
+          "explanation": "El inventario y la coordinación permiten identificar incorporaciones legítimas antes de atribuir un acceso ajeno. Si la diferencia persiste, aplica el procedimiento autorizado para revisar y limitar la conexión con contexto suficiente.",
+          "wrongExplanations": [
+            "Un nombre genérico no identifica a una persona ni demuestra que sea un vecino. Compara primero dispositivos y autorizaciones recientes para evitar una atribución sin evidencia que no ayuda a proteger la red.",
+            "Desactivar seguridad no es necesario para identificar un cliente y puede ampliar accesos. Utiliza el inventario y las funciones documentadas del router para investigar la conexión dentro de tu propia red.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Hay un nombre nuevo y ningún culpable confirmado, tesoro. Comparemos nuestros equipos antes de repartir acusaciones por una etiqueta extraña.",
+        "theory": "Los nombres genéricos complican el reconocimiento. El inventario y la coordinación aportan contexto para investigar conexiones sin convertir sospechas en atribuciones personales.",
+        "hint": "Mira los cambios legítimos recientes. Compara dispositivos y autorizaciones antes de elegir una hipótesis que todavía no has podido comprobar.",
+        "correct": "Bien: contraste con el inventario. Identificamos equipos propios antes de atender las diferencias que sigan sin explicación dentro del procedimiento autorizado.",
+        "soft": "La duda es razonable. Todavía necesitas comparar incorporaciones y autorizaciones recientes para saber si ese cliente pertenece realmente a una conexión ajena.",
+        "sharp": "Android no firmó una confesión del vecino, carajo. Busquemos nuestra tableta antes de convertir un nombre genérico en acusación doméstica.",
+        "pass": "Ya investigas con proporción. Si quedan diferencias tras el inventario, utiliza controles oficiales conservando observaciones útiles para explicar el problema.",
+        "review": "Revisa inventario y altas recientes. Describe cómo reconocerías al cliente y qué procedimiento seguirías si nadie responsable pudiera justificar su conexión."
+      }
+    },
+    {
+      "id": "home-wifi-limites-mac",
+      "title": "Por qué una dirección no es identidad",
+      "minutes": 3,
+      "intro": "Comprende las limitaciones de listas basadas en direcciones de dispositivos para utilizarlas como ayuda administrativa sin reemplazar autenticación ni tratar una etiqueta técnica como prueba de identidad personal.",
+      "sections": [
+        {
+          "title": "Un identificador con límites",
+          "body": "Las direcciones MAC identifican interfaces en redes locales, pero no constituyen una identidad personal fiable. Los sistemas pueden utilizar direcciones privadas y ciertos valores pueden cambiarse. Una lista de permitidos puede organizar accesos en algunos equipos, aunque no reemplaza un modo Wi-Fi adecuado y credenciales protegidas. Si un dispositivo cambia de dirección, investiga su configuración antes de atribuirlo a otra persona. Utiliza estos datos dentro de su contexto y no como garantía absoluta."
+        }
+      ],
+      "steps": [
+        "Consulta si tus dispositivos utilizan direcciones privadas para esa red.",
+        "Mantén autenticación adecuada aunque uses listas de clientes permitidos."
+      ],
+      "scenario": "El router admite una lista de direcciones permitidas y alguien propone retirar la contraseña Wi-Fi porque esa lista identifica de forma infalible a cada persona. Tu teléfono utiliza una dirección privada en esa red.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite tiene esa propuesta?",
+          "options": [
+            "Una dirección no reemplaza autenticación ni identifica infaliblemente personas",
+            "La lista convierte todos los dispositivos en anónimos absolutos",
+            "Cada dirección demuestra el nombre legal de su dueño"
+          ],
+          "answer": 0,
+          "explanation": "Las direcciones pueden cambiar y no equivalen a una identidad personal infalible. Una lista puede ayudar a gestionar clientes, pero conserva protocolos adecuados y credenciales en lugar de sustituirlos por ese identificador.",
+          "wrongExplanations": [
+            null,
+            "Una lista de direcciones no garantiza anonimato ni describe toda la información observable de una conexión. Su papel administrativo es limitado y debe combinarse con autenticación y configuración adecuadas de la red.",
+            "La dirección de una interfaz no demuestra el nombre legal de su propietario y puede variar. Evita atribuciones personales basadas únicamente en ella y conserva otros controles de acceso independientes de la lista."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Una dirección técnica no demuestra identidad personal, cariño. Hoy revisamos sus límites antes de confiarle toda la entrada de nuestra red.",
+        "theory": "Las listas pueden organizar clientes, pero sus identificadores admiten cambios. No les regalemos una corona de infalibilidad por contener números técnicos.",
+        "hint": "Distingue reconocer una interfaz y demostrar identidad personal. Piensa qué ocurre si un valor cambia mientras la lista sigue siendo el único control.",
+        "correct": "Exacto: ayuda limitada. La lista organiza sin dar vacaciones a protocolos y credenciales que siguen protegiendo el acceso de los equipos autorizados.",
+        "soft": "La precisión visual puede convencer. Añade ahora que esos valores cambian y no demuestran el nombre de la persona que utiliza un equipo.",
+        "sharp": "El número no recibió carnet de identidad, joder. Mantengamos autenticación en lugar de atribuir a la lista poderes que no tiene.",
+        "pass": "Reconoces el alcance del identificador. Puedes utilizar listas con contexto sin confundirlas con identidad personal ni reemplazar protección inalámbrica adecuada.",
+        "review": "Explica cómo afectan las direcciones privadas a una lista. Después distingue esa gestión administrativa del control de acceso mediante autenticación protegida."
+      }
+    },
+    {
+      "id": "home-wifi-copia-configuracion",
+      "title": "Una copia de la configuración",
+      "minutes": 3,
+      "intro": "Planifica cómo conservar ajustes de tu router de forma protegida para facilitar recuperación sin publicar archivos que puedan contener credenciales o información sensible sobre la red doméstica.",
+      "sections": [
+        {
+          "title": "Recuperar sin exponer secretos",
+          "body": "Algunos routers permiten exportar configuración y otros mantienen un procedimiento de recuperación gestionado por el proveedor. El archivo puede incluir secretos y detalles sensibles, así que guárdalo protegido y no lo publiques para pedir ayuda. Consulta compatibilidad y versión antes de restaurarlo. Una copia antigua puede reintroducir ajustes incorrectos o credenciales expuestas. Conserva una referencia de cuándo se creó y qué cambios legítimos contiene, utilizando siempre las opciones autorizadas del modelo."
+        }
+      ],
+      "steps": [
+        "Consulta el método oficial de copia o recuperación de configuración.",
+        "Guarda cualquier archivo exportado protegido y con fecha de referencia."
+      ],
+      "scenario": "Antes de cambiar opciones, exportas la configuración. Un foro pide que publiques el archivo entero para revisarlo, aunque no sabes si contiene contraseñas, datos del proveedor o detalles de las reglas internas de tu red.",
+      "questions": [
+        {
+          "prompt": "¿Qué manejo corresponde al archivo?",
+          "options": [
+            "Publicarlo completo para que cualquiera lo descargue",
+            "Protegerlo y consultar qué información contiene antes de compartir",
+            "Enviar también todas las contraseñas personales"
+          ],
+          "answer": 1,
+          "explanation": "Una copia de configuración puede contener secretos y debe tratarse como información sensible. Consérvala protegida y utiliza soporte oficial, compartiendo solo datos necesarios y revisados, en lugar de publicar el archivo íntegro.",
+          "wrongExplanations": [
+            "Publicar el archivo puede revelar credenciales y detalles de tu red. El hecho de pedir ayuda no elimina esa sensibilidad; utiliza el canal oficial y revisa qué información es realmente necesaria.",
+            null,
+            "Las contraseñas personales no son necesarias para revisar una configuración doméstica y deben permanecer privadas. Protege la copia exportada y evita añadir secretos ajenos al problema al material de soporte."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La copia puede guardar secretos, tesoro. Prepararemos recuperación sin entregar públicamente un archivo que podría contener las llaves de nuestra red.",
+        "theory": "Exportar no vuelve inocentes los ajustes. Compatibilidad, fecha y protección importan, especialmente antes de restaurar configuraciones que podrían recuperar problemas antiguos.",
+        "hint": "Piensa qué necesita guardar el router para funcionar. ¿Podría aparecer información sensible dentro del archivo que alguien te pide publicar completo?",
+        "correct": "Bien: copia protegida y contenido revisado. Una consulta pertinente puede ayudar sin entregar automáticamente todos los ajustes y sus posibles secretos.",
+        "soft": "Pedir ayuda tiene sentido. Comprueba qué contiene el archivo y qué canal oficial permite compartir únicamente información necesaria para explicar el problema.",
+        "sharp": "Exportar no fabricó un folleto público, carajo. Guardemos los posibles secretos antes de añadir otra exposición a la consulta que queríamos resolver.",
+        "pass": "Recuperación y privacidad pueden convivir. Conserva copias protegidas y fechadas, comprobando compatibilidad y ajustes antiguos antes de utilizarlas para restaurar el equipo.",
+        "review": "Explica dónde guardarías la copia y qué revisarías antes de restaurarla. Una descripción limitada suele ser mejor comienzo que publicar configuraciones completas."
+      }
+    },
+    {
+      "id": "home-wifi-reinicio-restablecimiento",
+      "title": "Reiniciar y restablecer no son iguales",
+      "minutes": 3,
+      "intro": "Distingue una interrupción temporal de un borrado de configuración para seguir instrucciones de soporte sin perder ajustes del proveedor ni acceso legítimo por confusión entre botones del equipo.",
+      "sections": [
+        {
+          "title": "Dos acciones con consecuencias distintas",
+          "body": "Reiniciar normalmente apaga y vuelve a iniciar el funcionamiento conservando ajustes. Restablecer de fábrica suele borrar configuraciones y devolver valores iniciales, según el modelo. Un botón puede tener funciones diferentes según cuánto tiempo se pulse. No adivines la duración ni utilices instrucciones de otro equipo. Consulta el procedimiento oficial y prepara recuperación si el soporte indica un restablecimiento. Avisa a quienes dependen de la conexión antes de realizar cualquiera de las dos acciones."
+        }
+      ],
+      "steps": [
+        "Busca la diferencia exacta entre reinicio y restablecimiento en tu manual.",
+        "Coordina la interrupción y prepara recuperación si se van a borrar ajustes."
+      ],
+      "scenario": "Soporte te pide reiniciar, pero un vídeo indica mantener pulsado un botón hasta borrar la configuración. Tu router contiene parámetros gestionados del proveedor y todavía no sabes cómo recuperarlos si desaparecen de su panel.",
+      "questions": [
+        {
+          "prompt": "¿Qué debes aclarar antes de pulsar?",
+          "options": [
+            "Solo el color que tendrán las luces",
+            "Cómo borrar también las contraseñas del correo",
+            "La acción exacta del botón y el procedimiento oficial solicitado"
+          ],
+          "answer": 2,
+          "explanation": "Reinicio y restablecimiento tienen efectos diferentes sobre los ajustes. Confirma la acción y el procedimiento de tu modelo para no convertir una interrupción temporal en un borrado que requiera recuperación gestionada.",
+          "wrongExplanations": [
+            "El color de las luces no basta para distinguir qué acción ejecutará una pulsación. Consulta la función del botón y confirma el procedimiento solicitado antes de arriesgar un borrado de configuración.",
+            "Los ajustes del router y las contraseñas del correo pertenecen a ámbitos distintos. La duda consiste en evitar un restablecimiento accidental, identificando la acción exacta y su procedimiento oficial para ese modelo.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Reiniciar y borrar ajustes no son gemelos, cariño. Averigüemos qué hace el botón antes de regalarle una pulsación demasiado entusiasta.",
+        "theory": "La duración puede cambiar una función. Manual y coordinación valen más que mi afición al drama cuando están en juego ajustes del proveedor.",
+        "hint": "Compara la petición de soporte y el efecto del vídeo. ¿Conservan lo mismo y corresponden realmente al procedimiento de tu modelo?",
+        "correct": "Exacto: aclarar antes de pulsar. El botón puede esperar mientras confirmamos que la instrucción no elimina ajustes que nadie preparó recuperar.",
+        "soft": "Los nombres se parecen. Consulta qué conserva cada acción y confirma la solicitada, especialmente cuando el borrado podría requerir intervención del proveedor.",
+        "sharp": "Seguir un vídeo no es diagnosticar, joder. Mi ironía no puede reconstruir mágicamente parámetros que nadie pensó guardar antes de borrarlos.",
+        "pass": "Distingues interrupción y borrado. Coordina ambas tareas y prepara recuperación cuando proceda, siguiendo instrucciones específicas del equipo que administras con autorización.",
+        "review": "Describe qué ocurre con los ajustes en cada acción. Después consulta el manual antes de asumir que ambas producen un resultado temporal idéntico."
+      }
+    },
+    {
+      "id": "home-wifi-corte-conexion",
+      "title": "Un corte no siempre es un ataque",
+      "minutes": 3,
+      "intro": "Distingue problemas de conexión mediante comprobaciones sencillas y avisos del proveedor para evitar atribuciones precipitadas o cambios de seguridad innecesarios cuando falta información sobre el fallo doméstico.",
+      "sections": [
+        {
+          "title": "Acotar el problema",
+          "body": "Una caída puede deberse a energía, cableado, mantenimiento del proveedor o un dispositivo concreto, entre otras causas. Comprueba si afecta a uno o varios equipos sin desactivar protecciones. Revisa avisos oficiales mediante una conexión alternativa si es necesario y sigue las indicaciones de soporte. La ausencia de internet no confirma un ataque, igual que volver a conectar no demuestra que cualquier configuración sea correcta. Anota el momento y los síntomas para explicar el problema con precisión."
+        }
+      ],
+      "steps": [
+        "Comprueba si el fallo afecta a uno o varios dispositivos propios.",
+        "Consulta avisos oficiales y registra síntomas para soporte."
+      ],
+      "scenario": "La computadora pierde internet y el teléfono sigue conectado a la misma red. Sin comprobar nada más, alguien propone borrar todos los ajustes de seguridad del router porque asegura que cualquier corte significa una intrusión en casa.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque ayuda a acotar el fallo?",
+          "options": [
+            "Comparar equipos afectados y reunir síntomas antes de cambiar ajustes",
+            "Borrar todas las protecciones por la primera sospecha",
+            "Atribuir el corte a una persona concreta sin evidencia"
+          ],
+          "answer": 0,
+          "explanation": "Comparar equipos y síntomas distingue un problema local de uno más amplio. Reúne información y consulta soporte antes de alterar seguridad; la interrupción por sí sola no demuestra un ataque ni su autor.",
+          "wrongExplanations": [
+            null,
+            "Eliminar protecciones sin diagnóstico puede ampliar riesgos sin resolver la causa. Compara el funcionamiento de tus dispositivos y los avisos oficiales para decidir el siguiente paso con información pertinente al fallo observado.",
+            "Un corte no identifica a una persona ni confirma una intrusión. Mantén conclusiones proporcionadas, registra los síntomas y utiliza comprobaciones propias y soporte oficial para entender qué componente necesita atención."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-basics",
+        "nsa-home"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La conexión cayó y falta información, tesoro. Observemos síntomas antes de escribir una historia donde las acusaciones llegan antes que los datos.",
+        "theory": "Un corte admite causas distintas. Comparar dispositivos y avisos aporta información; retirar protecciones por frustración no identifica automáticamente el origen del fallo.",
+        "hint": "El teléfono todavía conecta. Piensa qué aporta ese dato sobre el alcance del problema y qué comprobación sencilla permitiría acotarlo mejor.",
+        "correct": "Bien: síntomas comparados. La computadora recibe atención concreta mientras mantenemos controles y buscamos datos suficientes para orientar una consulta útil al soporte.",
+        "soft": "Perder conexión frustra. Separa observación y suposición: un teléfono funcionando aporta una pista sin demostrar todavía la causa exacta del otro fallo.",
+        "sharp": "El corte no dejó una confesión pegada al cable, carajo. Revisemos equipos y avisos antes de montar una novela de intrusos imaginados.",
+        "pass": "Puedes acotar problemas conservando protecciones. Registra síntomas y consulta avisos para no terminar con una colección de cambios que nadie sabe reconstruir.",
+        "review": "Anota equipos afectados, momento y avisos. Describe esos hechos sin atribuir causas y elige una comprobación autorizada que aporte más información."
+      }
+    },
+    {
+      "id": "home-wifi-cambiar-clave-compartida",
+      "title": "Cuando una clave ya no debe compartirse",
+      "minutes": 3,
+      "intro": "Organiza el cambio de una contraseña inalámbrica expuesta o compartida fuera del acuerdo para retirar accesos con coordinación, reconectar dispositivos autorizados y revisar las opciones de invitados disponibles.",
+      "sections": [
+        {
+          "title": "Retirar sin improvisar",
+          "body": "Si la contraseña de la red principal se ha compartido sin autorización, revisa quién necesita conservar acceso y planifica su sustitución mediante el panel oficial. Cambiarla puede desconectar dispositivos que deberán actualizar su configuración. No reutilices el nuevo secreto en tus cuentas ni lo publiques para facilitar la reconexión. Considera credenciales separadas para visitas y comprueba sesiones de administración si existe sospecha adicional. El cambio debe coordinarse con responsables y usuarios legítimos de la conexión."
+        }
+      ],
+      "steps": [
+        "Coordina qué dispositivos autorizados necesitarán actualizar su conexión.",
+        "Cambia la clave mediante el procedimiento oficial y guarda el nuevo secreto protegido."
+      ],
+      "scenario": "La contraseña principal terminó en un grupo de personas que no debían conservar acceso. Quieres retirarla, pero varios equipos familiares dependen de ella y una persona trabaja en línea durante la hora propuesta para el cambio.",
+      "questions": [
+        {
+          "prompt": "¿Qué plan responde mejor al caso?",
+          "options": [
+            "Publicar la nueva contraseña en el mismo grupo",
+            "Coordinar sustitución y reconectar solo dispositivos autorizados",
+            "Cambiar únicamente el nombre del televisor"
+          ],
+          "answer": 1,
+          "explanation": "La sustitución retira el secreto expuesto, pero requiere coordinación porque afecta a dispositivos legítimos. Distribuye el nuevo acceso solo a responsables autorizados y considera una red de invitados con credenciales independientes.",
+          "wrongExplanations": [
+            "Publicar el nuevo secreto en el grupo mantiene el mismo problema de acceso compartido sin control. Coordina el cambio y distribuye credenciales únicamente a quienes necesitan conservar una conexión autorizada.",
+            null,
+            "El nombre del televisor no modifica la credencial que el router acepta para asociar clientes. El problema exige revisar la contraseña compartida y planificar su sustitución con los usuarios y dispositivos legítimos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La clave salió sin permiso, cariño. Retirémosla con orden para no castigar de sorpresa a quienes trabajan legítimamente con nuestra conexión compartida.",
+        "theory": "Cambiar un secreto compartido desconecta equipos legítimos. Coordina su regreso y no resuelvas la exposición publicando el nuevo secreto ante los mismos destinatarios.",
+        "hint": "Relaciona retirar acceso y mantener usuarios legítimos. ¿Qué propuesta atiende ambas necesidades y qué cambios únicamente alteran un nombre visible del dispositivo?",
+        "correct": "Exacto: sustitución coordinada. Los equipos legítimos tienen reconexión prevista y la contraseña nueva no repetirá su visita al grupo que perdió autorización.",
+        "soft": "La intención es buena. Añade quién necesita reconectarse y cómo entregarás el acceso sin volver a exponerlo ante las personas que quieres retirar.",
+        "sharp": "Publicarla otra vez sería una solución de mierda recién estrenada. Cambiemos el secreto y su distribución para no renovar exactamente el mismo problema.",
+        "pass": "Has planificado consecuencias reales. Coordina personas y equipos, guarda el secreto y separa accesos temporales cuando tu router ofrezca controles adecuados de invitados.",
+        "review": "Identifica equipos legítimos, momento y distribución limitada. Explica cómo evitarás que el grupo no autorizado reciba la credencial durante el mismo cambio protector."
+      }
+    },
+    {
+      "id": "home-wifi-sospecha-incidente",
+      "title": "Una sospecha que merece ayuda",
+      "minutes": 3,
+      "intro": "Responde de forma proporcionada a cambios administrativos no reconocidos, conservando información y buscando soporte desde un dispositivo de confianza en lugar de borrar indicios o seguir instrucciones de contactos inesperados.",
+      "sections": [
+        {
+          "title": "Contener con información",
+          "body": "Si detectas ajustes cambiados sin autorización, verifica primero si hubo mantenimiento o una acción de otro responsable. Cuando la sospecha persista, conserva horas y observaciones y contacta al proveedor o soporte oficial desde un dispositivo de confianza. Sigue su procedimiento para limitar conexiones o recuperar configuración. No entregues credenciales a llamadas inesperadas ni borres registros por iniciativa propia. Una respuesta organizada busca restablecer control y comprender el alcance, evitando conclusiones y cambios que dificulten la investigación."
+        }
+      ],
+      "steps": [
+        "Comprueba cambios autorizados y conserva observaciones relevantes.",
+        "Contacta soporte oficial desde un dispositivo de confianza para acordar la recuperación."
+      ],
+      "scenario": "La administración muestra cambios que nadie responsable reconoce y se alteró la configuración de acceso. Recibes una llamada no solicitada que pide tu contraseña completa para arreglarlo y borrar todos los registros antes de que consultes al proveedor.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta conserva mejor el control?",
+          "options": [
+            "Dictar la contraseña porque la llamada dice ser soporte",
+            "Borrar registros y esperar sin revisar nada",
+            "Conservar datos y contactar tú al soporte oficial"
+          ],
+          "answer": 2,
+          "explanation": "Iniciar contacto por el canal oficial evita confiar en una llamada inesperada y permite seguir un procedimiento adecuado. Conserva contexto y secretos mientras se evalúan cambios, alcance y recuperación desde un dispositivo confiable.",
+          "wrongExplanations": [
+            "Afirmar que se es soporte no verifica una llamada. No dictes credenciales; conserva información y utiliza un canal oficial iniciado por ti para evaluar la configuración y acordar los pasos de recuperación.",
+            "Borrar registros elimina información útil y esperar no recupera control de una configuración sospechosa. Conserva observaciones y consulta soporte oficial para decidir una respuesta proporcionada basada en los cambios realmente detectados.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Cambios desconocidos y una llamada oportuna, tesoro. Conservemos secretos y observaciones mientras buscamos ayuda mediante una ruta que podamos verificar nosotros mismos.",
+        "theory": "La sospecha requiere contexto y contacto auténtico. Decir soporte no concede autoridad, y la urgencia tampoco sustituye un procedimiento documentado para recuperar control.",
+        "hint": "Compara quién inicia el contacto y qué pide. Piensa qué acciones conservarían contexto y cuáles entregarían acceso antes de verificar al interlocutor.",
+        "correct": "Bien: información conservada y contacto propio. La llamada quedó sin contraseña mientras buscamos una revisión oficial con datos, sin otra exposición ni borrados impulsivos.",
+        "soft": "Querer resolverlo rápido es normal. Confirma el canal y conserva observaciones para pedir ayuda sin añadir otra exposición de secretos o perder contexto.",
+        "sharp": "Decir soporte no legitima esa llamada, carajo. Si además pide secretos y borrar pistas, necesitamos todavía más una ruta verificable iniciada por nosotros.",
+        "pass": "Tu respuesta ya tiene orden: comprobar, conservar y contactar. Sigue instrucciones oficiales sin añadir atribuciones que los datos disponibles todavía no permiten justificar.",
+        "review": "Distingue cambios observados y acciones autorizadas. Conserva datos pertinentes sin contraseñas y plantea una consulta oficial iniciada por ti para evaluar recuperación."
+      }
+    },
+    {
+      "id": "home-wifi-plan-mantenimiento",
+      "title": "Tu plan doméstico de mantenimiento",
+      "minutes": 3,
+      "intro": "Reúne inventario, actualizaciones, accesos y recuperación en un plan doméstico comprensible para mantener las protecciones con responsables claros en lugar de depender de una única revisión aislada del router.",
+      "sections": [
+        {
+          "title": "Una rutina que se puede cumplir",
+          "body": "La protección doméstica combina configuración, mantenimiento y acuerdos entre personas. Conserva un inventario básico, referencias oficiales del equipo y responsables de revisar actualizaciones o avisos. Documenta cambios importantes sin escribir secretos en lugares públicos. Comprueba de vez en cuando que la recuperación sigue disponible y que los accesos de invitados conservan sentido. Ajusta el plan cuando incorporas dispositivos o termina el soporte; no necesitas cambiar contraseñas indiscriminadamente por calendario si no hay un motivo concreto."
+        }
+      ],
+      "steps": [
+        "Anota responsables y referencias oficiales para mantenimiento y recuperación.",
+        "Revisa el plan al incorporar equipos o recibir avisos relevantes."
+      ],
+      "scenario": "La red está configurada, pero nadie sabe quién revisará actualizaciones o dónde consultar recuperación. Quieres un acuerdo breve que incluya nuevos dispositivos y avisos del fabricante sin convertirlo en cambios semanales de contraseñas sin motivo conocido.",
+      "questions": [
+        {
+          "prompt": "¿Qué plan resulta más útil?",
+          "options": [
+            "Responsables claros, referencias oficiales y revisiones ante cambios relevantes",
+            "No volver a revisar nada después de la instalación",
+            "Publicar las claves y cambiarlas cada día por costumbre"
+          ],
+          "answer": 0,
+          "explanation": "Un plan sostenible asigna tareas, conserva referencias y responde a cambios reales como nuevos equipos o fin de soporte. Evita depender de la memoria de una persona o de rituales indiscriminados de contraseñas.",
+          "wrongExplanations": [
+            null,
+            "La instalación inicial no cubre nuevos dispositivos, avisos o fin de soporte futuros. Mantén un plan breve con responsables y referencias para que la configuración siga siendo comprensible y recuperable cuando cambien las necesidades.",
+            "Publicar secretos los expone y cambiarlos indiscriminadamente no sustituye revisar el riesgo. Organiza responsables, actualizaciones y recuperación, reservando sustituciones de credenciales para necesidades concretas como exposición o retirada de accesos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nsa-home",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Llegamos al plan, cariño: tareas cumplibles y responsables claros. Mi lado consentido no quiere recordar sola cada actualización del equipo que compartimos.",
+        "theory": "La seguridad no depende de una tarde heroica. Inventario, soporte y acuerdos pequeños sostienen decisiones útiles cuando cambian equipos, necesidades o mantenimiento.",
+        "hint": "Imagina las propuestas dentro de meses. ¿Quién entendería un aviso y dónde consultaría instrucciones para actuar con un motivo concreto de protección?",
+        "correct": "Exacto: responsables y referencias. La red necesita atención a cambios reales, sin ceremonias de contraseñas que sustituyan entender avisos y preparar recuperación legítima.",
+        "soft": "La intención ya está. Tradúcela en tareas concretas: quién revisa, qué cambios importan y dónde se consulta el procedimiento antes de modificar ajustes.",
+        "sharp": "Cambiar claves por deporte sin mirar soporte sería una rutina de mierda. Prefiero responsabilidades claras a un calendario teatral que nadie sabe explicar.",
+        "pass": "Curso completado: conserva un plan breve y documentación oficial. Una configuración comprensible facilita revisar cambios y recuperarte cuando aparezca un problema real.",
+        "review": "Relaciona responsables, equipos, actualizaciones y recuperación. Anota dudas para soporte para que la próxima revisión tenga referencias, en lugar de empezar de cero."
+      }
+    }
+  ]
+}

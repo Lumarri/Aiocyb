@@ -1,0 +1,1961 @@
+{
+  "id": "public-networks",
+  "title": "Redes públicas y conexiones móviles",
+  "description": "Conéctate fuera de casa con criterio: redes verificadas, cifrado, accesos limitados y respuesta tranquila ante señales sospechosas.",
+  "category": "Conexiones fuera de casa",
+  "symbol": "07",
+  "color": 4294942856,
+  "lessons": [
+    {
+      "id": "public-networks-capas",
+      "title": "Una red pública y varias capas",
+      "minutes": 3,
+      "intro": "Distingue la red que transporta datos del servicio que visitas para evaluar protecciones reales sin asumir que toda conexión pública revela automáticamente tus credenciales.",
+      "sections": [
+        {
+          "title": "Separar las responsabilidades",
+          "body": "Una red pública permite compartir infraestructura con personas que no conoces. Eso merece precauciones, pero no significa que todo contenido viaje visible: las conexiones HTTPS cifran la comunicación con los sitios correspondientes. También importan el estado del dispositivo, los permisos de compartir y la legitimidad del destino. Evalúa esas capas por separado. Una red bien identificada no vuelve honesta cualquier página, y una página cifrada no garantiza que cada función local esté bien configurada."
+        }
+      ],
+      "steps": [
+        "Identifica la red y la aplicación que vas a utilizar.",
+        "Comprueba el destino y las protecciones de la conexión por separado."
+      ],
+      "scenario": "En una biblioteca quieres abrir el portal oficial de estudios mediante HTTPS. Alguien asegura que por ser Wi-Fi público todas las contraseñas se muestran automáticamente a cada persona que está sentada cerca de ti.",
+      "questions": [
+        {
+          "prompt": "¿Qué evaluación es más precisa?",
+          "options": [
+            "La red pública siempre elimina el cifrado HTTPS",
+            "Hay varias capas y HTTPS protege el contenido de esa conexión",
+            "El nombre biblioteca garantiza la honestidad de cualquier página"
+          ],
+          "answer": 1,
+          "explanation": "HTTPS cifra el contenido de la comunicación con el sitio correspondiente, incluso sobre una red pública. Aun así debes verificar el destino y mantener el dispositivo y sus funciones compartidas correctamente protegidos.",
+          "wrongExplanations": [
+            "Conectarte a Wi-Fi público no desactiva automáticamente HTTPS. La conexión cifrada conserva una protección concreta, aunque debas revisar otros riesgos como la identidad del destino, los permisos locales y el mantenimiento.",
+            null,
+            "El nombre de una red no certifica todas las páginas que puedes visitar. Verifica cada destino y su conexión; las protecciones del transporte y la legitimidad del servicio son cuestiones relacionadas pero distintas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Compartir red no significa exhibir toda tu vida, cariño. Vamos a conocer las capas antes de regalarle poderes absurdos al miedo.",
+        "theory": "HTTPS hace un trabajo concreto; la red y el destino tienen otros. Mi ceja prefiere precisión a los cuentos de invisibilidad o desastre universal.",
+        "hint": "Separa contenido cifrado, identidad del sitio y configuración local. Pregúntate si una afirmación del caso está mezclando esas tres responsabilidades.",
+        "correct": "Exacto: capas y alcance real. La biblioteca no desactiva HTTPS por decreto, y tú conservas otras decisiones importantes sobre dispositivo y destino.",
+        "soft": "Es normal mezclar riesgos al principio. Revisa qué protege HTTPS y qué aspectos de la red o del dispositivo requieren comprobaciones diferentes.",
+        "sharp": "El Wi-Fi público no derrite todo cifrado, carajo. Revisemos riesgos reales antes de convertir cada mesa de biblioteca en una sala de espionaje mágico.",
+        "pass": "Primera distinción conseguida. Ya puedes evaluar una conexión pública con información concreta, evitando tanto las promesas absolutas como las alarmas que exageran su alcance.",
+        "review": "Repasa cada capa del recorrido: equipo, red y servicio. Explica qué protección corresponde a cada una antes de decidir sobre el caso."
+      }
+    },
+    {
+      "id": "public-networks-nombre-confirmado",
+      "title": "Confirmar el nombre de la red",
+      "minutes": 3,
+      "intro": "Verifica con el establecimiento el nombre y procedimiento de acceso antes de conectarte para reducir la confianza basada únicamente en etiquetas conocidas que cualquiera podría imitar.",
+      "sections": [
+        {
+          "title": "Un nombre no prueba propiedad",
+          "body": "El SSID es el nombre visible de una red inalámbrica. Puede parecerse al del local sin pertenecer a él, porque otra persona puede anunciar un nombre igual o convincente. Pregunta al personal por el acceso oficial y compara los detalles disponibles. Esa verificación reduce confusiones, aunque no garantiza por sí sola toda la seguridad del recorrido. Si no puedes aclarar cuál corresponde, utiliza una alternativa conocida o espera antes de realizar una tarea importante."
+        }
+      ],
+      "steps": [
+        "Pregunta al personal por el nombre y acceso oficiales.",
+        "Compara la información antes de seleccionar una red de la lista."
+      ],
+      "scenario": "En una cafetería aparecen CaféCentro y CaféCentroGratis. Un cartel antiguo no aclara la diferencia y un desconocido te indica conectarte a la segunda porque tiene un nombre más atractivo y promete mucha velocidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué dato deberías buscar antes de conectarte?",
+          "options": [
+            "La confirmación del acceso oficial por el establecimiento",
+            "Cuál nombre resulta más simpático",
+            "Qué desconocido habla más rápido"
+          ],
+          "answer": 0,
+          "explanation": "El establecimiento puede confirmar su procedimiento de acceso y evitar que elijas solo por apariencia. Un SSID atractivo o la recomendación de un desconocido no prueban quién administra realmente esa red.",
+          "wrongExplanations": [
+            null,
+            "El nombre puede ser elegido por quien anuncia la red y no demuestra propiedad. Confirma con el establecimiento cuál es el acceso oficial antes de conectar o proporcionar información en un portal.",
+            "La rapidez o seguridad al hablar no verifican quién controla una red. Utiliza información del establecimiento y compara el acceso oficial, manteniendo además protección del dispositivo y verificación de los destinos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La red que grita gratis no se ganó tu confianza, tesoro. Confirmemos el acceso del local antes de seguir el cartel más seductor.",
+        "theory": "Un SSID puede copiarse con bastante menos esfuerzo que mi peinado. El nombre orienta, pero no demuestra por sí mismo quién administra la conexión.",
+        "hint": "Busca una referencia vinculada al establecimiento y compárala con la recomendación recibida. ¿Qué evidencia explica realmente de quién es el acceso que vas a usar?",
+        "correct": "Bien: confirmación del local. Las etiquetas bonitas conservaron su encanto sin recibir autoridad automática sobre la decisión de conexión de tu dispositivo.",
+        "soft": "Los nombres similares confunden. Antes de elegir, busca una referencia del establecimiento que puedas relacionar con su procedimiento legítimo de acceso inalámbrico.",
+        "sharp": "Poner gratis en el nombre no expide un certificado de honestidad, joder. Preguntemos al local antes de enamorarnos de una etiqueta oportunista.",
+        "pass": "Ya puedes confirmar un acceso antes de seleccionarlo. Mantén esa costumbre cuando varios nombres intenten parecer la red esperada de un establecimiento.",
+        "review": "Distingue apariencia del nombre y evidencia de propiedad. Piensa qué referencia del local resolvería la ambigüedad sin confiar en un desconocido cercano."
+      }
+    },
+    {
+      "id": "public-networks-senal-fuerte",
+      "title": "La señal fuerte no autentica",
+      "minutes": 3,
+      "intro": "Interpreta la intensidad de señal como un dato de conexión y evita utilizarla como prueba de legitimidad cuando varias redes prometen pertenecer al mismo establecimiento.",
+      "sections": [
+        {
+          "title": "Potencia y confianza responden cosas distintas",
+          "body": "Las barras de señal describen una condición de recepción, no verifican la identidad de quien administra el punto de acceso. Una red cercana puede recibir mejor que la oficial del local y seguir sin ser la que necesitas. Tampoco una señal débil demuestra un ataque. Confirma nombre y procedimiento mediante el establecimiento, y evalúa por separado el funcionamiento. Esta diferencia evita que una conexión técnicamente cómoda se convierta en tu única razón para confiar en un acceso."
+        }
+      ],
+      "steps": [
+        "Observa la señal sin atribuirle una identidad al administrador.",
+        "Confirma el acceso oficial con una referencia del establecimiento."
+      ],
+      "scenario": "La red confirmada de un hotel tiene señal moderada. Otra con un nombre parecido aparece al máximo y una persona afirma que eso demuestra que es más oficial y segura, aunque recepción no la reconoce.",
+      "questions": [
+        {
+          "prompt": "¿Qué demuestran por sí solas las barras?",
+          "options": [
+            "El nombre legal de quien administra la red",
+            "Que todas las páginas visitadas serán honestas",
+            "La intensidad de recepción, sin autenticar al administrador"
+          ],
+          "answer": 2,
+          "explanation": "La intensidad informa sobre recepción y no demuestra la propiedad ni honestidad del punto de acceso. Mantén la verificación del establecimiento separada de las condiciones de funcionamiento que muestra el dispositivo.",
+          "wrongExplanations": [
+            "Las barras no identifican legalmente al administrador ni sustituyen confirmar el acceso con el hotel. Una red desconocida puede recibir bien por proximidad y seguir sin pertenecer al establecimiento.",
+            "La señal no certifica páginas ni sus peticiones. Incluso usando la red correcta debes verificar destinos y conexiones, porque la intensidad de recepción describe una condición técnica diferente de la legitimidad.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Muchas barras no significan mucha honestidad, cariño. La intensidad puede impresionar, pero no le entrega una identidad verificada al aparato que anuncia esa red.",
+        "theory": "La señal responde cómo recibes, no quién manda. Dos preguntas distintas merecen dos comprobaciones, aunque el indicador más brillante intente acaparar toda nuestra atención.",
+        "hint": "Relaciona el indicador con lo que mide físicamente. Después compara esa información con la afirmación sobre propiedad que alguien está haciendo en el caso.",
+        "correct": "Exacto: recepción y confianza separadas. La red potente no recibió documentos de identidad por aparecer arriba de la lista con todas sus barras satisfechas.",
+        "soft": "La buena señal resulta tentadora; distingue recepción e identidad antes de aceptar que una red potente pertenece necesariamente al hotel.",
+        "sharp": "Las barras no son estrellas de honestidad, carajo. El indicador mide señal; recepción sigue teniendo más autoridad para confirmar cuál es la red del establecimiento.",
+        "pass": "Ya puedes interpretar la señal sin convertirla en autenticación. Confirma el acceso y evalúa su funcionamiento como dos partes diferentes de la decisión de conexión.",
+        "review": "Explica qué miden las barras y qué referencia confirma el acceso antes de elegir una red solamente por su señal."
+      }
+    },
+    {
+      "id": "public-networks-red-con-clave",
+      "title": "Una contraseña compartida tiene límites",
+      "minutes": 3,
+      "intro": "Distingue el cifrado del enlace y la confianza en quienes comparten la red para evitar interpretar una contraseña pública de cafetería como garantía completa de seguridad.",
+      "sections": [
+        {
+          "title": "Todos pueden conocer el mismo secreto",
+          "body": "Una red pública puede requerir una contraseña que el local entrega a muchas personas. Eso no convierte a los demás usuarios en conocidos ni certifica todos los servicios de la red. La protección del enlace depende del modo utilizado y no equivale a verificar el destino. Confirma el acceso oficial y conserva cifrado de aplicaciones, actualizaciones y límites de compartir. No reutilices una contraseña del local como clave de una cuenta personal ni la confundas con tu propia credencial."
+        }
+      ],
+      "steps": [
+        "Comprueba para qué pantalla se entrega la contraseña del establecimiento.",
+        "Mantén separadas esa clave compartida y tus credenciales personales."
+      ],
+      "scenario": "La cafetería entrega la misma contraseña Wi-Fi a todas las mesas. Un acompañante asegura que, como la red tiene clave, cualquier persona conectada es de confianza y ya puedes compartir tus carpetas sin restricciones.",
+      "questions": [
+        {
+          "prompt": "¿Qué conclusión es más adecuada?",
+          "options": [
+            "La clave certifica a cada persona que está conectada",
+            "La clave compartida no verifica la confianza de todos los usuarios",
+            "La contraseña del local debe copiarse al correo personal"
+          ],
+          "answer": 1,
+          "explanation": "Una contraseña entregada a muchos clientes no identifica ni acredita a cada uno. Conserva límites sobre recursos compartidos y verifica servicios, aunque el enlace tenga un modo de protección configurado.",
+          "wrongExplanations": [
+            "Conocer una contraseña compartida no demuestra que una persona sea confiable. Puede haber muchos usuarios desconocidos; mantén límites locales y verifica destinos en lugar de asumir que todos han sido evaluados.",
+            null,
+            "La contraseña del local sirve para su acceso inalámbrico y no debe reutilizarse en tu cuenta. Utiliza credenciales personales únicas y mantén separadas la conexión a la red y la autenticación del correo."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La clave circula por muchas mesas, tesoro; eso no convierte a todos los usuarios en personas conocidas y verificadas personalmente.",
+        "theory": "Un secreto compartido protege una función concreta sin acreditar personas; tus recursos locales todavía necesitan sus propios límites de acceso.",
+        "hint": "Piensa quién puede recibir la clave y qué demuestra conocerla antes de atribuir confianza a cada persona que está conectada.",
+        "correct": "Bien: secreto compartido no significa usuarios acreditados; las carpetas conservarán límites aunque todos pidan la misma contraseña junto con su desayuno.",
+        "soft": "La presencia de clave tranquiliza; revisa ahora cómo se distribuye y qué información aporta realmente sobre las personas conectadas a ella.",
+        "sharp": "La pizarra no canonizó a cada cliente, joder; tus carpetas no necesitan ofrecer un buffet porque todos conocen esa contraseña.",
+        "pass": "Reconoces los límites de una clave compartida; mantén credenciales personales independientes y permisos locales apropiados cuando utilizas redes de establecimientos públicos.",
+        "review": "Separa cifrado del enlace y confianza personal; explica por qué conocer un secreto público no autoriza a consultar tus recursos privados."
+      }
+    },
+    {
+      "id": "public-networks-portal-cautivo",
+      "title": "Qué hace un portal cautivo",
+      "minutes": 3,
+      "intro": "Reconoce una página de acceso del establecimiento y diferencia sus condiciones de uso de las credenciales personales que pertenecen a servicios externos como correo o banca.",
+      "sections": [
+        {
+          "title": "Una pantalla previa a navegar",
+          "body": "Algunas redes muestran una página antes de permitir acceso general a internet. Puede presentar condiciones o un procedimiento específico del establecimiento. Se conoce como portal cautivo y también puede imitarse. Confirma con el personal qué pantalla y datos se esperan. No asumas que cualquier formulario abierto tras conectar es legítimo. Si solicita contraseñas de otros servicios o instalar cambios inesperados, detente y verifica el procedimiento por una referencia independiente del propio formulario que estás viendo."
+        }
+      ],
+      "steps": [
+        "Pregunta qué proceso de acceso utiliza el establecimiento.",
+        "Compara la pantalla y los datos solicitados con esa información."
+      ],
+      "scenario": "Tras conectar al Wi-Fi de un hotel aparece una página que pide la contraseña completa de tu correo. Recepción había indicado que su portal únicamente solicita aceptar condiciones y un código entregado al huésped.",
+      "questions": [
+        {
+          "prompt": "¿Qué detalle exige detenerte y verificar?",
+          "options": [
+            "Que exista cualquier página de condiciones",
+            "Que la contraseña externa no coincida con el procedimiento confirmado",
+            "Que el hotel ofrezca acceso inalámbrico a sus huéspedes"
+          ],
+          "answer": 1,
+          "explanation": "La solicitud de una contraseña externa no corresponde al procedimiento confirmado por recepción. Detente y consulta de forma independiente; abrirse después de conectar no demuestra que un formulario sea legítimo.",
+          "wrongExplanations": [
+            "Un portal legítimo puede mostrar condiciones de uso y eso no demuestra engaño por sí solo. La discrepancia concreta es pedir una contraseña externa que el procedimiento confirmado no requiere.",
+            null,
+            "Ofrecer Wi-Fi no indica automáticamente fraude ni confirma cualquier pantalla que aparezca. Compara el portal con el proceso oficial y verifica las solicitudes inesperadas de información que pertenecen a otras cuentas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El portal pide demasiado, cariño; confirmemos el proceso del hotel antes de ofrecer secretos que pertenecen a tus otras cuentas personales.",
+        "theory": "Aparecer después de conectar no legitima un formulario; cada petición necesita relación con el procedimiento que reconoce el establecimiento responsable.",
+        "hint": "Compara las instrucciones de recepción y la solicitud de pantalla; busca qué diferencia concreta puedes verificar mediante una referencia independiente.",
+        "correct": "Exacto: la petición contradice el proceso confirmado; el correo conserva su secreto mientras consultamos qué pantalla corresponde realmente al acceso del hotel.",
+        "soft": "La secuencia parece automática; revisa los datos pedidos y compáralos con el procedimiento oficial antes de introducir una contraseña en ese formulario.",
+        "sharp": "El portal no heredó tu correo por llegar primero, carajo; recepción describió otro proceso y necesitamos aclarar esa diferencia antes de compartir secretos.",
+        "pass": "Puedes interpretar portales sin confianza automática; confirma procedimiento y datos esperados, manteniendo separados acceso del establecimiento y credenciales de otras cuentas.",
+        "review": "Revisa qué indicó recepción y qué pide la pantalla; formula una consulta independiente que permita aclarar la discrepancia sin entregar contraseñas."
+      }
+    },
+    {
+      "id": "public-networks-portal-datos",
+      "title": "Datos que un acceso realmente necesita",
+      "minutes": 3,
+      "intro": "Evalúa la proporcionalidad de los datos solicitados para usar una conexión y decide si prefieres verificar, utilizar otra alternativa o no aceptar las condiciones del establecimiento.",
+      "sections": [
+        {
+          "title": "Conectar también implica decisiones de privacidad",
+          "body": "Un establecimiento puede pedir datos para proporcionar acceso y debe explicar su procedimiento. Eso no significa que debas aceptar cualquier solicitud o que la conexión sea obligatoria. Lee qué campos exige, distingue opcionales y revisa la información de privacidad disponible. Una petición excesiva o no esperada requiere aclaración por un canal legítimo. Puedes elegir datos móviles o esperar sin proporcionar información que no quieras compartir; nunca inventes consentimiento de otras personas para completar el formulario."
+        }
+      ],
+      "steps": [
+        "Lee campos obligatorios y opcionales antes de enviar datos.",
+        "Consulta solicitudes inesperadas o elige una alternativa si no deseas aceptarlas."
+      ],
+      "scenario": "Para utilizar Wi-Fi durante unos minutos, un formulario pide acceso a todos tus contactos y autorización de publicidad. No entiendes para qué necesita esos permisos y dispones de una conexión móvil propia como alternativa temporal.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión conserva tu control?",
+          "options": [
+            "Aceptar todo sin leer por tratarse de Wi-Fi",
+            "Ofrecer contactos de otras personas sin consultarlas",
+            "Aclarar las condiciones o elegir otra conexión"
+          ],
+          "answer": 2,
+          "explanation": "El acceso no obliga a aceptar peticiones que no comprendes o no deseas. Consulta el procedimiento y sus condiciones por un canal legítimo, o utiliza una alternativa sin entregar datos adicionales por impulso.",
+          "wrongExplanations": [
+            "Que un formulario acompañe al Wi-Fi no justifica aceptar cualquier permiso. Revisa la finalidad de los datos y decide de manera informada, utilizando otra conexión si no deseas esas condiciones.",
+            "Los contactos incluyen información de otras personas y no deben entregarse sin considerar su privacidad. Aclara la necesidad del permiso o utiliza una alternativa en lugar de concederlo automáticamente para obtener conexión.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El acceso quiere tu agenda, tesoro; preguntemos qué relación tienen esos contactos con conectarte durante unos minutos a la red del local.",
+        "theory": "Leer y decidir también forman parte de conectar; una oferta gratuita no obliga a aceptar permisos que no comprendes o no deseas.",
+        "hint": "Relaciona la tarea y los permisos solicitados; piensa qué opciones conservas cuando desconoces la finalidad de los datos que pide el formulario.",
+        "correct": "Bien: aclaración o alternativa elegida; una casilla conveniente no consiguió permiso ilimitado sobre información propia y datos de otras personas de tu agenda.",
+        "soft": "Querer conexión rápida es normal; identifica finalidad y permisos antes de aceptar acceso a información que otras personas tampoco te pidieron compartir.",
+        "sharp": "Gratis no significa barra libre para contactos, joder; leamos la propuesta antes de regalar datos de personas que ni siquiera están aquí.",
+        "pass": "Puedes evaluar condiciones conservando decisión; revisa finalidad, datos y alternativas antes de conceder permisos que excedan tu intención de utilizar acceso temporal.",
+        "review": "Separa el servicio ofrecido y los permisos exigidos; prepara una pregunta sobre finalidad y una alternativa si no quieres aceptar esas condiciones."
+      }
+    },
+    {
+      "id": "public-networks-https",
+      "title": "Qué protege HTTPS fuera de casa",
+      "minutes": 3,
+      "intro": "Identifica una conexión HTTPS y comprende que cifra el contenido en tránsito con el sitio correspondiente, sin convertir la red o el negocio visitado en entidades automáticamente confiables.",
+      "sections": [
+        {
+          "title": "Cifrado en el recorrido hacia el sitio",
+          "body": "HTTPS utiliza una conexión cifrada entre tu aplicación o navegador y el servicio correspondiente, validando su identidad mediante certificados según las comprobaciones del sistema. Eso dificulta leer o alterar el contenido durante el tránsito, incluso usando una red pública. No oculta necesariamente todos los metadatos ni demuestra la honestidad comercial del sitio. Comprueba el dominio esperado y respeta los avisos de seguridad en lugar de reducir toda la evaluación al dibujo de un candado."
+        }
+      ],
+      "steps": [
+        "Comprueba el dominio y el uso de HTTPS en el acceso oficial.",
+        "Detente si aparecen avisos de seguridad que no comprendes."
+      ],
+      "scenario": "Abres el dominio oficial de tu centro mediante HTTPS en una biblioteca. No aparecen avisos del navegador y una persona cree que el cifrado desaparece automáticamente por compartir el punto de acceso con desconocidos del establecimiento.",
+      "questions": [
+        {
+          "prompt": "¿Qué sigue protegiendo HTTPS en ese caso?",
+          "options": [
+            "El contenido de la comunicación cifrada con el sitio correspondiente",
+            "La honestidad de cualquier vendedor del mundo",
+            "La identidad personal de todos los usuarios del Wi-Fi"
+          ],
+          "answer": 0,
+          "explanation": "La conexión HTTPS protege el contenido en tránsito con el servicio correspondiente y no desaparece por usar Wi-Fi público. Mantén además verificación del dominio y atención a los avisos del navegador.",
+          "wrongExplanations": [
+            null,
+            "HTTPS no evalúa la honestidad de todos los negocios y puede existir en páginas engañosas. Su protección se refiere a la conexión con el sitio, cuyo dominio y peticiones también debes verificar.",
+            "HTTPS no identifica a las otras personas conectadas al punto de acceso. Protege una comunicación concreta con el servicio correspondiente, mientras la confianza y configuración de la red requieren consideraciones adicionales."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "HTTPS tiene un trabajo concreto, cariño; la biblioteca no lo elimina automáticamente porque también permita conectar a personas que tú no conoces.",
+        "theory": "El contenido viaja cifrado hacia el servicio correspondiente; eso no firma honestidad comercial ni identifica a cada usuario que comparte infraestructura inalámbrica.",
+        "hint": "Ubica ambos extremos de HTTPS; después compara ese tramo con las propuestas que hablan de vendedores o personas ajenas a esa comunicación.",
+        "correct": "Exacto: contenido protegido en tránsito; todavía verificas dominio y avisos sin convertir el candado en una garantía universal sobre cualquier otra cuestión.",
+        "soft": "La red compartida puede generar dudas; vuelve a los extremos de HTTPS y distingue esa protección de la confianza en usuarios o negocios.",
+        "sharp": "El cifrado no se asusta porque otra mesa pida café, carajo; protejamos precisión sin conceder certificados universales de buena conducta a nadie.",
+        "pass": "Explicas una protección útil sin exagerarla; conserva HTTPS, verifica destino y atiende avisos junto con los controles que corresponden al dispositivo utilizado.",
+        "review": "Señala quién se comunica mediante HTTPS; después identifica qué dudas siguen abiertas sobre el destino o la red pese al contenido cifrado."
+      }
+    },
+    {
+      "id": "public-networks-candado-limites",
+      "title": "Una página cifrada también puede engañar",
+      "minutes": 3,
+      "intro": "Separa la protección de la comunicación y la legitimidad de una petición para reconocer que un sitio fraudulento puede utilizar HTTPS y presentar una apariencia profesional convincente.",
+      "sections": [
+        {
+          "title": "El candado no evalúa intenciones",
+          "body": "Una página engañosa puede conseguir una conexión HTTPS para su propio dominio. El cifrado protege lo que envías hacia ese sitio, pero no decide si deberías entregárselo. Revisa el dominio completo y la acción que solicita, especialmente si pide credenciales o pagos inesperados. Un logotipo conocido puede copiarse. Para comprobar un aviso importante, abre la aplicación o dirección oficial por tu cuenta en lugar de utilizar únicamente el enlace que te presenta la página sospechosa."
+        }
+      ],
+      "steps": [
+        "Relaciona el dominio completo con el servicio que esperabas visitar.",
+        "Verifica solicitudes inesperadas mediante un acceso oficial independiente."
+      ],
+      "scenario": "Una página con HTTPS y logotipo de tu banco solicita la clave del correo para validar el Wi-Fi. El dominio no coincide con el banco y llegaste desde una ventana inesperada al conectarte a la red pública del local.",
+      "questions": [
+        {
+          "prompt": "¿Qué conclusión corresponde?",
+          "options": [
+            "El candado obliga a confiar en cualquier petición",
+            "La conexión cifrada no justifica la solicitud ni el dominio ajeno",
+            "El logotipo demuestra que el banco controla el sitio"
+          ],
+          "answer": 1,
+          "explanation": "HTTPS puede proteger la comunicación con un sitio fraudulento sin legitimar sus peticiones. El dominio ajeno y la solicitud inesperada requieren detenerse y verificar por el canal oficial, sin entregar la contraseña del correo.",
+          "wrongExplanations": [
+            "El candado indica una propiedad de la conexión y no ordena compartir datos. Debes revisar el dominio y la necesidad de cada solicitud, porque un sitio engañoso también puede utilizar HTTPS.",
+            null,
+            "Un logotipo es fácil de copiar y no acredita el control del dominio. La petición de una contraseña externa no se justifica por el diseño; confirma cualquier aviso mediante un acceso oficial independiente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El candado es bonito, tesoro; todavía debemos decidir si corresponde entregar datos a la petición que aparece en esa página tan convincente.",
+        "theory": "Puedes cifrar una entrega al destinatario equivocado; dominio, contexto y necesidad siguen importando cuando decides compartir información con un servicio que no reconoces.",
+        "hint": "Separa cómo viajan los datos y quién los recibe; relaciona después la petición concreta con la tarea que esperabas realizar al conectarte.",
+        "correct": "Bien: cifrado sin confianza automática; la página conserva su conexión, pero verificaremos la petición por una ruta oficial antes de entregar secretos ajenos.",
+        "soft": "El diseño puede convencer mucho; mira dominio y solicitud para distinguir la protección del recorrido y la decisión de compartir un dato concreto.",
+        "sharp": "El candado no canonizó al farsante, joder; una entrega perfectamente cifrada puede seguir terminando en las manos equivocadas si no verificamos el destino.",
+        "pass": "Distingues conexión protegida y solicitud legítima; conserva verificación del dominio y de cada acción pedida, utilizando referencias oficiales ante avisos que no esperabas.",
+        "review": "Identifica quién recibiría los datos y qué pretende obtener; explica por qué HTTPS no basta para justificar esa petición concreta del formulario."
+      }
+    },
+    {
+      "id": "public-networks-certificado-aviso",
+      "title": "No atravesar avisos por prisa",
+      "minutes": 3,
+      "intro": "Interpreta un aviso de certificado como una señal que requiere revisión y evita introducir secretos mientras la aplicación no pueda validar la conexión esperada al servicio que querías utilizar.",
+      "sections": [
+        {
+          "title": "Detenerse sin inventar una causa",
+          "body": "Un aviso sobre certificados puede aparecer por problemas del sitio, fecha del dispositivo, un portal pendiente u otras causas. No demuestra por sí solo un ataque, pero significa que la validación esperada no está completándose correctamente. No lo ignores para introducir credenciales. Comprueba hora y dominio, consulta el acceso del establecimiento si corresponde y utiliza otra conexión o soporte oficial. No instales certificados enviados por desconocidos para hacer desaparecer un aviso que todavía no comprendes."
+        }
+      ],
+      "steps": [
+        "Detén la introducción de datos y lee el dominio del aviso.",
+        "Comprueba hora y acceso oficial, o utiliza otra conexión para consultar soporte."
+      ],
+      "scenario": "Al abrir el servicio oficial aparece un aviso de certificado inesperado. Un desconocido propone continuar de todos modos y escribir la contraseña, aunque todavía no sabes si hay un error del sitio, de fecha o del acceso público que usas.",
+      "questions": [
+        {
+          "prompt": "¿Qué mantiene una respuesta proporcionada?",
+          "options": [
+            "Declarar que el aviso demuestra quién te está atacando",
+            "Ignorar el aviso porque necesitas entrar deprisa",
+            "Detener datos sensibles y revisar mediante referencias oficiales"
+          ],
+          "answer": 2,
+          "explanation": "El aviso no identifica una causa única, pero impide confiar normalmente en esa validación. Detén el envío de secretos y comprueba dominio, hora y procedimiento oficial o utiliza otra conexión antes de continuar.",
+          "wrongExplanations": [
+            "El aviso puede tener varias causas y no identifica automáticamente a una persona atacante. Mantén una conclusión proporcionada y revisa la validación mediante comprobaciones y soporte oficiales antes de entregar información sensible.",
+            "La prisa no corrige una validación fallida ni demuestra que el destino sea el esperado. Detente y comprueba el aviso mediante referencias oficiales o una conexión alternativa antes de introducir contraseñas u otros secretos.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El navegador protesta, cariño; revisemos sin inventar culpables ni entregar secretos mientras falta comprender por qué la conexión no se valida normalmente.",
+        "theory": "Un aviso admite varias causas sin volverse decorativo; necesitamos comprobar dominio, hora y procedimiento antes de continuar enviando datos hacia el servicio.",
+        "hint": "Distingue conocer la causa y reconocer una validación incompleta; piensa qué datos puedes comprobar sin afirmar culpables ni ignorar la advertencia recibida.",
+        "correct": "Exacto: detener y comprobar; respetamos el aviso sin inventar un villano ni cruzarlo por prisa antes de entender la conexión que estamos utilizando.",
+        "soft": "El aviso puede confundir; conserva tus secretos, identifica dominio y consulta referencias oficiales antes de elegir una explicación o decidir seguir adelante sin comprobaciones.",
+        "sharp": "La prisa no repara certificados, carajo; el aviso no es decoración y mi ironía tampoco puede convertirlo mágicamente en una validación correcta.",
+        "pass": "Puedes responder sin pánico ni obediencia ciega; conserva datos mientras revisas validación y utiliza alternativas oficiales cuando necesites aclarar una conexión inesperada.",
+        "review": "Separa aviso y causa todavía desconocida; prepara comprobaciones de dominio y hora junto con una ruta oficial para pedir ayuda sin entregar credenciales."
+      }
+    },
+    {
+      "id": "public-networks-no-instalar-perfiles",
+      "title": "Perfiles y certificados no son un trámite cualquiera",
+      "minutes": 3,
+      "intro": "Reconoce que instalar perfiles o certificados puede cambiar la confianza y configuración del dispositivo y exige una explicación legítima antes de aceptar indicaciones recibidas en un acceso público que no administras.",
+      "sections": [
+        {
+          "title": "Cambios que permanecen después de conectar",
+          "body": "Un portal puede intentar convencerte de instalar un perfil de configuración, un certificado o una aplicación para conectarte. Esos cambios pueden tener efectos que superan esa sesión, dependiendo del sistema y los permisos concedidos. Una organización legítima puede utilizar configuraciones gestionadas, pero debe ofrecer instrucciones verificables y autorización correspondiente. No aceptes una instalación inesperada solo para quitar una advertencia. Consulta al establecimiento o a tu soporte y utiliza una alternativa si no comprendes el alcance del cambio solicitado."
+        }
+      ],
+      "steps": [
+        "Lee qué elemento pretende instalarse y qué permisos cambia.",
+        "Verifica el procedimiento mediante la organización o soporte legítimo antes de aceptarlo."
+      ],
+      "scenario": "El Wi-Fi de una estación pide instalar un certificado para quitar avisos de seguridad. El personal no lo reconoce y ninguna instrucción oficial explica qué confianza o permisos cambiaría en tu teléfono.",
+      "questions": [
+        {
+          "prompt": "¿Qué haces con esa instalación inesperada?",
+          "options": [
+            "Detenerla y verificar el procedimiento por una referencia legítima",
+            "Aceptarla porque cualquier certificado mejora la seguridad",
+            "Instalarla también en teléfonos de otras personas sin permiso"
+          ],
+          "answer": 0,
+          "explanation": "Una instalación puede alterar confianza o configuración más allá de esa conexión. No aceptes un requisito inesperado sin explicación verificable; consulta soporte legítimo o utiliza otra opción en lugar de eliminar avisos mediante cambios desconocidos.",
+          "wrongExplanations": [
+            null,
+            "Un certificado no mejora automáticamente toda seguridad; su efecto depende del uso y confianza que configura. Instalar uno desconocido para quitar avisos puede cambiar protecciones, por lo que necesitas instrucciones y autorización verificables.",
+            "No debes modificar dispositivos de otras personas sin permiso y eso tampoco valida la instalación. Detén el proceso y verifica alcance, origen y procedimiento con una referencia legítima antes de realizar cambios persistentes."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El portal quiere dejar cambios duraderos, tesoro; comprobemos qué instala y quién lo respalda antes de aceptar un recuerdo permanente de esa conexión.",
+        "theory": "Un perfil puede cambiar ajustes y confianza; una instalación legítima necesita procedimiento verificable, no únicamente la promesa de silenciar avisos que todavía desconoces.",
+        "hint": "Compara duración del acceso y posibles efectos del cambio; identifica qué información falta sobre origen, autorización y alcance antes de instalar ese elemento.",
+        "correct": "Bien: instalación detenida; el teléfono conserva sus ajustes mientras buscamos una explicación legítima sobre el cambio persistente que pretendía hacer ese portal inesperado.",
+        "soft": "La petición parece parte del acceso; revisa sus efectos y consulta una referencia independiente antes de aceptar cambios que podrían permanecer después de desconectar.",
+        "sharp": "Llamarse certificado no vuelve santo al archivo, joder; no premiaremos una instalación desconocida con permisos duraderos solo para que deje de molestar.",
+        "pass": "Reconoces cambios que superan una sesión; verifica perfiles y certificados antes de instalarlos y consulta soporte legítimo si ya aceptaste algo inesperado sin comprenderlo.",
+        "review": "Repasa origen, efecto y duración del cambio; identifica quién podría confirmar el procedimiento y qué alternativa utilizarías mientras no exista esa explicación legítima."
+      }
+    },
+    {
+      "id": "public-networks-tarea-importante",
+      "title": "Elegir el momento y la conexión",
+      "minutes": 3,
+      "intro": "Valora qué tarea necesitas realizar y qué comprobaciones puedes completar para elegir una conexión o posponer la acción sin convertir la urgencia en confianza automática.",
+      "sections": [
+        {
+          "title": "Una decisión según el contexto",
+          "body": "No todas las tareas requieren la misma información ni tienen las mismas consecuencias. Leer un horario no equivale a cambiar los datos de recuperación de una cuenta. Si no puedes verificar la red o aparece un aviso inesperado, puedes utilizar datos móviles propios o esperar. Esto no significa que HTTPS deje de proteger en una red pública. Se trata de elegir un contexto que comprendes y en el que puedes comprobar los controles relevantes antes de continuar."
+        }
+      ],
+      "steps": [
+        "Identifica qué datos o cambios requiere la tarea.",
+        "Elige una conexión conocida o espera si faltan comprobaciones importantes."
+      ],
+      "scenario": "Necesitas modificar la recuperación de tu correo y el acceso público muestra un portal que no logras verificar. Tienes datos móviles disponibles y el cambio no requiere realizarse inmediatamente dentro del establecimiento.",
+      "questions": [
+        {
+          "prompt": "¿Qué opción conserva una decisión informada?",
+          "options": [
+            "Continuar cualquier pantalla porque la tarea parece urgente",
+            "Usar una alternativa conocida o esperar hasta verificar el acceso",
+            "Entregar la contraseña al primer cliente que ofrezca ayuda"
+          ],
+          "answer": 1,
+          "explanation": "Una alternativa conocida o esperar permite recuperar contexto y completar verificaciones. La decisión responde a una tarea sensible y un acceso no aclarado, sin afirmar que todas las redes públicas anulan HTTPS.",
+          "wrongExplanations": [
+            "La urgencia percibida no valida un portal ni sus solicitudes. Si puedes utilizar datos propios o esperar, conserva tus secretos hasta completar las comprobaciones necesarias para modificar una cuenta importante.",
+            null,
+            "Otra persona del establecimiento no necesita tu contraseña para aclarar el acceso inalámbrico. Mantén la credencial privada y utiliza soporte oficial o una conexión alternativa antes de realizar cambios de recuperación."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La tarea importa, cariño; el contexto también merece atención antes de que la prisa elija por ti.",
+        "theory": "Podemos cambiar de conexión sin inventar desastres universales: buscamos un entorno donde comprender y comprobar lo necesario.",
+        "hint": "Relaciona la sensibilidad del cambio con las dudas pendientes y observa qué alternativas conservas antes de seguir.",
+        "correct": "Elegiste contexto y control, tesoro; el correo no necesitó confiar en un portal que todavía no entiendes.",
+        "soft": "La urgencia puede empujar bastante; revisa las alternativas disponibles antes de decidir qué acción necesitas realizar ahora.",
+        "sharp": "La prisa no autentica portales, carajo; cambiemos de contexto antes de entregar secretos a una duda todavía abierta.",
+        "pass": "Ya puedes ajustar la conexión a tu tarea sin confundir prudencia contextual con una prohibición universal del Wi-Fi.",
+        "review": "Repasa qué falta verificar y qué opciones tienes para completar la tarea manteniendo control sobre cada decisión."
+      }
+    },
+    {
+      "id": "public-networks-vpn-recorrido",
+      "title": "El recorrido que protege una VPN",
+      "minutes": 3,
+      "intro": "Comprende que una VPN cifra un tramo hacia su servidor y evalúa esa protección sin confundirla con la legitimidad de los servicios visitados después de salir del túnel.",
+      "sections": [
+        {
+          "title": "Un túnel con extremos definidos",
+          "body": "Una VPN puede cifrar tráfico entre tu dispositivo y el servidor del proveedor de VPN, según cómo esté configurada. La red local observa ese uso, pero no el contenido protegido dentro de ese tramo. El tráfico continúa después hacia sus destinos, donde HTTPS sigue siendo importante. No todas las aplicaciones necesariamente atraviesan el mismo túnel. Comprende qué cubre tu configuración y quién opera el servicio antes de atribuirle protección total o utilizarlo por una recomendación desconocida."
+        }
+      ],
+      "steps": [
+        "Identifica el proveedor y qué tráfico incluye la configuración VPN.",
+        "Mantén HTTPS y verificación del destino aunque utilices el túnel."
+      ],
+      "scenario": "Instalas una VPN conocida y preguntas qué cambia. Una persona afirma que su túnel protege un recorrido concreto; otra dice que transforma cualquier página fraudulenta en un destino fiable y elimina todas las demás comprobaciones necesarias.",
+      "questions": [
+        {
+          "prompt": "¿Qué alcance corresponde a la función del túnel?",
+          "options": [
+            "Proteger el tramo configurado hacia el servidor VPN",
+            "Certificar todas las páginas que visitas",
+            "Cambiar las intenciones de quien recibe tus datos"
+          ],
+          "answer": 0,
+          "explanation": "La VPN protege un tramo y un conjunto de tráfico según configuración. No certifica páginas ni modifica intenciones de destinatarios; conserva HTTPS y verifica el servicio además de comprender quién opera el túnel.",
+          "wrongExplanations": [
+            null,
+            "El servicio VPN no convierte todas las páginas en entidades legítimas. El túnel cifra un recorrido configurado, mientras debes seguir evaluando dominios, solicitudes y protección de la conexión hacia cada servicio visitado.",
+            "Cifrar transporte no cambia lo que una persona o empresa hará con datos recibidos legítimamente. Verifica el destinatario y la necesidad de compartir información aunque la ruta incluya una VPN activa."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El túnel tiene extremos, tesoro; vamos a encontrarlos antes de imaginar una burbuja protectora para todo internet.",
+        "theory": "La VPN protege un recorrido configurado; mis cumplidos también tienen destinatario concreto y no arreglan automáticamente al resto.",
+        "hint": "Ubica dispositivo, servidor VPN y destino final para distinguir qué tramo describe realmente cada una de las propuestas.",
+        "correct": "Exacto: tramo y configuración definidos, cariño; el túnel hizo su trabajo sin recibir poderes sobre las intenciones ajenas.",
+        "soft": "La palabra túnel puede parecer absoluta; revisa dónde empieza y termina antes de valorar lo que sigue después.",
+        "sharp": "La VPN no convierte farsantes en santos, joder; protege transporte y todavía necesitamos criterio para elegir el destino.",
+        "pass": "Ahora puedes explicar el recorrido protegido y mantener las comprobaciones que corresponden al servicio situado después del túnel.",
+        "review": "Dibuja mentalmente ambos extremos de la VPN y el destino para separar transporte protegido y confianza comercial personal."
+      }
+    },
+    {
+      "id": "public-networks-vpn-anonimato",
+      "title": "Una VPN no promete anonimato total",
+      "minutes": 3,
+      "intro": "Reconoce los límites de privacidad de una VPN cuando mantienes sesiones abiertas y compartes datos personales para evitar atribuirle anonimato absoluto frente a todos los servicios y observadores.",
+      "sections": [
+        {
+          "title": "La cuenta sigue pudiendo reconocerte",
+          "body": "Usar una VPN puede modificar la dirección desde la que un sitio recibe tu conexión y proteger un tramo de transporte. No elimina automáticamente las sesiones iniciadas, identificadores del navegador o datos que entregas voluntariamente. Si accedes a tu cuenta, ese servicio puede relacionar la actividad con ella. También confías en quien presta la VPN. Evalúa objetivos concretos de privacidad y evita creer promesas de invisibilidad universal que no describen quién observa qué información en cada parte del recorrido."
+        }
+      ],
+      "steps": [
+        "Identifica ante quién quieres proteger información y cuál información concreta.",
+        "Revisa sesiones y datos compartidos sin confiar todo al indicador VPN."
+      ],
+      "scenario": "Con la VPN activa entras a una red social mediante tu cuenta habitual y publicas tu nombre. Un anuncio asegura que nadie, incluido ese servicio, puede relacionar la publicación contigo porque ahora eres completamente anónimo.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite contradice la promesa?",
+          "options": [
+            "La VPN borra por defecto cualquier publicación",
+            "El servicio recibe tu sesión y los datos que publicas",
+            "Una cuenta abierta deja siempre de existir con VPN"
+          ],
+          "answer": 1,
+          "explanation": "La VPN no elimina la autenticación de tu cuenta ni los datos que entregas al servicio. Esa sesión permite relacionar actividad contigo, por lo que anonimato total no describe correctamente su alcance.",
+          "wrongExplanations": [
+            "Una VPN no borra automáticamente el contenido que publicas ni revoca su entrega al destinatario. Si utilizas tu cuenta y escribes datos personales, el servicio puede asociarlos a esa sesión autenticada.",
+            null,
+            "La cuenta mantiene su funcionamiento y autenticación cuando utilizas una VPN. Cambiar el transporte o la dirección aparente no elimina la relación con una sesión que tú mismo has iniciado en ese servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Entraste con tu cuenta y publicaste tu nombre, cariño; veamos qué puede ocultar realmente ese indicador de VPN.",
+        "theory": "Transporte y reconocimiento por cuenta son cosas distintas; ningún túnel borra automáticamente lo que entregas al destinatario voluntariamente.",
+        "hint": "Observa qué información recibe directamente la red social aunque cambie el camino que siguen los paquetes de conexión.",
+        "correct": "Bien: reconociste la sesión personal, tesoro; la promesa de invisibilidad perdió el brillo que nunca pudo justificar técnicamente.",
+        "soft": "El anuncio exagera una función útil; separa dirección de conexión y datos que tú proporcionas al utilizar tu cuenta.",
+        "sharp": "Poner tu nombre y esperar invisibilidad es pedirle magia al túnel, carajo; revisemos qué recibe realmente ese servicio.",
+        "pass": "Distingues privacidad por recorrido y reconocimiento mediante cuenta; ya puedes cuestionar anuncios que prometen anonimato absoluto sin explicar límites.",
+        "review": "Identifica la información que entregas al sitio y explica por qué cambiar de ruta no elimina esa relación autenticada."
+      }
+    },
+    {
+      "id": "public-networks-proveedor-vpn",
+      "title": "Elegir en quién confías el túnel",
+      "minutes": 3,
+      "intro": "Evalúa procedencia, permisos y condiciones de un servicio VPN antes de instalarlo para no desplazar confianza hacia una aplicación desconocida que promete protección gratuita sin explicar su funcionamiento.",
+      "sections": [
+        {
+          "title": "Otra entidad en el recorrido",
+          "body": "La VPN añade un proveedor al recorrido de parte de tu tráfico. Necesitas comprender quién lo opera, qué permisos exige y qué información declara tratar. Una tienda oficial reduce ciertos riesgos de distribución, pero no demuestra que cualquier oferta sea apropiada. Revisa documentación y condiciones, especialmente ante promesas absolutas o permisos sin relación clara. Si tu organización proporciona una VPN, sigue sus instrucciones; no la sustituyas por una aplicación anunciada en una ventana inesperada de la red pública."
+        }
+      ],
+      "steps": [
+        "Comprueba identidad del proveedor y documentación del servicio VPN.",
+        "Revisa permisos y condiciones antes de instalar o iniciar sesión."
+      ],
+      "scenario": "Un portal ofrece una VPN gratuita que promete invisibilidad total y solicita permisos que no entiendes. Tu organización dispone de un procedimiento oficial, pero el anuncio insiste en que su aplicación sustituye cualquier configuración previa sin necesidad de consultar soporte.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión debes priorizar?",
+          "options": [
+            "Solo el tamaño del botón instalar",
+            "Que prometa más que cualquier otra aplicación",
+            "Proveedor, permisos y procedimiento autorizado"
+          ],
+          "answer": 2,
+          "explanation": "Instalar una VPN desplaza parte de la confianza hacia su proveedor y configuración. Revisa identidad, condiciones y permisos, respetando el procedimiento organizativo en lugar de sustituirlo por una promesa de un portal inesperado.",
+          "wrongExplanations": [
+            "Un botón llamativo no demuestra quién opera la aplicación ni qué hará con su acceso. Revisa documentación, permisos y condiciones; si existe una configuración organizativa, consulta su procedimiento oficial antes de cambiarla.",
+            "Promesas más amplias no equivalen a protección demostrada y pueden ocultar límites importantes. Comprueba el proveedor y la configuración, evitando sustituir controles autorizados por afirmaciones de invisibilidad que no explican su alcance.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El túnel también tiene dueño, tesoro; averigüemos quién es antes de invitar una aplicación desconocida a nuestra conexión personal.",
+        "theory": "La confianza no desaparece con una VPN; cambia de recorrido y exige entender proveedor, condiciones y permisos del servicio elegido.",
+        "hint": "Piensa qué entidad añades al recorrido y qué información explica realmente cómo utiliza los permisos que está solicitando ahora.",
+        "correct": "Exacto: proveedor y autorización primero, cariño; un anuncio no sustituye la explicación de qué hará esa aplicación sobre tu conexión.",
+        "soft": "La oferta suena cómoda; revisa quién la opera y sus permisos antes de decidir si encaja con tu necesidad concreta.",
+        "sharp": "Invisibilidad total en un botón no es documentación, joder; conozcamos al dueño del túnel antes de entregarle nuestra confianza personal.",
+        "pass": "Puedes evaluar el proveedor además del icono VPN; conserva procedimientos oficiales cuando la conexión esté relacionada con tu organización educativa.",
+        "review": "Repasa identidad, permisos y condiciones para formular dudas concretas antes de instalar una herramienta que modifica el recorrido del tráfico."
+      }
+    },
+    {
+      "id": "public-networks-vpn-oficial",
+      "title": "Preparar la VPN antes de viajar",
+      "minutes": 3,
+      "intro": "Instala y comprende una VPN autorizada desde un entorno conocido para no depender de una descarga inesperada cuando necesites conexión fuera de casa y tengas poco tiempo disponible para comprobarla.",
+      "sections": [
+        {
+          "title": "La preparación evita improvisación",
+          "body": "Si necesitas una VPN para una actividad concreta, prepara su instalación mediante el proveedor o la organización legítimos antes de salir. Comprueba instrucciones, cuenta, actualizaciones y método de conexión. No introduzcas credenciales en una aplicación sugerida por un portal imprevisto. Los pasos exactos varían según sistema y servicio. Conocer el procedimiento de antemano permite identificar cambios inesperados y pedir soporte adecuado sin confundir cualquier pantalla que diga VPN con la herramienta autorizada que realmente pretendías utilizar."
+        }
+      ],
+      "steps": [
+        "Obtén las instrucciones del proveedor legítimo o soporte organizativo.",
+        "Comprueba el procedimiento en tu dispositivo antes de depender de él durante un viaje."
+      ],
+      "scenario": "Necesitarás acceso organizativo durante un viaje. Puedes preparar hoy la herramienta oficial, pero otra persona aconseja esperar al aeropuerto e instalar lo que anuncie el primer portal para ahorrar tiempo antes de salir de casa.",
+      "questions": [
+        {
+          "prompt": "¿Qué preparación reduce la improvisación?",
+          "options": [
+            "Instalar y comprender la herramienta autorizada con anticipación",
+            "Usar cualquier descarga que aparezca en el aeropuerto",
+            "Compartir la cuenta organizativa para que otros elijan"
+          ],
+          "answer": 0,
+          "explanation": "Preparar la herramienta oficial permite conocer el procedimiento y detectar desviaciones antes de necesitarla con prisa. Una descarga anunciada por un portal desconocido no demuestra autorización ni relación con tu organización.",
+          "wrongExplanations": [
+            null,
+            "El portal del aeropuerto no determina qué herramienta está autorizada por tu organización. Prepararla mediante instrucciones legítimas reduce la presión para descargar aplicaciones desconocidas cuando tienes poco tiempo para verificarlas.",
+            "La cuenta organizativa no debe entregarse para que otras personas decidan por ti. Sigue las instrucciones oficiales y consulta soporte, manteniendo tus credenciales privadas mientras preparas el acceso que necesitas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Preparar antes de viajar también puede ser elegante, cariño; prefiero una herramienta conocida a una descarga improvisada junto al embarque.",
+        "theory": "Conocer el procedimiento ayuda a reconocer cambios; la palabra VPN en una pantalla cualquiera no acredita que sea nuestra herramienta autorizada.",
+        "hint": "Compara el tiempo y las referencias disponibles antes de salir con los que tendrías frente a un portal inesperado del aeropuerto.",
+        "correct": "Bien: preparación anticipada, tesoro; el aeropuerto podrá ofrecerte conexión sin decidir por eso qué aplicación organizativa debes instalar a toda prisa.",
+        "soft": "Esperar parece cómodo; piensa ahora qué comprobaciones podrías hacer con calma antes de depender de una descarga durante el viaje programado.",
+        "sharp": "El primer anuncio del aeropuerto no es tu soporte técnico, carajo; preparemos la herramienta sin regalar autoridad a una ventana oportunista.",
+        "pass": "Ya tienes una forma de reducir improvisación: instrucciones legítimas y procedimiento conocido antes de necesitar la conexión en un entorno distinto.",
+        "review": "Identifica qué herramienta está autorizada y dónde consultar instrucciones para reconocerla sin depender de la recomendación de un portal público inesperado."
+      }
+    },
+    {
+      "id": "public-networks-vpn-cobertura",
+      "title": "Comprobar qué incluye la VPN",
+      "minutes": 3,
+      "intro": "Distingue el estado conectado y el alcance configurado de una VPN para evitar suponer que todas las aplicaciones usan necesariamente el mismo recorrido por aparecer un indicador en pantalla.",
+      "sections": [
+        {
+          "title": "Conectada no describe todo el alcance",
+          "body": "Una VPN puede configurarse para incluir todo el tráfico permitido o solo determinadas aplicaciones y destinos. Las opciones dependen del sistema y el servicio, por lo que un indicador de conexión no explica por sí solo esa cobertura. Consulta su documentación o soporte antes de atribuirle protección sobre una aplicación concreta. No cambies reglas organizativas para comprobarlas por tu cuenta. Comprende qué función necesitas y qué confirma realmente el estado que muestra tu dispositivo cuando el túnel aparece como conectado."
+        }
+      ],
+      "steps": [
+        "Consulta qué aplicaciones o destinos incluye tu configuración autorizada.",
+        "Relaciona el indicador de conexión con ese alcance documentado."
+      ],
+      "scenario": "El indicador VPN está activo y una aplicación queda excluida según la configuración oficial. Una persona insiste en que todo el tráfico pasa necesariamente por el túnel porque el icono aparece en la barra del dispositivo.",
+      "questions": [
+        {
+          "prompt": "¿Qué dato determina el alcance en ese caso?",
+          "options": [
+            "Solo que el icono sea de un color agradable",
+            "La configuración documentada y sus exclusiones",
+            "Cuántas veces se pulse el indicador"
+          ],
+          "answer": 1,
+          "explanation": "El estado conectado no elimina exclusiones de configuración. Comprueba qué aplicaciones o destinos incluye realmente la VPN y consulta soporte autorizado cuando necesites interpretar su alcance para una actividad concreta.",
+          "wrongExplanations": [
+            "El aspecto del icono no documenta todas las rutas utilizadas por las aplicaciones. La configuración puede incluir exclusiones, por lo que debes consultar su alcance real antes de atribuir protección a cualquier tráfico.",
+            null,
+            "Pulsar un indicador no demuestra ni cambia necesariamente las exclusiones del túnel. Revisa las opciones documentadas y utiliza soporte autorizado para entender qué parte del tráfico cubre la configuración vigente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El icono está contento, tesoro; ahora veremos qué incluye realmente el túnel antes de asumir que todas las aplicaciones lo utilizan.",
+        "theory": "Conexión y cobertura son datos relacionados pero distintos; las exclusiones necesitan documentación y no desaparecen porque un indicador se vea muy convincente.",
+        "hint": "Compara la afirmación universal con la exclusión mencionada; pregunta qué información describe de verdad el recorrido de esa aplicación concreta del caso.",
+        "correct": "Exacto: configuración y alcance, cariño; el icono confirmó un estado sin anular por decreto las exclusiones que todavía forman parte del procedimiento oficial.",
+        "soft": "Es fácil atribuir cobertura completa al indicador; revisa ahora las aplicaciones incluidas y excluidas para entender qué confirma realmente ese estado de conexión.",
+        "sharp": "El icono no se comió las exclusiones, joder; leamos el alcance documentado antes de anunciar protección universal con una captura bonita de la barra.",
+        "pass": "Puedes distinguir estado y cobertura; consulta el alcance autorizado antes de depender del túnel para una aplicación que podría tener otro recorrido de conexión configurado.",
+        "review": "Resume qué incluye y qué excluye tu configuración; después explica por qué conectado no basta para describir el camino de todas las aplicaciones instaladas."
+      }
+    },
+    {
+      "id": "public-networks-vpn-corte",
+      "title": "Si el túnel se interrumpe",
+      "minutes": 3,
+      "intro": "Revisa qué ocurre cuando una VPN deja de estar conectada y evita asumir que el dispositivo bloquea automáticamente cualquier tráfico sin comprobar las funciones del servicio que utilizas.",
+      "sections": [
+        {
+          "title": "Un fallo que necesita un procedimiento",
+          "body": "Si una VPN se desconecta, la conducta del tráfico depende de la configuración y funciones disponibles. Algunas herramientas pueden bloquear conexiones fuera del túnel y otras no lo hacen de la misma forma. Consulta esa propiedad en instrucciones oficiales y sigue la política correspondiente a tu actividad. Pausa la tarea si dependía de la VPN y utiliza soporte para resolver el fallo. No afirmes que la interrupción revela automáticamente todos los contenidos protegidos por HTTPS, porque son capas diferentes."
+        }
+      ],
+      "steps": [
+        "Pausa las tareas que requieren el túnel autorizado si se interrumpe.",
+        "Comprueba el procedimiento de reconexión y las funciones de bloqueo documentadas."
+      ],
+      "scenario": "La VPN organizativa se desconecta durante una tarea que requiere ese acceso. No conoces si bloquea tráfico al caer y una persona propone seguir trabajando porque todos los programas deben hacerlo automáticamente por llamarse VPN.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión corresponde?",
+          "options": [
+            "Suponer bloqueo automático sin revisar configuración",
+            "Afirmar que HTTPS desapareció en todo internet",
+            "Pausar y comprobar el procedimiento y comportamiento documentados"
+          ],
+          "answer": 2,
+          "explanation": "Las funciones ante una caída varían y deben comprobarse mediante documentación o soporte. Si la tarea requiere el túnel, pausa y restablécelo según procedimiento sin inventar garantías de bloqueo ni confundirlo con HTTPS.",
+          "wrongExplanations": [
+            "No todas las herramientas y configuraciones bloquean tráfico de la misma forma cuando el túnel cae. Consulta la función documentada y pausa una tarea que dependía de ese acceso hasta resolverlo autorizadamente.",
+            "La caída de la VPN no desactiva automáticamente HTTPS en otros servicios. Son protecciones de ámbitos diferentes; revisa la necesidad del túnel y su comportamiento sin atribuirle efectos universales sobre todo cifrado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El túnel se cayó, cariño; comprobemos el procedimiento antes de inventarle un bloqueo automático que quizá nadie configuró en esta herramienta concreta.",
+        "theory": "Las funciones ante una caída varían; entenderlas evita tanto seguir por costumbre como declarar que todo HTTPS acaba de desaparecer del planeta entero.",
+        "hint": "Recuerda de qué dependía la tarea y qué información falta sobre el fallo; el nombre genérico de la herramienta no resuelve esa duda específica.",
+        "correct": "Bien: pausa y revisión, tesoro; resolvemos la necesidad concreta sin inventar garantías de bloqueo ni escribir una tragedia universal sobre todas las conexiones cifradas.",
+        "soft": "El nombre VPN puede sugerir un comportamiento uniforme; mira ahora qué funciones documenta tu servicio y qué exige la tarea antes de continuar normalmente.",
+        "sharp": "Llamarse VPN no firma un bloqueo mágico, carajo; pausa la tarea dependiente y consulta funciones en lugar de adivinar cómo responde ante fallos.",
+        "pass": "Puedes responder a una caída con alcance claro; consulta reconexión y bloqueo sin confundir ese fallo con desaparición de todas las otras protecciones.",
+        "review": "Relaciona requisito y respuesta documentada ante cortes; si desconoces esta última, conserva la pausa mientras consultas soporte autorizado para resolver el acceso."
+      }
+    },
+    {
+      "id": "public-networks-politica-organizacion",
+      "title": "La conexión de trabajo tiene reglas",
+      "minutes": 3,
+      "intro": "Sigue las instrucciones de tu organización al utilizar recursos de estudio o trabajo desde una red pública para evitar sustituir controles autorizados por consejos informales que prometen mayor comodidad durante el acceso.",
+      "sections": [
+        {
+          "title": "Autorización además de posibilidad técnica",
+          "body": "Que una aplicación permita entrar no significa que cualquier forma de hacerlo esté autorizada por tu organización. Puede existir un requisito de dispositivo gestionado, VPN o procedimiento de verificación específico. Consulta las instrucciones antes de acceder a documentos de trabajo o estudio. Si algo falla, informa al soporte correspondiente y evita enviar archivos a cuentas personales para rodear el control. Las normas y excepciones deben aclararse por sus responsables, sin atribuirte permisos solo porque una alternativa técnica funciona."
+        }
+      ],
+      "steps": [
+        "Consulta requisitos del acceso organizativo antes de utilizar la red pública.",
+        "Pide soporte si el método autorizado falla en lugar de trasladar archivos a cuentas personales."
+      ],
+      "scenario": "El acceso organizativo requiere una VPN oficial que ahora falla. Alguien propone enviar documentos internos a tu correo personal para continuar desde una red pública, aunque no existe autorización para transferirlos así.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta respeta el acceso autorizado?",
+          "options": [
+            "Pedir soporte y seguir el procedimiento de la organización",
+            "Trasladar todos los archivos internos sin permiso",
+            "Confundir posibilidad de envío con autorización automática"
+          ],
+          "answer": 0,
+          "explanation": "Los requisitos organizativos definen cómo acceder y compartir esos recursos. Consulta soporte cuando fallen y no conviertas una alternativa técnicamente posible en permiso para transferir documentos fuera del entorno autorizado.",
+          "wrongExplanations": [
+            null,
+            "Mover documentos internos a una cuenta personal puede incumplir los límites de acceso y compartir. El fallo del método oficial debe tratarse con soporte, conservando los recursos dentro de los procedimientos autorizados.",
+            "Poder realizar una acción no demuestra tener autorización para ella. Consulta las reglas y responsables del recurso, especialmente cuando una transferencia cambia quién controla los documentos y qué protecciones se aplican durante su uso."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "cisco-basics"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Que pueda enviarse no significa que debamos hacerlo, tesoro; la comodidad no concede permisos sobre documentos sujetos a los controles de una organización.",
+        "theory": "Los requisitos siguen existiendo cuando algo falla; soporte puede aclararlos sin que una ocurrencia sustituya la autorización necesaria para trasladar archivos internos.",
+        "hint": "Distingue resolver acceso y trasladar documentos; pregunta quién puede autorizar ese cambio antes de aceptar la alternativa por ser técnicamente posible y conveniente.",
+        "correct": "Exacto: soporte y procedimiento; el fallo del túnel no autorizó otra ruta para mover documentos que todavía requieren controles definidos por sus responsables.",
+        "soft": "La propuesta intenta solucionar una dificultad; revisa quién controla los archivos y qué autorización falta antes de tratarlos como documentos personales que puedes trasladar.",
+        "sharp": "La VPN falló y no apareció permiso para sacar archivos, joder; consultemos soporte antes de añadir un problema de control al fallo inicial.",
+        "pass": "Distingues posibilidad y autorización; conserva procedimientos y consulta responsables cuando necesites una excepción o ayuda para utilizar recursos organizativos desde una conexión externa.",
+        "review": "Identifica requisito, recurso y responsable; explica qué consultarías antes de transferir documentos internos a una cuenta personal que no estaba incluida en el acceso."
+      }
+    },
+    {
+      "id": "public-networks-perfil-publico",
+      "title": "Indicar que la red es pública",
+      "minutes": 3,
+      "intro": "Comprende los perfiles de confianza de los sistemas que los ofrecen y selecciona una configuración apropiada para una red ajena sin confundir ese ajuste local con autenticar al establecimiento o proteger todas las aplicaciones.",
+      "sections": [
+        {
+          "title": "Una decisión sobre tu propio equipo",
+          "body": "Algunos sistemas permiten marcar una red como pública o privada para aplicar comportamientos locales, como descubrimiento y compartir. En una conexión ajena, un perfil restrictivo ayuda a evitar exposición innecesaria de servicios del equipo. Los nombres y efectos varían según sistema, así que consulta sus instrucciones. Marcar pública no demuestra quién administra el punto de acceso ni sustituye HTTPS. La decisión configura tu dispositivo frente a una red, sin convertirla por sí misma en una infraestructura evaluada o autorizada por ti."
+        }
+      ],
+      "steps": [
+        "Consulta si tu sistema ofrece perfiles de red y qué controlan.",
+        "Utiliza las opciones restrictivas apropiadas cuando la red no es de confianza."
+      ],
+      "scenario": "El portátil pregunta si la red del local es pública o privada. La segunda opción permite descubrimiento, pero no administras ese acceso ni conoces a otros usuarios y quieres evitar compartir servicios innecesarios.",
+      "questions": [
+        {
+          "prompt": "¿Qué criterio debe dirigir la elección?",
+          "options": [
+            "Elegir privada porque el nombre suena más seguro",
+            "Aplicar el perfil local restrictivo apropiado para una red ajena",
+            "Suponer que el perfil autentica todos los sitios que visites"
+          ],
+          "answer": 1,
+          "explanation": "El perfil afecta al comportamiento local y debe corresponder a la confianza en la red. Revisa sus efectos y utiliza opciones restrictivas para evitar compartir innecesariamente, sin atribuirle autenticación de sitios o administradores.",
+          "wrongExplanations": [
+            "La palabra privada no garantiza mayor seguridad en cualquier contexto y puede permitir funciones de confianza local. Lee qué cambia cada perfil y elige según la red y los servicios que realmente necesitas exponer.",
+            null,
+            "El perfil local no verifica la identidad de todos los sitios ni del administrador inalámbrico. Controla comportamientos del equipo, por lo que debes seguir confirmando la red y verificando conexiones y destinos de cada servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Privada suena íntimo, cariño; leamos qué habilita antes de decidir por el nombre más agradable que ofrece el menú de perfiles de red.",
+        "theory": "El perfil ajusta tu equipo sin investigar al local; conoce sus efectos sobre descubrimiento y compartir antes de elegir confianza para una red ajena.",
+        "hint": "Relaciona el comportamiento de cada opción y los usuarios desconocidos; la impresión que produce su nombre no demuestra qué funciones habilitará realmente el sistema.",
+        "correct": "Bien: efecto local y contexto; elegiste límites apropiados sin tratar pública como alarma universal ni privada como promesa automática de seguridad para el dispositivo.",
+        "soft": "Los nombres pueden sugerir efectos equivocados; revisa descubrimiento y compartir antes de elegir según las funciones que necesitas ofrecer en esta red del establecimiento.",
+        "sharp": "Privada no significa acurrucada y segura, carajo; leamos sus efectos antes de obedecer una etiqueta que podría ofrecer confianza local a toda una red ajena.",
+        "pass": "Usas perfiles como controles del dispositivo; conserva separadas esa configuración y las comprobaciones del acceso y los sitios que continúan siendo necesarias al navegar.",
+        "review": "Identifica qué habilita cada perfil y qué confianza tienes en la red; explica la elección por sus efectos y no por cómo suena su nombre."
+      }
+    },
+    {
+      "id": "public-networks-carpetas-compartidas",
+      "title": "Carpetas que no necesitas ofrecer",
+      "minutes": 3,
+      "intro": "Revisa funciones de compartir antes de utilizar redes ajenas para limitar accesos locales innecesarios sin suponer que toda carpeta se publica automáticamente al conectarte fuera de casa.",
+      "sections": [
+        {
+          "title": "El alcance de compartir es local",
+          "body": "Compartir archivos permite que otros equipos accedan a recursos bajo determinadas condiciones de configuración y permisos. No todas las carpetas se publican automáticamente al usar Wi-Fi, pero conviene revisar qué servicios mantienes activos. En redes ajenas, desactiva lo que no necesitas siguiendo las opciones de tu sistema y conserva el cortafuegos. HTTPS protege comunicaciones web, no configura por ti cada recurso compartido del dispositivo. Si necesitas transferir un archivo, elige un método autorizado y confirma destinatario, alcance y duración del permiso concedido."
+        }
+      ],
+      "steps": [
+        "Revisa qué recursos y servicios compartidos mantiene activos tu sistema.",
+        "Desactiva funciones innecesarias en redes ajenas conservando el cortafuegos."
+      ],
+      "scenario": "El portátil conserva una carpeta compartida doméstica y ahora utiliza Wi-Fi de cafetería. Navegas mediante HTTPS, pero nadie ha revisado las reglas que permiten ofrecer esa carpeta a otros equipos de la red.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión pertenece a otra capa distinta de HTTPS?",
+          "options": [
+            "Cambiar el logotipo de la página que visitas",
+            "Suponer que todas las carpetas ya son públicas inevitablemente",
+            "Comprobar permisos y funciones locales de compartir archivos"
+          ],
+          "answer": 2,
+          "explanation": "HTTPS protege una comunicación web y no revisa los recursos locales compartidos del equipo. Comprueba servicios y permisos para limitar accesos innecesarios, sin asumir que toda carpeta está expuesta automáticamente por conectarte a una red pública.",
+          "wrongExplanations": [
+            "El logotipo de una página no configura los permisos de carpetas en tu dispositivo. Revisa las funciones locales de compartir y sus reglas, conservando el cortafuegos mientras utilizas una red ajena a tu administración.",
+            "La conexión a una red pública no publica inevitablemente todas las carpetas. La exposición depende de servicios, permisos y reglas; revisarlos permite limitar accesos innecesarios sin convertir una posibilidad concreta en una afirmación universal alarmante.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La carpeta doméstica no necesita socializar en cada cafetería, tesoro; revisemos qué ofrece el portátil sin pedirle a HTTPS que administre también archivos locales.",
+        "theory": "Compartir y navegar cifrado cumplen tareas diferentes; permisos y servicios locales necesitan su revisión sin afirmar que todo el disco quedó automáticamente expuesto al conectar.",
+        "hint": "Sitúa la carpeta en tu equipo y la página en el servicio; identifica qué configuración controla realmente el acceso desde otro dispositivo de la red.",
+        "correct": "Exacto: permisos locales revisados; HTTPS conserva su tarea y la carpeta recibe el control que corresponde, sin atribuir a una capa funciones de la otra.",
+        "soft": "Es normal pensar todo como seguridad de conexión; separa navegador y carpeta para identificar quién controla compartir y evitar conclusiones universales sobre exposición de archivos.",
+        "sharp": "El candado no se volvió bibliotecario de tus carpetas, joder; los permisos locales hacen otro trabajo y merecen revisión aunque la página vaya cifrada.",
+        "pass": "Distingues cifrado web y recursos compartidos; revisa servicios y cortafuegos en redes ajenas, eligiendo métodos autorizados cuando realmente necesites transferir un archivo concreto a alguien.",
+        "review": "Revisa recurso, usuarios y reglas locales; explica por qué HTTPS no decide esos permisos y por qué tampoco puedes afirmar exposición automática sin revisar configuración."
+      }
+    },
+    {
+      "id": "public-networks-descubrimiento",
+      "title": "Descubrimiento de dispositivos",
+      "minutes": 3,
+      "intro": "Revisa cuándo tu equipo anuncia o busca servicios cercanos para conservar solo las funciones necesarias al conectarte a una red ajena que comparten personas desconocidas.",
+      "sections": [
+        {
+          "title": "Encontrar no significa confiar",
+          "body": "El descubrimiento permite localizar equipos o servicios en una red, según el sistema y sus opciones. Puede facilitar impresoras o reproducción de contenido, pero no demuestra identidad ni autorización del dispositivo encontrado. En un entorno público, limita funciones que no utilizas mediante instrucciones oficiales. No aceptes compartir porque aparece un nombre familiar en una lista. Comprueba destinatario y tarea por otro medio antes de transferir contenido a cualquier dispositivo cercano que tu aplicación acaba de descubrir."
+        }
+      ],
+      "steps": [
+        "Revisa funciones de descubrimiento y recepción cercanas en tu sistema.",
+        "Desactiva las innecesarias y verifica destinatarios antes de compartir."
+      ],
+      "scenario": "Tu portátil descubre un dispositivo llamado ImpresoraBiblioteca. No necesitas imprimir y nadie ha confirmado que ese equipo pertenezca al local, aunque su nombre aparece junto a otros servicios disponibles en la red pública que utilizas.",
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra por sí solo aparecer en esa lista?",
+          "options": [
+            "Que el administrador verificó personalmente ese dispositivo",
+            "Que tus archivos deben enviarse allí automáticamente",
+            "Que fue descubierto, sin confirmar identidad ni autorización"
+          ],
+          "answer": 2,
+          "explanation": "El descubrimiento muestra disponibilidad observada y no acredita propiedad ni permiso para compartir. Conserva solo las funciones necesarias y verifica el destinatario mediante una referencia independiente antes de enviar archivos.",
+          "wrongExplanations": [
+            "La lista no demuestra una evaluación del administrador ni identifica al propietario. Un nombre familiar puede asignarse sin relación con el establecimiento; verifica antes de utilizar el dispositivo descubierto para una transferencia.",
+            "Descubrir un servicio no obliga a enviar archivos ni autoriza al receptor a obtenerlos. Si no necesitas compartir, mantén esa función limitada y conserva tus documentos fuera de transferencias no solicitadas.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La lista presenta equipos, cariño; todavía falta saber quiénes son antes de ofrecerles nuestros documentos como regalo de bienvenida.",
+        "theory": "Descubrir es encontrar, no verificar; el nombre familiar necesita contexto antes de convertirse en destinatario autorizado para tus archivos.",
+        "hint": "Separa disponibilidad observada y propiedad confirmada; piensa qué dato independiente necesitarías antes de utilizar ese servicio que aparece en pantalla.",
+        "correct": "Exacto: encontrado no significa acreditado, tesoro; la lista conserva utilidad sin recibir autoridad sobre la identidad de todos sus integrantes.",
+        "soft": "El nombre puede resultar convincente; revisa qué prueba realmente la lista y qué información falta sobre el propietario del dispositivo descubierto.",
+        "sharp": "La impresora no presentó documentos por llamarse Biblioteca, carajo; confirmemos su identidad antes de regalarle contenido que nadie nos pidió imprimir.",
+        "pass": "Puedes limitar descubrimiento y verificar destinatarios; utiliza las funciones cercanas según una necesidad real y con referencias sobre el receptor elegido.",
+        "review": "Repasa qué muestra la lista y qué no demuestra; después identifica una comprobación independiente antes de decidir compartir cualquier documento personal."
+      }
+    },
+    {
+      "id": "public-networks-actualizaciones",
+      "title": "Llegar con el dispositivo actualizado",
+      "minutes": 3,
+      "intro": "Mantén sistema y aplicaciones mediante sus canales oficiales para reducir fallos conocidos antes de utilizar redes ajenas, sin confundir mantenimiento con aceptar descargas imprevistas de un portal público.",
+      "sections": [
+        {
+          "title": "Mantenimiento por la ruta correcta",
+          "body": "Las actualizaciones pueden corregir vulnerabilidades del sistema, navegador y aplicaciones. Conviene mantener ese proceso habitual mediante las herramientas oficiales, no esperar a un aviso desconocido del Wi-Fi. Una página puede imitar una actualización para conseguir una instalación. Si aparece una petición inesperada, cierra esa interacción y consulta el estado desde ajustes o la tienda legítima. Estar actualizado no elimina todos los riesgos, pero reduce problemas conocidos sin entregar confianza automática al entorno que te está ofreciendo conexión."
+        }
+      ],
+      "steps": [
+        "Consulta actualizaciones desde ajustes y tiendas oficiales de tu dispositivo.",
+        "Evita instalar archivos propuestos por portales que no puedes verificar."
+      ],
+      "scenario": "Al conectarte en un local aparece una página que ofrece una actualización urgente del navegador como archivo descargable. El sistema ya dispone de su mecanismo oficial, pero todavía no lo has consultado ni comprobado quién publica ese archivo.",
+      "questions": [
+        {
+          "prompt": "¿Dónde debes comprobar la actualización?",
+          "options": [
+            "En el mecanismo oficial del sistema o aplicación",
+            "En cualquier archivo anunciado por el portal",
+            "En el nombre del primer desconocido que ofrezca ayuda"
+          ],
+          "answer": 0,
+          "explanation": "El canal oficial permite comprobar actualizaciones de la aplicación sin depender de una descarga inesperada. La urgencia de un portal no demuestra origen ni compatibilidad del archivo que intenta instalar en tu dispositivo.",
+          "wrongExplanations": [
+            null,
+            "Una página de acceso puede imitar avisos de actualización para promover software desconocido. Comprueba el estado por el mecanismo oficial de la aplicación o del sistema antes de aceptar una instalación inesperada.",
+            "La oferta de ayuda de un desconocido no verifica el archivo ni su relación con el fabricante. Utiliza canales oficiales para mantener el dispositivo y conserva privadas las credenciales durante cualquier consulta."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El portal quiere actualizar tu navegador, tesoro; comprobemos la oferta desde el mecanismo oficial antes de instalar un recuerdo inesperado del local.",
+        "theory": "Mantener el equipo importa; aceptar cualquier archivo no es mantenimiento, aunque una ventana lo anuncie con muchas prisas y un logotipo bonito.",
+        "hint": "Busca la ruta habitual del fabricante para actualizar y compárala con el origen del archivo que presenta el aviso del caso.",
+        "correct": "Bien: canal oficial, cariño; la actualización puede verificarse sin entregar al portal desconocido la capacidad de elegir software para tu dispositivo personal.",
+        "soft": "El aviso parece urgente; separa esa presión de la evidencia sobre quién publica el archivo y cómo se actualiza realmente tu navegador instalado.",
+        "sharp": "Urgente no convierte un archivo en parche legítimo, joder; abramos la herramienta oficial antes de instalar cualquier cosa para tranquilizar una ventana insistente.",
+        "pass": "Ya distingues mantener y descargar por impulso; conserva actualizaciones oficiales como rutina y verifica avisos que intenten cambiar ese procedimiento conocido por ti.",
+        "review": "Explica quién mantiene la aplicación y dónde consultarías su estado; después compara esa referencia con una descarga que aparece durante el acceso público."
+      }
+    },
+    {
+      "id": "public-networks-conexion-automatica",
+      "title": "Conexiones automáticas con intención",
+      "minutes": 3,
+      "intro": "Revisa las preferencias de conexión automática para decidir cuándo volver a redes guardadas, evitando suponer que una selección del pasado autoriza cualquier conexión futura con un nombre que parece conocido.",
+      "sections": [
+        {
+          "title": "La comodidad también se configura",
+          "body": "Un dispositivo puede recordar redes y volver a conectarse según su sistema y preferencias. La conducta exacta varía, así que consulta las opciones disponibles y revisa conexiones automáticas que ya no necesitas. No asumas que cada reconexión se decide de manera idéntica en todos los teléfonos. Para accesos temporales, limita la reconexión cuando exista esa función y comprueba la red activa antes de una tarea importante. El nombre reconocido por sí solo no demuestra quién controla un punto de acceso concreto."
+        }
+      ],
+      "steps": [
+        "Consulta las preferencias de reconexión de tus redes guardadas.",
+        "Desactiva lo innecesario según las opciones oficiales del sistema."
+      ],
+      "scenario": "Tu teléfono conserva el acceso de una cafetería de un viaje anterior y vuelve a conectarse cerca de un lugar con nombre parecido. No has comprobado la red activa y quieres reducir reconexiones temporales que ya no necesitas conservar.",
+      "questions": [
+        {
+          "prompt": "¿Qué ajuste merece revisión?",
+          "options": [
+            "La fotografía de fondo del teléfono",
+            "Las preferencias de reconexión de redes guardadas",
+            "La contraseña del correo de todas las personas del local"
+          ],
+          "answer": 1,
+          "explanation": "Las preferencias de redes guardadas controlan cuándo puede volver a conectarse el dispositivo, según el sistema. Revisa accesos temporales y confirma la red activa, evitando asumir idéntico comportamiento en todos los modelos.",
+          "wrongExplanations": [
+            "El fondo de pantalla no controla qué red elige el sistema para reconectarse. Consulta las preferencias oficiales de redes guardadas y limita aquellas conexiones temporales que ya no necesitas repetir automáticamente.",
+            null,
+            "Las credenciales de otras personas no son necesarias ni autorizan revisar su acceso. Limita la tarea a tu dispositivo, sus preferencias de reconexión y la comprobación de la red que utilizas realmente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El teléfono recordó la cafetería, cariño; ahora decidiremos si todavía queremos esa comodidad antes de dejarle elegir conexiones sin mirar su contexto actual.",
+        "theory": "Las preferencias cambian según el sistema; conocerlas permite conservar la comodidad necesaria sin mantener por costumbre cada acceso temporal que utilizaste durante un viaje anterior.",
+        "hint": "Piensa qué recuerda el teléfono y qué ajustes permiten decidir cuándo volver a esos accesos que utilizaste de manera temporal durante el viaje.",
+        "correct": "Exacto: reconexión revisada, tesoro. El recuerdo del viaje no decide solo qué accesos temporales siguen disponibles hoy para tu dispositivo personal.",
+        "soft": "La automatización puede sorprender. Consulta tu modelo y las opciones de esa red antes de atribuir a todos los teléfonos el mismo comportamiento.",
+        "sharp": "Guardar una cafetería no firmó romance eterno con su nombre, carajo. Revisemos reconexión y acceso actual antes de confiar en recuerdos viejos.",
+        "pass": "Puedes revisar conexiones recordadas con intención. Conserva solo preferencias útiles y confirma la red activa antes de realizar tareas importantes desde el teléfono.",
+        "review": "Relaciona red guardada y opción de reconexión. Explica cómo comprobarías el acceso actual sin depender únicamente del nombre que recuerdas haber utilizado antes."
+      }
+    },
+    {
+      "id": "public-networks-olvidar-red",
+      "title": "Salir y olvidar un acceso temporal",
+      "minutes": 3,
+      "intro": "Distingue desconectar una sesión inalámbrica de eliminar una red guardada para cerrar un acceso temporal con las opciones apropiadas, sin suponer que cualquiera de esas acciones borra información que ya enviaste anteriormente al servicio.",
+      "sections": [
+        {
+          "title": "Dos decisiones sobre el dispositivo",
+          "body": "Desconectar termina la asociación actual, mientras olvidar una red elimina su configuración guardada según el sistema. Si el acceso fue temporal y no necesitas volver, revisar esta última opción reduce recuerdos innecesarios de conexión. No significa borrar registros del establecimiento ni retirar información que entregaste a una página. Comprueba qué acción ofrece tu dispositivo y conserva credenciales legítimas si debes configurar de nuevo más adelante. Evita restablecer todos los ajustes inalámbricos por una única red que puedes gestionar individualmente."
+        }
+      ],
+      "steps": [
+        "Desconecta del acceso cuando termines de utilizarlo.",
+        "Olvida la red temporal si no necesitas conservar sus preferencias."
+      ],
+      "scenario": "Termina el viaje y no necesitas conservar el Wi-Fi del alojamiento. Alguien propone borrar todas las conexiones y promete que eso también retirará información ya enviada a páginas externas durante tu estancia.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción corresponde al objetivo limitado?",
+          "options": [
+            "Borrar necesariamente todas las cuentas y conexiones",
+            "Esperar que desconectar borre datos de cualquier servicio remoto",
+            "Gestionar y olvidar esa red guardada mediante su opción específica"
+          ],
+          "answer": 2,
+          "explanation": "Olvidar la red gestiona la configuración guardada de ese acceso sin exigir borrar todas las demás. No elimina información ya entregada a servicios ni registros ajenos; su alcance está en las preferencias del dispositivo.",
+          "wrongExplanations": [
+            "Un acceso temporal puede gestionarse individualmente y no exige borrar todas las conexiones o cuentas. Consulta la opción específica de olvidar esa red y distingue sus efectos locales de la información que ya tienen otros servicios.",
+            "Desconectar cambia la conexión actual y no ordena borrar datos en sitios remotos. Para retirar un acceso guardado utiliza su opción específica, recordando que ninguna de esas acciones revierte entregas anteriores de información a terceros.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El viaje terminó, tesoro. Gestionemos el acceso concreto sin borrar conexiones cotidianas ni inventar que un ajuste local retira información de servicios remotos.",
+        "theory": "Desconectar y olvidar tienen efectos distintos. Ninguna acción ordena borrar datos ya enviados a sitios, porque esos servicios mantienen sus propios procedimientos y controles.",
+        "hint": "Identifica qué configuración deseas quitar y compara ese objetivo con propuestas que afectan todas las redes o datos que ya recibieron servicios externos.",
+        "correct": "Bien: opción específica, cariño. Retiraste el acceso temporal sin atribuirle capacidad de borrar información remota ni desmontar conexiones que todavía necesitas conservar en el teléfono.",
+        "soft": "Querer cerrar el viaje es comprensible. Separa conexión actual, configuración guardada y datos entregados para elegir una acción ajustada a tu objetivo concreto.",
+        "sharp": "Olvidar no mandó un borrador mágico a internet, joder. Retiremos la red concreta sin desmontar las conexiones de casa como despedida del hotel.",
+        "pass": "Distingues desconectar y retirar una configuración guardada. Consulta opciones específicas y conserva claridad sobre información que ya pertenece a los servicios que la recibieron.",
+        "review": "Decide si quieres terminar la conexión o retirar su recuerdo. Explica por qué eso no borra otras redes ni datos enviados anteriormente a páginas."
+      }
+    },
+    {
+      "id": "public-networks-direccion-privada",
+      "title": "Direcciones privadas con alcance limitado",
+      "minutes": 3,
+      "intro": "Comprende para qué sirve una dirección inalámbrica privada del dispositivo y distingue esa medida local de anonimato total, cifrado del contenido o confianza en un servicio externo.",
+      "sections": [
+        {
+          "title": "Limitar un identificador no borra todos los demás",
+          "body": "Algunos sistemas utilizan direcciones MAC privadas para redes inalámbricas y ofrecen opciones que varían según versión y administración. Esto puede limitar el uso de un identificador estable entre conexiones, pero no elimina cuentas, cookies ni información que compartes con una aplicación. No cambies una configuración gestionada sin consultar soporte. Si el acceso tiene problemas, revisa las instrucciones oficiales en lugar de asumir que desactivar privacidad es siempre necesario o que mantenerla garantiza invisibilidad frente a todos los observadores."
+        }
+      ],
+      "steps": [
+        "Consulta las opciones de dirección privada de tu sistema.",
+        "Distingue su identificador local de los datos que entregas a servicios externos."
+      ],
+      "scenario": "El teléfono usa dirección privada y después inicias sesión en tu cuenta habitual. Un anuncio promete que ese ajuste impide a la aplicación relacionar actividad contigo, aunque le proporciones tus credenciales personales.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debes recordar?",
+          "options": [
+            "La dirección privada borra toda cuenta autenticada",
+            "El ajuste no elimina la identificación mediante tu sesión personal",
+            "La medida cambia automáticamente la honestidad del local"
+          ],
+          "answer": 1,
+          "explanation": "Una dirección privada actúa sobre un identificador inalámbrico y no elimina la sesión que inicias ante una aplicación. Evalúa esa medida con su alcance real, separándola de cuentas y datos entregados voluntariamente.",
+          "wrongExplanations": [
+            "El ajuste inalámbrico no borra cuentas ni su autenticación. Si entras con tus credenciales, el servicio puede relacionar la actividad con esa sesión aunque el dispositivo utilice una dirección privada en la red local.",
+            null,
+            "Una opción del dispositivo no modifica las intenciones del establecimiento. Limita un identificador concreto, mientras la verificación del acceso y la evaluación de servicios siguen requiriendo comprobaciones apropiadas para cada finalidad."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "wifi-apple",
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Una dirección privada ayuda con un identificador, cariño. Hoy evitaremos confundir esa medida con desaparecer de toda aplicación.",
+        "theory": "Cambiar una etiqueta local no borra sesiones personales. Cada identificador necesita su contexto antes de prometer privacidad absoluta.",
+        "hint": "Observa qué información recibe la aplicación cuando inicias sesión. Compárala con el identificador inalámbrico que cambia el dispositivo.",
+        "correct": "Exacto: alcance limitado, tesoro. La cuenta sigue reconociendo su sesión aunque una dirección local tenga funciones de privacidad útiles.",
+        "soft": "El nombre puede sugerir anonimato completo. Separa el identificador de red y los datos que proporcionas al acceder personalmente.",
+        "sharp": "La dirección privada no borró tu presentación ante la aplicación, carajo. No le pidamos magia a una función concreta.",
+        "pass": "Reconoces una medida útil con límites. Consulta las opciones oficiales y conserva otras decisiones sobre identidad, sesiones y datos compartidos.",
+        "review": "Explica qué identificador modifica esta opción. Después identifica qué información seguiría recibiendo una aplicación donde utilizas tu cuenta habitual."
+      }
+    },
+    {
+      "id": "public-networks-datos-moviles",
+      "title": "Datos móviles como alternativa conocida",
+      "minutes": 3,
+      "intro": "Considera tu conexión móvil como una alternativa cuando no puedes verificar un acceso inalámbrico y mantén las comprobaciones del servicio sin atribuir inmunidad total a la red celular.",
+      "sections": [
+        {
+          "title": "Otra ruta, las mismas preguntas sobre el destino",
+          "body": "Utilizar datos móviles propios permite evitar un punto de acceso público que no puedes verificar. Revisa cobertura, plan y coste antes de depender de esa alternativa. No significa que desaparezcan el phishing, las aplicaciones inseguras o las solicitudes engañosas de datos. HTTPS y la verificación del servicio siguen importando. Cambiar de ruta resuelve una duda concreta sobre el acceso local, sin convertir toda interacción posterior en una acción automáticamente segura o eliminar la necesidad de mantener actualizado el dispositivo."
+        }
+      ],
+      "steps": [
+        "Comprueba disponibilidad y condiciones de tu conexión móvil.",
+        "Si eliges esa ruta, sigue verificando destino y solicitudes de cada servicio."
+      ],
+      "scenario": "No puedes confirmar cuál red pertenece a una estación y decides utilizar tus datos móviles para una tarea breve. Otra persona afirma que desde ese momento cualquier enlace recibido por mensajería será legítimo porque ya no utilizas Wi-Fi público.",
+      "questions": [
+        {
+          "prompt": "¿Qué protege una decisión bien delimitada?",
+          "options": [
+            "Evita ese acceso dudoso sin certificar todos los enlaces posteriores",
+            "Convierte cualquier mensaje en una petición oficial",
+            "Elimina la necesidad de actualizar el teléfono"
+          ],
+          "answer": 0,
+          "explanation": "Los datos móviles evitan depender de ese punto de acceso, pero no legitiman enlaces o aplicaciones. Conserva verificación del servicio, cifrado y mantenimiento, comprobando además condiciones y consumo del plan utilizado.",
+          "wrongExplanations": [
+            null,
+            "La ruta de conexión no autentica cada mensaje que recibes. Un engaño puede llegar también por datos móviles, así que revisa remitente, dominio y peticiones mediante canales oficiales independientes antes de actuar.",
+            "El sistema y las aplicaciones siguen necesitando mantenimiento aunque utilices datos móviles. La alternativa cambia el acceso a la red y no elimina vulnerabilidades conocidas ni reemplaza las actualizaciones del fabricante."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "microsoft-wireless",
+        "ftc-public"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Podemos cambiar de ruta, tesoro. Los datos propios evitan una red dudosa sin volver honesto cada enlace que recibas después.",
+        "theory": "Una alternativa conocida responde al acceso local. El destino todavía necesita verificación aunque ya no estemos utilizando ese Wi-Fi desconocido.",
+        "hint": "Separa el problema que resolviste al cambiar de red de las peticiones que todavía pueden llegar por otras aplicaciones.",
+        "correct": "Bien: una duda concreta resuelta, cariño. La ruta cambió y tu criterio sigue acompañando cada servicio que utilizas desde ella.",
+        "soft": "Cambiar de conexión ayuda con ese acceso. Revisa ahora qué riesgos pertenecen al mensaje o al dispositivo y siguen presentes.",
+        "sharp": "Los datos móviles no bautizaron cada enlace, joder. El farsante puede escribirte igual aunque la cafetería ya no transporte tu conexión.",
+        "pass": "Puedes utilizar una alternativa con límites claros. Comprueba plan y cobertura y conserva las verificaciones habituales de servicios y mensajes.",
+        "review": "Identifica qué acceso evitaste y qué tareas continúan. Explica por qué la conexión móvil no sustituye verificar enlaces ni actualizar aplicaciones."
+      }
+    },
+    {
+      "id": "public-networks-hotspot-propio",
+      "title": "Compartir tu conexión móvil",
+      "minutes": 3,
+      "intro": "Reconoce el punto de acceso personal como una forma de conectar tus dispositivos mediante el teléfono y comprueba sus opciones oficiales antes de utilizarlo fuera de casa.",
+      "sections": [
+        {
+          "title": "El teléfono también ofrece acceso",
+          "body": "Un punto de acceso personal permite que otros dispositivos utilicen la conexión compartida del teléfono, sujeto a las funciones del sistema y las condiciones del operador. Actívalo desde ajustes oficiales y revisa nombre, seguridad y contraseña antes de conectar tu portátil. No confundas ofrecer acceso con hacerlo público sin controles. Cuando termines, desactiva la función si no la necesitas. El enlace compartido tampoco sustituye HTTPS, la verificación de servicios o los controles locales del equipo que se conecta."
+        }
+      ],
+      "steps": [
+        "Consulta cómo activar el punto de acceso de tu teléfono.",
+        "Revisa su protección y desactívalo cuando termines de compartir."
+      ],
+      "scenario": "Tu portátil necesita internet y tienes un teléfono con plan compatible para compartir. Puedes activar un punto de acceso protegido desde ajustes, pero alguien sugiere abrirlo sin contraseña para evitar escribirla durante el viaje que estáis realizando.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque corresponde al uso propio?",
+          "options": [
+            "Abrir acceso ilimitado para cualquier persona cercana",
+            "Revisar y proteger el punto de acceso antes de utilizarlo",
+            "Publicar las contraseñas de todas tus cuentas"
+          ],
+          "answer": 1,
+          "explanation": "El punto de acceso debe configurarse con las protecciones que ofrece el sistema antes de conectar dispositivos autorizados. Compartir datos no exige dejar acceso abierto ni elimina otras comprobaciones sobre aplicaciones y servicios.",
+          "wrongExplanations": [
+            "Un acceso sin controles permite que personas no previstas intenten utilizar la conexión compartida. Revisa nombre, seguridad y contraseña desde ajustes oficiales y comparte únicamente con dispositivos que realmente quieras autorizar.",
+            null,
+            "Tus contraseñas personales no son necesarias para ofrecer una conexión móvil y deben seguir siendo privadas. Configura el acceso inalámbrico por separado, manteniendo credenciales únicas y verificaciones para cada servicio que utilizas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El teléfono puede prestar conexión, cariño. Vamos a preparar su acceso sin confundir compartir con inaugurar una invitación para todo el andén.",
+        "theory": "El hotspot tiene nombre y protección propios. Configurarlo desde ajustes permite decidir quién utiliza la conexión que pagas y mantienes disponible.",
+        "hint": "Piensa qué dispositivos quieres conectar y qué configuración permite limitar el acceso a ellos sin publicar secretos de otras cuentas personales.",
+        "correct": "Exacto: punto de acceso protegido, tesoro. El portátil tendrá conexión sin que el viaje se convierta en una oferta abierta para desconocidos cercanos.",
+        "soft": "Compartir puede ser sencillo sin retirar controles. Revisa la seguridad que ofrece el teléfono y quién necesita realmente utilizar esa conexión temporal.",
+        "sharp": "Escribir una clave no merece regalar el hotspot al vagón entero, carajo. Configuremos permisos antes de convertir comodidad en acceso sin límites.",
+        "pass": "Ya conoces el uso del punto de acceso propio. Consulta condiciones del plan y conserva controles sobre los dispositivos que permites conectar al teléfono.",
+        "review": "Revisa dónde se activa el hotspot y qué opciones lo protegen. Distingue esa configuración de las credenciales personales que utilizas después en cada servicio."
+      }
+    },
+    {
+      "id": "public-networks-hotspot-clave",
+      "title": "Una clave independiente para el hotspot",
+      "minutes": 3,
+      "intro": "Configura un secreto de acceso propio para compartir conexión sin reutilizar credenciales personales ni publicar información privada dentro del nombre que pueden ver los dispositivos cercanos.",
+      "sections": [
+        {
+          "title": "Identificar sin entregar otros secretos",
+          "body": "El punto de acceso anuncia un nombre y puede requerir una contraseña para conectar dispositivos. Elige un nombre reconocible que no exponga datos personales innecesarios y utiliza una clave robusta según las opciones del sistema. No reutilices la contraseña de tu correo o banco. Compartir el acceso con una persona no debería entregarle también credenciales de otros servicios. Guarda el secreto protegido y revisa su distribución si deja de corresponder a las personas que deben utilizar tu conexión."
+        }
+      ],
+      "steps": [
+        "Revisa el nombre visible del punto de acceso personal.",
+        "Utiliza una clave independiente de tus cuentas y compártela solo cuando corresponda."
+      ],
+      "scenario": "Vas a compartir datos con una compañera y propones usar la contraseña del correo como clave del hotspot. También piensas incluir tu número de teléfono completo en el nombre visible, aunque no resulta necesario para identificarlo entre las redes cercanas.",
+      "questions": [
+        {
+          "prompt": "¿Qué configuración reduce esa exposición innecesaria?",
+          "options": [
+            "Nombre prudente y clave independiente de tus cuentas",
+            "La contraseña del banco dentro del nombre",
+            "Una clave compartida con todas tus cuentas personales"
+          ],
+          "answer": 0,
+          "explanation": "Un nombre prudente evita anunciar datos innecesarios y una contraseña independiente separa el acceso compartido de tus cuentas. La persona autorizada a utilizar datos móviles no necesita conocer otros secretos personales.",
+          "wrongExplanations": [
+            null,
+            "El nombre del punto de acceso puede ser visible para personas cercanas. Incluir una contraseña bancaria la expone innecesariamente y mezcla dos funciones que deben conservar sus propios secretos y contextos de uso.",
+            "Reutilizar la clave conecta el acceso compartido con tus cuentas personales. Quien recibe la contraseña del hotspot no debe obtener por esa misma razón credenciales útiles para correo, banca u otros servicios externos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisa-habits",
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Compartir datos no incluye tu correo de regalo, tesoro. Prepararemos un acceso reconocible sin anunciar información personal que nadie necesita para conectarse.",
+        "theory": "Nombre visible y clave tienen trabajos distintos. La exclusividad entre secretos protege tus cuentas cuando otra persona necesita utilizar temporalmente la conexión móvil.",
+        "hint": "Compara lo que debe conocer una persona para usar el hotspot con lo que permitiría entrar también en tus servicios personales habituales.",
+        "correct": "Bien: separación y discreción, cariño. La compañera consigue conexión sin recibir por accidente otra llave que pertenece únicamente a tus cuentas privadas.",
+        "soft": "Recordar una sola clave parece cómodo. Añade ahora quién la recibirá y qué otros servicios quedarían relacionados si reutilizas el mismo secreto personal.",
+        "sharp": "Prestar internet no exige prestar el correo, joder. Mantengamos secretos independientes y dejemos el número personal fuera del cartel inalámbrico cuando no hace falta.",
+        "pass": "Puedes preparar un hotspot sin mezclar credenciales. Conserva el acceso limitado y revisa qué información anuncia el nombre a quienes buscan redes cerca del teléfono.",
+        "review": "Repasa quién recibe el acceso y qué debe permitirle. Distingue esa contraseña de tus credenciales personales y de los datos anunciados por el nombre."
+      }
+    },
+    {
+      "id": "public-networks-hotspot-clientes",
+      "title": "Quién utiliza tu conexión compartida",
+      "minutes": 3,
+      "intro": "Revisa los dispositivos conectados al hotspot y retira acceso cuando ya no corresponda para mantener la conexión dentro del acuerdo con las personas a quienes decidiste compartir datos móviles.",
+      "sections": [
+        {
+          "title": "Un permiso puede ser temporal",
+          "body": "El sistema puede mostrar clientes conectados o controles de acceso del punto de acceso personal, con funciones que varían entre modelos. Compara esa lista con los equipos autorizados sin atribuir identidad personal únicamente al nombre técnico. Cuando termine la necesidad, desactiva la función o modifica el acceso mediante las opciones oficiales. Si cambias la contraseña, los dispositivos legítimos pueden necesitar volver a configurarse. Coordina el cambio y no difundas el nuevo secreto al mismo grupo que acababas de retirar."
+        }
+      ],
+      "steps": [
+        "Consulta clientes y controles disponibles en tu punto de acceso.",
+        "Retira acceso temporal mediante opciones oficiales y coordinación con usuarios legítimos."
+      ],
+      "scenario": "Compartiste datos durante una reunión y ya terminó esa necesidad. Quieres retirar el permiso, pero un dispositivo propio todavía trabaja conectado y necesitas coordinar el cierre sin interrumpirlo por sorpresa.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción mantiene el acceso dentro del acuerdo?",
+          "options": [
+            "Dejarlo indefinidamente sin revisar ninguna conexión",
+            "Coordinar el cierre y gestionar el acceso desde ajustes oficiales",
+            "Publicar la clave nueva en cualquier grupo de desconocidos"
+          ],
+          "answer": 1,
+          "explanation": "Un acceso temporal puede retirarse mediante controles oficiales, coordinando dispositivos legítimos que aún dependen de él. Revisa clientes sin atribuciones automáticas y no distribuyas nuevas credenciales entre quienes ya no deben conservar el permiso.",
+          "wrongExplanations": [
+            "Dejar el acceso activo por costumbre puede mantener una capacidad que ya no corresponde al acuerdo. Revisa usuarios y necesidades, y utiliza los controles oficiales para cerrar o ajustar la conexión compartida.",
+            null,
+            "Publicar la nueva clave vuelve a ampliar el acceso sin control y contradice la retirada prevista. Coordina dispositivos legítimos y limita la distribución del secreto a quienes realmente necesiten conservar una conexión autorizada."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La reunión terminó, cariño. El permiso temporal también puede cerrar su sesión sin convertirse en una invitación inalámbrica que olvidamos para siempre.",
+        "theory": "Compartir requiere revisar a quién y hasta cuándo. Los nombres técnicos ayudan con contexto, pero no identifican infaliblemente a cada persona conectada al teléfono.",
+        "hint": "Relaciona el acuerdo temporal con los dispositivos que todavía necesitan conexión. Busca una decisión que cierre acceso sin ignorar esas dependencias legítimas actuales.",
+        "correct": "Exacto: cierre coordinado, tesoro. La conexión deja de ofrecer permisos sobrantes y los equipos propios tienen información antes de que cambie el acceso compartido.",
+        "soft": "Retirar acceso afecta a equipos legítimos. Identifica dependencias y opciones oficiales antes de cambiar la clave o apagar una conexión que todavía están utilizando.",
+        "sharp": "Temporal no significa hasta jubilar el teléfono, carajo. Revisemos quién necesita conexión y cerremos el permiso que ya cumplió su propósito durante la reunión.",
+        "pass": "Puedes gestionar el final de un acceso compartido. Mantén coordinación, credenciales protegidas y observaciones con contexto al revisar clientes de tu punto de acceso personal.",
+        "review": "Relaciona acuerdo, dispositivos y controles oficiales. Explica cómo retirarías acceso sin interrumpir sin aviso a quien todavía depende legítimamente de la conexión que compartiste."
+      }
+    },
+    {
+      "id": "public-networks-consumo-bateria",
+      "title": "Datos y batería también necesitan un plan",
+      "minutes": 3,
+      "intro": "Comprueba consumo y condiciones de tu plan cuando compartes conexión para conservar disponibilidad sin recurrir a redes o descargas desconocidas porque el teléfono agota recursos durante una tarea importante.",
+      "sections": [
+        {
+          "title": "Disponibilidad sin improvisación",
+          "body": "Compartir datos puede consumir batería y el volumen de conexión de tu plan. Algunas tareas, como sincronizaciones o actualizaciones grandes, pueden utilizar más recursos de los esperados. Consulta los indicadores y condiciones de tu operador, sin asumir costes idénticos para todos. Coordina las necesidades de los equipos conectados y prepara una alternativa legítima si vas a depender del acceso durante un periodo largo. Tener pocos recursos no justifica aceptar aplicaciones milagrosas que prometen datos ilimitados desde anuncios desconocidos."
+        }
+      ],
+      "steps": [
+        "Revisa batería, consumo y condiciones del plan antes de compartir durante mucho tiempo.",
+        "Coordina tareas de los equipos conectados y prepara una alternativa conocida."
+      ],
+      "scenario": "Compartes datos para una clase y el portátil inicia una descarga grande. Queda poca batería, desconoces el límite del plan y un anuncio promete datos ilimitados si entregas las credenciales del operador.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión aborda el problema sin añadir una exposición?",
+          "options": [
+            "Entregar credenciales al anuncio para ganar datos ilimitados",
+            "Afirmar que compartir nunca consume batería ni datos",
+            "Revisar recursos y coordinar tareas mediante controles conocidos"
+          ],
+          "answer": 2,
+          "explanation": "Revisar consumo, batería y tareas permite recuperar control de disponibilidad sin entregar credenciales a una promesa desconocida. Consulta las condiciones reales del operador y utiliza opciones oficiales para gestionar la conexión compartida.",
+          "wrongExplanations": [
+            "El anuncio no demuestra que pueda cambiar legítimamente las condiciones del plan y pedir credenciales añade exposición. Consulta al operador por su canal oficial y gestiona consumo y batería mediante controles conocidos.",
+            "El teléfono utiliza recursos al compartir conexión y los límites dependen del plan. Revisa indicadores y tareas de los equipos conectados en lugar de asumir disponibilidad infinita durante una actividad que requiere continuidad.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El hotspot también come batería, tesoro. Revisemos recursos antes de confiar toda una clase a un porcentaje que ya empieza a pedir compasión.",
+        "theory": "Disponibilidad exige plan y batería conocidos. Coordina descargas sin entregar credenciales a aplicaciones milagrosas que prometen resolver límites que todavía no has comprobado oficialmente.",
+        "hint": "Separa recursos limitados y promesa publicitaria. Identifica indicadores legítimos para entender consumo y batería sin entregar secretos a quien afirma poder cambiarlos mágicamente por ti.",
+        "correct": "Bien: recursos bajo control, cariño. La clase necesita conexión sostenible y no otra cuenta expuesta por aceptar una oferta sin autoridad demostrada sobre tu plan.",
+        "soft": "La descarga sorprende; revisa consumo y batería mediante controles oficiales antes de entregar secretos a una oferta que no verificaste.",
+        "sharp": "Datos infinitos por regalar la cuenta huelen a mierda; revisemos recursos reales sin añadir otra exposición al problema de batería.",
+        "pass": "Integras disponibilidad y privacidad; consulta condiciones y tareas antes de depender del hotspot, preparando alternativas legítimas con tus credenciales protegidas.",
+        "review": "Identifica consumo y controles oficiales; explica por qué una promesa publicitaria no demuestra autoridad para modificar las condiciones de tu plan."
+      }
+    },
+    {
+      "id": "public-networks-roaming-movil",
+      "title": "Roaming móvil y condiciones del viaje",
+      "minutes": 3,
+      "intro": "Distingue itinerancia móvil y conexión Wi-Fi para consultar cobertura y costes del operador antes de utilizar datos fuera de tu zona habitual, sin aceptar instrucciones de mensajes inesperados sobre pagos o ajustes.",
+      "sections": [
+        {
+          "title": "Una condición del servicio móvil",
+          "body": "La itinerancia o roaming móvil permite utilizar redes de otros operadores según los acuerdos y condiciones de tu servicio. No es el nombre de volver a conectarte al Wi-Fi de un hotel. Consulta antes del viaje disponibilidad, ajustes y costes mediante el operador oficial, porque varían entre planes y destinos. Un mensaje que pide instalar aplicaciones o entregar contraseñas para evitar cargos necesita verificación independiente. Comprender la diferencia permite elegir una conexión sin confundir condiciones comerciales con garantías de seguridad sobre los sitios que visitas."
+        }
+      ],
+      "steps": [
+        "Consulta condiciones de itinerancia de tu plan por el canal oficial.",
+        "Distingue esos ajustes de las preferencias de Wi-Fi guardadas en el teléfono."
+      ],
+      "scenario": "Viajando recibes un mensaje que exige tu contraseña para evitar supuestos cargos de roaming. Puedes consultar tu cuenta oficial y todavía no has distinguido si habla de datos móviles o del Wi-Fi del alojamiento.",
+      "questions": [
+        {
+          "prompt": "¿Qué comprobación corresponde antes de actuar?",
+          "options": [
+            "Consultar el plan oficial y verificar el aviso sin entregar la contraseña",
+            "Dictar las credenciales a cualquier remitente que mencione roaming",
+            "Suponer que todo Wi-Fi de hotel cobra itinerancia móvil"
+          ],
+          "answer": 0,
+          "explanation": "El operador oficial puede confirmar condiciones y avisos de tu servicio móvil. No entregues credenciales al remitente inesperado y distingue itinerancia celular de utilizar Wi-Fi, que tiene un procedimiento de acceso independiente.",
+          "wrongExplanations": [
+            null,
+            "Mencionar roaming no verifica la identidad del remitente ni justifica recibir tu contraseña. Consulta el aviso mediante un canal oficial iniciado por ti y conserva credenciales privadas mientras compruebas condiciones reales del plan.",
+            "El Wi-Fi del alojamiento y la itinerancia móvil son formas de acceso diferentes. Revisa cada condición con su responsable y no atribuyas automáticamente un cargo celular a cualquier conexión inalámbrica del hotel."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Roaming no es un apodo del Wi-Fi del hotel, cariño. Revisemos condiciones reales antes de que un mensaje urgente elija por tu cuenta.",
+        "theory": "La itinerancia pertenece al servicio móvil. Plan y destino importan, mientras un aviso inesperado todavía necesita demostrar su relación con el operador legítimo.",
+        "hint": "Separa datos móviles y acceso del alojamiento. Después identifica qué canal puede confirmar las condiciones del servicio sin pedirte secretos por un mensaje inesperado.",
+        "correct": "Exacto: consulta oficial, tesoro. Las condiciones del viaje se comprueban con el operador sin regalar credenciales a quien solo sabe escribir roaming en una alerta.",
+        "soft": "Los nombres pueden mezclarse viajando; identifica qué conexión utilizas y quién publica sus condiciones antes de responder al aviso que recibiste.",
+        "sharp": "Escribir roaming no nombró operador al remitente, carajo; consultemos las condiciones por nuestra ruta antes de premiar su alarma con credenciales.",
+        "pass": "Distingues itinerancia y Wi-Fi; conserva referencias oficiales para consultar condiciones del viaje y verificar independientemente avisos sobre acciones de tu cuenta móvil.",
+        "review": "Identifica conexión y responsable de sus condiciones; elige una consulta oficial que no dependa del enlace ni de la identidad anunciada por el mensaje."
+      }
+    },
+    {
+      "id": "public-networks-cambio-ruta",
+      "title": "Comprobar por dónde estás conectado",
+      "minutes": 3,
+      "intro": "Observa la conexión activa cuando el dispositivo cambia entre Wi-Fi y datos móviles para interpretar avisos y requisitos sin asumir que todas las aplicaciones utilizan siempre la ruta que elegiste al principio.",
+      "sections": [
+        {
+          "title": "La ruta puede cambiar durante la tarea",
+          "body": "Los sistemas pueden cambiar entre conexiones según cobertura, preferencias y funciones disponibles. El comportamiento depende del dispositivo y sus ajustes; no presupongas que toda sesión mantiene la misma ruta inicial. Comprueba el estado cuando una tarea requiere una conexión concreta o presenta interrupciones. Si utilizas una VPN, consulta además cómo responde ante el cambio. No modifiques controles organizativos para forzar continuidad: sigue el procedimiento autorizado y revisa consumo si el teléfono pasa a utilizar datos móviles durante una actividad larga."
+        }
+      ],
+      "steps": [
+        "Consulta la conexión activa y las preferencias de cambio automático de tu sistema.",
+        "Revisa requisitos del servicio y consumo si cambia la ruta durante una tarea."
+      ],
+      "scenario": "Empiezas conectado al Wi-Fi y el teléfono pasa a datos móviles por cobertura. La tarea exige una configuración organizativa, pero alguien asegura que basta recordar que inicialmente elegiste la red correcta.",
+      "questions": [
+        {
+          "prompt": "¿Qué información importa después del cambio?",
+          "options": [
+            "Únicamente el nombre que viste antes de empezar",
+            "La conexión actual y los requisitos que siguen aplicándose",
+            "El color de la funda del teléfono"
+          ],
+          "answer": 1,
+          "explanation": "La selección inicial no describe necesariamente la ruta actual ni garantiza el cumplimiento de requisitos posteriores. Comprueba el estado y el procedimiento autorizado, considerando también consumo y comportamiento de herramientas como la VPN utilizada.",
+          "wrongExplanations": [
+            "La ruta puede cambiar después de una selección inicial, según cobertura y configuración del sistema. Revisa la conexión actual cuando la tarea depende de requisitos específicos y consulta cómo mantiene el acceso la herramienta autorizada.",
+            null,
+            "La funda no informa sobre rutas, cobertura ni requisitos de acceso. Consulta los indicadores y preferencias del sistema para interpretar el cambio, manteniendo los procedimientos organizativos y el control del consumo móvil."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-wifi",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "El teléfono cambió de camino, tesoro; miremos la conexión actual antes de asumir que una elección anterior todavía describe su acceso.",
+        "theory": "La cobertura puede cambiar recorridos; observar el estado ayuda a interpretar requisitos y consumo sin depender del recuerdo de la selección inicial.",
+        "hint": "Compara el indicador anterior y el actual; piensa cuál describe la conexión disponible ahora y qué requisitos necesita conservar la tarea.",
+        "correct": "Bien: estado y requisitos, cariño; la selección inicial no firmó permanencia y podemos revisar el cambio sin atribuir al pasado información actual.",
+        "soft": "Es fácil recordar solo el comienzo; consulta indicadores y preferencias para comprender qué ruta existe y qué necesita conservar tu tarea.",
+        "sharp": "La conexión no hizo voto de fidelidad, joder; revisemos el indicador antes de declarar todo igual mientras el teléfono muestra otro camino.",
+        "pass": "Observas cambios sin suponer sistemas idénticos; consulta conexión, consumo y requisitos cuando dependas de una ruta concreta para completar una tarea importante.",
+        "review": "Relaciona conexión actual y condición de la tarea; explica dónde consultar preferencias sin confiar únicamente en la red que seleccionaste al empezar."
+      }
+    },
+    {
+      "id": "public-networks-bluetooth-emparejar",
+      "title": "Emparejar el accesorio correcto",
+      "minutes": 3,
+      "intro": "Confirma el dispositivo Bluetooth con el que quieres vincularte y revisa los códigos cuando aparezcan para evitar autorizar solicitudes inesperadas solo porque el nombre del accesorio resulta conocido.",
+      "sections": [
+        {
+          "title": "La proximidad no demuestra identidad",
+          "body": "Bluetooth conecta dispositivos cercanos para funciones como audio o intercambio de datos, según sus capacidades. El nombre encontrado puede ser genérico o imitar otro, así que inicia tú el emparejamiento del accesorio legítimo y sigue sus instrucciones. Si aparecen códigos en ambos equipos, comprueba que coincidan antes de aceptar. Cancela solicitudes que no reconoces. Estar cerca no concede permiso sobre tu teléfono y no necesitas aceptar un vínculo inesperado para seguir utilizando una conexión Wi-Fi independiente."
+        }
+      ],
+      "steps": [
+        "Inicia el emparejamiento con tu accesorio y consulta sus instrucciones.",
+        "Compara los códigos si el procedimiento los muestra en ambos equipos."
+      ],
+      "scenario": "Quieres conectar tus auriculares y aparece además una solicitud Bluetooth de un dispositivo desconocido. No has iniciado ese segundo vínculo y alguien insiste en aceptarlo para que funcione el Wi-Fi del tren donde estás realizando el viaje.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión mantiene el emparejamiento dentro de tu intención?",
+          "options": [
+            "Aceptar todos los vínculos cercanos por comodidad",
+            "Autorizar solo el accesorio verificado y cancelar la solicitud ajena",
+            "Dictar contraseñas personales al nombre que aparece"
+          ],
+          "answer": 1,
+          "explanation": "El vínculo debe corresponder al accesorio que tú iniciaste y verificaste. Una solicitud ajena no es necesaria para usar Wi-Fi; cancélala y comprueba códigos cuando el procedimiento legítimo los presente en ambos dispositivos.",
+          "wrongExplanations": [
+            "Aceptar cualquier vínculo amplía permisos sin verificar el accesorio ni la intención. Inicia el emparejamiento propio, comprueba los datos disponibles y cancela solicitudes que no corresponden a una acción que hayas realizado.",
+            null,
+            "Las contraseñas personales no son material para identificar un accesorio Bluetooth. Verifica el dispositivo mediante su procedimiento oficial y códigos cuando existan, manteniendo privadas las credenciales de correo u otros servicios independientes."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "motorola-bluetooth"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Tus auriculares tienen compañía inesperada, cariño. Confirmemos el accesorio antes de aceptar otro vínculo que nadie había solicitado ni explicado.",
+        "theory": "Un nombre Bluetooth no demuestra propietario. El emparejamiento legítimo necesita tu intención y las comprobaciones que ofrece el procedimiento del accesorio.",
+        "hint": "Relaciona cada solicitud con una acción propia. Después revisa qué datos permiten confirmar el accesorio que realmente estabas intentando conectar al teléfono.",
+        "correct": "Exacto: vínculo previsto, tesoro. Los auriculares reciben atención y el desconocido no consiguió permiso por aparecer junto a ellos en pantalla.",
+        "soft": "Los nombres cercanos pueden confundirse. Revisa cuál emparejamiento iniciaste y compara códigos cuando existan antes de aceptar una solicitud que no reconoces.",
+        "sharp": "El desconocido no se volvió auricular por saludar primero, carajo. Cancelemos ese vínculo y confirmemos el accesorio propio sin obedecer una historia sobre el Wi-Fi.",
+        "pass": "Ya puedes emparejar con intención y comprobaciones. Conserva separados los procedimientos de Bluetooth y Wi-Fi cuando una solicitud inesperada pretenda mezclar sus permisos.",
+        "review": "Identifica qué accesorio querías conectar y cómo verificarlo. Después explica por qué una petición ajena no obtiene autorización únicamente por aparecer cerca del teléfono."
+      }
+    },
+    {
+      "id": "public-networks-bluetooth-permisos",
+      "title": "Audio no significa acceso a contactos",
+      "minutes": 3,
+      "intro": "Revisa qué funciones autorizas a un dispositivo Bluetooth para limitar el intercambio a necesidades reales y retirar vínculos temporales cuando ya no deban conservar acceso a información del teléfono.",
+      "sections": [
+        {
+          "title": "Un vínculo tiene funciones concretas",
+          "body": "Los dispositivos Bluetooth pueden solicitar funciones distintas, como audio, contactos o acceso a internet, dependiendo del sistema y accesorio. Revisa las opciones ofrecidas y conserva solo lo que necesitas para su uso legítimo. Un equipo temporal, como un sistema de audio prestado, no requiere automáticamente todos los permisos disponibles. Cuando termine el uso, consulta cómo retirar el vínculo y las copias locales si se compartieron datos. La conducta exacta varía; sigue instrucciones del teléfono y del accesorio en lugar de prometer una eliminación universal al desconectar."
+        }
+      ],
+      "steps": [
+        "Lee las funciones que solicita el vínculo Bluetooth antes de aceptarlas.",
+        "Retira vínculos temporales y consulta datos conservados según el equipo utilizado."
+      ],
+      "scenario": "Conectas el teléfono a un equipo de audio prestado para escuchar música. También solicita sincronizar todos tus contactos, aunque no necesitas esa función y el manual permite seleccionar por separado los permisos que recibirá durante el vínculo temporal.",
+      "questions": [
+        {
+          "prompt": "¿Qué autorización encaja con la tarea?",
+          "options": [
+            "Compartir siempre toda la información disponible",
+            "Publicar los contactos para facilitar el emparejamiento",
+            "Limitar los permisos a la función que realmente necesitas"
+          ],
+          "answer": 2,
+          "explanation": "Escuchar audio no exige automáticamente entregar contactos cuando el sistema permite separar funciones. Lee permisos, conserva solo lo necesario y consulta cómo retirar el vínculo o datos compartidos al terminar el uso temporal.",
+          "wrongExplanations": [
+            "El emparejamiento no justifica compartir toda la información del teléfono. Las funciones pueden tener controles separados; selecciona las necesarias para la tarea y revisa qué conservará el equipo cuando termine el vínculo.",
+            "Publicar contactos no es necesario para utilizar audio y expone información propia y de otras personas. Revisa permisos disponibles y limita el vínculo a la función legítima que quieres realizar con el accesorio prestado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "motorola-bluetooth"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La música no necesita tu agenda, tesoro; revisemos permisos antes de convertir un accesorio prestado en otro archivo de tus contactos personales.",
+        "theory": "Audio y contactos cumplen tareas distintas; utiliza opciones separadas cuando existan para limitar las funciones del vínculo a lo realmente necesario.",
+        "hint": "Compara la tarea prevista y la función adicional; piensa si puedes conservar la utilidad sin compartir información que esa tarea no requiere.",
+        "correct": "Bien: permisos limitados, cariño; la música puede sonar sin entregar automáticamente una agenda porque emparejar no exige conceder todas las funciones disponibles.",
+        "soft": "La petición parece parte del proceso; comprueba si puedes separar funciones y decide considerando la tarea y los datos que recibirá el accesorio.",
+        "sharp": "El altavoz no necesita conocer al dentista, carajo; dejemos la agenda fuera cuando solo queremos escuchar música y podemos elegir permisos separados.",
+        "pass": "Relacionas permisos y uso del accesorio; consulta cierre y copias locales al terminar sin asumir que desconectar borra toda información recibida previamente.",
+        "review": "Identifica función, datos y cierre del vínculo; consulta cómo retirar copias sin dar por hecho que todo accesorio las elimina automáticamente al alejarte."
+      }
+    },
+    {
+      "id": "public-networks-compartir-cercano",
+      "title": "Elegir quién puede enviarte archivos",
+      "minutes": 3,
+      "intro": "Revisa la visibilidad y recepción de funciones de compartir por proximidad para aceptar contenido esperado de personas verificadas sin convertir la cercanía física o un nombre familiar en autorización automática.",
+      "sections": [
+        {
+          "title": "Recibir también es una decisión",
+          "body": "Las herramientas de compartir cerca pueden utilizar varias tecnologías y ofrecer modos de visibilidad según el sistema. Consulta quién puede encontrarte y cómo se acepta una transferencia, porque no todos los casos muestran la misma confirmación. Limita recepción cuando no la necesitas y verifica remitente y archivo antes de abrirlo. Estar en el mismo vagón no hace legítima una entrega. Tampoco debes reenviar contenido sospechoso para pedir opinión; utiliza soporte o canales de reporte apropiados sin ampliar la distribución del archivo recibido."
+        }
+      ],
+      "steps": [
+        "Consulta visibilidad y recepción de la función de compartir de tu sistema.",
+        "Acepta solo contenido esperado y verifica al remitente por otro medio."
+      ],
+      "scenario": "Durante un viaje recibes una oferta de archivo desde un dispositivo con el nombre de una compañera. Ella no te anunció ninguna transferencia y puedes preguntarle directamente antes de aceptar o abrir el contenido que aparece en pantalla.",
+      "questions": [
+        {
+          "prompt": "¿Qué comprobación aporta contexto?",
+          "options": [
+            "Confirmar directamente si la compañera inició la transferencia",
+            "Aceptar cualquier archivo con un nombre conocido",
+            "Reenviar el archivo a todos antes de preguntar"
+          ],
+          "answer": 0,
+          "explanation": "Confirmar con la persona por otro medio relaciona la transferencia con una acción esperada. El nombre del dispositivo no basta para autenticar remitente ni contenido; revisa además las opciones de recepción y visibilidad del sistema.",
+          "wrongExplanations": [
+            null,
+            "Un nombre conocido puede imitarse y no demuestra quién envía el archivo. Verifica con la persona antes de aceptar o abrir contenido inesperado, conservando recepción limitada cuando no necesitas compartir por proximidad.",
+            "Reenviar sin verificar amplía una distribución que podría ser problemática y no confirma su origen. Pregunta primero a la persona esperada y utiliza canales apropiados si necesitas reportar o analizar el contenido sospechoso."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-share",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Apareció un archivo de una compañera, cariño. Preguntemos antes de aceptar un regalo digital que ella todavía no ha anunciado personalmente.",
+        "theory": "La proximidad facilita compartir sin demostrar intención. Visibilidad y verificación ayudan a mantener las transferencias dentro de lo que realmente esperabas recibir de otra persona.",
+        "hint": "Compara el nombre mostrado y la acción reconocida por tu compañera; identifica una referencia independiente antes de aceptar el archivo inesperado.",
+        "correct": "Exacto: confirmación directa, tesoro; el nombre no autentica por sí solo al remitente ni el contenido que un dispositivo cercano quiere enviarte.",
+        "soft": "El nombre familiar convence; relaciónalo con una acción reconocida y revisa visibilidad para limitar entregas que no corresponden a tu tarea actual.",
+        "sharp": "Llamarse como tu compañera no vuelve amigo al archivo, joder; confirmemos antes de abrir y de convertir una duda en otro reenvío.",
+        "pass": "Controlas recepción y verificas entregas; consulta modos de tu sistema y confirma envíos inesperados sin atribuir comportamientos idénticos a todos los teléfonos.",
+        "review": "Revisa quién puede encontrarte y cómo recibes contenido; distingue un nombre familiar y una acción que la persona reconoce haber iniciado voluntariamente."
+      }
+    },
+    {
+      "id": "public-networks-nfc-etiquetas",
+      "title": "Una etiqueta NFC puede abrir un enlace",
+      "minutes": 3,
+      "intro": "Reconoce que una etiqueta de proximidad puede contener enlaces o iniciar acciones según el sistema y revisa el destino antes de entregar información o aceptar cambios inesperados durante su lectura en un espacio público.",
+      "sections": [
+        {
+          "title": "Acercar no significa aprobar todo",
+          "body": "NFC permite interacciones a corta distancia y puede utilizar etiquetas que contienen información, incluidos enlaces. El comportamiento al leerlas varía según sistema y aplicación. La cercanía necesaria no demuestra quién colocó la etiqueta ni legitima todo lo que aparezca después. Si se abre un sitio, verifica dominio y petición antes de introducir datos. No confundas una lectura de enlace con autorizar cualquier pago o instalación; cada acción requiere su propio contexto y las comprobaciones que ofrezca el procedimiento oficial de tu dispositivo."
+        }
+      ],
+      "steps": [
+        "Lee el contexto de la etiqueta y verifica el destino que presenta.",
+        "Detén solicitudes inesperadas de datos, instalaciones o pagos hasta aclararlas oficialmente."
+      ],
+      "scenario": "Una etiqueta ofrece el menú al acercar el teléfono. Después aparece una página que pide la contraseña del correo, aunque el personal no reconoce esa solicitud como parte de su servicio digital.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debes mantener al leer la etiqueta?",
+          "options": [
+            "Toda acción cercana queda automáticamente autorizada",
+            "La proximidad no justifica entregar credenciales a la página abierta",
+            "NFC demuestra el nombre legal de quien pegó la etiqueta"
+          ],
+          "answer": 1,
+          "explanation": "La corta distancia no acredita origen ni finalidad de la página. Verifica dominio y solicitud, deteniendo credenciales inesperadas; leer información mediante NFC no equivale a autorizar cualquier acción posterior que intente promover el destino abierto.",
+          "wrongExplanations": [
+            "Acercar el teléfono puede permitir leer información, pero no justifica automáticamente pagos, instalaciones o entrega de secretos. Evalúa cada acción con su contexto y referencias oficiales antes de continuar desde una etiqueta no verificada.",
+            null,
+            "Una etiqueta no demuestra la identidad legal de quien la colocó y puede dirigir a un sitio ajeno. Consulta al establecimiento y verifica el destino antes de confiar en solicitudes inesperadas que aparezcan después de leerla."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "android-nfc",
+        "cisco-phishing"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Acercar el teléfono no firma permiso universal, cariño; revisemos qué abrió la etiqueta antes de dar información innecesaria para consultar el menú.",
+        "theory": "NFC facilita proximidad sin demostrar autoría; el destino y sus peticiones requieren contexto porque una distancia corta no justifica confianza en cualquier formulario.",
+        "hint": "Relaciona lo anunciado y lo solicitado; busca qué referencia del establecimiento conecta esa petición con el servicio que esperabas al leer la etiqueta.",
+        "correct": "Bien: proximidad sin confianza automática, tesoro; la etiqueta ofrece información sin convertir una contraseña externa en requisito legítimo para consultar un menú.",
+        "soft": "La lectura parece natural; compara qué esperabas obtener y qué pide la página para distinguir consulta de contenido y autorización de acciones adicionales.",
+        "sharp": "Unos centímetros no canonizaron la etiqueta, carajo; si el menú exige secretos, consultemos al local antes de permitir tanta curiosidad a la mesa.",
+        "pass": "Distingues lectura cercana y autorización posterior; verifica peticiones según tu sistema sin atribuir a la proximidad capacidad de autenticar cualquier destino o acción.",
+        "review": "Compara propósito y petición; busca referencias del local y del dominio sin suponer que todos los usos de NFC merecen exactamente la misma respuesta."
+      }
+    },
+    {
+      "id": "public-networks-codigo-qr",
+      "title": "El QR no verifica su propio destino",
+      "minutes": 3,
+      "intro": "Interpreta un código QR como una forma de representar información y revisa si propone una red, un enlace u otra acción antes de aceptar su contenido en una conexión pública que no administras.",
+      "sections": [
+        {
+          "title": "Cómodo de leer, todavía necesita contexto",
+          "body": "Un código QR puede representar un enlace, datos de acceso inalámbrico u otra información, dependiendo del formato y la aplicación lectora. Escanearlo no demuestra quién lo publicó. Un adhesivo puede colocarse sobre otro, así que confirma con el establecimiento las instrucciones cuando aparezcan discrepancias. Revisa la acción antes de aceptarla y no entregues contraseñas personales a un sitio solo porque llegaste mediante cámara. Si incluye credenciales de red, trátalo como una forma de compartir ese acceso, no como certificación de su administrador."
+        }
+      ],
+      "steps": [
+        "Revisa la acción y destino que interpreta tu lector QR.",
+        "Confirma con el establecimiento cualquier cambio o solicitud inesperada."
+      ],
+      "scenario": "El cartel Wi-Fi lleva un QR encima de otro y el lector abre una solicitud bancaria. El personal había confirmado conexión gratuita sin pagos ni información financiera para utilizar el acceso del local.",
+      "questions": [
+        {
+          "prompt": "¿Qué respuesta conserva el criterio sobre el destino?",
+          "options": [
+            "Pagar porque la cámara ya leyó el código",
+            "Confiar en cualquier adhesivo colocado cerca del mostrador",
+            "Detener la acción y verificar el procedimiento con el local"
+          ],
+          "answer": 2,
+          "explanation": "El QR no acredita origen ni legitima una solicitud que contradice el procedimiento confirmado. Detén la entrega de datos y consulta al establecimiento por una referencia independiente antes de aceptar la acción interpretada por la cámara.",
+          "wrongExplanations": [
+            "Leer un código no obliga a pagar ni verifica su finalidad. La solicitud financiera contradice las instrucciones del local, por lo que debes detenerla y confirmar el acceso legítimo antes de proporcionar datos sensibles.",
+            "La ubicación del adhesivo no demuestra quién lo colocó ni que su contenido sea oficial. Compara destino y solicitud con el procedimiento del establecimiento y verifica la discrepancia sin utilizar la propia página como única referencia.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La cámara leyó un dibujo, cariño; todavía debemos decidir qué propone antes de confiar en el adhesivo que apareció encima de otro cartel.",
+        "theory": "Un QR representa contenido sin autenticar al autor; la comodidad no justifica peticiones que el establecimiento nunca anunció como parte del acceso ofrecido.",
+        "hint": "Compara lectura e instrucciones del local; identifica la discrepancia y una referencia independiente antes de aceptar una acción inesperada sobre tus datos financieros.",
+        "correct": "Exacto: detener y verificar, tesoro; el adhesivo no recibió autoridad financiera por colocarse junto a un cartel legítimo que prometía acceso gratuito.",
+        "soft": "La ubicación parece oficial; revisa acción y destino frente al procedimiento conocido antes de asumir que leer el código justifica cualquier entrega de información.",
+        "sharp": "La cámara no nombró banquero al adhesivo, joder; si gratis termina pidiendo dinero, preguntamos antes de premiar esa discrepancia con nuestros datos.",
+        "pass": "Reconoces el QR como formato con contexto pendiente; verifica destino y acción manteniendo separadas la facilidad de escanear y la decisión de confiar.",
+        "review": "Revisa lectura y proceso confirmado; formula una consulta sin introducir datos y explica por qué el formato no acredita identidad del servicio propuesto."
+      }
+    },
+    {
+      "id": "public-networks-desconectar-sospecha",
+      "title": "Si algo inesperado cambia durante el acceso",
+      "minutes": 3,
+      "intro": "Detén una interacción sospechosa y reúne contexto para distinguir señales y acciones realizadas sin concluir automáticamente que todo el dispositivo quedó comprometido por conectarse a una red pública.",
+      "sections": [
+        {
+          "title": "Primero reconoce lo que ocurrió",
+          "body": "Una redirección inesperada, un aviso o una petición extraña merece pausa. Cierra la interacción que no comprendes y desconecta de esa red si necesitas evitar seguir utilizándola. Identifica si solo viste una página, entregaste credenciales, aceptaste un permiso o instalaste algo, porque las respuestas son distintas. Anota hora y observaciones sin incluir secretos. Utiliza otra conexión conocida y soporte oficial para aclarar el caso. Desconectar no revierte automáticamente datos ya entregados ni configuraciones persistentes que hayas aceptado durante el proceso."
+        }
+      ],
+      "steps": [
+        "Detén la interacción y deja de utilizar el acceso si no puedes verificarlo.",
+        "Anota qué acción realizaste y consulta soporte por una ruta conocida."
+      ],
+      "scenario": "El portal cambia y propone instalar una aplicación. Aún no aceptaste descargas ni escribiste credenciales; quieres parar y consultar al establecimiento sin afirmar que ya perdiste todas las cuentas del teléfono.",
+      "questions": [
+        {
+          "prompt": "¿Qué actuación responde a los hechos conocidos?",
+          "options": [
+            "Detener, identificar acciones realizadas y consultar por un canal legítimo",
+            "Anunciar que mirar una página prueba la pérdida de todas las cuentas",
+            "Instalar la aplicación para averiguar si el aviso era importante"
+          ],
+          "answer": 0,
+          "explanation": "La pausa y el registro de acciones permiten evaluar un alcance real sin exagerarlo. No se han entregado credenciales ni instalado software; conserva contexto y verifica el cambio mediante el establecimiento o soporte legítimo.",
+          "wrongExplanations": [
+            null,
+            "Ver una página no demuestra por sí solo que todas las cuentas estén perdidas. Diferencia acciones realizadas y contexto, detén peticiones inesperadas y consulta soporte antes de atribuir un compromiso total que todavía no está demostrado.",
+            "Instalar algo desconocido para investigar añade un cambio innecesario al problema. Mantén la interacción detenida y reúne información sobre la petición, utilizando una ruta legítima para comprobar el procedimiento sin conceder más permisos."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "microsoft-wireless"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "La pantalla cambió de plan, tesoro; podemos parar sin instalar otra cosa ni declarar todavía una catástrofe sobre todas tus cuentas personales.",
+        "theory": "Ver, entregar secretos e instalar son acciones distintas; desconectar limita el acceso actual sin retroceder para deshacer datos enviados o cambios persistentes anteriores.",
+        "hint": "Revisa qué hiciste y qué solo apareció como propuesta; compara pausa y nuevos cambios manteniendo una conclusión apoyada en hechos del caso.",
+        "correct": "Bien: pausa y hechos, cariño; no instalamos por curiosidad y conservamos contexto sin confundir una pantalla vista con todas las cuentas comprometidas automáticamente.",
+        "soft": "La petición inquieta; distingue qué aceptaste antes de concluir su alcance y detén cambios nuevos mientras conservas observaciones para una consulta legítima al soporte.",
+        "sharp": "Instalar lo sospechoso para investigar sería una mierda con iniciativa; mejor pausa y hechos antes de añadir permisos o inventar todas las cuentas perdidas.",
+        "pass": "Respondes con proporción; distingue acciones y busca ayuda oficial recordando que desconectar no revierte secretos enviados ni perfiles aceptados durante interacciones anteriores del dispositivo.",
+        "review": "Separa observación, acción y consecuencia posible; registra también qué no aceptaste para consultar sin instalar por curiosidad ni anunciar pérdidas que todavía no demostraste."
+      }
+    },
+    {
+      "id": "public-networks-clave-entregada",
+      "title": "Si entregaste una contraseña",
+      "minutes": 3,
+      "intro": "Protege la cuenta correspondiente cuando compartiste una credencial en un formulario falso, utilizando un dispositivo de confianza y el servicio oficial para revisar acceso, sesiones y recuperación sin esperar a perder la conexión.",
+      "sections": [
+        {
+          "title": "La respuesta pertenece a la cuenta",
+          "body": "Si escribiste una contraseña real en un sitio falso, desconectar el Wi-Fi no invalida el secreto que ya recibió el destinatario. Desde un dispositivo de confianza, abre directamente el servicio oficial y cambia la contraseña. Sustituye también las cuentas donde la reutilizabas y revisa sesiones, MFA y recuperación. Si pertenece a una organización, informa por su procedimiento. No respondas al supuesto soporte del formulario ni entregues códigos para deshacer el incidente; utiliza canales oficiales y conserva una descripción clara de lo ocurrido."
+        }
+      ],
+      "steps": [
+        "Accede al servicio oficial desde un dispositivo de confianza y sustituye la clave expuesta.",
+        "Revisa sesiones, recuperación y reutilización, e informa al responsable si la cuenta es organizativa."
+      ],
+      "scenario": "Escribiste la contraseña del correo en un portal falso y luego desconectaste. Aún accedes desde tu teléfono de confianza y necesitas proteger la cuenta sin entregar códigos a quien promovió el formulario engañoso.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción aborda el secreto ya entregado?",
+          "options": [
+            "Cambiar únicamente el nombre visible del teléfono",
+            "Cambiar la clave oficialmente y revisar sesiones y recuperación",
+            "Esperar que desconectar borre lo que el formulario recibió"
+          ],
+          "answer": 1,
+          "explanation": "La contraseña ya enviada debe sustituirse desde el servicio oficial y un dispositivo confiable. Revisa accesos y recuperación, además de cuentas donde se repetía; desconectar no retira información que el destinatario ya recibió.",
+          "wrongExplanations": [
+            "El nombre del teléfono no modifica la credencial que acepta el correo. Actúa en el servicio oficial: sustituye el secreto expuesto y revisa sesiones, recuperación y otros usos de esa contraseña compartida.",
+            null,
+            "Desconectar cambia el acceso actual a la red y no borra la información entregada al formulario. Protege la cuenta mediante el servicio oficial y revisa sesiones y recuperación sin esperar una reversión automática del envío anterior."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Si entregaste la clave, cariño, ahora actuamos sobre la cuenta con calma y un procedimiento oficial concreto.",
+        "theory": "Cambiar de red no invalida el secreto entregado; la cuenta necesita revisión propia mediante un dispositivo de confianza.",
+        "hint": "Piensa dónde sigue siendo válida la contraseña enviada y qué acciones modifican realmente el acceso de esa cuenta.",
+        "correct": "Bien: secreto sustituido y acceso revisado, tesoro; la respuesta atiende la cuenta sin esperar magia de la desconexión inalámbrica.",
+        "soft": "Respira y separa conexión y credencial; el dato ya salió, pero todavía puedes proteger la cuenta mediante su acceso oficial.",
+        "sharp": "Apagar el Wi-Fi no borra recuerdos del farsante, carajo; cambiemos el secreto donde todavía permite entrar a la cuenta.",
+        "pass": "Has identificado una respuesta concreta para credenciales expuestas; conserva canales oficiales y revisa otros servicios donde reutilizabas el mismo secreto personal.",
+        "review": "Repasa cambio de contraseña, sesiones y recuperación; después identifica cómo comprobarías oficialmente cualquier otra cuenta que compartiera la credencial entregada."
+      }
+    },
+    {
+      "id": "public-networks-plan-viaje",
+      "title": "Tu plan para conectarte fuera",
+      "minutes": 3,
+      "intro": "Reúne acceso verificado, cifrado, permisos y alternativas en un plan sencillo para conectarte fuera de casa con decisiones proporcionadas sin depender de herramientas milagrosas ni afirmaciones universales sobre redes públicas.",
+      "sections": [
+        {
+          "title": "Una secuencia que puedes recordar",
+          "body": "Antes de salir, mantén el dispositivo actualizado y prepara herramientas autorizadas si la tarea las requiere. En el lugar, confirma el acceso y revisa el destino de tus servicios; conserva HTTPS y atiende avisos. Limita funciones locales de compartir y decide sobre redes guardadas cuando termines. Mantén una alternativa como datos propios si no puedes aclarar el acceso. Ante cambios sospechosos, detén la interacción y diferencia acciones realizadas antes de pedir ayuda. La seguridad útil conecta controles concretos con decisiones comprensibles, sin prometer protección absoluta."
+        }
+      ],
+      "steps": [
+        "Prepara referencias oficiales, herramientas necesarias y una alternativa de conexión.",
+        "Al terminar, revisa accesos temporales y conserva un procedimiento para consultar señales inesperadas."
+      ],
+      "scenario": "Preparas un viaje de estudio: quieres confirmar redes, verificar servicios y limitar compartir. También necesitas responder a solicitudes extrañas sin prohibir todo acceso público ni confiar ciegamente en una sola herramienta de protección.",
+      "questions": [
+        {
+          "prompt": "¿Qué resume un plan proporcionado?",
+          "options": [
+            "Combinar verificaciones y controles, con una alternativa y respuesta según los hechos",
+            "Confiar únicamente en cualquier icono que diga VPN",
+            "Afirmar que todo acceso público elimina cualquier cifrado"
+          ],
+          "answer": 0,
+          "explanation": "El plan combina preparación, verificación, permisos y alternativas según las necesidades reales. Reconocer cada alcance permite usar protecciones sin exagerarlas y responder a señales sospechosas conforme a las acciones concretas que realmente realizaste.",
+          "wrongExplanations": [
+            null,
+            "Un indicador VPN no describe toda la seguridad ni confirma destinos, permisos locales o alcance del túnel. Mantén verificaciones y alternativas para una conexión comprendida, sin depender de una sola herramienta como garantía universal.",
+            "Las redes públicas no desactivan automáticamente HTTPS ni exponen inevitablemente todo contenido. Evalúa acceso, dispositivo y servicio por separado, utilizando un plan de controles concretos en lugar de una afirmación universal que contradice el alcance del cifrado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ftc-public",
+        "microsoft-wireless",
+        "android-wifi"
+      ],
+      "diagram": "wifi",
+      "aoi": {
+        "intro": "Llegó el plan, tesoro; un conjunto de decisiones claras vale más que otro amuleto prometiendo conexión perfectamente invulnerable.",
+        "theory": "Preparación, verificación y límites trabajan juntos; ninguna herramienta necesita fingir superpoderes para aportar una protección útil durante el viaje.",
+        "hint": "Compara cuántas necesidades reales contempla cada propuesta; busca coherencia entre preparación, controles y respuesta ante información que todavía no entiendes.",
+        "correct": "Exacto: controles con propósito, cariño; el plan conserva criterio sin tratar una herramienta como la dueña absoluta de toda seguridad.",
+        "soft": "Ya conoces muchas piezas; ahora relaciónalas con su función antes de elegir una frase que promete resolverlo todo mediante una única etiqueta.",
+        "sharp": "Otro amuleto universal sería una mierda de plan, joder; prefiero verificaciones comprensibles y una alternativa antes que promesas sin límites explicados.",
+        "pass": "Curso completado: puedes conectarte con precisión, revisar lo necesario y pedir ayuda según hechos sin inventar inmunidad ni desastre automático.",
+        "review": "Vuelve a unir acceso, destino, permisos y alternativas; explica qué harías ante una duda concreta sin atribuir poderes universales a ninguna capa."
+      }
+    }
+  ]
+}

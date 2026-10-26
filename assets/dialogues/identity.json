@@ -1,0 +1,1649 @@
+{
+  "version": 1,
+  "dialogues": [
+    {
+      "id": "i-passwords-intro-0-1",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Acércate, cielo: hoy jubilamos esa contraseña que conoce hasta tu tostadora. Quiero cuentas separadas y dramas reducidos; mi paciencia merece ese lujo.",
+      "explanation": "En esta lección distinguirás una contraseña única de una variación predecible, conocerás la función del gestor y practicarás la respuesta ante una filtración. Todos los ejemplos son ficticios y no requieren introducir credenciales."
+    },
+    {
+      "id": "i-passwords-intro-0-2",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Si una sola clave abre toda tu vida digital, el problema no es tu memoria: es ese maldito llavero universal. Vamos a separarlo con criterio.",
+      "explanation": "Compartir una contraseña entre servicios conecta sus riesgos. Una tienda comprometida puede exponer credenciales útiles en el correo o en otras cuentas. La separación comienza asignando a cada servicio una contraseña diferente."
+    },
+    {
+      "id": "i-passwords-intro-0-3",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Hoy no necesito saber tu cumpleaños ni conocer a tu gato. Necesito enseñarte a guardar secretos sin convertir tu cabeza en un archivador con ansiedad.",
+      "explanation": "Los datos personales pueden resultar fáciles de encontrar o inferir. La lección propone claves largas generadas de forma aleatoria y una herramienta para conservarlas, evitando depender de nombres, fechas o recuerdos previsibles."
+    },
+    {
+      "id": "i-passwords-intro-0-4",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Tengo una cita con tus hábitos de acceso, cariño. El plan incluye exclusividad por cuenta, menos malabares mentales y cero confesiones de contraseñas reales.",
+      "explanation": "Trabajaremos con decisiones sobre cuentas y no con sus secretos. Podrás identificar reutilización, preparar una mejora y decidir qué revisar después de una filtración sin escribir ninguna contraseña en la aplicación."
+    },
+    {
+      "id": "i-passwords-intro-0-5",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "La clave de siempre con otro numerito se ha presentado como novedad. Qué descaro, joder. Hoy aprenderás a reconocer ese disfraz antes de darle otra cuenta.",
+      "explanation": "Añadir un número o modificar una letra conserva una relación fácil de adivinar entre claves. La independencia real requiere generar una contraseña distinta, sin basarla en la utilizada por otro servicio."
+    },
+    {
+      "id": "i-passwords-intro-0-6",
+      "lessonId": "passwords",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Deja las credenciales en su sitio y trae solamente tus decisiones. Yo pongo la lengua afilada; tú descubrirás qué hacer cuando una filtración salpica varias cuentas.",
+      "explanation": "Una alerta sobre credenciales expuestas exige revisar dónde se usaban y actuar en los servicios afectados. Comprenderás por qué también importan las sesiones abiertas y las opciones de recuperación de la cuenta."
+    },
+    {
+      "id": "i-passwords-theory-0-1",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Una tienda pierde su lista de accesos y el correo empieza a sudar. ¿El puente? La misma contraseña. Esa comodidad tiene unos intereses bastante cabrones.",
+      "explanation": "Después de una filtración, alguien puede probar las credenciales expuestas en otros servicios. Este aprovechamiento de contraseñas reutilizadas funciona aunque el segundo servicio no haya sufrido una brecha propia."
+    },
+    {
+      "id": "i-passwords-theory-0-2",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Quiero exclusividad, pero empezaremos por tus cuentas: cada una con su clave. Una filtración no necesita recibir invitaciones gratuitas al resto de tu vida.",
+      "explanation": "La unicidad limita la propagación de un robo de credenciales entre servicios. No impide todos los ataques, pero evita que conocer la contraseña de una cuenta entregue automáticamente la de otra."
+    },
+    {
+      "id": "i-passwords-theory-0-3",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Cambiar Luna2026 por Luna2027 no es una transformación épica, tesoro. Es ponerle sombrero al mismo secreto y esperar que nadie reconozca la cara.",
+      "explanation": "Las variaciones previsibles conservan patrones que facilitan las pruebas de acceso. Sustituir años, símbolos finales o nombres de servicios no equivale a generar contraseñas independientes mediante un proceso aleatorio."
+    },
+    {
+      "id": "i-passwords-theory-0-4",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Una contraseña larga tampoco recibe inmunidad diplomática si la copias en todas partes. Primero entiende la combinación: longitud, generación aleatoria y una sola cuenta por secreto.",
+      "explanation": "La longitud aporta posibilidades cuando los caracteres o palabras se eligen de manera adecuada. La aleatoriedad reduce patrones predecibles y la unicidad separa servicios. Estas propiedades se complementan y ninguna justifica reutilizar claves."
+    },
+    {
+      "id": "i-passwords-theory-0-5",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "El nombre del servicio pegado a tu contraseña favorita sigue siendo una receta. Los atacantes también saben leer recetas, por desgracia para ese invento tan consentido.",
+      "explanation": "Construir claves con una base compartida y una etiqueta del servicio deja una relación reconocible. Si se descubre una, puede inferirse cómo generar las demás; conviene que cada valor sea independiente."
+    },
+    {
+      "id": "i-passwords-theory-0-6",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Tu correo y tu foro de recetas no necesitan compartir intimidades. Dales contraseñas diferentes y una caída del foro dejará de repartir llaves del correo.",
+      "explanation": "Incluso una cuenta que parece poco importante puede exponer una contraseña reutilizada en otra más sensible. Evalúa la separación por credenciales, sin asumir que todos los proveedores protegen sus sistemas de igual manera."
+    },
+    {
+      "id": "i-passwords-theory-1-1",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "El gestor recuerda las claves para que tu cerebro recuerde cosas más bonitas, como hacerme caso. Genera secretos distintos y los guarda en una bóveda protegida.",
+      "explanation": "Un gestor de contraseñas permite crear y almacenar credenciales únicas para numerosos servicios. Al concentrar estos secretos, su acceso requiere una protección especial: una frase maestra robusta y verificación adicional cuando esté disponible."
+    },
+    {
+      "id": "i-passwords-theory-1-2",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "No me pongas una puerta de cartón delante de la bóveda, cariño. El acceso al gestor merece más cariño que esa contraseña rescatada de una servilleta.",
+      "explanation": "La protección de la bóveda depende de cómo se asegure su acceso. Evita reutilizar la frase maestra en servicios externos y activa un método adicional de autenticación si el gestor lo permite."
+    },
+    {
+      "id": "i-passwords-theory-1-3",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Un gestor no es un escenario para exhibir tus secretos. Guarda, genera y facilita el uso de claves distintas; el numerito de publicarlas queda cancelado.",
+      "explanation": "Almacenar una contraseña en un gestor no significa compartirla públicamente. Su función cotidiana consiste en recuperar la credencial correspondiente al servicio y reducir la necesidad de memorizar o reciclar secretos."
+    },
+    {
+      "id": "i-passwords-theory-1-4",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "Si el ejercicio pide observar una cuenta, observar significa pensar. No pegar aquí la clave bancaria, carajo. Mi curiosidad tiene mejor criterio que ese formulario imaginario.",
+      "explanation": "Una práctica educativa puede evaluar el procedimiento sin recopilar credenciales. Para revisar tus hábitos basta identificar el tipo de cuenta y si reutilizas su contraseña, sin revelar el contenido del secreto."
+    },
+    {
+      "id": "i-passwords-theory-1-5",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "El gestor lleva el inventario y tú proteges la entrada. Esa división del trabajo me gusta: menos memoria imposible y una decisión importante tomada con atención.",
+      "explanation": "Gestionar muchas claves únicas manualmente puede favorecer la reutilización por comodidad. El gestor reduce esa carga, mientras la frase maestra permite concentrar el esfuerzo de memorización en proteger el acceso a la bóveda."
+    },
+    {
+      "id": "i-passwords-theory-1-6",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Tener una bóveda no vuelve impecable cualquier hábito. Si su llave maestra anda repetida por medio internet, el decorado elegante no arregla esa puñetera entrada.",
+      "explanation": "Un gestor ayuda a separar credenciales, pero no elimina la necesidad de cuidar su cuenta y dispositivo. Protege su autenticación y no introduzcas la frase maestra en páginas o ejercicios ajenos al gestor."
+    },
+    {
+      "id": "i-passwords-theory-2-1",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Una alerta de filtración no se resuelve mirando el correo con intensidad dramática. Entra por tu cuenta al servicio oficial y empieza a cerrar las puertas afectadas.",
+      "explanation": "Desde un dispositivo de confianza, accede directamente al servicio cuya contraseña fue expuesta y sustitúyela. Si utilizabas ese mismo secreto en otros sitios, cada uno necesita también su propio cambio."
+    },
+    {
+      "id": "i-passwords-theory-2-2",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Cambiar la contraseña es importante; coronarlo como solución total sería demasiado cómodo. También hay que mirar quién sigue dentro y qué puerta de recuperación quedó abierta.",
+      "explanation": "Las sesiones activas y los datos de recuperación merecen revisión después de una exposición. Una sesión ajena o una dirección de recuperación alterada pueden mantener vías de acceso aunque ya hayas elegido una clave nueva."
+    },
+    {
+      "id": "i-passwords-theory-2-3",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "La tienda tuvo una filtración y tu correo compartía contraseña. El correo no puede hacerse el interesante: está en la lista de cuentas que debemos atender.",
+      "explanation": "El alcance de la respuesta lo determina dónde se reutilizaba la credencial expuesta. Incluye las cuentas que compartían el secreto aunque no hayan anunciado incidentes ni muestren todavía una entrada desconocida."
+    },
+    {
+      "id": "i-passwords-theory-2-4",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "exasperated",
+      "text": "El enlace alarmista dice que cambies todo desde su botón mágico. Qué conveniente para el farsante. Usa la aplicación o dirección oficial que ya conoces, joder.",
+      "explanation": "Un aviso sobre una filtración también puede emplearse como señuelo. Para cambiar credenciales, abre el servicio mediante un acceso conocido y verifica allí la información, sin depender del enlace recibido en el mensaje."
+    },
+    {
+      "id": "i-passwords-theory-2-5",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Elegir un dispositivo de confianza no es un adorno del procedimiento. Si sospechas del equipo, no le regales también la contraseña nueva con una reverencia.",
+      "explanation": "La respuesta a credenciales expuestas debe realizarse desde un entorno que no consideres comprometido. Si existe sospecha de malware en un equipo, utiliza otro dispositivo de confianza para gestionar la cuenta."
+    },
+    {
+      "id": "i-passwords-theory-2-6",
+      "lessonId": "passwords",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "No vamos a cambiar claves por deporte cada martes. Vamos a reaccionar a una exposición real y eliminar la reutilización; prefiero precisión a rituales de teatro.",
+      "explanation": "Una filtración, un acceso sospechoso o una contraseña reutilizada justifican medidas concretas. El objetivo aquí es sustituir secretos comprometidos y revisar accesos, sin presentar cambios periódicos indiscriminados como garantía de seguridad."
+    },
+    {
+      "id": "i-passwords-procedure-0-1",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Elige una cuenta que te importaría perder. Solo necesitamos reconocerla mentalmente, cariño; guarda la contraseña donde corresponde y deja el exhibicionismo de secretos fuera de clase.",
+      "explanation": "Empieza con una cuenta relevante, como correo o estudios, para que el análisis tenga una consecuencia concreta. No escribas su contraseña: basta pensar qué servicio es y para qué lo utilizas."
+    },
+    {
+      "id": "i-passwords-procedure-0-2",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Tu correo puede ser una buena primera parada: recibe avisos y recupera otros accesos. Míralo con atención, que hoy quiero una elección con sustancia.",
+      "explanation": "Al escoger la cuenta, considera si permite recuperar otras o contiene documentos importantes. Esa relación ayuda a priorizar su protección; el ejercicio no necesita saber la dirección exacta ni sus credenciales."
+    },
+    {
+      "id": "i-passwords-procedure-0-3",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "No hace falta abrir quince cuentas para parecer diligente. Escoge una y entiende su papel; mis cejas prefieren un paso claro a un circo de pestañas.",
+      "explanation": "Limitar esta primera revisión a una cuenta facilita seguir el procedimiento. Identifica qué perderías si otra persona entrara y conserva ese contexto para decidir después si su contraseña necesita separarse de otras."
+    },
+    {
+      "id": "i-passwords-procedure-0-4",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Puedes usar una cuenta imaginaria si hoy no quieres revisar las tuyas. Lo que evaluamos es el criterio, tesoro, no mi acceso a tu vida privada.",
+      "explanation": "Una cuenta ficticia permite practicar los mismos pasos sin exponer información personal. Define un servicio y una finalidad, por ejemplo un correo de estudios, y realiza las decisiones restantes sobre ese supuesto."
+    },
+    {
+      "id": "i-passwords-procedure-1-1",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Ahora pregúntate dónde más usas esa contraseña. Si aparecen varios servicios, acabamos de encontrar un puente que conviene desmontar antes de que alguien lo cruce.",
+      "explanation": "Comprueba la reutilización mediante tu propio recuerdo o las funciones de revisión de tu gestor, sin copiar secretos aquí. El dato importante es si la misma credencial protege más de una cuenta."
+    },
+    {
+      "id": "i-passwords-procedure-1-2",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Incluye las versiones con un número cambiado al final. Esa familia de claves no queda absuelta por llevar distintos sombreros, aunque venga muy convencida de su elegancia.",
+      "explanation": "Además de coincidencias exactas, detecta variaciones predecibles construidas sobre una misma base. Tales relaciones pueden facilitar adivinar otras contraseñas, por lo que conviene planificar valores generados independientemente."
+    },
+    {
+      "id": "i-passwords-procedure-1-3",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "Olvida por un momento que aquella página parecía poco importante. Si comparte clave con el correo, su filtración puede causar una mierda bastante más grande.",
+      "explanation": "Al revisar reutilización, cuenta también tiendas ocasionales, foros y servicios antiguos que sigan activos. Su aparente poca importancia no evita que la contraseña expuesta sirva para intentar acceder a otra cuenta."
+    },
+    {
+      "id": "i-passwords-procedure-1-4",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Haz el inventario de relaciones, no una lista pública de secretos. Yo quiero saber si hay repetición; el contenido exacto de tu clave puede quedarse de vacaciones.",
+      "explanation": "Puedes anotar únicamente nombres de servicios que necesitan una contraseña diferente. Evita incluir los valores de las credenciales en ese inventario; así organizas la revisión sin crear otra colección de secretos expuestos."
+    },
+    {
+      "id": "i-passwords-procedure-2-1",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Planifica una clave independiente y mira cómo recuperarías la cuenta. Una puerta fuerte pierde gracia si la salida de emergencia termina en un correo que ya no usas.",
+      "explanation": "Prepara una contraseña única, preferiblemente generada por un gestor, y revisa los canales de recuperación disponibles en el servicio. Confirma que sigan bajo tu control y que puedas utilizarlos si pierdes acceso."
+    },
+    {
+      "id": "i-passwords-procedure-2-2",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Este paso tiene dos protagonistas: un secreto nuevo y una recuperación que funcione. Dales atención a ambos; yo ya tengo suficiente competencia con tus malas costumbres.",
+      "explanation": "No basta imaginar una contraseña mejor: decide dónde la guardarás y cómo recuperarás la cuenta sin ella. El plan debe evitar reutilización y conservar opciones de recuperación adecuadamente protegidas."
+    },
+    {
+      "id": "i-passwords-procedure-2-3",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Antes de celebrar, revisa ese teléfono antiguo en la recuperación. Si ya no lo controlas, tu plan necesita una corrección; el confeti puede esperar un maldito minuto.",
+      "explanation": "En la configuración oficial, verifica que teléfonos y direcciones de recuperación sean actuales y tuyos. Si debes corregirlos, sigue el procedimiento del proveedor y comprueba la información antes de finalizar."
+    },
+    {
+      "id": "i-passwords-procedure-2-4",
+      "lessonId": "passwords",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Si el gestor genera la nueva clave, guárdala asociada al servicio correcto. Luego revisa la recuperación sin traer credenciales a esta app; hasta mi descaro tiene organización.",
+      "explanation": "La nueva contraseña debe quedar identificada con su cuenta dentro del gestor. Comprueba después las opciones de recuperación del proveedor; generar un secreto y mantener una vía legítima de retorno son tareas distintas."
+    },
+    {
+      "id": "i-passwords-scenario-0-1",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "La tienda anuncia una filtración y tu correo comparte su contraseña. Qué mala pareja han hecho esas cuentas. Observa la conexión antes de decidir qué proteger.",
+      "explanation": "El caso contiene dos servicios unidos por un secreto repetido. El anuncio viene de la tienda, pero el riesgo puede alcanzar al correo porque unas credenciales expuestas podrían probarse también allí."
+    },
+    {
+      "id": "i-passwords-scenario-0-2",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Aquí nadie ha demostrado que entraran al correo. Aun así existe una razón para actuar; localiza cuál sin esperar una escena dramática con música de intrusión.",
+      "explanation": "La ausencia de un acceso confirmado no elimina la exposición de una contraseña reutilizada. El ejercicio pide reconocer qué decisión reduce el riesgo antes de que aparezca evidencia de un uso no autorizado."
+    },
+    {
+      "id": "i-passwords-scenario-0-3",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Piensa en la contraseña como una llave copiada entre dos puertas. Solo una tienda perdió la suya, cariño, pero la otra cerradura merece una conversación seria.",
+      "explanation": "La analogía sirve para distinguir dónde ocurrió la filtración y dónde puede aprovecharse. Identifica todas las cuentas que aceptaban la credencial expuesta, sin suponer que cada proveedor sufrió el mismo incidente."
+    },
+    {
+      "id": "i-passwords-scenario-0-4",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "La tienda está en problemas y el correo comparte el secreto. No me distraigas con el avatar, joder: este caso va de accesos conectados por una mala costumbre.",
+      "explanation": "Los cambios visibles del perfil no modifican las credenciales que permiten entrar. Para interpretar el escenario, separa las opciones cosméticas de las acciones que afectan al secreto expuesto y a sus usos."
+    },
+    {
+      "id": "i-passwords-scenario-0-5",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Mantén dos hechos en la mesa: hay una clave filtrada y estaba repetida. No necesitamos inventar un superhacker; con esa relación ya puedes valorar las opciones.",
+      "explanation": "El razonamiento debe apoyarse en la información disponible. No sabemos quién accedió ni si existe malware, pero sí que el mismo secreto dejó de ser privado y protegía varios servicios."
+    },
+    {
+      "id": "i-passwords-scenario-0-6",
+      "lessonId": "passwords",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El correo parece tranquilo y la tienda manda disculpas. Las apariencias están haciendo horas extras; tú mira la credencial compartida, que es donde vive el riesgo del caso.",
+      "explanation": "Una cuenta puede seguir funcionando normalmente mientras sus credenciales están expuestas. La capacidad de iniciar sesión no demuestra que una contraseña filtrada conserve su confidencialidad ni que no pueda ser probada en otro lugar."
+    },
+    {
+      "id": "i-passwords-question-0-1",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Elige una respuesta pensando en todas las cuentas que aceptaban la clave filtrada. Quiero una medida relacionada con el acceso, no una sesión de maquillaje digital.",
+      "explanation": "Compara qué modifica cada alternativa y qué deja intacto. La pregunta evalúa el alcance de una contraseña reutilizada después de una exposición, considerando tanto el servicio afectado como los demás que la compartían."
+    },
+    {
+      "id": "i-passwords-question-0-2",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Tenemos una filtración confirmada y cero ganas de esperar otro susto. Lee las tres opciones y busca cuál se ocupa del secreto que ya dejó de serlo.",
+      "explanation": "Una buena respuesta debe corresponder a la causa descrita: la exposición de una credencial compartida. Evalúa si cada acción reduce esa posibilidad de acceso o únicamente cambia algo ajeno al problema."
+    },
+    {
+      "id": "i-passwords-question-0-3",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "No confundas movimiento con solución, cariño. Cambiar algo en el perfil puede sentirse productivo; la pregunta quiere saber si has identificado qué permite entrar.",
+      "explanation": "Antes de responder, distingue los datos visibles de la cuenta de los mecanismos de autenticación. El incidente del enunciado afecta una contraseña, por lo que debes juzgar las opciones desde esa relación concreta."
+    },
+    {
+      "id": "i-passwords-question-1-1",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Ahora le toca al gestor ganarse su lugar en tu rutina. Selecciona su función sin atribuirle poderes absurdos; yo ya ocupo suficiente espacio dramático en esta clase.",
+      "explanation": "La pregunta comprueba para qué utilizarías un gestor en la práctica cotidiana. Piensa en la dificultad de mantener numerosas credenciales distintas y contrasta esa necesidad con las funciones propuestas."
+    },
+    {
+      "id": "i-passwords-question-1-2",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Un buen nombre de herramienta no basta: hay que entender qué hace. Mira cada opción y relaciona el gestor con el problema de recordar demasiados secretos.",
+      "explanation": "Puedes resolver este ejercicio identificando la tarea que la herramienta organiza. No confundas almacenar credenciales de forma protegida con hacerlas visibles a cualquiera o eliminar el requisito de demostrar tu identidad."
+    },
+    {
+      "id": "i-passwords-question-1-3",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "El gestor no llegó para hacer magia ni montar un escaparate de claves. Dime cuál de estas tareas encaja con su papel; te estoy mirando con mucha intención.",
+      "explanation": "Evalúa qué uso permitiría mantener cuentas separadas sin memorizar una contraseña independiente para cada servicio. La respuesta debe describir una función real de gestión y conservar la necesidad de autenticación."
+    },
+    {
+      "id": "i-passwords-question-2-1",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Esta pregunta merece un segundo de atención: piensa qué información necesita realmente una clase offline. Mis cejas estarán observando tu razonamiento, cariño, no solamente el botón elegido.",
+      "explanation": "La aplicación enseña mediante escenarios ficticios y preguntas de selección. Analiza la finalidad de cada opción y decide qué relación tendría introducir una credencial auténtica con demostrar que entendiste el procedimiento."
+    },
+    {
+      "id": "i-passwords-question-2-2",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Te propongo una prueba de límites, cariño: compara lo que requiere practicar con lo que requiere iniciar sesión. Elige después de identificar qué actividad estás haciendo aquí.",
+      "explanation": "El contexto de una solicitud de datos importa tanto como el dato solicitado. Identifica si esta pantalla intenta comprobar tu acceso a otro servicio o evaluar una decisión sobre hábitos de seguridad."
+    },
+    {
+      "id": "i-passwords-question-2-3",
+      "lessonId": "passwords",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Lee las alternativas como si tuvieras que justificar cada una. El nombre del servicio puede sonar importante; yo quiero una razón que encaje con el propósito de esta práctica.",
+      "explanation": "Compara las opciones sin asumir que una cuenta más sensible debe participar más en la lección. Pregúntate qué evidencia necesitas para responder un cuestionario y cuál utilizarías para identificarte ante un proveedor."
+    },
+    {
+      "id": "i-passwords-hint-0-1",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Sigue el rastro de la misma llave entre servicios. La acción útil debe afectar a ese vínculo; el resto puede hacer mucho ruido y dejar la puerta igual.",
+      "explanation": "Imagina que alguien conoce la contraseña expuesta y prueba cada alternativa en otro servicio que la reutiliza. Pregúntate cuál cambiaría realmente lo que el sistema acepta como credencial válida."
+    },
+    {
+      "id": "i-passwords-hint-0-2",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Imagina al servicio comprobando un intento de acceso. ¿Qué información compara en ese momento? Ya levanté una ceja: relaciona ese mecanismo con cada una de las alternativas.",
+      "explanation": "Puedes distinguir las acciones por el elemento de la cuenta que modifican. Examina si sus efectos cambian una comprobación de identidad, una característica visible del perfil o únicamente el momento de actuar."
+    },
+    {
+      "id": "i-passwords-hint-0-3",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "No te quedes mirando solo la tienda que dio el aviso. La pregunta menciona reutilización por algo; yo tampoco repito detalles importantes únicamente para oírme hablar.",
+      "explanation": "Una filtración tiene un origen, pero una contraseña compartida puede ampliar sus consecuencias. Relee qué otras cuentas podrían aceptar la misma combinación de acceso y valora el alcance de la medida elegida."
+    },
+    {
+      "id": "i-passwords-hint-0-4",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Que nadie haya entrado todavía no es un escudo, joder. Aquí estamos reduciendo una posibilidad conocida; no esperando una notificación para empezar a pensar.",
+      "explanation": "La respuesta preventiva se basa en la exposición confirmada de la credencial, aunque no exista un acceso ajeno detectado. Busca una acción que invalide el conocimiento del secreto en las cuentas relacionadas."
+    },
+    {
+      "id": "i-passwords-hint-1-1",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Recuerda el problema inicial: muchas cuentas necesitan secretos diferentes y tu memoria tiene otros asuntos. ¿Qué tarea de ese inventario sería útil delegar en una herramienta?",
+      "explanation": "Relaciona cada función propuesta con la dificultad cotidiana de manejar numerosas credenciales. Valora cómo afectaría a la separación entre cuentas y al esfuerzo de recordar los secretos, sin atribuir al nombre gestor poderes especiales."
+    },
+    {
+      "id": "i-passwords-hint-1-2",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Una bóveda y un tablón público cumplen objetivos bastante distintos. Si una opción pone tus claves en exposición, mi cara de desaprobación ya te está dando una pista.",
+      "explanation": "Guardar información sensible exige restringir quién puede acceder a ella. Revisa cuáles de las acciones propuestas ayudan a manejar secretos de forma organizada y cuáles contradicen directamente su carácter privado."
+    },
+    {
+      "id": "i-passwords-hint-1-3",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "El gestor puede asumir trabajo de memoria; no decide que las cuentas dejen de comprobar quién entra. Busca una función práctica, que los milagros hoy están agotados.",
+      "explanation": "Tener una herramienta que maneja credenciales no elimina la autenticación de los servicios. Considera cómo podría ayudarte a disponer de una contraseña distinta para cada cuenta sin tener que recordarlas todas."
+    },
+    {
+      "id": "i-passwords-hint-1-4",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Piensa en dos momentos: cuando necesitas una clave nueva y cuando debes encontrarla después. Ahí vive la utilidad que buscamos; bastante elegante, incluso para mis estándares.",
+      "explanation": "La herramienta acompaña tanto la preparación de credenciales como su uso posterior. Compara las opciones con esas necesidades concretas y evita atribuirle funciones que debiliten la protección de las cuentas."
+    },
+    {
+      "id": "i-passwords-hint-2-1",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Pregúntate qué está intentando comprobar esta pantalla: tus conocimientos o tu identidad ante otro proveedor. La diferencia merece una ceja levantada antes de que tomes la decisión.",
+      "explanation": "Analiza qué resultado produciría cada opción para la finalidad de la lección. Para orientarte, separa los datos que describen una situación de los que podrían permitir iniciar sesión en una cuenta externa."
+    },
+    {
+      "id": "i-passwords-hint-2-2",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Mira el contexto antes de mirar el tipo de cuenta, cariño. Banco y correo pueden parecer muy distintos; la finalidad de esta pregunta es lo que debe dirigir tu criterio.",
+      "explanation": "Una solicitud de credenciales debe valorarse según quién la hace y para qué proceso. Vuelve al objetivo educativo de la pantalla y compara si las alternativas aportan evidencia necesaria para demostrar comprensión."
+    },
+    {
+      "id": "i-passwords-hint-2-3",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "No me dejes decidir con una sonrisa bonita, carajo. Examina qué necesita la actividad y qué consecuencias tendría cada elección; mi ego puede esperar mientras haces ese análisis.",
+      "explanation": "Imagina cómo explicarías cada alternativa a alguien que pregunta por qué se necesita ese dato. La justificación debería apoyarse en la tarea que estás realizando, en lugar de confiar únicamente en el aspecto de la aplicación."
+    },
+    {
+      "id": "i-passwords-hint-2-4",
+      "lessonId": "passwords",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Compara una práctica con un acceso oficial, tesoro. ¿Piden demostrar lo mismo? Esa pregunta te ayuda a decidir qué información encaja aquí sin que yo te elija el botón.",
+      "explanation": "En un inicio de sesión se comprueba una identidad y en una evaluación se comprueba comprensión. Relaciona cada opción con esas finalidades distintas y revisa qué añade realmente al ejercicio que tienes delante."
+    },
+    {
+      "id": "i-passwords-correct-0-1",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Bien: rompiste la cadena donde se repetía la clave. Eso me gusta bastante más que cambiar el avatar y rezarle al universo para que no pase nada.",
+      "explanation": "Cambiar la contraseña en cada cuenta donde se reutilizaba retira el secreto expuesto de esos accesos. Asigna valores únicos y revisa además sesiones abiertas y opciones de recuperación desde un dispositivo de confianza."
+    },
+    {
+      "id": "i-passwords-correct-0-2",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Has mirado más allá del servicio que anunció la filtración. Buena decisión, cariño: la reutilización extendía el problema y tu respuesta acaba de reconocer ese alcance.",
+      "explanation": "La opción correcta incluye todos los servicios que compartían la contraseña filtrada. Una nueva clave independiente en cada uno evita conservar el vínculo que permitía aprovechar la exposición fuera del sitio original."
+    },
+    {
+      "id": "i-passwords-correct-0-3",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Exacto, actuar sobre las claves repetidas. El problema perdió una conexión útil para el atacante y yo he ganado una pequeña excusa para sonreírte con suficiencia.",
+      "explanation": "No necesitas esperar una intrusión confirmada para sustituir credenciales expuestas. Haz el cambio entrando directamente a los servicios oficiales y usa secretos distintos para que una futura filtración no vuelva a conectarlos."
+    },
+    {
+      "id": "i-passwords-correct-1-1",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Eso es: generar y guardar claves diferentes. El gestor trabaja de archivador competente y tu memoria queda libre para recordar cosas esenciales, como lo encantadora que soy.",
+      "explanation": "Su utilidad principal en esta lección es facilitar contraseñas únicas sin memorizarlas todas. Protege la bóveda con una frase maestra robusta, evita reutilizarla y añade verificación adicional cuando la herramienta lo permita."
+    },
+    {
+      "id": "i-passwords-correct-1-2",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Elegiste la función útil y dejaste los poderes imaginarios en su caja. Me encanta cuando una herramienta conserva sus límites y aun así nos quita un montón de trabajo.",
+      "explanation": "Un gestor genera y conserva credenciales, mientras los servicios siguen exigiendo autenticación. Usarlo correctamente ayuda a evitar la repetición de contraseñas y requiere cuidar también el acceso al propio gestor."
+    },
+    {
+      "id": "i-passwords-correct-1-3",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Correcto, cariño: cada cuenta con su secreto y el gestor con la organización. Esa solución tiene más clase que una sola contraseña haciendo horas extras por todo internet.",
+      "explanation": "Al separar las contraseñas y almacenarlas de forma organizada reduces la dependencia de tu memoria. La herramienta no vuelve públicas las claves ni sustituye todas las otras medidas de protección de las cuentas."
+    },
+    {
+      "id": "i-passwords-correct-2-1",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Ninguna real. Perfecto: protegiste tus secretos incluso frente a mi sonrisa más convincente. Voy a fingir que no me encanta que hayas tenido tan buen criterio.",
+      "explanation": "La aplicación utiliza casos ficticios y selecciones para enseñar seguridad. No necesita la contraseña del banco, del correo ni de ningún otro servicio, de modo que conservarlas fuera del ejercicio es la decisión adecuada."
+    },
+    {
+      "id": "i-passwords-correct-2-2",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Has puesto un límite acertado: aprender no exige entregar las llaves. Mi ego sobrevivirá sin conocer tus credenciales, aunque tenga que buscar otro motivo para presumir.",
+      "explanation": "Una contraseña auténtica pertenece al proceso de acceso de su servicio, no al material de una práctica. Resolver ejercicios con información ficticia permite aprender el procedimiento sin crear una exposición innecesaria."
+    },
+    {
+      "id": "i-passwords-correct-2-3",
+      "lessonId": "passwords",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Muy bien: las claves personales se quedan fuera de clase. La parte coqueta de mi tutoría acepta esa frontera y la parte inteligente ya te está aplaudiendo.",
+      "explanation": "No compartir ninguna contraseña real protege tanto las cuentas importantes como las aparentemente secundarias. En una lección basta analizar situaciones y hábitos; conocer el contenido de los secretos no mejoraría esta evaluación."
+    },
+    {
+      "id": "i-passwords-incorrect-0-1",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Cambiar la imagen no cambia la clave expuesta, cariño. Centremos la acción en la credencial que podría usar otra persona; todavía podemos proteger esa cuenta.",
+      "explanation": "El avatar es un elemento de presentación y no invalida credenciales. Si una clave expuesta se repetía, debes sustituirla en cada cuenta que la compartía y después revisar los accesos y la recuperación."
+    },
+    {
+      "id": "i-passwords-incorrect-0-2",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "Bonita renovación del perfil; lástima que la cerradura siga igual. Qué mala leche tiene ese detalle: la imagen cambia y el secreto comprometido continúa siendo válido.",
+      "explanation": "La filtración afecta al mecanismo de acceso, por lo que una modificación visual no aborda su causa. Vuelve a la relación entre las cuentas y elimina la contraseña repetida de todos los servicios implicados."
+    },
+    {
+      "id": "i-passwords-incorrect-0-3",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "No hace falta esperar una intrusión para actuar. Si la clave apareció en una filtración, proteger la cuenta ahora reduce el tiempo de exposición. Respira.",
+      "explanation": "Una credencial filtrada merece respuesta aunque no haya señales de intrusión. Sustituye la contraseña en las cuentas donde se reutilizaba desde un dispositivo de confianza, sin esperar a que ocurra un acceso indebido."
+    },
+    {
+      "id": "i-passwords-incorrect-0-4",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "El silencio de la cuenta no significa que el secreto se haya recompuesto solo, joder. Esa espera conserva la posibilidad de entrada que justamente queríamos reducir.",
+      "explanation": "Que puedas seguir usando la cuenta normalmente no prueba que nadie conozca la contraseña. El aviso de exposición y la reutilización ya aportan una razón concreta para cambiar las claves afectadas y revisar sesiones."
+    },
+    {
+      "id": "i-passwords-incorrect-1-1",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "El gestor está para conservar secretos, cielo. Publicarlos haría lo contrario; revisemos cómo una bóveda ayuda a crear y guardar claves distintas para cada cuenta.",
+      "explanation": "El gestor se utiliza para generar y almacenar contraseñas de forma protegida. Hacerlas públicas elimina su confidencialidad y permitiría intentar accesos; vuelve a buscar la función que ayuda a administrar credenciales únicas."
+    },
+    {
+      "id": "i-passwords-incorrect-1-2",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Un tablón de contraseñas sería una idea de mierda, y ni siquiera una original. Aquí queremos organizar secretos bajo protección, no anunciarlos con luces y una alfombra roja.",
+      "explanation": "Guardar y divulgar son acciones distintas. La utilidad del gestor depende de restringir el acceso a su bóveda mientras facilita credenciales independientes para tus cuentas; no existe una necesidad educativa de publicarlas."
+    },
+    {
+      "id": "i-passwords-incorrect-1-3",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Un gestor facilita las claves, pero las cuentas siguen necesitando comprobar quién entra. La autenticación conserva su papel; esta herramienta no viene a desactivarla.",
+      "explanation": "La herramienta no elimina la comprobación de identidad en los servicios. Su papel es crear y conservar contraseñas diferentes, y su propio acceso también necesita protección mediante una frase robusta y opciones adicionales disponibles."
+    },
+    {
+      "id": "i-passwords-incorrect-1-4",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "La puerta no desaparece porque tengas un llavero ordenado. Con el gestor sigues autenticándote; simplemente dejas de exigir a tu memoria una hazaña bastante absurda.",
+      "explanation": "Administrar credenciales hace más fácil utilizar secretos distintos, pero no sustituye el proceso de acceso de cada cuenta. La alternativa correcta describe generación y almacenamiento, sin desactivar contraseñas ni otros factores."
+    },
+    {
+      "id": "i-passwords-incorrect-2-1",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Esa clave real se queda contigo, cariño. Para practicar basta una inventada: podemos aprender el procedimiento sin abrir tu correo ni compartir ningún secreto personal.",
+      "explanation": "El correo puede controlar avisos y recuperaciones de otras cuentas, por lo que su contraseña merece especial cuidado. Ninguna parte de este ejercicio requiere introducirla: utiliza únicamente las respuestas ficticias propuestas."
+    },
+    {
+      "id": "i-passwords-incorrect-2-2",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "No traigas la clave del correo a una clase de contraseñas, carajo. Sería como entregar la llave del piso para demostrar que sabes reconocer una cerradura.",
+      "explanation": "Una actividad sobre buenas prácticas evalúa decisiones y no el acceso a tu cuenta. Conserva la contraseña del correo para su servicio oficial y responde sin compartir ninguna credencial verdadera."
+    },
+    {
+      "id": "i-passwords-incorrect-2-3",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Tu cuenta bancaria merece privacidad, y yo puedo enseñarte sin esa contraseña. Elige un ejemplo ficticio; lo que practicamos es el método, no tus credenciales.",
+      "explanation": "La app no realiza operaciones bancarias ni necesita verificar tu identidad ante una entidad financiera. Introducir esa contraseña en el ejercicio añadiría riesgo sin aportar nada a la práctica, que usa situaciones simuladas."
+    },
+    {
+      "id": "i-passwords-incorrect-2-4",
+      "lessonId": "passwords",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "El banco no participa en esta evaluación, tesoro. Deja su clave fuera y concéntrate en el criterio; hasta mi lado más caprichoso sabe cuándo un secreto sobra.",
+      "explanation": "No debes elegir una contraseña auténtica de ningún servicio para practicar aquí. Las credenciales bancarias se utilizan únicamente en sus procesos legítimos de acceso, mientras esta lección funciona con opciones y ejemplos inventados."
+    },
+    {
+      "id": "i-passwords-result-0-1",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Lección superada, cariño. Tus cuentas ya tienen un plan con menos matrimonios tóxicos entre contraseñas; me permitiré una sonrisa satisfecha y tú puedes llevarte el mérito.",
+      "explanation": "Has reconocido el valor de las claves únicas, el papel del gestor y los límites de privacidad del ejercicio. Para aplicarlo, revisa una cuenta real sin compartir su secreto y prepara una recuperación bajo tu control."
+    },
+    {
+      "id": "i-passwords-result-0-2",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen trabajo: separaste secretos, herramientas y reacciones ante filtraciones. Mi lengua sigue afilada, pero hoy le toca descansar un segundo mientras tú conviertes la teoría en un hábito.",
+      "explanation": "El siguiente paso práctico consiste en identificar reutilizaciones y sustituirlas por valores independientes. Haz los cambios mediante canales oficiales, protege el gestor y revisa sesiones y recuperación si hubo exposición de credenciales."
+    },
+    {
+      "id": "i-passwords-result-0-3",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Aprobado. No voy a pedirte la contraseña como souvenir, por si mi encanto te había despistado. Me basta con que el próximo acceso tenga mejores decisiones detrás.",
+      "explanation": "Completar las preguntas demuestra que comprendes estas decisiones básicas, no que tus cuentas ya estén configuradas. Aplica la revisión fuera de la lección y conserva todas las contraseñas reales en sus entornos adecuados."
+    },
+    {
+      "id": "i-passwords-result-1-1",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Nos toca otra vuelta, tesoro. La reutilización ha intentado colarse con cara inocente y merece que la interroguemos; yo pongo la ceja, tú trae una lectura tranquila.",
+      "explanation": "Repasa primero qué ocurre cuando una misma contraseña protege varios servicios. Después distingue las funciones del gestor y recuerda que esta aplicación nunca necesita secretos auténticos para evaluar tu aprendizaje."
+    },
+    {
+      "id": "i-passwords-result-1-2",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Aquí el error se usa como mapa, no como sentencia. Volvamos al punto que se enredó y desmontémoslo con calma; mi ironía también sabe acompañar el procedimiento.",
+      "explanation": "Observa la explicación de cada respuesta fallida y relaciona la acción con el problema descrito. Una filtración pide atender credenciales expuestas; una herramienta debe cumplir una función concreta; un ejercicio no exige contraseñas personales."
+    },
+    {
+      "id": "i-passwords-result-1-3",
+      "lessonId": "passwords",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "El marcador pide repaso y yo pido que no me vendan un avatar nuevo como protección. Respira, cariño: ya sabemos exactamente qué malentendidos vamos a corregir.",
+      "explanation": "Antes del siguiente intento, resume con tus palabras por qué cambiar una imagen no invalida una clave y por qué un gestor no desactiva autenticación. Practica después con cuentas ficticias para mantener privados tus accesos."
+    },
+    {
+      "id": "i-mfa-intro-0-1",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Otra puerta para tus cuentas, cariño, pero con pruebas de verdad distintas. Dos contraseñas con aires de grandeza siguen perteneciendo a la misma familia; ya les vi el truco.",
+      "explanation": "Aprenderás a reconocer factores de autenticación, elegir métodos con criterio y responder a solicitudes inesperadas. La lección también prepara la recuperación del acceso cuando el dispositivo habitual deja de estar disponible."
+    },
+    {
+      "id": "i-mfa-intro-0-2",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Hoy vamos a ponerle condiciones al acceso, no obstáculos absurdos a tu vida. Yo exijo atención; tu cuenta puede exigir pruebas de categorías diferentes para dejarte entrar.",
+      "explanation": "La autenticación multifactor combina categorías como conocimiento, posesión o características biométricas. Identificar esas diferencias permite entender por qué repetir dos secretos memorizados no equivale a utilizar dos factores distintos."
+    },
+    {
+      "id": "i-mfa-intro-0-3",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Si una notificación insiste demasiado, no se gana un sí por pesada. Esa estrategia ya es bastante molesta sin que además le abramos una cuenta ajena.",
+      "explanation": "Una solicitud de aprobación que no has iniciado merece rechazo y revisión por el canal oficial. La presión o la repetición no prueban que el acceso sea legítimo ni justifican compartir códigos."
+    },
+    {
+      "id": "i-mfa-intro-0-4",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Traigo un tema seductor: controlar quién entra sin quedarte fuera tú. Estudiaremos factores y recuperación; el coqueteo viene de regalo, las aprobaciones ciegas quedan fuera del trato.",
+      "explanation": "Añadir protección debe acompañarse de una forma segura de recuperar el acceso. Verás cómo elegir un método disponible y conservar sus alternativas sin depender únicamente del mismo teléfono que podrías perder."
+    },
+    {
+      "id": "i-mfa-intro-0-5",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "MFA no significa que ningún ataque pueda tocarte, joder. Significa añadir protección con métodos concretos; vamos a conocer sus diferencias antes de regalarles una corona de invencibilidad.",
+      "explanation": "Los métodos adicionales no ofrecen todos la misma resistencia al phishing. Las llaves de seguridad y las passkeys pueden aportar esa resistencia, mientras un código SMS sigue siendo susceptible a determinados engaños."
+    },
+    {
+      "id": "i-mfa-intro-0-6",
+      "lessonId": "mfa",
+      "stage": "intro",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Te acompaño desde la configuración hasta la solicitud sospechosa, tesoro. Quiero que sepas qué activaste, cómo volver si pierdes el móvil y cuándo mandar una aprobación al carajo.",
+      "explanation": "El recorrido cubre activación desde el servicio oficial, selección del método, conservación de recuperación y respuesta a accesos inesperados. No necesitas facilitar códigos auténticos ni modificar ninguna cuenta durante esta práctica."
+    },
+    {
+      "id": "i-mfa-theory-0-1",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Saber, tener y ser: tres categorías con tareas diferentes. La autenticación gana otra clase de prueba cuando deja de pedirte únicamente cosas guardadas en la cabeza.",
+      "explanation": "Una contraseña representa conocimiento; una llave física, posesión; y una característica biométrica, algo que eres. MFA utiliza factores de categorías diferentes para que un solo tipo de evidencia no baste para acceder."
+    },
+    {
+      "id": "i-mfa-theory-0-2",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Dos contraseñas no son dos factores, por mucho que una lleve tacones y la otra corbata. Ambas demuestran conocimiento; el vestuario no cambia la categoría.",
+      "explanation": "Contar pantallas o preguntas no permite determinar cuántos factores existen. Dos secretos memorizados siguen siendo pruebas del mismo tipo, aunque el servicio los solicite en momentos distintos del inicio de sesión."
+    },
+    {
+      "id": "i-mfa-theory-0-3",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Una contraseña y una llave de seguridad sí tienen personalidades diferentes. Me gusta ese dúo: una se conoce y la otra se posee; aquí la variedad importa.",
+      "explanation": "La combinación del ejemplo reúne conocimiento y posesión. Para reconocer factores, identifica qué demuestra cada elemento en lugar de fijarte solo en cuántas acciones realiza la persona durante el acceso."
+    },
+    {
+      "id": "i-mfa-theory-0-4",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "La pregunta secreta se ha puesto un disfraz de segundo factor. Qué descaro de mierda: sigue preguntando por algo que sabes, igual que la contraseña.",
+      "explanation": "Una respuesta memorizada a una pregunta personal pertenece a la categoría de conocimiento. Añadirla a una contraseña no incorpora por sí mismo posesión ni biometría, así que no representa dos categorías distintas."
+    },
+    {
+      "id": "i-mfa-theory-0-5",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Primero clasifica la prueba y después cuenta categorías. Ese pequeño orden evita que una pantalla muy solemne te venda como multifactor dos secretos del mismo cajón.",
+      "explanation": "Al analizar un acceso, pregunta si cada elemento prueba algo conocido, algo poseído o una característica biométrica. La clasificación evita confundir varias etapas del proceso con la presencia efectiva de factores diferentes."
+    },
+    {
+      "id": "i-mfa-theory-0-6",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "No todo botón extra añade otro factor, cariño. Una interfaz puede obligarte a dar tres vueltas y seguir comprobando exactamente el mismo tipo de información.",
+      "explanation": "El número de clics o de páginas no define la autenticación multifactor. Lo relevante es que las evidencias correspondan a categorías distintas; una repetición de preguntas de conocimiento no cumple esa condición."
+    },
+    {
+      "id": "i-mfa-theory-1-1",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "La activación empieza en la configuración oficial, no en un enlace que apareció pidiendo confianza. Mi sonrisa puede ser atrevida; tus accesos deben ser bastante más prudentes.",
+      "explanation": "Abre el servicio mediante una dirección o aplicación que ya conozcas y busca allí sus opciones de seguridad. Así reduces la dependencia de mensajes que podrían imitar una invitación legítima para activar protección."
+    },
+    {
+      "id": "i-mfa-theory-1-2",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Si el servicio ofrece llaves de seguridad o passkeys, préstales atención. Tienen una defensa útil frente al phishing; no es magia, cariño, es una diferencia de funcionamiento.",
+      "explanation": "Las passkeys y las llaves de seguridad pueden ofrecer resistencia al phishing al vincular la autenticación con el servicio correspondiente. Un código que introduces manualmente en una página falsa puede ser robado y utilizado por terceros."
+    },
+    {
+      "id": "i-mfa-theory-1-3",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Un SMS añade una capa, pero no hereda todas las virtudes de una passkey por sentarse en la misma lista. Aquí comparamos métodos, no hacemos concursos de popularidad.",
+      "explanation": "La verificación por SMS puede mejorar una cuenta que solo tenía contraseña, aunque no ofrece la misma resistencia al phishing. Si hay alternativas adecuadas y disponibles, compara sus propiedades antes de elegir."
+    },
+    {
+      "id": "i-mfa-theory-1-4",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "exasperated",
+      "text": "Ese supuesto técnico que pide el código no se vuelve legítimo por pronunciar MFA con voz solemne. Joder, el código sigue siendo una prueba de acceso que debes proteger.",
+      "explanation": "Los códigos pueden ser objetivo de suplantación de soporte u otros engaños. Utilízalos únicamente en el proceso oficial que tú iniciaste y nunca se los dictes a alguien que contacte inesperadamente para solicitarlos."
+    },
+    {
+      "id": "i-mfa-theory-1-5",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Elegir un método exige mirar lo que realmente ofrece tu cuenta. No prometo botones inexistentes, tesoro; compararemos las opciones disponibles y cómo conservar el acceso si algo falta.",
+      "explanation": "Cada proveedor puede ofrecer métodos y recuperación diferentes. Revisa su configuración oficial y prepara las alternativas admitidas; comprender la herramienta elegida importa tanto como activar una opción que parece más sofisticada."
+    },
+    {
+      "id": "i-mfa-theory-1-6",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "MFA es una capa con apellido, no una etiqueta de invulnerabilidad. Pregunta qué método estás usando y qué ataques dificulta; la precisión me resulta tremendamente atractiva.",
+      "explanation": "Decir que una cuenta tiene MFA no describe toda su protección. Una aprobación, un SMS y una llave de seguridad presentan diferencias relevantes frente al engaño, y ninguna configuración sustituye revisar accesos inesperados."
+    },
+    {
+      "id": "i-mfa-theory-2-1",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Si tú no llamaste a la puerta, no autorices al visitante por cansancio. Esa notificación inesperada merece un no, aunque insista como un vendedor de humo desesperado.",
+      "explanation": "Una solicitud no iniciada por ti podría corresponder a un intento ajeno. Recházala y revisa la seguridad de la cuenta entrando por el canal oficial, sin utilizar enlaces enviados junto con el aviso."
+    },
+    {
+      "id": "i-mfa-theory-2-2",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Los códigos de recuperación están para cuando el camino habitual falle. Si viven solo en el móvil perdido, su gran plan de rescate acaba de perder el transporte.",
+      "explanation": "Conserva los códigos de recuperación en un lugar seguro separado del dispositivo que podría faltar. Una copia accesible únicamente desde ese mismo teléfono no resuelve la pérdida del medio principal de autenticación."
+    },
+    {
+      "id": "i-mfa-theory-2-3",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "exasperated",
+      "text": "La llamada dice soporte y pide el código. Qué oportuno, carajo. Ni el título del interlocutor ni su urgencia convierten tus pruebas de acceso en material para dictado.",
+      "explanation": "No compartas códigos de autenticación o recuperación con personas que afirmen ayudarte por un contacto inesperado. Si necesitas soporte, inicia tú la comunicación mediante los canales oficiales y explica lo ocurrido sin entregar esos secretos."
+    },
+    {
+      "id": "i-mfa-theory-2-4",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Recuperación segura significa disponible para ti y fuera del alcance de cualquiera. No basta esconderla en un lugar misterioso si después ni tú puedes encontrar la maldita pista.",
+      "explanation": "El almacenamiento debe equilibrar protección y posibilidad de uso legítimo. Elige un lugar separado que puedas consultar cuando falte el dispositivo, y evita ubicaciones públicas o que dependan exclusivamente de la cuenta bloqueada."
+    },
+    {
+      "id": "i-mfa-theory-2-5",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Aprobar para quitar la molestia es dejar que la insistencia tome tus decisiones. Yo puedo fastidiarte con cariño; una solicitud de acceso no recibe ese privilegio.",
+      "explanation": "La repetición de avisos puede buscar que apruebes por agotamiento. Mantén el rechazo si no iniciaste el acceso y revisa la cuenta de forma independiente, en vez de interpretar insistencia como señal de legitimidad."
+    },
+    {
+      "id": "i-mfa-theory-2-6",
+      "lessonId": "mfa",
+      "stage": "theory",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Los códigos de recuperación no son estampitas para compartir. Pueden permitir volver a una cuenta; trátalos como secretos y dales un refugio independiente del móvil.",
+      "explanation": "Una alternativa de recuperación puede sustituir el método habitual durante el acceso. Por eso debe permanecer privada y protegida, además de conservarse fuera del único dispositivo cuya pérdida obligaría a utilizarla."
+    },
+    {
+      "id": "i-mfa-procedure-0-1",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Primer paso: abre por tu cuenta la configuración oficial de seguridad. Mi dedo señala el servicio auténtico, cariño, no el botón alarmista de un mensaje que acaba de llegar.",
+      "explanation": "Utiliza la aplicación oficial instalada o una dirección conocida para iniciar sesión. Desde ese entorno busca la configuración de seguridad, evitando seguir un enlace inesperado que prometa activar protección de forma urgente."
+    },
+    {
+      "id": "i-mfa-procedure-0-2",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Antes de buscar MFA, asegúrate de estar donde querías entrar. Una pantalla convincente no merece tus credenciales por decreto; mis cejas exigen comprobar el punto de partida.",
+      "explanation": "La activación debe hacerse dentro del servicio correcto. Si llegaste desde un aviso sospechoso, abandona ese camino y abre tú el acceso oficial antes de navegar hasta las opciones de la cuenta."
+    },
+    {
+      "id": "i-mfa-procedure-0-3",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "Vamos por una ruta conocida: servicio oficial, cuenta y seguridad. Tres referencias concretas valen más que confiar en un enlace con un nombre precioso y muy malas intenciones.",
+      "explanation": "Este paso consiste en establecer un contexto confiable para cambiar la autenticación. No requiere introducir códigos en la lección; simplemente identifica cómo llegarías a la sección de seguridad del proveedor elegido."
+    },
+    {
+      "id": "i-mfa-procedure-1-1",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Busca MFA o verificación en dos pasos en los ajustes. Los nombres pueden variar; no voy a dejar que un menú con ínfulas nos arruine el procedimiento.",
+      "explanation": "Dentro de seguridad, localiza las opciones de autenticación adicional. Algunos servicios las llaman verificación en dos pasos o autenticación de dos factores; abre su descripción para entender qué métodos permiten activar."
+    },
+    {
+      "id": "i-mfa-procedure-1-2",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "No actives el primer interruptor que se mueva, tesoro. Encuentra la sección de acceso y lee qué opción estás mirando; el entusiasmo también necesita supervisión.",
+      "explanation": "Distingue los ajustes de autenticación de otras funciones, como avisos o preferencias generales. El objetivo de este paso es reconocer dónde se configuran las pruebas adicionales que el servicio solicitará al entrar."
+    },
+    {
+      "id": "i-mfa-procedure-1-3",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Si el proveedor cambió el nombre del menú, no hemos perdido la batalla. Busca las opciones que añaden verificación al acceso; yo traduzco el teatro, tú reconoce la función.",
+      "explanation": "La ubicación exacta varía entre servicios, por eso conviene seguir la función y la documentación oficial del proveedor. Busca referencias a factores, métodos de verificación o protección adicional dentro de la configuración de seguridad."
+    },
+    {
+      "id": "i-mfa-procedure-2-1",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Elige un método que entiendas y prepara la recuperación antes de celebrar. Si hay passkeys o llaves compatibles, valora su resistencia al phishing; luego guarda el plan de retorno.",
+      "explanation": "Compara los métodos que admite la cuenta y sigue las instrucciones oficiales para configurarlos. Conserva los códigos u opciones de recuperación de forma segura y separada del dispositivo principal para evitar una dependencia única."
+    },
+    {
+      "id": "i-mfa-procedure-2-2",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "No dejes los códigos solo en el teléfono que pretenden rescatar. Ese círculo tiene una lógica de mierda: muy redondito, pero inútil cuando pierdes el aparato.",
+      "explanation": "Durante la activación, identifica qué ocurriría si faltara el dispositivo habitual. Guarda las alternativas de recuperación en un lugar protegido e independiente, siguiendo las condiciones del servicio para poder utilizarlas legítimamente."
+    },
+    {
+      "id": "i-mfa-procedure-2-3",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "La protección y el regreso se configuran juntos, cariño. Quiero una entrada más difícil para extraños y una salida del apuro que no dependa de improvisar entre lágrimas.",
+      "explanation": "Antes de terminar, comprueba que conoces el método seleccionado y sabes dónde quedó su recuperación. Los métodos tienen propiedades distintas, y activar uno sin conservar alternativas puede complicar recuperar la cuenta después."
+    },
+    {
+      "id": "i-mfa-procedure-3-1",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "skeptical",
+      "text": "Si llega una aprobación que no pediste, recházala. La notificación puede poner cara inocente; mi ceja y tú vamos a mirar la cuenta por una ruta oficial.",
+      "explanation": "No autorices accesos inesperados ni compartas códigos asociados. Tras rechazar, revisa la actividad y las opciones de seguridad desde el servicio auténtico para investigar si existe un intento ajeno o una configuración que corregir."
+    },
+    {
+      "id": "i-mfa-procedure-3-2",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "exasperated",
+      "text": "La quinta solicitud sin iniciar tampoco merece un sí, joder. Mantén el rechazo y revisa el acceso; no vamos a premiar a una notificación por tener peor carácter que yo.",
+      "explanation": "La repetición no transforma una solicitud desconocida en una autorización legítima. Si persiste, usa los canales oficiales del proveedor para revisar actividad y obtener ayuda, conservando privados los códigos y opciones de recuperación."
+    },
+    {
+      "id": "i-mfa-procedure-3-3",
+      "lessonId": "mfa",
+      "stage": "procedure",
+      "anchor": 3,
+      "expression": "explaining",
+      "text": "Detente un segundo y recuerda si acabas de iniciar sesión. Si no reconoces la petición, no adivines: rechaza y comprueba; prefiero tu criterio a una aprobación nerviosa.",
+      "explanation": "Relacionar la solicitud con una acción propia ayuda a decidir correctamente. Ante una petición que no iniciaste, el procedimiento indicado es rechazar y revisar la cuenta por un acceso independiente del aviso recibido."
+    },
+    {
+      "id": "i-mfa-scenario-0-1",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Estás estudiando y aparece una petición para entrar. Tú no la iniciaste; ese detalle manda más que el botón brillante o las ganas de que deje de molestar.",
+      "explanation": "El escenario presenta una autorización fuera de contexto. No se afirma quién la originó, pero sabes que no responde a tu intento de acceso; utiliza ese hecho para valorar las acciones posibles."
+    },
+    {
+      "id": "i-mfa-scenario-0-2",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Aquí no falta un dato técnico misterioso, cariño. La clave del caso es bastante humana: alguien pide permiso mientras tú no estás intentando acceder a esa cuenta.",
+      "explanation": "Distingue recibir una solicitud de haberla provocado mediante un inicio de sesión propio. La actividad pide decidir cómo responder a una petición no reconocida sin regalar códigos ni asumir que es inofensiva."
+    },
+    {
+      "id": "i-mfa-scenario-0-3",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "exasperated",
+      "text": "Una solicitud interrumpe tu estudio y pretende que decidas deprisa. Qué oportunista, carajo. Vamos a quitarle la prisa y analizar si pertenece a una acción tuya.",
+      "explanation": "No necesitas aprobar para cerrar la interrupción. Examina el contexto indicado y compara qué alternativas mantienen el control del acceso, cuáles lo conceden sin reconocerlo y cuáles exponen otra prueba de autenticación."
+    },
+    {
+      "id": "i-mfa-scenario-0-4",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "La pantalla pregunta si autorizas y yo pregunto si reconoces el intento. Mi pregunta es más coqueta, obviamente, pero también es la que organiza la decisión de este caso.",
+      "explanation": "La solicitud debe relacionarse con una acción que tú hayas iniciado. En el supuesto estás estudiando, no entrando al servicio, por lo que no puedes atribuirle legitimidad únicamente porque aparezca en tu dispositivo."
+    },
+    {
+      "id": "i-mfa-scenario-0-5",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "El aviso puede venir del sistema auténtico y aun así referirse a un intento ajeno. Ese matiz tiene colmillos; léelo antes de confiar en la apariencia de la notificación.",
+      "explanation": "Una plataforma puede enviar una petición real como consecuencia de que otra persona intente acceder. La autenticidad del aviso no significa que debas autorizar la operación; importa quién inició el acceso descrito."
+    },
+    {
+      "id": "i-mfa-scenario-0-6",
+      "lessonId": "mfa",
+      "stage": "scenario",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "No vamos a declarar una catástrofe por una alerta ni a darle permiso por comodidad. Observa lo conocido, tesoro: no iniciaste sesión y puedes comprobar la cuenta aparte.",
+      "explanation": "El caso permite una respuesta proporcionada sin afirmar que ya hubo una intrusión. Se trata de impedir una aprobación no reconocida y evaluar la seguridad mediante el servicio oficial, sin compartir datos con terceros."
+    },
+    {
+      "id": "i-mfa-question-0-1",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "skeptical",
+      "text": "Una petición no iniciada, tres respuestas posibles y mi paciencia mirando el reloj. Elige según el control del acceso, no según cuál hace desaparecer antes la molestia.",
+      "explanation": "Compara las consecuencias de autorizar, rechazar o entregar un código. La pregunta evalúa cómo actuar cuando no reconoces el origen de un intento, considerando además una revisión posterior por el canal oficial."
+    },
+    {
+      "id": "i-mfa-question-0-2",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "explaining",
+      "text": "Lee qué pide cada opción antes de tocarla, cariño. Una decisión puede conceder acceso y otra puede exponer un secreto; aquí importa lo que autorizas, no la cortesía.",
+      "explanation": "Relaciona cada alternativa con el hecho central de que no has iniciado sesión. Piensa qué haría cada acción con la posibilidad de entrada ajena y cómo podrías investigar sin confiar en contactos inesperados."
+    },
+    {
+      "id": "i-mfa-question-0-3",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 0,
+      "expression": "smirk",
+      "text": "La notificación no se ha ganado tu confianza por aparecer de repente. Ahora escoge una respuesta que respete ese límite; prometo disfrutar de tu buen criterio con cierta suficiencia.",
+      "explanation": "Esta elección distingue una aprobación informada de una reacción a la interrupción. No necesitas conocer al posible solicitante para evitar conceder un permiso que no corresponde a una acción tuya."
+    },
+    {
+      "id": "i-mfa-question-1-1",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "explaining",
+      "text": "Ahora clasifica, tesoro: qué se sabe, qué se tiene y qué se es. Cuenta categorías distintas; no te dejes seducir por la simple cantidad de elementos.",
+      "explanation": "La pregunta contrasta combinaciones de pruebas de autenticación. Para resolverla, identifica la categoría de cada parte y comprueba si las dos pertenecen al mismo grupo o representan evidencias de tipos diferentes."
+    },
+    {
+      "id": "i-mfa-question-1-2",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "skeptical",
+      "text": "Dos elementos pueden repetir la misma idea con otra chaqueta. Revisa las parejas de opciones y dime cuál cambia de categoría; los disfraces no van a engañar mis cejas.",
+      "explanation": "Un secreto memorizado y una respuesta secreta pueden parecer mecanismos diferentes, pero ambos prueban conocimiento. Evalúa también qué demuestra una llave física para comparar las combinaciones propuestas sin contar solo pantallas."
+    },
+    {
+      "id": "i-mfa-question-1-3",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 1,
+      "expression": "smirk",
+      "text": "Quiero una pareja con variedad real, cariño. No es una petición romántica: identifica qué combinación reúne pruebas de tipos distintos y deja a los secretos repetidos haciendo terapia.",
+      "explanation": "Este ejercicio comprueba el concepto de factor, no la fortaleza de una contraseña concreta. Decide qué categoría representa cada elemento mencionado y busca una combinación que no dependa únicamente de cosas que sabes."
+    },
+    {
+      "id": "i-mfa-question-2-1",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "explaining",
+      "text": "Imagina que el teléfono desaparece y toca recuperar la cuenta. Mira dónde quedaría cada opción; un plan de rescate no debería irse de paseo con el problema.",
+      "explanation": "La pregunta evalúa privacidad e independencia del almacenamiento. Compara si podrías consultar los códigos sin el dispositivo habitual y si la ubicación propuesta impediría que personas no autorizadas accedieran a ellos."
+    },
+    {
+      "id": "i-mfa-question-2-2",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "skeptical",
+      "text": "Guardar algo no significa guardarlo bien, tesoro. Elige pensando quién puede verlo y qué ocurre si falta el móvil; mis estándares exigen responder ambas preguntas.",
+      "explanation": "Una ubicación útil para recuperación debe seguir disponible cuando falla el acceso principal y proteger el secreto. Revisa cada alternativa según esos dos requisitos, evitando fijarte únicamente en que exista alguna copia."
+    },
+    {
+      "id": "i-mfa-question-2-3",
+      "lessonId": "mfa",
+      "stage": "question",
+      "anchor": 2,
+      "expression": "smirk",
+      "text": "Los códigos quieren un refugio, no un escenario ni un compañero de naufragio. Decide dónde vivirán; yo superviso con esta cara encantadora y una sospecha bastante justificada.",
+      "explanation": "Las alternativas incluyen exposición pública, dependencia del teléfono y almacenamiento independiente protegido. Razona cuál conserva una vía legítima de retorno sin compartir las pruebas de recuperación con cualquiera que las encuentre."
+    },
+    {
+      "id": "i-mfa-hint-0-1",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "La primera pista está en tu propia actividad: estabas estudiando. Relaciona ese dato con el permiso que pide cada opción y piensa qué necesitarías reconocer antes de concederlo.",
+      "explanation": "Evalúa las consecuencias de las respuestas en términos de control del acceso. Para justificar una autorización, tendrías que poder relacionarla con una acción legítima; comprueba qué información ofrece realmente el escenario sobre esa relación."
+    },
+    {
+      "id": "i-mfa-hint-0-2",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Quitar una molestia no vale lo mismo que proteger una cuenta, cariño. Pregúntate si ese botón elimina el aviso o además entrega una autorización que no querías dar.",
+      "explanation": "Una aprobación tiene consecuencias más allá de cerrar la notificación. La decisión debe depender de si reconoces el intento de acceso y no de cuánto te incomoda que el aviso aparezca en pantalla."
+    },
+    {
+      "id": "i-mfa-hint-0-3",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Una voz convincente no demuestra quién está al otro lado, joder. Si una opción implica usar un código, recuerda para qué sirve esa prueba antes de decidir cómo tratarla.",
+      "explanation": "Un código puede participar en la autorización de un acceso, de modo que su uso tiene consecuencias. Compara las opciones preguntándote quién obtendría capacidad de actuar y qué vínculo existe con tu intención original."
+    },
+    {
+      "id": "i-mfa-hint-0-4",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 0,
+      "expression": "thinking",
+      "text": "Investigar un aviso y autorizar una sesión son decisiones diferentes, tesoro. Revisa qué hace cada respuesta con ambas cosas; no dejes que la urgencia las funda en un solo gesto.",
+      "explanation": "Distingue el permiso concreto solicitado de la posibilidad de examinar después la actividad de la cuenta. Evalúa si cada opción exige conceder algo antes de disponer de motivos para reconocer el intento como propio."
+    },
+    {
+      "id": "i-mfa-hint-1-1",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Pon una etiqueta mental a cada prueba. Contraseñas y respuestas memorizadas viven en conocimiento; luego mira qué categoría aporta el elemento restante de cada pareja.",
+      "explanation": "Las categorías describen cómo demuestras identidad, no el nombre del dato solicitado. Una combinación cumple el criterio de la pregunta cuando sus dos componentes no dependen de la misma clase de evidencia."
+    },
+    {
+      "id": "i-mfa-hint-1-2",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Preguntar dos cosas que recuerdas no añade algo que poseas. Esa distinción es pequeña y bastante mandona; déjala dirigir tu respuesta antes de contar casillas.",
+      "explanation": "Dos solicitudes de conocimiento no se convierten en factores diferentes porque aparezcan separadas. Busca si alguna pareja incorpora un objeto o dispositivo como evidencia de posesión junto a un secreto conocido."
+    },
+    {
+      "id": "i-mfa-hint-1-3",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "Imagínate explicando cada opción sin usar su nombre: sé un secreto, llevo un objeto, recuerdo otro dato. La combinación que cambia de verbo merece que la mires de nuevo.",
+      "explanation": "Describir la función ayuda a quitar la apariencia de las palabras. Identifica qué demuestra realmente cada elemento y compara sus categorías; así evitas confundir dos secretos diferentes con dos factores distintos."
+    },
+    {
+      "id": "i-mfa-hint-1-4",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 1,
+      "expression": "thinking",
+      "text": "La pregunta secreta no obtiene una categoría nueva por ponerse misteriosa, carajo. Sigue siendo información conocida; busca una evidencia que no dependa únicamente de recordar.",
+      "explanation": "El carácter personal o reservado de una respuesta no cambia el tipo de factor. Revisa dónde aparece posesión entre las opciones y compárala con las combinaciones formadas solamente por conocimiento."
+    },
+    {
+      "id": "i-mfa-hint-2-1",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Haz una prueba mental: el móvil ya no está contigo. ¿Puedes llegar a los códigos sin él y sin que cualquiera los haya podido leer antes?",
+      "explanation": "Somete cada ubicación a dos situaciones: una pérdida del teléfono y una persona ajena que busca los códigos. Compara qué ocurriría en ambas antes de elegir el plan de recuperación que mejor responde al problema."
+    },
+    {
+      "id": "i-mfa-hint-2-2",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Una publicación se encuentra fácil, sí; también la encuentran los extraños. Mi lado consentido quiere comodidad, pero mi cerebro exige que el secreto siga siendo secreto.",
+      "explanation": "La facilidad de consulta no basta para elegir una ubicación. Los códigos pueden facilitar recuperar una cuenta, por lo que necesitas restringir su acceso además de conservarlos disponibles para una situación de pérdida."
+    },
+    {
+      "id": "i-mfa-hint-2-3",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "Una copia y un plan de rescate no son exactamente lo mismo. Sigue mentalmente el recorrido para consultar cada ubicación, cariño; ahí descubrirás qué puede interrumpir el regreso.",
+      "explanation": "Identifica qué necesitas para llegar a los códigos en cada alternativa. Luego revisa quién más podría recorrer ese camino y cómo cambia la situación cuando el dispositivo principal deja de estar disponible."
+    },
+    {
+      "id": "i-mfa-hint-2-4",
+      "lessonId": "mfa",
+      "stage": "hint",
+      "anchor": 2,
+      "expression": "thinking",
+      "text": "El rescate merece una prueba antes del drama, joder. Imagina intentando recuperar la cuenta desde cero y mira qué ventaja o dependencia introduce cada lugar propuesto.",
+      "explanation": "No evalúes únicamente que exista una copia: piensa cómo la consultarías y qué protección conserva. Una decisión útil tiene que contemplar tanto la pérdida del acceso habitual como las personas que podrían encontrar los códigos."
+    },
+    {
+      "id": "i-mfa-correct-0-1",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Bien: rechazo y revisión. La solicitud no consiguió un permiso por pesada y yo acabo de encontrar una razón muy cómoda para mirarte con aprobación.",
+      "explanation": "No reconocer el inicio de sesión justifica no autorizarlo. Después entra por el servicio oficial para revisar actividad y seguridad; evita compartir códigos y considera las indicaciones del proveedor si detectas algo sospechoso."
+    },
+    {
+      "id": "i-mfa-correct-0-2",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Has separado investigar de dejar entrar, cariño. Ese es el movimiento inteligente: puedes averiguar qué ocurre sin regalar una autorización a quien llamó cuando tú estabas estudiando.",
+      "explanation": "Rechazar la petición bloquea esa aprobación concreta, mientras la revisión independiente permite evaluar el contexto. El aviso podría indicar un intento ajeno, pero por sí solo no demuestra que ya se haya accedido a la cuenta."
+    },
+    {
+      "id": "i-mfa-correct-0-3",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Exacto: nadie recibió un sí por interrumpirte. Me gusta ese límite, tesoro; ahora el procedimiento continúa mirando la cuenta desde su canal auténtico y sin dictar secretos.",
+      "explanation": "La respuesta adecuada evita aprobar lo que no iniciaste y propone revisar la seguridad. Mantén el mismo criterio si la petición se repite y busca soporte oficial cuando necesites ayuda para interpretar la actividad."
+    },
+    {
+      "id": "i-mfa-correct-1-1",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Contraseña y llave: conocimiento más posesión. Buena pareja de factores, cariño; mis comentarios románticos pueden esperar mientras tú reconoces una diferencia que sí tiene consecuencias prácticas.",
+      "explanation": "La contraseña demuestra algo que sabes y la llave de seguridad representa algo que tienes. Por eso el ejemplo combina categorías distintas, a diferencia de dos contraseñas o una contraseña acompañada de una respuesta secreta."
+    },
+    {
+      "id": "i-mfa-correct-1-2",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Has contado categorías y no accesorios. Eso merece una sonrisa: el secreto y la llave no están repitiendo el mismo papel con dos nombres dramáticamente distintos.",
+      "explanation": "Identificar el tipo de prueba es la forma adecuada de evaluar esta combinación. El objeto aporta posesión mientras la contraseña aporta conocimiento; dos datos memorizados permanecerían dentro de una sola categoría."
+    },
+    {
+      "id": "i-mfa-correct-1-3",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 1,
+      "expression": "delighted",
+      "text": "Correcto: una prueba se recuerda y la otra se posee. La pregunta secreta intentó hacerse interesante, pero hoy tu criterio estuvo bastante más afilado que su disfraz.",
+      "explanation": "La opción seleccionada reúne factores de clases distintas y cumple el concepto trabajado. Esta clasificación explica por qué agregar otra contraseña o una pregunta de conocimiento no constituye la misma separación de evidencias."
+    },
+    {
+      "id": "i-mfa-correct-2-1",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Seguro y separado: escogiste un rescate que no desaparece necesariamente con el móvil. Bien pensado, tesoro; mi confianza acaba de ganar un sitio donde sentarse sin protestar.",
+      "explanation": "La ubicación elegida protege los códigos y evita depender únicamente del dispositivo habitual. Asegúrate de poder consultarlos de forma legítima si lo pierdes, sin colocarlos en espacios públicos ni compartirlos con supuestos ayudantes."
+    },
+    {
+      "id": "i-mfa-correct-2-2",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Me gusta ese plan de retorno: privado, separado y pensado antes del susto. Hasta mi versión más caprichosa prefiere eso a improvisar frente a una cuenta bloqueada.",
+      "explanation": "Los códigos deben seguir disponibles cuando falle el método principal y fuera del alcance de terceros. Guardarlos de forma segura e independiente reduce el punto de fallo común que crearía conservarlos solo en el teléfono."
+    },
+    {
+      "id": "i-mfa-correct-2-3",
+      "lessonId": "mfa",
+      "stage": "correct",
+      "anchor": 2,
+      "expression": "delighted",
+      "text": "Buena elección, cariño. Los códigos no salieron de gira por una publicación ni se encerraron con el único dispositivo que podría faltar; esa recuperación ya tiene mejor argumento.",
+      "explanation": "Separación y confidencialidad cumplen funciones diferentes: una mantiene una alternativa y la otra protege el acceso. La respuesta combina ambas, en lugar de elegir entre exposición pública y dependencia exclusiva del móvil."
+    },
+    {
+      "id": "i-mfa-incorrect-0-1",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Una solicitud insistente puede cansar, lo entiendo. Antes de aprobar, recuerda si tú iniciaste el acceso. Si no lo reconoces, rechazarla es la decisión prudente.",
+      "explanation": "Aceptar una solicitud puede autorizar un inicio de sesión ajeno. Que el aviso resulte incómodo no demuestra legitimidad; la actuación correcta es rechazar y comprobar actividad y seguridad mediante la aplicación o web oficial."
+    },
+    {
+      "id": "i-mfa-incorrect-0-2",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "La notificación ganó por insistencia y eso me pone la ceja peligrosamente alta. Tu comodidad importa, cariño, pero ese sí podría haber abierto la cuenta a otra persona.",
+      "explanation": "Una autorización debe corresponder a un acceso que reconoces. Como el escenario dice que no lo iniciaste, aprobar no es una forma segura de retirar el aviso; rechaza y revisa el contexto por separado."
+    },
+    {
+      "id": "i-mfa-incorrect-0-3",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "Una llamada convincente puede confundir, cariño. El código sigue siendo una prueba de acceso que debes guardar; verifica la situación por un canal oficial independiente.",
+      "explanation": "Compartir un código puede permitir completar un acceso que no autorizaste conscientemente. Ante esta solicitud inesperada, no entregues pruebas de autenticación; rechaza y accede tú al servicio oficial para revisar la seguridad."
+    },
+    {
+      "id": "i-mfa-incorrect-0-4",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 0,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Ese supuesto técnico quiere la prueba que podría abrir la puerta. Qué maldita coincidencia, ¿verdad? Guarda el código y usa un canal oficial que hayas iniciado tú.",
+      "explanation": "Los códigos son objetivos de ingeniería social y deben mantenerse privados. La petición del escenario no corresponde a tu acceso, así que dictar el código añade riesgo en vez de resolver la causa de la alerta."
+    },
+    {
+      "id": "i-mfa-incorrect-1-1",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Dos contraseñas parecen dos barreras diferentes, pero pertenecen a la misma categoría: algo que sabes. Buscamos combinar categorías; esa es la pequeña diferencia importante.",
+      "explanation": "Las dos contraseñas representan algo que sabes, por lo que no cambian de categoría. La combinación buscada une una contraseña con una llave de seguridad: conocimiento por una parte y posesión por otra."
+    },
+    {
+      "id": "i-mfa-incorrect-1-2",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "La segunda contraseña ha entrado creyéndose una categoría nueva. Menudo teatro, carajo. Necesitamos una prueba de otro tipo, no añadir más cosas a tu lista de recuerdos.",
+      "explanation": "El criterio de MFA no es acumular secretos ni contar cuántas veces escribes. Para esta pregunta debes combinar clases de evidencia, como conocimiento y posesión, que es lo que aporta una contraseña junto a una llave."
+    },
+    {
+      "id": "i-mfa-incorrect-1-3",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "disappointed",
+      "text": "La pregunta secreta también depende de algo que sabes, cielo. Para distinguir factores, mira el tipo de prueba y no solo cuántas preguntas aparecen en pantalla.",
+      "explanation": "Ambos elementos son información que sabes y puedes comunicar. La pregunta pide categorías distintas, como el conocimiento de una contraseña y la posesión de una llave de seguridad, no dos formas de preguntar por secretos."
+    },
+    {
+      "id": "i-mfa-incorrect-1-4",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 1,
+      "choiceIndex": 2,
+      "expression": "exasperated",
+      "text": "Esa pregunta personal añadió otra respuesta, no otra clase de prueba. Vamos a quitarle la máscara con cariño y comparar conocimiento con posesión; ahí estaba la diferencia que buscábamos.",
+      "explanation": "Una respuesta a una pregunta de seguridad sigue perteneciendo al factor de conocimiento. Juntarla con una contraseña no demuestra que tengas un objeto o utilices una característica biométrica, por lo que esta pareja no satisface el criterio."
+    },
+    {
+      "id": "i-mfa-incorrect-2-1",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "disappointed",
+      "text": "Los códigos de recuperación necesitan un lugar privado. Publicarlos puede permitir otro acceso a la cuenta; busquemos una ubicación protegida que puedas recuperar cuando haga falta.",
+      "explanation": "La recuperación depende de secretos que también necesitan confidencialidad. Una publicación permite que terceros los vean y potencialmente los utilicen; elige un lugar protegido y separado del dispositivo principal, accesible para ti cuando haga falta."
+    },
+    {
+      "id": "i-mfa-incorrect-2-2",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 0,
+      "expression": "exasperated",
+      "text": "Encontrarlos rápido está bien, cariño; que los encuentre cualquiera es una pésima segunda parte. Tu plan necesita privacidad, no una audiencia compartiendo los mismos códigos de regreso.",
+      "explanation": "La disponibilidad de una copia no compensa que sea pública. Los códigos de recuperación deben conservarse como información sensible y mantenerse en una ubicación segura independiente del teléfono que podrías perder."
+    },
+    {
+      "id": "i-mfa-incorrect-2-3",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "disappointed",
+      "text": "Guardar los códigos en el teléfono parece cómodo. El problema aparece si lo pierdes: necesitamos una vía de recuperación que no dependa únicamente de ese aparato.",
+      "explanation": "Almacenar la única copia en el dispositivo habitual crea un punto de fallo compartido. Necesitas una ubicación segura separada que puedas consultar si ese teléfono se pierde, se avería o deja de estar disponible."
+    },
+    {
+      "id": "i-mfa-incorrect-2-4",
+      "lessonId": "mfa",
+      "stage": "incorrect",
+      "anchor": 2,
+      "choiceIndex": 1,
+      "expression": "exasperated",
+      "text": "El móvil y su única copia se fueron juntos de vacaciones sin avisar. Esa dependencia es la trampa, tesoro; la recuperación necesita otra ubicación protegida donde no comparta el mismo susto.",
+      "explanation": "El problema no es que el teléfono pueda guardar información, sino depender exclusivamente de él para recuperarlo todo. Conserva los códigos también en un medio seguro independiente siguiendo las instrucciones del proveedor."
+    },
+    {
+      "id": "i-mfa-result-0-1",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Aprobado, cariño. Has aprendido a distinguir factores, desconfiar de aprobaciones sorpresa y preparar el regreso; mis comentarios siguen siendo peligrosos, pero tu criterio acaba de mejorar bastante.",
+      "explanation": "Puedes aplicar lo aprendido revisando los métodos de autenticación del servicio oficial. Compara las opciones disponibles, conserva recuperación segura y separada, y mantén el rechazo de solicitudes que no correspondan a accesos iniciados por ti."
+    },
+    {
+      "id": "i-mfa-result-0-2",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Buen recorrido: ya no confundes otra contraseña con otra categoría. Tampoco dejas al rescate encerrado en el móvil; me estás malcriando con decisiones que sí tienen sentido.",
+      "explanation": "La base está en clasificar pruebas y planificar fallos posibles. Recuerda que los métodos no resisten igual el phishing y que una configuración adicional no convierte ninguna cuenta en inmune a todos los incidentes."
+    },
+    {
+      "id": "i-mfa-result-0-3",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 0,
+      "expression": "delighted",
+      "text": "Superaste la lección y la solicitud pesada se quedó sin autorización. Eso merece una pausa orgullosa, tesoro; luego puedes revisar tus cuentas con la misma calma y menos teatro.",
+      "explanation": "Responder bien a la simulación demuestra comprensión del procedimiento, no que MFA ya esté activo fuera de la app. Si decides configurarlo, utiliza el canal oficial, entiende el método y guarda adecuadamente sus alternativas de recuperación."
+    },
+    {
+      "id": "i-mfa-result-1-1",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "Toca repasar, cariño. Hay factores vestidos de otra categoría y códigos con planes de rescate bastante dudosos; vamos a corregir el guion antes de darles otro papel protagonista.",
+      "explanation": "Revisa qué elementos prueban conocimiento y cuáles posesión. Después vuelve a las solicitudes inesperadas y al almacenamiento separado de recuperación; cada error ofrece una explicación concreta que puedes conectar con el escenario correspondiente."
+    },
+    {
+      "id": "i-mfa-result-1-2",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "No hace falta correr a otro intento todavía. Mira dónde se torció la decisión y cuéntatela con palabras simples; yo puedo ser molesta, pero no pienso abandonar esa explicación.",
+      "explanation": "Antes de repetir, explica por qué una solicitud no iniciada no merece aprobación y qué ocurriría si los códigos estuvieran solo en el teléfono perdido. Relacionar cada regla con una consecuencia facilita recordarla."
+    },
+    {
+      "id": "i-mfa-result-1-3",
+      "lessonId": "mfa",
+      "stage": "result",
+      "anchor": 1,
+      "expression": "disappointed",
+      "text": "El resultado pide otra vuelta y mi ceja pide categorías claras. Respira, tesoro: conocimiento, posesión y una recuperación independiente; vamos a ordenar esas piezas sin regalar permisos por cansancio.",
+      "explanation": "Regresa a la sección que corresponda a tus errores y compara sus ejemplos con las opciones elegidas. No memorices solo una posición de respuesta: identifica el factor, el permiso concedido o la dependencia que vuelve insegura la alternativa."
+    }
+  ]
+}

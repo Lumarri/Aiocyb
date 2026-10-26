@@ -1,0 +1,14 @@
+{
+    "date":  "2026-10-24",
+    "device":  "Motorola moto g24 power",
+    "package":  "com.aiocyb.aiocyb",
+    "previousVersion":  "1.4.0+6",
+    "installedVersion":  "1.5.0+7",
+    "installMode":  "adb install -r",
+    "result":  "Success",
+    "previousAppId":  10285,
+    "installedAppId":  10285,
+    "dataIdentityRetained":  true,
+    "visualVerificationOnHardware":  false,
+    "note":  "Updated in place. No app data was cleared. Visual checks used the compiled web build; no interaction with the phone UI was performed."
+}

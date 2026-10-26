@@ -1,0 +1,805 @@
+{
+  "courseId": "phishing",
+  "lessons": [
+    {
+      "id": "phishing-practice-mail-identity",
+      "title": "El correo lleva nombre prestado",
+      "minutes": 5,
+      "intro": "Practica la revisión de identidad en correos inesperados y distingue nombres visibles, direcciones y detalles personales que pueden aumentar credibilidad sin demostrar quién envía realmente la solicitud.",
+      "sections": [
+        {
+          "title": "La presentación puede copiarse",
+          "body": "El nombre visible de un remitente no demuestra que controle una institución. Revisa la dirección completa y si la petición encaja con lo que esperabas. Algunos correos también proponen responder a una dirección diferente; ese cambio merece comprobarse, aunque puede tener usos legítimos. Un saludo con tu nombre y una redacción cuidada tampoco acreditan identidad. Para solicitudes sensibles, consulta al supuesto emisor mediante un contacto previamente conocido, sin depender de los enlaces ni teléfonos del mismo mensaje que intentas verificar."
+        }
+      ],
+      "steps": [
+        "Despliega los datos del remitente sin abrir enlaces.",
+        "Compara la petición con el contexto esperado.",
+        "Confirma cambios sensibles por una vía previamente conocida."
+      ],
+      "scenario": "Una academia ficticia recibe mensajes con firmas institucionales, direcciones ajenas y saludos personalizados. Debes separar señales de presentación de evidencias útiles antes de enviar documentos o responder con información de una cuenta personal.",
+      "questions": [
+        {
+          "prompt": "¿Qué dato debes examinar además del nombre mostrado?",
+          "scenario": "Un correo ficticio aparece como Secretaría del Taller, pero no esperabas trámites. Solicita una copia de tu documento y su firma reproduce el escudo del centro donde estudias actualmente.",
+          "options": [
+            "Solo el tamaño del escudo",
+            "La dirección completa y su coherencia con la solicitud",
+            "Únicamente el orden de los párrafos"
+          ],
+          "answer": 1,
+          "explanation": "La dirección completa aporta información que el nombre visible puede ocultar. Compárala con el contexto y confirma la solicitud sensible por un contacto conocido; una firma copiada no acredita por sí misma a la secretaría.",
+          "wrongExplanations": [
+            "El escudo puede copiarse y su tamaño no demuestra quién envía el correo. Examina la dirección completa y verifica la solicitud de documentos por un contacto del centro que ya conocías.",
+            null,
+            "La estructura de párrafos puede imitarse y no identifica al emisor. Revisa los datos completos y la necesidad del trámite, sin enviar documentos personales por una petición que todavía no has podido confirmar."
+          ],
+          "aoi": {
+            "question": "Ese escudo viene muy peinado, cariño; revisa qué información permite mirar detrás del nombre antes de soltar un documento personal.",
+            "hint": "Distingue los elementos elegidos para parecer institucionales de los datos que puedes contrastar con una referencia previa del centro.",
+            "correct": "Miraste más allá de la firma; comprobar datos y contexto vale más que conceder autoridad automática a un nombre bien presentado.",
+            "soft": "La firma puede resultar convincente; revisemos qué parte aporta información contrastable antes de decidir si el centro pidió realmente ese documento.",
+            "sharp": "El escudo no ganó poderes por crecer veinte píxeles, cielo; quitémosle esa corona y examinemos quién está enviando la petición completa."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene hacer con ese cambio de dirección para responder?",
+          "scenario": "Un proveedor ficticio escribe desde una cuenta conocida, pero pide enviar datos de facturación a gestion@soporte-cobros.test. Nunca utilizaste esa dirección y la petición cambia el proceso habitual sin explicación.",
+          "options": [
+            "Confirmar el cambio mediante el contacto habitual del proveedor",
+            "Enviar los datos porque la conversación ya existía",
+            "Copiar a todas las personas de tu agenda"
+          ],
+          "answer": 0,
+          "explanation": "Una conversación conocida no confirma toda instrucción nueva y podría existir una cuenta comprometida. Comprueba el cambio por el contacto habitual antes de enviar datos a un destino que no has validado.",
+          "wrongExplanations": [
+            null,
+            "El historial de conversación aporta contexto, pero no acredita automáticamente una dirección nueva. La cuenta podría estar comprometida; confirma la modificación por un contacto previo antes de entregar información de facturación al destino propuesto.",
+            "Difundir la petición no valida el cambio y puede exponer datos a más personas. Contacta al proveedor por una vía conocida y conserva el mensaje según el procedimiento que utilice tu organización."
+          ],
+          "aoi": {
+            "question": "La conversación es vieja y la dirección es nueva, cariño; decide qué comprobarías antes de trasladar información de facturación a otro lugar.",
+            "hint": "Piensa si una cuenta conocida podría enviar una instrucción ajena a su dueño y qué fuente independiente aclararía ese cambio concreto.",
+            "correct": "Confirmaste la modificación fuera del mensaje; una relación previa puede ayudar sin convertirse en autorización automática para enviar información a cualquier dirección nueva.",
+            "soft": "Es razonable reconocer la conversación; ahora separemos esa familiaridad de la comprobación necesaria cuando cambia el destino de datos sensibles del proveedor.",
+            "sharp": "La charla tiene antigüedad, no inmunidad diplomática; ese cambio todavía necesita pruebas antes de llevarse los datos de facturación como regalo de confianza."
+          }
+        },
+        {
+          "prompt": "¿Qué puedes concluir de que conozca tu nombre y escriba correctamente?",
+          "scenario": "Un correo ficticio de un concurso no solicitado usa tu nombre completo y no tiene errores. Pide pagar una gestión antes de entregar un premio que nunca esperabas recibir.",
+          "options": [
+            "Que todo concurso personalizado es auténtico",
+            "Que la buena ortografía elimina el riesgo",
+            "Que esos detalles no bastan para acreditar el concurso"
+          ],
+          "answer": 2,
+          "explanation": "La personalización y la redacción pueden copiarse o prepararse con datos públicos. No acreditan un premio inesperado ni justifican pagar; comprueba la entidad por una vía independiente antes de considerar esa solicitud.",
+          "wrongExplanations": [
+            "Conocer tu nombre no demuestra relación legítima con un concurso. Puede obtenerse de publicaciones u otras fuentes; verifica la entidad y la existencia del premio sin pagar primero por una promesa inesperada.",
+            "Una redacción correcta no evalúa las intenciones del emisor. Los engaños también pueden ser profesionales; analiza la petición de pago y verifica el supuesto concurso mediante datos de contacto que no dependan de ese aviso.",
+            null
+          ],
+          "aoi": {
+            "question": "Sabe tu nombre y conjuga verbos, cariño; evalúa si eso alcanza para que un concurso inesperado reciba dinero antes de mostrar pruebas.",
+            "hint": "Pregúntate si esos detalles podrían prepararse sin organizar un concurso real y qué falta comprobar sobre el supuesto premio que ahora están cobrando.",
+            "correct": "Separaste presentación y autenticidad; un saludo impecable puede seguir acompañando una solicitud que necesita verificarse antes de tocar un medio de pago personal.",
+            "soft": "La personalización impresiona; pensemos de dónde podrían salir esos datos y qué prueba independiente existe sobre el concurso al que supuestamente te apuntaron.",
+            "sharp": "El estafador aprendió ortografía, qué jodido giro argumental; eso no le concede un premio real ni derecho a cobrarte por adelantado una promesa."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy interrogamos firmas elegantes, cariño; la papelería institucional no recibe tu confianza hasta que la petición pueda sostenerse fuera de su propio correo.",
+        "theory": "Nombre, dirección y contexto aportan cosas distintas; comprobar una solicitud sensible requiere algo más que reconocer el maquillaje con el que se presenta el mensaje.",
+        "pass": "Distinguiste identidad y presentación en tres correos; mi ceja baja un poco mientras los remitentes impostores descubren que necesitan más que una firma bonita.",
+        "review": "Repasa qué información verificaste y por qué elegiste ese contacto; reconocer nombres y detalles personales ayuda menos que comprobar peticiones nuevas mediante referencias independientes."
+      }
+    },
+    {
+      "id": "phishing-practice-sms-context",
+      "title": "SMS con ganas de llevarte de paseo",
+      "minutes": 5,
+      "intro": "Evalúa mensajes de texto sobre entregas o trámites y reconoce que una conversación agrupada o una amenaza breve no sustituye comprobar la solicitud mediante una referencia conocida.",
+      "sections": [
+        {
+          "title": "Poco texto, decisiones importantes",
+          "body": "Un SMS puede dirigir hacia una página falsa o pedir una respuesta que prolongue el engaño. La brevedad y el aspecto de la conversación no prueban quién lo envió. Incluso aparecer junto a mensajes antiguos no acredita cada instrucción nueva. Comprueba entregas o trámites mediante la aplicación y los contactos que ya utilizabas. Si confirmas que es fraudulento, usa las opciones de reporte y bloqueo disponibles según el dispositivo o servicio, siguiendo las instrucciones de tu organización cuando corresponda y evitando difundir el enlace entre tus contactos."
+        }
+      ],
+      "steps": [
+        "Identifica qué acción solicita el SMS.",
+        "Consulta el trámite por tu aplicación habitual.",
+        "Reporta mediante la opción disponible si confirmas el engaño."
+      ],
+      "scenario": "Una familia ficticia recibe avisos de entregas, trámites urgentes y premios por SMS. Algunos aparecen junto a mensajes legítimos anteriores, pero cada petición nueva necesita comprobarse antes de responder, pagar o facilitar datos personales.",
+      "questions": [
+        {
+          "prompt": "¿Qué comprobarías antes de pagar esa tasa de entrega?",
+          "scenario": "Un SMS ficticio dice que un paquete requiere una tasa de aduana y enlaza a entrega-rapida.test. Esperas un pedido, pero el mensaje no coincide con la información que conservas del transportista.",
+          "options": [
+            "El estado del envío desde el canal del transportista que ya utilizabas",
+            "La rapidez con que carga el enlace nuevo",
+            "Cuántas veces repite la palabra urgente"
+          ],
+          "answer": 0,
+          "explanation": "Esperar un paquete hace creíble la historia, pero no valida el cobro. Consulta el envío desde el canal conocido del transportista y confirma si existe una tasa antes de utilizar el destino recibido por SMS.",
+          "wrongExplanations": [
+            null,
+            "La velocidad de carga no demuestra que el transportista gestione ese sitio ni que la tasa exista. Comprueba el pedido mediante una referencia previa y no introduzcas información financiera para averiguar si el aviso era auténtico.",
+            "La insistencia intenta influir en tu decisión y no acredita el trámite. Necesitas contrastar el cobro con el canal conocido del transportista, especialmente cuando la información del mensaje no coincide con los datos de tu pedido."
+          ],
+          "aoi": {
+            "question": "Esperas un paquete y el SMS lo sabe aprovechar, cariño; decide qué fuente puede aclarar una tasa sin cobrar primero tu confianza.",
+            "hint": "Busca la información del envío que existía antes del mensaje y piensa qué referencia conserva independencia frente al enlace recién recibido.",
+            "correct": "Consultaste la entrega por tu referencia habitual; el contexto del pedido no se convirtió en una autorización automática para pagar cualquier tasa anunciada por SMS.",
+            "soft": "La coincidencia con un pedido real puede convencer; comparemos el aviso con los datos previos antes de dar por auténtico el nuevo cobro.",
+            "sharp": "Que exista tu paquete no convierte a cada SMS en transportista, cielo; la maldita tasa todavía necesita confirmación fuera de su propio enlace."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra que el aviso aparezca junto a SMS antiguos?",
+          "scenario": "Tu teléfono agrupa un aviso ficticio de bloqueo junto a mensajes anteriores de una empresa. La instrucción nueva pide una contraseña y no aparece ninguna incidencia en tu aplicación habitual del servicio.",
+          "options": [
+            "Que la contraseña debe enviarse por SMS",
+            "Que la agrupación no autentica por sí sola la nueva instrucción",
+            "Que cada mensaje de la conversación tiene idéntico origen comprobado"
+          ],
+          "answer": 1,
+          "explanation": "La presentación agrupada del teléfono no es una garantía de autenticidad de cada mensaje. Revisa la incidencia por la aplicación o un contacto conocido y no envíes la contraseña en respuesta a esa solicitud inesperada.",
+          "wrongExplanations": [
+            "La agrupación no crea una necesidad legítima de compartir contraseñas. No respondas con credenciales; entra por tu aplicación habitual y pregunta al servicio mediante un contacto previamente verificado si existe el supuesto bloqueo que anuncia ese SMS.",
+            null,
+            "El aspecto de una conversación no demuestra que todas las instrucciones nuevas procedan de una fuente auténtica. Comprueba el aviso mediante un acceso independiente, sin transferir la confianza de mensajes anteriores a una petición sensible no confirmada."
+          ],
+          "aoi": {
+            "question": "El teléfono puso el aviso en una conversación conocida, cariño; evalúa si ordenar mensajes equivale a verificar quién escribe una instrucción nueva.",
+            "hint": "Distingue cómo presenta contenido tu teléfono de una comprobación independiente del servicio, especialmente cuando el aviso propone entregar información que no habías previsto compartir.",
+            "correct": "No confundiste agrupación y autenticación; cada petición sensible necesita contexto y verificación, aunque el teléfono la coloque al lado de mensajes que sí reconoces.",
+            "soft": "La vista agrupada da sensación de continuidad; revisemos la nueva solicitud por lo que pide y no solo por dónde decidió mostrarla el teléfono.",
+            "sharp": "El teléfono organizó una carpeta, no montó una notaría, cielo; esa vecindad visual no autoriza a regalar una contraseña al último mensaje que llegó."
+          }
+        },
+        {
+          "prompt": "¿Cómo manejarías la supuesta baja de ese SMS sospechoso?",
+          "scenario": "Un SMS ficticio de un sorteo desconocido exige responder con nombre y documento para dejar de recibir avisos. Nunca te registraste y no conoces al remitente ni el servicio que afirma gestionar la baja.",
+          "options": [
+            "Enviar el documento porque promete dejar de molestar",
+            "Reenviarlo al grupo para que todos pidan la baja",
+            "No entregar esos datos y revisar reporte o bloqueo en tu dispositivo"
+          ],
+          "answer": 2,
+          "explanation": "La promesa de baja no justifica entregar documentos a un remitente desconocido. No continúes la interacción; revisa las opciones de reporte o bloqueo disponibles y conserva el mensaje si el responsable necesita investigarlo antes de retirarlo de la bandeja.",
+          "wrongExplanations": [
+            "Entregar un documento añade información sensible al engaño y no confirma que exista una baja legítima. No sigas esa petición; usa las opciones del dispositivo o consulta al servicio por un contacto conocido si existe una relación real que necesites aclarar.",
+            "Difundir el SMS puede exponer a más personas y no tramita tu baja. Evita reenviar enlaces o peticiones de documentos y utiliza el canal de reporte correspondiente, respetando las instrucciones de conservación si tu organización investiga el caso.",
+            null
+          ],
+          "aoi": {
+            "question": "El sorteo que no conoces pide un documento para despedirse, cariño; qué despedida tan curiosa, elige cómo evitar otra entrega de datos personales.",
+            "hint": "Piensa qué obtendría el remitente si obedeces y si las opciones del propio dispositivo permiten cortar el contacto sin satisfacer esa petición inesperada.",
+            "correct": "Frenaste la entrega de documentos y elegiste controles propios; una supuesta baja no necesita convertirse en otra oportunidad de recopilar información sobre tu identidad personal.",
+            "soft": "La molestia invita a responder rápido; revisemos el alcance de los datos pedidos y cómo limitar el contacto sin entregar documentos a un sorteo desconocido.",
+            "sharp": "Para dejar de molestarte quiere tu documento, qué jodida atención al cliente; no financiemos su curiosidad con más identidad personal por una promesa de silencio."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Los SMS tienen pocas líneas y demasiada prisa, cariño; vamos a comprobar sus historias antes de que una notificación decida dónde pagas o qué datos entregas.",
+        "theory": "El contexto puede hacer creíble un mensaje, pero el canal conocido conserva independencia; ni agrupación visual ni amenaza breve autentican por sí solas una solicitud sensible.",
+        "pass": "Separaste entrega, presentación y petición de datos en tres mensajes; esa pequeña pausa evita que el teclado del teléfono se convierta en un mecanismo de obediencia inmediata.",
+        "review": "Repasa qué referencia existía antes del SMS y qué entrega proponía; verificar el trámite requiere algo más que reconocer una conversación o querer que deje de sonar el teléfono."
+      }
+    },
+    {
+      "id": "phishing-practice-voice-pressure",
+      "title": "Una voz convincente no es una credencial",
+      "minutes": 5,
+      "intro": "Practica respuestas ante llamadas inesperadas que usan nombres conocidos, códigos o amenazas para presionarte, conservando una vía independiente con la que comprobar la identidad y el propósito de quien llama.",
+      "sections": [
+        {
+          "title": "La llamada no decide las reglas",
+          "body": "Una persona puede presentarse como un banco, soporte o un familiar para solicitar pagos, códigos o acceso. El número mostrado puede ser suplantado y una voz convincente no autentica la petición. Si una llamada inesperada propone una acción sensible, termina la conversación y contacta por una referencia que ya conocías, evitando devolver la llamada solo desde el registro reciente. No compartas códigos que autoricen pagos o accesos ajenos. La presión para impedir comprobaciones es una señal relevante que merece detener la gestión."
+        }
+      ],
+      "steps": [
+        "Identifica la acción sensible que solicita quien llama.",
+        "Termina la llamada si no puedes verificar su identidad.",
+        "Consulta por un teléfono conocido o la aplicación oficial."
+      ],
+      "scenario": "Varias llamadas ficticias afirman representar un banco y un centro de estudios. Sus interlocutores conocen datos básicos, muestran números familiares y presionan para aceptar operaciones sin utilizar los contactos oficiales que ya conservas.",
+      "questions": [
+        {
+          "prompt": "¿Qué valor tiene el número mostrado como prueba de identidad?",
+          "scenario": "Una llamada ficticia muestra el nombre de tu entidad y pide transferir dinero a una cuenta segura. No solicitaste ayuda y quien llama impide que consultes primero la aplicación habitual del banco.",
+          "options": [
+            "Autentica cualquier instrucción pronunciada en la llamada",
+            "El número mostrado no basta para confirmar quién llama",
+            "Obliga a completar la transferencia antes de colgar"
+          ],
+          "answer": 1,
+          "explanation": "El identificador de llamada puede suplantarse y no demuestra la identidad del interlocutor. No realices la transferencia; termina la conversación y consulta al banco mediante tu aplicación o un teléfono que ya tenías verificado.",
+          "wrongExplanations": [
+            "El nombre o número en pantalla no verifica todas las instrucciones de la voz. Puede existir suplantación; detén la acción sensible y busca al banco por un contacto previamente conocido, sin obedecer el traslado de dinero propuesto.",
+            null,
+            "Ningún identificador crea obligación de transferir dinero durante una llamada inesperada. La presión para evitar consultas aumenta la necesidad de comprobar; utiliza un canal oficial que no dependa del interlocutor ni del registro reciente de llamadas."
+          ],
+          "aoi": {
+            "question": "La pantalla puso un nombre conocido, cariño; decide si eso demuestra quién propone mover tu dinero durante una llamada que no pediste.",
+            "hint": "Separa la etiqueta que aparece en el teléfono de una comprobación independiente y considera por qué esa voz insiste en evitarla.",
+            "correct": "No confundiste identificador y autenticidad; una operación sensible merece confirmación por una vía conocida antes de obedecer a la voz del teléfono.",
+            "soft": "La pantalla inspira confianza; revisemos qué garantiza realmente y qué puedes consultar por tu cuenta antes de autorizar una transferencia inesperada.",
+            "sharp": "El nombre en pantalla no tiene poderes notariales, cielo; el supuesto banco todavía necesita algo más que una etiqueta y ganas de cobrar."
+          }
+        },
+        {
+          "prompt": "¿Qué deberías hacer con el código que autoriza ese pago?",
+          "scenario": "En una llamada ficticia alguien dice devolver una compra y solicita el código que acabas de recibir. El texto del banco indica que autoriza un pago que tú no iniciaste ni deseas realizar.",
+          "options": [
+            "No compartirlo y consultar la operación por el canal oficial",
+            "Dictarlo porque la persona dijo devolución",
+            "Publicarlo en redes para pedir opiniones"
+          ],
+          "answer": 0,
+          "explanation": "El mensaje describe una autorización de pago que no iniciaste, no una devolución comprobada. No compartas el código; termina la llamada y revisa la operación por el canal oficial de la entidad financiera.",
+          "wrongExplanations": [
+            null,
+            "La palabra devolución no cambia la función indicada por el mensaje del banco. Entregar ese código puede completar una operación ajena; revisa el aviso desde tu aplicación o contacta a la entidad por una referencia conocida.",
+            "Publicar un código de autorización puede exponer una operación a terceros y no confirma al interlocutor. Mantén el código privado y pide ayuda mediante el canal oficial, describiendo el hecho sin revelar el valor recibido por SMS o aplicación."
+          ],
+          "aoi": {
+            "question": "La voz promete devolución y el mensaje dice autorizar pago, cariño; elige qué información gobierna una decisión sobre ese código recién recibido.",
+            "hint": "Mira la acción exacta que habilita el código y compárala con lo que tú intentabas hacer antes de recibir esa llamada inesperada.",
+            "correct": "Mantuviste el código fuera de la llamada; la descripción de la operación importa más que el nombre amable que eligió quien intentaba completarla.",
+            "soft": "La devolución suena beneficiosa; comparemos esa promesa con el texto que explica para qué sirve realmente el código enviado por la entidad.",
+            "sharp": "Cambiar pago por devolución en la conversación no reprograma el código, cielo; qué maldita semántica comercial, leamos la autorización antes de regalarla."
+          }
+        },
+        {
+          "prompt": "¿Cómo comprobarías esa amenaza sin usar el contacto que ofrece la llamada?",
+          "scenario": "Una llamada ficticia amenaza con cancelar tu matrícula y te dicta otro número para arreglarlo. Ya tienes el contacto académico del centro, pero quien llama exige que no lo utilices porque perderías el turno.",
+          "options": [
+            "Llamar solo al número dictado por esa voz",
+            "Pagar para conservar el supuesto turno",
+            "Consultar por el contacto académico que ya conocías"
+          ],
+          "answer": 2,
+          "explanation": "El contacto previo permite comprobar la matrícula fuera del circuito impuesto por la llamada. Un número dictado por la misma persona no aporta independencia y la amenaza de perder turno no valida una gestión académica inesperada.",
+          "wrongExplanations": [
+            "Ese número procede de la misma llamada no verificada y puede llevar a otra persona implicada. Utiliza el contacto académico previo o la aplicación oficial para comprobar si existe una incidencia real antes de seguir nuevas instrucciones.",
+            "Pagar primero ejecuta la presión sin aclarar quién llama ni si existe el problema. Comprueba tu matrícula por el canal conocido del centro y conserva los datos de la llamada si el responsable necesita investigar la amenaza recibida.",
+            null
+          ],
+          "aoi": {
+            "question": "La llamada trae amenaza y teléfono propio para resolverla, cariño; decide qué contacto puede comprobar la matrícula sin quedar dentro de su historia.",
+            "hint": "Piensa qué referencia existía antes de que apareciera la amenaza y seguiría disponible aunque toda la conversación recién recibida fuese inventada.",
+            "correct": "Elegiste una referencia previa; la amenaza perdió la capacidad de escoger también quién debe confirmarla y por dónde consultar tu situación académica real.",
+            "soft": "Perder una matrícula asusta; recuperemos una vía conocida antes de permitir que ese temor decida a quién llamas o qué gestión pagas ahora.",
+            "sharp": "La amenaza ya vendía su propio servicio de rescate, cielo; qué negocio tan completo, le quitamos el monopolio usando el contacto del centro."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-mfa"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy la estafa tiene voz, cariño; puede sonar muy segura y todavía necesitar una comprobación independiente antes de que aceptes pagos, códigos o nuevas instrucciones.",
+        "theory": "El identificador y el tono no autentican una llamada; el contexto y una referencia previa permiten comprobar acciones sensibles sin compartir secretos para demostrar confianza.",
+        "pass": "Mantuviste el control frente a tres voces insistentes; saber colgar y consultar también es una habilidad, aunque al estafador le parezca una educación bastante inconveniente.",
+        "review": "Repasa quién eligió el contacto y qué operación autorizabas; una llamada inesperada no necesita recibir códigos ni dinero para que puedas averiguar si el problema era real."
+      }
+    },
+    {
+      "id": "phishing-practice-qr-context",
+      "title": "Los cuadrados también pueden mentir",
+      "minutes": 5,
+      "intro": "Analiza códigos QR en carteles y mensajes como accesos que necesitan contexto, revisando el destino y las peticiones posteriores antes de pagar, instalar una aplicación o iniciar una sesión personal.",
+      "sections": [
+        {
+          "title": "Leer el código no acredita su origen",
+          "body": "Un QR puede facilitar abrir una dirección, pero el teléfono no certifica quién lo creó al reconocerlo. En un cartel puede existir una pegatina superpuesta o un destino distinto del esperado. Revisa la vista previa cuando esté disponible y consulta al establecimiento por otro medio si la petición resulta extraña. No instales aplicaciones ni entregues credenciales por una condición inesperada del enlace. El formato del código no protege el contenido y un sitio con HTTPS también requiere comprobar identidad y finalidad de la solicitud que muestra."
+        }
+      ],
+      "steps": [
+        "Observa el cartel y el destino que muestra la vista previa.",
+        "Relaciona la petición con la tarea anunciada.",
+        "Confirma cambios inesperados con el establecimiento por un canal conocido."
+      ],
+      "scenario": "Un museo ficticio utiliza QR para horarios y entradas. Algunos carteles muestran pegatinas nuevas, descargas no anunciadas y peticiones de credenciales ajenas; debes decidir qué comprobar sin tratar cada patrón cuadrado como certificado del lugar.",
+      "questions": [
+        {
+          "prompt": "¿Qué significa observar esa pegatina superpuesta?",
+          "scenario": "En un museo ficticio encuentras un QR pegado encima del original del cartel de entradas. La vista previa muestra tickets-ajenos.test y no existe explicación del museo sobre ese nuevo destino de pago.",
+          "options": [
+            "Es una señal que justifica consultar al museo antes de pagar",
+            "Demuestra que todo el museo sufrió una infección",
+            "Garantiza que el código nuevo tiene mejor seguridad"
+          ],
+          "answer": 0,
+          "explanation": "La alteración y el destino no explicado justifican comprobar el cartel con el museo. No demuestran por sí solos una infección general, pero tampoco debes pagar antes de confirmar que el acceso pertenece al proceso real de entradas.",
+          "wrongExplanations": [
+            null,
+            "Una pegatina sospechosa no demuestra infección en todos los sistemas del museo. Describe lo observado y pregunta al personal por el proceso oficial, evitando atribuir un alcance técnico que el escenario no permite confirmar ni utilizar como diagnóstico completo.",
+            "Un código más reciente o superpuesto no acredita protección ni identidad. Confirma el destino de entradas con el museo antes de facilitar información financiera, porque el aspecto del QR no explica quién controla la página que propone abrir en el teléfono."
+          ],
+          "aoi": {
+            "question": "El QR tiene otro QR encima, cariño; decide si eso merece una comprobación antes de permitir que una pegatina reciba el dinero de la entrada.",
+            "hint": "Distingue una observación que invita a verificar de una prueba que explicaría todo el estado técnico del museo o la seguridad del sitio nuevo.",
+            "correct": "Elegiste comprobar sin exagerar el alcance; una señal extraña basta para detener el pago mientras el museo confirma qué destino utiliza para sus entradas.",
+            "soft": "El cambio puede tener explicación legítima; consultemos al lugar antes de pagar o concluir que todos sus sistemas están comprometidos por la pegatina del cartel.",
+            "sharp": "Poner otro cuadrado encima no concede seguridad premium, cielo; esa pegatina todavía no presentó un contrato para convertirse en taquilla oficial del museo."
+          }
+        },
+        {
+          "prompt": "¿Qué harías ante esa instalación no anunciada?",
+          "scenario": "Un QR ficticio para consultar horarios abre una página que exige instalar una aplicación desconocida desde un archivo. El museo ofrece los mismos horarios en su web habitual y nunca anunció que hubiera cambiado ese procedimiento.",
+          "options": [
+            "Instalar el archivo porque proviene de un patrón QR",
+            "Consultar los horarios por el acceso conocido sin instalarlo",
+            "Desactivar protecciones para ver si el instalador funciona"
+          ],
+          "answer": 1,
+          "explanation": "Puedes consultar los horarios por la fuente conocida sin conceder ejecución a un archivo no verificado. El QR no acredita la aplicación y una petición de instalación inesperada debe contrastarse antes de modificar el dispositivo que utilizas para navegar.",
+          "wrongExplanations": [
+            "El formato QR solo contiene datos o un enlace y no verifica quién distribuye la aplicación. No instales por esa apariencia; utiliza la web conocida y consulta al museo si necesita aclarar el cambio de procedimiento para acceder a sus horarios.",
+            null,
+            "Desactivar protecciones no identifica al proveedor ni hace necesaria la aplicación. Evita ejecutar ese archivo y utiliza el canal conocido, que ya permite cumplir la consulta sin introducir software desconocido en el dispositivo ni alterar su configuración de seguridad."
+          ],
+          "aoi": {
+            "question": "Querías un horario y apareció un instalador, cariño; compara el objetivo con el cambio que el enlace pretende introducir en tu teléfono antes de obedecerlo.",
+            "hint": "Busca una manera de completar la consulta que no requiera autorizar software nuevo ni confiar primero en la página inesperada que acabas de abrir desde el cartel.",
+            "correct": "Conservaste el objetivo y evitaste una instalación no verificada; el horario no necesita convertirse en excusa para añadir programas que el museo no había explicado ni anunciado.",
+            "soft": "A veces los servicios cambian; antes de aceptar un archivo, confirmemos ese cambio y recordemos que tienes otra fuente conocida donde los horarios siguen disponibles para consulta.",
+            "sharp": "El horario ya quería instalarse en casa con toda la familia, cielo; qué maldita ambición, leemos la web conocida y dejamos al archivo sin invitación para ejecutarse."
+          }
+        },
+        {
+          "prompt": "¿Qué valida realmente el reconocimiento del QR por la cámara?",
+          "scenario": "Una imagen QR ficticia llega por chat y anuncia un examen. La cámara lee correctamente el enlace, pero la página pide la contraseña de tu correo personal en un dominio distinto del portal académico que conoces.",
+          "options": [
+            "Que la página pertenece al centro por ser legible",
+            "Que la contraseña personal es necesaria para cualquier examen",
+            "Que el teléfono pudo leer el contenido, sin acreditar el destino"
+          ],
+          "answer": 2,
+          "explanation": "Leer el patrón no autentica la página ni justifica pedir una contraseña de otro servicio. Verifica el examen por el portal o contacto académico conocido antes de entregar información a un dominio que no has validado para esa gestión.",
+          "wrongExplanations": [
+            "La lectura correcta demuestra que la cámara interpretó el patrón, no que el centro creara el enlace. Examina la solicitud y comprueba el examen mediante el portal académico habitual, manteniendo fuera del formulario la contraseña de tu correo personal.",
+            "Un examen no justifica entregar contraseñas de otros servicios por una petición no verificada. Consulta el procedimiento oficial del centro y no uses una clave personal como prueba de legitimidad de una página que apareció mediante un QR enviado en una conversación de chat.",
+            null
+          ],
+          "aoi": {
+            "question": "La cámara entendió los cuadraditos y la página pide una clave ajena, cariño; decide qué comprobación hizo realmente el teléfono antes de abrir ese formulario externo del supuesto examen.",
+            "hint": "Separa interpretar un formato de comprobar quién administra una web; leer correctamente una instrucción no demuestra que su procedencia o sus peticiones sean legítimas.",
+            "correct": "Distinguiste lectura y confianza; el teléfono no certificó el examen ni la necesidad de una clave ajena, así que puedes consultar por el acceso académico conocido.",
+            "soft": "La confirmación de cámara parece respaldo; revisemos que solo indica lectura, sin evaluar el dominio ni los datos que la página pide después de abrirse.",
+            "sharp": "La cámara descifró puntitos, no entrevistó a la conciencia del formulario, cielo; qué maldito ascenso, comprobemos el examen antes de entregar una contraseña de otra cuenta."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "chrome-browsing"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy los cuadrados traen propuestas, cariño; los leeremos sin atribuirles propiedad del museo ni permiso automático para pedir datos antes de explicar su función.",
+        "theory": "Un QR facilita abrir una dirección, pero no acredita origen ni finalidad; contexto, destino y necesidad siguen importando después de que la cámara interprete el patrón.",
+        "pass": "Separaste señal, función y confianza en tres códigos; consultar información no obliga a instalar o pagar si la petición necesita una explicación independiente del establecimiento.",
+        "review": "Repasa qué leyó la cámara y qué debe confirmar el servicio; interpretar un enlace no verifica procedencia ni justifica cada contraseña o instalación que pide después."
+      }
+    },
+    {
+      "id": "phishing-practice-support-access",
+      "title": "Soporte que exige demasiada confianza",
+      "minutes": 5,
+      "intro": "Reconoce supuestas asistencias técnicas que aparecen sin haberlas solicitado y practica cómo comprobar identidad, alcance y necesidad antes de instalar herramientas o conceder control sobre el dispositivo donde utilizas tus cuentas personales.",
+      "sections": [
+        {
+          "title": "Ayudar no autoriza cualquier acceso",
+          "body": "Las herramientas de asistencia remota tienen usos legítimos, pero permiten acciones importantes sobre un equipo. Antes de autorizarlas, confirma al técnico mediante el soporte oficial y entiende qué hará. Una alerta dentro de una página no demuestra haber analizado todo el sistema, ni una conversación inesperada acredita al operador. Si ya diste acceso y observas actividad ajena a lo acordado, interrúmpelo y consulta al responsable por otra vía. Conserva información del incidente sin enviar archivos sospechosos ni borrar pruebas por iniciativa propia."
+        }
+      ],
+      "steps": [
+        "Comprueba quién inició la asistencia y cómo verificas al técnico.",
+        "Entiende el alcance antes de aceptar control remoto.",
+        "Interrumpe accesos sospechosos y consulta al responsable por un canal oficial."
+      ],
+      "scenario": "Un centro ficticio recibe alertas web, chats y llamadas que ofrecen reparaciones urgentes. Algunas piden acceso remoto sin autorización previa y otras solicitan información financiera que no corresponde a la tarea técnica anunciada al usuario.",
+      "questions": [
+        {
+          "prompt": "¿Qué puedes concluir de ese supuesto análisis mostrado dentro de la página?",
+          "scenario": "Una página ficticia dice haber revisado todos tus archivos y encontrado cientos de virus. No instalaste ninguna herramienta ni solicitaste un análisis; ahora ofrece un teléfono para pagar una reparación inmediata del dispositivo.",
+          "options": [
+            "La afirmación de la página no acredita un análisis real del equipo",
+            "El número de infecciones siempre es exacto",
+            "Debes pagar antes de consultar otra herramienta"
+          ],
+          "answer": 0,
+          "explanation": "El contenido de una página puede imitar un diagnóstico sin demostrar que analizó el equipo. No pagues ni llames por esa alerta; comprueba el estado mediante herramientas conocidas o soporte oficial si existen síntomas que requieran atención.",
+          "wrongExplanations": [
+            null,
+            "Un contador dibujado dentro de una web no demuestra resultados de un análisis legítimo. El número puede formar parte del engaño; usa herramientas conocidas y no concedas acceso ni pagos para validar una afirmación que todavía no ha sido comprobada.",
+            "Pagar ejecuta la presión sin verificar la supuesta infección ni a quien ofrece repararla. Cierra la página y consulta por una vía independiente si hay síntomas, evitando utilizar el teléfono que aparece dentro de la misma advertencia sospechosa del navegador."
+          ],
+          "aoi": {
+            "question": "La página se inventó un hospital entero, cariño; evalúa qué prueba aporta realmente ese contador sobre el estado del equipo.",
+            "hint": "Distingue mostrar una afirmación de demostrar que se ejecutó un análisis legítimo; busca qué comprobación puede existir fuera del anuncio.",
+            "correct": "No convertiste una pantalla alarmista en diagnóstico; las herramientas conocidas pueden comprobar el estado sin pagar primero al teléfono del aviso.",
+            "soft": "La alarma puede asustar; revisemos qué ocurrió antes de mostrar el resultado y si existe alguna evidencia independiente de ese análisis.",
+            "sharp": "Un número gigante no es un diagnóstico, cielo; si bastara con dibujar contadores, hasta mi maldita chaqueta podría montar un servicio técnico."
+          }
+        },
+        {
+          "prompt": "¿Qué petición queda fuera de la reparación que habías solicitado?",
+          "scenario": "En una simulación contactaste al soporte real por un fallo de impresión. Durante un chat no verificado, otra persona pide instalar control remoto y abrir tu banco para demostrar que tienes fondos disponibles antes de continuar.",
+          "options": [
+            "Describir el modelo de impresora al canal oficial",
+            "Abrir el banco y mostrar información financiera al interlocutor",
+            "Explicar el error de impresión que aparece en pantalla"
+          ],
+          "answer": 1,
+          "explanation": "Mostrar el banco no corresponde a diagnosticar el fallo de impresión. Interrumpe ese chat y confirma la asistencia mediante el canal oficial que tú abriste, sin conceder control remoto ni información financiera a una persona cuya identidad no verificaste.",
+          "wrongExplanations": [
+            "El modelo puede ser información pertinente para el soporte oficial de una impresora. La petición ajena a la reparación es abrir información bancaria; no confundas datos técnicos necesarios con acceso financiero que no justifica ese problema de impresión del escenario.",
+            null,
+            "Describir el error ayuda a evaluar el problema si utilizas el soporte auténtico. Lo que no encaja es enseñar información bancaria; confirma al operador por el canal oficial y conserva el chat si el responsable necesita investigar esa solicitud sospechosa."
+          ],
+          "aoi": {
+            "question": "La impresora falla y el chat quiere visitar tu banco, cariño; localiza qué petición abandonó por completo el objetivo de la reparación.",
+            "hint": "Compara cada dato solicitado con lo necesario para entender un error de impresión y revisa quién tiene identidad confirmada en esa conversación.",
+            "correct": "Detectaste la desviación financiera; una reparación puede requerir datos técnicos sin recibir permiso para mirar cuentas bancarias ni controlar el equipo sin comprobaciones.",
+            "soft": "El contexto de soporte parece familiar; separemos lo útil para la impresora de una petición que no tiene relación clara con ese fallo.",
+            "sharp": "La impresora no necesita tu saldo para aprender a imprimir, cielo; qué jodido periférico ambicioso, comprobemos al operador antes de abrirle otra puerta."
+          }
+        },
+        {
+          "prompt": "¿Cuál es la primera respuesta proporcionada ante ese acceso sospechoso?",
+          "scenario": "Concediste acceso remoto en un equipo ficticio del centro. El operador empieza a abrir carpetas personales y pide el banco, acciones que no acordaste, mientras puedes contactar al responsable desde otro dispositivo de confianza.",
+          "options": [
+            "Dejarlo continuar para observar qué roba",
+            "Borrar todos los registros antes de avisar",
+            "Interrumpir el acceso y avisar al responsable por el canal conocido"
+          ],
+          "answer": 2,
+          "explanation": "Interrumpir el acceso limita nuevas acciones y avisar permite coordinar la respuesta. Si necesitas desconectar la red para detenerlo, sigue el procedimiento del centro; no borres registros y explica qué autorizaste, qué observaste y cuándo ocurrió.",
+          "wrongExplanations": [
+            "Mantener un acceso sospechoso puede ampliar el daño y no es una investigación apropiada para practicar sobre tus datos. Interrúmpelo y contacta al responsable por una vía fiable, conservando la información disponible sin permitir nuevas acciones para ver qué pasa.",
+            "Borrar registros puede eliminar evidencia y no revoca por sí mismo el control remoto. Detén la interacción, avisa al responsable y sigue sus instrucciones para preservar información y evaluar si deben protegerse cuentas o contener el equipo mediante medidas adicionales del procedimiento institucional.",
+            null
+          ],
+          "aoi": {
+            "question": "El operador salió del acuerdo y está abriendo puertas personales, cariño; decide cómo recuperar control sin convertir tus datos en un experimento para observarlo.",
+            "hint": "Busca una acción que frene nuevas intervenciones y permita coordinar ayuda, manteniendo información útil en vez de destruirla o ampliar la exposición por curiosidad.",
+            "correct": "Frenaste el acceso y pediste ayuda adecuada; esa secuencia protege mejor que dejar continuar al operador o quitarle al responsable las pistas que necesita revisar.",
+            "soft": "Conceder acceso no te obliga a mantenerlo cuando cambia lo acordado; podemos interrumpirlo y explicar la situación sin borrar información útil ni compartir más secretos.",
+            "sharp": "No le dejamos una visita guiada por tus carpetas para estudiar su estilo, cielo; qué maldito experimento, cortamos acceso y avisamos antes de darle otra oportunidad."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy revisamos ayudas con demasiadas exigencias, cariño; un técnico necesita identidad y una función clara antes de recibir capacidad para manejar el dispositivo donde conservas información personal.",
+        "theory": "La asistencia legítima puede usar control remoto, pero una alerta o un chat inesperado no prueban identidad ni justifican acciones ajenas a la reparación que solicitaste al soporte real.",
+        "pass": "Separaste diagnóstico, necesidad y autorización; pedir ayuda no exige aceptar cada pantalla alarmista ni abrir información ajena a la tarea técnica que acordaste con el soporte.",
+        "review": "Repasa origen, identidad y alcance de la asistencia; interrumpir un acceso sospechoso y avisar conserva más control que observar por curiosidad o borrar sus rastros."
+      }
+    },
+    {
+      "id": "phishing-practice-attachments",
+      "title": "El archivo no es lo que promete su nombre",
+      "minutes": 5,
+      "intro": "Practica cómo responder a documentos inesperados que solicitan ejecución o desactivar controles, revisando procedencia, tipo y necesidad antes de abrir contenido que puede actuar sobre el dispositivo utilizado para estudiar.",
+      "sections": [
+        {
+          "title": "Leer y ejecutar no son lo mismo",
+          "body": "Un archivo puede aparentar ser una factura, fotografía o tarea y requerir acciones adicionales que no esperabas. El icono y el nombre no garantizan su contenido. Revisa el nombre completo y confirma envíos extraños por otra vía, incluso si llegan desde una cuenta conocida que podría estar comprometida. No habilites macros ni desactives protecciones por instrucciones de un documento inesperado. Si ya ejecutaste algo sospechoso, comunica lo ocurrido al responsable siguiendo el procedimiento del centro, sin reenviar el archivo para que otras personas lo prueben."
+        }
+      ],
+      "steps": [
+        "Comprueba nombre completo y procedencia sin ejecutar.",
+        "Confirma envíos inesperados por un contacto independiente.",
+        "No habilites contenido activo sin comprender y verificar su necesidad."
+      ],
+      "scenario": "Un grupo ficticio recibe facturas, archivos comprimidos y supuestas imágenes para una actividad. Algunos solicitan habilitar código, otros llegan sin contexto y uno oculta una extensión ejecutable detrás de un nombre que parece documento de clase.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión evita autorizar ese contenido activo sin confirmación?",
+          "scenario": "Recibes una factura ficticia que no esperabas y el documento exige habilitar macros para mostrar el importe. No reconoces la compra e incluye instrucciones para desactivar la vista protegida antes de leer el supuesto cobro.",
+          "options": [
+            "Mantener protecciones y confirmar la factura por otro canal",
+            "Habilitar macros porque el archivo dice factura",
+            "Desactivar protecciones para todo documento futuro"
+          ],
+          "answer": 0,
+          "explanation": "Una factura inesperada no justifica ejecutar contenido activo ni retirar protecciones. Mantén los controles y confirma el envío con el proveedor por una referencia conocida antes de decidir si existe un documento real que debas revisar por un procedimiento legítimo.",
+          "wrongExplanations": [
+            null,
+            "La etiqueta factura no acredita procedencia ni necesidad de ejecutar macros. El contenido activo puede realizar acciones; no lo habilites para descubrir un importe y verifica la compra o el envío mediante un canal que no dependa del documento recibido.",
+            "Desactivar protecciones generales amplía riesgo sin aclarar esta factura. Conserva la configuración, no ejecutes sus instrucciones y consulta al proveedor por una vía conocida si necesitas confirmar una compra, un trámite o el origen del archivo que no esperabas recibir."
+          ],
+          "aoi": {
+            "question": "La factura quiere ejecutar antes de mostrar números, cariño; decide cómo investigar ese cobro sin abrirle permisos que todavía no entiendes ni has verificado.",
+            "hint": "Compara leer un importe con autorizar acciones del documento y busca una respuesta que conserve las protecciones mientras otra fuente aclara el envío inesperado.",
+            "correct": "Separaste lectura y ejecución; una compra sin confirmar no recibe permiso para cambiar protecciones solo porque el archivo se presente como una factura urgente por revisar.",
+            "soft": "Puede parecer un paso normal del documento; revisemos qué capacidad habilita y confirmemos primero que la compra y el envío corresponden realmente al proveedor que dice haberlo emitido.",
+            "sharp": "La factura quiere apagar alarmas antes de enseñar el precio, cielo; qué maldita tarifa especial, comprobemos el cobro sin concederle código activo ni permisos sobre otros documentos futuros."
+          }
+        },
+        {
+          "prompt": "¿Qué comprobarías antes de abrir ese archivo comprimido?",
+          "scenario": "La cuenta ficticia de una compañera envía un archivo comprimido sin explicación y pide abrirlo antes de diez minutos. Ella no había anunciado materiales nuevos y conoces otro medio habitual para hablar directamente con esa persona.",
+          "options": [
+            "Que el icono del archivo sea bonito",
+            "Si ella envió ese contenido, mediante el otro contacto conocido",
+            "Cuántas personas lo han reenviado antes de ti"
+          ],
+          "answer": 1,
+          "explanation": "Una cuenta conocida puede estar comprometida y un envío extraño merece confirmación independiente. Pregunta a la compañera por el otro canal antes de abrir; ni el icono ni la difusión demuestran que el archivo proceda de una acción legítima de su dueña.",
+          "wrongExplanations": [
+            "El icono puede cambiarse o imitar documentos conocidos y no acredita quién preparó el archivo. Confirma el envío directamente con la compañera por otro medio que ya utilizabais, sin abrirlo para comprobar si la amenaza de urgencia era verdadera o necesaria.",
+            null,
+            "La cantidad de reenvíos no verifica contenido ni identidad y puede ser parte de su difusión. No lo repartas ni lo abras por popularidad; confirma por el contacto independiente que la compañera tenía intención de compartir ese archivo comprimido para la actividad del grupo."
+          ],
+          "aoi": {
+            "question": "Conoces la cuenta, cariño, pero ese archivo llegó sin contexto; elige qué comprobación podría distinguir un envío real de una cuenta usada por otra persona sin permiso.",
+            "hint": "Piensa si el buzón conocido puede estar comprometido y qué vía previa permite hablar con su dueña sin ejecutar el archivo ni depender de la instrucción recibida ahora.",
+            "correct": "Buscaste confirmación de la persona por fuera del envío; reconocer una cuenta no obliga a ejecutar contenido inesperado que su dueña quizá no decidió compartir contigo para la actividad.",
+            "soft": "La familiaridad pesa; revisemos si existe explicación del envío y aprovechemos el otro contacto antes de abrir un archivo que llegó con prisa y sin contexto.",
+            "sharp": "El buzón lleva su nombre, no una garantía de intenciones, cielo; no contratamos a la familiaridad para auditar un maldito archivo comprimido que nadie había anunciado."
+          }
+        },
+        {
+          "prompt": "¿Qué señala el final del nombre mostrado en este ejemplo de Windows?",
+          "scenario": "Una supuesta imagen ficticia llega como plano.png.exe y tiene icono de fotografía. Puedes ver el nombre completo sin abrirla; quien la envía afirma que el dibujo demuestra que no ejecutará programas.",
+          "options": [
+            "Que la palabra plano demuestra autenticidad",
+            "Que cualquier icono de foto elimina el riesgo",
+            "Que la extensión final corresponde a un ejecutable"
+          ],
+          "answer": 2,
+          "explanation": "En este ejemplo de Windows la extensión final .exe corresponde a un ejecutable. El fragmento .png y el icono no cambian ese tipo; no lo abras para comprobarlo y confirma el envío o pide ayuda por un canal adecuado al contexto de tu equipo.",
+          "wrongExplanations": [
+            "La palabra plano es un nombre elegido y no demuestra origen ni tipo. La extensión final .exe indica un ejecutable en este ejemplo; revisa el nombre completo y no uses el título como garantía de que abrirlo solo mostrará una imagen estática en pantalla.",
+            "El icono puede imitar una fotografía y no altera el tipo del archivo. Debes considerar la extensión final y la procedencia, evitando ejecutarlo por una apariencia familiar o por una promesa del remitente que todavía no has comprobado mediante otra fuente adecuada de confianza.",
+            null
+          ],
+          "aoi": {
+            "question": "El archivo lleva icono de foto y apellido ejecutable, cariño; analiza el nombre completo antes de permitir que el dibujo decida qué ocurrirá al abrirlo.",
+            "hint": "Distingue texto incluido en el nombre y extensión final; un icono puede mostrarse sin demostrar que su apariencia coincide con el tipo real del archivo.",
+            "correct": "Leíste el final y reconociste el ejecutable; ni el fragmento de imagen ni el icono cambian ese tipo, así que no necesitas abrirlo para comprobarlo.",
+            "soft": "Los nombres dobles engañan a primera vista; revisemos extensión y procedencia sin ejecutar para resolver la duda, utilizando datos del archivo y un contacto conocido.",
+            "sharp": "Ese icono se vistió de fotógrafo y el apellido sigue siendo ejecutable, cielo; qué maldito currículo creativo, revisemos el tipo antes de darle entrada al equipo."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy examinamos paquetes con nombre bonito, cariño; preguntamos qué son, quién los mandó y qué capacidad quieren antes de convertir una urgencia en permiso para ejecutar.",
+        "theory": "Nombre, icono y cuenta conocida no garantizan contenido seguro; confirmar procedencia y distinguir lectura de ejecución permite decidir antes de habilitar acciones sobre el dispositivo.",
+        "pass": "Reconociste contenido activo, cuentas comprometidas y extensiones ejecutables; puedes revisar un envío sin tratarlo como seguro por familiaridad ni probarlo sobre tus datos para conocerlo.",
+        "review": "Repasa qué comprobar sin ejecutar y qué contacto valida el envío; procedencia, extensión y permisos explican más que un icono o una amenaza de tiempo."
+      }
+    },
+    {
+      "id": "phishing-practice-payment-verification",
+      "title": "Dinero con instrucciones nuevas",
+      "minutes": 5,
+      "intro": "Practica la confirmación de cambios de pago y pruebas de cobro, manteniendo independencia frente a mensajes urgentes, capturas y órdenes que intentan sustituir los procedimientos conocidos de una compra o actividad del grupo.",
+      "sections": [
+        {
+          "title": "La instrucción nueva necesita una comprobación",
+          "body": "Los engaños de pago pueden imitar proveedores, responsables o compradores y utilizar información real para dar contexto. Una factura conocida no valida automáticamente una cuenta bancaria nueva. Confirma cambios sensibles por un contacto previo, respetando las aprobaciones de tu organización. Las capturas pueden alterarse y no sustituyen comprobar un cobro en tu propia aplicación financiera o plataforma oficial. Las solicitudes de tarjetas regalo con secreto y urgencia merecen una pausa; evita entregar códigos o productos antes de verificar la operación y a quien la propone por una fuente independiente."
+        }
+      ],
+      "steps": [
+        "Identifica qué cambió respecto al proceso habitual.",
+        "Confirma órdenes sensibles mediante un contacto previo.",
+        "Comprueba cobros en tu propio servicio antes de entregar productos o códigos."
+      ],
+      "scenario": "Una asociación ficticia compra materiales y vende artículos para una actividad. Recibe cuentas nuevas, encargos de tarjetas regalo y capturas de pagos, y debe comprobar cada operación sin dejar que la prisa reemplace sus procedimientos habituales.",
+      "questions": [
+        {
+          "prompt": "¿Qué referencia puede confirmar de forma independiente el nuevo destino del pago?",
+          "scenario": "Una factura ficticia de un proveedor habitual reaparece con otra cuenta bancaria. El correo conoce el importe, exige transferir hoy y añade un teléfono nuevo para confirmar, aunque conservas el contacto usado en compras anteriores con esa empresa.",
+          "options": [
+            "El teléfono conocido del proveedor que ya conservabas",
+            "El teléfono nuevo incluido en el mismo correo",
+            "El importe correcto como prueba suficiente"
+          ],
+          "answer": 0,
+          "explanation": "El contacto previo permite preguntar por el cambio sin depender de los datos del mensaje. El importe puede conocerse por otras fuentes o una cuenta comprometida; sigue además la aprobación habitual antes de modificar el destino del dinero.",
+          "wrongExplanations": [
+            null,
+            "El teléfono nuevo forma parte de la misma instrucción no validada y puede llevar a otra persona implicada. Confirma con la referencia previa del proveedor y aplica el proceso de autorización antes de transferir a una cuenta diferente de la habitual.",
+            "Conocer el importe no acredita un cambio de cuenta y puede aprovechar datos de una factura real. Necesitas confirmar la modificación por un canal previo, sin convertir el contexto correcto en permiso automático para mover dinero al destino nuevo que propone el correo."
+          ],
+          "aoi": {
+            "question": "La factura conoce el importe y cambió de cuenta, cariño; elige qué referencia puede confirmar ese destino sin dejar que el propio correo elija también a su testigo.",
+            "hint": "Busca el contacto que existía antes de recibir la instrucción y seguiría siendo útil aunque todos los datos nuevos del aviso hubieran sido preparados por un impostor.",
+            "correct": "Elegiste una referencia previa; el importe queda como contexto sin convertirse en permiso universal para aceptar una cuenta nueva que necesita confirmación y aprobación de pago.",
+            "soft": "Reconocer la factura inspira confianza; separemos ese dato de la cuenta que cambió y comprobemos el destino antes de decidir dónde debe llegar el dinero.",
+            "sharp": "El correo trajo cuenta nueva y testigo a medida, cielo; qué maldito servicio completo, usemos el contacto previo antes de permitir que certifique su propia versión."
+          }
+        },
+        {
+          "prompt": "¿Qué hace recomendable comprobar esa orden antes de comprar los códigos?",
+          "scenario": "Un chat ficticio imita al responsable de tu asociación y pide comprar tarjetas regalo de inmediato. Exige mantener secreto y enviar fotografías de los códigos, aunque nunca utilizaste ese procedimiento para comprar materiales del grupo.",
+          "options": [
+            "Que una fotografía de un código nunca entrega valor",
+            "La combinación de urgencia, secreto y un método ajeno al proceso habitual",
+            "Que cualquier orden escrita con buena gramática es fiable"
+          ],
+          "answer": 1,
+          "explanation": "La orden cambia el proceso y presiona para evitar comprobaciones, por lo que requiere confirmar identidad y necesidad mediante un contacto conocido. Los códigos pueden permitir usar el saldo; no los envíes por una petición no verificada del chat.",
+          "wrongExplanations": [
+            "Los códigos pueden permitir utilizar el saldo y fotografiarlos puede entregar ese valor a otra persona. No son una prueba inocua de compra; confirma al responsable y el procedimiento antes de adquirir o compartir tarjetas por una orden inesperada de chat.",
+            null,
+            "Una redacción correcta puede imitarse y no acredita al responsable. La urgencia, el secreto y el cambio de método deben contrastarse por una referencia conocida antes de gastar dinero o enviar códigos que otra persona podría utilizar fuera del grupo."
+          ],
+          "aoi": {
+            "question": "El supuesto responsable quiere códigos, secreto y velocidad, cariño; identifica qué combinación requiere comprobarse antes de comprar algo que nunca formó parte del procedimiento habitual.",
+            "hint": "Compara la orden con el proceso del grupo y piensa qué obtendría el interlocutor al recibir imágenes legibles de los códigos antes de confirmar su identidad.",
+            "correct": "Detectaste el cambio y la presión para no preguntar; los códigos pueden entregar valor, así que confirmar al responsable protege mejor que obedecer ese chat inesperado.",
+            "soft": "Cuesta cuestionar una orden importante; podemos confirmarla por el contacto habitual antes de gastar, sin acusar por intuición ni permitir que el secreto impida comprobarla.",
+            "sharp": "Los códigos no son cromos para el álbum del jefe, cielo; qué maldito coleccionista urgente, comprobemos la orden antes de regalar saldo por un chat no verificado."
+          }
+        },
+        {
+          "prompt": "¿Qué confirma mejor que ese cobro está disponible según tu servicio?",
+          "scenario": "En una venta ficticia, el comprador muestra una captura y exige el envío inmediato. Tu plataforma no refleja el cobro y él insiste en que su imagen basta aunque no hayas comprobado la operación.",
+          "options": [
+            "La imagen enviada por el comprador sin otra revisión",
+            "Su promesa de que el pago llegará después de enviar",
+            "El estado de la operación consultado en tu propia plataforma oficial"
+          ],
+          "answer": 2,
+          "explanation": "Tu plataforma oficial permite consultar el estado según su proceso, mientras una captura puede alterarse o describir otra operación. No entregues el producto por presión; revisa las instrucciones del servicio y consulta a su soporte si el cobro no aparece o no entiendes su situación.",
+          "wrongExplanations": [
+            "Una captura puede falsificarse y no sustituye revisar el estado desde tu cuenta. Comprueba el proceso oficial y no entregues el producto por presión de quien todavía no aporta una operación confirmada por tu servicio.",
+            "La promesa no confirma que exista un pago. Consulta la operación y las instrucciones de tu plataforma, recurriendo al soporte si no aparece; enviar primero no garantiza que después llegue un cobro auténtico del comprador.",
+            null
+          ],
+          "aoi": {
+            "question": "La captura sonríe y el cobro no aparece, cariño; decide qué fuente registra tu operación antes de entregar el producto por una promesa del comprador.",
+            "hint": "Busca una fuente que puedas abrir tú y registre la venta, sin depender de una imagen preparada por quien quiere recibir el artículo antes de comprobarse el cobro.",
+            "correct": "Consultaste donde se registra la operación; una captura no sustituye el estado oficial ni obliga a entregar el producto antes de comprender el proceso de cobro.",
+            "soft": "La captura parece una prueba; revisemos tu cuenta y el proceso antes de enviar, porque la imagen podría estar incompleta, alterada o corresponder a otra operación.",
+            "sharp": "Una captura no fabrica dinero, cielo; qué maldita economía de píxeles, comprobemos el cobro antes de dejar que una imagen y una promesa se lleven el producto."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Hoy las instrucciones quieren dinero, cariño; les pediremos más que un importe, autoridad aparente o captura antes de decidir si merecen recibir saldo, productos o información.",
+        "theory": "Las operaciones necesitan referencias propias y procesos conocidos; una factura aporta contexto sin autorizar cambios, y una captura no sustituye revisar el cobro en tu servicio.",
+        "pass": "Comprobaste una cuenta nueva, códigos y una captura; la prisa perdió capacidad de sustituir el proceso conocido y la información independiente de cada operación del grupo.",
+        "review": "Repasa qué cambió, quién aporta la referencia y dónde se registra el pago; una imagen, importe conocido o petición de secreto no acreditan por sí solos instrucciones nuevas."
+      }
+    },
+    {
+      "id": "phishing-practice-response-report",
+      "title": "Responder con hechos, no con pánico",
+      "minutes": 5,
+      "intro": "Relaciona la respuesta con los datos o permisos expuestos y practica un reporte que conserve información útil, evitando nuevas revelaciones, limpiezas impulsivas o promesas de que una medida resuelve automáticamente cualquier incidente de phishing.",
+      "sections": [
+        {
+          "title": "El siguiente paso depende de lo ocurrido",
+          "body": "Tras un engaño, detén nuevas interacciones y describe qué hiciste: introducir datos, autorizar una aplicación o ejecutar contenido son acciones distintas. Una contraseña escrita en una página falsa puede haber sido capturada aunque no recuerdes pulsar enviar. Protege la cuenta desde un dispositivo fiable y el servicio oficial, revisando sesiones y recuperación. Los permisos delegados requieren una revisión propia. Reporta por el canal indicado y conserva el mensaje según instrucciones, sin publicar enlaces activos o borrar pruebas que el responsable necesite para investigar lo ocurrido y coordinar medidas proporcionadas."
+        }
+      ],
+      "steps": [
+        "Detén el contacto e identifica acciones y datos expuestos.",
+        "Utiliza controles oficiales desde un dispositivo de confianza.",
+        "Reporta por el canal adecuado y conserva evidencia según las instrucciones del responsable."
+      ],
+      "scenario": "Un equipo ficticio revisa una contraseña escrita, permisos de una aplicación engañosa y un mensaje distribuido a estudiantes. Cada incidente requiere medidas específicas y un reporte útil que no provoque nuevas visitas ni difusión.",
+      "questions": [
+        {
+          "prompt": "¿Cómo tratarías esa contraseña aunque no pulsaras enviar?",
+          "scenario": "En un caso hipotético, Nora escribe la contraseña de su cuenta de correo ficticia en una web falsa y cierra sin enviar. Su teléfono fiable permite acceder al proveedor oficial para revisar la seguridad.",
+          "options": [
+            "Suponer que nunca pudo salir porque no enviaste el formulario",
+            "Publicarla para preguntar si alguien la vio",
+            "Tratarla como expuesta y proteger la cuenta por el servicio oficial"
+          ],
+          "answer": 2,
+          "explanation": "La página puede recoger texto mientras escribes. Trata la clave como expuesta: cámbiala desde el servicio oficial y un dispositivo fiable, revisa sesiones y recuperación, y sustituye esa credencial en otras cuentas donde la reutilizabas.",
+          "wrongExplanations": [
+            "No pulsar enviar no garantiza que la página no recogiera el texto. Protege la cuenta desde el proveedor oficial y un dispositivo fiable, sin esperar daños visibles ni volver al sitio para estudiar cómo capturaba datos.",
+            "Publicarla añade exposición y no aclara lo ocurrido. No compartas secretos al pedir ayuda; cambia la clave por el proveedor oficial y describe el incidente por tipos de datos, sin reproducir contraseñas en reportes públicos.",
+            null
+          ],
+          "aoi": {
+            "question": "Cerró antes de enviar, cariño; evalúa si eso garantiza secreto o si Nora debe proteger una contraseña escrita en una página cuyo funcionamiento no ha comprobado.",
+            "hint": "Piensa si la página puede recoger texto mientras escribes y busca una respuesta que reduzca su utilidad sin esperar prueba visible de abuso sobre la cuenta.",
+            "correct": "Trataste la clave como expuesta; el dispositivo fiable y el proveedor real permiten protegerla y revisar acceso sin volver al formulario para probar cómo capturaba información.",
+            "soft": "Cerrar puede limitar acciones, pero no demuestra ausencia de captura; revisemos lo tecleado y usemos el acceso oficial sin culpar a Nora ni compartir la clave.",
+            "sharp": "Enviar no es el único botón cotilla, cielo; qué maldita confianza en un formulario falso, protegemos lo escrito antes de esperar una presentación formal del intruso."
+          }
+        },
+        {
+          "prompt": "¿Qué acceso necesita una revisión propia después de cambiar la clave?",
+          "scenario": "Una falsa aplicación de becas obtuvo permiso para leer tu correo en una simulación. Cambiaste la contraseña, pero continúa como conexión activa y ya no tiene ninguna función que quieras mantener dentro de tu cuenta.",
+          "options": [
+            "La autorización de la aplicación conectada en el servicio oficial",
+            "El color del tema para que no aparezca en la lista",
+            "Solo el icono que muestra la página de becas"
+          ],
+          "answer": 0,
+          "explanation": "Los permisos delegados requieren revisión y posible revocación desde el proveedor oficial. Cambiar la clave no garantiza retirarlos todos; revisa esa conexión y consulta al soporte si observas actividad desconocida o no puedes recuperar control del acceso.",
+          "wrongExplanations": [
+            null,
+            "Los colores no modifican permisos de otra aplicación. Revisa conexiones desde el proveedor y retira lo innecesario, comprobando también sesiones y recuperación según el incidente, sin confiar en una modificación visual para proteger el contenido de tu correo.",
+            "El icono no determina si conserva permiso. Utiliza los controles del proveedor donde figura la conexión y no cambios de apariencia del sitio falso; la autorización delegada puede mantener acceso aunque la contraseña directa de la cuenta haya cambiado."
+          ],
+          "aoi": {
+            "question": "Cambiaste la contraseña y la aplicación sigue invitada, cariño; identifica qué acceso recibió permiso propio y necesita un control distinto de cambiar la decoración del sitio.",
+            "hint": "Distingue conocer una clave y recibir autorización delegada; busca dónde el proveedor administra esa conexión sin suponer que renovar la entrada directa retiró todos los permisos.",
+            "correct": "Revisaste el permiso en su lugar; cambiar clave puede ayudar sin despedir automáticamente conexiones, y revocarlas tampoco equivale por sí solo a revisar sesiones o recuperación.",
+            "soft": "Los menús mezclan accesos; separemos contraseña, conexión y sesión para elegir el control adecuado sin dar por resuelto todo el incidente con una única acción del proveedor.",
+            "sharp": "La becaria falsa seguía con pase propio, cielo; qué malditos privilegios, revisemos la autorización en lugar de atribuirle al cambio de clave una capacidad universal de despido."
+          }
+        },
+        {
+          "prompt": "¿Qué reporte ayuda sin ampliar la campaña entre estudiantes?",
+          "scenario": "Detectas un phishing ficticio en el centro y conservas el correo original. Existe un canal de incidentes, pero un grupo quiere publicar el enlace activo para que todos entren a reconocerlo antes de borrarlo.",
+          "options": [
+            "Pedir a todos que prueben el enlace para medir el engaño",
+            "Avisar al canal responsable y conservar el original según sus indicaciones",
+            "Borrar primero todos los registros y después explicar de memoria lo que recuerdes"
+          ],
+          "answer": 1,
+          "explanation": "Reporta al responsable y conserva el original según sus instrucciones. Puede coordinar la revisión por un canal adecuado, mientras una advertencia al grupo describe el riesgo sin invitar a visitar la página ni eliminar pruebas antes de valorarlas.",
+          "wrongExplanations": [
+            "Probar el enlace amplía la exposición y facilita nuevas interacciones. No uses cuentas del grupo como demostración; reporta al responsable y advierte sin enlaces activos, siguiendo su procedimiento para preservar lo necesario sin distribuir otra vez la campaña.",
+            null,
+            "Borrar primero puede perder origen, alcance y contexto. Conserva según instrucciones y utiliza el canal de incidentes, explicando hechos sin contraseñas ni adjuntos sospechosos distribuidos por iniciativa propia; el responsable decidirá qué datos necesita investigar y cómo recibirlos."
+          ],
+          "aoi": {
+            "question": "Quieres avisar al centro, cariño; elige un reporte útil que no regale visitas a la campaña ni destruya las pistas que necesita el responsable para investigarla.",
+            "hint": "Piensa quién puede coordinar medidas y qué evidencia requiere, separándolo de la advertencia que basta al resto sin obligar a estudiantes a entrar en la página.",
+            "correct": "Elegiste reporte y preservación; el grupo puede entender el riesgo sin excursiones al enlace mientras el responsable coordina por su canal cómo recoger contexto y contener la campaña.",
+            "soft": "La intención de advertir ayuda; ajustemos el método para que nadie necesite abrir la trampa y el correo original siga disponible según las indicaciones del responsable del centro.",
+            "sharp": "No hacemos excursiones escolares al enlace venenoso, cielo; qué maldita actividad extraescolar, reportamos y preservamos pistas sin repartir entradas a la campaña que estamos intentando frenar."
+          }
+        }
+      ],
+      "sourceIds": [
+        "cisco-phishing",
+        "cisa-habits",
+        "mozilla-privacy"
+      ],
+      "diagram": "phishing",
+      "aoi": {
+        "intro": "Último refuerzo, cariño: después del engaño todavía decides; revisaremos datos, permisos y reporte para que el susto no provoque otra revelación ni borre las pistas útiles.",
+        "theory": "Escribir una clave, conceder permisos y distribuir mensajes requieren controles diferentes; describir acciones y conservar lo indicado permite coordinar medidas sin prometer que un cambio resuelve cualquier incidente.",
+        "pass": "Relacionaste exposición y respuesta en tres incidentes: clave escrita, permiso delegado y reporte; ahora puedes explicar por qué cada control actúa sobre una parte distinta de lo ocurrido.",
+        "review": "Repasa acción, acceso y responsable; detener contacto, usar vías fiables y conservar evidencia ayuda más que probar otra vez la trampa o atribuir soluciones universales a un botón."
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "viewport": "390x844",
+  "courses": [
+    {
+      "id": "linux-start",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    },
+    {
+      "id": "terminal-tools",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    },
+    {
+      "id": "linux-access",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    },
+    {
+      "id": "linux-operations",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    },
+    {
+      "id": "log-analysis",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    },
+    {
+      "id": "linux-investigation",
+      "theoryRead": true,
+      "workedCases": 2,
+      "exercises": 40
+    }
+  ],
+  "expressions": [
+    "curious",
+    "focused",
+    "playful",
+    "surprised",
+    "pouting",
+    "relieved",
+    "celebrating",
+    "blushing"
+  ],
+  "screenshots": [
+    "32-ruta-linux.png",
+    "33-aoi-curiosidad.png",
+    "34-aoi-concentracion.png",
+    "35-aoi-reto.png",
+    "36-aoi-sorpresa.png",
+    "37-aoi-primer-fallo.png",
+    "38-aoi-alivio.png",
+    "39-aoi-reincidencia.png",
+    "40-aoi-celebracion-linux.png",
+    "41-aoi-rubor.png"
+  ],
+  "errors": [],
+  "previousGradesRetained": 370,
+  "courseCompletedAtThreeOfFour": true,
+  "bestScorePersisted": 4,
+  "mistakesPersisted": true,
+  "bookmarkPersisted": true,
+  "noManualDialogueControls": true,
+  "blockedExternalRequests": 18
+}

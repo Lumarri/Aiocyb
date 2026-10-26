@@ -1,0 +1,1931 @@
+{
+  "id": "web-privacy",
+  "title": "Privacidad en la web",
+  "description": "Cuarenta decisiones breves para comprender tus datos, reducir seguimiento y controlar lo que compartes al navegar.",
+  "category": "Privacidad personal",
+  "symbol": "09",
+  "color": 4292846847,
+  "lessons": [
+    {
+      "id": "web-privacy-privacy-goal",
+      "title": "Qué quieres mantener privado",
+      "minutes": 3,
+      "intro": "Identifica qué información te importa proteger y frente a quién para elegir medidas proporcionadas en vez de intentar ocultarlo todo sin un objetivo concreto.",
+      "sections": [
+        {
+          "title": "La privacidad empieza con una pregunta",
+          "body": "Privacidad no significa desaparecer de Internet. Consiste en entender qué información compartes, con quién y para qué. Una dirección de entrega puede ser necesaria para recibir un paquete, pero no para leer un horario público. Antes de ajustar herramientas, elige un dato que quieras proteger y una situación concreta. Así puedes comparar beneficios, exposición y comodidad, sin asumir que una misma medida resolverá todos los problemas de cualquier persona."
+        }
+      ],
+      "steps": [
+        "Elige un dato personal sin escribirlo aquí.",
+        "Identifica quién necesita conocerlo y para qué tarea."
+      ],
+      "scenario": "En un caso ficticio quieres recibir avisos de una biblioteca sin publicar tu domicilio en el perfil visible para otros lectores. El formulario ofrece separar datos de contacto y presentación pública.",
+      "questions": [
+        {
+          "prompt": "¿Qué objetivo de privacidad está bien definido?",
+          "options": [
+            "Recibir avisos sin mostrar públicamente el domicilio",
+            "Hacer que ningún dato exista en ningún lugar",
+            "Aceptar todos los campos para terminar antes"
+          ],
+          "answer": 0,
+          "explanation": "El objetivo distingue una función necesaria de una exposición pública evitable. Puedes recibir avisos con datos adecuados sin publicar el domicilio en el perfil que consultan otros lectores del servicio.",
+          "wrongExplanations": [
+            null,
+            "Exigir que ningún dato exista no define una situación ni una medida practicable. La privacidad requiere concretar qué información quieres proteger, frente a quién y mientras realizas qué actividad.",
+            "Aceptar todo evita analizar la necesidad de cada dato y su audiencia. Define primero qué función necesitas y qué información no debe aparecer públicamente para cumplir ese objetivo de privacidad."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ven, cariño: hoy decidimos qué sabe cada servicio de ti; mi curiosidad no convierte tu vida en una ficha pública.",
+        "theory": "Una medida tiene sentido cuando protege un dato frente a una exposición concreta, sin impedir necesariamente la actividad que necesitas realizar.",
+        "hint": "Busca un objetivo que nombre información, audiencia y una actividad posible, en lugar de prometer desaparición total por arte digital.",
+        "correct": "Buen objetivo: mantuviste la utilidad y limitaste la exposición; eso sí es tomar decisiones propias sobre información personal con criterio.",
+        "soft": "Podemos concretarlo sin prisa; elige un dato y piensa quién necesita conocerlo para que la actividad funcione de verdad.",
+        "sharp": "Ocultarlo todo y compartirlo todo son extremos cómodos para no pensar; mi ceja prefiere una decisión con un propósito reconocible.",
+        "pass": "Ya tienes una pregunta útil para empezar; la privacidad funciona mejor con objetivos que con promesas universales demasiado vistosas.",
+        "review": "Repasa qué dato protegías, quién debía verlo y qué actividad querías conservar; esas tres piezas guían una elección proporcionada."
+      }
+    },
+    {
+      "id": "web-privacy-local-remote",
+      "title": "Tu navegador y el servidor",
+      "minutes": 3,
+      "intro": "Distingue datos almacenados en el dispositivo de información recibida por un servicio y evita creer que limpiar el navegador elimina automáticamente lo que ya enviaste a una página.",
+      "sections": [
+        {
+          "title": "La información puede estar en dos lugares",
+          "body": "El navegador guarda datos locales, como historial o ciertas cookies. El servicio también puede conservar información en sus propios sistemas, como mensajes enviados o un pedido realizado. Borrar una copia local no ordena al servidor eliminar la suya. Antes de limpiar, distingue qué registro quieres retirar y dónde existe. Para revisar información de una cuenta debes utilizar sus controles oficiales y entender sus condiciones de conservación, además de los ajustes del navegador."
+        }
+      ],
+      "steps": [
+        "Separa un registro local de un dato enviado al servicio.",
+        "Busca el control correspondiente al lugar donde se conserva."
+      ],
+      "scenario": "En una simulación envías una consulta a una tienda y después borras el historial del navegador. La tienda conserva la consulta dentro de tu cuenta y todavía puedes leerla al volver a entrar.",
+      "questions": [
+        {
+          "prompt": "¿Por qué sigue existiendo la consulta?",
+          "options": [
+            "Porque limpiar historial siempre borra solo imágenes",
+            "Porque el servicio conserva su propia copia remota",
+            "Porque todo el navegador está necesariamente infectado"
+          ],
+          "answer": 1,
+          "explanation": "El historial local y los mensajes del servicio son registros distintos. Limpiar el primero no elimina automáticamente la consulta almacenada en la cuenta; revisa las herramientas y condiciones del proveedor.",
+          "wrongExplanations": [
+            "El historial no es únicamente una colección de imágenes, pero tampoco controla los mensajes del servidor. Debes distinguir la limpieza local de la información que enviaste y quedó guardada en el servicio.",
+            null,
+            "Que un mensaje siga en la cuenta no demuestra una infección. Es coherente con el almacenamiento remoto del servicio, que no depende de conservar el historial local del navegador utilizado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Borraste el camino del navegador, cariño, no la memoria del destinatario; cada copia necesita que entendamos dónde vive realmente.",
+        "theory": "Los datos locales y remotos tienen controles diferentes; limpiar el dispositivo no retira por sí mismo una información que ya enviaste.",
+        "hint": "Piensa qué sistema recibió el mensaje y si borrar una lista de visitas le comunica que también debe eliminar su copia.",
+        "correct": "Exacto: distinguiste las dos ubicaciones y evitaste regalarle al botón de limpieza un poder remoto que no tiene por sí mismo.",
+        "soft": "Los menús mezclan palabras parecidas; revisemos dónde existe cada registro antes de elegir el control con el que quieres actuar.",
+        "sharp": "El botón de borrar historial no es una varita con permiso para vaciar servidores; qué comodidad tan jodidamente ambiciosa le atribuimos.",
+        "pass": "Ya separas dispositivo y servicio; esa distinción evita limpiezas que parecen resolver el objetivo mientras la copia importante permanece intacta.",
+        "review": "Vuelve a identificar dónde se conserva la información y qué control actúa allí, sin confundir borrar una referencia con retirar un mensaje."
+      }
+    },
+    {
+      "id": "web-privacy-first-party-cookies",
+      "title": "Cookies del propio sitio",
+      "minutes": 3,
+      "intro": "Comprende cómo una cookie puede mantener una sesión o recordar preferencias y evita asumir que todas las cookies tienen el mismo propósito o contienen por sí mismas cada dato de la cuenta.",
+      "sections": [
+        {
+          "title": "Una pequeña pieza con funciones distintas",
+          "body": "Una cookie es información que un sitio hace guardar al navegador y que puede recibir de nuevo bajo ciertas condiciones. Puede ayudar a mantener una sesión o recordar una preferencia. No todas sirven para publicidad y no contienen necesariamente la contraseña. Su función depende del diseño del servicio. Eliminar algunas cookies puede cerrar sesiones o perder ajustes, pero no borra automáticamente la cuenta ni los mensajes conservados en el servidor del proveedor."
+        }
+      ],
+      "steps": [
+        "Identifica una función del sitio que recuerde una preferencia.",
+        "Distingue recordar una sesión de borrar una cuenta completa."
+      ],
+      "scenario": "En una web ficticia de cursos eliges modo oscuro y al volver se conserva esa preferencia. Después eliminas sus cookies y el sitio vuelve al aspecto inicial sin que hayan desaparecido tus lecciones guardadas.",
+      "questions": [
+        {
+          "prompt": "¿Qué interpretación encaja con lo ocurrido?",
+          "options": [
+            "Las cookies contenían toda la cuenta y sus cursos",
+            "Cualquier cookie demuestra seguimiento publicitario malicioso",
+            "Una cookie podía recordar una preferencia del sitio"
+          ],
+          "answer": 2,
+          "explanation": "Una cookie puede recordar opciones del sitio, como una preferencia visual. Perderla no significa borrar los datos de la cuenta ni demuestra que esa cookie tuviera una finalidad de publicidad.",
+          "wrongExplanations": [
+            "La cuenta y los cursos pueden almacenarse en el servidor y no dentro de una cookie. Eliminar cookies puede perder preferencias o sesiones sin borrar esa información remota del servicio.",
+            "La existencia de una cookie no demuestra publicidad ni malicia. Hay funciones de sesión y preferencias que también las utilizan; debes conocer su propósito antes de valorar la exposición que generan.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Las cookies no son todas villanas, cariño; algunas solo recuerdan que prefieres estudiar sin una pantalla blanca atacando tus ojos cansados.",
+        "theory": "Una cookie puede sostener preferencias o sesiones; conocer su propósito ayuda más que juzgarla únicamente por el nombre del mecanismo.",
+        "hint": "Relaciona el cambio visual con la información local eliminada y distingue esa preferencia de los cursos que conserva el servicio.",
+        "correct": "Eso encaja: una preferencia local desapareció, mientras la cuenta siguió existiendo; acabas de separar funciones que muchos menús presentan juntas.",
+        "soft": "Es fácil meterlas todas en el mismo saco; revisemos qué recordó el sitio antes de atribuir publicidad o almacenamiento completo de la cuenta.",
+        "sharp": "Si cada cookie fuera una conspiración, hasta el modo oscuro necesitaría abogado; averigüemos su función antes de montar el juicio dramático.",
+        "pass": "Ya distingues una función concreta de una etiqueta general; esa precisión permite ajustar el navegador sin sacrificar comodidad por confusiones evitables.",
+        "review": "Repasa qué puede recordar una cookie y qué datos siguen perteneciendo al almacenamiento remoto del proveedor aunque retires esa pieza local."
+      }
+    },
+    {
+      "id": "web-privacy-third-party-cookies",
+      "title": "Cuando aparece un tercero",
+      "minutes": 3,
+      "intro": "Reconoce que una página puede incorporar servicios de otras organizaciones y comprende cómo ciertas cookies de terceros pueden contribuir a relacionar visitas realizadas en distintos sitios de la web.",
+      "sections": [
+        {
+          "title": "No todo viene del sitio principal",
+          "body": "Una página puede cargar contenido de proveedores externos, como anuncios o herramientas de medición. Si el navegador permite determinados identificadores de terceros, ese proveedor puede reconocer visitas en diferentes sitios que lo incorporan. La configuración y las protecciones del navegador influyen en ese alcance. No todos los recursos externos tienen la misma función. Revisa las opciones de protección frente al seguimiento entendiendo que limitar cookies de terceros no elimina todas las formas posibles de reconocer un navegador."
+        }
+      ],
+      "steps": [
+        "Identifica qué significa que un proveedor aparezca en varios sitios.",
+        "Localiza los ajustes de seguimiento o cookies del navegador."
+      ],
+      "scenario": "En un ejemplo ficticio, dos revistas incluyen anuncios del mismo proveedor externo. Con ciertas cookies permitidas, ese proveedor puede reconocer el navegador al visitar ambas aunque cada revista tenga su propio dominio diferente.",
+      "questions": [
+        {
+          "prompt": "¿Qué permite relacionar esas visitas en el ejemplo?",
+          "options": [
+            "Un identificador del proveedor externo presente en ambos sitios",
+            "Que las revistas utilicen el mismo color",
+            "Que el usuario tenga una pantalla grande"
+          ],
+          "answer": 0,
+          "explanation": "Un identificador del proveedor externo puede contribuir a reconocer el navegador en ambos sitios. El diseño o el tamaño de pantalla no explican por sí solos el mecanismo concreto de cookies descrito aquí.",
+          "wrongExplanations": [
+            null,
+            "El color compartido no establece una relación técnica entre las visitas. El ejemplo describe un proveedor externo con un identificador que puede recibirse en varios sitios bajo determinadas condiciones del navegador.",
+            "El tamaño puede formar parte de otras señales, pero no es el mecanismo de cookies del ejemplo. Aquí importa el identificador del proveedor que aparece en ambas revistas como tercero."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La revista tiene invitados que también trabajan en otras páginas; qué agenda tan movida, revisemos cuáles pueden reconocer tus visitas entre sitios distintos.",
+        "theory": "Un tercero puede aparecer en varios lugares; determinados identificadores ayudan a relacionar visitas cuando la configuración del navegador lo permite.",
+        "hint": "Busca qué elemento del ejemplo se repite con capacidad de reconocer el navegador, más allá de la apariencia de cada revista.",
+        "correct": "Encontraste el identificador compartido; distinguir ese mecanismo permite entender qué limitan las protecciones sin inventar explicaciones basadas en colores del diseño.",
+        "soft": "Hay varias técnicas de seguimiento; en esta pregunta miramos solo el proveedor externo y su identificador para no mezclar mecanismos diferentes.",
+        "sharp": "No fue el color de la revista haciendo espionaje, cariño; miremos al tercero que sí lleva una libreta de identificadores entre sitios.",
+        "pass": "Ya sabes que una página puede traer otros operadores; revisar esas relaciones da contexto a las opciones de bloqueo y consentimiento del navegador.",
+        "review": "Repasa quién incorpora al tercero y qué identificador relaciona las visitas, recordando que limitar cookies no elimina todas las demás técnicas de seguimiento."
+      }
+    },
+    {
+      "id": "web-privacy-consent-choices",
+      "title": "Elegir en el aviso de cookies",
+      "minutes": 3,
+      "intro": "Aprende a revisar opciones de consentimiento según tus preferencias y distingue las funciones necesarias de usos opcionales sin aceptar automáticamente por cansancio o por el tamaño del botón principal.",
+      "sections": [
+        {
+          "title": "El aviso necesita una lectura propia",
+          "body": "Algunos sitios permiten elegir usos opcionales de datos, como personalización o medición, junto a funciones necesarias para prestar el servicio. Lee las categorías y evita interpretar el botón más grande como una recomendación neutral. Las opciones concretas y su efecto dependen del sitio. Guardar una elección tampoco impide toda recopilación posible ni sustituye las protecciones del navegador. Puedes revisar o cambiar tu decisión mediante el mecanismo que ofrezca el proveedor cuando esté disponible."
+        }
+      ],
+      "steps": [
+        "Abre las categorías antes de elegir si necesitas más detalle.",
+        "Selecciona según tus preferencias y conserva acceso a la revisión de esa elección."
+      ],
+      "scenario": "Un sitio ficticio ofrece aceptar todo o configurar categorías. Quieres leer una noticia sin personalización publicitaria y el panel permite rechazar esa categoría opcional manteniendo las funciones necesarias para mostrar el contenido solicitado.",
+      "questions": [
+        {
+          "prompt": "¿Qué elección responde a esa preferencia concreta?",
+          "options": [
+            "Aceptar todo porque el botón tiene mayor tamaño",
+            "Rechazar la personalización opcional mediante sus controles",
+            "Creer que cualquier elección vuelve invisible el navegador"
+          ],
+          "answer": 1,
+          "explanation": "Rechazar esa categoría opcional coincide con la preferencia expresada. La elección no garantiza invisibilidad ni bloquea por sí sola toda recopilación; describe una decisión concreta dentro de las opciones que ofrece el sitio.",
+          "wrongExplanations": [
+            "El tamaño del botón puede orientar la atención, pero no define tus preferencias. Si no quieres personalización y existe el control, revisa esa categoría en lugar de aceptar automáticamente todos los usos.",
+            null,
+            "Ninguna elección del aviso convierte el navegador en invisible. La página puede seguir recibiendo información necesaria para responder y existir otros mecanismos; configura la categoría que corresponde a tu objetivo sin atribuirle protección universal."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El botón enorme quiere terminar la conversación por ti; yo soy consentida, pero tus preferencias todavía merecen una lectura antes del clic final.",
+        "theory": "Las categorías opcionales permiten decisiones distintas; su efecto concreto depende del sitio y no reemplaza todas las demás protecciones de privacidad del navegador.",
+        "hint": "Busca una opción que corresponda al uso que quieres evitar, sin confundir esa elección específica con una promesa total de invisibilidad.",
+        "correct": "Elegiste según tu objetivo, no por el tamaño del botón; qué molestia tan bonita para una interfaz que esperaba obediencia por agotamiento.",
+        "soft": "Los paneles pueden resultar pesados; revisemos la categoría relevante para tu preferencia sin intentar resolver cada detalle del proveedor en una sola lectura.",
+        "sharp": "El botón gritó aceptar todo y esperaba ganar por volumen; qué maldita confianza, aquí la preferencia no la decide el tamaño de sus letras.",
+        "pass": "Ya conviertes un aviso en una elección propia; mantener objetivos concretos ayuda a no confundir comodidad visual con autorización para todos los usos opcionales.",
+        "review": "Repasa qué categoría rechazabas y qué información podría seguir tratándose por otras funciones; el consentimiento específico no equivale a borrar todas las huellas posibles."
+      }
+    },
+    {
+      "id": "web-privacy-cookie-controls",
+      "title": "Limitar sin romperlo todo",
+      "minutes": 3,
+      "intro": "Aprende a cambiar controles de cookies de forma gradual y a reconocer problemas de funcionamiento sin desactivar todas las protecciones ni conceder excepciones generales a cualquier sitio que proteste.",
+      "sections": [
+        {
+          "title": "Los ajustes tienen efectos prácticos",
+          "body": "Bloquear cookies o almacenamiento puede limitar ciertos seguimientos, pero también afectar inicios de sesión o preferencias. Si una función deja de trabajar, revisa qué cambiaste y la información oficial del navegador antes de quitar todas las protecciones. Una excepción específica puede ser distinta de una autorización general para cualquier sitio. Concede solo lo necesario, comprende el alcance y retira excepciones que ya no utilices. Un problema de funcionamiento no demuestra por sí mismo que el sitio sea malicioso."
+        }
+      ],
+      "steps": [
+        "Cambia un ajuste por vez y observa su efecto.",
+        "Evalúa excepciones concretas en lugar de desactivar protecciones para todos los sitios."
+      ],
+      "scenario": "Tras limitar cookies, un servicio ficticio deja de recordar tu sesión. Su ayuda oficial describe una excepción concreta para ese sitio, pero un anuncio propone desactivar toda protección del navegador para evitar problemas de acceso futuros.",
+      "questions": [
+        {
+          "prompt": "¿Qué enfoque mantiene mejor el control del cambio?",
+          "options": [
+            "Desactivar todas las protecciones permanentemente",
+            "Permitir cualquier excepción que aparezca en un anuncio",
+            "Revisar el ajuste y valorar una excepción específica necesaria"
+          ],
+          "answer": 2,
+          "explanation": "Revisar el cambio y su alcance permite recuperar una función sin autorizarlo todo. Una excepción debe responder a una necesidad conocida, con información oficial y la posibilidad de retirarla cuando deje de ser útil.",
+          "wrongExplanations": [
+            "Desactivar todas las protecciones amplía el efecto a sitios que no necesitaban el cambio. Revisa la causa y valora una excepción concreta antes de modificar de forma general la política del navegador.",
+            "Los anuncios no son la fuente adecuada para decidir excepciones de privacidad. Usa la configuración y documentación oficial, entiende qué permiso cambia y concede únicamente lo que corresponda a la función que necesitas.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La sesión dejó de recordarte y un anuncio quiere apagar toda privacidad; qué solución tan generosa con el resto de sitios que ni preguntaron todavía.",
+        "theory": "Un ajuste puede afectar funciones legítimas; revisarlo con precisión permite decidir una excepción sin convertir un problema concreto en permiso general para todos los sitios.",
+        "hint": "Busca una respuesta que investigue el cambio y limite su alcance, en lugar de quitar defensas que no tienen relación con esa función del servicio.",
+        "correct": "Buena revisión gradual: recuperaste la función sin entregar permisos generales a todos los sitios que visitas desde este navegador cada día.",
+        "soft": "Ajustar privacidad puede necesitar cambios pequeños; distinguimos una excepción justificada de desactivar protecciones que no afectan a esa función concreta.",
+        "sharp": "La sesión estornudó y el anuncio propuso demoler la casa; qué remedio de mierda, mejor revisamos el ajuste con precisión.",
+        "pass": "Ya equilibras funcionamiento y exposición mediante cambios concretos; entender una excepción evita abandonar todas las protecciones por un problema aislado.",
+        "review": "Repasa qué cambió y qué función afectó; limitar la excepción permite recuperar utilidad sin autorizar de forma general cualquier sitio."
+      }
+    },
+    {
+      "id": "web-privacy-fingerprinting",
+      "title": "Reconocer sin una cookie",
+      "minutes": 3,
+      "intro": "Comprende que un navegador puede distinguirse mediante combinaciones de características técnicas y evita asumir que borrar cookies elimina necesariamente todas las formas posibles de seguimiento o reconocimiento entre visitas a páginas diferentes.",
+      "sections": [
+        {
+          "title": "Muchas señales pueden formar una huella",
+          "body": "Un sitio puede recibir o consultar características del navegador y del dispositivo, como idioma, tamaños o capacidades disponibles. Combinadas, esas señales pueden ayudar a distinguir visitantes, incluso sin una cookie tradicional. A esto suele llamarse huella digital del navegador. Las protecciones intentan reducir ciertos alcances, pero sus resultados dependen del contexto. No instales extensiones desconocidas que prometan anonimato perfecto; cambiar ajustes al azar también puede modificar tu singularidad sin ofrecer la protección que imaginas."
+        }
+      ],
+      "steps": [
+        "Distingue un identificador guardado de una combinación de características.",
+        "Revisa protecciones oficiales sin añadir herramientas desconocidas por promesas absolutas."
+      ],
+      "scenario": "En una simulación eliminas cookies y un sitio aún parece reconocerte. Su sistema combina características del navegador y del dispositivo, por lo que no depende únicamente de una pequeña pieza de información almacenada como cookie en tu perfil local.",
+      "questions": [
+        {
+          "prompt": "¿Qué mecanismo explica esa posibilidad?",
+          "options": [
+            "Una combinación de señales técnicas del navegador",
+            "Que borrar cookies siempre borre también el servidor",
+            "Que cualquier reconocimiento demuestre una infección completa"
+          ],
+          "answer": 0,
+          "explanation": "Combinar características puede ayudar a distinguir un navegador sin depender solo de cookies. Eso explica una posibilidad de reconocimiento, aunque para un caso real habría que investigar qué técnicas utiliza realmente el sitio que estás evaluando en ese momento.",
+          "wrongExplanations": [
+            null,
+            "Borrar cookies no borra automáticamente registros remotos ni elimina cada técnica de identificación. Una huella combina características y puede contribuir al reconocimiento aunque hayas retirado parte del almacenamiento local del navegador.",
+            "El reconocimiento no demuestra por sí solo una infección. Puede proceder de una sesión, datos remotos o señales técnicas; revisa el contexto antes de atribuir control completo del dispositivo al sitio visitado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Quitaste la cookie, cariño, pero todavía quedan señales técnicas; no todas las formas de reconocimiento guardan su nombre en ese cajón.",
+        "theory": "Una huella combina características y puede distinguir navegadores sin cookies tradicionales; su alcance depende del contexto y de las protecciones disponibles.",
+        "hint": "Piensa en varias pistas reunidas y busca una explicación que no necesite inventar infección ni poderes remotos del botón de limpieza.",
+        "correct": "Identificaste la combinación de señales; retirar un identificador no describe toda la privacidad ni elimina necesariamente otros mecanismos de reconocimiento.",
+        "soft": "La huella es menos visible; reconocemos la posibilidad sin concluir identificación perfecta ni instalar herramientas desconocidas para cambiar cada ajuste del navegador.",
+        "sharp": "Borrar un cajón no vacía la casa, cariño; la maldita huella usa más señales y merece expectativas concretas antes de comprar promesas.",
+        "pass": "Ya distingues seguimiento y cookies; esa diferencia ayuda a interpretar protecciones con realismo y a evitar garantías universales sobre una limpieza local.",
+        "review": "Repasa combinación de características y cookie guardada; reconocer una posibilidad no demuestra infección ni que un sitio identifique perfectamente cada visita."
+      }
+    },
+    {
+      "id": "web-privacy-incognito-local",
+      "title": "Lo que hace una ventana privada",
+      "minutes": 3,
+      "intro": "Reconoce el propósito local de la navegación privada y distingue evitar ciertos rastros posteriores en el dispositivo de ocultar tu actividad al sitio visitado, a tu cuenta o al operador de la conexión de red.",
+      "sections": [
+        {
+          "title": "Privada describe un modo, no invisibilidad",
+          "body": "Una ventana privada limita lo que el navegador conserva localmente después de cerrar todas sus ventanas de ese modo, según su funcionamiento. No vuelve anónima tu actividad frente a los sitios ni oculta automáticamente la conexión al proveedor de red. Si inicias sesión, el servicio puede asociar acciones con tu cuenta. Descargas y marcadores pueden permanecer. Úsala para objetivos concretos de separación local, sin confiarle la eliminación de datos que ya recibió un servidor o una cuenta en la que te identificaste."
+        }
+      ],
+      "steps": [
+        "Define si quieres limitar rastros locales o información recibida por el sitio.",
+        "Cierra todas las ventanas privadas al terminar y revisa archivos descargados por separado."
+      ],
+      "scenario": "En una actividad ficticia abres una ventana privada e inicias sesión en tus cursos. El servicio conserva una respuesta enviada en tu cuenta aunque después cierres todas las ventanas de ese modo.",
+      "questions": [
+        {
+          "prompt": "¿Qué afirmación describe correctamente ese resultado?",
+          "options": [
+            "La ventana privada impide que el sitio vea cualquier actividad",
+            "El servicio puede asociar acciones con la cuenta iniciada",
+            "Cerrar la ventana elimina automáticamente la respuesta del servidor"
+          ],
+          "answer": 1,
+          "explanation": "La navegación privada no impide registrar acciones de una cuenta iniciada. Su objetivo limita ciertos rastros locales, sin borrar respuestas que enviaste al servidor mientras estabas identificado en el servicio.",
+          "wrongExplanations": [
+            "El sitio recibe las solicitudes necesarias y puede asociarlas con la cuenta iniciada. El modo privado no ofrece invisibilidad general ni impide conservar remotamente una respuesta que decidiste enviar a la plataforma.",
+            null,
+            "Cerrar ventanas privadas no ordena al servidor borrar respuestas. La limpieza local y la información de cuenta son ámbitos distintos que necesitan herramientas diferentes para revisar o retirar datos ya enviados al proveedor."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-incognito"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Abriste modo privado, cariño, no una grieta fuera del mundo; veamos qué conserva el navegador y qué recibe tu cuenta del servicio.",
+        "theory": "La ventana limita rastros locales, pero un servicio puede registrar acciones asociadas a la cuenta con la que decidiste identificarte al entrar.",
+        "hint": "Piensa dónde se guarda la respuesta enviada y si cambiar el modo del navegador impide al destinatario conservar lo que acaba de recibir.",
+        "correct": "Separaste modo local e identidad de cuenta; cerrar ventanas no comunica al servidor que deba olvidar la respuesta que ya enviaste allí.",
+        "soft": "El nombre invita a esperar demasiado; distingamos lo que cambia localmente de los datos enviados mientras utilizas una cuenta que reconoce tu identidad.",
+        "sharp": "Ese sombrerito no vuelve fantasma tu cuenta, cariño; si entras identificado y respondes, el servicio puede recordar quién escribió el mensaje.",
+        "pass": "Ya usas una ventana privada con un objetivo concreto; sus límites permiten revisar por separado archivos descargados y datos enviados a servicios.",
+        "review": "Repasa rastros locales y actividad remota; cerrar ventanas privadas no modifica automáticamente respuestas, mensajes o pedidos guardados dentro de una cuenta iniciada."
+      }
+    },
+    {
+      "id": "web-privacy-private-downloads",
+      "title": "El archivo que sobrevive al modo privado",
+      "minutes": 3,
+      "intro": "Comprende que descargar un archivo crea una copia en el dispositivo y que cerrar una ventana privada no retira necesariamente documentos, marcadores o materiales que guardaste durante esa sesión especial del navegador del equipo.",
+      "sections": [
+        {
+          "title": "Un archivo guardado sigue siendo un archivo",
+          "body": "La navegación privada no debe confundirse con un espacio donde todo desaparece al terminar. Los archivos que descargas pueden quedar en la carpeta elegida y los marcadores creados pueden conservarse. Si usaste un equipo compartido, revisa qué guardaste y retira tus copias personales cuando corresponda, respetando los procedimientos del lugar. Eliminar un archivo tampoco garantiza borrar todas sus copias o respaldos. Evita descargar información sensible en dispositivos que no controlas si no tienes una necesidad clara y una manera apropiada de gestionarla después."
+        }
+      ],
+      "steps": [
+        "Identifica dónde se guardó el archivo descargado.",
+        "Revisa copias personales antes de dejar un equipo compartido según las normas del lugar."
+      ],
+      "scenario": "Descargas un certificado ficticio en una ventana privada de un equipo compartido y después cierras todas sus ventanas. Otra persona abre la carpeta Descargas y encuentra el archivo con tu nombre y los datos del curso completado en la plataforma.",
+      "questions": [
+        {
+          "prompt": "¿Por qué puede seguir apareciendo el certificado?",
+          "options": [
+            "Porque todo archivo privado se publica automáticamente en Internet",
+            "Porque el navegador necesariamente compartió tu contraseña",
+            "Porque la descarga puede conservarse fuera de la ventana privada"
+          ],
+          "answer": 2,
+          "explanation": "El archivo descargado vive en una carpeta y puede permanecer al cerrar el modo privado. Gestiona esa copia por separado, especialmente si otras personas utilizarán el mismo dispositivo y podrán acceder a sus carpetas.",
+          "wrongExplanations": [
+            "Que un archivo permanezca no implica publicarlo en Internet. El escenario describe una copia local accesible a usuarios del equipo, que requiere gestionar almacenamiento además de cerrar las ventanas privadas utilizadas durante la descarga.",
+            "Encontrar la descarga no demuestra que se haya compartido la contraseña. El modo privado puede conservar archivos guardados; revísalos por separado sin inventar una exposición de credenciales que el caso no confirma.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-incognito"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La ventana se fue y el certificado quedó, cariño; revisemos la carpeta antes de atribuirle al modo privado una limpieza total del dispositivo.",
+        "theory": "Descargar crea una copia fuera de la ventana; la limpieza de ciertos rastros no administra automáticamente documentos guardados en carpetas del equipo.",
+        "hint": "Piensa si el certificado vive en la ventana o en una carpeta y busca una explicación sin inventar publicación mundial ni robo de claves.",
+        "correct": "Identificaste una copia local persistente; cerrar el modo privado no gestiona necesariamente los documentos que guardaste donde otras personas también pueden acceder.",
+        "soft": "Privada suena a desaparición completa; revisemos archivos y marcadores por separado antes de entregar el equipo a otra persona que utilizará sus carpetas.",
+        "sharp": "El certificado no se evaporó por cerrar ventanas, cariño; qué maldita comodidad imaginaria, revisemos dónde quedó antes de abandonar el equipo compartido.",
+        "pass": "Ya diferencias sesión y archivo guardado; esa separación ayuda a planificar consultas sin dejar materiales personales en dispositivos que otras personas utilizarán después.",
+        "review": "Repasa navegador y sistema de archivos; cerrar ventanas privadas no reemplaza revisar descargas ni garantiza que todas las copias o respaldos desaparezcan."
+      }
+    },
+    {
+      "id": "web-privacy-private-network",
+      "title": "Privado no oculta toda la conexión",
+      "minutes": 3,
+      "intro": "Distingue rastros locales de información observable en una conexión y reconoce que el modo privado no oculta automáticamente tu actividad a sitios, proveedores de Internet o redes administradas.",
+      "sections": [
+        {
+          "title": "La conexión sigue teniendo participantes",
+          "body": "La ventana privada cambia ciertas prácticas locales del navegador, pero no crea por sí sola un túnel que oculte toda la navegación. Los sitios reciben tu conexión y pueden conocer información técnica; una red administrada o el proveedor también puede observar determinados datos según la protección y configuración utilizadas. HTTPS protege el contenido del transporte frente a ciertas observaciones, pero no implica invisibilidad total. No utilices el modo privado como promesa de ocultación frente a todos los participantes de una conexión de red real."
+        }
+      ],
+      "steps": [
+        "Identifica si tu objetivo es local o frente a otros participantes de la conexión.",
+        "Evita atribuir al modo privado protecciones de red que no proporciona por sí solo."
+      ],
+      "scenario": "En una simulación usas modo privado en la red del centro y esperas que ningún operador observe información. No utilizaste otras herramientas y sigues entrando a servicios con las mismas cuentas habituales.",
+      "questions": [
+        {
+          "prompt": "¿Qué expectativa del modo privado debes corregir?",
+          "options": [
+            "Que no garantiza invisibilidad frente a los participantes de la conexión",
+            "Que elimina necesariamente todo acceso a páginas con HTTPS",
+            "Que impide por completo iniciar sesión en servicios de la web"
+          ],
+          "answer": 0,
+          "explanation": "El modo privado limita ciertos rastros locales, sin garantizar invisibilidad ante sitios o redes. La información observable depende de otros mecanismos y configuraciones que una ventana privada no modifica automáticamente por sí sola.",
+          "wrongExplanations": [
+            null,
+            "El modo privado no impide necesariamente visitar HTTPS. Debes distinguir conservación local, cifrado del transporte y otros datos observables para entender qué protege cada mecanismo del navegador o de la red utilizada.",
+            "Puedes iniciar sesión en muchos servicios con modo privado y el proveedor puede asociar acciones con esa cuenta. El modo no prohíbe autenticarse ni oculta automáticamente tu identidad al servicio donde entras."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "chrome-incognito"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La ventana privada no tapa todos los cables, cariño; separemos rastros locales de la información que otros participantes pueden observar en la conexión.",
+        "theory": "Una función local no describe toda la red; HTTPS tiene otro alcance y ningún nombre de modo garantiza invisibilidad universal ante cada participante.",
+        "hint": "Busca la respuesta que limite la promesa al ámbito local sin inventar que ese modo bloquea necesariamente HTTPS o iniciar sesión en servicios.",
+        "correct": "Corregiste la expectativa: un cambio local no vuelve invisible cada conexión ni modifica todo lo que sitios u operadores pueden observar según sus condiciones.",
+        "soft": "El nombre mezcla expectativas; revisemos quién recibe solicitudes y qué cambia en el dispositivo antes de prometer que ningún participante observará datos.",
+        "sharp": "El borde oscuro no le venda los ojos a la maldita red; privacidad local y observación del transporte requieren entender controles diferentes.",
+        "pass": "Ya separas rastros locales y datos de conexión; eso permite elegir herramientas por objetivos concretos en vez de confiar en una etiqueta universal.",
+        "review": "Repasa tu objetivo y los participantes; evitar ciertos rastros locales necesita controles distintos de reducir información observable durante la conexión utilizada para navegar."
+      }
+    },
+    {
+      "id": "web-privacy-history-local",
+      "title": "Una lista de visitas",
+      "minutes": 3,
+      "intro": "Aprende qué revela el historial local y decide cuándo revisarlo o limpiarlo sin confundir esa acción con borrar actividad guardada en una cuenta o servidor.",
+      "sections": [
+        {
+          "title": "El historial tiene una ubicación",
+          "body": "El historial registra páginas visitadas y ayuda a regresar a ellas. Otra persona con acceso al mismo perfil puede verlo, según la configuración. El navegador permite revisar y borrar períodos o entradas, pero ese control no elimina automáticamente actividad remota de una cuenta ni archivos descargados. Antes de limpiar, piensa si necesitas conservar alguna referencia y si la sincronización también comparte registros con otros dispositivos. En equipos administrados respeta las normas del responsable."
+        }
+      ],
+      "steps": [
+        "Localiza el historial en el menú oficial.",
+        "Distingue visitas registradas de archivos y actividad remota."
+      ],
+      "scenario": "En un caso ficticio tu hermano usa el mismo perfil y ve títulos de páginas de salud en el historial. Quieres reducir esa exposición local sin afirmar que el proveedor olvidará las consultas.",
+      "questions": [
+        {
+          "prompt": "¿Qué control corresponde al registro local de visitas?",
+          "options": [
+            "El volumen del altavoz",
+            "La revisión y limpieza del historial",
+            "El cambio de foto de una cuenta"
+          ],
+          "answer": 1,
+          "explanation": "El historial es el registro local que debes revisar para ese objetivo. Limpiarlo no borra necesariamente consultas remotas ni otros tipos de datos, que tienen controles diferentes en el dispositivo o servicio.",
+          "wrongExplanations": [
+            "El volumen no controla la lista de visitas del navegador. Usa el historial para ese registro y revisa por separado archivos, sincronización y actividad que algún servicio conserve en sus propios sistemas.",
+            null,
+            "Cambiar una foto no retira títulos de páginas del historial local. Debes utilizar sus controles y distinguirlos de los ajustes de identidad o actividad guardada remotamente en una cuenta del servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Tu historial también cuenta historias, cariño; hoy elegimos qué rastros locales necesitas conservar y cuáles conviene revisar.",
+        "theory": "La lista de visitas puede revelar intereses a quien usa el perfil; ubicarla ayuda a controlar esa exposición local.",
+        "hint": "Busca qué opción actúa sobre páginas visitadas, en lugar de modificar sonidos o imágenes ajenos a ese registro.",
+        "correct": "Ubicaste el control correcto; ahora puedes revisar visitas sin atribuirle al botón poderes sobre todos los servidores del mundo.",
+        "soft": "Los registros se parecen en los menús; separemos visitas, archivos y actividad remota antes de elegir qué quieres retirar.",
+        "sharp": "La foto del perfil no tapa el historial, cielo; ese maquillaje tiene poca influencia sobre una lista de visitas.",
+        "pass": "Ya sabes dónde mirar una exposición local concreta; esa precisión vale más que limpiar al azar cada ajuste del navegador.",
+        "review": "Repasa qué registra el historial y qué otras copias requieren controles distintos aunque borres su lista local de visitas."
+      }
+    },
+    {
+      "id": "web-privacy-sync-account",
+      "title": "Cuando tus ajustes viajan",
+      "minutes": 3,
+      "intro": "Comprende que la sincronización puede trasladar información entre dispositivos y revisa qué categorías comparte antes de activarla en un equipo personal, prestado o utilizado con otras personas.",
+      "sections": [
+        {
+          "title": "Sincronizar conecta más de un lugar",
+          "body": "Una cuenta del navegador puede sincronizar marcadores, historial, contraseñas u otras categorías según el producto y tu elección. Eso facilita trabajar en varios dispositivos, pero también cambia dónde puede aparecer información personal. Revisa las categorías y los equipos vinculados desde los controles oficiales. No actives sincronización en un perfil ajeno por comodidad. Desactivarla no demuestra que cada copia previa desaparezca; consulta cómo gestionar datos ya guardados localmente y en la cuenta del proveedor."
+        }
+      ],
+      "steps": [
+        "Comprueba qué categorías sincroniza tu cuenta.",
+        "Revisa los dispositivos vinculados antes de añadir otro equipo."
+      ],
+      "scenario": "En una simulación activas tu cuenta del navegador en un portátil familiar y aparecen marcadores personales. La familia comparte ese mismo perfil, aunque tú solo querías abrir un enlace para una tarea de clase.",
+      "questions": [
+        {
+          "prompt": "¿Qué deberías revisar antes de activar esa función?",
+          "options": [
+            "Solo el color del portátil",
+            "Solo la velocidad de Internet",
+            "Qué datos y dispositivos participarán en la sincronización"
+          ],
+          "answer": 2,
+          "explanation": "La sincronización determina dónde pueden aparecer categorías personales como marcadores o historial. Revisa su alcance y evita vincular un perfil compartido sin comprender qué copias o accesos quedarán disponibles para otras personas.",
+          "wrongExplanations": [
+            "El color del portátil no controla qué información sincroniza la cuenta. Debes revisar categorías y dispositivos, además de quién utiliza el perfil donde podrían aparecer marcadores u otros datos personales al vincularlo.",
+            "La velocidad influye en la transferencia, no en quién verá los datos sincronizados. Revisa categorías y equipos vinculados antes de activar tu cuenta en un perfil que otras personas también utilizan habitualmente.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Tus marcadores hicieron una excursión al portátil familiar; qué sociables, cariño, revisemos quién los invitó mediante la sincronización del navegador.",
+        "theory": "Sincronizar facilita continuidad, pero también distribuye categorías elegidas; conviene conocer equipos y perfiles antes de aceptar la conexión de cuenta.",
+        "hint": "Piensa qué información podría aparecer en el otro dispositivo y quién utiliza después ese mismo perfil del navegador compartido.",
+        "correct": "Buena revisión del alcance; no confundiste comodidad entre equipos con permiso para compartir tus datos con todo un perfil familiar.",
+        "soft": "Puede activarse con pocos clics; revisemos categorías y dispositivos para entender por qué aparecieron marcadores donde no los esperabas ver.",
+        "sharp": "La sincronización no leyó tu intención de abrir solo un enlace; el maldito botón mueve datos según permisos, no telepatía.",
+        "pass": "Ya reconoces cuándo la información viaja entre dispositivos; comprobar categorías evita que una consulta breve deje una colección personal en otro equipo.",
+        "review": "Repasa qué categorías se sincronizan y cómo gestionar copias previas; desconectar la función no demuestra que todas desaparezcan automáticamente después."
+      }
+    },
+    {
+      "id": "web-privacy-browser-profiles",
+      "title": "Perfiles separados con límites",
+      "minutes": 3,
+      "intro": "Utiliza perfiles del navegador para separar cuentas y preferencias cotidianas y reconoce que esa organización no equivale necesariamente a proteger información frente al administrador del dispositivo u otros usuarios con acceso suficiente.",
+      "sections": [
+        {
+          "title": "Ordenar no siempre significa aislar",
+          "body": "Los perfiles del navegador pueden separar historial, sesiones y ajustes para actividades distintas. Resultan útiles para evitar mezclar trabajo y estudio o cuentas de varias personas. Sin embargo, un perfil no es necesariamente una barrera fuerte frente a quien controla el sistema o puede abrirlo desde el mismo equipo. Para información sensible necesitas además proteger el dispositivo y comprender sus cuentas de usuario. No guardes secretos en un perfil compartido pensando que su nombre ofrece aislamiento por sí mismo."
+        }
+      ],
+      "steps": [
+        "Define qué actividades necesitas separar en perfiles.",
+        "Comprueba quién puede abrir cada perfil y controlar el equipo."
+      ],
+      "scenario": "Creas dos perfiles ficticios llamados Estudio y Personal en el mismo equipo familiar. Cualquier usuario puede abrir ambos desde el navegador y no existe una cuenta de sistema separada que limite el acceso a esos datos locales.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite de los perfiles muestra este caso?",
+          "options": [
+            "Separar perfiles no garantiza aislamiento frente a quien puede abrirlos",
+            "Los nombres de perfiles cifran automáticamente cada archivo",
+            "Un perfil impide cualquier observación del administrador"
+          ],
+          "answer": 0,
+          "explanation": "Los perfiles ayudan a organizar sesiones y preferencias, pero no garantizan aislamiento fuerte si otras personas pueden abrirlos. Revisa también protección y cuentas del dispositivo antes de guardar información personal sensible en ellos.",
+          "wrongExplanations": [
+            null,
+            "Nombrar un perfil no demuestra que su contenido esté cifrado o restringido frente a otros usuarios. La separación del navegador organiza datos, pero requiere evaluar la protección real del dispositivo y quién puede acceder al perfil.",
+            "El administrador puede tener capacidades amplias sobre el sistema y un perfil no las elimina automáticamente. No atribuyas a esa organización una garantía general contra cualquier observación o acceso desde el dispositivo que lo contiene."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Dos perfiles, dos etiquetas bonitas; ahora comprobemos si tienen puertas reales o solo carteles decorativos sobre el mismo acceso familiar.",
+        "theory": "Separar sesiones evita mezclas, pero protegerlas frente a otras personas también depende del dispositivo y de sus controles de acceso.",
+        "hint": "Piensa si alguien puede abrir ambos perfiles y qué impide realmente que vea los datos cuando utiliza ese mismo equipo.",
+        "correct": "Reconociste el límite: organizaste actividades sin confundir el nombre del perfil con una caja fuerte que nadie más pueda abrir.",
+        "soft": "La separación resulta útil; solo necesitamos distinguir comodidad organizativa de protección efectiva frente a quien controla o utiliza el sistema.",
+        "sharp": "Poner Personal en un perfil no le instala un dragón de seguridad; qué adorno tan ambicioso para una simple etiqueta del navegador.",
+        "pass": "Ya puedes separar actividades con expectativas realistas; los perfiles ayudan más cuando comprendes también quién accede al dispositivo donde viven.",
+        "review": "Revisa qué separa el navegador y qué controla el sistema; una organización útil no sustituye evaluar cuentas y accesos del equipo."
+      }
+    },
+    {
+      "id": "web-privacy-shared-save",
+      "title": "Guardar secretos en un perfil ajeno",
+      "minutes": 3,
+      "intro": "Aprende a evitar el guardado de credenciales en equipos compartidos y a revisar la salida del servicio antes de entregar el navegador a la siguiente persona que necesita utilizarlo.",
+      "sections": [
+        {
+          "title": "El siguiente usuario importa",
+          "body": "Un navegador puede ofrecer guardar contraseñas para próximas visitas. En un perfil compartido, esa comodidad puede dejar información accesible para otras personas según la configuración y protección del equipo. Evita guardarlas allí y cierra sesión en el servicio antes de irte. Si aceptaste por error, revisa desde un dispositivo de confianza las sesiones y pide ayuda para retirar el dato local siguiendo las normas del lugar, sin borrar información de otros usuarios."
+        }
+      ],
+      "steps": [
+        "Rechaza guardar credenciales en perfiles compartidos.",
+        "Cierra sesión y comprueba que no quedan accesos personales abiertos."
+      ],
+      "scenario": "En una biblioteca ficticia el navegador ofrece recordar la contraseña de tu correo. Otras personas utilizarán el mismo perfil después y tú no conoces las protecciones locales del equipo donde acabas de abrir tu bandeja.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión responde a ese contexto?",
+          "options": [
+            "Guardarla porque el equipo tiene una pantalla grande",
+            "Rechazar el guardado y cerrar sesión al terminar",
+            "Guardar también la contraseña del banco como respaldo"
+          ],
+          "answer": 1,
+          "explanation": "Rechazar el guardado y cerrar sesión reduce el acceso que dejas en un perfil compartido. La pantalla no cambia la protección de credenciales y no necesitas almacenar otros secretos para una consulta puntual.",
+          "wrongExplanations": [
+            "El tamaño de pantalla no limita quién accede al perfil o a información guardada. No conserves credenciales personales en ese equipo y utiliza el cierre de sesión del servicio al terminar tu consulta.",
+            null,
+            "Guardar más contraseñas amplía la información expuesta y no respalda la seguridad del correo. Mantén tus secretos fuera del perfil compartido y revisa que la sesión termine antes de dejar el equipo disponible."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese navegador quiere recordarte en un equipo de todos; qué romántico, cariño, pero las contraseñas no necesitan una residencia pública.",
+        "theory": "Guardar credenciales deja información en un perfil; la decisión depende de quién puede usarlo y cómo se protege ese dispositivo después.",
+        "hint": "Piensa quién abrirá el mismo navegador cuando te marches y qué acceso personal permanecería si aceptaras conservar todos esos datos allí.",
+        "correct": "Elegiste salir sin dejar llaves; una consulta breve puede terminar sin una contraseña instalada como recuerdo para la próxima persona del lugar.",
+        "soft": "La sugerencia aparece como ayuda normal; revisemos el contexto compartido antes de decidir si esa comodidad sirve realmente a tu privacidad.",
+        "sharp": "Una pantalla enorme no custodia secretos; si eso bastara, pondríamos un televisor a proteger cada maldita contraseña del centro y descansaríamos.",
+        "pass": "Ya relacionas el guardado con el contexto del dispositivo; esa decisión evita que la comodidad local se convierta en exposición para otros usuarios.",
+        "review": "Repasa guardar credenciales y mantener sesión como accesos distintos; ambos necesitan revisión cuando utilizas un perfil que luego abrirán otras personas."
+      }
+    },
+    {
+      "id": "web-privacy-extension-reading",
+      "title": "Quién puede leer tus páginas",
+      "minutes": 3,
+      "intro": "Revisa las extensiones instaladas y el alcance de sus permisos para comprender qué información podrían observar mientras navegas, manteniendo únicamente herramientas que necesitas y cuya procedencia puedes identificar con suficiente claridad.",
+      "sections": [
+        {
+          "title": "Una función puede ver información sensible",
+          "body": "Las extensiones pueden recibir acceso a páginas y datos según sus permisos. Eso puede ser necesario para ciertas funciones, pero amplía quién podría leer información que aparece en el navegador. Revisa qué tienes instalado, quién lo publica y por qué requiere ese alcance. Retira lo que ya no usas o no reconoces mediante los controles oficiales. Una extensión no debe conservarse solo porque alguna vez resultó útil; sus cambios de permisos también merecen una revisión consciente antes de aceptarlos."
+        }
+      ],
+      "steps": [
+        "Enumera extensiones que todavía necesitas.",
+        "Revisa sus permisos y retira las que no reconozcas o ya no utilices."
+      ],
+      "scenario": "Una extensión ficticia de descuentos permanece instalada aunque no compras desde hace meses. Puede leer páginas de muchas tiendas y ahora solicita ampliar su acceso a todos los sitios, incluidos correo y documentos de estudio.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene revisar antes de mantenerla?",
+          "options": [
+            "Solo la cantidad de colores de su icono",
+            "Si alguna vez fue útil sin mirar nada más",
+            "Su necesidad actual, procedencia y alcance de permisos"
+          ],
+          "answer": 2,
+          "explanation": "La utilidad pasada no justifica automáticamente ampliar acceso actual. Revisa función, editor y permisos; si no necesitas la extensión o no puedes explicar ese alcance, retirarla evita conservar un observador innecesario de tu navegación.",
+          "wrongExplanations": [
+            "El icono no explica qué datos puede leer la extensión ni si confías en su editor. La revisión debe centrarse en necesidad actual y alcance antes de mantener o ampliar un acceso a páginas que pueden contener información sensible.",
+            "Una herramienta útil en el pasado puede dejar de ser necesaria o pedir nuevas capacidades. Revisa el acceso que conserva ahora y lo que pretende ampliar, en vez de aceptar por costumbre sin volver a evaluar su función y procedencia.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese cupón lleva meses de vacaciones y todavía mira páginas; qué empleo cómodo, revisemos si sigue necesitando un puesto en tu navegador.",
+        "theory": "Los permisos de una extensión pueden permitir leer contenido sensible; su utilidad actual importa tanto como la promesa que hizo al instalarse.",
+        "hint": "Busca una evaluación que considere qué hace ahora, quién la publica y qué acceso necesita realmente para la función que todavía utilizas.",
+        "correct": "Buena revisión: no concediste permanencia por antigüedad; el acceso del navegador necesita una razón actual, además de una utilidad pasada que recuerdas.",
+        "soft": "Las herramientas se acumulan con facilidad; revisar una por una permite retirar las innecesarias sin eliminar funciones que sí necesitas para estudiar.",
+        "sharp": "No compra descuentos, no explica permisos y quiere ver más; qué maldito empleado ejemplar, ya podemos revisar su contrato antes de renovarlo.",
+        "pass": "Ya sabes auditar extensiones sin juzgarlas solo por fama o icono; mantener menos accesos innecesarios reduce una exposición que podrías olvidar fácilmente con el tiempo.",
+        "review": "Repasa qué información permite ver el permiso; una ampliación requiere una decisión nueva aunque la extensión lleve mucho tiempo instalada en el navegador."
+      }
+    },
+    {
+      "id": "web-privacy-precise-location",
+      "title": "Ubicación cuando la necesitas",
+      "minutes": 3,
+      "intro": "Aprende a decidir cuándo una página necesita acceso a tu ubicación y a preferir opciones de menor precisión o entrada manual cuando permiten realizar la misma tarea sin compartir más información de la necesaria.",
+      "sections": [
+        {
+          "title": "La función define el acceso",
+          "body": "Una web puede solicitar ubicación para mostrar servicios cercanos. El navegador permite conceder o negar ese acceso, y las opciones de precisión dependen del dispositivo y del servicio. Antes de aceptar, compara la utilidad con la información que revelarías. Consultar el clima de una ciudad puede resolverse escribiendo su nombre en lugar de entregar una posición más precisa. Revisa y retira permisos cuando ya no los necesites; negarlos no garantiza que el sitio no pueda inferir una ubicación aproximada por otros datos."
+        }
+      ],
+      "steps": [
+        "Relaciona la precisión solicitada con la tarea.",
+        "Comprueba si puedes introducir una ciudad manualmente en lugar de compartir ubicación."
+      ],
+      "scenario": "Para revisar el tiempo ficticio de una ciudad, una página solicita ubicación precisa. También dispone de un buscador donde puedes escribir el nombre de la ciudad sin activar ese permiso del navegador o del dispositivo.",
+      "questions": [
+        {
+          "prompt": "¿Qué opción reduce información sin impedir esa consulta?",
+          "options": [
+            "Escribir la ciudad en el buscador disponible",
+            "Conceder siempre la máxima precisión posible",
+            "Publicar tus coordenadas en un comentario de la página"
+          ],
+          "answer": 0,
+          "explanation": "Escribir la ciudad permite esa consulta sin conceder ubicación precisa. Es una reducción concreta de información compartida, aunque el sitio todavía pueda recibir otros datos técnicos o inferir una zona aproximada por mecanismos diferentes durante la conexión.",
+          "wrongExplanations": [
+            null,
+            "La máxima precisión no es necesaria si basta consultar una ciudad. Evalúa la función y elige la alternativa que permite realizarla compartiendo menos información, sin conceder automáticamente un permiso más amplio por comodidad de la primera pantalla.",
+            "Publicar coordenadas amplía la audiencia y no ayuda a limitar la información de ubicación. Utiliza el buscador por ciudad si resuelve la consulta y evita entregar datos más precisos de los que requiere esa tarea meteorológica concreta."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El pronóstico quiere encontrarte con precisión, cariño; para hablar de lluvia quizá le basta saber la ciudad y no tu esquina exacta.",
+        "theory": "La ubicación puede ayudar a ciertas funciones; su precisión debería corresponder al objetivo y no aceptarse siempre como condición automática para consultar información general.",
+        "hint": "Busca una forma de obtener el dato del tiempo que necesitas sin revelar un punto más exacto que la zona relevante para la consulta.",
+        "correct": "Elegiste una ciudad manualmente y conservaste la función; compartir menos puede ser tan sencillo como utilizar un campo que la propia página ya ofrecía.",
+        "soft": "La petición puede tener un propósito legítimo; revisamos si esta tarea necesita esa precisión o si existe una alternativa menos detallada.",
+        "sharp": "Para anunciar lluvia no necesita escoltarte hasta la puerta; qué curiosidad jodida, probemos escribir la ciudad antes de conceder una posición precisa.",
+        "pass": "Ya comparas utilidad y precisión en lugar de tratar ubicación como obligación; elegir menos detalle puede mantener una consulta cotidiana plenamente útil.",
+        "review": "Repasa la precisión necesaria y otras posibles inferencias; negar geolocalización no elimina toda estimación aproximada que un sitio pueda hacer con datos de conexión."
+      }
+    },
+    {
+      "id": "web-privacy-approximate-region",
+      "title": "La región que no escribiste",
+      "minutes": 3,
+      "intro": "Reconoce que un sitio puede inferir una zona aproximada con información de la conexión y evita confundir negar geolocalización con impedir cualquier estimación de país, ciudad o región mientras navegas por sus páginas.",
+      "sections": [
+        {
+          "title": "El permiso no es la única señal",
+          "body": "Negar el permiso de ubicación evita esa vía de acceso del navegador, pero el sitio sigue recibiendo información de conexión. La dirección IP puede permitir estimaciones aproximadas y a veces equivocadas de una región. Otros datos, como idioma o información de cuenta, también aportan contexto. Esto no equivale necesariamente a conocer tu domicilio exacto. Distingue precisión y mecanismo antes de concluir que el permiso falló o que el dispositivo sufrió una intrusión por mostrar contenido adaptado a una zona."
+        }
+      ],
+      "steps": [
+        "Distingue una ciudad aproximada de coordenadas precisas.",
+        "Considera qué datos de conexión o cuenta podrían explicar la inferencia."
+      ],
+      "scenario": "En una simulación rechazas geolocalización y una tienda todavía muestra tu país aproximado. No aparece tu dirección ni una posición exacta, y el servicio utiliza información de la conexión para adaptar inicialmente su catálogo de productos.",
+      "questions": [
+        {
+          "prompt": "¿Qué explicación es compatible con ese resultado?",
+          "options": [
+            "Negar ubicación garantiza que ningún dato revela región",
+            "La conexión puede permitir inferir una región aproximada",
+            "Mostrar un país demuestra control completo del dispositivo"
+          ],
+          "answer": 1,
+          "explanation": "La IP u otros datos pueden contribuir a una estimación regional sin usar el permiso de geolocalización. Esa aproximación no implica conocer el domicilio exacto ni demuestra que el dispositivo haya sido comprometido por el sitio que muestra el catálogo.",
+          "wrongExplanations": [
+            "El permiso controla un mecanismo concreto y no toda inferencia posible. El sitio todavía recibe información técnica que puede sugerir una región aproximada, con precisión variable, aunque no acceda a la ubicación mediante esa autorización del navegador que decidiste negar.",
+            null,
+            "Mostrar un país aproximado no prueba intrusión ni acceso total al dispositivo. Puede explicarse por datos de conexión o cuenta; evalúa la precisión y el mecanismo antes de atribuir capacidades que el escenario no demuestra al servicio visitado."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Negaste ubicación y acertó el país; tranquila, cariño, eso no vuelve a la tienda detective con acceso exacto a cada habitación de tu casa.",
+        "theory": "La región puede inferirse con información técnica; esa estimación difiere de recibir coordenadas precisas mediante un permiso del navegador que aceptaste o negaste.",
+        "hint": "Compara la precisión mostrada con los datos de conexión y busca una explicación que no necesite inventar una intrusión completa del equipo.",
+        "correct": "Separaste mecanismo y precisión; una región estimada puede coexistir con el permiso negado sin que ese control prometiera evitar cualquier inferencia de zona.",
+        "soft": "La sorpresa es comprensible; revisemos región general frente a posición exacta antes de atribuir al sitio capacidades que todavía no demuestra la información.",
+        "sharp": "Acertó un país y parecía adivina omnipotente; qué promoción tan rápida, distingamos esa estimación de conocer tu domicilio exacto o controlar el equipo.",
+        "pass": "Ya interpretas la aproximación sin exagerarla; precisión y mecanismo permiten evaluar permisos con expectativas realistas en lugar de declararlos inútiles ante cualquier personalización regional.",
+        "review": "Repasa qué controla el permiso y qué datos siguen viajando; negar una vía no elimina cada inferencia ni convierte personalización en evidencia de control total."
+      }
+    },
+    {
+      "id": "web-privacy-sensor-permissions",
+      "title": "Después de la videollamada",
+      "minutes": 3,
+      "intro": "Revisa accesos a cámara y micrófono concedidos a sitios que ya no necesitas y entiende cómo reducir permisos persistentes sin asumir que apagar una pestaña modifica automáticamente todas las autorizaciones guardadas en el navegador.",
+      "sections": [
+        {
+          "title": "El permiso puede durar más que la tarea",
+          "body": "Un sitio de reuniones puede solicitar cámara y micrófono para una conversación legítima. Después, el navegador puede conservar el permiso según la opción elegida. Revisa los accesos por sitio y retira los que ya no necesites desde la configuración oficial. Negar el permiso futuro puede impedir otra llamada hasta autorizarlo de nuevo, lo cual no significa un fallo. No deduzcas que una autorización guardada demuestra grabación permanente; distingue capacidad concedida de actividad que realmente se haya producido durante el uso."
+        }
+      ],
+      "steps": [
+        "Localiza permisos de cámara y micrófono por sitio.",
+        "Retira accesos de servicios que ya no utilices y comprueba cómo volver a autorizarlos si fuera necesario."
+      ],
+      "scenario": "Un servicio ficticio que usaste para una entrevista conserva permiso de cámara y micrófono. Ya no planeas volver a utilizarlo y quieres reducir los accesos persistentes sin afirmar que el sitio estuvo grabando continuamente desde que terminó la conversación.",
+      "questions": [
+        {
+          "prompt": "¿Qué medida corresponde a ese objetivo?",
+          "options": [
+            "Cambiar el fondo del navegador",
+            "Conservar permisos para todos por comodidad",
+            "Retirar el acceso del sitio desde los controles oficiales"
+          ],
+          "answer": 2,
+          "explanation": "Retirar el permiso reduce una capacidad futura que ya no necesitas. Eso no demuestra que hubiera grabación previa; estás revisando el alcance autorizado y podrás volver a concederlo si existe una función legítima que requiera usarlo de nuevo más adelante.",
+          "wrongExplanations": [
+            "Cambiar el aspecto no modifica permisos de cámara o micrófono. Revisa los controles por sitio para retirar una autorización que ya no necesitas conservar después de terminar la tarea del servicio de reuniones.",
+            "La comodidad general no justifica accesos innecesarios. Revisa cada sitio y retira lo que no uses, entendiendo que una llamada futura puede requerir autorización nueva sin que eso indique un fallo del servicio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La entrevista terminó, cariño; revisemos si su permiso puede despedirse en lugar de quedarse instalado cuando ya no necesitas esa función del servicio.",
+        "theory": "Un permiso guardado describe capacidad, no prueba grabación continua; retirar lo innecesario reduce exposición futura sin inventar actividad que no has comprobado.",
+        "hint": "Busca un control que cambie el permiso del sitio y piensa si necesitas conservar esa capacidad después de terminar la tarea que lo justificaba.",
+        "correct": "Retiraste una capacidad innecesaria sin inventar grabación permanente; revisar autorizaciones antiguas también mantiene privacidad cuando cambia tu uso de un servicio en línea.",
+        "soft": "Los permisos pueden conservarse según lo elegido; revisamos su duración sin confundir autorización guardada con prueba de actividad continua mientras no utilizabas el servicio.",
+        "sharp": "La entrevista acabó y el permiso quería vacaciones indefinidas; qué huésped cómodo, le retiramos acceso sin acusarlo de una película secreta que nadie comprobó.",
+        "pass": "Ya diferencias capacidad y actividad; puedes retirar lo innecesario y volver a autorizar una función legítima cuando decidas utilizar de nuevo ese servicio.",
+        "review": "Repasa qué autorizaste y qué necesitas ahora; retirar un permiso tiene un alcance distinto de investigar cómo se trató una conversación anterior del servicio."
+      }
+    },
+    {
+      "id": "web-privacy-clipboard-secrets",
+      "title": "El portapapeles también lleva datos",
+      "minutes": 3,
+      "intro": "Reconoce que copiar información sensible crea otra copia temporal y revisa posibles historiales o sincronización del portapapeles antes de pegar datos en un campo cuya audiencia no necesita recibirlos.",
+      "sections": [
+        {
+          "title": "Una herramienta cotidiana con información real",
+          "body": "El portapapeles facilita mover texto entre aplicaciones, pero también puede contener contraseñas, códigos o datos personales. Algunas funciones mantienen historial o sincronización, según el sistema. Comprueba qué pegaste y dónde antes de enviar un formulario o mensaje. Evita conceder acceso del portapapeles a sitios que no lo necesitan y revisa las opciones oficiales si utilizas datos sensibles. No pegues secretos en comprobadores desconocidos para saber qué hay almacenado; puedes comprobar funciones con un texto ficticio que no exponga información real de tus cuentas."
+        }
+      ],
+      "steps": [
+        "Utiliza un texto ficticio para revisar cómo funciona el pegado.",
+        "Comprueba si existen historial o sincronización del portapapeles en el sistema que utilizas."
+      ],
+      "scenario": "En una simulación copias un código de recuperación y luego preparas un mensaje al grupo. No recuerdas qué conserva el portapapeles ni si el dispositivo mantiene historial de varias copias guardadas.",
+      "questions": [
+        {
+          "prompt": "¿Qué práctica evita revelar el código por un pegado apresurado?",
+          "options": [
+            "Comprobar el contenido y evitar enviarlo a un campo público",
+            "Pegar directamente en el grupo para descubrir qué contiene",
+            "Confiar en que cerrar una pestaña siempre vacía todas las copias"
+          ],
+          "answer": 0,
+          "explanation": "Comprobar antes de enviar y mantener secretos fuera del grupo evita divulgación accidental. El portapapeles y su historial dependen del sistema; cerrar una pestaña no garantiza que todas sus copias desaparezcan.",
+          "wrongExplanations": [
+            null,
+            "Pegar en el grupo para comprobar puede divulgar el secreto. No uses destinatarios públicos como espacio de prueba; revisa funciones con texto ficticio y verifica campo y audiencia antes de enviar información sensible.",
+            "Cerrar una pestaña no demuestra que portapapeles, historial o sincronización queden vacíos. Revisa los controles oficiales del sistema y evita pegar información sensible sin comprobar antes el destino y las personas que la recibirían."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El portapapeles trae recuerdos, cariño; no lo usemos como caja sorpresa delante de un grupo que no necesita conocer tus códigos de recuperación.",
+        "theory": "Copiar crea otra ubicación de información; historial o sincronización pueden ampliar su alcance según el sistema, independientemente de la pestaña donde viste el secreto.",
+        "hint": "Piensa qué ocurriría si pegas un código ante muchas personas y busca una comprobación que no convierta la duda en divulgación dentro del grupo.",
+        "correct": "Evitaste convertir la prueba en filtración; revisar campo y audiencia protege información que el portapapeles podría conservar aunque ya estés pensando en otra tarea.",
+        "soft": "Pegar por costumbre resulta fácil; revisemos destino y funciones del sistema sin utilizar un grupo público como espacio donde averiguar qué secreto está guardado.",
+        "sharp": "El grupo no es cubo de pruebas para secretos, cariño; qué maldita idea sociable, entendamos el mecanismo con texto ficticio antes de divulgar datos.",
+        "pass": "Ya reconoces otra copia sensible; comprobar contenido y destino antes del envío ayuda a evitar accidentes que cerrar una pestaña no resolvería automáticamente después.",
+        "review": "Repasa origen, destino e historial del portapapeles; las pruebas con contenido ficticio permiten entenderlo sin arriesgar claves reales ni códigos que recuperan cuentas."
+      }
+    },
+    {
+      "id": "web-privacy-connected-permissions",
+      "title": "Aplicaciones conectadas a tu cuenta",
+      "minutes": 3,
+      "intro": "Aprende a revisar accesos delegados a otras aplicaciones y comprende que cambiar una contraseña no sustituye necesariamente comprobar autorizaciones de lectura o acciones que concediste mediante una pantalla de permisos del proveedor.",
+      "sections": [
+        {
+          "title": "Una autorización puede conservar alcance",
+          "body": "Al iniciar sesión mediante un proveedor puedes conceder a otra aplicación acceso a información o acciones de tu cuenta. Ese permiso puede persistir según el servicio, aunque no compartas la contraseña con la aplicación. Revisa las conexiones en la configuración oficial, identifica cuáles necesitas y revoca las desconocidas o innecesarias. Cambiar la clave no garantiza que cada autorización delegada desaparezca. Si sospechas abuso, comunica el caso al soporte y revisa también sesiones, recuperación y otras opciones de acceso que el proveedor ofrezca para proteger la cuenta afectada."
+        }
+      ],
+      "steps": [
+        "Abre las aplicaciones conectadas desde el proveedor oficial.",
+        "Revisa alcance y necesidad antes de conservar o retirar cada autorización."
+      ],
+      "scenario": "Hace meses autorizaste un calendario ficticio a leer contactos. Ya no lo utilizas y cambiaste la contraseña, pero todavía figura como conexión activa con ese mismo alcance dentro de la configuración oficial.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión sigue siendo necesaria?",
+          "options": [
+            "Cambiar únicamente el color del calendario",
+            "Suponer que toda autorización desapareció al cambiar la clave",
+            "Revisar y revocar la conexión que ya no necesitas"
+          ],
+          "answer": 2,
+          "explanation": "Cambiar la contraseña no garantiza retirar toda autorización delegada. Revisa necesidad y alcance de la conexión, revoca lo innecesario y consulta al soporte si observas acciones que no reconoces o no puedes explicar.",
+          "wrongExplanations": [
+            "El color no modifica permisos delegados. Revisa conexiones desde el proveedor oficial y decide si leer contactos sigue teniendo una función necesaria; retira el acceso si ya no corresponde a tus actividades actuales.",
+            "El efecto de cambiar la clave depende del servicio y no garantiza eliminar autorizaciones. Comprueba conexiones y alcance, sin suponer que renovar la credencial retiró permisos concedidos mediante un mecanismo diferente de acceso.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese calendario sigue conectado después de abandonarlo, cariño; revisemos si conserva una puerta que ya no necesitas para ninguna función actual de tu cuenta.",
+        "theory": "Las autorizaciones delegadas pueden persistir según el servicio; revisar conexiones permite conocer capacidades que cambiar una contraseña no elimina necesariamente de forma automática.",
+        "hint": "Busca el control de la conexión y su alcance, sin suponer que renovar la contraseña retira todos los permisos otorgados mediante otros mecanismos de acceso.",
+        "correct": "Revisaste la autorización concreta; proteger credenciales y retirar conexiones son decisiones distintas cuando aplicaciones antiguas todavía conservan permisos que ya no necesitas mantener.",
+        "soft": "Los menús mezclan conceptos; separemos contraseña, sesión y permiso delegado para elegir el control apropiado sin borrar aplicaciones al azar ni inventar cierres automáticos.",
+        "sharp": "El calendario jubilado seguía con acceso premium; qué maldito retiro cómodo, revisemos su autorización antes de atribuirle poderes mágicos al cambio de contraseña.",
+        "pass": "Ya diferencias credenciales y autorizaciones; esa distinción permite revisar accesos con más detalle sin asumir que una clave nueva resolvió automáticamente cada puerta conectada.",
+        "review": "Repasa quién recibió permiso, qué podía hacer y si todavía lo necesitas; revocar una conexión y cerrar una sesión pueden requerir controles diferentes del proveedor."
+      }
+    },
+    {
+      "id": "web-privacy-session-review",
+      "title": "Dónde sigue abierta tu cuenta",
+      "minutes": 3,
+      "intro": "Aprende a revisar sesiones activas desde el servicio oficial y a cerrar accesos que ya no necesitas sin confundir el nombre de un dispositivo con una prueba suficiente de identidad.",
+      "sections": [
+        {
+          "title": "Una cuenta puede tener varias sesiones",
+          "body": "Los servicios pueden mostrar dispositivos o sesiones donde tu cuenta conserva acceso. Los nombres y ubicaciones son pistas, a veces aproximadas, que deben interpretarse con contexto. Revisa fechas y actividad antes de decidir. Cierra sesiones de equipos que ya no utilizas y, si detectas accesos desconocidos, protege la cuenta desde un dispositivo fiable y consulta al soporte. Cambiar una contraseña no invalida necesariamente cada sesión en todos los servicios, por lo que esa revisión tiene un propósito propio."
+        }
+      ],
+      "steps": [
+        "Abre la lista oficial de sesiones o dispositivos.",
+        "Identifica accesos antiguos y consulta los que no reconozcas."
+      ],
+      "scenario": "En una simulación tu cuenta muestra una sesión del portátil que devolviste al centro. Ya no necesitas ese acceso y puedes utilizar el teléfono de confianza para gestionar las sesiones desde el servicio oficial.",
+      "questions": [
+        {
+          "prompt": "¿Qué medida responde a ese acceso antiguo?",
+          "options": [
+            "Cerrar la sesión del portátil mediante el servicio oficial",
+            "Cambiar solo su nombre para olvidarlo",
+            "Compartir la cuenta con otra persona para comprobarlo"
+          ],
+          "answer": 0,
+          "explanation": "Cerrar la sesión mediante el proveedor retira ese acceso que ya no necesitas. Renombrar el dispositivo no termina la sesión y compartir la cuenta añade otra exposición en lugar de resolver la anterior.",
+          "wrongExplanations": [
+            null,
+            "El nombre es una etiqueta que ayuda a reconocer, pero no decide si el acceso sigue activo. Usa el control oficial de cierre para retirar la sesión del equipo que devolviste.",
+            "Compartir credenciales agrega personas con acceso y no retira la sesión antigua. Gestiona los dispositivos desde tu teléfono fiable y consulta al soporte si no puedes identificar o cerrar una sesión que aparece activa."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese portátil ya volvió al centro, cariño; revisemos si tu sesión también recibió la noticia de su devolución.",
+        "theory": "Una sesión conserva acceso; su lista oficial permite revisar equipos antiguos sin confundir una etiqueta con identidad comprobada.",
+        "hint": "Busca qué control actúa sobre el acceso existente y no solamente sobre el nombre que muestra la lista del servicio.",
+        "correct": "Bien: cerraste una puerta antigua desde el proveedor; el portátil puede seguir estudiando con otra persona sin llevar tu cuenta abierta.",
+        "soft": "Los nombres pueden resultar confusos; revisa contexto y fechas antes de retirar una sesión o consultar al soporte por un acceso desconocido.",
+        "sharp": "Renombrarlo no lo expulsa, cielo; poner adiós en la etiqueta sería una despedida muy educada y técnicamente bastante inútil.",
+        "pass": "Ya sabes revisar sesiones con propósito; retirar accesos antiguos evita confiar en que devolver el equipo termina todas las conexiones personales.",
+        "review": "Repasa qué sesión conserva acceso y qué control la termina; un nombre o una ubicación aproximada no explican todo el contexto."
+      }
+    },
+    {
+      "id": "web-privacy-logout-delete",
+      "title": "Salir no borra la cuenta",
+      "minutes": 3,
+      "intro": "Distingue terminar una sesión de eliminar información o cerrar una cuenta para elegir el control que corresponde al objetivo de privacidad que realmente quieres conseguir dentro de un servicio.",
+      "sections": [
+        {
+          "title": "Tres acciones con resultados diferentes",
+          "body": "Cerrar sesión termina un acceso desde ese navegador según el mecanismo del servicio. No elimina por sí mismo la cuenta ni sus contenidos remotos. Borrar mensajes o solicitar el cierre de una cuenta son acciones diferentes, con efectos y condiciones propios. Antes de pulsar, define si quieres impedir que otro usuario del equipo entre, retirar un contenido o dejar de utilizar el servicio. Lee la información oficial y conserva lo que necesites antes de cambios difíciles de revertir."
+        }
+      ],
+      "steps": [
+        "Define si tu objetivo es salir, retirar un contenido o cerrar la cuenta.",
+        "Busca el control oficial que corresponde a ese objetivo concreto."
+      ],
+      "scenario": "En una simulación sales de una red social para que nadie use tu sesión en el equipo familiar. Al volver a entrar, tu perfil y publicaciones siguen existiendo porque no solicitaste borrarlos ni cerrar la cuenta del servicio.",
+      "questions": [
+        {
+          "prompt": "¿Qué hizo realmente el cierre de sesión?",
+          "options": [
+            "Eliminó todas las publicaciones remotas",
+            "Terminó ese acceso sin borrar necesariamente la cuenta",
+            "Impuso que ningún servidor conserve datos antiguos"
+          ],
+          "answer": 1,
+          "explanation": "Cerrar sesión actúa sobre el acceso del navegador y no elimina necesariamente la cuenta o sus publicaciones. Para otros objetivos necesitas los controles específicos del servicio y comprender sus condiciones de conservación o retirada de información.",
+          "wrongExplanations": [
+            "Las publicaciones son datos del servicio y no desaparecen por cerrar el acceso del navegador. Si quieres retirarlas, revisa sus controles propios y no confundas esa gestión con el cierre de sesión local.",
+            null,
+            "Salir no establece una orden universal de conservación para servidores o copias. Su propósito es terminar un acceso; la eliminación y retención tienen condiciones distintas que debes consultar y gestionar desde el servicio oficial."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Cerraste la puerta, cariño, no demoliste la casa; salir de una cuenta y eliminarla requieren decisiones con efectos distintos.",
+        "theory": "El cierre de sesión controla acceso; mensajes, perfil y cuenta tienen sus propios procedimientos para revisar o retirar información remota.",
+        "hint": "Piensa qué objetivo tenías en el equipo familiar y si para cumplirlo era necesario eliminar todas las publicaciones del servicio.",
+        "correct": "Distinguido con precisión: terminaste el acceso sin asumir que desaparecía el contenido remoto que todavía conserva la cuenta del servicio.",
+        "soft": "Los verbos se parecen en algunos menús; aclaramos el objetivo antes de escoger un cambio que pueda afectar más información de la necesaria.",
+        "sharp": "Salir no incendia el servidor, cielo; ese botón no necesita semejante vocación destructiva para cerrar una sesión en el equipo familiar.",
+        "pass": "Ya separas acceso, contenido y cuenta; esa organización permite elegir controles apropiados sin esperar milagros de una salida del navegador.",
+        "review": "Repasa qué termina una sesión y qué requiere una gestión distinta de eliminación; define el objetivo antes de elegir el botón final."
+      }
+    },
+    {
+      "id": "web-privacy-form-purpose",
+      "title": "La pregunta de cada formulario",
+      "minutes": 3,
+      "intro": "Compara los datos solicitados con el propósito de una gestión y decide cuándo buscar una explicación o una alternativa antes de enviar información sensible que no parece necesaria para esa tarea.",
+      "sections": [
+        {
+          "title": "Obligatorio no significa explicado",
+          "body": "Un formulario puede marcar campos como obligatorios sin explicar por qué los necesita. Antes de completarlos, comprueba el servicio y la finalidad de la gestión. Una dirección puede ser necesaria para una entrega, pero no siempre para una consulta general. Busca explicación oficial o un canal alternativo si el alcance no resulta claro. No introduzcas contraseñas de otros servicios y no uses documentos falsos para superar una duda; puedes decidir no continuar hasta entender la petición."
+        }
+      ],
+      "steps": [
+        "Relaciona cada dato sensible con la finalidad indicada.",
+        "Consulta una alternativa si no existe una explicación comprensible."
+      ],
+      "scenario": "Para descargar un folleto ficticio de horarios, una página exige documento de identidad y dirección de domicilio. El folleto es público y el centro también lo ofrece en un canal conocido sin registrar esos datos personales.",
+      "questions": [
+        {
+          "prompt": "¿Qué opción reduce la información entregada para esa tarea?",
+          "options": [
+            "Enviar documentos porque el campo es obligatorio",
+            "Dar además la contraseña del correo por precaución",
+            "Utilizar el canal conocido que no pide esos datos innecesarios"
+          ],
+          "answer": 2,
+          "explanation": "La alternativa conocida permite obtener el folleto sin esa exposición adicional. Un campo obligatorio no demuestra por sí mismo necesidad; compara el dato solicitado con la tarea y busca una explicación si la relación no queda clara.",
+          "wrongExplanations": [
+            "La validación del formulario impone una condición técnica, pero no explica su necesidad. Si existe una vía conocida que permite consultar el folleto sin documentos personales, puedes usarla para reducir la información compartida durante esa tarea.",
+            "Una contraseña de otro servicio no corresponde a descargar un folleto y añade riesgo innecesario. No la entregues para demostrar confianza; utiliza una fuente conocida y cuestiona datos que no tengan una finalidad explicada para la gestión.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese folleto quiere tu domicilio antes de decir la hora; qué curiosidad tan desmedida para una tabla pública, cariño.",
+        "theory": "La necesidad de un dato se compara con la función; marcar un campo obligatorio no proporciona automáticamente una explicación razonable del propósito.",
+        "hint": "Busca cómo obtener el mismo contenido mediante una fuente conocida que no requiera entregar información sin relación clara con esa tarea.",
+        "correct": "Elegiste una alternativa útil y menos invasiva; consultar un horario no tuvo que convertirse en un registro de documentos y domicilio personales.",
+        "soft": "Puede haber requisitos legítimos en otras gestiones; aquí comprobamos si estos datos aportan algo necesario para acceder al folleto público del centro.",
+        "sharp": "El folleto se cree notaría y ya quiere documentos; qué maldita autoestima, probemos la fuente que entiende lo que significa público.",
+        "pass": "Ya sabes reducir datos sin inventar respuestas falsas; comparar finalidad y alternativas permite cumplir una tarea conservando más control sobre tu información personal.",
+        "review": "Repasa la finalidad del formulario y la sensibilidad de lo pedido; una condición técnica no reemplaza una explicación del motivo para recopilar esos datos."
+      }
+    },
+    {
+      "id": "web-privacy-autofill-review",
+      "title": "Antes de enviar el autocompletado",
+      "minutes": 3,
+      "intro": "Aprende a revisar campos rellenados automáticamente para evitar enviar direcciones, teléfonos u otros datos personales que el navegador conserva y que una gestión concreta no necesita recibir para funcionar correctamente.",
+      "sections": [
+        {
+          "title": "La comodidad necesita revisión final",
+          "body": "El autocompletado puede insertar datos guardados, como nombre, teléfono o dirección, y ahorrar tiempo. También puede llenar más campos de los que esperabas o utilizar información antigua. Antes de enviar, revisa cada campo y elimina lo que no sea necesario si la gestión lo permite. Revisa por separado los datos almacenados en el navegador y quién usa ese perfil. No confundas una sugerencia automática con una exigencia legítima del proveedor ni con una autorización para que otro usuario conozca tus datos guardados."
+        }
+      ],
+      "steps": [
+        "Revisa todos los campos antes de enviar.",
+        "Corrige datos guardados que ya no sean necesarios o estén desactualizados."
+      ],
+      "scenario": "Un formulario ficticio para pedir información sobre un curso se rellena con tu dirección completa y un teléfono antiguo. Solo necesitas enviar una pregunta general y el propio servicio indica que basta con un correo de respuesta válido.",
+      "questions": [
+        {
+          "prompt": "¿Qué conviene hacer antes de pulsar enviar?",
+          "options": [
+            "Revisar y retirar campos adicionales que no necesitas compartir",
+            "Asumir que todo lo autocompletado es obligatorio",
+            "Enviar más datos para comprobar si el servicio los borra después"
+          ],
+          "answer": 0,
+          "explanation": "Revisar y retirar campos adicionales alinea el envío con la información necesaria. El autocompletado es una ayuda del navegador, no una prueba de que el proveedor requiera todos esos datos para responder a la consulta general.",
+          "wrongExplanations": [
+            null,
+            "Un campo rellenado automáticamente puede ser opcional o antiguo. Comprueba qué exige realmente la consulta y qué datos quieres enviar, en lugar de atribuir necesidad al contenido que el navegador decidió sugerir desde su almacenamiento local.",
+            "Enviar primero para ver si se borra después crea una exposición evitable y no garantiza retirada. Revisa antes los campos y comparte solo lo que necesitas para recibir respuesta mediante el procedimiento indicado por el servicio."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El navegador completó media biografía sin que se la pidieras; qué asistente tan entusiasta, revisemos antes de enviar la consulta.",
+        "theory": "Autocompletar usa datos guardados, pero la necesidad de cada campo depende de la gestión que estás realizando en ese momento.",
+        "hint": "Compara los campos llenados con la instrucción del servicio y busca una revisión que ocurra antes de transmitir información adicional innecesaria.",
+        "correct": "Buena revisión final: conservaste lo necesario para recibir respuesta y retiraste datos que el navegador había añadido por comodidad sin evaluar tu objetivo.",
+        "soft": "La ayuda automática ahorra tiempo; solo necesita una comprobación tuya para evitar que datos antiguos o adicionales salgan sin que lo hayas decidido conscientemente.",
+        "sharp": "Ese autocompletado ya iba a contarlo todo por ti; qué maldito entusiasmo, la decisión de enviar sigue siendo tuya y merece una revisión.",
+        "pass": "Ya distingues sugerencia y necesidad; comprobar campos antes del envío reduce revelaciones accidentales que después pueden ser mucho más difíciles de retirar del servicio destinatario.",
+        "review": "Repasa lo guardado, lo necesario y lo enviado; esas decisiones necesitan revisión propia antes de confirmar un formulario rellenado automáticamente por el navegador."
+      }
+    },
+    {
+      "id": "web-privacy-email-alias",
+      "title": "Una dirección para un propósito",
+      "minutes": 3,
+      "intro": "Comprende cómo un alias de correo puede ayudar a separar registros y reducir exposición de una dirección principal, sin asumir que crea anonimato completo ni elimina otros datos que compartes con el servicio.",
+      "sections": [
+        {
+          "title": "Separar también facilita gestionar",
+          "body": "Un alias o dirección adicional puede utilizarse para ciertos registros y facilitar identificar de dónde llega correo o retirar una vía de contacto. Su funcionamiento depende del proveedor: algunos reenvían mensajes y otros ofrecen buzones separados. No garantiza anonimato si compartes nombre, pagos u otros identificadores. Revisa cómo recuperarás la cuenta y mantén acceso a los avisos importantes. Usa solo servicios que entiendas y evita perder una dirección necesaria para recuperar cuentas que todavía utilizas."
+        }
+      ],
+      "steps": [
+        "Define qué registros quieres separar de tu correo principal.",
+        "Comprueba recepción y recuperación antes de depender de una dirección adicional."
+      ],
+      "scenario": "En una simulación pruebas un boletín con una dirección adicional que controlas. El proveedor también recibe tu nombre y otros datos, por lo que no supones que el alias oculte toda tu identidad.",
+      "questions": [
+        {
+          "prompt": "¿Qué utilidad realista puede aportar el alias?",
+          "options": [
+            "Impedir cualquier identificación aunque entregues otros datos",
+            "Separar contactos sin garantizar anonimato completo",
+            "Borrar automáticamente cada cuenta que lo haya recibido"
+          ],
+          "answer": 1,
+          "explanation": "Una dirección adicional puede separar contactos o facilitar gestionar un registro, según el proveedor. No borra otros identificadores entregados ni garantiza anonimato; debes conservar acceso a mensajes y recuperación si la cuenta sigue siendo importante para ti.",
+          "wrongExplanations": [
+            "El alias no elimina nombre, pagos u otros datos que puedan identificarte ante el servicio. Úsalo con un objetivo concreto de separación, entendiendo su funcionamiento y los demás datos que decidas entregar durante ese registro o después.",
+            null,
+            "Una dirección adicional no elimina automáticamente cuentas de otros servicios. Si quieres retirarlas, utiliza sus controles propios; conserva además acceso a los mensajes necesarios para recuperar cuentas que todavía utilizas y que dependen de ese canal de contacto."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Una dirección extra puede poner orden, cariño; no le pidamos que borre tu identidad completa mientras el formulario sigue recibiendo otros datos personales.",
+        "theory": "Un alias separa vías de contacto según su proveedor; conviene entender recepción y recuperación antes de usarlo para registros que no quieres perder después.",
+        "hint": "Busca un beneficio de organización que no prometa invisibilidad ni cambie por sí mismo todos los registros que conservan otros servicios.",
+        "correct": "Elegiste una utilidad realista: separar contacto sin inventar anonimato total; esa precisión ayuda a usar la herramienta sin confiarle una protección que no ofrece automáticamente.",
+        "soft": "Los proveedores funcionan distinto; revisemos recepción y recuperación antes de utilizar una dirección adicional para una cuenta que necesitas mantener accesible.",
+        "sharp": "El alias no borra nombres y pagos por vergüenza ajena; qué carga laboral, dejémosle separar contacto y revisemos los otros datos por su alcance.",
+        "pass": "Ya usas separación con propósito sin confundirla con anonimato; mantener correo y recuperación evita que una medida de privacidad bloquee una cuenta necesaria.",
+        "review": "Repasa qué separa la dirección adicional y qué datos siguen identificándote; entiende el proveedor y conserva acceso a mensajes importantes para recuperar tus cuentas."
+      }
+    },
+    {
+      "id": "web-privacy-notice-purpose",
+      "title": "Leer una política con preguntas",
+      "minutes": 3,
+      "intro": "Aprende a buscar finalidad, destinatarios y conservación dentro de una declaración de privacidad para evaluar una gestión concreta sin interpretar que publicar un documento garantiza por sí mismo un comportamiento adecuado del proveedor.",
+      "sections": [
+        {
+          "title": "Busca respuestas, no solo una casilla",
+          "body": "Una declaración de privacidad puede explicar qué datos recoge un servicio, para qué los usa, con quién los comparte y cómo contactar al responsable. Leerla resulta más útil con preguntas sobre la tarea que quieres realizar. Busca información sobre conservación y controles disponibles, sin confundir publicar el texto con una certificación de buenas prácticas. Si una explicación importante falta o resulta ambigua, consulta al proveedor por su canal oficial antes de compartir datos sensibles que no necesitas entregar todavía."
+        }
+      ],
+      "steps": [
+        "Busca finalidad y categorías de datos de tu gestión.",
+        "Localiza conservación, destinatarios y un contacto para dudas."
+      ],
+      "scenario": "Un servicio ficticio pide grabaciones de voz para practicar idiomas. Su declaración explica el uso educativo, pero no aclara cuánto conserva el audio ni si lo comparte, y tú quieres entender ese alcance antes de subir una muestra personal.",
+      "questions": [
+        {
+          "prompt": "¿Qué pregunta corresponde hacer antes de compartir la grabación?",
+          "options": [
+            "Cuánto tiempo conservará el audio y quién podrá recibirlo",
+            "Qué color tendrá el botón de enviar",
+            "Si tener una política demuestra que no existen riesgos"
+          ],
+          "answer": 0,
+          "explanation": "Preguntar por conservación y destinatarios aclara el alcance pendiente para esa muestra. Una política publicada no elimina riesgos ni sustituye una respuesta comprensible sobre cómo tratará el proveedor los datos que pretendes compartir durante la práctica.",
+          "wrongExplanations": [
+            null,
+            "El color no aclara conservación, usos o destinatarios del audio. Las preguntas útiles deben centrarse en el tratamiento del dato personal antes de enviarlo, especialmente cuando una explicación relevante no aparece clara en la información oficial.",
+            "Publicar una política no demuestra ausencia de riesgos ni buenas prácticas universales. Necesitas entender las condiciones concretas del audio, incluidos usos, destinatarios y conservación, para decidir si ese tratamiento encaja con tu objetivo de aprendizaje y privacidad."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese servicio quiere escuchar tu voz, cariño; antes preguntamos qué hará con ella después de terminar la práctica del idioma.",
+        "theory": "Una política resulta útil cuando responde preguntas concretas sobre finalidad, destinatarios y conservación de la información que estás pensando enviar al proveedor.",
+        "hint": "Mira qué información falta para decidir sobre el audio y busca una pregunta que aclare su tratamiento futuro dentro del servicio.",
+        "correct": "Preguntaste por lo relevante antes de subir; esa pausa conserva tu capacidad de decidir con información sobre destinatarios y duración del tratamiento.",
+        "soft": "Los textos pueden ser largos; enfoca la lectura en tu dato y pregunta al proveedor por las condiciones que no quedan claras todavía.",
+        "sharp": "Tener política no convierte a nadie en santo; qué maldita ceremonia, prefiero una respuesta sobre el audio antes que una casilla tranquilizadora.",
+        "pass": "Ya lees con preguntas propias; identificar lo que falta permite decidir sin fingir que una página de texto resuelve todas las dudas de privacidad.",
+        "review": "Repasa dato, uso, destinatarios y conservación; la declaración debe ayudar a entenderlos, no actuar como sustituto automático de una decisión sobre tu información personal."
+      }
+    },
+    {
+      "id": "web-privacy-public-profile",
+      "title": "Lo que ve quien no te conoce",
+      "minutes": 3,
+      "intro": "Revisa campos públicos de un perfil y utiliza una vista externa o controles de audiencia para comprobar qué información personal queda disponible más allá de tus contactos o de una sesión iniciada en la plataforma.",
+      "sections": [
+        {
+          "title": "La audiencia puede ser mayor de lo esperado",
+          "body": "Un perfil puede mostrar nombre, fotografía, biografía y otros campos a personas distintas de tus contactos. Las opciones dependen del servicio y algunos datos pueden permanecer públicos. Revisa cada campo y su audiencia mediante los controles oficiales; una vista como visitante puede ayudar si está disponible. No supongas que ocultar una publicación cambia automáticamente el perfil completo. Antes de añadir un teléfono o domicilio, confirma si realmente necesitas publicarlo y qué personas podrán consultarlo después sin una relación previa contigo."
+        }
+      ],
+      "steps": [
+        "Revisa campos del perfil y sus audiencias.",
+        "Comprueba la vista de visitante cuando el servicio la permita."
+      ],
+      "scenario": "En una simulación restringes publicaciones a amistades, pero el perfil sigue mostrando públicamente tu teléfono. Una persona que no tiene cuenta puede abrir esa página y leer el número porque su campo conserva un ajuste diferente al de las publicaciones.",
+      "questions": [
+        {
+          "prompt": "¿Qué debes revisar para reducir esa exposición?",
+          "options": [
+            "Solo la audiencia de la última publicación",
+            "El campo del teléfono y su visibilidad propia",
+            "El tono de llamada del dispositivo"
+          ],
+          "answer": 1,
+          "explanation": "El perfil y las publicaciones pueden tener controles distintos. Debes revisar la visibilidad del campo del teléfono y retirarlo o limitarlo según las opciones del servicio, sin asumir que otra audiencia ya modificó esa parte pública.",
+          "wrongExplanations": [
+            "La última publicación no controla necesariamente los campos del perfil. El teléfono puede conservar visibilidad propia; revisa ese campo y comprueba la vista externa antes de concluir que dejó de estar disponible para personas desconocidas.",
+            null,
+            "El tono cambia cómo recibes llamadas y no retira un teléfono del perfil público. Debes revisar el dato publicado y su audiencia dentro del servicio que lo muestra a visitantes o decidir si necesitas conservarlo allí."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Tu perfil saluda a más gente de la que imaginas, cariño; revisemos qué parte de la presentación quedó abierta al público general.",
+        "theory": "Los campos del perfil pueden tener audiencias propias; limitar publicaciones no cambia necesariamente lo que un visitante ve sobre ti al abrir la página.",
+        "hint": "Busca el dato exacto que permanece visible y qué control le corresponde, en lugar de ajustar otra parte de la cuenta sin comprobarlo.",
+        "correct": "Ubicaste el campo público correcto; una revisión específica ayuda más que confiar en que todas las partes del perfil comparten la misma audiencia automáticamente.",
+        "soft": "Las plataformas reparten controles entre pantallas; revisemos perfil y publicaciones por separado antes de decidir que un dato ya no se ve desde fuera.",
+        "sharp": "El teléfono seguía saludando a desconocidos mientras la publicación estaba cerrada; qué maldita sociabilidad, vamos a revisar ese campo por su propia audiencia del perfil.",
+        "pass": "Ya sabes mirar información desde fuera; esa revisión permite retirar detalles que no necesitan acompañar la presentación pública de tu perfil.",
+        "review": "Repasa el campo que mostraba el teléfono y sus opciones; la audiencia de una publicación no describe necesariamente todos los datos públicos del perfil."
+      }
+    },
+    {
+      "id": "web-privacy-post-audience",
+      "title": "Elegir quién recibe una publicación",
+      "minutes": 3,
+      "intro": "Revisa la audiencia antes de enviar información personal y comprende que limitar destinatarios reduce acceso inicial sin garantizar que los participantes no puedan copiar o compartir lo recibido posteriormente.",
+      "sections": [
+        {
+          "title": "La privacidad empieza antes del envío",
+          "body": "Los servicios pueden ofrecer audiencias como público, contactos o grupos seleccionados. Revisa esa elección en cada publicación sensible, porque el valor anterior podría conservarse o cambiar según la plataforma. Elegir un grupo reducido limita el acceso inicial, pero no controla perfectamente lo que haga cada destinatario después. Comparte información que corresponda al propósito del grupo y evita datos de otras personas sin una razón y una autorización apropiadas. La confianza personal y las opciones técnicas se complementan, pero no son garantías idénticas."
+        }
+      ],
+      "steps": [
+        "Comprueba la audiencia antes de publicar.",
+        "Retira detalles que no necesita recibir ese grupo para la actividad."
+      ],
+      "scenario": "En una actividad ficticia quieres avisar a cuatro compañeros de un cambio de reunión. El editor conserva la opción público de una publicación anterior y el borrador incluye la dirección personal donde se realizará el encuentro del grupo reducido.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión corresponde antes de enviar?",
+          "options": [
+            "Solo mirar si el texto tiene una tipografía bonita",
+            "Publicarlo para comprobar después quién pudo verlo",
+            "Elegir la audiencia adecuada y revisar los datos incluidos"
+          ],
+          "answer": 2,
+          "explanation": "La audiencia y el contenido deben corresponder al grupo que necesita el aviso. Revisa antes de enviar: corregir después no garantiza retirar lo que alguien ya leyó, copió o compartió mientras estuvo accesible.",
+          "wrongExplanations": [
+            "La tipografía no decide quién recibe la dirección. Revisa audiencia y necesidad antes de publicar, especialmente si el editor conserva una elección pública de una actividad anterior con otros destinatarios o finalidad.",
+            "Publicar para comprobar convierte la duda en exposición. Las correcciones posteriores no garantizan retirar copias previas; utiliza los controles disponibles para elegir audiencia y contenido antes de confirmar el envío al servicio.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El editor heredó público y la reunión era pequeña, cariño; revisemos destinatarios antes de convertir una dirección personal en invitación abierta para cualquiera.",
+        "theory": "Audiencia y contenido requieren revisión conjunta; cambiar acceso después no garantiza retirar lo que otras personas ya pudieron leer, copiar o compartir antes del ajuste.",
+        "hint": "Piensa quién necesita el aviso y si el ajuste corresponde al grupo, sin esperar a publicar para descubrir quién podía consultar la información.",
+        "correct": "Elegiste destinatarios antes del envío; así limitas una exposición evitable sin prometer que cada integrante pierde la capacidad de copiar lo que recibe del grupo.",
+        "soft": "Una audiencia anterior puede heredarse; revisamos ajuste y contenido para que el aviso llegue a quienes necesitan conocer la reunión y no a cualquier visitante.",
+        "sharp": "El editor convirtió cuatro sillas en fiesta pública; qué maldita iniciativa social, corrijamos audiencia antes de soltar una dirección que alguien pueda copiar enseguida.",
+        "pass": "Ya ajustas publicaciones al propósito; revisar antes de enviar evita depender de un borrado posterior o tratar un grupo privado como barrera contra cualquier copia.",
+        "review": "Repasa audiencia, contenido y necesidad; limitar acceso inicial ayuda, pero no ofrece control perfecto sobre lo que hará cada destinatario con la información recibida."
+      }
+    },
+    {
+      "id": "web-privacy-copies-screenshots",
+      "title": "Privado no significa imposible de copiar",
+      "minutes": 3,
+      "intro": "Reconoce que destinatarios autorizados pueden guardar capturas o reenviar información y ajusta lo compartido sin confundir una audiencia limitada con una garantía contra cualquier copia posterior fuera de la plataforma.",
+      "sections": [
+        {
+          "title": "El destinatario también tiene decisiones",
+          "body": "Un grupo privado limita quién entra inicialmente, pero un participante puede copiar texto, fotografiar una pantalla o contar lo recibido por otra vía. Algunas funciones avisan o restringen ciertas capturas, sin impedir necesariamente todas las formas de copia. Antes de compartir datos sensibles, considera la necesidad, la confianza y las consecuencias de una difusión mayor. Si se trata de información ajena, conversa con la persona afectada y evita enviarla por simple comodidad cuando no existe una finalidad clara para ese grupo."
+        }
+      ],
+      "steps": [
+        "Evalúa qué ocurriría si el contenido saliera del grupo.",
+        "Comparte solo el detalle necesario y respeta los datos de otras personas."
+      ],
+      "scenario": "Un grupo ficticio tiene cinco integrantes y una etiqueta privada. Alguien propone enviar una fotografía del documento de otra compañera para organizar una actividad, aunque no necesitan esa imagen completa y la compañera no ha autorizado compartirla con los participantes.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite del grupo importa para decidir?",
+          "options": [
+            "Sus participantes todavía pueden copiar o reenviar información",
+            "La palabra privado impide toda fotografía de pantalla",
+            "Cinco personas nunca pueden causar una exposición importante"
+          ],
+          "answer": 0,
+          "explanation": "La audiencia limitada no elimina la capacidad de copia. Si el documento no es necesario y contiene información ajena, evita difundirlo y acuerda una alternativa que comparta menos datos para la actividad.",
+          "wrongExplanations": [
+            null,
+            "Privado describe acceso inicial y no impide toda copia. Una persona puede fotografiar o retransmitir información; reduce contenido sensible y respeta la decisión de la compañera cuyos datos aparecen en el documento.",
+            "Un grupo pequeño no garantiza ausencia de consecuencias si se copia información. Evalúa necesidad y sensibilidad, especialmente con documentos ajenos no autorizados cuando la tarea puede resolverse sin enviar esa imagen completa."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Cinco personas no forman un hechizo, cariño; antes de enviar ese documento ajeno pensemos si necesitan la imagen completa para organizar la actividad.",
+        "theory": "Un grupo limitado controla acceso inicial, no todas las copias posteriores; necesidad y decisión de la persona afectada siguen importando antes de compartir datos ajenos.",
+        "hint": "Piensa qué puede hacer un destinatario con la imagen y si una alternativa resolvería la tarea sin exponer el documento entero.",
+        "correct": "Reconociste el límite y evitaste tratar datos ajenos como material libre; preguntar y compartir menos permite organizar la actividad sin entregar una imagen innecesaria.",
+        "soft": "Privado tranquiliza, pero revisemos necesidad y copias posibles sin asumir mala intención; una alternativa más limitada puede proteger a la compañera y mantener la coordinación.",
+        "sharp": "Privado no apaga todas las cámaras, cariño; qué maldito hechizo cómodo sería, no regalemos un documento ajeno porque el grupo parezca pequeño o simpático.",
+        "pass": "Ya diferencias acceso inicial y copia; esa separación permite expectativas realistas y decisiones cuidadosas sobre documentos ajenos que no necesitas compartir completos para una actividad.",
+        "review": "Repasa quién necesita qué y las consecuencias de una copia fuera del grupo; una etiqueta privada no sustituye necesidad ni autorización de la persona afectada."
+      }
+    },
+    {
+      "id": "web-privacy-photo-metadata",
+      "title": "Lo que acompaña a una fotografía",
+      "minutes": 3,
+      "intro": "Comprende que una imagen puede incluir metadatos y revisa tanto el archivo como la escena antes de publicarla, sin confiar en que todas las plataformas retiren automáticamente ubicación u otras pistas.",
+      "sections": [
+        {
+          "title": "El archivo guarda más que la escena",
+          "body": "Una fotografía puede incluir fecha, modelo de dispositivo o coordenadas si se registraron al crearla. Ese conjunto depende del equipo, sus ajustes y el tratamiento posterior de la imagen. Algunas plataformas modifican o retiran metadatos, pero no todas las copias se comportan igual. Revisa propiedades con herramientas conocidas y utiliza opciones apropiadas para compartir sin información adicional cuando ese sea tu objetivo. Recuerda que lo visible en la escena también puede revelar lugares, personas o rutinas aunque retires datos técnicos del archivo."
+        }
+      ],
+      "steps": [
+        "Revisa propiedades de una imagen ficticia o no sensible.",
+        "Comprueba ubicación registrada y detalles visibles antes de publicar una copia."
+      ],
+      "scenario": "En una práctica ficticia quieres publicar un proyecto realizado en casa. La foto incluye coordenadas y muestra el número de puerta; no sabes qué metadatos conservará la copia descargable del servicio donde la subirías.",
+      "questions": [
+        {
+          "prompt": "¿Qué revisión protege mejor el objetivo de no revelar el domicilio?",
+          "options": [
+            "Solo cambiar el nombre del archivo",
+            "Revisar metadatos y también detalles visibles de la escena",
+            "Confiar en que todas las plataformas eliminan cualquier pista"
+          ],
+          "answer": 1,
+          "explanation": "La ubicación puede aparecer en metadatos y en la escena. Revisa ambas vías y comparte una copia adecuada al objetivo, sin confiar en que una plataforma retire toda pista ni en que renombrar cambie la imagen.",
+          "wrongExplanations": [
+            "Renombrar no retira necesariamente coordenadas ni oculta el número visible de la puerta. Revisa datos técnicos y escena: ambas partes pueden revelar domicilio aunque el título no contenga ninguna dirección personal escrita explícitamente.",
+            null,
+            "El tratamiento varía por servicio y una plataforma no necesariamente oculta lo visible. Comprueba ambas vías antes de publicar, sin atribuir una garantía universal a subir un archivo con coordenadas y número de puerta."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La foto luce bien, cariño, pero coordenadas y puerta también podrían presentar tu domicilio a una audiencia que solo necesitaba ver el proyecto de clase.",
+        "theory": "Metadatos y escena son fuentes distintas; retirar una no garantiza que la otra deje de revelar lugares o personas en la copia que decidas publicar.",
+        "hint": "Busca una revisión que abarque datos técnicos y lo visible sin depender de que el nombre o la plataforma retiren automáticamente cada pista personal.",
+        "correct": "Revisaste ambas fuentes; quitar coordenadas no borra detalles visibles y subir la imagen tampoco demuestra que toda información adicional desaparecerá de las copias descargables.",
+        "soft": "Es fácil olvidar el fondo; revisemos escena y archivo con herramientas conocidas antes de publicar información que no necesita acompañar la explicación del proyecto.",
+        "sharp": "El proyecto quería aplausos y la puerta daba la dirección; qué maldito entusiasmo, revisemos pistas técnicas y visuales antes de estrenar esa foto en público.",
+        "pass": "Ya miras imagen y archivo como fuentes diferentes; esa revisión ayuda a mostrar tu trabajo sin confiar ciegamente en el tratamiento que aplique cada plataforma.",
+        "review": "Repasa datos técnicos y escena; renombrar, retirar coordenadas o subir a una plataforma no garantiza eliminar cada pista que pueda revelar dónde tomaste la fotografía."
+      }
+    },
+    {
+      "id": "web-privacy-mail-pixels",
+      "title": "Imágenes que avisan al cargarse",
+      "minutes": 3,
+      "intro": "Comprende que cargar imágenes externas en un correo puede comunicar una apertura al remitente y revisa las opciones del cliente sin asumir que bloquear imágenes elimina cualquier forma posible de seguimiento del mensaje.",
+      "sections": [
+        {
+          "title": "El recurso también realiza una petición",
+          "body": "Un correo puede incluir imágenes alojadas en un servidor externo, incluso muy pequeñas. Al cargarlas, el cliente realiza una solicitud que puede aportar señales sobre la apertura, según sus protecciones y funcionamiento. Algunos servicios intermedian o limitan ese mecanismo, por lo que los resultados no son exactos en todos los casos. Revisa la carga automática de imágenes y decide cuándo permitirla. Bloquearlas puede cambiar la apariencia del mensaje, pero no elimina enlaces rastreables ni todos los datos que compartes al responder al remitente."
+        }
+      ],
+      "steps": [
+        "Localiza la opción de imágenes externas del correo.",
+        "Evalúa si necesitas cargarlas para entender un mensaje concreto."
+      ],
+      "scenario": "Un boletín ficticio incluye una imagen externa diminuta para medir aperturas. Tu cliente permite bloquear recursos remotos antes de ver el contenido y el texto del aviso puede leerse sin activar las imágenes del mensaje recibido.",
+      "questions": [
+        {
+          "prompt": "¿Qué acción limita esa solicitud externa concreta?",
+          "options": [
+            "Dejar bloqueada la carga de imágenes externas",
+            "Cambiar el color de la bandeja",
+            "Responder con todos tus datos para pedir anonimato"
+          ],
+          "answer": 0,
+          "explanation": "Bloquear la carga evita esa vía concreta de solicitud externa, según el cliente. No garantiza ausencia de otros seguimientos ni impide que compartir datos al responder revele información que decidiste enviar al remitente del boletín.",
+          "wrongExplanations": [
+            null,
+            "El color de la bandeja no controla la carga de recursos externos. Busca el ajuste de imágenes remotas y entiende su alcance para decidir si necesitas autorizar ese contenido en el mensaje que estás revisando.",
+            "Enviar datos personales añade una revelación y no neutraliza la medición del mensaje. Revisa el cliente y limita las imágenes externas si ese es tu objetivo, sin compartir secretos ni información innecesaria con el remitente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El correo trajo una imagen diminuta con ganas de avisar que llegaste; revisemos esa petición, cariño.",
+        "theory": "Cargar un recurso externo genera una solicitud; su información depende del cliente y de las protecciones que utilice.",
+        "hint": "Busca qué control cambia la descarga de recursos remotos, sin confundirla con el aspecto visual de toda la bandeja.",
+        "correct": "Limitaste esa petición externa concreta; ahora distingues bloquear imágenes de prometer que ningún otro dato podría comunicarse mediante el correo.",
+        "soft": "La imagen puede parecer inofensiva; revisemos cómo se carga antes de decidir si aporta algo necesario para leer el mensaje.",
+        "sharp": "Ese puntito quería llevar un registro de visitas; qué pequeña vocación de cotilla, veamos si necesita cargar ahora.",
+        "pass": "Ya conoces un mecanismo de medición del correo; decidir sobre imágenes externas permite ajustar exposición sin inventar garantías universales.",
+        "review": "Repasa qué petición impides y qué otros datos podrías compartir; bloquear una imagen no controla cada enlace o respuesta posterior."
+      }
+    },
+    {
+      "id": "web-privacy-url-parameters",
+      "title": "El equipaje del enlace",
+      "minutes": 3,
+      "intro": "Reconoce funciones distintas de los parámetros de una dirección y evita borrar partes sin entenderlas o compartir enlaces privados que puedan conceder acceso mediante valores incluidos en su URL.",
+      "sections": [
+        {
+          "title": "No todos los parámetros sirven igual",
+          "body": "Una dirección puede llevar información después de un signo de interrogación, como campañas, búsquedas o valores necesarios para una función. Algunos parámetros facilitan medición y otros pueden contener referencias privadas o acceso temporal. No publiques enlaces de recuperación o documentos privados para limpiarlos en herramientas desconocidas. Si necesitas compartir contenido público, utiliza el enlace de compartir oficial y comprueba su alcance. Borrar partes al azar puede romper la gestión y no demuestra que hayas eliminado todo mecanismo de seguimiento del sitio."
+        }
+      ],
+      "steps": [
+        "Distingue un enlace público de otro con acceso personal.",
+        "Utiliza el mecanismo oficial de compartir y comprueba su audiencia."
+      ],
+      "scenario": "En una actividad ficticia recibes un enlace de recuperación con un valor largo después del signo de interrogación. Un desconocido ofrece limpiarlo si lo pegas en su página pública para quitar supuestos rastreadores del proveedor de correo.",
+      "questions": [
+        {
+          "prompt": "¿Cómo debes tratar ese enlace de recuperación?",
+          "options": [
+            "Publicarlo porque cualquier parámetro es publicidad",
+            "Como información privada que no debes entregar al comprobador",
+            "Borrar piezas hasta que deje de funcionar y compartir lo que quede"
+          ],
+          "answer": 1,
+          "explanation": "El enlace puede contener un valor que permita recuperar o acceder a una cuenta. No lo entregues a herramientas desconocidas; utiliza únicamente el proceso oficial y no supongas que todos los parámetros son publicidad inocua o información prescindible.",
+          "wrongExplanations": [
+            "Los parámetros pueden tener funciones sensibles, como autorizar una recuperación. Publicarlos puede conceder acceso a otra persona; no los clasifiques todos como medición y conserva el enlace dentro del proceso oficial de la cuenta para la que fue emitido.",
+            null,
+            "Borrar partes sin entender su función puede romper el proceso y no garantiza retirar información sensible. No compartas el enlace de recuperación; vuelve al proveedor oficial si necesitas iniciar o completar de forma segura esa gestión personal de acceso."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Ese enlace lleva equipaje después del interrogante, cariño; antes de compartirlo averiguamos si transporta campaña, búsqueda o una llave personal.",
+        "theory": "Los parámetros tienen funciones diferentes; no todos son rastreadores y algunos pueden conceder acceso que deberías mantener dentro del proceso oficial.",
+        "hint": "Piensa qué podría conseguir otra persona con un enlace de recuperación, en lugar de juzgarlo solo por tener texto adicional.",
+        "correct": "Trataste el enlace como información privada; buena decisión antes de permitir que un supuesto limpiador reciba una posible vía de acceso.",
+        "soft": "La palabra limpieza suena útil; revisemos primero la función del enlace para no enviar una información sensible a un servicio desconocido.",
+        "sharp": "El limpiador quería lavar tu enlace en su plaza pública; qué maldita comodidad para quien busque una llave de recuperación ajena.",
+        "pass": "Ya distingues parámetros por contexto y función; esa revisión evita convertir una buena intención de privacidad en otra revelación innecesaria de acceso.",
+        "review": "Repasa la diferencia entre compartir contenido público y entregar un enlace personal; ningún nombre de herramienta justifica exponer datos de recuperación de tu cuenta."
+      }
+    },
+    {
+      "id": "web-privacy-link-audience",
+      "title": "Compartir con acceso limitado",
+      "minutes": 3,
+      "intro": "Aprende a revisar quién puede abrir un enlace de documentos y distingue acceso para personas concretas de una opción disponible para cualquiera que reciba la dirección por algún canal de comunicación del grupo.",
+      "sections": [
+        {
+          "title": "El enlace puede ser una invitación amplia",
+          "body": "Los servicios de documentos pueden ofrecer acceso a personas específicas, al grupo o a cualquiera con el enlace. Son alcances diferentes y dependen de sus controles. Antes de compartir, elige la audiencia y si necesita leer o editar. Un enlace enviado por chat privado puede seguir permitiendo acceso amplio si su configuración no está restringida. Revisa desde el servicio quién conserva permisos y evita publicar direcciones de materiales que contienen información personal sin comprobar antes el alcance efectivo que concede ese enlace."
+        }
+      ],
+      "steps": [
+        "Comprueba la audiencia del documento desde su panel oficial.",
+        "Distingue lectura y edición antes de compartir el enlace."
+      ],
+      "scenario": "Un documento ficticio de clase contiene teléfonos del grupo y está configurado para cualquiera con el enlace. Lo envías a dos compañeros en privado, pero el ajuste permite abrirlo a otras personas que reciban después esa misma dirección compartida.",
+      "questions": [
+        {
+          "prompt": "¿Qué determina el acceso efectivo al documento?",
+          "options": [
+            "Solo el tono amable del mensaje",
+            "El número de palabras del enlace",
+            "Los permisos configurados en el servicio del documento"
+          ],
+          "answer": 2,
+          "explanation": "El acceso depende de los permisos del documento, además de cómo se distribuye la dirección. Un chat privado no limita por sí mismo una configuración de cualquiera con el enlace; elige personas concretas si ese es el alcance que necesitas.",
+          "wrongExplanations": [
+            "La amabilidad no modifica autorizaciones del documento. Revisa la audiencia real y decide si esas personas necesitan leer o editar, porque el enlace puede conservar un alcance amplio aunque el mensaje que lo contiene se envíe de forma privada.",
+            "La longitud no establece quién puede abrir el documento. La configuración del servicio define el permiso y un enlace largo también puede ser accesible para cualquiera que lo reciba si no restringiste la audiencia desde el panel oficial.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El chat era privado, cariño, pero el documento invitaba a cualquiera con la dirección; revisemos quién tiene realmente permiso de entrada.",
+        "theory": "La audiencia del archivo y la del mensaje son distintas; compartir en privado no cambia automáticamente los permisos del documento remoto.",
+        "hint": "Busca el control que decide quién abre el archivo, en lugar de observar solamente el canal por donde enviaste la dirección.",
+        "correct": "Encontraste los permisos reales; ahora puedes limitar el documento sin confiar en que el tono privado del chat cierre una invitación amplia.",
+        "soft": "Las dos audiencias se confunden fácilmente; revisemos el panel del archivo y qué acceso necesita cada persona antes de volver a compartirlo.",
+        "sharp": "El chat susurró mientras el documento gritaba pasen todos; qué maldita coordinación, pongamos el límite donde realmente se controla el archivo.",
+        "pass": "Ya relacionas enlaces con permisos efectivos; comprobar lectura y edición evita ofrecer más acceso del necesario a materiales que contienen datos personales del grupo.",
+        "review": "Repasa quién puede abrir y qué puede hacer dentro del documento; el canal de envío no sustituye esas dos decisiones del servicio que lo conserva."
+      }
+    },
+    {
+      "id": "web-privacy-access-duration",
+      "title": "Cuando termina una colaboración",
+      "minutes": 3,
+      "intro": "Revisa accesos al terminar colaboraciones y comprende que retirar permisos limita aperturas futuras del recurso, pero no elimina automáticamente copias guardadas mientras las personas estaban autorizadas para consultarlo.",
+      "sections": [
+        {
+          "title": "El permiso también tiene duración útil",
+          "body": "Una colaboración puede necesitar acceso temporal a ciertos archivos. Cuando termina, revisa quién conserva permisos y retira lo que ya no corresponde, usando expiraciones si el servicio las ofrece y entiendes su efecto. Eso limita acceso futuro al recurso original, pero no recoge copias o capturas que alguien haya guardado. Comparte solo lo necesario desde el inicio y acuerda el tratamiento de materiales sensibles con los participantes. La revisión posterior complementa esas decisiones, sin reemplazarlas ni ofrecer borrado remoto universal de todo lo recibido."
+        }
+      ],
+      "steps": [
+        "Revisa accesos al terminar la actividad.",
+        "Retira permisos innecesarios y comprueba expiraciones disponibles en el servicio."
+      ],
+      "scenario": "En una práctica ficticia compartiste un documento durante una semana. La tarea terminó y retiraste el permiso del colaborador, pero esa persona descargó una copia cuando todavía estaba autorizada para participar.",
+      "questions": [
+        {
+          "prompt": "¿Qué límite debes recordar al retirar el acceso?",
+          "options": [
+            "No borra automáticamente la copia que el colaborador ya descargó",
+            "Impide que exista cualquier fotografía previa de la pantalla",
+            "Hace que todos los dispositivos olviden lo leído"
+          ],
+          "answer": 0,
+          "explanation": "Retirar permisos actúa sobre futuras aperturas del recurso según el servicio. No elimina automáticamente copias descargadas antes; por eso conviene compartir lo necesario desde el comienzo y acordar cómo se tratarán materiales sensibles al terminar una colaboración.",
+          "wrongExplanations": [
+            null,
+            "La retirada no impide una fotografía realizada mientras había acceso. Reduce exposición futura del original, pero copias anteriores requieren acuerdos y gestión propia, sin prometer control técnico sobre dispositivos de otras personas.",
+            "El control de acceso no elimina recuerdos, lecturas o copias previas. Limita futuras consultas del recurso original y complementa las decisiones iniciales sobre necesidad y sensibilidad de la información compartida durante una colaboración."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La tarea terminó y el permiso seguía sentado en la mesa, cariño; revisemos qué acceso necesita todavía ese antiguo colaborador del documento.",
+        "theory": "Retirar acceso limita nuevas aperturas, pero las copias anteriores requieren otra consideración; la duración del permiso no controla todo lo que alguien pudo guardar.",
+        "hint": "Piensa si el servicio administra el archivo original o también cada copia que otra persona descargó mientras estaba autorizada para participar en la actividad.",
+        "correct": "Reconociste el límite; revisar accesos sigue siendo útil, pero no describe un borrado remoto de cada copia que salió durante la colaboración del grupo.",
+        "soft": "Podemos retirar lo innecesario sin prometer lo imposible; distinguimos el documento original de materiales que pudieron copiarse antes bajo un permiso legítimo de acceso.",
+        "sharp": "Cerrar la puerta no teletransporta de vuelta cada copia, qué maldita comodidad sería; por eso decidimos también cuánto compartir desde el principio de la actividad.",
+        "pass": "Ya revisas accesos al terminar una tarea; limitar duración y contenido desde el inicio ayuda más que confiar en recuperar todas las copias después.",
+        "review": "Repasa permisos actuales y copias previas; cerrar acceso complementa las decisiones iniciales sobre qué compartir y cómo tratar materiales sensibles al terminar la colaboración."
+      }
+    },
+    {
+      "id": "web-privacy-contact-upload",
+      "title": "Tu agenda contiene a otras personas",
+      "minutes": 3,
+      "intro": "Comprende que sincronizar contactos puede transmitir datos ajenos y busca alternativas cuando una función social no necesita recibir toda tu agenda para realizar una búsqueda concreta dentro del servicio.",
+      "sections": [
+        {
+          "title": "Una comodidad con datos ajenos",
+          "body": "Una aplicación puede ofrecer encontrar amistades mediante la agenda del dispositivo. Ese paso puede enviar nombres, teléfonos u otros campos de tus contactos al proveedor, según el servicio y permiso. Antes de aceptar, revisa qué utiliza y si puedes buscar a una persona manualmente. Tu agenda contiene información de terceros que quizá no esperan ese uso. Limitar el permiso reduce una vía de entrega, pero no garantiza que el proveedor no conozca relaciones por otras fuentes o datos que otras personas hayan compartido."
+        }
+      ],
+      "steps": [
+        "Lee qué acceso pide la función de encontrar contactos.",
+        "Comprueba si puedes añadir a una persona manualmente sin subir toda la agenda."
+      ],
+      "scenario": "Una aplicación ficticia pide toda tu agenda para encontrar a un compañero. También permite escribir su usuario manualmente; conservas teléfonos de familiares que no necesitan participar en esa búsqueda puntual dentro del servicio.",
+      "questions": [
+        {
+          "prompt": "¿Qué alternativa reduce datos ajenos entregados para esa tarea?",
+          "options": [
+            "Subir toda la agenda porque la sugerencia es cómoda",
+            "Buscar manualmente al compañero por su usuario",
+            "Añadir más contactos antes de aceptar para mejorar la precisión"
+          ],
+          "answer": 1,
+          "explanation": "La búsqueda manual cumple esa tarea sin transmitir toda la agenda. Reduce una entrega concreta de datos ajenos, aunque no garantiza que el proveedor desconozca relaciones por otras fuentes o por lo que compartan otros usuarios.",
+          "wrongExplanations": [
+            "La comodidad no elimina considerar a otras personas de la agenda. Si buscas un usuario y existe opción manual, puedes completar la tarea sin conceder acceso amplio a todos los contactos guardados en el dispositivo.",
+            null,
+            "Añadir contactos amplía información compartida y no ayuda a limitar esa búsqueda. Utiliza la alternativa manual y revisa la finalidad antes de entregar una colección de teléfonos o nombres que también pertenece a otras personas."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Tu agenda incluye familiares que no pidieron entrar aquí, cariño; busquemos al compañero sin organizar una excursión completa con sus números personales hacia otro servicio.",
+        "theory": "Los contactos contienen datos ajenos; revisar finalidad y alternativas permite decidir si una búsqueda necesita toda la colección o solo un usuario.",
+        "hint": "Compara encontrar una persona con transmitir la agenda y busca una forma de cumplir la tarea entregando menos información ajena al proveedor.",
+        "correct": "Elegiste la búsqueda manual y evitaste subir la agenda; una función social puede ayudar sin recibir automáticamente cada número que conservas por otros motivos personales.",
+        "soft": "Encontrar amistades parece una ayuda normal; revisemos qué pide y si la tarea necesita realmente sincronizar toda la información de contactos guardada dentro del dispositivo.",
+        "sharp": "Para encontrar a uno quería conocer a la familia; qué maldita reunión, el buscador manual resuelve la tarea sin pasar lista completa.",
+        "pass": "Ya consideras datos ajenos al conceder permisos; reducir una transmisión no promete invisibilidad, pero evita compartir toda la agenda para una búsqueda puntual.",
+        "review": "Repasa quién aparece en la agenda y qué necesita la función; una autorización tuya también afecta datos ajenos, así que comprueba alternativas antes."
+      }
+    },
+    {
+      "id": "web-privacy-ad-personalization",
+      "title": "Personalización no es toda publicidad",
+      "minutes": 3,
+      "intro": "Distingue limitar publicidad personalizada de eliminar todos los anuncios o impedir cualquier recopilación y revisa qué cambia realmente el control ofrecido por un servicio antes de interpretar sus efectos sobre tu experiencia de navegación cotidiana.",
+      "sections": [
+        {
+          "title": "Un interruptor con alcance concreto",
+          "body": "Un servicio puede permitir desactivar parte de la personalización publicitaria según sus condiciones. Eso no significa necesariamente que desaparezcan anuncios ni que deje de tratar toda información para otras funciones. Lee qué categoría modifica el control y revisa opciones de cuenta o navegador por separado. La publicidad puede basarse en contexto sin utilizar el mismo historial personalizado. No atribuyas a una preferencia un efecto universal sobre todos los proveedores, dispositivos o datos que hayas compartido previamente con una cuenta iniciada en distintos lugares."
+        }
+      ],
+      "steps": [
+        "Lee qué uso modifica el control publicitario.",
+        "Comprueba si el ajuste afecta una cuenta, dispositivo o servicio concreto."
+      ],
+      "scenario": "En una simulación desactivas anuncios personalizados y todavía ves publicidad relacionada con el artículo que estás leyendo. El servicio explica que conserva anuncios contextuales y no promete eliminar cada anuncio ni toda información necesaria para otras funciones de la página.",
+      "questions": [
+        {
+          "prompt": "¿Qué expectativa es razonable para ese ajuste?",
+          "options": [
+            "Debe borrar cualquier anuncio de todas las páginas",
+            "Demuestra que el navegador dejó de enviar cualquier dato",
+            "Limita el uso descrito sin garantizar ausencia de publicidad"
+          ],
+          "answer": 2,
+          "explanation": "El control modifica un uso definido, no toda publicidad ni cada tratamiento. Los anuncios contextuales pueden continuar; revisa la descripción y separa esa preferencia de otros ajustes de cuenta o navegador con alcances diferentes.",
+          "wrongExplanations": [
+            "Desactivar personalización no retira anuncios de todas las páginas o proveedores. Lee el alcance: puede continuar publicidad contextual y tratamiento de datos para funciones que no pertenecen a esa categoría concreta de personalización.",
+            "El sitio sigue recibiendo solicitudes para funcionar y puede tratar información para otras finalidades. Interpreta la preferencia según su descripción, sin convertirla en una garantía general de invisibilidad ante cualquier destinatario de datos.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Apagaste personalización y el anuncio seguía, cariño; revisemos lo que prometía ese control antes de declararlo roto porque todavía muestra publicidad sobre el artículo.",
+        "theory": "La preferencia modifica usos concretos según el proveedor; no elimina todos los anuncios ni cada tratamiento de información dentro de la cuenta.",
+        "hint": "Piensa en usar historial frente a mostrar publicidad del artículo; busca una interpretación que respete la descripción sin prometer ausencia de toda información o anuncio.",
+        "correct": "Reconociste el alcance del ajuste; eso permite evaluar su efecto sin confundir un anuncio contextual con prueba de que toda protección de privacidad falló.",
+        "soft": "Los nombres pueden sonar amplios; revisamos la descripción para saber qué uso cambia y qué podría continuar bajo otras funciones o categorías del mismo servicio.",
+        "sharp": "El interruptor no extermina publicidad de toda la maldita web; leamos qué cambia antes de atribuirle una promesa universal que nunca explicó en su descripción.",
+        "pass": "Ya interpretas preferencias por su alcance; distinguir un uso de toda publicidad permite revisar otras opciones con objetivos diferentes y expectativas realistas.",
+        "review": "Repasa qué cambiaste y qué sigue permitido; ver publicidad no demuestra un fallo ni desactivarla convierte cada conexión en invisible ante el sitio."
+      }
+    },
+    {
+      "id": "web-privacy-retention-time",
+      "title": "Durante cuánto tiempo se conserva",
+      "minutes": 3,
+      "intro": "Aprende a preguntar por criterios de conservación y distingue reducir entregas futuras de gestionar datos existentes, entendiendo que un proveedor puede aplicar condiciones diferentes a distintas categorías de información.",
+      "sections": [
+        {
+          "title": "Conservar también es una decisión de alcance",
+          "body": "Un proveedor puede conservar categorías durante plazos distintos o según criterios explicados en su información oficial. No asumas que dejar de usar un sitio borra automáticamente la cuenta o cada registro. Busca qué conserva, por cuánto tiempo y con qué motivo, incluyendo cómo solicitar una revisión o eliminación cuando exista ese mecanismo. Si la explicación no resulta clara, consulta al contacto oficial. Evita inventar garantías legales universales: las obligaciones y procedimientos dependen del contexto, el servicio y las reglas que puedan aplicarse a ese tratamiento concreto de información."
+        }
+      ],
+      "steps": [
+        "Busca plazo o criterio de conservación de un dato específico.",
+        "Distingue dejar de enviarlo de solicitar gestión sobre lo que ya existe."
+      ],
+      "scenario": "En una simulación dejas de visitar una plataforma que conserva tareas antiguas. Su información explica períodos distintos por categoría y quieres saber qué ocurre con documentos subidos durante el curso que ya terminaste.",
+      "questions": [
+        {
+          "prompt": "¿Qué pregunta ayuda a entender esa conservación?",
+          "options": [
+            "Qué plazo o criterio aplica a esas tareas y cómo gestionarlas",
+            "Cuánto mide el logotipo del sitio",
+            "Si no entrar una semana obliga a borrar toda información"
+          ],
+          "answer": 0,
+          "explanation": "Preguntar por la categoría y sus controles aclara el tratamiento. Dejar de visitar no demuestra eliminación automática; consulta plazos o criterios y utiliza el procedimiento disponible para gestionar documentos que el servicio todavía conserva.",
+          "wrongExplanations": [
+            null,
+            "El tamaño del logotipo no explica conservación ni controles. Busca la categoría de documentos y sus criterios para decidir si necesitas mantenerlos, descargarlos o pedir retirada mediante el procedimiento oficial que ofrezca el proveedor.",
+            "No asumas borrado universal por una semana de inactividad. Los criterios varían; revisa qué aplica a esas tareas y consulta el canal oficial sin inventar una regla que el caso no establece para esa cuenta."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Las tareas no recibieron tu despedida, cariño; revisemos cuánto conserva el servicio esos documentos y qué controles ofrece para gestionarlos después del curso.",
+        "theory": "La duración depende de categorías y criterios; dejar de visitar no borra automáticamente lo enviado ni explica qué conserva el proveedor en tu cuenta.",
+        "hint": "Busca una pregunta sobre tus documentos y su duración, sin sustituir información oficial por un plazo inventado o por detalles visuales ajenos a su tratamiento.",
+        "correct": "Preguntaste por categoría y procedimiento; esa información permite decidir sin asumir que dejar de entrar ordenó al servidor borrar cada tarea que habías enviado antes.",
+        "soft": "La inactividad parece una despedida, pero revisamos las condiciones del proveedor; distintas categorías pueden conservarse de forma diferente aunque el curso ya haya terminado.",
+        "sharp": "No visitar no manda una orden telepática de borrado, cariño; qué maldita comodidad, preguntemos por las tareas antes de inventar cuánto debía recordarlas el servicio.",
+        "pass": "Ya consideras duración como parte de privacidad; gestionar información existente y reducir entregas futuras son objetivos distintos que necesitan controles apropiados del servicio que utilizaste.",
+        "review": "Repasa categoría, criterio y controles; utiliza información oficial sin inventar garantías universales ni dar por borradas copias por un período de inactividad no explicado."
+      }
+    },
+    {
+      "id": "web-privacy-account-export",
+      "title": "Tu copia también merece protección",
+      "minutes": 3,
+      "intro": "Comprende que exportar una cuenta crea otra colección sensible y prepara un destino adecuado antes de descargarla, revisando qué contendrá y quién podrá acceder a ese archivo de datos.",
+      "sections": [
+        {
+          "title": "Exportar no reduce por sí mismo la exposición",
+          "body": "Algunos servicios permiten descargar una copia de datos de la cuenta. El archivo puede reunir información que antes estaba repartida, como mensajes, contactos o actividad, y merece protección adecuada. Inicia la solicitud solo desde el proveedor oficial, entiende qué categorías incluirá y utiliza un dispositivo de confianza para recibirla. No la descargues en un equipo compartido por comodidad. Exportar no elimina la copia del servidor ni demuestra que la exportación incluya absolutamente todo lo que el proveedor conserva bajo distintas categorías o condiciones de su funcionamiento."
+        }
+      ],
+      "steps": [
+        "Comprueba el contenido previsto de la exportación.",
+        "Prepara un dispositivo y almacenamiento a los que solo accedan personas autorizadas."
+      ],
+      "scenario": "Un servicio ficticio ofrece exportar años de mensajes y contactos. Estás en un ordenador público, pero puedes esperar a tu dispositivo de confianza para recibir la copia y guardarla de forma adecuada.",
+      "questions": [
+        {
+          "prompt": "¿Qué decisión reduce el riesgo de la nueva copia?",
+          "options": [
+            "Descargarla en el equipo público y dejarla en Escritorio",
+            "Preparar un destino protegido y descargar desde tu dispositivo fiable",
+            "Publicarla primero para comprobar que la exportación funciona"
+          ],
+          "answer": 1,
+          "explanation": "Preparar destino evita concentrar datos personales en un equipo público. Exportar crea una copia que debes proteger; no elimina automáticamente información remota ni justifica publicar el archivo para comprobar si funciona o llegó completo.",
+          "wrongExplanations": [
+            "Dejar la copia en un equipo público puede exponer información a otros usuarios. Espera un dispositivo fiable y prepara almacenamiento, revisando categorías incluidas y cómo protegerlas antes de solicitar o descargar el archivo del proveedor.",
+            null,
+            "Publicar expone datos que querías revisar personalmente y no es una prueba necesaria. Comprueba la copia en un entorno adecuado sin compartir mensajes o contactos ajenos que puedan estar dentro de esa recopilación exportada desde tu cuenta."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "La exportación junta años en una caja, cariño; decidamos dónde guardarla antes de dejar mensajes y contactos sobre una mesa compartida con personas desconocidas.",
+        "theory": "La copia descargada necesita protección; exportar no borra el servidor ni demuestra que incluya cada categoría que el proveedor conserve dentro de sus sistemas.",
+        "hint": "Busca una opción que prepare dispositivo y acceso al archivo, sin usar equipos públicos o publicaciones abiertas como prueba para información personal acumulada durante años.",
+        "correct": "Preparaste destino antes de reunir datos; una revisión personal no necesita convertir mensajes y contactos en material disponible para usuarios de un equipo compartido.",
+        "soft": "Es comprensible querer revisar pronto; preparar almacenamiento y acceso conserva el objetivo sin exponer una colección que puede contener datos propios y de otras personas.",
+        "sharp": "Una caja de secretos en el Escritorio público sería una maldita exhibición; exportar no pone escolta a cada copia que dejes disponible ante otros usuarios.",
+        "pass": "Ya entiendes que obtener copia crea responsabilidad; destino, acceso y duración requieren decisiones propias, separadas de la información remota que el proveedor todavía puede conservar.",
+        "review": "Repasa contenido, destino y acceso; exportar obtiene una copia, mientras protegerla y gestionar información remota necesitan decisiones diferentes y controles propios en cada lugar."
+      }
+    },
+    {
+      "id": "web-privacy-deletion-limits",
+      "title": "Borrar con expectativas realistas",
+      "minutes": 3,
+      "intro": "Distingue retirar contenido visible de eliminar todas sus copias y consulta el alcance oficial antes de prometer desaparición completa de datos que podrían conservar destinatarios, respaldos u otros sistemas.",
+      "sections": [
+        {
+          "title": "La retirada puede tener varios alcances",
+          "body": "Eliminar una publicación puede impedir que siga apareciendo mediante el servicio, pero otras personas podrían haberla copiado y el proveedor puede tener procesos de conservación o respaldo. Lee qué implica el control utilizado y consulta al contacto oficial si necesitas aclaraciones sobre datos sensibles. No prometas desaparición universal por pulsar borrar. Antes de eliminar una cuenta completa, revisa dependencias y material que necesitas conservar. Si existe un incidente, sigue las indicaciones del responsable para preservar evidencia antes de retirar información que podría servir para investigarlo."
+        }
+      ],
+      "steps": [
+        "Lee qué efecto describe el control de eliminación.",
+        "Distingue contenido visible, copias de destinatarios y conservación del proveedor."
+      ],
+      "scenario": "En un caso ficticio borras una publicación con un teléfono y desaparece del perfil. Un compañero había capturado la pantalla y todavía desconoces cómo gestiona el proveedor sus respaldos de la información retirada.",
+      "questions": [
+        {
+          "prompt": "¿Qué conclusión permite afirmar lo observado?",
+          "options": [
+            "Toda copia mundial desapareció inmediatamente",
+            "Nadie pudo leer el teléfono antes de borrarlo",
+            "La publicación dejó de verse, sin probar que desaparecieran todas las copias"
+          ],
+          "answer": 2,
+          "explanation": "Solo confirmas retirada visible, no eliminación de capturas o respaldos. Revisa el alcance oficial y consulta si hace falta, sin convertir un resultado concreto en garantía universal sobre sistemas o personas que conservan copias.",
+          "wrongExplanations": [
+            "El perfil no controla capturas anteriores ni demuestra el estado de respaldos. Sabes que la publicación dejó de verse; otros alcances necesitan información del proveedor o gestión con quienes recibieron copias mientras estuvo accesible.",
+            "Retirar después no demuestra ausencia de lectores anteriores. Si el teléfono estuvo visible, pudo existir exposición; evalúa contexto y medidas según sensibilidad y audiencia, evitando afirmar un resultado que no permite comprobar el caso presentado.",
+            null
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "El teléfono salió del perfil, cariño; separemos ese resultado de una promesa universal sobre capturas, respaldos y personas que pudieron leerlo antes de la retirada.",
+        "theory": "Borrar puede retirar lo visible, pero copias previas y conservación interna tienen alcances propios; revisar el procedimiento permite entender lo confirmado sin inventar desaparición universal.",
+        "hint": "Piensa qué demuestra un perfil sin la publicación y qué falta saber sobre capturas o respaldos; busca una conclusión apoyada en lo observado del escenario.",
+        "correct": "Elegiste una conclusión proporcionada: retirada visible confirmada, otras copias pendientes de contexto; esa precisión evita prometer que capturas y respaldos desaparecieron al mismo tiempo.",
+        "soft": "Borrar puede sonar absoluto; distinguimos la reducción de exposición futura de información sobre copias anteriores, sin asumir que nadie leyó el contenido antes de retirarlo.",
+        "sharp": "El botón no lanza rayos contra todas las capturas, cariño; reconozcamos lo que cambió sin atribuirle poderes sobre cada dispositivo que recibió la publicación.",
+        "pass": "Ya evalúas retirada por su alcance; limitar nuevas consultas es útil aunque otras copias o plazos necesiten una gestión diferente según dato, audiencia y proveedor.",
+        "review": "Repasa cambios e información pendiente; entiende los controles antes de prometer desaparición universal y preserva evidencia según las instrucciones del responsable si existe un incidente."
+      }
+    },
+    {
+      "id": "web-privacy-privacy-routine",
+      "title": "Tu revisión breve de privacidad",
+      "minutes": 3,
+      "intro": "Combina objetivos, audiencias, permisos y conservación en una revisión periódica sostenible, priorizando cambios concretos sin esperar que una herramienta o limpieza local resuelva toda la privacidad de tus actividades.",
+      "sections": [
+        {
+          "title": "Un recorrido que puedes repetir",
+          "body": "Empieza por una cuenta o actividad importante y define qué información quieres limitar. Revisa lo que publicas, quién puede acceder, qué permisos y conexiones conserva el servicio y qué copias locales o remotas existen. Retira lo innecesario con los controles apropiados y comprueba el efecto sin asumir garantías universales. Anota lo que necesite una consulta al proveedor. Repite cuando cambie tu uso, un dispositivo o una colaboración. La privacidad se mantiene mejor con decisiones comprensibles y revisables que con promesas de ocultación absoluta para cualquier situación de tu vida digital."
+        }
+      ],
+      "steps": [
+        "Elige una cuenta y un objetivo concreto de reducción de exposición.",
+        "Revisa audiencia, permisos, copias y conservación por separado.",
+        "Comprueba un cambio y anota las dudas que necesitan información oficial del proveedor."
+      ],
+      "scenario": "En una simulación terminas un curso y quieres conservar apuntes sin compartir contactos o documentos con colaboradores antiguos. Puedes revisar una cuenta, sus accesos y copias sin depender de una promesa de borrado universal.",
+      "questions": [
+        {
+          "prompt": "¿Qué plan corresponde a esa revisión?",
+          "options": [
+            "Definir el objetivo y revisar cada acceso o copia con su control adecuado",
+            "Usar modo privado como solución universal para datos ya enviados",
+            "Borrar historial y dar por retirados todos los permisos remotos"
+          ],
+          "answer": 0,
+          "explanation": "Definir objetivo y revisar controles específicos permite actuar donde existe la información. Historial y modo privado no retiran automáticamente permisos remotos; comprueba cada cambio y consulta lo que falta antes de dar la revisión por terminada.",
+          "wrongExplanations": [
+            null,
+            "El modo privado limita ciertos rastros locales, no información o permisos remotos ya existentes. Identifica audiencias, conexiones y copias concretas para utilizar los controles adecuados y reducir exposición según el objetivo que definiste después del curso.",
+            "Limpiar historial no revoca permisos ni elimina documentos del servidor por sí mismo. Revisa accesos y copias desde sus controles, conserva lo necesario y comprueba el resultado sin asumir que otro ámbito también cambió automáticamente."
+          ]
+        }
+      ],
+      "sourceIds": [
+        "mozilla-privacy"
+      ],
+      "diagram": "privacy",
+      "aoi": {
+        "intro": "Última revisión, cariño: elegimos un objetivo y buscamos sus puertas reales; reducir una exposición importante no exige perseguir toda Internet ni comprar una etiqueta milagrosa.",
+        "theory": "Ubicaciones, audiencias y permisos tienen controles distintos; revisar cada parte evita esperar que una sola limpieza retire toda información ya compartida con servicios y personas.",
+        "hint": "Compara conservar apuntes con mantener accesos antiguos y busca un plan que actúe donde se controla cada permiso, documento o copia que necesitas revisar.",
+        "correct": "Elegiste una revisión concreta y comprobable; conservas lo útil mientras retiras exposición innecesaria, dejando dudas para información oficial sin prometer que un botón resuelva todo.",
+        "soft": "Empieza por una cuenta importante y comprueba un cambio comprensible; no necesitas revisar todo hoy ni borrar materiales necesarios por prisa ante la tarea.",
+        "sharp": "Un botón universal sería una maldita maravilla publicitaria; revisemos permisos y copias donde se controlan, en lugar de pedir milagros remotos al historial del navegador.",
+        "pass": "Terminaste con método propio: definir, localizar, limitar y comprobar; repetirlo cuando cambien actividades mantiene decisiones comprensibles sobre datos, accesos y copias que necesitas gestionar.",
+        "review": "Repasa objetivo, ubicación, audiencia y acceso; comprueba resultados con expectativas realistas y consulta lo pendiente sin prometer cambios universales sobre información que no administras directamente."
+      }
+    }
+  ]
+}

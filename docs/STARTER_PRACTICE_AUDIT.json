@@ -1,0 +1,29 @@
+{
+  "courses_expanded": 3,
+  "added_lessons": 24,
+  "added_exercises": 72,
+  "starter_exercises_per_course": 30,
+  "academy_lessons": 430,
+  "academy_exercises": 930,
+  "authored_aoi_lines": 456,
+  "unique_aoi_lines": 456,
+  "theories": 24,
+  "theory_words": 2048,
+  "independent_exercise_cases": 72,
+  "answer_explanations": 216,
+  "files": [
+    {
+      "path": "assets/practice/foundations.json",
+      "sha256": "5138e8c6d196ec3123e4f806ddd2d66a9636906a3016350d1dd4c12a0014c78c"
+    },
+    {
+      "path": "assets/practice/identity.json",
+      "sha256": "50631181b6b1714a3275f1530059dc228b2c0b90232efd33a05778ff077a644e"
+    },
+    {
+      "path": "assets/practice/phishing.json",
+      "sha256": "74e00cde029852cc37dc6c7ca4012b82a98d89a31d8edaa3bb9adf721bd22ae4"
+    }
+  ],
+  "errors": []
+}

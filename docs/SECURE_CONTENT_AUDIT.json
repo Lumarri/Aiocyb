@@ -1,0 +1,341 @@
+{
+  "partial_check": false,
+  "courses": 4,
+  "lessons": 40,
+  "exercises": 120,
+  "explained_cases": 80,
+  "theory_words": 27038,
+  "minimum_theory_words_per_lesson": 634,
+  "maximum_theory_words_per_lesson": 714,
+  "authored_aoi_lines": 964,
+  "unique_aoi_lines": 964,
+  "answer_explanations": 360,
+  "academy_courses": 25,
+  "academy_lessons": 430,
+  "academy_exercises": 930,
+  "lesson_details": [
+    {
+      "id": "crypto-foundations-objetivos",
+      "theory_words": 634,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-representacion",
+      "theory_words": 635,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-resumenes",
+      "theory_words": 645,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-simetrico",
+      "theory_words": 653,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-autenticado",
+      "theory_words": 643,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-pares",
+      "theory_words": 648,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-firmas",
+      "theory_words": 651,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-certificados",
+      "theory_words": 653,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-azar",
+      "theory_words": 658,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "crypto-foundations-decision",
+      "theory_words": 654,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-inventario",
+      "theory_words": 667,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-almacenamiento",
+      "theory_words": 673,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-contrasenas",
+      "theory_words": 662,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-datos",
+      "theory_words": 676,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-entrega",
+      "theory_words": 660,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-rotacion",
+      "theory_words": 677,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-repositorio",
+      "theory_words": 674,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-exposicion",
+      "theory_words": 670,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-recuperacion",
+      "theory_words": 683,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "keys-data-plan",
+      "theory_words": 681,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-peticion",
+      "theory_words": 676,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-origen",
+      "theory_words": 681,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-cookies",
+      "theory_words": 686,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-sesiones",
+      "theory_words": 697,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-permisos",
+      "theory_words": 684,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-csrf",
+      "theory_words": 692,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-xss",
+      "theory_words": 700,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-transporte",
+      "theory_words": 683,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-politicas",
+      "theory_words": 675,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "web-security-archivos",
+      "theory_words": 670,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-contratos",
+      "theory_words": 703,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-validacion",
+      "theory_words": 686,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-consultas",
+      "theory_words": 695,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-rutas",
+      "theory_words": 709,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-configuracion",
+      "theory_words": 686,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-componentes",
+      "theory_words": 692,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-errores",
+      "theory_words": 709,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-concurrencia",
+      "theory_words": 696,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-pruebas",
+      "theory_words": 714,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    },
+    {
+      "id": "secure-coding-revision",
+      "theory_words": 707,
+      "concepts": 4,
+      "explained_cases": 2,
+      "exercises": 3
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/secure/crypto-foundations.json",
+      "sha256": "d51f3c285b6d092de34a1a702d95debfa011b95b68ce4a02c392f54978876406",
+      "lessons": 10,
+      "exercises": 30
+    },
+    {
+      "path": "assets/secure/keys-data.json",
+      "sha256": "d04d66767bcd0ce20eecf5d10bf6a88502d6678c22e454c09d1c151a3f580428",
+      "lessons": 10,
+      "exercises": 30
+    },
+    {
+      "path": "assets/secure/web-security.json",
+      "sha256": "c0d4972f9249bfd931b60073e70c71bbd7eaf81529cad9ef8923c4c60640ee9d",
+      "lessons": 10,
+      "exercises": 30
+    },
+    {
+      "path": "assets/secure/secure-coding.json",
+      "sha256": "62b063be34764c6411f117209ed23cc490dd0c2bd8f35bc12db8c82d3c2bb246",
+      "lessons": 10,
+      "exercises": 30
+    },
+    {
+      "path": "assets/secure/crypto-foundations.md",
+      "sha256": "21325c1b5947924bb3952f6305387d060a78aefc07c2f6706a62b6762397f2dd"
+    },
+    {
+      "path": "assets/secure/keys-data.md",
+      "sha256": "015abd10cb5a25c21233977d069e733f1098e097f064228a995aad1951d37dcd"
+    },
+    {
+      "path": "assets/secure/web-security.md",
+      "sha256": "a273aac17546fdc8a81fdb58fd610e7a539f9753dd4dbf66a77cf3b02eb553e6"
+    },
+    {
+      "path": "assets/secure/secure-coding.md",
+      "sha256": "d1d560c619fde46186d6abca5375b83d3662379063df7c3af50770b74ef47b53"
+    }
+  ],
+  "errors": []
+}

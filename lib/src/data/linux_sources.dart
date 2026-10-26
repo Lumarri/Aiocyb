@@ -1,0 +1,142 @@
+import '../models/course.dart';
+
+const linuxSources = [
+  LearningSource(
+    'linux-kernel',
+    'Linux · Guía del núcleo',
+    'https://docs.kernel.org/admin-guide/',
+    'Núcleo, recursos y contexto de administración. Consulta opcional con conexión.',
+  ),
+  LearningSource(
+    'linux-debian',
+    'Debian · Manual de administración',
+    'https://www.debian.org/doc/manuals/debian-handbook/',
+    'Distribución, herramientas y mantenimiento; los ejemplos del curso son propios.',
+  ),
+  LearningSource(
+    'linux-bash',
+    'GNU · Manual de Bash',
+    'https://www.gnu.org/software/bash/manual/bash.html',
+    'Argumentos, citas, expansiones, flujos y estados de tuberías.',
+  ),
+  LearningSource(
+    'linux-coreutils',
+    'GNU · Manual de Coreutils',
+    'https://www.gnu.org/software/coreutils/manual/coreutils.html',
+    'Consultas de archivos, modos, ordenación y transformación de texto.',
+  ),
+  LearningSource(
+    'linux-grep',
+    'GNU · Manual de grep',
+    'https://www.gnu.org/software/grep/manual/grep.html',
+    'Cadenas fijas, expresiones regulares, contexto y estados de búsqueda.',
+  ),
+  LearningSource(
+    'linux-journal',
+    'systemd · journalctl',
+    'https://www.freedesktop.org/software/systemd/man/latest/journalctl.html',
+    'Selección por campos, unidad, prioridad, tiempo y arranque.',
+  ),
+  LearningSource(
+    'linux-journal-fields',
+    'systemd · Campos del journal',
+    'https://www.freedesktop.org/software/systemd/man/latest/systemd.journal-fields.html',
+    'Procedencia de campos, marcas temporales y mensajes multilínea.',
+  ),
+  LearningSource(
+    'linux-systemctl',
+    'systemd · systemctl',
+    'https://www.freedesktop.org/software/systemd/man/latest/systemctl.html',
+    'Carga, actividad, habilitación y operaciones del gestor.',
+  ),
+  LearningSource(
+    'linux-permissions',
+    'Linux man-pages · Resolución de rutas',
+    'https://man7.org/linux/man-pages/man7/path_resolution.7.html',
+    'Identidad, búsqueda de directorios, enlaces y comprobaciones de acceso.',
+  ),
+  LearningSource(
+    'linux-fhs',
+    'Debian · Organización del sistema de archivos',
+    'https://www.debian.org/doc/manuals/debian-handbook/sect.unix.fhs.html',
+    'Contexto de rutas y organización de directorios en el entorno documentado.',
+  ),
+  LearningSource(
+    'linux-inode',
+    'Linux man-pages · Inodos y marcas temporales',
+    'https://man7.org/linux/man-pages/man7/inode.7.html',
+    'Tipos de objeto, acceso, modificación y cambio de metadatos.',
+  ),
+  LearningSource(
+    'linux-proc',
+    'procps-ng · ps',
+    'https://man7.org/linux/man-pages/man1/ps.1.html',
+    'Instantáneas, selección de procesos y significado de medidas.',
+  ),
+  LearningSource(
+    'linux-acl',
+    'Linux ACL · Listas de acceso',
+    'https://man7.org/linux/man-pages/man5/acl.5.html',
+    'Entradas, máscara, acceso efectivo y ACL por defecto.',
+  ),
+  LearningSource(
+    'linux-sudo',
+    'Sudo · Política sudoers',
+    'https://www.sudo.ws/docs/man/sudoers.man/',
+    'Delegación según política, identidad, argumentos y alcance.',
+  ),
+  LearningSource(
+    'linux-ssh',
+    'OpenSSH · sshd',
+    'https://man.openbsd.org/sshd',
+    'Etapas y contexto del servicio; los mensajes de ejercicios son ficticios.',
+  ),
+  LearningSource(
+    'linux-timers',
+    'systemd · Temporizadores',
+    'https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html',
+    'Activación temporal, servicio destino y condiciones de calendario.',
+  ),
+  LearningSource(
+    'linux-apt',
+    'Debian · Guía de APT',
+    'https://www.debian.org/doc/manuals/apt-guide/',
+    'Metadatos, paquetes e instalación dentro de la distribución.',
+  ),
+  LearningSource(
+    'linux-ip',
+    'iproute2 · ip',
+    'https://man7.org/linux/man-pages/man8/ip.8.html',
+    'Interfaces, direcciones y rutas del contexto local.',
+  ),
+  LearningSource(
+    'linux-ss',
+    'iproute2 · ss',
+    'https://man7.org/linux/man-pages/man8/ss.8.html',
+    'Sockets seleccionados, escucha y visibilidad de procesos.',
+  ),
+  LearningSource(
+    'linux-logrotate',
+    'logrotate · Manual del proyecto',
+    'https://github.com/logrotate/logrotate/blob/main/logrotate.8.in',
+    'Mecanismos de rotación y condiciones de conservación de archivos.',
+  ),
+  LearningSource(
+    'linux-nginx',
+    'nginx · Registro de solicitudes',
+    'https://nginx.org/en/docs/http/ngx_http_log_module.html',
+    'Formato configurable y campos del registro web.',
+  ),
+  LearningSource(
+    'linux-logging',
+    'OWASP · Registro de eventos',
+    'https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html',
+    'Diseño, integridad, minimización y análisis de registros.',
+  ),
+  LearningSource(
+    'linux-response',
+    'NIST · Respuesta a incidentes, SP 800-61r3',
+    'https://csrc.nist.gov/pubs/sp/800/61/r3/final',
+    'Preparación, análisis, respuesta, recuperación y mejora; caso docente original.',
+  ),
+];

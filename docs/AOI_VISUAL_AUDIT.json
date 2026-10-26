@@ -1,0 +1,199 @@
+{
+  "portraits": 16,
+  "newly_added": 8,
+  "files": [
+    {
+      "path": "assets/aoi/aoi-blushing-v1.png",
+      "sha256": "b1c1a59bc7f18e0b96b4f92b6897931e5e83e7ec7f6d9b259d7fb478f31676ec",
+      "bytes": 2316486,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-celebrating-v1.png",
+      "sha256": "083d38c728d85aebaa553479fc52dea31c3d973d8aec155e2a6ae9cd1733a884",
+      "bytes": 2486304,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-curious-v1.png",
+      "sha256": "1cfade452044aad59811e8ba5f915916a88e194056820047ab402fa41080aa74",
+      "bytes": 2292258,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-delighted-v1.png",
+      "sha256": "6aacc18e707d77557159a39ef3a3abb7bf0b75877c07cc48ebc94357d3254760",
+      "bytes": 2233785,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-disappointed-v1.png",
+      "sha256": "e63e4fc2a0056080d4f4912e1a4d6e076dc0bee5581d588116b3469babc1a300",
+      "bytes": 2282087,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-exasperated-v1.png",
+      "sha256": "2d6d2bd67de58b696b26c9e99d738aad0502ca38df9e638bd3a69f49c3e83eb7",
+      "bytes": 2314408,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-explain-v1.png",
+      "sha256": "e66b7b2ef48fa354ca6c29cabe8e3061271e54dae82ec8dae0a9b277441dd672",
+      "bytes": 2320509,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-focused-v1.png",
+      "sha256": "a2217ee5bff8ac7c748ef06fc4565f3e2d80f886cbffeff6ccf408072ead6ae7",
+      "bytes": 2294800,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-playful-v1.png",
+      "sha256": "eee4bfa7621f5cbac71ae9b9415127728bc877e913e7a87fdbc086be57a2b559",
+      "bytes": 2459288,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-pouting-v1.png",
+      "sha256": "eb909e668929484c0bf9ae2ac55e42a3ab0de4a6dd281ce7bf94056c5cd70624",
+      "bytes": 2194945,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-proud-v1.png",
+      "sha256": "f122b0db177b9ed837cb3a04fbb28f14f59131f9d969a05274edbbcd94b6ce25",
+      "bytes": 2219322,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-relieved-v1.png",
+      "sha256": "adbc92d41657c177401ed9312e496097f0d7afedfcdf27e4b279b3806574f3be",
+      "bytes": 2247431,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-skeptic-v1.png",
+      "sha256": "8fee7ac640d52b7ad5ac807323162697ea80b5b91add33a760ee75125488905e",
+      "bytes": 2260778,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-smirk-v1.png",
+      "sha256": "8bc268013acb73938802575265fa553a01d184bb8a23f5cb08d0f05a33c974f1",
+      "bytes": 2396538,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-surprised-v1.png",
+      "sha256": "f97f36da63aa5df75351047b8015b138ccc7e47d2ef7e9a3a74a729fe610a727",
+      "bytes": 2208876,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "assets/aoi/aoi-thinking-v1.png",
+      "sha256": "621bb5d7c95afdf53e70afd85ac1178253c06e22f4fc8223d030752f9109c023",
+      "bytes": 2183041,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "errors": []
+}
