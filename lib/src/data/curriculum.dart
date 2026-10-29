@@ -3,10 +3,14 @@ import 'extended_curriculum.g.dart';
 import 'linux_curriculum.g.dart';
 import 'linux_sources.dart';
 import 'malware_curriculum.g.dart';
+import 'network_expansion.g.dart';
+import 'network_practice.dart';
+import 'network_sources.dart';
 import 'secure_curriculum.g.dart';
 import 'starter_practice.g.dart';
 
 const sources = [
+  ...networkSources,
   ...linuxSources,
   LearningSource(
     'code-review',
@@ -787,15 +791,26 @@ final List<Course> starterCourses = List.unmodifiable([
 
 final List<Course> courses = List.unmodifiable([
   ...starterCourses,
-  ...extendedCourses,
+  ...extendedCourses.map(
+    (course) => withNetworkPractice(course, networkReinforcementQuestions),
+  ),
   ...malwareCourses,
   ...secureCourses,
   ...linuxCourses,
+  ...advancedNetworkCourses,
 ]);
 
 final allLessons = courses
     .expand((course) => course.lessons)
     .toList(growable: false);
+
+final allPracticeLessons = courses
+    .expand((course) => course.practiceLessons)
+    .toList(growable: false);
+
+/// All individually graded units, including optional reinforcement exercises.
+/// Lesson totals and XP continue to use [allLessons].
+final allAssessmentLessons = [...allLessons, ...allPracticeLessons];
 
 const diagnosticQuestions = [
   Question(

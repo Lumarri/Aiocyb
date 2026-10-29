@@ -1,0 +1,2020 @@
+{
+  "id": "network-diagnostics",
+  "title": "Diagnóstico de redes basado en evidencias",
+  "description": "Distingue fallos de enlace, nombres, transporte y aplicación con pruebas acotadas y observaciones verificables.",
+  "symbol": "DIAG",
+  "color": 4285458359,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Sesenta decisiones y ya no disparas cambios al primer síntoma, cariño. Formulas una pregunta, recoges evidencia y explicas sus límites; mi paciencia acaba de encontrar una aliada competente.",
+    "explanation": "Completaste diagnóstico por capas, contadores, ICMP, DNS, DHCP, TCP, rendimiento y lectura de capturas. Conserva alcance y tiempo de las observaciones, protege los datos recogidos y valida el servicio después de una corrección concreta."
+  },
+  "lessons": [
+    {
+      "id": "network-diagnostics-metodo",
+      "title": "Del síntoma a una hipótesis que pueda comprobarse",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Precisar el síntoma antes de elegir una herramienta",
+          "body": "Una descripción como que la red está lenta agrupa experiencias diferentes: tardar en resolver un nombre, esperar una conexión, recibir un error de aplicación o transferir menos datos de lo habitual. Pregunta qué acción intenta la persona, desde qué equipo, hacia qué servicio y desde cuándo ocurre. Registra el resultado esperado y el observado, incluyendo un ejemplo reproducible que no contenga información sensible. En la actividad, el portal de inventario tarda veinte segundos en abrir desde el segmento de usuarios durante una franja concreta. Esa frase es más útil que decir que internet no funciona, pero aún no identifica la causa. También falta saber si afecta a otros servicios o clientes. Una prueba debe mantener suficiente semejanza con el flujo original para responder a esa pregunta. Cambiar simultáneamente equipo, nombre, protocolo y horario puede producir un resultado distinto sin revelar qué variable importaba. Delimitar el síntoma permite escoger una herramienta por la información que puede aportar en vez de ejecutar todas las órdenes conocidas esperando que alguna muestre una palabra alarmante."
+        },
+        {
+          "title": "Separar hecho, hipótesis y evidencia que falta",
+          "body": "Un hecho observado puede ser que una consulta DNS tardó cierta cantidad de tiempo en una prueba registrada. La afirmación de que toda la demora proviene del DNS es una hipótesis adicional que requiere relacionar ese tiempo con la acción completa. Escribe ambas cosas por separado y anota qué resultado confirmaría o debilitaría la explicación. Si la consulta termina rápido y la espera aparece después de establecer la conexión, esa observación orienta hacia otra etapa sin declarar que todos los componentes anteriores sean perfectos en cualquier situación. Las capas ayudan a ordenar preguntas sobre enlace, direccionamiento, resolución, transporte y aplicación, pero no obligan a repetir siempre una lista completa de acciones. Empieza por la información disponible y evita saltos que excedan su alcance. Un indicador verde del enlace no prueba servicio correcto; un error de aplicación tampoco demuestra un ataque. Vincula cada conclusión al dato que la sostiene y mantén explícito lo que todavía no se comprobó, especialmente cuando los registros de dos puntos no corresponden exactamente al mismo momento."
+        },
+        {
+          "title": "Diseñar comparaciones que aporten información causal",
+          "body": "Un equipo de referencia puede ayudar a localizar diferencias si comparte condiciones relevantes y se conocen las que cambian. Comparar dos puestos en el mismo segmento y horario con la misma acción reduce algunas variables; aun así pueden diferir perfiles, cachés, credenciales o versiones. Describe esas limitaciones en vez de tratar la referencia como verdad absoluta. Las pruebas deben ser de bajo impacto y respetar el alcance autorizado: una consulta o conexión dirigida a un servicio conocido suele responder una pregunta más concreta que un barrido general. Si necesitas cambiar un parámetro, conserva el valor anterior, modifica una variable relevante y define cuándo recuperar. La mejora posterior aporta evidencia temporal, pero puede coincidir con otro cambio o con una recuperación espontánea del servicio. Repite lo necesario para distinguir esas posibilidades sin generar carga injustificada. Un buen diagnóstico busca una explicación que prediga resultados observables y pueda ser revisada por otra persona, no una secuencia de acciones cuyo último paso se convierte automáticamente en la causa del éxito."
+        },
+        {
+          "title": "Cerrar con verificación y una explicación reproducible",
+          "body": "La corrección debe validar el requisito original desde los puntos pertinentes, no solamente mostrar que el dispositivo acepta la configuración. Registra qué cambió, qué resultado se obtuvo y qué restricciones siguen vigentes. Si el problema era intermitente, una única prueba favorable puede necesitar un período de observación definido según el contexto. Conserva evidencia suficiente para comparar sin acumular capturas con datos personales que no aportan a la investigación. Identifica hora, zona temporal, herramienta, origen, destino y condiciones importantes. Al entregar el informe, distingue causa confirmada, causa probable y preguntas pendientes; esas etiquetas ayudan a no convertir una sospecha inicial en un hecho permanente. También conviene dejar el siguiente paso si el síntoma reaparece, de modo que otra persona pueda continuar con una pregunta mejor formulada. El cierre útil explica cómo la evidencia cambió la hipótesis y por qué la acción elegida resolvió o redujo el problema observado, con sus límites. Esa disciplina ahorra reinicios innecesarios y evita que un resultado aislado se convierta en una receta aplicada a cualquier falla futura."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué descripción permite iniciar una investigación más concreta del síntoma?",
+          "scenario": "La oficina quiere registrar una demora del portal antes de modificar configuraciones y todavía no conoce su causa.",
+          "options": [
+            "El portal de inventario tarda veinte segundos desde usuarios a las nueve",
+            "Toda la tecnología está mal y siempre falla",
+            "El DNS tiene la culpa porque su nombre aparece en el menú"
+          ],
+          "answer": 0,
+          "explanation": "La primera descripción identifica servicio, origen, tiempo y resultado observado, datos útiles para reproducir y delimitar el síntoma.",
+          "wrongExplanations": [
+            null,
+            "La frase general no precisa acción, alcance ni momento, por lo que no permite diseñar una comparación concreta.",
+            "Mencionar un componente no demuestra causalidad; falta una observación que relacione su comportamiento con la demora del servicio."
+          ],
+          "aoi": {
+            "question": "Dame una acción y sus condiciones antes de elegir al sospechoso favorito.",
+            "hint": "Busca la descripción que un operador pueda intentar reproducir de forma acotada.",
+            "correct": "Convertiste la queja en una observación con la que sí podemos trabajar.",
+            "soft": "Revisa qué datos faltan para repetir el síntoma y comparar sus resultados.",
+            "sharp": "El menú no es una lista de culpables, cielo; describe primero lo que pasó."
+          }
+        },
+        {
+          "prompt": "¿Qué diferencia una hipótesis de un hecho en esta investigación?",
+          "scenario": "Se midió una consulta rápida y el equipo todavía no ha establecido qué etapa provoca la demora completa de la aplicación.",
+          "options": [
+            "Una hipótesis nunca puede comprobarse con ninguna prueba",
+            "La hipótesis propone una explicación que aún debe contrastarse con evidencias",
+            "El hecho es cualquier conclusión que se escriba en letras grandes"
+          ],
+          "answer": 1,
+          "explanation": "La explicación propuesta requiere pruebas que la sostengan o debiliten; la medición observada no demuestra automáticamente toda la causa.",
+          "wrongExplanations": [
+            "Una hipótesis útil debe poder contrastarse mediante resultados observables; considerarla incomprobable impide orientar la investigación del síntoma.",
+            null,
+            "El formato de un informe no convierte una afirmación en hecho; hacen falta observaciones pertinentes y una conclusión acorde con ellas."
+          ],
+          "aoi": {
+            "question": "Podemos proponer una causa sin fingir que ya la hemos demostrado.",
+            "hint": "Identifica qué parte se observó y qué parte intenta explicar esa observación.",
+            "correct": "Separaste la medición de la causa propuesta y dejaste espacio para comprobarla.",
+            "soft": "Pregunta qué resultado podría cambiar tu explicación antes de darla por confirmada.",
+            "sharp": "Las mayúsculas no añaden evidencia, tesoro; solo hacen que la suposición grite más."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión admite una espera posterior a una consulta DNS rápida?",
+          "scenario": "La prueba delimitada registra diez milisegundos de resolución y veinte segundos de espera principalmente después de establecer el transporte.",
+          "options": [
+            "DNS nunca puede fallar en ningún dispositivo",
+            "Toda la red sufrió necesariamente un ataque confirmado",
+            "La consulta observada no explica por sí sola la demora posterior"
+          ],
+          "answer": 2,
+          "explanation": "La evidencia dirige la investigación hacia etapas posteriores en esa prueba, sin demostrar ausencia universal de fallos DNS ni un ataque.",
+          "wrongExplanations": [
+            "Un resultado puntual no cubre todos los equipos, consultas o momentos; esa conclusión universal supera el alcance de la medición registrada.",
+            "Una demora no identifica por sí misma una actividad maliciosa; faltan evidencias que justifiquen atribuir el comportamiento a un ataque.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestra línea de tiempo ubica la espera; sigamos esa pista con su alcance real.",
+            "hint": "Compara cuándo terminó la resolución con el momento en que apareció la demora.",
+            "correct": "Limitaste la conclusión a la secuencia medida y orientaste la siguiente pregunta.",
+            "soft": "No conviertas una observación de hoy en una garantía sobre todos los DNS.",
+            "sharp": "El DNS no se lleva absolución eterna ni condena automática, cariño; mira esta prueba concreta."
+          }
+        },
+        {
+          "prompt": "¿Por qué no confirma el cable una prueba que cambia equipo, red y horario?",
+          "scenario": "La acción funciona bajo varias condiciones nuevas, pero no se ha aislado qué diferencia respecto del intento original produjo el resultado.",
+          "options": [
+            "Porque cambiaron varias variables capaces de influir en el resultado",
+            "Porque una prueba favorable nunca aporta información útil",
+            "Porque todos los cables tienen exactamente el mismo estado físico"
+          ],
+          "answer": 0,
+          "explanation": "La comparación no aísla el cable y admite otras explicaciones; sirve como dato, pero necesita condiciones mejor controladas para confirmar esa causa.",
+          "wrongExplanations": [
+            null,
+            "El resultado sí aporta una observación y posibles diferencias; su limitación es causal, no una inutilidad absoluta de cualquier prueba favorable.",
+            "Los cables pueden presentar condiciones distintas; afirmar igualdad universal no explica la falta de aislamiento de variables que caracteriza esta comparación."
+          ],
+          "aoi": {
+            "question": "La mejora existe, pero todavía no sabemos cuál de tus cambios la acompañó de verdad.",
+            "hint": "Cuenta cuántas condiciones relevantes variaron antes de señalar una causa única.",
+            "correct": "Reconociste el límite de la comparación y evitaste culpar al cable sin aislamiento.",
+            "soft": "Revisa qué otra variable podría explicar también que la segunda prueba funcionara.",
+            "sharp": "Cambiar media escena y acusar al cable es un juicio bastante flojo, demonios; controla variables."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba responde mejor a una pregunta dirigida sobre el servicio afectado?",
+          "scenario": "El alcance autoriza revisar un portal conocido y necesitamos observar una conexión concreta sin añadir carga o recopilar información ajena.",
+          "options": [
+            "Un barrido general de cualquier dirección disponible sin pregunta definida",
+            "Una conexión acotada al servicio previsto con condiciones y tiempos registrados",
+            "Una modificación simultánea de todos los controles y resolutores"
+          ],
+          "answer": 1,
+          "explanation": "La prueba dirigida mantiene relación con la pregunta y permite interpretar su resultado bajo condiciones identificables sin ampliar innecesariamente el alcance.",
+          "wrongExplanations": [
+            "El barrido no responde necesariamente a la pregunta del portal y amplía actividad sin justificar qué observación distinguirá las causas propuestas.",
+            null,
+            "Cambiar muchos componentes altera variables y riesgo a la vez; puede ocultar qué condición explicaba el síntoma original y complicar su recuperación."
+          ],
+          "aoi": {
+            "question": "La herramienta debe contestar nuestra pregunta, no entretenernos con una tormenta de resultados.",
+            "hint": "Elige una acción limitada que observe directamente el flujo que estamos investigando.",
+            "correct": "Vinculaste alcance y observación a la pregunta que necesita respuesta.",
+            "soft": "Comprueba si la prueba conserva relación con el servicio y permite interpretar su resultado.",
+            "sharp": "Más ruido no equivale a más diagnóstico, joder; pregunta algo concreto y observa ese flujo."
+          }
+        },
+        {
+          "prompt": "¿Qué debe indicar el informe si la causa sigue siendo probable?",
+          "scenario": "La corrección mejoró el síntoma, pero coincidió con otros cambios y no se pudo aislar por completo la explicación propuesta.",
+          "options": [
+            "Que la última orden demuestra toda la causa sin excepción",
+            "Que no se debe registrar ninguna observación hasta tener certeza absoluta",
+            "Evidencias, nivel de certeza, límites y siguiente paso si reaparece"
+          ],
+          "answer": 2,
+          "explanation": "El informe conserva valor al diferenciar lo comprobado de lo probable y explicar las limitaciones y acciones necesarias para continuar la investigación.",
+          "wrongExplanations": [
+            "La secuencia temporal no descarta causas coincidentes; atribuir certeza universal a la última orden excede los datos disponibles del escenario.",
+            "Omitir observaciones útiles dificulta continuar el trabajo; pueden documentarse con claridad sin presentarlas como confirmación definitiva de una causa.",
+            null
+          ],
+          "aoi": {
+            "question": "Un informe honesto puede decir probable y seguir siendo muy útil.",
+            "hint": "Distingue resultado observado, explicación propuesta y evidencia que todavía falta recoger.",
+            "correct": "Dejaste una investigación continuable en lugar de fabricar certeza para cerrar el turno.",
+            "soft": "Revisa si tu conclusión reconoce las variables que no pudiste aislar.",
+            "sharp": "No escribas certeza para salir antes, cielo; deja claro qué sabemos y qué falta demostrar."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La consulta rápida que no explicaba veinte segundos",
+          "scenario": "El portal tarda veinte segundos en una prueba. La resolución del nombre termina en diez milisegundos y la mayor espera registrada comienza después del establecimiento de la conexión de transporte.",
+          "explanation": "La observación no sostiene atribuir toda esa demora a la consulta DNS de esa prueba. Conviene investigar la etapa posterior y sus dependencias, conservando el alcance temporal y sin afirmar que DNS nunca pueda fallar en otras condiciones o momentos."
+        },
+        {
+          "title": "La comparación que cambió demasiadas variables",
+          "scenario": "Un usuario repite la acción desde otro equipo, otra red, otro horario y otra cuenta. Esta vez funciona y el informe afirma que el cable original era la causa confirmada.",
+          "explanation": "El resultado favorable no aísla el cable porque variaron varias condiciones relevantes. Debe diseñarse una comparación más controlada y distinguir la hipótesis de una causa demostrada; el informe puede registrar diferencias y límites sin inventar una confirmación que los datos no aportan."
+        }
+      ],
+      "diagram": "network",
+      "intro": "En la oficina ficticia algunos usuarios dicen que la aplicación va mal. Antes de cambiar DNS, reiniciar equipos o abrir reglas, convertiremos esa descripción en una pregunta verificable sobre un flujo concreto.",
+      "scenario": "En la oficina ficticia algunos usuarios dicen que la aplicación va mal. Antes de cambiar DNS, reiniciar equipos o abrir reglas, convertiremos esa descripción en una pregunta verificable sobre un flujo concreto.",
+      "steps": [
+        "Define usuario, servicio, recorrido, momento y resultado esperado.",
+        "Distingue observaciones de explicaciones todavía hipotéticas.",
+        "Elige una prueba que diferencie causas sin ampliar el impacto.",
+        "Registra condiciones y compara con una referencia pertinente.",
+        "Aplica una corrección acotada y vuelve a validar el requisito."
+      ],
+      "sourceIds": [
+        "net-wireshark",
+        "net-interface"
+      ],
+      "aoi": {
+        "intro": "Antes de arreglar la red, cariño, decidamos qué significa exactamente que va mal.",
+        "theory0": "Una acción, un origen y un momento convierten una queja en algo investigable.",
+        "theory1": "El hecho y tu explicación pueden convivir sin hacerse pasar por la misma cosa.",
+        "theory2": "La referencia ayuda cuando sabemos qué conserva y qué cambia frente al caso.",
+        "theory3": "Quiero un cierre que otro operador pueda repetir sin pedirte poderes adivinatorios.",
+        "case0": "Diez milisegundos de resolución no explican por sí solos esos veinte segundos posteriores.",
+        "case1": "Cambiaste cuatro condiciones y el cable cargó con la culpa sin juicio.",
+        "pass": "Ya formulas pruebas que distinguen causas. Tu criterio me está dando un descanso encantador.",
+        "review": "Repasemos observación e hipótesis; ese salto de conclusión todavía no tiene evidencia suficiente."
+      }
+    },
+    {
+      "id": "network-diagnostics-enlace",
+      "title": "Estado físico, contadores y diferencias por intervalo",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Distinguir enlace disponible y servicio utilizable",
+          "body": "Un indicador de enlace activo informa sobre una condición del medio o de la interfaz conforme a la plataforma, pero no acredita resolución de nombres, rutas, autorización o funcionamiento de una aplicación. También puede existir estado administrativo habilitado sin portadora disponible. Conviene identificar qué campo se observa y qué parte de la pila describe antes de usar la palabra conectado como una garantía general. En un enlace cableado se pueden revisar velocidad negociada, dúplex y cambios de portadora junto con los requisitos del medio y de los equipos. Una discrepancia requiere datos de ambos extremos y documentación de la plataforma; no se resuelve imponiendo valores arbitrarios en un solo lado. En interfaces virtuales, inalámbricas o agregadas, los estados pueden tener significados particulares y dependencias adicionales. La actividad utiliza una interfaz Ethernet concreta para evitar mezclar unidades de observación. Registra su identidad y su papel en el recorrido del servicio, porque una interfaz sana que no participa en el flujo no demuestra nada concluyente sobre el enlace que realmente necesita investigar el usuario."
+        },
+        {
+          "title": "Comparar muestras sin confundir antigüedad con actividad",
+          "body": "Muchos contadores son acumulativos durante cierto período de funcionamiento y pueden reiniciarse al reiniciar un equipo, limpiar estadísticas o producirse otras condiciones de implementación. El número aislado no informa cuándo ocurrieron los eventos. Si el contador pasa de 200 a 230 en sesenta segundos sin reinicio ni desbordamiento, la diferencia es treinta y la tasa media observada es medio evento por segundo. No se divide el total final por ese minuto, porque parte del total ya existía antes de empezar la observación. Si la segunda muestra es menor, no la interpretes inmediatamente como una cantidad negativa de errores; revisa continuidad, reinicios, alcance de contador y cambios de identidad de interfaz. Conviene capturar también tiempos y disponibilidad del equipo para que la diferencia tenga una base válida. Dos enlaces con totales distintos pueden haber trabajado durante períodos y cargas muy diferentes. La comparación necesita un intervalo común o una normalización apropiada, además de entender exactamente qué eventos cuenta cada plataforma."
+        },
+        {
+          "title": "Interpretar errores, descartes y agregados sin sumarlos a ciegas",
+          "body": "Los errores de recepción, errores de CRC y descartes no son necesariamente categorías independientes ni equivalentes. Un contador agregado puede incluir eventos que también aparecen desglosados en otros campos; sumarlos produciría doble conteo. Un descarte puede relacionarse con recursos, colas u otras condiciones sin implicar una trama dañada por el medio. Consulta la definición del sistema, del controlador y del dispositivo para saber qué incluye cada valor. La comprobación CRC ayuda a detectar alteraciones de transmisión de una trama dentro del enlace, pero no autentica a una persona ni reemplaza controles criptográficos de una aplicación. A su vez, ver errores de CRC no identifica por sí solo el cable exacto que falla: puede ser necesario revisar transceptores, conectores, medio, estado y ambos extremos. Formula una hipótesis coherente con el tipo y evolución del contador y busca evidencia adicional antes de reemplazar componentes sin criterio. El objetivo es relacionar síntomas con mecanismos posibles, no asignar una causa única a cualquier número que aparezca junto a la palabra error."
+        },
+        {
+          "title": "Usar denominadores y cambios acotados para validar una hipótesis",
+          "body": "Una tasa por segundo y una proporción de errores sobre tramas consideradas responden preguntas diferentes. En un conjunto definido de treinta mil tramas con treinta errores pertinentes, la proporción es 0,1 por ciento. Eso no debe calcularse con un contador de paquetes cuya definición o cobertura no coincide con el numerador. Documenta qué representa cada cantidad y si ambas pertenecen al mismo intervalo y punto. Para validar una corrección física autorizada, conserva referencias anteriores, cambia el componente pertinente y compara intervalos con tráfico representativo. Que el total acumulado siga siendo alto después de corregir no demuestra que la corrección fracasara; puede permanecer el historial mientras el incremento reciente desaparece. Tampoco conviene borrar estadísticas sin guardar la referencia necesaria para interpretar lo que ocurrió. Añade una prueba del servicio afectado y observa si los cambios de estado o errores reaparecen. La evidencia útil combina comportamiento del enlace, evolución temporal y resultado del flujo, reconociendo los límites de cada medición y las diferencias entre las definiciones de fabricantes o controladores."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuánto aumentó el contador entre las dos muestras válidas?",
+          "scenario": "Pasa de 200 a 230 durante sesenta segundos y el caso confirma que no hubo reinicio, limpieza ni cambio de interfaz.",
+          "options": [
+            "Treinta eventos en el intervalo",
+            "Doscientos treinta eventos nuevos en el intervalo",
+            "Menos treinta eventos porque son errores"
+          ],
+          "answer": 0,
+          "explanation": "La diferencia entre final e inicial es treinta; el resto del total final ya existía antes de comenzar la observación.",
+          "wrongExplanations": [
+            null,
+            "Usar el total final como incremento atribuye al minuto eventos anteriores y no respeta la referencia inicial que proporciona la primera muestra.",
+            "La condición de error no invierte el signo aritmético; el contador aumentó de 200 a 230 bajo continuidad confirmada."
+          ],
+          "aoi": {
+            "question": "El total final incluye la historia anterior; resta primero la muestra inicial.",
+            "hint": "Calcula final menos inicial usando las dos observaciones del mismo contador.",
+            "correct": "Aislaste la actividad reciente y dejaste el historial fuera de ese incremento.",
+            "soft": "Comprueba qué parte del total estaba presente antes de empezar nuestro intervalo.",
+            "sharp": "Doscientos ya estaban invitados antes de la prueba, cielo; cuenta solo los treinta nuevos."
+          }
+        },
+        {
+          "prompt": "¿Cuál es la tasa media para treinta eventos en sesenta segundos?",
+          "scenario": "El intervalo es continuo y la pregunta pide eventos por segundo, sin afirmar que la distribución temporal haya sido uniforme.",
+          "options": [
+            "Treinta eventos por segundo durante todo el período",
+            "Medio evento por segundo como promedio del intervalo",
+            "Sesenta eventos por segundo porque ese es el tiempo medido"
+          ],
+          "answer": 1,
+          "explanation": "Treinta dividido entre sesenta equivale a 0,5 eventos por segundo de media; el cálculo no demuestra una distribución uniforme instante a instante.",
+          "wrongExplanations": [
+            "El valor treinta es la cantidad acumulada del intervalo, no la tasa por segundo; falta dividirlo por los sesenta segundos observados.",
+            null,
+            "La duración no se convierte en cantidad de eventos; intercambiar unidades produce una tasa que no corresponde a los datos del ejercicio."
+          ],
+          "aoi": {
+            "question": "Un promedio necesita cantidad dividida por tiempo, con unidades que sigan teniendo sentido.",
+            "hint": "Divide los treinta eventos por los sesenta segundos sin inventar uniformidad temporal.",
+            "correct": "Calculaste la tasa media y conservaste el límite de lo que representa.",
+            "soft": "Revisa si tu resultado usa eventos por segundo o repite uno de los datos.",
+            "sharp": "Los segundos no se transforman en errores por intimidación, tesoro; divide con las unidades correctas."
+          }
+        },
+        {
+          "prompt": "¿Qué debes revisar si la segunda muestra acumulada resulta menor?",
+          "scenario": "La interfaz muestra un total inferior al inicial y aún no se ha confirmado continuidad de equipo ni de estadísticas.",
+          "options": [
+            "Que los errores viajaron atrás en el tiempo y se repararon solos",
+            "Que todas las aplicaciones alcanzaron por ello disponibilidad completa",
+            "Reinicio, limpieza, desbordamiento o cambio de alcance del contador"
+          ],
+          "answer": 2,
+          "explanation": "La disminución requiere comprobar continuidad y semántica antes de calcular una diferencia útil; no representa necesariamente una cantidad negativa de eventos reales.",
+          "wrongExplanations": [
+            "Los contadores pueden reiniciarse o cambiar de alcance, pero una disminución no demuestra reparación retroactiva de eventos ni permite ignorar su contexto.",
+            "El valor estadístico no acredita funcionamiento completo de aplicación; esa conclusión necesita pruebas de flujo y condiciones distintas de la continuidad del contador.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese total menor necesita una explicación del contador antes de convertirse en una tasa.",
+            "hint": "Busca qué pudo cambiar el punto de partida o la identidad de la medición.",
+            "correct": "Revisaste continuidad y evitaste convertir una diferencia engañosa en una conclusión operativa.",
+            "soft": "Pregunta si las dos muestras conservan realmente la misma referencia de acumulación.",
+            "sharp": "El contador no deshizo el pasado, cariño; mira si reinició o cambió lo que estaba midiendo."
+          }
+        },
+        {
+          "prompt": "¿Puedes sumar errores totales y CRC si el primero incluye al segundo?",
+          "scenario": "La documentación del equipo define CRC como parte de errores de recepción y ambos valores corresponden al mismo intervalo.",
+          "options": [
+            "No, esa suma contaría de nuevo una parte del agregado",
+            "Sí, toda columna de una tabla siempre representa eventos independientes",
+            "Sí, porque sumar números nunca necesita conocer su definición"
+          ],
+          "answer": 0,
+          "explanation": "Los conjuntos se solapan por definición, así que sumarlos como categorías independientes duplica eventos y produce un total que la medición no sostiene.",
+          "wrongExplanations": [
+            null,
+            "La presentación en columnas no garantiza independencia; una tabla puede mostrar un agregado y sus componentes para facilitar precisamente el análisis detallado.",
+            "Una operación aritmética puede ser formalmente posible y conceptualmente incorrecta cuando sus cantidades se superponen o tienen significados incompatibles en la medición."
+          ],
+          "aoi": {
+            "question": "El CRC ya estaba dentro del total; no le vamos a cobrar otra entrada.",
+            "hint": "Revisa la relación entre agregado y desglose que declara la documentación del contador.",
+            "correct": "Respetaste los conjuntos de eventos y evitaste inflar el total del informe.",
+            "soft": "Antes de sumar columnas, averigua si una de ellas ya contiene a la otra.",
+            "sharp": "El mismo error no merece dos multas, demonios; no sumes el agregado con su propio desglose."
+          }
+        },
+        {
+          "prompt": "¿Un descarte implica necesariamente daño físico detectado por CRC?",
+          "scenario": "El sistema separa varios contadores y el caso no proporciona todavía la definición del controlador ni la causa del descarte.",
+          "options": [
+            "Sí, cualquier descarte identifica con certeza un cable dañado",
+            "No, puede tener otras causas y necesita interpretar la definición del contador",
+            "Sí, todo descarte autentica además al emisor original"
+          ],
+          "answer": 1,
+          "explanation": "Los descartes pueden relacionarse con recursos u otras condiciones; sin definición y evidencias adicionales no deben equipararse universalmente a errores físicos CRC.",
+          "wrongExplanations": [
+            "La inferencia salta de un contador general a una causa física única sin datos que la sostengan; hace falta entender el mecanismo observado.",
+            null,
+            "Descartar o comprobar CRC no autentica una identidad; esa función exige otros mecanismos y no se desprende de la estadística de recepción presentada."
+          ],
+          "aoi": {
+            "question": "La palabra descarte todavía no nos ha dicho por qué se perdió esa entrega.",
+            "hint": "Consulta qué eventos agrupa el sistema y busca la evidencia que distingue sus causas.",
+            "correct": "Mantuviste separados tipos de eventos y evitaste diagnosticar el cable por una etiqueta.",
+            "soft": "La definición del controlador puede cambiar el significado operativo de ese contador.",
+            "sharp": "No todo descarte es un cable llorando, joder; averigua primero qué está contando el equipo."
+          }
+        },
+        {
+          "prompt": "¿Qué proporción representan treinta errores de treinta mil tramas consideradas?",
+          "scenario": "La actividad declara numerador y denominador compatibles, del mismo intervalo y punto de observación, para calcular una proporción de ese conjunto.",
+          "options": [
+            "Diez por ciento de las tramas consideradas",
+            "Cien por ciento porque hubo algún error registrado",
+            "0,1 por ciento de las tramas consideradas"
+          ],
+          "answer": 2,
+          "explanation": "Treinta dividido entre treinta mil es 0,001; al expresarlo como porcentaje se obtiene 0,1 por ciento para el conjunto definido.",
+          "wrongExplanations": [
+            "Diez por ciento correspondería a tres mil de treinta mil, no a treinta; esa respuesta no respeta la relación numérica del caso.",
+            "Registrar algún error no significa que todas las tramas lo tengan; el porcentaje depende de la relación entre eventos y el conjunto compatible.",
+            null
+          ],
+          "aoi": {
+            "question": "Tenemos un conjunto bien definido; ahora calcula su fracción antes de ponerle el símbolo de porcentaje.",
+            "hint": "Divide errores entre tramas y multiplica por cien para expresar esa proporción.",
+            "correct": "Convertiste la fracción en porcentaje sin perder el significado del conjunto medido.",
+            "soft": "Revisa los ceros de la división y la conversión de fracción a porcentaje.",
+            "sharp": "Treinta errores no conquistaron treinta mil tramas, cielo; calcula la proporción sin dramatizarla."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un historial alto que no sigue creciendo",
+          "scenario": "El contador muestra cuarenta mil errores acumulados antes del mantenimiento y conserva ese total después. En el intervalo de validación con tráfico representativo no aumenta y la aplicación recupera el resultado esperado.",
+          "explanation": "El total histórico no demuestra por sí mismo que persista la condición. Debe evaluarse el incremento durante el intervalo posterior y el servicio validado, conservando las limitaciones de la muestra y la necesidad de observación si el síntoma era intermitente."
+        },
+        {
+          "title": "La suma que contó dos veces el CRC",
+          "scenario": "La definición del equipo indica que errores de recepción incluye los errores CRC. El informe suma veinte errores de recepción y doce CRC del mismo intervalo como treinta y dos eventos distintos.",
+          "explanation": "Esa suma duplica los eventos que ya forman parte del agregado. Hay que respetar la definición y distinguir el total de su desglose, evitando presentar categorías solapadas como conjuntos independientes para calcular tasas o justificar una causa."
+        }
+      ],
+      "diagram": "network",
+      "intro": "La interfaz ficticia mantiene enlace y acumula errores de recepción. Leeremos dos muestras separadas por sesenta segundos para distinguir un total histórico de una actividad reciente, sin atribuir cada contador al mismo tipo de fallo.",
+      "scenario": "La interfaz ficticia mantiene enlace y acumula errores de recepción. Leeremos dos muestras separadas por sesenta segundos para distinguir un total histórico de una actividad reciente, sin atribuir cada contador al mismo tipo de fallo.",
+      "steps": [
+        "Identifica interfaz, equipo, unidad y tiempo de cada muestra.",
+        "Comprueba si hubo reinicio o limpieza de contadores.",
+        "Calcula diferencias antes de comparar tasas.",
+        "Consulta qué incluye cada contador y si se solapa con otro.",
+        "Relaciona el resultado con pruebas del servicio y del tramo afectado."
+      ],
+      "sourceIds": [
+        "net-interface",
+        "net-switching"
+      ],
+      "aoi": {
+        "intro": "Ese contador tiene memoria, cariño; vamos a averiguar cuánto ocurrió durante nuestra prueba.",
+        "theory0": "Enlace activo es una pista sobre el medio, no una aprobación de toda la aplicación.",
+        "theory1": "Dos muestras comparables cuentan una historia que un total aislado no puede fechar.",
+        "theory2": "No sumes el agregado y sus hijos como si fueran familias desconocidas.",
+        "theory3": "El porcentaje necesita un denominador que pertenezca a la misma medición y definición.",
+        "case0": "El historial sigue ahí, pero el incremento reciente nos cuenta cómo quedó el enlace.",
+        "case1": "Nuestro informe contó al CRC dos veces; el equipo no cometió esos eventos extra.",
+        "pass": "Ya lees intervalos y definiciones antes de acusar al cable. Mi ceja está gratamente relajada.",
+        "review": "Revisemos unidad, continuidad y cobertura; estás comparando números que todavía no hablan del mismo conjunto."
+      }
+    },
+    {
+      "id": "network-diagnostics-icmp",
+      "title": "Ping, traceroute y conclusiones que sus respuestas permiten",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Utilizar Echo como una observación concreta de alcance",
+          "body": "Ping suele utilizar solicitudes y respuestas Echo de ICMP para observar alcance y tiempo de ida y vuelta bajo sus condiciones de prueba. En IPv4 se emplean los tipos correspondientes de ICMPv4; IPv6 tiene su propio protocolo y tipos, por lo que los filtros y referencias deben ajustarse a la familia real. Una respuesta valida ese intercambio concreto con el origen que devuelve el mensaje, pero no demuestra que una aplicación de otro protocolo o puerto funcione. Tampoco acredita permisos de usuario, estado de una base de datos ni honestidad de un sitio. Si no hay respuesta, existen varias explicaciones posibles: destino no disponible, filtrado, pérdidas, límites de respuesta, ruta de regreso u otras condiciones. La ausencia no distingue automáticamente entre ellas. En el laboratorio, el puerto del servicio acepta una conexión mientras Echo no responde; el resultado impide equiparar silencio ICMP con caída total del host. La siguiente pregunta debe corresponder al requisito de la aplicación y a las evidencias disponibles, sin desactivar controles generales para conseguir que una herramienta concreta muestre un color favorable."
+        },
+        {
+          "title": "Entender cómo una sonda revela un punto del camino",
+          "body": "Traceroute utiliza sondas con un límite de saltos creciente para provocar respuestas que ayuden a observar puntos del recorrido. En IPv4, un router que reduce TTL hasta agotar su valor descarta el paquete y puede devolver el mensaje de control pertinente conforme a las condiciones del protocolo y del equipo. Según herramienta y opciones, las sondas pueden utilizar UDP, ICMP o TCP; por eso una traza no representa necesariamente el mismo tratamiento que otro flujo de aplicación. El dato del salto procede de una respuesta recibida, no de una lectura directa de toda la topología. La dirección mostrada puede corresponder a una interfaz elegida por el router para responder y no describe por sí sola su ubicación geográfica ni todos sus enlaces. En presencia de reparto de carga, políticas o cambios de ruta, sondas distintas pueden seguir decisiones diferentes. Registra tipo, parámetros, origen, destino y momento para que otra persona entienda qué se midió. Una lista de nombres resueltos a partir de direcciones tampoco convierte la traza en un mapa físico exacto."
+        },
+        {
+          "title": "Interpretar silencios y mensajes sin inventar un corte",
+          "body": "Un asterisco indica que la herramienta no recibió la respuesta esperada dentro de su espera para esa sonda; no prueba que ningún tráfico atravesara ese router. Si aparecen respuestas de saltos posteriores, existe evidencia de que al menos esas sondas progresaron más allá de la posición silenciosa por el recorrido observado. El dispositivo intermedio puede reenviar datos y limitar sus propias respuestas de control. Los mensajes explícitos también necesitan interpretación por tipo y código: un rechazo administrativo aporta una pista distinta de una expiración de TTL o de un silencio. No todos esos resultados identifican un ataque, ni todos justifican cambiar rutas. La captura o registro debe distinguir qué equipo envió el mensaje y qué paquete original describe cuando esa información esté disponible. Evita traducir cada falta de respuesta en pérdida de aplicación sin medir el flujo real. Una prueba puede revelar un límite de observabilidad de la herramienta antes que una indisponibilidad del servicio, y esa distinción es precisamente el resultado útil de la investigación."
+        },
+        {
+          "title": "Comparar tiempos sin convertirlos en demora de cada enlace",
+          "body": "El tiempo mostrado para una sonda incluye su viaje hacia el punto que respondió y el regreso de esa respuesta, además del tratamiento que le dieron los equipos. No es simplemente el tiempo de un enlace aislado entre dos filas. Restar valores de saltos diferentes puede mezclar caminos de regreso, colas y prioridades distintas. Si un router intermedio tarda cien milisegundos en responder a control y el destino responde después con treinta, no se concluye que el enlace posterior tenga latencia negativa ni que toda aplicación acumule cien en ese punto. Puede existir un tratamiento particular de las respuestas del dispositivo intermedio. Para investigar rendimiento, utiliza muestras y métricas apropiadas al flujo, con un intervalo y condiciones definidos. Conserva también el resultado de la aplicación que importa al usuario. El cierre del caso debe indicar qué alcance se observó, qué silencios permanecen sin explicación y qué hipótesis necesitan otra prueba. Esa precisión permite aprovechar ping y traceroute sin pedirles que demuestren propiedades que sus mensajes no miden."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra una respuesta Echo por sí sola en la prueba delimitada?",
+          "scenario": "El destino responde al ping, pero no se ha intentado abrir el servicio de aplicación que necesita el usuario.",
+          "options": [
+            "Que ese intercambio de control obtuvo respuesta bajo las condiciones observadas",
+            "Que todas las aplicaciones y usuarios tienen acceso correcto",
+            "Que cualquier página alojada allí es honesta y segura"
+          ],
+          "answer": 0,
+          "explanation": "La respuesta acredita el intercambio Echo observado; no comprueba aplicaciones, permisos ni la legitimidad del contenido que el destino pueda ofrecer.",
+          "wrongExplanations": [
+            null,
+            "Echo no inicia todos los protocolos o servicios ni valida identidades de usuario; esos objetivos requieren pruebas específicas adicionales al intercambio de control.",
+            "La respuesta de red no evalúa intención o contenido del sitio; honestidad y autorización no se deducen de que responda a una sonda."
+          ],
+          "aoi": {
+            "question": "La respuesta llegó; ahora limita el certificado imaginario que le estabas entregando.",
+            "hint": "Relaciona el resultado únicamente con la solicitud de control que se envió.",
+            "correct": "Reconociste el alcance útil del ping sin atribuirle validaciones de otra capa.",
+            "soft": "Revisa qué servicios y permisos no participaron en esa solicitud Echo.",
+            "sharp": "Un pong no aprobó todas tus aplicaciones, cielo; solo respondió a lo que le preguntaste."
+          }
+        },
+        {
+          "prompt": "¿Un host está necesariamente caído si no responde a Echo pero acepta TCP?",
+          "scenario": "El laboratorio confirma una conexión al servicio previsto durante la misma ventana en que las sondas Echo quedan sin respuesta.",
+          "options": [
+            "Sí, porque ningún servicio puede funcionar sin responder antes a Echo",
+            "No, el silencio Echo no demuestra indisponibilidad total del host",
+            "Sí, la conexión TCP favorable debe ser ignorada por definición"
+          ],
+          "answer": 1,
+          "explanation": "La conexión observada prueba funcionamiento de otro intercambio y descarta esa inferencia total; el silencio puede deberse a condiciones específicas del control.",
+          "wrongExplanations": [
+            "Los servicios pueden tener tratamiento distinto de ICMP; no existe esa obligación universal de responder primero a Echo para aceptar una conexión TCP.",
+            null,
+            "La evidencia del servicio es pertinente al requisito del usuario y debe integrarse, no descartarse para preservar una interpretación demasiado amplia del silencio ICMP."
+          ],
+          "aoi": {
+            "question": "Nuestro servicio contestó aunque Echo guardara silencio; las dos observaciones pueden coexistir.",
+            "hint": "Distingue el tratamiento de ICMP del flujo TCP que sí se comprobó.",
+            "correct": "Evitaste declarar caído un destino por una sonda que no representa todos sus servicios.",
+            "soft": "Comprueba qué resultado real contradice la conclusión de indisponibilidad completa.",
+            "sharp": "Echo no es el portero obligatorio de todo TCP, tesoro; mira la conexión que sí funcionó."
+          }
+        },
+        {
+          "prompt": "¿Qué permite concluir un asterisco con respuestas posteriores en la traza?",
+          "scenario": "La posición cuatro no contesta en su espera, pero sondas posteriores reciben respuestas hasta el destino del laboratorio.",
+          "options": [
+            "Que ningún paquete atravesó jamás esa posición",
+            "Que el destino está desconectado sin posibilidad de contestar",
+            "Que faltó esa respuesta esperada y no se acredita un corte total del tránsito"
+          ],
+          "answer": 2,
+          "explanation": "La falta de respuesta tiene alcance limitado y las respuestas posteriores muestran progreso de otras sondas; no justifican declarar un bloqueo universal de tránsito.",
+          "wrongExplanations": [
+            "La traza no observa todos los paquetes y contiene evidencia de progreso posterior; esa afirmación absoluta contradice el alcance de la prueba.",
+            "El destino respondió según el escenario, por lo que el silencio de una posición intermedia no acredita desconexión total ni invalida esa observación final.",
+            null
+          ],
+          "aoi": {
+            "question": "La fila silenciosa no puede borrar las respuestas que llegaron después de ella.",
+            "hint": "Pregunta qué esperaba recibir la herramienta en esa posición y qué sí recibió más adelante.",
+            "correct": "Interpretaste el silencio sin convertirlo en una barrera que las demás evidencias contradicen.",
+            "soft": "Lee la traza completa antes de decidir qué significa una fila sin respuesta.",
+            "sharp": "Ese asterisco no puede secuestrar toda la ruta, cariño; las sondas de después ya volvieron."
+          }
+        },
+        {
+          "prompt": "¿Qué mecanismo básico ayuda a traceroute a observar saltos IPv4?",
+          "scenario": "La herramienta envía sondas con valores crecientes y recibe determinados mensajes cuando un router agota el límite del paquete.",
+          "options": [
+            "El TTL y las respuestas de control relacionadas con su expiración",
+            "Una consulta DNS que revela obligatoriamente todos los cables del planeta",
+            "La eliminación de cualquier cabecera IP antes de enviar cada sonda"
+          ],
+          "answer": 0,
+          "explanation": "El TTL limita el tránsito y su expiración puede provocar respuestas útiles para observar puntos del camino, según el tipo de sonda y controles.",
+          "wrongExplanations": [
+            null,
+            "DNS puede resolver nombres de direcciones, pero no descubre obligatoriamente el cableado completo ni sustituye el mecanismo de límite de saltos de las sondas.",
+            "Sin cabecera IP no se describe la sonda IPv4 del ejercicio; la herramienta utiliza precisamente campos y respuestas del protocolo para obtener observaciones."
+          ],
+          "aoi": {
+            "question": "El límite de la sonda permite provocar una respuesta en un punto del recorrido.",
+            "hint": "Relaciona el valor creciente con el contador que reduce el router al reenviar.",
+            "correct": "Identificaste el mecanismo que fundamenta la observación de saltos en el caso.",
+            "soft": "Revisa qué campo limita el avance y qué mensaje puede explicar su agotamiento.",
+            "sharp": "DNS no salió a contar cables por la ciudad, demonios; sigue el TTL de la sonda."
+          }
+        },
+        {
+          "prompt": "¿Puedes restar tiempos de filas distintas como latencia exacta de un enlace?",
+          "scenario": "El salto tres contesta en cien milisegundos y el destino en treinta, con posibles diferencias de tratamiento y camino de regreso.",
+          "options": [
+            "Sí, demuestra un enlace posterior con latencia negativa real",
+            "No, son mediciones de viajes y respuestas que pueden tener condiciones diferentes",
+            "Sí, todo paquete de usuario hereda necesariamente el tiempo de control mayor"
+          ],
+          "answer": 1,
+          "explanation": "Los tiempos incluyen ida, respuesta y regreso de sondas distintas; restarlos no aísla universalmente la demora de un enlace ni el rendimiento de la aplicación.",
+          "wrongExplanations": [
+            "La resta numérica no demuestra un fenómeno físico de latencia negativa; mezcla observaciones que no representan tramos idénticos y condiciones de respuesta equivalentes.",
+            null,
+            "El tratamiento de respuestas de control puede diferir del reenvío de datos; esa cifra no se impone automáticamente a cada paquete del servicio de usuario."
+          ],
+          "aoi": {
+            "question": "No hemos medido dos tramos con el mismo reloj y condiciones; son respuestas distintas.",
+            "hint": "Considera el regreso y la prioridad de la respuesta antes de interpretar una diferencia entre filas.",
+            "correct": "Conservaste el significado de cada tiempo sin fabricar una demora imposible para el enlace.",
+            "soft": "Pregunta qué componentes incluye el tiempo de cada sonda y cuáles pueden cambiar.",
+            "sharp": "La red no inventó latencia negativa, joder; tu resta está mezclando viajes diferentes."
+          }
+        },
+        {
+          "prompt": "¿Qué debe registrarse para interpretar y repetir una traza del problema?",
+          "scenario": "El informe quiere comparar observaciones desde el puesto afectado y evitar que una sonda distinta parezca medir exactamente el mismo flujo.",
+          "options": [
+            "Solo el nombre simpático que alguien asignó a la herramienta",
+            "Únicamente que hubo algún asterisco sin identificar origen ni momento",
+            "Origen, destino, familia, tipo de sonda, parámetros y momento pertinentes"
+          ],
+          "answer": 2,
+          "explanation": "Esos datos delimitan qué se probó y permiten comparar condiciones relevantes; una lista aislada de símbolos no describe el flujo ni su tratamiento esperado.",
+          "wrongExplanations": [
+            "El nombre no identifica parámetros, familia o recorrido y no permite reproducir una medición comparable del problema que se está investigando.",
+            "Un asterisco sin contexto no permite ubicar alcance ni condiciones; omitir origen y momento impide relacionarlo de manera fiable con el síntoma.",
+            null
+          ],
+          "aoi": {
+            "question": "Una traza sin condiciones es una anécdota difícil de volver a comprobar.",
+            "hint": "Busca los datos que explican desde dónde, hacia dónde y cómo se enviaron las sondas.",
+            "correct": "Dejaste una observación reproducible y con límites que el siguiente operador puede evaluar.",
+            "soft": "Revisa si otro operador podría repetir una prueba comparable usando únicamente tu registro.",
+            "sharp": "El asterisco solo no redacta el informe, cielo; anota qué enviaste, desde dónde y cuándo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un silencio intermedio con destino que contesta",
+          "scenario": "La traza del laboratorio muestra asteriscos en la posición cuatro y respuestas en posiciones posteriores hasta el destino. El servicio de aplicación también funciona durante la ventana registrada.",
+          "explanation": "El silencio de esa posición no demuestra un corte total del tránsito. Algunas sondas llegaron más adelante y la aplicación respondió. Puede requerirse revisar el tratamiento de mensajes de control, manteniendo la diferencia entre ausencia de respuesta de la herramienta y entrega del servicio."
+        },
+        {
+          "title": "El router lento al responder que no retrasaba igual al destino",
+          "scenario": "La sonda del salto tres recibe respuesta en cien milisegundos y las del destino en treinta. El informe atribuye automáticamente cien milisegundos de demora a todo paquete de usuario que atraviese el salto tres.",
+          "explanation": "Cada tiempo incluye un recorrido y tratamiento de respuesta propios. No permite asignar automáticamente esa demora a todo tráfico reenviado ni calcular latencia negativa al restar filas. Hay que medir el flujo y considerar prioridad de control y posibles diferencias de regreso."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El servicio ficticio responde por TCP aunque no contesta a Echo. Una traza muestra un salto con asteriscos y respuestas posteriores; usaremos esas observaciones para explicar el alcance real de las pruebas de control.",
+      "scenario": "El servicio ficticio responde por TCP aunque no contesta a Echo. Una traza muestra un salto con asteriscos y respuestas posteriores; usaremos esas observaciones para explicar el alcance real de las pruebas de control.",
+      "steps": [
+        "Identifica familia IP, tipo de prueba y destino exacto.",
+        "Distingue falta de respuesta de un error recibido explícitamente.",
+        "Interpreta TTL y respuestas de control dentro del recorrido.",
+        "Relaciona tiempos con el viaje de cada sonda y su regreso.",
+        "Contrasta el servicio real antes de concluir que el destino está caído."
+      ],
+      "sourceIds": [
+        "net-icmp",
+        "net-router"
+      ],
+      "aoi": {
+        "intro": "Ping y traceroute son útiles, cariño; vamos a pedirles pruebas que realmente puedan dar.",
+        "theory0": "Una respuesta Echo no tiene las credenciales de todas tus aplicaciones en el bolsillo.",
+        "theory1": "La sonda limita sus saltos para provocar una observación, no para dibujar toda la ciudad.",
+        "theory2": "Un asterisco nos cuenta un silencio de respuesta, no necesariamente una carretera cortada.",
+        "theory3": "Esos tiempos son viajes completos de sondas distintas; no los restes como trozos idénticos.",
+        "case0": "La fila cuatro calla, pero las siguientes ya contestaron. Escuchemos toda la evidencia.",
+        "case1": "El router tardó con su respuesta de control; todavía no medimos así el tráfico del usuario.",
+        "pass": "Ya interpretas mensajes y límites sin dramatizar cada asterisco. Me gusta esa calma tan razonada.",
+        "review": "Repasemos qué respondió, qué calló y qué prueba falta para hablar del servicio real."
+      }
+    },
+    {
+      "id": "network-diagnostics-nombres",
+      "title": "Localizar la demora entre DNS, transporte e identidad TLS",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Consultar el nombre correcto desde el contexto pertinente",
+          "body": "Resolver un nombre consiste en obtener información DNS para una consulta concreta, no en comprobar todo lo que ocurre al abrir una página. Anota nombre completo, tipo, resolutor, origen y tiempo. A y AAAA representan datos de direcciones de familias distintas; que exista uno no demuestra que el otro deba existir ni funcionar. Un nombre puede ofrecer varias direcciones y la aplicación escoger una mediante su propia lógica. Además, una herramienta que pregunta directamente a un servidor específico puede no utilizar la misma cadena de resolución, caché o política que el navegador. Un resultado diferente es una pista que debe relacionarse con esas condiciones, no una razón automática para reemplazar todos los ajustes de la organización. En el entorno de prueba, los nombres bajo example representan servicios ficticios. Cuando un nombre interno solo está disponible mediante un resolutor autorizado, cambiarlo por uno público puede impedir resolverlo y exponer consultas que antes permanecían dentro del alcance previsto. Identifica el contexto y las dependencias antes de tratar un resolutor externo como referencia universalmente correcta."
+        },
+        {
+          "title": "Interpretar resultados positivos, negativos y fallos de resolución",
+          "body": "Una respuesta con datos, una respuesta negativa y la ausencia de respuesta son observaciones distintas. NXDOMAIN indica que el nombre consultado se considera inexistente según la respuesta recibida; no significa que toda conectividad IP se haya perdido. Una respuesta sin el tipo solicitado puede requerir distinguir existencia del nombre y disponibilidad de ese registro. SERVFAIL comunica un fallo del servidor al completar la consulta y no equivale necesariamente a que el nombre no exista. Un silencio necesita revisar alcance del resolutor, transporte, política y tiempos. También pueden conservarse respuestas negativas en caché bajo las reglas correspondientes. Crear un registro nuevo no obliga a todas las cachés a abandonar inmediatamente la respuesta previa. Documenta el estado y el tiempo de las consultas antes de vaciar cachés, porque esa acción modifica una condición de la prueba y puede borrar evidencia útil. La duración de caché tampoco certifica legitimidad del destino ni disponibilidad del servicio; informa sobre el uso temporal de datos dentro de las condiciones de resolución."
+        },
+        {
+          "title": "Seguir la dirección elegida hacia transporte y canal protegido",
+          "body": "Tras resolver, la aplicación necesita alcanzar una dirección y establecer el transporte que utilice su protocolo. Para la maqueta se declara HTTPS sobre TCP, sin generalizar ese transporte a cualquier versión o implementación web. Una conexión TCP establecida todavía no demuestra validación TLS satisfactoria ni una respuesta de aplicación correcta. La negociación del canal y las comprobaciones de identidad tienen requisitos distintos del alcance de red. Un aviso de nombre de certificado puede aparecer porque la identidad solicitada no corresponde a lo presentado, entre otras causas que deben investigarse con sus detalles. Sustituir el nombre por una IP en el navegador cambia la identidad que se está solicitando y puede alterar la selección del servicio en un servidor compartido. No es una comparación idéntica por definición. Tampoco debe deshabilitarse la validación para convertir el aviso en una prueba favorable. Mantén el nombre esperado y utiliza procedimientos de diagnóstico adecuados al cliente para distinguir selección de dirección, llegada al servidor y comprobación del canal."
+        },
+        {
+          "title": "Construir una línea de tiempo y validar la etapa corregida",
+          "body": "Una medición útil sitúa resolución, conexión, canal y respuesta en su secuencia temporal, con límites claros sobre lo que la herramienta observa. Si resolver tarda poco y el rechazo ocurre durante TLS, cambiar DNS sin otra evidencia puede no afectar la condición que genera el aviso. Si el navegador utiliza otra dirección de las ofrecidas, la prueba debe seguir esa elección en vez de una dirección que el operador eligió por comodidad. También importa si intervienen proxy, caché local o una política administrada; dos clientes con configuraciones distintas no representan necesariamente el mismo recorrido. Después de corregir la causa confirmada, valida el nombre, la identidad esperada y la acción de aplicación desde el origen relevante. Conserva una prueba negativa si el requisito incluye rechazar una identidad no válida. El informe debe atribuir cada observación a su etapa y evitar garantías sobre todos los servicios basadas en una respuesta DNS o un canal cifrado. De ese modo puedes explicar por qué la resolución funcionó aunque la conexión fallara después, y qué evidencia justifica la modificación concreta."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué datos permiten comparar dos consultas DNS con contexto suficiente?",
+          "scenario": "El informe presenta resultados distintos y necesitamos identificar si las herramientas preguntaron por lo mismo bajo condiciones equivalentes.",
+          "options": [
+            "Nombre, tipo, resolutor, origen y momento relevantes",
+            "Solo que ambas herramientas muestran letras y números",
+            "Únicamente el fondo oscuro o claro de la consola"
+          ],
+          "answer": 0,
+          "explanation": "Esos datos delimitan la consulta y sus condiciones; diferencias en tipo, resolutor o tiempo pueden explicar resultados que no son directamente equivalentes.",
+          "wrongExplanations": [
+            null,
+            "La apariencia de una salida no identifica qué se consultó ni bajo qué política o caché se obtuvo el resultado de resolución.",
+            "El tema de la consola no establece nombre, tipo o resolutor y no permite reproducir una consulta DNS comparable con la original."
+          ],
+          "aoi": {
+            "question": "Dos resultados solo se comparan bien cuando sabemos qué pregunta hizo cada herramienta.",
+            "hint": "Busca las condiciones que podrían cambiar los datos devueltos aunque el nombre parezca parecido.",
+            "correct": "Conservaste el contexto que permite explicar diferencias de resolución sin adivinar.",
+            "soft": "Revisa si los resultados corresponden realmente al mismo tipo y resolutor.",
+            "sharp": "La consola negra no garantiza la misma pregunta, cielo; anota nombre, tipo y resolutor."
+          }
+        },
+        {
+          "prompt": "¿Qué diferencia SERVFAIL de afirmar que el nombre no existe?",
+          "scenario": "El resolutor devuelve ese código durante la consulta del portal y no se dispone todavía de una explicación del fallo interno.",
+          "options": [
+            "SERVFAIL demuestra que todo nombre del mundo fue eliminado",
+            "Expresa un fallo al completar la consulta y no equivale por sí solo a inexistencia",
+            "Siempre acredita que el canal TLS del portal se validó correctamente"
+          ],
+          "answer": 1,
+          "explanation": "El código comunica un problema de resolución que necesita investigar su causa; no debe interpretarse automáticamente como NXDOMAIN ni como resultado de TLS.",
+          "wrongExplanations": [
+            "El alcance de una respuesta no cubre todos los nombres y ese código no expresa eliminación universal; la conclusión ignora la semántica del fallo recibido.",
+            null,
+            "El resultado DNS no ejecuta por sí mismo la validación del canal de aplicación; atribuirle ese éxito confunde etapas que todavía deben comprobarse."
+          ],
+          "aoi": {
+            "question": "El resolutor informó un fallo de la consulta, no la desaparición de todo el nombre por decreto.",
+            "hint": "Interpreta el código recibido sin sustituirlo por el significado de otro resultado.",
+            "correct": "Separaste fallo de consulta e inexistencia y mantuviste pendiente investigar la causa.",
+            "soft": "Revisa qué informa ese código antes de sacar conclusiones sobre otros servicios.",
+            "sharp": "SERVFAIL no es NXDOMAIN con mala letra, tesoro; cada resultado necesita su propia interpretación."
+          }
+        },
+        {
+          "prompt": "¿Por qué puede persistir una negativa después de crear el registro DNS?",
+          "scenario": "El resolutor conserva una respuesta anterior dentro de las condiciones temporales aplicables y la nueva consulta utiliza ese contexto.",
+          "options": [
+            "Porque crear registros prohíbe para siempre cualquier consulta posterior",
+            "Porque las respuestas DNS nunca pueden conservarse en caché",
+            "Porque puede seguir utilizándose la respuesta negativa almacenada"
+          ],
+          "answer": 2,
+          "explanation": "La caché negativa puede conservar el resultado anterior durante su período aplicable; publicar un registro no invalida instantáneamente todas las respuestas almacenadas en otros contextos.",
+          "wrongExplanations": [
+            "La publicación no prohíbe consultas futuras ni fija una ausencia eterna; el caso describe conservación temporal que debe distinguirse de inexistencia permanente.",
+            "Las cachés forman parte del comportamiento de resolución y pueden incluir resultados negativos; negar su existencia impide explicar precisamente la secuencia observada.",
+            null
+          ],
+          "aoi": {
+            "question": "La publicación cambió el origen de datos, pero nuestra caché todavía tiene una respuesta previa.",
+            "hint": "Revisa qué resultado conserva el resolutor y qué período le corresponde en la prueba.",
+            "correct": "Identificaste una condición temporal sin declarar fallida la publicación por una sola consulta.",
+            "soft": "Relaciona el momento de creación con el estado que utiliza la cadena de resolución.",
+            "sharp": "El registro nuevo no entró a borrar memorias ajenas, cariño; revisa la caché negativa."
+          }
+        },
+        {
+          "prompt": "¿Qué cambia al sustituir el nombre del servicio por su IP en el navegador?",
+          "scenario": "El portal utiliza identidad por nombre y alojamiento compartido, y la prueba directa produce un aviso de identidad del canal.",
+          "options": [
+            "La identidad solicitada y posiblemente la selección del servicio que responde",
+            "Solo el color del indicador de conexión, sin ninguna otra diferencia",
+            "Nada relevante, porque toda IP siempre acredita cualquier nombre"
+          ],
+          "answer": 0,
+          "explanation": "La solicitud ya no presenta necesariamente la misma identidad o selección de servicio; el aviso requiere separar esas condiciones de la resolución que se intentaba comparar.",
+          "wrongExplanations": [
+            null,
+            "La sustitución afecta datos utilizados por el cliente y servidor, no una simple presentación visual; ignorarlo hace que la comparación deje de representar el mismo servicio.",
+            "Una dirección no autentica todos los nombres posibles; la correspondencia de identidad debe validarse conforme al servicio esperado y al mecanismo de protección del canal."
+          ],
+          "aoi": {
+            "question": "Cambiar la forma de pedir el servicio también puede cambiar lo que debe demostrarte.",
+            "hint": "Identifica qué nombre espera validar el cliente y cómo se selecciona el servicio compartido.",
+            "correct": "Viste la variable adicional de la prueba y evitaste culpar automáticamente al resolutor.",
+            "soft": "Pregunta si ambas solicitudes conservan realmente la misma identidad esperada.",
+            "sharp": "La IP no trae certificado para todos los nombres del barrio, demonios; compara la identidad correcta."
+          }
+        },
+        {
+          "prompt": "¿TCP establecido demuestra que la validación TLS y la aplicación ya terminaron bien?",
+          "scenario": "La maqueta declara HTTPS sobre TCP y la observación solo confirma el establecimiento del transporte antes de iniciar las comprobaciones del canal.",
+          "options": [
+            "Sí, TCP aprueba automáticamente certificados y credenciales de aplicación",
+            "No, el canal y la aplicación necesitan verificaciones posteriores específicas",
+            "Sí, cualquier conexión establecida demuestra honestidad del contenido remoto"
+          ],
+          "answer": 1,
+          "explanation": "El transporte establecido es una etapa y no acredita las comprobaciones posteriores de canal, identidad, permisos o respuesta que necesita el servicio de aplicación.",
+          "wrongExplanations": [
+            "TCP no valida por sí mismo certificados o cuentas de aplicación; esas funciones pertenecen a otros mecanismos que aún no han aportado resultados en el escenario.",
+            null,
+            "La conexión no evalúa intención del contenido ni legitimidad general; esa conclusión supera tanto el intercambio de transporte como las pruebas que se han realizado."
+          ],
+          "aoi": {
+            "question": "Tenemos transporte; no entregues todavía diplomas al certificado ni a la aplicación.",
+            "hint": "Sitúa cada comprobación en su etapa después de la conexión TCP observada.",
+            "correct": "Conservaste el orden del diagnóstico y dejaste las validaciones pendientes donde corresponde.",
+            "soft": "Revisa qué mecanismos todavía no participaron cuando el transporte quedó establecido.",
+            "sharp": "TCP no revisó el certificado por ti, joder; todavía faltan canal y aplicación."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba conviene tras corregir una causa confirmada de identidad del servicio?",
+          "scenario": "El requisito es abrir el portal por su nombre esperado manteniendo las comprobaciones del canal desde el puesto afectado.",
+          "options": [
+            "Desactivar toda validación y declarar éxito porque desaparece el aviso",
+            "Probar solo que el resolutor devuelve algún dato sin abrir el portal",
+            "Validar nombre, identidad y acción de aplicación con los controles activos"
+          ],
+          "answer": 2,
+          "explanation": "La verificación debe cubrir el requisito original y mantener los controles pertinentes; eliminar el aviso desactivando su comprobación no demuestra una corrección de identidad.",
+          "wrongExplanations": [
+            "Deshabilitar la validación elimina una evidencia y cambia la protección; que desaparezca el mensaje no acredita que el servidor presente la identidad esperada.",
+            "Un dato DNS no comprueba el canal ni la acción que fallaba; el cierre necesita seguir las etapas relevantes del servicio desde el origen afectado.",
+            null
+          ],
+          "aoi": {
+            "question": "Quiero que el portal funcione con su identidad comprobada, no que el navegador deje de protestar.",
+            "hint": "Repite el requisito original conservando el control que detectó la condición.",
+            "correct": "Validaste el resultado útil sin ocultar el problema desactivando su comprobación.",
+            "soft": "Distingue corregir una identidad de silenciar la herramienta que la estaba revisando.",
+            "sharp": "Quitar la alarma no arregla la puerta, cielo; prueba el nombre y el canal con sus controles."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El registro recién creado que seguía pareciendo ausente",
+          "scenario": "Un resolutor había almacenado una respuesta negativa para inventario.example. Después se crea el registro, pero una consulta desde ese mismo contexto aún utiliza la respuesta conservada dentro de su período aplicable.",
+          "explanation": "La creación del dato no invalida de manera instantánea todas las cachés existentes. Debe revisarse el contexto y la conservación temporal de la respuesta negativa antes de concluir que la publicación falló, documentando cualquier limpieza que modifique la condición de la prueba."
+        },
+        {
+          "title": "La IP directa que cambió la identidad solicitada",
+          "scenario": "El servicio se ofrece por un nombre y un servidor compartido. Al abrir su IP directamente, el navegador presenta un aviso de identidad y el grupo considera demostrado que el resolutor está averiado.",
+          "explanation": "La sustitución cambió la identidad solicitada y puede influir en la selección del servicio. El aviso no demuestra por sí mismo fallo DNS; hay que separar dirección, transporte e identidad, conservando validación del canal y comparaciones apropiadas al nombre esperado."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El portal ficticio inventario.example tiene varias direcciones posibles. Separaremos una consulta DNS, la conexión a una dirección, la validación del canal y la respuesta de aplicación para no llamar error DNS a cualquier aviso del navegador.",
+      "scenario": "El portal ficticio inventario.example tiene varias direcciones posibles. Separaremos una consulta DNS, la conexión a una dirección, la validación del canal y la respuesta de aplicación para no llamar error DNS a cualquier aviso del navegador.",
+      "steps": [
+        "Registra el nombre exacto, tipo consultado y resolutor utilizado.",
+        "Distingue respuesta DNS, silencio y código de error.",
+        "Observa qué dirección y familia usa realmente la aplicación.",
+        "Separa establecimiento de transporte y validación TLS.",
+        "Compara resultados manteniendo la identidad esperada del servicio."
+      ],
+      "sourceIds": [
+        "net-dns",
+        "net-dns-errors",
+        "net-dns-cache",
+        "net-tls"
+      ],
+      "aoi": {
+        "intro": "El navegador hizo varias cosas, cariño; vamos a separar en cuál apareció el problema.",
+        "theory0": "Nombre, tipo y resolutor describen una consulta; sin ellos estamos comparando sombras.",
+        "theory1": "NXDOMAIN, SERVFAIL y silencio no son tres disfraces de la misma respuesta.",
+        "theory2": "Llegar a una IP y validar una identidad son comprobaciones distintas.",
+        "theory3": "La línea de tiempo nos dirá qué etapa merece el siguiente vistazo.",
+        "case0": "La caché aún recuerda una negativa válida; el registro nuevo no le borró la memoria.",
+        "case1": "Cambiar el nombre por la IP también cambió lo que le pediste acreditar al servidor.",
+        "pass": "Ya distingues dirección, canal y aplicación. Ese orden me resulta bastante más atractivo que culpar al DNS.",
+        "review": "Repasemos el nombre solicitado y la etapa del aviso antes de tocar otra configuración."
+      }
+    },
+    {
+      "id": "network-diagnostics-dhcp",
+      "title": "Localizar dónde se interrumpe una asignación DHCP",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Describir el estado actual sin adivinar cómo se obtuvo",
+          "body": "Cuando un equipo muestra una dirección, no sabemos por ese dato aislado si proviene de un arrendamiento reciente, una configuración manual, una concesión anterior o algún mecanismo local de respaldo. Revisa método de asignación, interfaz, prefijo, puerta, DNS y tiempos pertinentes. En algunos clientes IPv4, una dirección de enlace local en 169.254.0.0/16 puede aparecer cuando no se obtiene la configuración esperada, pero no se debe convertir ese comportamiento en regla universal para cualquier sistema. Tampoco implica que toda la pila IP esté desactivada; su alcance y utilidad dependen del contexto. La pregunta del caso es por qué ese puesto no recibe la configuración autorizada, no cómo forzarlo a mostrar cualquier dirección. Copiar una IP libre aparente puede crear conflictos y ocultar la causa de asignación. Conserva el estado anterior y el identificador del segmento para investigar el ámbito correcto. Un servidor puede tener muchas direcciones disponibles en otro ámbito que no corresponde a ese cliente o a su política de acceso."
+        },
+        {
+          "title": "Seguir una transacción sin mezclar todos los mensajes UDP",
+          "body": "El intercambio inicial habitual puede incluir Discover, Offer, Request y Acknowledge, pero renovaciones y otros estados utilizan secuencias distintas. Que una captura no muestre esas cuatro fases no acredita por sí solo un fallo. Relaciona identificador de transacción, identidad del cliente, servidor pertinente y tiempos junto con el punto donde se observa cada mensaje. Filtrar únicamente por puertos DHCP puede reunir conversaciones de muchos puestos y hacer parecer completa una asignación cuyos mensajes pertenecen a clientes diferentes. En IPv4, los papeles habituales utilizan UDP 67 para servidor y 68 para cliente, con condiciones de relay y entrega que deben interpretarse según el intercambio concreto. Un Offer propone una configuración; no es equivalente a la aceptación final de una concesión. También importa qué servidor identifica el cliente al solicitarla y si recibe una respuesta pertinente. La captura debe abarcar el momento necesario y considerar pérdidas de observación, porque no ver un mensaje en un archivo incompleto no demuestra que nunca existiera en el enlace."
+        },
+        {
+          "title": "Ubicar el segmento y el papel del relay",
+          "body": "La difusión inicial del cliente no atraviesa automáticamente cualquier límite de router como si toda la organización compartiera un enlace. Cuando servidor y cliente están en segmentos distintos, una función de relay puede transportar la solicitud y aportar información para seleccionar el ámbito adecuado. Debe revisarse su ubicación, configuración y el camino permitido hacia el servidor y de regreso. Tener un servidor con espacio libre no confirma que el relay reciba, reenvíe o devuelva mensajes del segmento afectado. Compara observaciones de cliente, relay y servidor con tiempos coherentes y dentro del alcance autorizado. Si el cliente transmite Discover pero el servidor no registra esa transacción, la investigación necesita localizar el tramo donde se pierde la observación; aún no prueba una causa única. Si el servidor contesta y el cliente no recibe, el regreso, la política o la visibilidad de captura merecen revisión. También pueden existir restricciones por identidad, reserva o estado del ámbito que impidan la asignación pese a disponer de direcciones numéricamente libres."
+        },
+        {
+          "title": "Validar la concesión y las dependencias entregadas",
+          "body": "Una vez recibida la respuesta pertinente, comprueba qué configuración adopta el cliente y si corresponde al segmento autorizado. Dirección, máscara, puerta y resolutores deben ser coherentes con el diseño; una concesión obtenida no garantiza por sí sola servicio de aplicación. Verifica también alcance y resultado del servicio que motivó la consulta. La presencia de más de una oferta no demuestra automáticamente un servidor hostil: puede haber un diseño legítimo con varios participantes, pero debe contrastarse con el inventario autorizado y sus funciones. No aceptes cualquier configuración solo porque llegó antes. Las operaciones de liberar o renovar pueden afectar una sesión de administración y cambian el estado que se intenta observar, por lo que necesitan propósito y recuperación apropiados. Antes de ejecutarlas, conserva la referencia y el acceso necesario. El informe debe indicar qué transacción se siguió, en qué punto se interrumpió la evidencia y qué condición concreta se corrigió, diferenciando asignación, adopción de parámetros y funcionamiento posterior de los servicios dependientes."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Direcciones libres en el servidor prueban que el cliente podrá recibir configuración?",
+          "scenario": "El ámbito tiene capacidad, pero aún no se ha observado la transacción del puesto en el relay ni en el servidor.",
+          "options": [
+            "No, faltan alcance, procesamiento y regreso pertinentes de la conversación",
+            "Sí, la disponibilidad numérica garantiza todas las etapas y políticas",
+            "Sí, cualquier cliente obtiene una concesión aunque esté en otro ámbito sin relay"
+          ],
+          "answer": 0,
+          "explanation": "El espacio disponible solo responde a capacidad del ámbito; no acredita que la solicitud llegue, se permita y produzca una respuesta recibida por el cliente.",
+          "wrongExplanations": [
+            null,
+            "La capacidad no demuestra camino ni política y no sustituye las observaciones de la transacción que aún faltan entre los puntos del caso.",
+            "La selección y acceso al ámbito requieren condiciones de segmento y entrega; no ocurren universalmente entre redes distintas sin el mecanismo pertinente."
+          ],
+          "aoi": {
+            "question": "Un asiento libre no garantiza que nuestra solicitud haya llegado a la recepción.",
+            "hint": "Separa capacidad del ámbito de entrega y procesamiento de mensajes del cliente.",
+            "correct": "Identificaste las condiciones pendientes en vez de confundir espacio con comunicación completa.",
+            "soft": "Pregunta qué evidencia muestra que ese cliente concreto llegó a solicitar configuración.",
+            "sharp": "Las IP libres no salen a buscar al cliente por su cuenta, cielo; sigue la conversación."
+          }
+        },
+        {
+          "prompt": "¿Qué permite relacionar correctamente mensajes de una asignación entre varias capturas?",
+          "scenario": "El archivo contiene tráfico DHCP de muchos equipos y buscamos seguir el intercambio del puesto afectado durante una ventana limitada.",
+          "options": [
+            "Que todos utilicen UDP sin importar identidad ni momento",
+            "Cliente, transacción, participantes y tiempos coherentes con el punto de captura",
+            "El color con que la herramienta representa cada paquete"
+          ],
+          "answer": 1,
+          "explanation": "Esos datos permiten correlacionar el intercambio pertinente y evitar unir mensajes de clientes o momentos distintos como si fueran una sola asignación.",
+          "wrongExplanations": [
+            "Compartir transporte y puertos no identifica una transacción única entre muchas; la correlación necesita campos y tiempos que distingan al cliente investigado.",
+            null,
+            "El color facilita lectura según reglas locales, pero no establece identidad, transacción o correspondencia temporal entre mensajes observados en distintos puntos."
+          ],
+          "aoi": {
+            "question": "Necesito seguir a nuestro cliente, no reunir una familia inventada con paquetes parecidos.",
+            "hint": "Relaciona identificadores y tiempo antes de dar por completas las fases del intercambio.",
+            "correct": "Construiste una correlación basada en datos del protocolo y no en semejanzas visuales.",
+            "soft": "Revisa si los mensajes elegidos pertenecen realmente al mismo cliente y transacción.",
+            "sharp": "Cuatro colores bonitos no completan DORA, tesoro; comprueba quién habló y en qué transacción."
+          }
+        },
+        {
+          "prompt": "¿Qué significa un Offer en el intercambio inicial habitual?",
+          "scenario": "El servidor propone parámetros al cliente, pero aún no se ha observado aceptación final pertinente ni configuración adoptada en el puesto.",
+          "options": [
+            "Que cualquier aplicación remota ya funciona con permisos correctos",
+            "Que el cliente nunca necesitará mensajes posteriores ni verificación",
+            "Una propuesta que no equivale por sí sola a concesión final adoptada"
+          ],
+          "answer": 2,
+          "explanation": "La oferta es una fase de propuesta y debe relacionarse con la solicitud y respuesta posteriores pertinentes; aún falta comprobar qué configuración utiliza realmente el cliente.",
+          "wrongExplanations": [
+            "La propuesta DHCP no valida aplicaciones o permisos de usuario; esos resultados pertenecen a comprobaciones posteriores que el escenario todavía no ha realizado.",
+            "El intercambio y la adopción necesitan contexto adicional; dar la oferta por resultado final omite precisamente las etapas que aún no se han observado.",
+            null
+          ],
+          "aoi": {
+            "question": "El servidor ofreció condiciones; todavía no sabemos cómo terminó esa conversación.",
+            "hint": "Distingue propuesta, confirmación pertinente y parámetros efectivamente usados por el puesto.",
+            "correct": "Conservaste el papel de la oferta sin adelantar el resultado de la asignación.",
+            "soft": "Busca qué evidencia falta entre recibir una propuesta y utilizar la configuración prevista.",
+            "sharp": "Una oferta no es la firma final ni el servicio funcionando, cariño; sigue leyendo la transacción."
+          }
+        },
+        {
+          "prompt": "¿Qué debes investigar si Discover sale del cliente pero no aparece en el servidor?",
+          "scenario": "La arquitectura declara un relay entre segmentos y las observaciones de la ventana todavía no localizan dónde se pierde la transacción.",
+          "options": [
+            "El trayecto, relay y visibilidad entre puntos antes de atribuir una causa única",
+            "Solo el tamaño de un ámbito que ya tiene direcciones suficientes",
+            "La obligación de retirar todas las máscaras de los clientes"
+          ],
+          "answer": 0,
+          "explanation": "La evidencia acota la investigación al intercambio entre puntos, pero necesita localizar la condición concreta y descartar limitaciones de observación antes de confirmar una causa.",
+          "wrongExplanations": [
+            null,
+            "Aumentar capacidad no explica por sí mismo que no se observe la solicitud; el caso ya confirma espacio y requiere revisar cómo llega el intercambio.",
+            "Eliminar máscaras no establece el camino de la solicitud ni valida el relay; introduce otro cambio sin relación demostrada con la evidencia disponible."
+          ],
+          "aoi": {
+            "question": "Todavía no sabemos en qué tramo dejó de verse; avancemos por puntos y tiempos.",
+            "hint": "Compara cliente, relay y servidor sin saltar de una ausencia a una causa definitiva.",
+            "correct": "Orientaste la siguiente prueba hacia el trayecto que la evidencia mantiene pendiente.",
+            "soft": "Revisa qué parte de la conversación necesita observación antes de modificar parámetros de capacidad.",
+            "sharp": "Añadir más IP no arregla una solicitud que no llega, demonios; encuentra el tramo pendiente."
+          }
+        },
+        {
+          "prompt": "¿Dos ofertas demuestran automáticamente un servidor DHCP hostil?",
+          "scenario": "El inventario del laboratorio contempla dos participantes autorizados y las respuestas todavía deben contrastarse con sus identidades y funciones.",
+          "options": [
+            "Sí, toda red permite exactamente un único servidor por definición",
+            "No, hay que contrastar participantes y configuración con el diseño autorizado",
+            "Sí, cualquier oferta adicional modifica de inmediato todas las contraseñas"
+          ],
+          "answer": 1,
+          "explanation": "Pueden existir diseños legítimos con varios participantes; la investigación debe contrastar identidad, rol y parámetros antes de atribuir un incidente al número de ofertas.",
+          "wrongExplanations": [
+            "Ese límite universal no describe todos los diseños y no responde al inventario declarado; la autorización requiere contexto, no contar respuestas aisladas.",
+            null,
+            "Una oferta DHCP no cambia automáticamente todas las contraseñas; esa afirmación mezcla funciones ajenas y no aporta evidencia sobre la legitimidad de los participantes."
+          ],
+          "aoi": {
+            "question": "Dos voces en la conversación todavía necesitan identificación antes de un veredicto.",
+            "hint": "Compara los servidores observados con los papeles que el inventario autoriza.",
+            "correct": "Pediste contraste del diseño y evitaste convertir una cantidad en prueba automática de ataque.",
+            "soft": "El número de respuestas orienta una pregunta; no sustituye comprobar quién las envió.",
+            "sharp": "Dos ofertas no forman una banda criminal por votación, joder; consulta el inventario autorizado."
+          }
+        },
+        {
+          "prompt": "¿Qué precaución técnica corresponde antes de liberar o renovar desde gestión remota?",
+          "scenario": "El puesto usa la configuración investigada para la sesión actual y la operación puede modificar el acceso que necesitamos conservar.",
+          "options": [
+            "Ejecutar siempre ambas acciones sin registrar el estado anterior",
+            "Asumir que renovar jamás altera una sesión ni sus dependencias",
+            "Definir propósito, conservar referencia y disponer de recuperación apropiada"
+          ],
+          "answer": 2,
+          "explanation": "La operación cambia el estado y puede afectar el acceso; necesita una pregunta concreta, referencia previa y una recuperación que permita continuar si falla la sesión.",
+          "wrongExplanations": [
+            "Actuar sin referencia puede borrar evidencia o cortar gestión sin plan; repetir órdenes no garantiza localizar la condición que interrumpe la asignación.",
+            "La continuidad no es universal bajo cambios de parámetros o concesión; asumirla elimina una dependencia importante que el escenario pide considerar antes de actuar.",
+            null
+          ],
+          "aoi": {
+            "question": "Antes de cambiar la configuración que sostiene tu sesión, aseguremos cómo seguirás investigando.",
+            "hint": "Relaciona la operación con su efecto en el acceso y en la evidencia actual.",
+            "correct": "Preparaste una prueba con recuperación en vez de apostar toda la gestión a la renovación.",
+            "soft": "Revisa qué datos y camino perderías si la operación interrumpe la sesión actual.",
+            "sharp": "No sueltes la cuerda desde la que estás trabajando, cielo; guarda referencia y prepara cómo volver."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Había espacio y faltaba el camino de la solicitud",
+          "scenario": "El ámbito correcto conserva direcciones libres. El cliente emite Discover en su VLAN, pero el relay previsto no presenta esa transacción y el servidor no recibe una solicitud asociada.",
+          "explanation": "La capacidad del ámbito no demuestra alcance del intercambio. Hay que investigar segmento, relay y visibilidad entre puntos con tiempos e identidad coherentes; todavía no se justifica cambiar el tamaño del ámbito ni afirmar que el servidor procesó la transacción."
+        },
+        {
+          "title": "Ofertas de dos participantes autorizados",
+          "scenario": "La captura muestra dos ofertas relacionadas con el mismo cliente y el inventario documenta dos servidores legítimos para ese diseño. El grupo quiere declarar automáticamente un ataque por el número de respuestas.",
+          "explanation": "El número de ofertas no basta para atribuir actividad hostil. Deben contrastarse identidades, funciones y configuración con el diseño autorizado, además de verificar qué transacción y parámetros adopta el cliente; la investigación puede confirmar una condición legítima o detectar una discrepancia concreta."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Un puesto ficticio no obtiene la configuración IPv4 prevista. El servidor conserva direcciones libres, pero eso no demuestra que la solicitud llegue ni que la respuesta vuelva; compararemos mensajes, tiempos y puntos de observación.",
+      "scenario": "Un puesto ficticio no obtiene la configuración IPv4 prevista. El servidor conserva direcciones libres, pero eso no demuestra que la solicitud llegue ni que la respuesta vuelva; compararemos mensajes, tiempos y puntos de observación.",
+      "steps": [
+        "Identifica interfaz, configuración actual y alcance de la asignación.",
+        "Relaciona mensajes por cliente, transacción y momento.",
+        "Compara capturas o registros de los puntos autorizados.",
+        "Revisa relay, política y disponibilidad del ámbito pertinente.",
+        "Valida la configuración final sin renovar o liberar a ciegas el acceso de gestión."
+      ],
+      "sourceIds": [
+        "net-dhcp",
+        "net-wireshark"
+      ],
+      "aoi": {
+        "intro": "Hay direcciones libres, cariño; ahora falta demostrar que la conversación completa llega a ellas.",
+        "theory0": "La dirección del puesto tiene una historia de asignación que aún debemos consultar.",
+        "theory1": "No mezcles cuatro mensajes de cuatro clientes y me presentes una transacción perfecta.",
+        "theory2": "El relay conecta esta conversación entre segmentos; revisemos qué recibió y qué devolvió.",
+        "theory3": "Obtener una concesión es un paso, no la aprobación automática de todos los servicios.",
+        "case0": "El ámbito tiene sitio, pero todavía no ha visto la solicitud de ese puesto.",
+        "case1": "Dos ofertas requieren inventario y contexto antes de que montemos una película de intrusos.",
+        "pass": "Ya sigues cliente, transacción y regreso. Me encanta cuando una investigación tiene nombres y tiempos.",
+        "review": "Volvamos a la conversación concreta; una dirección libre todavía no explica por qué el puesto no la recibe."
+      }
+    },
+    {
+      "id": "network-diagnostics-tcp",
+      "title": "Conexiones TCP, secuencias y evidencias de retransmisión",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Reconocer una conversación y su apertura sin mezclar extremos",
+          "body": "Una conexión TCP relaciona dos extremos definidos por direcciones y puertos dentro de su contexto de red. Una captura con varias conexiones hacia el mismo servidor necesita distinguir también el puerto del cliente, el momento y cualquier transformación visible en ese punto. El establecimiento habitual incluye SYN del iniciador, SYN con ACK del receptor y ACK de confirmación. En el modelo, el cliente envía SYN con secuencia absoluta 100; el servidor responde SYN con secuencia 500 y confirmación 101; el cliente confirma 501. SYN ocupa una posición de secuencia, de modo que la confirmación avanza una unidad aunque ese segmento de apertura no lleve datos de aplicación. Los analizadores pueden mostrar números relativos para facilitar la lectura; no combines esas cifras con números absolutos de otro registro sin indicar la diferencia. Ver una parte de la apertura tampoco acredita la secuencia completa cuando el punto de observación pierde paquetes o solo ve una dirección. La actividad declara una captura suficiente de ambos sentidos para practicar la interpretación, pero en una investigación real esa condición debe verificarse."
+        },
+        {
+          "title": "Interpretar confirmaciones de bytes y límites de transporte",
+          "body": "TCP proporciona un flujo ordenado de bytes y utiliza números de secuencia y confirmaciones para coordinar la entrega. En el ejemplo simplificado, veinte bytes comienzan en la secuencia 101 y ocupan hasta 120, así que la siguiente posición esperada es 121. Una confirmación acumulativa de 121 comunica recepción de lo anterior según las condiciones del intercambio; no significa que se hayan recibido ciento veintiún paquetes. Tampoco demuestra que una persona leyera el contenido o que la aplicación completara una transacción comercial. Un ACK puede acompañar datos, y un segmento que solo confirma no consume por ese hecho una nueva posición de datos. FIN, como SYN, tiene su tratamiento de secuencia propio. Para diagnosticar, relaciona bytes y dirección de la confirmación en vez de contar cualquier paquete como un bloque idéntico. La segmentación observada puede variar por mecanismos del sistema y por el punto de captura, de modo que el número de segmentos visibles no debe convertirse automáticamente en el número de mensajes de aplicación."
+        },
+        {
+          "title": "Ubicar silencios y cierres antes de nombrar un culpable",
+          "body": "Si se observan SYN repetidos sin respuesta, la captura informa de intentos de apertura que no obtuvieron respuesta visible en ese punto. Puede haber pérdida, filtrado, destino indisponible, regreso distinto o límites de observación, entre otras condiciones. No demuestra por sí solo qué dispositivo bloqueó el servicio. Un RST es una señal explícita de reinicio o rechazo de la conexión en su contexto, distinta de un silencio, pero su presencia tampoco identifica automáticamente un firewall como emisor legítimo ni prueba una intrusión. Revisa dirección, relación con el intercambio y registros pertinentes. Un cierre ordenado también debe interpretarse por su secuencia y por qué extremo lo inicia. El transporte puede terminar de forma esperada cuando la aplicación decide cerrar. Conserva la línea de tiempo y pregunta qué resultado funcional debía producirse. Un diagnóstico que diferencia no hubo respuesta de hubo rechazo explícito permite escoger la siguiente prueba sin prometer una causa que la captura todavía no permite localizar."
+        },
+        {
+          "title": "Tratar las etiquetas del analizador como ayudas que necesitan contexto",
+          "body": "Una etiqueta de retransmisión suele orientar hacia bytes que el analizador considera repetidos dentro de su visión de la conversación. No demuestra por sí sola una duplicación de operación de aplicación ni localiza el enlace que perdió un paquete. Captura iniciada tarde, pérdida de paquetes en la propia observación, reordenamiento y mecanismos de descarga del sistema pueden influir en la interpretación. Antes de atribuir todo al medio, revisa integridad del archivo, punto, filtros, dirección y capacidades de captura. Contrastar otra observación autorizada o registros del extremo puede ayudar a distinguir pérdida en el trayecto de pérdida de visibilidad. También importa el intervalo: unas pocas marcas aisladas no describen necesariamente el comportamiento de toda la jornada. Después de corregir una causa confirmada, valida transporte y la acción de aplicación que motivó la investigación, con una carga representativa y datos mínimos. El resultado útil explica qué bytes o fases estaban pendientes y qué evidencia cambió después, sin convertir la etiqueta automática en una sentencia que sustituya el análisis del protocolo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué confirmación corresponde al SYN del cliente con secuencia absoluta 100?",
+          "scenario": "La apertura simplificada no incluye datos adicionales y el servidor reconoce el SYN recibido según el tratamiento de secuencia del protocolo.",
+          "options": [
+            "101 como siguiente posición esperada del cliente",
+            "100 porque SYN nunca afecta la secuencia",
+            "Cien paquetes de aplicación aprobados definitivamente"
+          ],
+          "answer": 0,
+          "explanation": "SYN ocupa una posición de secuencia, por lo que su reconocimiento avanza de 100 a 101 en el modelo sin datos adicionales.",
+          "wrongExplanations": [
+            null,
+            "El protocolo asigna a SYN un tratamiento que consume una posición; ignorarlo impide interpretar correctamente la confirmación de la apertura declarada.",
+            "La cifra representa posición de secuencia y no cantidad de paquetes o éxito de aplicación; esa interpretación cambia la unidad y el alcance del mensaje."
+          ],
+          "aoi": {
+            "question": "La apertura también ocupa una posición aunque todavía no lleve el contenido de la aplicación.",
+            "hint": "Aplica el tratamiento de SYN antes de calcular la siguiente posición esperada.",
+            "correct": "Reconociste el avance de secuencia que corresponde al inicio de la conexión.",
+            "soft": "Revisa si estás contando bytes y control o inventando paquetes de aplicación.",
+            "sharp": "Ese SYN sí ocupa su sitio, cielo; no lo dejes fuera de la cuenta."
+          }
+        },
+        {
+          "prompt": "¿Qué confirmación sigue a veinte bytes desde la secuencia 101 en este ejemplo?",
+          "scenario": "El receptor recibe de forma continua las posiciones 101 a 120 y no hay otros consumos de secuencia en el tramo descrito.",
+          "options": [
+            "120 porque siempre se confirma el último byte escrito",
+            "121 como siguiente posición esperada del flujo",
+            "Veinte porque toda confirmación solo muestra longitud del segmento"
+          ],
+          "answer": 1,
+          "explanation": "La confirmación acumulativa expresa la siguiente posición esperada y los veinte bytes terminan en 120, por lo que el valor resultante es 121.",
+          "wrongExplanations": [
+            "El último byte recibido y la siguiente posición esperada son valores distintos; confundirlos introduce un desfase en la interpretación del flujo.",
+            null,
+            "La longitud ayuda a calcular el avance, pero no reemplaza el número de secuencia; aquí el flujo ya comenzaba en la posición 101."
+          ],
+          "aoi": {
+            "question": "Nuestros veinte bytes terminan en ciento veinte; la confirmación mira lo que espera después.",
+            "hint": "Suma la longitud al inicio y conserva el significado de siguiente posición esperada.",
+            "correct": "Calculaste la confirmación sobre el flujo y mantuviste su unidad correcta.",
+            "soft": "Revisa si elegiste la posición siguiente o te quedaste en el último byte recibido.",
+            "sharp": "El ACK está esperando al siguiente, tesoro; no lo estaciones sobre el byte que ya recibió."
+          }
+        },
+        {
+          "prompt": "¿Una confirmación TCP acredita que una transacción de aplicación fue aceptada?",
+          "scenario": "El receptor confirma bytes de la conexión, pero no se observa todavía una respuesta funcional del servicio a la operación solicitada.",
+          "options": [
+            "Sí, cualquier ACK equivale a aceptación comercial y permiso de usuario",
+            "Sí, demuestra que una persona ya leyó todo el contenido",
+            "No, confirma transporte según el protocolo y no ese resultado funcional"
+          ],
+          "answer": 2,
+          "explanation": "La confirmación pertenece a la coordinación del flujo y no acredita procesamiento, permisos o aceptación de una operación de aplicación que aún necesita su propia evidencia.",
+          "wrongExplanations": [
+            "La aplicación tiene reglas y respuestas distintas del transporte; convertir cualquier ACK en aceptación comercial excede lo que ese mensaje informa del intercambio.",
+            "El protocolo no observa la lectura humana ni certifica que una persona revisara los datos; esa conclusión no se obtiene de un reconocimiento de bytes.",
+            null
+          ],
+          "aoi": {
+            "question": "TCP reconoció entrega de bytes; la aplicación todavía debe contarnos qué hizo con ellos.",
+            "hint": "Separa confirmación del flujo y resultado de la operación que pidió el usuario.",
+            "correct": "Conservaste el límite de transporte sin atribuir decisiones que corresponden a la aplicación.",
+            "soft": "Pregunta qué respuesta funcional falta aunque los bytes ya hayan sido confirmados.",
+            "sharp": "El ACK no aprobó tu compra ni leyó por ti, cariño; falta la respuesta de aplicación."
+          }
+        },
+        {
+          "prompt": "¿Qué concluyes de SYN repetidos sin respuesta visible en un único punto?",
+          "scenario": "La captura registra los intentos del cliente, pero no hay evidencia suficiente para localizar dónde deja de observarse la respuesta.",
+          "options": [
+            "Que la apertura no obtuvo respuesta visible allí y la causa requiere más evidencia",
+            "Que un firewall concreto y ya identificado es necesariamente el responsable",
+            "Que todos los servicios del destino se validaron por completo"
+          ],
+          "answer": 0,
+          "explanation": "La observación describe intentos sin respuesta visible, pero admite causas y límites de captura diferentes que deben investigarse antes de localizar el problema.",
+          "wrongExplanations": [
+            null,
+            "Sin datos adicionales no se identifica un dispositivo concreto ni se distingue filtrado de pérdida, destino indisponible o regreso fuera del punto observado.",
+            "No se completó siquiera una respuesta visible de apertura en ese punto; afirmar validación de todos los servicios contradice el alcance del escenario."
+          ],
+          "aoi": {
+            "question": "Nuestra captura ve insistencia del cliente; aún no ha localizado por qué falta la contestación.",
+            "hint": "Limita la conclusión al punto observado y enumera qué tramo necesita contraste.",
+            "correct": "Describiste la evidencia sin convertir una ausencia en la firma de un culpable específico.",
+            "soft": "Revisa qué dato identifica realmente el dispositivo o condición que estás señalando.",
+            "sharp": "El firewall no firmó esos silencios, demonios; localiza el tramo antes de acusarlo."
+          }
+        },
+        {
+          "prompt": "¿Una etiqueta de retransmisión prueba por sí sola una operación duplicada de aplicación?",
+          "scenario": "El analizador observa bytes posiblemente repetidos en una captura incompleta y no se dispone de registros funcionales de la transacción.",
+          "options": [
+            "Sí, cada segmento repetido ejecuta siempre otra compra o solicitud independiente",
+            "No, hay que distinguir transporte, visibilidad y comportamiento de la aplicación",
+            "Sí, el nombre de la etiqueta elimina cualquier límite de observación"
+          ],
+          "answer": 1,
+          "explanation": "La repetición o inferencia sobre bytes no demuestra una segunda operación funcional; además, la captura incompleta puede limitar la interpretación que realiza el analizador.",
+          "wrongExplanations": [
+            "TCP ofrece un flujo y la aplicación define sus operaciones; un segmento repetido no equivale universalmente a una transacción ejecutada de nuevo.",
+            null,
+            "Las etiquetas se basan en la información observada y no restauran paquetes ausentes ni conocen todo el estado funcional de la aplicación remota."
+          ],
+          "aoi": {
+            "question": "La herramienta marcó bytes; todavía no vimos dos operaciones aceptadas por el servicio.",
+            "hint": "Distingue lo que infiere el analizador de lo que demostrarían registros de aplicación.",
+            "correct": "Separaste la ayuda de análisis de una conclusión funcional que necesita otra evidencia.",
+            "soft": "Revisa qué parte de tu afirmación habla del flujo y cuál de la lógica del servicio.",
+            "sharp": "Una etiqueta no duplicó mágicamente la compra, joder; comprueba la aplicación y la captura."
+          }
+        },
+        {
+          "prompt": "¿Qué precaución necesitas al combinar secuencias relativas y absolutas de dos registros?",
+          "scenario": "La herramienta muestra valores relativos y otro informe conserva números absolutos del mismo intercambio que se intenta correlacionar.",
+          "options": [
+            "Sumarlos como cantidades de paquetes sin identificar su formato",
+            "Suponer que cualquier número igual corresponde siempre al mismo byte",
+            "Reconocer el formato y relacionar las referencias antes de comparar posiciones"
+          ],
+          "answer": 2,
+          "explanation": "Los formatos usan puntos de referencia distintos; hay que establecer su relación para comparar posiciones del flujo y evitar asociaciones numéricas engañosas.",
+          "wrongExplanations": [
+            "La unidad sigue siendo secuencia del flujo y no paquetes; sumar cifras de referencias distintas no produce una correlación válida entre registros.",
+            "La igualdad visual no acredita posición equivalente bajo referencias distintas; se necesita conocer el formato y el contexto de la conversación observada.",
+            null
+          ],
+          "aoi": {
+            "question": "Antes de unir números, averigua desde dónde empezó a contar cada herramienta.",
+            "hint": "Compara las referencias de presentación y la identidad de la conversación que representan.",
+            "correct": "Respetaste los formatos y preparaste una correlación que conserva el significado de las posiciones.",
+            "soft": "Revisa si las cifras comparten punto de partida antes de tratarlas como idénticas.",
+            "sharp": "Dos números parecidos no son una cita perfecta, cielo; primero presenta sus referencias."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La confirmación que no contaba paquetes",
+          "scenario": "El cliente envía veinte bytes desde secuencia absoluta 101 y el receptor confirma 121 en el modelo. El informe interpreta el número como ciento veintiún paquetes recibidos.",
+          "explanation": "La confirmación indica la siguiente posición esperada en el flujo de bytes, no una cantidad de paquetes. Los veinte bytes ocupan las posiciones 101 a 120; interpretar correctamente esa unidad evita conclusiones falsas sobre volumen, segmentación o éxito de aplicación."
+        },
+        {
+          "title": "El analizador que empezó a mirar demasiado tarde",
+          "scenario": "La captura comienza con una conexión ya activa y marca posibles retransmisiones sin disponer de toda la apertura ni de todos los paquetes. El grupo atribuye automáticamente una operación duplicada en la aplicación.",
+          "explanation": "La visión incompleta limita la interpretación y una retransmisión de bytes no prueba por sí sola duplicación de transacción de aplicación. Hay que revisar el punto de captura y correlacionar evidencia adicional pertinente antes de atribuir pérdida del trayecto o efectos funcionales concretos."
+        }
+      ],
+      "diagram": "network",
+      "intro": "La captura ficticia muestra una apertura TCP y números de secuencia absolutos declarados. Seguiremos qué se confirma y qué sigue pendiente, distinguiendo un problema de transporte de una respuesta de aplicación que todavía no se ha observado.",
+      "scenario": "La captura ficticia muestra una apertura TCP y números de secuencia absolutos declarados. Seguiremos qué se confirma y qué sigue pendiente, distinguiendo un problema de transporte de una respuesta de aplicación que todavía no se ha observado.",
+      "steps": [
+        "Identifica los dos extremos y el momento de la conversación.",
+        "Relaciona SYN, ACK y números de secuencia del ejemplo.",
+        "Distingue confirmación de bytes de éxito de aplicación.",
+        "Examina silencios, RST y retransmisiones con el alcance de captura.",
+        "Contrasta con registros o una segunda observación autorizada antes de atribuir la causa."
+      ],
+      "sourceIds": [
+        "net-tcp",
+        "net-wireshark"
+      ],
+      "aoi": {
+        "intro": "Hoy leeremos la conversación TCP, cariño; sus números cuentan bytes y expectativas concretas.",
+        "theory0": "Identifica extremos y formato de secuencias antes de juntar cifras de dos capturas.",
+        "theory1": "Un ACK conoce posiciones del flujo, no si alguien aprobó la compra al otro lado.",
+        "theory2": "Silencio y rechazo explícito necesitan preguntas distintas antes de señalar al firewall.",
+        "theory3": "La etiqueta del analizador ayuda, pero todavía no le he dado mi puesto de tutora.",
+        "case0": "Esos ciento veintiuno indican la próxima posición, no una multitud de paquetes recibidos.",
+        "case1": "Llegamos tarde a la conversación; la herramienta tampoco puede adivinar lo que no capturó.",
+        "pass": "Ya sigues apertura, bytes y límites de observación. Me está gustando esa precisión tan tuya.",
+        "review": "Repasemos unidad, sentido y contexto antes de convertir un número TCP en una historia de aplicación."
+      }
+    },
+    {
+      "id": "network-diagnostics-rendimiento",
+      "title": "Capacidad, caudal útil, retardo y pérdida sin mezclar unidades",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Medir caudal útil sin convertirlo en capacidad nominal",
+          "body": "La capacidad nominal de un enlace y la cantidad de datos útiles que una aplicación entrega por segundo son magnitudes relacionadas, pero diferentes. El caudal observado depende del recorrido, protocolos, extremos, carga y condiciones de la aplicación. En el ejemplo se transfieren cuarenta megabytes decimales útiles en veinte segundos: dos megabytes por segundo, equivalentes a dieciséis megabits por segundo al multiplicar por ocho. Se declara unidad decimal para evitar confundirla con unidades binarias, y la cantidad útil no incluye sobrecarga que la actividad no mide. El resultado no demuestra que el enlace físico tenga exactamente esa capacidad ni identifica por sí solo dónde existe una limitación. Un servidor lento, lectura de disco, cifrado o comportamiento de transporte pueden afectar la transferencia. Documenta también número de flujos, sentido y duración si comparas herramientas. Una prueba con muchos flujos puede utilizar el recorrido de manera distinta a una aplicación de un solo flujo y no certifica automáticamente que el usuario obtendrá la misma cifra en cualquier tarea."
+        },
+        {
+          "title": "Distinguir demora unidireccional y tiempo de ida y vuelta",
+          "body": "El tiempo de ida y vuelta incluye viaje hacia el destino y regreso de la respuesta bajo las condiciones de la medición. No puede dividirse por dos para obtener una demora unidireccional exacta si no se ha justificado simetría de caminos y tratamiento. Las mediciones entre relojes distintos también necesitan considerar sincronización y error temporal. Un valor aislado describe una muestra; una serie permite observar distribución y cambios. El promedio puede ocultar demoras ocasionales importantes para una aplicación interactiva, por lo que conviene informar otras estadísticas pertinentes y el tamaño de la muestra. Indica método y condiciones en vez de comparar números de herramientas diferentes como si todos midieran exactamente la misma etapa. El tiempo de respuesta de una aplicación puede incluir procesamiento y dependencias adicionales, no solo transporte de red. Si una pantalla tarda en cargar mientras el intercambio de red es rápido, la investigación debe distinguir esas partes antes de concluir que la capacidad del enlace es la única causa posible."
+        },
+        {
+          "title": "Describir variación y pérdida con su definición concreta",
+          "body": "La variación de demora importa cuando una aplicación necesita recibir datos con regularidad, como ciertos intercambios de audio y video. Existen métricas diferentes para describir esa variación, a menudo agrupadas informalmente bajo la palabra jitter. Debe indicarse cuál utiliza la herramienta y sobre qué selección de paquetes; una cifra sin definición puede no ser comparable con otra. Un búfer de reproducción puede absorber parte de la irregularidad, pero también añade demora y no elimina todas las causas de pérdida. Del mismo modo, una proporción de pérdida requiere definir qué paquetes se enviaron, cuáles se consideran recibidos y dentro de qué condiciones de tiempo. Si una prueba declara cien sondas y tres no recibidas según su criterio, informa tres por ciento para esa muestra. No implica automáticamente que todos los protocolos o sentidos sufran esa misma proporción. Los mensajes de control pueden recibir tratamiento distinto y una captura que pierde visibilidad no demuestra necesariamente pérdida equivalente del flujo en el trayecto."
+        },
+        {
+          "title": "Comparar bajo carga representativa y cerrar sobre el requisito",
+          "body": "Una prueba fuera del horario del problema puede mostrar buenas cifras sin explicar qué ocurre cuando coinciden usuarios, copias u otras actividades. Define una ventana representativa y evita generar saturación no autorizada para demostrar un punto. Registra las condiciones de los extremos y el recorrido para distinguir un cambio de carga de una mejora de configuración. Si se propone más capacidad, relaciona la hipótesis con utilización y colas observadas, no con una sensación general de lentitud. Si el problema es variación de demora, valida también la experiencia de la aplicación y los efectos secundarios del ajuste, incluida latencia añadida por búferes. El objetivo no consiste en lograr el número más alto de una herramienta, sino en cumplir un requisito concreto con controles y estabilidad adecuados. El informe debe expresar unidades, método, distribución o proporciones pertinentes y límites de extrapolación. Esa combinación permite comparar antes y después de forma razonable, y evita confundir una cifra favorable de transferencia con una demostración de calidad para todas las aplicaciones del mismo enlace."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué caudal útil medio representa la transferencia decimal del ejemplo?",
+          "scenario": "La aplicación entrega cuarenta megabytes útiles en veinte segundos y la conversión pide megabits por segundo sin incluir sobrecarga no medida.",
+          "options": [
+            "Dieciséis megabits por segundo útiles de media",
+            "Dos megabits por segundo porque bytes y bits son iguales",
+            "Cuarenta megabits por segundo porque basta copiar el tamaño total"
+          ],
+          "answer": 0,
+          "explanation": "Cuarenta dividido entre veinte son dos megabytes por segundo y multiplicar por ocho produce dieciséis megabits por segundo de datos útiles.",
+          "wrongExplanations": [
+            null,
+            "Dos es el resultado en megabytes por segundo; conservar ese número con unidad de megabits omite la conversión entre bytes y bits.",
+            "El tamaño transferido necesita dividirse por el tiempo y convertir la unidad; copiar cuarenta no calcula una tasa correspondiente al intervalo."
+          ],
+          "aoi": {
+            "question": "El archivo aporta cantidad y el cronómetro tiempo; convierte después de dividir.",
+            "hint": "Calcula megabytes por segundo y recuerda cuántos bits contiene cada byte.",
+            "correct": "Conservaste cantidad, tiempo y conversión sin inventar capacidad física a partir del caudal.",
+            "soft": "Revisa si cambiaste también el número cuando sustituiste bytes por bits.",
+            "sharp": "Los bytes no se convierten en bits solo cambiando la letra, cielo; multiplica por ocho."
+          }
+        },
+        {
+          "prompt": "¿Puedes obtener demora unidireccional exacta dividiendo cualquier RTT entre dos?",
+          "scenario": "La prueba mide ida y vuelta y no declara simetría de caminos ni igualdad de tratamiento entre ambos sentidos.",
+          "options": [
+            "Sí, toda ruta de internet es necesariamente simétrica",
+            "No, faltan condiciones que justifiquen esa división como medida exacta",
+            "Sí, el promedio elimina automáticamente cualquier diferencia entre sentidos"
+          ],
+          "answer": 1,
+          "explanation": "RTT combina ambos recorridos y no identifica por sí solo sus componentes; una división exacta necesita supuestos y condiciones que el escenario no aporta.",
+          "wrongExplanations": [
+            "Los caminos y tratamiento pueden diferir entre sentidos; suponer simetría universal ignora la información que haría falta para separar correctamente las demoras.",
+            null,
+            "Promediar muestras no elimina una diferencia sistemática entre ida y regreso ni convierte una medición conjunta en dos medidas unidireccionales independientes."
+          ],
+          "aoi": {
+            "question": "La respuesta hizo un viaje de vuelta que no prometió parecerse al de ida.",
+            "hint": "Identifica qué información falta para separar las dos partes del tiempo conjunto.",
+            "correct": "Mantuviste el alcance del RTT y evitaste atribuir precisión que la medición no tiene.",
+            "soft": "Pregunta si la herramienta observó ambos componentes por separado o solo su resultado combinado.",
+            "sharp": "La red no firmó simetría para facilitarte la cuenta, tesoro; no inventes precisión al dividir."
+          }
+        },
+        {
+          "prompt": "¿Dos valores llamados jitter son necesariamente comparables sin más detalles?",
+          "scenario": "Las herramientas no especifican la misma definición ni selección de paquetes y el informe solo conserva sus cifras finales.",
+          "options": [
+            "Sí, el nombre obliga a usar una fórmula universal idéntica",
+            "Sí, cualquier diferencia confirma por sí sola un enlace averiado",
+            "No, deben conocerse definición, muestra y condiciones de las métricas"
+          ],
+          "answer": 2,
+          "explanation": "La variación admite formulaciones distintas y necesita contexto de medición; el nombre informal no garantiza que ambas cifras representen el mismo aspecto del tráfico.",
+          "wrongExplanations": [
+            "La etiqueta no impone una única formulación a todas las herramientas; la comparación requiere consultar qué selección y cálculo realiza cada una.",
+            "La diferencia puede provenir del método o condiciones, por lo que no localiza automáticamente una avería sin contrastar lo que realmente miden ambos valores.",
+            null
+          ],
+          "aoi": {
+            "question": "El nombre se parece; todavía falta comprobar que las dos cifras hagan la misma pregunta.",
+            "hint": "Consulta cómo define y calcula variación cada herramienta y sobre qué paquetes.",
+            "correct": "Pediste métricas comparables antes de convertir una diferencia de cifras en un diagnóstico.",
+            "soft": "Revisa si comparaste unidades y definiciones además de la palabra que muestra la pantalla.",
+            "sharp": "Jitter no es una contraseña para que todas las fórmulas sean iguales, cariño; mira la definición."
+          }
+        },
+        {
+          "prompt": "¿Qué proporción informa una muestra de cien sondas con tres no recibidas?",
+          "scenario": "La actividad define su criterio de recepción y el intervalo, y pide una conclusión limitada a esas sondas bajo esas condiciones.",
+          "options": [
+            "Tres por ciento de pérdida según la muestra y su criterio",
+            "Treinta por ciento de pérdida en cualquier protocolo de toda la red",
+            "Cero porque las sondas no pueden perderse nunca"
+          ],
+          "answer": 0,
+          "explanation": "Tres dividido entre cien corresponde a tres por ciento para el conjunto definido; extrapolarlo a todo tráfico exige justificar representatividad y tratamiento comparable.",
+          "wrongExplanations": [
+            null,
+            "Treinta no corresponde a la proporción y la conclusión universal añade un alcance que la muestra de sondas no demuestra para otros protocolos o momentos.",
+            "La prueba declara sondas no recibidas según su criterio; negar cualquier posibilidad de pérdida evita interpretar los datos que el ejercicio pide evaluar."
+          ],
+          "aoi": {
+            "question": "Tenemos una proporción de esta muestra; no una ley para cada paquete de la jornada.",
+            "hint": "Divide no recibidas entre enviadas y conserva el alcance del criterio declarado.",
+            "correct": "Calculaste el porcentaje y lo limitaste a los paquetes que realmente participaron en la prueba.",
+            "soft": "Revisa tanto la cuenta como el alcance temporal y de tráfico de tu conclusión.",
+            "sharp": "Tres de cien no condenan todo el tráfico del planeta, demonios; informa esta muestra correctamente."
+          }
+        },
+        {
+          "prompt": "¿Por qué un promedio bajo puede coexistir con esperas molestas de usuarios?",
+          "scenario": "La serie incluye muchas respuestas rápidas y algunos episodios muy lentos coincidentes con las quejas registradas durante la ventana.",
+          "options": [
+            "Porque el promedio demuestra que ninguna muestra pudo ser lenta",
+            "Porque una media puede ocultar episodios y necesita contexto de distribución",
+            "Porque el tiempo de aplicación jamás puede medirse de ninguna manera"
+          ],
+          "answer": 1,
+          "explanation": "La media resume el conjunto pero no describe todos sus valores; analizar distribución y coincidencia temporal ayuda a valorar los episodios que afectan la experiencia.",
+          "wrongExplanations": [
+            "El promedio puede ser bajo aunque existan valores altos poco frecuentes; confundir media con máximo elimina precisamente los episodios que presenta el escenario.",
+            null,
+            "La aplicación puede medirse con métodos pertinentes; la limitación aquí pertenece al resumen estadístico elegido y no a una imposibilidad universal de observar tiempos."
+          ],
+          "aoi": {
+            "question": "La mayoría respondió rápido, pero el usuario también vivió esos picos que la media suaviza.",
+            "hint": "Pregunta qué estadística y qué contexto muestran las esperas ocasionales de la serie.",
+            "correct": "Reconociste la limitación del resumen y mantuviste visibles los episodios relevantes.",
+            "soft": "No trates una media como prueba de que todas las respuestas tuvieron ese valor.",
+            "sharp": "El promedio no puede barrer las esperas debajo de la alfombra, joder; mira la distribución."
+          }
+        },
+        {
+          "prompt": "¿Una transferencia nocturna favorable valida el audio de una franja concurrida?",
+          "scenario": "El horario, la carga y el tipo de aplicación difieren del problema original que los usuarios siguen observando por la mañana.",
+          "options": [
+            "Sí, una cifra favorable de caudal aprueba toda experiencia futura",
+            "Sí, porque el audio solo depende del tamaño total de un archivo",
+            "No, necesita condiciones representativas y métricas relacionadas con esa experiencia"
+          ],
+          "answer": 2,
+          "explanation": "La prueba cambia variables relevantes y mide otra tarea; la validación del audio requiere considerar carga, demora, variación y pérdida según el requisito afectado.",
+          "wrongExplanations": [
+            "Una transferencia puntual no acredita todos los horarios o aplicaciones; esa conclusión ignora las diferencias de carga y comportamiento que el escenario declara.",
+            "El audio interactivo puede depender de regularidad y demora además de caudal; reducirlo al tamaño de archivo no responde a la experiencia que falla.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestro archivo nocturno estaba cómodo; los usuarios se quejaban en otro escenario distinto.",
+            "hint": "Compara horario, carga y requisitos de la tarea que realmente necesita validación.",
+            "correct": "Exigiste una prueba representativa en vez de usar la cifra más favorable como certificado general.",
+            "soft": "Revisa qué parte del problema de audio estuvo realmente presente durante esa transferencia.",
+            "sharp": "La madrugada no aprobó la llamada de las nueve, cielo; mide la experiencia cuando y como falla."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El promedio tranquilo que ocultaba esperas largas",
+          "scenario": "La serie de respuesta tiene muchas muestras cortas y algunas demoras muy altas que coinciden con quejas de usuarios. El informe conserva únicamente el promedio y declara inexistente el síntoma.",
+          "explanation": "El promedio no describe toda la distribución y puede ocultar episodios relevantes. Deben conservarse tamaño de muestra, variabilidad y estadísticas apropiadas al requisito, relacionándolas temporalmente con las quejas antes de descartar la experiencia de los usuarios."
+        },
+        {
+          "title": "El resultado nocturno que no representaba la llamada de la mañana",
+          "scenario": "Una prueba de transferencia funciona bien de madrugada sin otros usuarios. La queja afecta al audio durante una franja concurrida y el informe usa esa cifra nocturna para darlo por resuelto.",
+          "explanation": "Cambian carga, horario y tipo de experiencia, de modo que la prueba no valida por sí sola el requisito afectado. Hace falta una medición representativa de la franja y métricas pertinentes al audio, sin generar saturación innecesaria ni confundir caudal con regularidad de llegada."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una transferencia ficticia entrega cuarenta megabytes decimales útiles en veinte segundos. Otra prueba detecta demoras variables en audio; distinguiremos métricas, muestras y requisitos antes de proponer más ancho de banda como solución universal.",
+      "scenario": "Una transferencia ficticia entrega cuarenta megabytes decimales útiles en veinte segundos. Otra prueba detecta demoras variables en audio; distinguiremos métricas, muestras y requisitos antes de proponer más ancho de banda como solución universal.",
+      "steps": [
+        "Define qué experiencia o requisito se quiere medir.",
+        "Anota unidad, dirección, intervalo y condiciones de cada medición.",
+        "Separa capacidad nominal y datos útiles transferidos.",
+        "Distingue ida y vuelta, demora unidireccional y variación.",
+        "Compara muestras representativas y valida el efecto en la aplicación."
+      ],
+      "sourceIds": [
+        "net-delay-variation",
+        "net-loss",
+        "net-tcp"
+      ],
+      "aoi": {
+        "intro": "Hoy las unidades van a portarse bien, cariño; ni bits disfrazados de bytes ni promedios milagrosos.",
+        "theory0": "Cuarenta megabytes útiles cuentan una transferencia, no toda la capacidad del enlace.",
+        "theory1": "La ida y vuelta no se parte en dos por cortesía si los caminos difieren.",
+        "theory2": "Jitter necesita definición; una cifra con nombre elegante todavía puede ser incomparable.",
+        "theory3": "La prueba debe representar el problema del usuario, no el horario más cómodo para presumir.",
+        "case0": "Ese promedio está escondiendo unas esperas largas; vamos a mirar también la distribución.",
+        "case1": "La red descansaba de madrugada; el audio se quejaba cuando todos llegaron.",
+        "pass": "Ya comparas experiencia, muestra y unidad. Mi lado exigente acaba de concederte una sonrisa.",
+        "review": "Repasemos qué mide cada cifra antes de comprar capacidad para una causa que aún no comprobamos."
+      }
+    },
+    {
+      "id": "network-diagnostics-filtros",
+      "title": "Filtros de captura y visualización en Wireshark",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Elegir el momento en que se seleccionan los paquetes",
+          "body": "Un filtro de captura limita qué tráfico se incorpora durante la adquisición, mientras un filtro de visualización selecciona qué paquetes ya presentes se muestran para analizarlos. No son dos nombres para la misma operación y utilizan lenguajes distintos. Un ejemplo de captura para el modelo es host 192.0.2.30 and tcp port 443; uno de visualización es ip.addr == 192.0.2.30 and tcp.port == 443. Ambos ejemplos se aplican bajo el contexto IPv4 ordinario declarado y no representan cualquier encapsulación o servicio web posible. El primero puede excluir tráfico antes de que forme parte del archivo, y después no será recuperable simplemente vaciando un cuadro de filtro. El segundo no elimina por sí mismo los paquetes originales al cambiar la vista. Antes de empezar, decide qué pregunta exige conservar otros protocolos o fases de la conversación. Un filtro demasiado estrecho puede ocultar precisamente la resolución de nombres o los mensajes de control que ayudarían a explicar por qué no se establece la conexión que se está investigando."
+        },
+        {
+          "title": "Seleccionar campos y direcciones conforme a la pregunta",
+          "body": "En el modelo de visualización, ip.addr compara direcciones IPv4 de origen o destino y tcp.port considera puertos TCP de cualquiera de los dos extremos. Esa selección permite mantener petición y respuesta del intercambio descrito. En cambio, ip.src == 192.0.2.30 muestra paquetes donde el puesto es origen y puede ocultar las respuestas cuyo origen es el servidor. No demuestra que esas respuestas nunca existieran en el archivo. La elección entre campos de origen, destino o cualquiera de ambos depende de la pregunta, no de cuál expresión parezca más corta. Para IPv6 se necesitan los campos correspondientes, y para conversaciones encapsuladas hay que comprobar qué cabeceras está interpretando el analizador. Los ejemplos evitan esas complejidades para enseñar una relación clara entre campo y paquete. Si el resultado parece imposible, abre un paquete conocido y contrasta sus campos con la expresión aplicada. Los operadores y agrupaciones también importan: una condición que exige simultáneamente dos propiedades no equivale a aceptar cualquiera de ellas, así que conviene hacer explícita la intención."
+        },
+        {
+          "title": "No confundir un puerto o una disección con toda una aplicación",
+          "body": "Filtrar TCP en el puerto 443 identifica coincidencias de transporte de ese contexto, pero no garantiza que todo paquete sea una aplicación honesta ni incluye necesariamente toda modalidad de navegación cifrada. Otras comunicaciones pueden usar puertos diferentes o transportes distintos. Asimismo, un filtro por un protocolo interpretado, como dns, depende de lo que el analizador pueda reconocer dentro del tráfico disponible. Si la resolución viaja dentro de un canal cifrado y no se dispone de la información necesaria para analizarla, su ausencia en ese filtro no demuestra que no hubiera resolución. Las herramientas también pueden asignar índices locales a conversaciones para facilitar seguir un flujo. Un índice de flujo TCP identifica una selección dentro de ese contexto de análisis, no una identidad global que deba coincidir numéricamente en archivos distintos. Relaciona extremos, tiempos y contenido pertinente al correlacionar capturas. Una etiqueta o número que organiza la vista ayuda a navegar, pero no sustituye los identificadores del protocolo ni la evidencia necesaria para afirmar qué servicio o transacción se produjo."
+        },
+        {
+          "title": "Verificar la vista y conservar el contexto de exportación",
+          "body": "Antes de concluir que falta tráfico, comprueba filtro aplicado, cantidad capturada, cantidad mostrada y alcance temporal. Si existen cien paquetes en el archivo y el filtro muestra veinte, los ochenta restantes no se convierten por ello en paquetes perdidos en la red. Están fuera de esa selección visible mientras se conserve el original. Al guardar o exportar, la herramienta puede ofrecer opciones para conservar todos o únicamente determinados paquetes; esa decisión sí afecta al archivo que entregas para otro análisis. Identifica el original y el subconjunto, registra la expresión y evita presentar un extracto como observación completa sin advertir su alcance. Protege también los datos que no sean necesarios para la pregunta y limita su distribución conforme al entorno. Una revisión reproducible indica versión o capacidades relevantes, expresión, conversación esperada y paquetes de comprobación de ambos sentidos. Así puedes corregir un filtro sin inventar un incidente y compartir un resultado que otra persona entienda, manteniendo separados adquisición, visualización, exportación y las conclusiones sobre el tráfico real."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué selección de visualización conserva ambos sentidos del intercambio declarado?",
+          "scenario": "El archivo contiene IPv4 ordinario del puesto 192.0.2.30 y queremos TCP con puerto 443 en cualquiera de los extremos pertinentes.",
+          "options": [
+            "ip.addr == 192.0.2.30 and tcp.port == 443",
+            "ip.src == 192.0.2.30 and tcp.dstport == 443 para afirmar ambos sentidos",
+            "dns para incluir obligatoriamente toda conexión TCP y su respuesta"
+          ],
+          "answer": 0,
+          "explanation": "La primera expresión considera dirección y puerto de ambos extremos en el modelo; la segunda restringe origen y destino de puerto y puede excluir respuestas.",
+          "wrongExplanations": [
+            null,
+            "Esa selección puede servir para peticiones, pero no describe ambos sentidos porque el servidor responde como origen y utiliza otros papeles de campos.",
+            "El filtro por disección DNS no selecciona universalmente conexiones TCP del servicio; identifica otro tipo de información bajo las capacidades de interpretación disponibles."
+          ],
+          "aoi": {
+            "question": "Busca una expresión que deje entrar también al paquete que vuelve al puesto.",
+            "hint": "Comprueba qué campos aceptan coincidencia en origen o destino dentro del caso.",
+            "correct": "Conservaste petición y respuesta sin exigir al regreso los mismos papeles de la ida.",
+            "soft": "Revisa si la respuesta cumple realmente la condición de origen que seleccionaste.",
+            "sharp": "La respuesta no nace en el cliente, cielo; tu filtro tiene que dejarla volver a la vista."
+          }
+        },
+        {
+          "prompt": "¿Qué operación puede excluir paquetes antes de que entren al archivo?",
+          "scenario": "La herramienta distingue adquisición y selección de visualización y necesitamos saber qué cambio limita la información conservada desde el inicio.",
+          "options": [
+            "Cambiar únicamente el color de una regla de resaltado",
+            "Aplicar un filtro de captura durante la adquisición",
+            "Ordenar visualmente una columna después de abrir el archivo"
+          ],
+          "answer": 1,
+          "explanation": "El filtro de captura decide qué se incorpora durante la adquisición; los cambios de presentación posteriores no recuperan lo que quedó fuera del archivo.",
+          "wrongExplanations": [
+            "El resaltado modifica una ayuda visual y no define por sí mismo la selección previa de paquetes que se incorporan durante la adquisición.",
+            null,
+            "Ordenar columnas reorganiza la presentación de datos existentes, pero no selecciona retrospectivamente el tráfico que nunca se capturó al inicio."
+          ],
+          "aoi": {
+            "question": "La pregunta trata de la puerta de entrada del archivo, no de su escaparate.",
+            "hint": "Ubica cada acción antes o después de incorporar los paquetes a la captura.",
+            "correct": "Identificaste la fase que puede limitar de origen la evidencia disponible.",
+            "soft": "Separa la adquisición del tráfico de las formas de ordenar o resaltar lo ya presente.",
+            "sharp": "Pintar paquetes no decide cuáles entraron al archivo, tesoro; mira el filtro de captura."
+          }
+        },
+        {
+          "prompt": "¿Qué significa mostrar veinte de cien paquetes mediante un filtro de vista?",
+          "scenario": "El original se conserva íntegro y el dato solo describe cuántos paquetes satisficieron la expresión de visualización aplicada.",
+          "options": [
+            "Que ochenta paquetes se perdieron necesariamente en el enlace",
+            "Que el archivo original fue borrado de forma automática",
+            "Que ochenta quedan fuera de esa selección visible, no necesariamente fuera del archivo"
+          ],
+          "answer": 2,
+          "explanation": "El filtro de visualización selecciona datos existentes y no convierte los no mostrados en pérdida de red ni los elimina por sí mismo del original.",
+          "wrongExplanations": [
+            "La cantidad oculta describe una selección del analizador, no una medición de paquetes enviados y no recibidos en el trayecto de la red.",
+            "El escenario conserva el original y cambiar la vista no implica borrarlo; esa conclusión confunde una selección visual con una operación de archivo.",
+            null
+          ],
+          "aoi": {
+            "question": "Veinte coinciden con la expresión; los otros ochenta todavía no se han evaporado.",
+            "hint": "Distingue cantidad capturada de cantidad mostrada bajo el filtro actual.",
+            "correct": "Interpretaste la vista sin convertir paquetes ocultos en una pérdida que no medimos.",
+            "soft": "Pregunta dónde están los datos originales antes de atribuir su ausencia al enlace.",
+            "sharp": "Los ochenta no se fueron de vacaciones por un filtro, cariño; siguen fuera de esa vista."
+          }
+        },
+        {
+          "prompt": "¿Puedes recuperar paquetes excluidos por captura borrando el filtro de visualización?",
+          "scenario": "El archivo se adquirió solo con TCP 443 y la nueva pregunta necesita tráfico DNS que no fue incorporado entonces.",
+          "options": [
+            "No, cambiar la vista no reconstruye datos que nunca entraron al archivo",
+            "Sí, el cuadro vacío vuelve a consultar todo el pasado de la red",
+            "Sí, los paquetes omitidos siempre permanecen escondidos dentro de cualquier archivo"
+          ],
+          "answer": 0,
+          "explanation": "La vista trabaja sobre los datos presentes; si la adquisición excluyó información, debe reconocerse ese límite y valorar otra captura autorizada si hace falta.",
+          "wrongExplanations": [
+            null,
+            "El analizador no reconstruye universalmente tráfico pasado al cambiar una expresión; necesita datos conservados y no dispone aquí de los que fueron excluidos.",
+            "El caso declara que esos paquetes no se incorporaron y no existe esa garantía de archivo oculto; confundirla falsea el alcance de la evidencia disponible."
+          ],
+          "aoi": {
+            "question": "No se puede mostrar lo que la captura nunca guardó en primer lugar.",
+            "hint": "Ubica la exclusión en la fase de adquisición antes de intentar corregir la vista.",
+            "correct": "Reconociste el límite del archivo y evitaste inventar datos recuperables por una casilla.",
+            "soft": "Revisa si los paquetes faltan de la selección visible o de la adquisición completa.",
+            "sharp": "Borrar el filtro no abre una máquina del tiempo, demonios; esos paquetes no entraron al archivo."
+          }
+        },
+        {
+          "prompt": "¿La ausencia bajo filtro dns demuestra que no hubo resolución de nombres?",
+          "scenario": "La aplicación puede usar una forma de resolución dentro de tráfico cifrado que el analizador no interpreta como DNS en esta captura.",
+          "options": [
+            "Sí, todo DNS siempre aparece legible bajo cualquier transporte",
+            "No, depende del tráfico disponible y de lo que pueda interpretar el analizador",
+            "Sí, prueba además que ninguna aplicación abrió una conexión"
+          ],
+          "answer": 1,
+          "explanation": "El filtro depende de datos visibles y disección; una resolución protegida o no observada puede no aparecer sin que eso demuestre su inexistencia.",
+          "wrongExplanations": [
+            "El transporte cifrado y los límites de observación pueden impedir esa interpretación directa; asumir visibilidad universal ignora las condiciones que la actividad declara.",
+            null,
+            "Una selección DNS no observa por sí sola todas las aperturas de aplicación; su ausencia no acredita una conclusión general sobre conexiones de otros protocolos."
+          ],
+          "aoi": {
+            "question": "El filtro pregunta por lo que puede reconocer, no por cada acción invisible de la aplicación.",
+            "hint": "Revisa visibilidad y capacidades antes de traducir ausencia de disección en ausencia de actividad.",
+            "correct": "Mantuviste el límite de interpretación y pediste contexto para la resolución protegida.",
+            "soft": "Pregunta si ese tráfico aporta campos DNS visibles al analizador en el punto observado.",
+            "sharp": "El filtro no ve a través de todo cifrado por llamarse dns, joder; comprueba su visibilidad."
+          }
+        },
+        {
+          "prompt": "¿Qué debe acompañar a un subconjunto exportado para otro operador?",
+          "scenario": "Se comparte solo una selección de paquetes y se conserva por separado el original pertinente de la observación autorizada.",
+          "options": [
+            "La afirmación de que contiene todo el tráfico de cualquier momento",
+            "Un índice de flujo tratado como identidad global en todos los archivos",
+            "Su alcance, expresión o criterio de selección y referencia al original conservado"
+          ],
+          "answer": 2,
+          "explanation": "Ese contexto permite interpretar qué incluye el extracto y qué quedó fuera, evitando presentarlo como evidencia completa de conversaciones o períodos que no contiene.",
+          "wrongExplanations": [
+            "El subconjunto no cubre universalmente toda actividad ni todos los tiempos; afirmar ese alcance distorsiona la evidencia que el operador podrá analizar.",
+            "Los índices locales organizan la vista y no sustituyen identidad y contexto entre capturas; hace falta documentar la selección y sus límites reales.",
+            null
+          ],
+          "aoi": {
+            "question": "El extracto puede ayudar mucho si no fingimos que contiene más de lo que seleccionamos.",
+            "hint": "Describe cómo se obtuvo el subconjunto y qué referencia permite revisar su contexto.",
+            "correct": "Compartiste evidencia con límites claros y una relación reconocible con el original.",
+            "soft": "Revisa qué necesita saber el siguiente operador para no confundir selección y totalidad.",
+            "sharp": "No vendas un recorte como película completa, cielo; documenta el filtro y el original."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Las respuestas escondidas por el campo de origen",
+          "scenario": "El archivo conserva petición y respuesta. El operador aplica ip.src == 192.0.2.30 y solo ve lo que sale del cliente; concluye que el servidor nunca contestó.",
+          "explanation": "El filtro restringe origen y excluye respuestas cuyo origen es el servidor. Debe comprobarse una selección apropiada de ambos sentidos y los paquetes originales antes de declarar ausencia en la red. Una vista parcial no equivale a una captura que nunca recibió esas respuestas."
+        },
+        {
+          "title": "El tráfico descartado antes de adquirirlo",
+          "scenario": "La captura se inició limitada a TCP 443 del puesto. Después surge la necesidad de revisar consultas DNS que el filtro de captura no incorporó, y alguien propone borrar únicamente el filtro de visualización.",
+          "explanation": "Cambiar la vista no reconstruye paquetes excluidos durante la adquisición. Hay que reconocer el límite del archivo y, si procede, diseñar otra captura autorizada con alcance apropiado; el informe debe distinguir datos ausentes del archivo de una conclusión sobre lo ocurrido en la red."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El archivo ficticio contiene conversaciones IPv4 ordinarias sin encapsulación. Queremos observar ambos sentidos de TCP entre el puesto 192.0.2.30 y un servicio en el puerto 443, distinguiendo qué se capturó de qué estamos mostrando.",
+      "scenario": "El archivo ficticio contiene conversaciones IPv4 ordinarias sin encapsulación. Queremos observar ambos sentidos de TCP entre el puesto 192.0.2.30 y un servicio en el puerto 443, distinguiendo qué se capturó de qué estamos mostrando.",
+      "steps": [
+        "Formula qué conversación y sentidos necesitas observar.",
+        "Identifica si editas un filtro de captura o visualización.",
+        "Comprueba protocolo, campos y operadores de ese lenguaje.",
+        "Verifica el resultado con paquetes conocidos de ida y regreso.",
+        "Conserva el original y documenta cualquier subconjunto exportado."
+      ],
+      "sourceIds": [
+        "net-display-filters",
+        "net-capture-filters"
+      ],
+      "aoi": {
+        "intro": "Antes de filtrar, cariño, aclaremos si estamos decidiendo qué entra o qué se ve.",
+        "theory0": "Dos lenguajes parecidos no hacen que adquisición y visualización sean la misma operación.",
+        "theory1": "El campo origen puede esconder la respuesta que justo estabas buscando.",
+        "theory2": "Un puerto y una etiqueta ayudan a seleccionar; no certifican toda la aplicación.",
+        "theory3": "El extracto necesita su contexto para no disfrazarse de captura completa.",
+        "case0": "Nuestro filtro miraba solo la salida del cliente; el servidor seguía presente en el archivo.",
+        "case1": "Lo que excluimos antes de capturar no vuelve por borrar una casilla de la vista.",
+        "pass": "Ya eliges campos y conservas contexto. Mis ganas de corregirte se están quedando sin excusas.",
+        "review": "Repasemos fase de filtrado y sentidos antes de llamar pérdida a lo que la vista no muestra."
+      }
+    },
+    {
+      "id": "network-diagnostics-captura",
+      "title": "Adquirir evidencia suficiente sin recopilar de más",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Planificar evidencia a partir de una pregunta delimitada",
+          "body": "Una captura puede incluir direcciones, nombres, patrones de actividad y contenido sensible según los protocolos y el punto donde se obtiene. No hace falta conservar toda la actividad de una organización para responder a una pregunta sobre una conexión concreta. Define finalidad, alcance autorizado, participantes pertinentes, ventana y condiciones de almacenamiento antes de adquirir datos. La minimización necesita equilibrarse con los campos y fases que permiten explicar el problema; excluir demasiado puede obligar a repetir la observación. Registra quién obtiene el archivo, desde dónde y con qué parámetros relevantes. Las credenciales o secretos no deben incluirse deliberadamente en ejemplos compartidos cuando una reproducción ficticia sirve para la misma pregunta. También conviene planificar retención y eliminación conforme al procedimiento del entorno, sin conservar copias indefinidas por costumbre. Un archivo pequeño y bien contextualizado puede ser más útil que una adquisición extensa cuyo origen, tiempo y permisos no están claros. La actividad utiliza datos ficticios precisamente para practicar esa planificación sin necesitar tráfico de personas reales ni acceso a una red externa."
+        },
+        {
+          "title": "Comprender qué visibilidad aporta el punto de observación",
+          "body": "Capturar desde un puesto muestra el tráfico que su interfaz puede observar bajo sus condiciones, no todo lo que atraviesa un switch distante. Activar modo promiscuo no obliga a la infraestructura a enviar al puesto todas las conversaciones de otros puertos ni elimina cifrado. Una copia de puerto o un punto de observación de red puede aportar otra vista, pero necesita configuración y alcance autorizados, además de capacidad suficiente para el tráfico que recibe. Si se agregan varias fuentes hacia una salida insuficiente, puede perderse información de captura aunque el servicio original siga funcionando. Las rutas asimétricas también pueden dejar un punto viendo principalmente un sentido. Documenta dónde está el sensor y qué se espera que vea, contrastándolo con paquetes conocidos. La ausencia observada necesita interpretarse con esa geometría. No ver una respuesta en un puesto que no recibe ese trayecto no demuestra que el servidor nunca la transmitiera. Las comparaciones entre puntos requieren además relacionar tiempos y transformaciones que puedan cambiar las direcciones o forma de los paquetes."
+        },
+        {
+          "title": "Revisar longitud conservada y efectos del sistema de captura",
+          "body": "La longitud de captura por paquete puede limitar cuántos bytes se almacenan de cada unidad observada. Un paquete cuyo tamaño original supera ese límite queda truncado en el archivo; el dato de longitud original no reconstruye los bytes omitidos. Esa selección puede reducir exposición y volumen, pero también impedir analizar campos o contenido necesarios. Decide el límite según la pregunta y registra su efecto. Asimismo, mecanismos de checksum offload pueden hacer que una captura local vea una suma aún no completada por el hardware, sin que eso demuestre una trama incorrecta en el medio. Otras descargas o agregaciones pueden alterar la segmentación que presenta el sistema al analizador. Una alerta visual necesita contexto antes de atribuir corrupción del enlace. Contrasta las capacidades del extremo y, cuando proceda dentro del alcance, una observación independiente del trayecto. No desactives funciones indiscriminadamente para conseguir una captura que parezca más familiar; cualquier ajuste debe tener propósito, efecto entendido y recuperación apropiada, además de no ampliar sin razón el impacto sobre el servicio investigado."
+        },
+        {
+          "title": "Conservar procedencia e integridad con límites explícitos",
+          "body": "Un resumen criptográfico ayuda a comprobar si los bytes de un archivo coinciden con una referencia, pero no demuestra por sí mismo que su contenido represente toda la realidad de la red ni que su origen esté correctamente declarado. La procedencia requiere registro de adquisición y manejo. Conserva el original con acceso limitado y documenta copias o transformaciones necesarias. Si se prepara un extracto o material anonimizado para compartir, identifica que es una derivación y qué se modificó; su hash cambiará y algunos ajustes pueden afectar la interpretación de protocolos o sumas. No lo presentes como original inalterado. También deben protegerse metadatos que puedan identificar sistemas o personas aunque el contenido parezca inocuo. El informe de captura debe indicar ventana, punto, filtros, longitud, pérdidas conocidas y condiciones de reloj pertinentes. Con esa información otra persona puede valorar qué conclusiones permite el archivo y cuáles siguen pendientes. La evidencia suficiente combina datos pertinentes, integridad verificable y contexto; recopilar más sin criterio no sustituye ninguna de esas tres condiciones."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿El modo promiscuo garantiza observar unicast entre todos los puertos del switch?",
+          "scenario": "El puesto está conectado a un puerto ordinario y no existe copia de tráfico ni otra configuración de observación declarada.",
+          "options": [
+            "No, no obliga al switch a entregar todas esas conversaciones al puesto",
+            "Sí, transforma cualquier interfaz en una copia completa de toda la infraestructura",
+            "Sí, elimina también el cifrado de cualquier aplicación remota"
+          ],
+          "answer": 0,
+          "explanation": "La interfaz depende del tráfico que llega a su punto; el modo no configura por sí mismo copia de otros puertos ni supera esos límites de visibilidad.",
+          "wrongExplanations": [
+            null,
+            "La observación completa requiere un diseño y capacidades pertinentes de captura; activar una opción local no transforma universalmente la infraestructura que entrega los paquetes.",
+            "El cifrado no desaparece por ese modo de recepción; contenido y visibilidad requieren condiciones distintas que la actividad no aporta con esa opción."
+          ],
+          "aoi": {
+            "question": "Nuestra interfaz puede escuchar lo que llega, pero no manda sobre todos los demás puertos.",
+            "hint": "Relaciona el modo local con el tráfico que el switch realmente entrega a ese punto.",
+            "correct": "Respetaste el límite de observación y evitaste inventar cobertura de toda la red.",
+            "soft": "Pregunta qué mecanismo autorizado copiaría esas conversaciones hacia el sensor si fuera necesario.",
+            "sharp": "Promiscuo no le puso micrófonos a todo el edificio, cielo; comprueba qué tráfico llega ahí."
+          }
+        },
+        {
+          "prompt": "¿Qué debe definir primero un plan de captura para una conexión concreta?",
+          "scenario": "La autorización delimita puntos y cinco minutos de observación, y la investigación necesita datos suficientes sin recopilar actividad ajena innecesaria.",
+          "options": [
+            "Una conservación perpetua de cualquier contenido disponible",
+            "Pregunta, alcance, ventana, datos necesarios y manejo del archivo",
+            "El mayor volumen posible sin importar quién participa o qué se busca"
+          ],
+          "answer": 1,
+          "explanation": "Definir finalidad y condiciones permite seleccionar evidencia pertinente y protegerla; acumular todo no sustituye una pregunta ni justifica ampliar el alcance autorizado.",
+          "wrongExplanations": [
+            "Retener indefinidamente no responde a la necesidad concreta y puede conservar exposición innecesaria; el manejo debe ajustarse al propósito y procedimiento del entorno.",
+            null,
+            "El volumen no acredita utilidad ni autorización; recoger actividad ajena sin relación con la pregunta puede complicar el análisis y ampliar la exposición."
+          ],
+          "aoi": {
+            "question": "Primero decidamos qué necesitamos saber y qué datos bastan para responderlo.",
+            "hint": "Vincula la adquisición con la pregunta, sus límites y la conservación apropiada.",
+            "correct": "Preparaste una observación suficiente sin confundir cantidad de datos con calidad de evidencia.",
+            "soft": "Revisa qué parte del plan explica para qué se recoge cada dato.",
+            "sharp": "No hace falta llevarte el vecindario entero al disco, tesoro; delimita la pregunta y el archivo."
+          }
+        },
+        {
+          "prompt": "¿La longitud original permite recuperar bytes truncados por el límite de captura?",
+          "scenario": "El archivo informa paquete de mil quinientos bytes, pero solo conserva cien y el campo necesario queda después del contenido disponible.",
+          "options": [
+            "Sí, el tamaño contiene cifrado todo el contenido restante",
+            "Sí, cualquier analizador reconstruye exactamente los bytes que nunca guardó",
+            "No, informa del tamaño y no reconstruye el contenido omitido"
+          ],
+          "answer": 2,
+          "explanation": "La longitud original describe una medida del paquete y no sus bytes ausentes; el análisis debe reconocer el límite y valorar otra adquisición pertinente si resulta necesaria.",
+          "wrongExplanations": [
+            "El número de longitud no codifica el contenido omitido; atribuirle esa capacidad confunde una medida con los datos que se decidió no conservar.",
+            "La herramienta no puede garantizar reconstrucción exacta de información nunca adquirida; inventarla produciría evidencia que el archivo no contiene bajo las condiciones del caso.",
+            null
+          ],
+          "aoi": {
+            "question": "Tenemos una medida de tamaño y solo una parte del paquete, no un rompecabezas completo.",
+            "hint": "Distingue longitud original de cantidad de bytes realmente disponibles para analizar.",
+            "correct": "Reconociste la truncación y evitaste tratar contenido ausente como evidencia conservada.",
+            "soft": "Revisa si el campo necesario está dentro de los bytes que el archivo sí guardó.",
+            "sharp": "Saber cuánto medía no cuenta qué decía, cariño; esos bytes quedaron fuera de la captura."
+          }
+        },
+        {
+          "prompt": "¿Un aviso de checksum en captura local prueba automáticamente daño en el medio?",
+          "scenario": "El extremo puede utilizar checksum offload y la observación se realiza antes de que el hardware complete determinadas funciones del envío.",
+          "options": [
+            "No, hay que contrastar descarga de procesamiento y una evidencia pertinente del trayecto",
+            "Sí, cualquier aviso identifica con certeza un cable específico roto",
+            "Sí, toda descarga de procesamiento destruye necesariamente el paquete transmitido"
+          ],
+          "answer": 0,
+          "explanation": "La captura local puede observar un estado previo a completar la suma; atribuir corrupción requiere contexto del extremo y evidencias adicionales apropiadas a la transmisión.",
+          "wrongExplanations": [
+            null,
+            "El aviso no localiza universalmente un cable ni demuestra daño físico; la condición de observación puede explicar diferencias entre el archivo y lo que sale al medio.",
+            "La descarga es un mecanismo de procesamiento y no implica destrucción inevitable; su efecto sobre la captura debe entenderse antes de juzgar la transmisión real."
+          ],
+          "aoi": {
+            "question": "La captura vio una etapa del envío; todavía no hemos observado la suma final en el medio.",
+            "hint": "Consulta qué funciones completa el hardware después del punto donde mira el analizador.",
+            "correct": "Interpretaste el aviso con su contexto y mantuviste pendiente la comprobación apropiada.",
+            "soft": "Pregunta si la suma ya debía estar completa en esa fase de observación.",
+            "sharp": "La etiqueta roja no identificó al cable culpable, demonios; revisa primero dónde se calculó la suma."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra un hash coincidente con la referencia de un archivo?",
+          "scenario": "Se compara una copia con un resumen previamente registrado, pero no se ha revisado todavía cómo se obtuvo ni qué cobertura tenía la captura.",
+          "options": [
+            "Que todos los paquetes de la red quedaron incluidos y son legítimos",
+            "Que sus bytes coinciden con la referencia bajo esa comprobación de integridad",
+            "Que la hora y el origen declarados nunca pueden ser erróneos"
+          ],
+          "answer": 1,
+          "explanation": "La comparación de integridad vincula los bytes con la referencia; cobertura, procedencia y exactitud de metadatos requieren documentación y comprobaciones distintas de ese resumen.",
+          "wrongExplanations": [
+            "El hash no describe todo tráfico que existió fuera del archivo ni certifica legitimidad de cada paquete; su alcance es la comparación de contenido conservado.",
+            null,
+            "Un resumen no valida por sí mismo reloj, punto o declaraciones de adquisición; esos aspectos necesitan registros y contexto de procedencia verificables."
+          ],
+          "aoi": {
+            "question": "El hash responde si cambiaron estos bytes, no si el sensor vio toda la verdad del mundo.",
+            "hint": "Separa integridad del archivo de procedencia y cobertura de su adquisición.",
+            "correct": "Acotaste correctamente la comprobación y mantuviste necesarias las evidencias de origen.",
+            "soft": "Revisa qué dato del proceso no puede obtenerse simplemente comparando el resumen.",
+            "sharp": "El hash no estuvo mirando por encima del hombro del sensor, joder; documenta también la procedencia."
+          }
+        },
+        {
+          "prompt": "¿Cómo debe identificarse un extracto anonimizado que se comparte para revisión?",
+          "scenario": "El original se conserva protegido y la derivación cambia direcciones o elimina datos para reducir exposición del material entregado.",
+          "options": [
+            "Como original intacto aunque sus bytes y significado hayan cambiado",
+            "Como prueba de que nunca existieron datos sensibles en la adquisición",
+            "Como derivación con transformaciones y límites documentados respecto del original"
+          ],
+          "answer": 2,
+          "explanation": "La derivación necesita trazabilidad y contexto de cambios; modificar datos puede afectar interpretación y hash, por lo que no debe presentarse como original inalterado.",
+          "wrongExplanations": [
+            "La transformación altera el material y puede cambiar detalles relevantes del análisis; ocultarla impide valorar qué evidencia pertenece al original y qué se modificó.",
+            "El extracto no demuestra ausencia histórica de datos en el original; solo refleja el material seleccionado o transformado bajo las condiciones de su preparación.",
+            null
+          ],
+          "aoi": {
+            "question": "Podemos compartir menos datos sin ocultar que preparamos una versión derivada.",
+            "hint": "Registra qué cambió y conserva la relación con el original protegido.",
+            "correct": "Compartiste evidencia minimizada con una procedencia clara y sin fingir integridad original.",
+            "soft": "Revisa si el siguiente operador sabrá qué partes del material fueron transformadas.",
+            "sharp": "El recorte con maquillaje sigue siendo una derivación, cielo; di qué cambiaste y protege el original."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El modo promiscuo al que pidieron ver todo el edificio",
+          "scenario": "Un puesto conectado a un puerto normal de switch activa modo promiscuo y no observa conexiones unicast entre otros dos puertos. El informe concluye que esas conversaciones no existen en la red.",
+          "explanation": "Ese modo no obliga al switch a entregar todas las conversaciones al puesto. La ausencia debe interpretarse según su visibilidad y el diseño de observación; hace falta un punto autorizado apropiado si la pregunta requiere comprobar esos flujos ajenos al puerto."
+        },
+        {
+          "title": "El paquete de tamaño completo con contenido recortado",
+          "scenario": "El archivo registra longitud original de mil quinientos bytes, pero solo conserva cien por el límite configurado. El análisis necesita un campo situado después de lo capturado y propone recuperarlo leyendo la longitud original.",
+          "explanation": "El tamaño original informa cuánto medía el paquete, no reconstruye su contenido ausente. Debe reconocerse la truncación y valorar otra adquisición autorizada si el campo es necesario, ajustando alcance y longitud sin presentar bytes imaginados como evidencia conservada."
+        }
+      ],
+      "diagram": "network",
+      "intro": "La investigación ficticia autoriza observar un flujo durante cinco minutos desde puntos definidos. Planificaremos alcance, visibilidad, longitud conservada y protección del archivo para que la captura sea útil sin convertirse en un almacén indiscriminado de datos.",
+      "scenario": "La investigación ficticia autoriza observar un flujo durante cinco minutos desde puntos definidos. Planificaremos alcance, visibilidad, longitud conservada y protección del archivo para que la captura sea útil sin convertirse en un almacén indiscriminado de datos.",
+      "steps": [
+        "Define pregunta, autorización, puntos, duración y tráfico pertinente.",
+        "Comprueba qué puede observar realmente cada interfaz.",
+        "Decide longitud y filtros sin perder los campos necesarios.",
+        "Registra límites de captura, reloj y posibles descargas de procesamiento.",
+        "Conserva el original protegido y comparte solo el material necesario con contexto."
+      ],
+      "sourceIds": [
+        "net-wireshark",
+        "net-capture-filters",
+        "net-offload",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Una buena captura responde una pregunta, cariño; no necesita quedarse con todos los secretos del vecindario.",
+        "theory0": "Define finalidad y alcance antes de abrir un archivo que también puede contener datos de otros.",
+        "theory1": "El sensor solo conoce la vista que el recorrido realmente le entrega.",
+        "theory2": "Una suma pendiente o un paquete truncado necesitan contexto, no una acusación instantánea.",
+        "theory3": "El hash comprueba bytes frente a una referencia; la procedencia necesita su propia historia.",
+        "case0": "Promiscuo describe cómo recibe la interfaz, no un poder para obligar al switch a contarlo todo.",
+        "case1": "Mil quinientos era el tamaño, pero cien son los bytes que realmente conservamos.",
+        "pass": "Captura suficiente, acceso limitado y contexto claro. Ese cuidado me resulta tan inteligente como atractivo.",
+        "review": "Repasemos punto, límites y procedencia antes de tratar el archivo como si hubiera visto toda la red."
+      }
+    },
+    {
+      "id": "network-diagnostics-informe",
+      "title": "Entregar un diagnóstico que otro operador pueda verificar",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Abrir el informe con una pregunta y un impacto reconocibles",
+          "body": "Un informe técnico comienza por lo que necesita entender quien recibe el caso: qué servicio se afectó, qué usuarios o segmentos se observaron, durante qué período y con qué resultado. El alcance debe distinguir lo comprobado de lo no consultado. Si solo se ensayó un puesto, no describas todos los edificios como afectados sin otra evidencia. También conviene separar impacto funcional y gravedad interpretada: una demora medible no tiene necesariamente la misma consecuencia que perder un servicio crítico, y la valoración depende del contexto. Utiliza identificadores del caso y referencias de equipos suficientes para localizar las pruebas, evitando publicar información personal o credenciales en el resumen. El objetivo no es reemplazar toda la documentación de arquitectura, sino proporcionar un contexto mínimo que haga comprensible la investigación. Una frase sobre aplicación, origen, ventana y fallo concreto orienta mejor que una lista de comandos ejecutados. El receptor debe poder relacionar ese contexto con el requisito que se validará al cerrar, para saber si las pruebas posteriores responden realmente al problema presentado."
+        },
+        {
+          "title": "Construir una cronología sin mezclar zonas y relojes",
+          "body": "Los registros pueden mostrar hora local, UTC o valores con desplazamiento explícito. Dos líneas con números distintos pueden corresponder al mismo instante, y dos horas iguales pueden pertenecer a zonas diferentes. Conserva la referencia original y utiliza una representación comparable para ordenar acontecimientos. En el ejemplo, 09:00 con desplazamiento UTC menos cinco equivale a 14:00 UTC del mismo día. No deben tratarse como eventos separados por cinco horas. Además de zona, considera sincronización y posible desviación del reloj; una normalización de formato no corrige un equipo cuya hora es inexacta. Si la precisión no alcanza para decidir qué ocurrió primero, expresa ese límite. Relaciona capturas y registros por identificadores de conversación, dirección y datos pertinentes, sin depender únicamente de que dos líneas aparezcan cerca en una pantalla. La cronología útil muestra observación, cambio y validación con referencias identificables, y evita inventar un orden causal exacto cuando las fuentes solo permiten establecer una ventana aproximada de coincidencia."
+        },
+        {
+          "title": "Asociar evidencias a conclusiones sin exceder su cobertura",
+          "body": "Cada afirmación importante debe indicar qué observación la sostiene y qué alternativas siguen abiertas. Por ejemplo, una ruta instalada, una respuesta de transporte y un rechazo de aplicación informan aspectos diferentes; reunirlos ayuda a localizar, pero ninguno demuestra por sí solo toda la causa. El informe puede utilizar una matriz sencilla de hecho, hipótesis, prueba y resultado para mantener esa distinción. Cuando existe una corrección, explica su relación con la condición observada y si se aisló suficientemente la variable para hablar de causa confirmada. Si coinciden otros cambios, conviene reconocerlos. Incluye referencia al archivo o registro pertinente, punto de observación y método de selección, en lugar de pegar una captura sin contexto como demostración autosuficiente. Las comprobaciones de integridad ayudan a reconocer material, pero la procedencia y cobertura deben documentarse también. Selecciona los fragmentos necesarios y protege originales y datos sensibles conforme al procedimiento. El objetivo es permitir una revisión razonable de las conclusiones, no impresionar con volumen ni ocultar incertidumbre entre páginas de salida sin explicación."
+        },
+        {
+          "title": "Cerrar con estado final, responsable y condiciones de seguimiento",
+          "body": "El cierre debe decir qué quedó funcionando y con qué evidencias, qué cambio se conservó o revirtió y qué seguimiento necesita el caso. Si el síntoma era intermitente, define la observación posterior y las condiciones de reapertura pertinentes, sin prometer que una prueba favorable asegura disponibilidad perpetua. Registra también quién recibe el pendiente y qué acción concreta podrá continuarlo. Una escalación útil aporta reproducción acotada, contexto y pruebas ya realizadas para evitar que el siguiente equipo empiece sin referencias. No hace falta compartir secretos o acceso indiscriminado para entregar un caso claro; se pueden usar los canales y mecanismos de acceso autorizados cuando sean necesarios. Actualiza la documentación de referencia si la solución modifica el diseño vigente. El informe final no tiene que narrar cada intento en orden, pero sí conservar decisiones y resultados que expliquen el estado entregado. Con esa estructura otra persona puede verificar la conclusión, retomar una pregunta abierta y distinguir una recuperación comprobada de una explicación todavía probable que requiere investigación adicional."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cómo se relacionan 09:00 UTC menos cinco y 14:00 UTC del mismo día?",
+          "scenario": "Las dos fuentes indican explícitamente esas zonas y la pregunta se limita a convertir la referencia temporal, no a certificar precisión de sus relojes.",
+          "options": [
+            "Representan el mismo instante según los desplazamientos declarados",
+            "Necesariamente describen sucesos separados por cinco horas reales",
+            "Demuestran que ambos relojes son perfectos y nunca se desvían"
+          ],
+          "answer": 0,
+          "explanation": "La conversión suma cinco horas a la referencia local y obtiene 14:00 UTC; la equivalencia de zonas no valida por sí sola precisión de relojes.",
+          "wrongExplanations": [
+            null,
+            "Comparar solo los números omite los desplazamientos explícitos y crea una separación que la conversión temporal declarada no sostiene para esos registros.",
+            "La normalización de zona no mide error del reloj; su exactitud requiere otra comprobación y no se deriva de la equivalencia de referencias."
+          ],
+          "aoi": {
+            "question": "Primero convierte la referencia; después podremos discutir la precisión que realmente tengan los equipos.",
+            "hint": "Suma el desplazamiento necesario para expresar la hora local en UTC.",
+            "correct": "Alineaste las referencias sin atribuir a la conversión una garantía de sincronización.",
+            "soft": "Revisa si comparaste instantes o simplemente números escritos bajo zonas distintas.",
+            "sharp": "El cinco pertenece a la zona, cielo; no inventes cinco horas de incidente al ignorarlo."
+          }
+        },
+        {
+          "prompt": "¿Qué alcance debe describir el informe si solo se comprobó un puesto?",
+          "scenario": "El operador dispone de una reproducción en un cliente y aún no consultó otros segmentos o edificios de la organización.",
+          "options": [
+            "Toda la infraestructura afectada sin distinguir lo que no se observó",
+            "El puesto y condiciones comprobados, dejando explícito el alcance pendiente",
+            "Ninguna información hasta medir cada dispositivo del planeta"
+          ],
+          "answer": 1,
+          "explanation": "El informe puede ser útil con alcance limitado si distingue observaciones y pendientes; ampliar la conclusión a otros equipos necesita evidencia adicional pertinente.",
+          "wrongExplanations": [
+            "Una prueba local no acredita impacto universal y esa generalización puede desviar prioridad o investigación sin datos que la sostengan para el resto.",
+            null,
+            "No se necesita cobertura universal para documentar una reproducción; lo necesario es declarar límites y preguntas pendientes de forma que otra persona pueda continuar."
+          ],
+          "aoi": {
+            "question": "Un caso acotado también vale si no lo disfrazamos de censo de toda la empresa.",
+            "hint": "Separa equipos observados de los que todavía no participaron en la investigación.",
+            "correct": "Conservaste utilidad y precisión sin inflar el alcance ni bloquear el informe.",
+            "soft": "Pregunta qué evidencia incluye realmente cada grupo de usuarios que mencionas.",
+            "sharp": "Un puesto no habló por todos los edificios, tesoro; describe a quién sí observamos."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión corresponde a una recuperación tras dos cambios no aislados?",
+          "scenario": "Las pruebas finales muestran el servicio funcionando, pero la investigación no distingue cuál modificación resolvió la condición original.",
+          "options": [
+            "La última orden demuestra automáticamente una causa única confirmada",
+            "Los resultados favorables deben ocultarse porque aún hay incertidumbre causal",
+            "Recuperación observada con causa probable o pendiente y límites documentados"
+          ],
+          "answer": 2,
+          "explanation": "Puede acreditarse el estado recuperado sin atribuir certeza causal; las modificaciones coincidentes deben reconocerse y orientar un siguiente paso si la explicación sigue abierta.",
+          "wrongExplanations": [
+            "La posición temporal de una orden no aísla su efecto frente al otro cambio y no justifica por sí sola una causa única definitiva.",
+            "La incertidumbre no elimina las observaciones útiles; deben documentarse junto con su alcance y la explicación que todavía necesita confirmación adicional.",
+            null
+          ],
+          "aoi": {
+            "question": "Podemos entregar recuperación real sin regalar una certeza que las pruebas no aislaron.",
+            "hint": "Distingue el estado final comprobado de la explicación causal que sigue abierta.",
+            "correct": "Registraste el resultado útil y mantuviste honesta la interpretación de su causa.",
+            "soft": "Revisa si tus pruebas separaron realmente el efecto de cada una de las modificaciones.",
+            "sharp": "El servicio volvió, cariño, pero dos cambios juntos todavía no eligieron al héroe de la historia."
+          }
+        },
+        {
+          "prompt": "¿Qué hace verificable una captura utilizada como evidencia de una conclusión?",
+          "scenario": "El informe selecciona material del incidente y quiere que otro operador comprenda qué observación sostiene la afirmación técnica.",
+          "options": [
+            "Referencia, punto, tiempo, criterio de selección y explicación de su relación con la conclusión",
+            "Solo una imagen grande sin indicar de dónde ni cuándo procede",
+            "Únicamente una promesa de que el operador reconoce su propia pantalla"
+          ],
+          "answer": 0,
+          "explanation": "La evidencia necesita contexto y una relación explícita con la afirmación; así puede revisarse su alcance y valorar si sostiene realmente la conclusión presentada.",
+          "wrongExplanations": [
+            null,
+            "El tamaño visual no aporta procedencia, tiempo o selección y puede ocultar límites relevantes; una imagen aislada no vuelve autosuficiente la afirmación.",
+            "La confianza personal no sustituye datos reproducibles del material; el receptor necesita referencias para interpretar lo observado sin depender de recuerdos del autor."
+          ],
+          "aoi": {
+            "question": "La captura debe contar qué observamos y por qué importa, no solo ocupar espacio.",
+            "hint": "Busca los datos que permiten situar y revisar el fragmento de evidencia.",
+            "correct": "Relacionaste el material con la afirmación y dejaste visibles sus condiciones de observación.",
+            "soft": "Revisa si alguien ajeno al caso podría entender qué representa realmente esa imagen.",
+            "sharp": "Una captura enorme no vale doble evidencia, demonios; dale procedencia y explica qué demuestra."
+          }
+        },
+        {
+          "prompt": "¿Qué necesita un pendiente técnico al entregar el caso a otro equipo?",
+          "scenario": "Queda una pregunta abierta y la operación quiere continuar sin repetir pruebas innecesarias ni perder las condiciones de reproducción.",
+          "options": [
+            "Solo la frase alguien debería mirarlo cuando pueda",
+            "Un responsable receptor, siguiente acción concreta y contexto de lo ya probado",
+            "Acceso irrestricto a todos los secretos aunque no hagan falta para la pregunta"
+          ],
+          "answer": 1,
+          "explanation": "El pendiente debe ser accionable y tener un receptor identificable, con evidencia y contexto que permitan continuar la investigación desde lo ya aprendido.",
+          "wrongExplanations": [
+            "La frase no asigna responsabilidad ni define una prueba o acción, por lo que facilita que el trabajo quede sin seguimiento y se pierda contexto.",
+            null,
+            "La continuidad no exige divulgar secretos innecesarios; acceso y material deben ajustarse a la pregunta y a los mecanismos autorizados del entorno."
+          ],
+          "aoi": {
+            "question": "Nuestra pregunta abierta necesita una persona y una acción, no una despedida vaga.",
+            "hint": "Describe quién la recibe, qué hará después y qué evidencia ya tiene disponible.",
+            "correct": "Convertiste el pendiente en trabajo continuable con dueño y contexto suficiente.",
+            "soft": "Comprueba si la siguiente persona sabrá qué pregunta debe resolver primero.",
+            "sharp": "Alguien no es un responsable y luego no es un plan, joder; concreta la entrega."
+          }
+        },
+        {
+          "prompt": "¿Una prueba final favorable garantiza que un síntoma intermitente nunca reaparecerá?",
+          "scenario": "La ventana confirma funcionamiento durante unas muestras, pero el problema original ocurría solo bajo ciertas condiciones de carga y horario.",
+          "options": [
+            "Sí, cualquier resultado favorable garantiza disponibilidad perpetua",
+            "Sí, el informe elimina automáticamente toda condición futura de fallo",
+            "No, debe indicarse cobertura y seguimiento apropiado a la intermitencia"
+          ],
+          "answer": 2,
+          "explanation": "La prueba tiene alcance temporal y condiciones limitadas; un caso intermitente necesita criterios de observación o reapertura acordes sin convertir la muestra en garantía universal.",
+          "wrongExplanations": [
+            "Un resultado puntual no cubre todas las cargas, momentos o cambios futuros; esa promesa excede lo que la validación realmente observó en la ventana.",
+            "La documentación describe evidencias y decisiones, pero no elimina físicamente cualquier causa futura; su valor depende de reflejar límites y próximos pasos verificables.",
+            null
+          ],
+          "aoi": {
+            "question": "La muestra fue favorable; no le vamos a pedir que firme todos los días del futuro.",
+            "hint": "Relaciona seguimiento y condiciones de reapertura con la forma en que aparecía el síntoma.",
+            "correct": "Conservaste una validación útil y un seguimiento razonable sin prometer imposibles.",
+            "soft": "Pregunta qué condiciones del problema intermitente quedaron fuera de esta observación final.",
+            "sharp": "Un aprobado de hoy no contrató eternidad, cielo; documenta la muestra y cómo volveremos a mirar."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos horas que representan el mismo instante",
+          "scenario": "El registro del puesto marca 09:00 con desplazamiento UTC menos cinco y el registro del servidor marca 14:00 UTC del mismo día. El borrador los ordena con una separación real de cinco horas.",
+          "explanation": "Ambas referencias representan el mismo instante bajo esas zonas declaradas. Debe normalizarse la cronología conservando sus fuentes y verificar aparte la precisión de los relojes; convertir formato no elimina posibles desviaciones que necesiten documentarse en la correlación."
+        },
+        {
+          "title": "Un servicio recuperado con causa todavía no aislada",
+          "scenario": "La aplicación vuelve a responder tras una ventana con dos modificaciones simultáneas. Las pruebas finales son favorables, pero no se distingue cuál de las dos condiciones explicaba el síntoma inicial.",
+          "explanation": "Puede documentarse recuperación observada y conservarse la causa como probable o pendiente, con sus evidencias y siguiente paso. Afirmar una causa única confirmada excedería la comparación disponible y dificultaría revisar el caso si reaparece el mismo comportamiento."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Prepararemos el cierre del incidente ficticio INC-042. El equipo necesita una cronología comparable, evidencias relacionadas con el síntoma y una descripción fiel de lo resuelto y lo pendiente, sin copiar secretos ni convertir sospechas en causas confirmadas.",
+      "scenario": "Prepararemos el cierre del incidente ficticio INC-042. El equipo necesita una cronología comparable, evidencias relacionadas con el síntoma y una descripción fiel de lo resuelto y lo pendiente, sin copiar secretos ni convertir sospechas en causas confirmadas.",
+      "steps": [
+        "Resume impacto, alcance y acción afectada con datos mínimos.",
+        "Normaliza referencias temporales y conserva su zona de origen.",
+        "Vincula cada conclusión con una evidencia y sus límites.",
+        "Describe cambio, validación y recuperación con resultado real.",
+        "Entrega responsable, próximos pasos y material necesario para continuar."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-wireshark",
+        "net-syslog"
+      ],
+      "aoi": {
+        "intro": "Vamos a entregar un caso que se entienda, cariño; nadie debería reconstruir tus pensamientos por adivinación.",
+        "theory0": "Empieza por el impacto observado y deja claro hasta dónde miramos.",
+        "theory1": "Las zonas horarias necesitan una referencia común antes de ordenar nuestra historia.",
+        "theory2": "Cada conclusión quiere su evidencia y también sus límites, aunque te arruinen un titular espectacular.",
+        "theory3": "Cierra con estado real y siguiente responsable; una tarea sin dueño sigue esperando.",
+        "case0": "Nueve con menos cinco y catorce UTC coinciden; el reloj no creó dos incidentes.",
+        "case1": "Recuperamos el servicio, pero dos cambios juntos todavía no revelaron una causa única.",
+        "pass": "Informe verificable y pendientes con dueño. Admito que esa claridad me despierta un orgullo descarado.",
+        "review": "Repasemos qué quedó probado y qué sigue abierto antes de firmar una certeza que no tenemos."
+      }
+    }
+  ]
+}

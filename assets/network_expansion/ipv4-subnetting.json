@@ -1,0 +1,2007 @@
+{
+  "id": "ipv4-subnetting",
+  "title": "IPv4 y subnetting con criterio",
+  "description": "Calcula redes, reparte direcciones y justifica rutas con ejemplos verificables.",
+  "symbol": "IP",
+  "color": 4284999929,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Sesenta decisiones y tus prefijos ya no salen de una tómbola, cariño. Puedes explicar cada bloque y comprobar sus límites; mi orgullo acaba de ocupar otra subred.",
+    "explanation": "Completaste direccionamiento IPv4, prefijos, planificación, asignación y diagnóstico. Conserva el inventario, verifica las excepciones y documenta cada cambio con una prueba y un procedimiento de vuelta atrás."
+  },
+  "lessons": [
+    {
+      "id": "ipv4-subnetting-bits",
+      "title": "Leer una dirección sin adivinar la red",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Cuatro octetos, una dirección completa",
+          "body": "Una dirección IPv4 contiene treinta y dos bits. La notación decimal los agrupa en cuatro octetos separados por puntos; cada octeto representa un valor entre cero y doscientos cincuenta y cinco. Esta escritura facilita leer el número, pero sus puntos no declaran por sí solos dónde termina la red. En 192.168.40.18/24, la barra indica que los primeros veinticuatro bits corresponden al prefijo utilizado en ese contexto. Los ocho restantes quedan disponibles para diferenciar direcciones dentro del bloque. Si aparece 192.168.40.18 sin prefijo, faltan datos para establecer qué otros destinos se consideran locales. La cooperativa debe registrar dirección y prefijo juntos, además de la interfaz a la que pertenecen. Una fotografía con solo el número del equipo no sustituye esa información. Tampoco permite afirmar que la dirección sea única: hace falta conocer el ámbito de asignación y comprobar que otro dispositivo del mismo segmento no la esté usando. El valor identifica una configuración; no acredita quién utiliza el equipo ni qué permisos posee."
+        },
+        {
+          "title": "Leer el peso de cada posición",
+          "body": "En un octeto, los pesos binarios son 128, 64, 32, 16, 8, 4, 2 y 1. Para convertir dieciocho, seleccionas dieciséis y dos; por eso su representación es 00010010. La suma de las posiciones activas recupera el valor decimal y ofrece una comprobación sencilla. No necesitas transformar los cuatro octetos en todas las operaciones: identifica primero cuál contiene la frontera del prefijo. Con /24 esa frontera coincide con un punto; con /26 aparece dentro del último octeto. En ese segundo caso, dos bits adicionales pertenecen a la red y seis permanecen como parte de host. Dibuja una línea que separe ambos grupos y conserva los ceros iniciales hasta completar ocho posiciones. Omitirlos puede desplazar mentalmente la frontera y llevar a elegir un bloque distinto. Trabajar con una tabla pequeña hace visible el razonamiento y permite detectar si sumaste un peso incorrecto. La calculadora es una ayuda para verificar, no una explicación suficiente del criterio de pertenencia."
+        },
+        {
+          "title": "Prefijo y máscara describen la misma frontera",
+          "body": "La máscara IPv4 de un prefijo CIDR utiliza unos consecutivos para la parte de red y ceros para la parte restante. Un /24 corresponde a 255.255.255.0; un /26 corresponde a 255.255.255.192. En este último octeto, 192 equivale a 11000000: los dos unos iniciales completan los veintiséis bits de red. No sumes el número veintiséis a la dirección ni lo interpretes como cantidad de dispositivos. Tampoco aceptes cualquier combinación decimal como una máscara CIDR válida. Un patrón con unos separados por ceros no representa un prefijo contiguo del modelo que estamos estudiando. En una ficha de configuración puedes escribir la barra o la máscara equivalente, pero deben expresar la misma frontera. Si una transcripción muestra /26 junto a 255.255.255.0, hay una contradicción que debes resolver antes de calcular el alcance. Mantén los datos originales y pregunta cuál fue realmente aplicado a la interfaz; corregir silenciosamente la ficha ocultaría una posible causa del problema."
+        },
+        {
+          "title": "Pertenencia, identidad y alcance de la conclusión",
+          "body": "Dos direcciones pertenecen al mismo bloque cuando comparten los bits que el prefijo reserva para la red. Esa comparación requiere utilizar el prefijo apropiado para la observación que se analiza. No demuestra que exista un enlace físico, que una VLAN coincida o que un firewall permita comunicarse. Dos puestos con números compatibles podrían estar en segmentos separados; dos números diferentes podrían comunicarse mediante un router. Primero responde la pregunta numérica y después estudia las condiciones de conectividad. En la cooperativa, documenta qué dirección y máscara declaró cada interfaz, de dónde salió la transcripción y a qué hora se recogió. Si alguien afirma que ambos puestos se ven porque sus números empiezan igual, solicita el prefijo y la ubicación de red antes de aceptar la conclusión. El objetivo es separar una propiedad del direccionamiento de una prueba de comunicación. Esa disciplina evita cambiar cables, reiniciar equipos o ampliar permisos para resolver una incompatibilidad que todavía no se ha definido con precisión."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuántos bits contiene una dirección IPv4?",
+          "scenario": "La ficha de la cooperativa agrupa la dirección en cuatro octetos de ocho posiciones cada uno.",
+          "options": [
+            "32 bits",
+            "24 bits",
+            "128 bits"
+          ],
+          "answer": 0,
+          "explanation": "Cuatro octetos de ocho bits suman treinta y dos; el prefijo describe una partición de esos mismos bits.",
+          "wrongExplanations": [
+            null,
+            "Veinticuatro puede ser la longitud de un prefijo, pero no cambia el tamaño completo de una dirección IPv4.",
+            "Ciento veintiocho es el tamaño de una dirección IPv6, no el de los cuatro octetos de IPv4."
+          ],
+          "aoi": {
+            "question": "Cuenta el tamaño de la dirección antes de dividir sus funciones.",
+            "hint": "Multiplica los cuatro octetos por sus ocho posiciones binarias, cariño.",
+            "correct": "Exacto: treinta y dos posiciones, y ninguna apareció por decoración.",
+            "soft": "Separa el tamaño total del número escrito después de la barra.",
+            "sharp": "Otra vez cambiando el tamaño por el prefijo; los bits no negocian."
+          }
+        },
+        {
+          "prompt": "¿Qué representa la barra en 192.168.40.18/24?",
+          "scenario": "El puesto conserva su dirección completa y necesita interpretar qué significa el número situado tras la barra.",
+          "options": [
+            "La cantidad de equipos encendidos",
+            "La longitud del prefijo de red",
+            "La dirección del router"
+          ],
+          "answer": 1,
+          "explanation": "El valor veinticuatro cuenta los bits del prefijo; no informa del número de equipos activos ni identifica una puerta de enlace.",
+          "wrongExplanations": [
+            "La cantidad de equipos depende del inventario y las asignaciones; no se obtiene contando el número escrito tras la barra.",
+            null,
+            "La puerta de enlace requiere una dirección configurada aparte; un prefijo no señala por sí mismo qué equipo actúa como router."
+          ],
+          "aoi": {
+            "question": "Esa barra cuenta posiciones, no hace el inventario del almacén.",
+            "hint": "Mira qué parte de los treinta y dos bits queda reservada.",
+            "correct": "Bien: encontraste una frontera y dejaste de contar personas imaginarias.",
+            "soft": "No pasa nada: distingue una longitud de una dirección concreta.",
+            "sharp": "La barra sigue sin convertirse en router porque la mires fijamente."
+          }
+        },
+        {
+          "prompt": "¿Qué decimal corresponde al octeto 00010010?",
+          "scenario": "Una alumna marca únicamente las posiciones de peso dieciséis y dos en la tabla binaria del último octeto.",
+          "options": [
+            "20",
+            "34",
+            "18"
+          ],
+          "answer": 2,
+          "explanation": "Los bits activos aportan dieciséis y dos; su suma es dieciocho y las demás posiciones aportan cero.",
+          "wrongExplanations": [
+            "Veinte requeriría activar dieciséis y cuatro; la posición de peso cuatro aparece desactivada en el octeto presentado.",
+            "Treinta y cuatro requeriría treinta y dos y dos; el peso treinta y dos no está activado en esta representación.",
+            null
+          ],
+          "aoi": {
+            "question": "Suma los pesos encendidos; los ceros no cobran protagonismo esta vez.",
+            "hint": "Las dos posiciones activas valen dieciséis y dos, tesoro.",
+            "correct": "Dieciocho, impecable. Mi implante y tu suma coinciden por fin.",
+            "soft": "Revisa el peso de cada columna antes de sumar sus posiciones.",
+            "sharp": "Otra suma creativa no cambia qué columnas están encendidas, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué máscara corresponde a un prefijo /26?",
+          "scenario": "El inventario necesita expresar con octetos la misma frontera de veintiséis bits indicada en el ejemplo del puesto.",
+          "options": [
+            "255.255.255.192",
+            "255.255.255.0",
+            "255.255.0.0"
+          ],
+          "answer": 0,
+          "explanation": "Los primeros veinticuatro bits forman tres octetos completos; otros dos unos añaden ciento noventa y dos al último octeto.",
+          "wrongExplanations": [
+            null,
+            "La máscara terminada en cero representa /24; omite los dos bits adicionales de red que exige /26.",
+            "La máscara con solo dos octetos completos representa /16 y reserva una frontera distinta de la indicada en el ejercicio."
+          ],
+          "aoi": {
+            "question": "Tres octetos completos y dos bits más: mantén esa cuenta.",
+            "hint": "Convierte los unos iniciales del último octeto: ciento veintiocho más sesenta y cuatro.",
+            "correct": "Perfecto: la máscara cuenta exactamente los mismos veintiséis bits.",
+            "soft": "Comprueba cuántos unos contiene la máscara que acabas de elegir.",
+            "sharp": "Ese /24 prestado sigue debiendo dos bits, cariño; no lo maquilles."
+          }
+        },
+        {
+          "prompt": "¿Qué dato impide tratar 192.168.40.300 como una IPv4 válida?",
+          "scenario": "La ficha del taller presenta cuatro grupos, pero el último supera el tamaño que admite un octeto decimal.",
+          "options": [
+            "El nombre del almacén",
+            "El valor 300 supera 255",
+            "La dirección termina en número par"
+          ],
+          "answer": 1,
+          "explanation": "Un octeto de ocho bits representa como máximo doscientos cincuenta y cinco; trescientos queda fuera de ese intervalo permitido.",
+          "wrongExplanations": [
+            "El nombre del lugar no decide si los octetos son válidos; debe comprobarse cada valor numérico de la dirección.",
+            null,
+            "La paridad del último octeto no determina la validez de una dirección; el problema concreto es superar el máximo representable."
+          ],
+          "aoi": {
+            "question": "El grupo final se pasó de aforo, y bastante.",
+            "hint": "Recuerda el intervalo que representan ocho posiciones binarias completas.",
+            "correct": "Detectaste el dato imposible sin inventar una configuración para taparlo.",
+            "soft": "Busca una restricción numérica comprobable, no una propiedad decorativa.",
+            "sharp": "Volver a mirar si es par no hará que trescientos quepa, joder."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra compartir un prefijo de red válido?",
+          "scenario": "Dos fichas del taller tienen direcciones que coinciden en los bits reservados por el mismo prefijo utilizado para compararlas.",
+          "options": [
+            "Que el firewall permite todo",
+            "Que ambos dispositivos son confiables",
+            "Que pertenecen al mismo bloque numérico"
+          ],
+          "answer": 2,
+          "explanation": "La coincidencia demuestra pertenencia al bloque considerado; la conectividad y la confianza requieren evidencias y controles adicionales del entorno.",
+          "wrongExplanations": [
+            "Las reglas del firewall no se deducen de los números de dirección; pueden restringir equipos pertenecientes al mismo bloque.",
+            "Una dirección no autentica al dispositivo ni acredita su mantenimiento, identidad o permisos para acceder a un servicio concreto.",
+            null
+          ],
+          "aoi": {
+            "question": "Tu cálculo describe un bloque; todavía no ha inspeccionado ningún firewall.",
+            "hint": "Separa lo que comparten los bits de lo que permiten los equipos.",
+            "correct": "Así se concluye con criterio: pertenencia comprobada y alcance bien delimitado.",
+            "soft": "Reduce la afirmación a lo que realmente comparaste en las fichas.",
+            "sharp": "El prefijo no firmó certificados de confianza, cielo; deja de regalarlos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un octeto imposible",
+          "scenario": "Una ficha del almacén contiene 192.168.40.300/24 y otra conserva el valor que mostró la interfaz durante la revisión del taller.",
+          "explanation": "Trescientos no cabe en un octeto IPv4. Se debe contrastar la ficha con la transcripción original y corregir el dato identificado, sin inventar una dirección válida ni aplicarla directamente al equipo."
+        },
+        {
+          "title": "Dos fronteras diferentes",
+          "scenario": "Recepción declara 192.168.40.18/26, mientras el inventario escribe para ese mismo puesto la máscara 255.255.255.0 y no identifica cuál se aplicó realmente.",
+          "explanation": "El prefijo /26 equivale a 255.255.255.192 y contradice la máscara anotada. Antes de deducir qué destinos son locales, hay que confirmar la configuración efectiva y conservar la discrepancia como evidencia del diagnóstico."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una cooperativa ficticia organiza sus puestos de recepción y almacén. Antes de repartir direcciones, necesita distinguir el valor IPv4 completo del prefijo que declara su red.",
+      "scenario": "Una cooperativa ficticia organiza sus puestos de recepción y almacén. Antes de repartir direcciones, necesita distinguir el valor IPv4 completo del prefijo que declara su red.",
+      "steps": [
+        "Escribe los cuatro octetos y el prefijo del ejemplo.",
+        "Convierte únicamente el octeto necesario a binario.",
+        "Marca los bits de red y conserva el resto como parte de host.",
+        "Comprueba el resultado con un segundo cálculo independiente."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-private"
+      ],
+      "aoi": {
+        "intro": "Los puntos separan octetos, cariño; la barra pone la frontera.",
+        "theory0": "Treinta y dos bits, cuatro octetos: ni uno pertenece a mi paciencia.",
+        "theory1": "Conserva los ceros iniciales; aquí también sostienen toda la estructura.",
+        "theory2": "Un /26 no se arregla poniéndole una máscara de /24.",
+        "theory3": "Compartir números bonitos no demuestra que los puestos puedan hablar.",
+        "case0": "Ese trescientos necesita revisión, no una excepción inventada por entusiasmo.",
+        "case1": "Nuestra ficha se contradice; primero aclaremos qué configuró realmente recepción.",
+        "pass": "Ya lees bits con intención. Esa precisión empieza a resultarme encantadora.",
+        "review": "Volvamos a la frontera; todavía estás confiando demasiado en los puntos."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-bloque",
+      "title": "Calcular red, difusión y rango de hosts",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Encontrar el inicio mediante AND",
+          "body": "La operación AND compara dos bits y produce uno únicamente cuando ambos son uno. Al aplicarla entre una dirección y su máscara, conserva los bits de red y pone a cero la parte de host. Para 192.168.50.77/26, la máscara termina en 192. El último octeto de la dirección, setenta y siete, se representa como 01001101; la máscara utiliza 11000000. Su AND produce 01000000, que equivale a sesenta y cuatro. Los tres primeros octetos permanecen intactos porque sus máscaras son 255. La dirección de red resultante es 192.168.50.64. Escribe también el prefijo para identificar el tamaño del bloque. No basta quitar el último octeto o reemplazarlo siempre por cero: esa costumbre solo acierta en ciertos límites y falla precisamente en este ejemplo. Repetir la operación con otra dirección candidata permite comprobar pertenencia. Conserva la máscara utilizada junto al resultado para que otra persona pueda verificar la misma frontera, sin depender de una conclusión memorizada."
+        },
+        {
+          "title": "Contar direcciones y localizar el extremo final",
+          "body": "Con /26 quedan seis bits para la parte de host, de modo que el bloque contiene dos elevado a seis, es decir, sesenta y cuatro direcciones. Desde el inicio sesenta y cuatro, sus valores abarcan hasta ciento veintisiete, ambos incluidos. El siguiente bloque empieza en ciento veintiocho; no pertenece a la subred anterior. Dentro de un /24, los comienzos de bloques /26 están alineados en cero, sesenta y cuatro, ciento veintiocho y ciento noventa y dos. Esta lista sirve como comprobación para este tamaño concreto, no como una regla aplicable a cualquier prefijo. Puedes encontrar el extremo final sumando el tamaño menos uno al inicio. Mantén la suma dentro de la representación completa: para bloques mayores quizá necesites avanzar a otro octeto. En nuestra práctica no hay desbordamiento, pero el procedimiento debe explicar por qué. Confundir el siguiente comienzo con el último miembro añade una dirección ajena y altera después las pruebas de acceso y la planificación de reservas."
+        },
+        {
+          "title": "Red y broadcast en una subred convencional",
+          "body": "En una subred IPv4 convencional de acceso múltiple, la parte de host formada por ceros identifica la red y la formada por unos corresponde a difusión dirigida. Para 192.168.50.64/26, esos extremos son 192.168.50.64 y 192.168.50.127. Por ello, el rango convencional de direcciones de host va desde 192.168.50.65 hasta 192.168.50.126: sesenta y dos valores. No asignes los extremos a los puestos del taller. La fórmula de dos direcciones reservadas necesita contexto; las redes /31 destinadas a enlaces punto a punto y las rutas /32 se estudiarán como casos específicos. Tampoco concluyas que existen sesenta y dos equipos activos: has calculado capacidad numérica, no ocupación. Las reservas, direcciones estáticas y exclusiones del servidor de asignación pueden reducir lo disponible para nuevos puestos. Si el inventario incluye un gateway, su dirección ocupa uno de los valores de host del bloque. No aparece una plaza adicional por actuar como router ni tiene que ser necesariamente la primera dirección utilizable."
+        },
+        {
+          "title": "Comprobar antes de configurar",
+          "body": "Un cálculo correcto debe convertirse en una ficha verificable: dirección observada, prefijo, red, difusión, rango convencional y origen de los datos. Para comparar dos candidatos, calcula su red con la misma máscara y observa si coincide con la declarada. No cambies la configuración de un equipo real para demostrar una cuenta que puedes resolver sobre papel. Primero establece si el ejemplo corresponde a la interfaz y al segmento donde trabajas. En el taller, una dirección dentro del rango podría estar ocupada, reservada o asignada a otro recurso. Revisa el inventario y el mecanismo de asignación antes de elegirla. Después valida por separado la conectividad prevista y los controles aplicables; pertenecer a la subred no evita conflictos ni garantiza acceso a una aplicación. Si una calculadora produce un valor distinto, compara las entradas antes de seleccionar al azar una salida. Registrar ambas cuentas ayuda a distinguir un error de transcripción de un error conceptual, y permite corregir el procedimiento sin ocultar evidencia del intento anterior."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuál es la red de 192.168.50.77/26?",
+          "scenario": "Aplica la máscara 255.255.255.192 al último octeto del puesto ficticio y conserva los octetos restantes.",
+          "options": [
+            "192.168.50.64/26",
+            "192.168.50.0/26",
+            "192.168.50.77/26"
+          ],
+          "answer": 0,
+          "explanation": "El AND de setenta y siete con ciento noventa y dos produce sesenta y cuatro, que identifica el inicio del bloque.",
+          "wrongExplanations": [
+            null,
+            "El inicio cero corresponde al primer bloque /26 del mismo /24, pero no contiene el valor setenta y siete.",
+            "La dirección observada contiene bits de host activos y no coincide con el comienzo alineado de su bloque /26."
+          ],
+          "aoi": {
+            "question": "No borres el octeto por costumbre; calcula qué bits sobreviven.",
+            "hint": "El último octeto queda como 01000000 después de aplicar la máscara.",
+            "correct": "Encontraste el inicio correcto sin obligar a todos los bloques a empezar en cero.",
+            "soft": "Comprueba el AND antes de elegir una dirección que solo parece familiar.",
+            "sharp": "Otra vez ese cero automático; el /26 no comparte tu manía, cielo."
+          }
+        },
+        {
+          "prompt": "¿Cuántas direcciones contiene en total un bloque /26?",
+          "scenario": "El prefijo utiliza veintiséis de los treinta y dos bits y deja seis para los valores internos del bloque.",
+          "options": [
+            "62",
+            "64",
+            "26"
+          ],
+          "answer": 1,
+          "explanation": "Seis bits permiten sesenta y cuatro combinaciones; las reservas de extremos se consideran después al calcular hosts convencionales.",
+          "wrongExplanations": [
+            "Sesenta y dos es la capacidad convencional de hosts tras excluir red y broadcast, no el tamaño completo del bloque.",
+            null,
+            "Veintiséis es la longitud del prefijo y no el número de combinaciones de la parte restante de la dirección."
+          ],
+          "aoi": {
+            "question": "Primero cuenta el bloque completo; después sentamos a los hosts.",
+            "hint": "Calcula dos elevado a los seis bits que quedan libres.",
+            "correct": "Sesenta y cuatro combinaciones: ahora sí puedes separar sus dos extremos.",
+            "soft": "Distingue direcciones totales de direcciones normalmente asignables a equipos.",
+            "sharp": "Si descuentas los extremos antes de tiempo, la cuenta vuelve a tropezar."
+          }
+        },
+        {
+          "prompt": "¿Cuál es el broadcast de 192.168.50.64/26?",
+          "scenario": "Una subred IPv4 convencional comienza en sesenta y cuatro y contiene sesenta y cuatro direcciones consecutivas.",
+          "options": [
+            "192.168.50.128",
+            "192.168.50.126",
+            "192.168.50.127"
+          ],
+          "answer": 2,
+          "explanation": "El último valor incluido es ciento veintisiete; ciento veintiocho ya corresponde al comienzo del bloque /26 siguiente.",
+          "wrongExplanations": [
+            "Ciento veintiocho inicia otra subred /26 y queda fuera del intervalo que empieza en sesenta y cuatro.",
+            "Ciento veintiséis es el último host convencional; todavía falta el extremo final reservado para difusión dirigida.",
+            null
+          ],
+          "aoi": {
+            "question": "El broadcast cierra este bloque; no inaugura el siguiente.",
+            "hint": "Suma sesenta y cuatro menos uno al último octeto inicial.",
+            "correct": "Ciento veintisiete: cerraste la puerta exactamente donde termina nuestra subred.",
+            "soft": "Revisa si escogiste un host o el comienzo del bloque vecino.",
+            "sharp": "No invites al ciento veintiocho; ya tiene su propia subred, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué rango convencional de hosts corresponde a 192.168.50.64/26?",
+          "scenario": "El ejercicio utiliza una subred de acceso múltiple y reserva las direcciones de red y difusión dirigida.",
+          "options": [
+            "192.168.50.65 a 192.168.50.126",
+            "192.168.50.64 a 192.168.50.127",
+            "192.168.50.66 a 192.168.50.128"
+          ],
+          "answer": 0,
+          "explanation": "Los extremos sesenta y cuatro y ciento veintisiete están reservados en este caso; los hosts convencionales ocupan los valores intermedios.",
+          "wrongExplanations": [
+            null,
+            "Incluir ambos extremos describe el bloque completo, pero presenta direcciones de red y broadcast como si fueran hosts convencionales.",
+            "Ese intervalo excluye injustificadamente el primer host y además incorpora el inicio de la siguiente subred /26."
+          ],
+          "aoi": {
+            "question": "A los puestos les corresponden los valores entre ambos extremos.",
+            "hint": "Excluye únicamente red y broadcast para calcular este rango convencional.",
+            "correct": "Rango correcto: dejaste los extremos donde cumplen su función especial.",
+            "soft": "Marca primero red y broadcast, y después recorre los valores intermedios.",
+            "sharp": "Volver a colar el broadcast no crea otra plaza para tu portátil."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra que una dirección cae dentro del rango de hosts?",
+          "scenario": "Una propuesta para portátil utiliza una dirección numéricamente válida, pero el inventario todavía no se ha consultado.",
+          "options": [
+            "Que nadie más la utiliza",
+            "Que puede asignarse solo si las demás condiciones lo permiten",
+            "Que el gateway debe cambiar"
+          ],
+          "answer": 1,
+          "explanation": "Pertenecer al rango satisface una condición de direccionamiento; aún deben comprobarse ocupación, reservas y el mecanismo de asignación de ese segmento.",
+          "wrongExplanations": [
+            "La pertenencia al rango no informa de asignaciones existentes; otro recurso podría estar utilizando o reservando precisamente esa dirección.",
+            null,
+            "El rango no ordena cambiar el gateway; esa configuración necesita una justificación independiente y comprobar la topología prevista."
+          ],
+          "aoi": {
+            "question": "El rango dice que cabe; el inventario dice si la silla está ocupada.",
+            "hint": "Comprueba reservas y asignaciones antes de celebrar una dirección disponible.",
+            "correct": "Eso: posibilidad numérica y disponibilidad real son comprobaciones distintas.",
+            "soft": "Falta un dato de ocupación; no inventes una certeza a partir del cálculo.",
+            "sharp": "La silla puede seguir ocupada aunque repitas que cabe, cariño."
+          }
+        },
+        {
+          "prompt": "¿Son locales entre sí 192.168.50.77/26 y 192.168.50.130/26 según esos prefijos?",
+          "scenario": "La comparación usa la misma máscara /26 y pregunta únicamente si ambas direcciones pertenecen al mismo bloque numérico.",
+          "options": [
+            "Sí, comparten tres octetos",
+            "Sí, las dos son privadas",
+            "No, calculan redes /26 diferentes"
+          ],
+          "answer": 2,
+          "explanation": "Setenta y siete pertenece al bloque iniciado en sesenta y cuatro; ciento treinta pertenece al iniciado en ciento veintiocho, por lo que no comparten subred.",
+          "wrongExplanations": [
+            "Compartir tres octetos solo fija una coincidencia de veinticuatro bits y no resuelve los dos bits adicionales que distingue /26.",
+            "Ser direcciones privadas no las sitúa en el mismo segmento; el espacio privado contiene muchos prefijos y redes diferentes.",
+            null
+          ],
+          "aoi": {
+            "question": "La frontera está dentro del último octeto; préstale esa atención.",
+            "hint": "Calcula la dirección de red de cada candidato con /26.",
+            "correct": "Separaste ambos bloques sin dejarte seducir por los primeros tres octetos.",
+            "soft": "La coincidencia visual es parcial; faltan dos bits decisivos por comparar.",
+            "sharp": "El parentesco privado no los vuelve vecinos, joder; compara el prefijo completo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El vecino de otro bloque",
+          "scenario": "El taller compara 192.168.50.77/26 con una propuesta para impresora en 192.168.50.130/26 y supone que compartir tres octetos basta para ser vecinos locales.",
+          "explanation": "Las redes calculadas son 192.168.50.64/26 y 192.168.50.128/26. Pertenecen a bloques diferentes, aunque coincidan los tres primeros octetos. Debe revisarse la topología y el enrutamiento previsto, sin alterar las máscaras para esconder la diferencia."
+        },
+        {
+          "title": "Una dirección de gateway reservada",
+          "scenario": "La ficha asigna 192.168.50.65 al gateway y propone reutilizarla para un portátil porque aparece como primer host disponible del bloque.",
+          "explanation": "El rango numérico no refleja ocupación. Esa dirección ya figura asignada al gateway y no debe repetirse. Conviene elegir un valor libre según el inventario y el mecanismo de asignación, conservando la reserva existente."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El taller ficticio recibe 192.168.50.77/26 para un puesto y debe documentar el bloque completo antes de proponer direcciones para sus compañeros.",
+      "scenario": "El taller ficticio recibe 192.168.50.77/26 para un puesto y debe documentar el bloque completo antes de proponer direcciones para sus compañeros.",
+      "steps": [
+        "Obtén la máscara equivalente al prefijo.",
+        "Aplica AND para encontrar la dirección de red.",
+        "Calcula el tamaño del bloque y su dirección final.",
+        "Separa los extremos reservados del rango convencional de hosts."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-private"
+      ],
+      "aoi": {
+        "intro": "Hoy la red empieza en sesenta y cuatro; tus puntos no mandan.",
+        "theory0": "AND conserva el prefijo y apaga los bits de host, cariño.",
+        "theory1": "Cuenta ambos extremos; el siguiente bloque no viene de regalo.",
+        "theory2": "Sesenta y dos plazas posibles no equivalen a sesenta y dos invitados.",
+        "theory3": "La cuenta abre la revisión del inventario, no la reemplaza.",
+        "case0": "Esos tres octetos compartidos están intentando distraerte del /26.",
+        "case1": "Nuestro gateway ya ocupa su silla; no le sientes encima un portátil.",
+        "pass": "Calculaste el bloque entero. Esa prolijidad merece una sonrisa especialmente peligrosa.",
+        "review": "Repitamos los extremos con calma; todavía se están colando direcciones vecinas."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-extremos",
+      "title": "/30, /31 y /32 sin fórmulas ciegas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "El caso convencional de un /30",
+          "body": "Un prefijo /30 deja dos bits fuera de la parte de red. Por tanto, contiene cuatro direcciones consecutivas. En una subred IPv4 convencional se reservan el comienzo y el final, y quedan dos direcciones de host. El bloque 192.0.2.8/30 abarca los valores ocho, nueve, diez y once del último octeto. Nueve y diez pueden identificar los extremos del enlace del ejemplo; ocho corresponde a red y once a broadcast en ese modelo. El siguiente bloque /30 empieza en doce. Observa que elegir un prefijo pequeño no cambia el tamaño de IPv4: sigues trabajando con treinta y dos bits. Cambia cuántos de ellos pertenecen al bloque. Para describir el enlace, registra ambas direcciones, su prefijo y qué interfaz corresponde a cada extremo. No deduzcas del cálculo si el medio físico está conectado o si el fabricante acepta la configuración propuesta. Esa compatibilidad se comprueba en la documentación del equipo y en una prueba controlada, manteniendo una vía de administración independiente cuando sea necesaria."
+        },
+        {
+          "title": "Por qué un /31 necesita otro contexto",
+          "body": "Un /31 contiene dos direcciones. Aplicar mecánicamente la resta de red y broadcast dejaría cero hosts, pero RFC 3021 define su utilización en enlaces IPv4 punto a punto: ambos valores se interpretan como direcciones de los extremos. La restricción de contexto es decisiva. No estamos trasladando el mismo esquema a una LAN con varios puestos y difusión compartida. En el enlace ficticio 192.0.2.20/31, los extremos son 192.0.2.20 y 192.0.2.21, siempre que la implementación y el diseño soporten este uso. No reserves una tercera dirección para un gateway: los dos routers ya son los participantes del enlace. Antes de proponer el cambio desde un /30 existente, revisa soporte, herramientas de inventario, comprobaciones automáticas y procedimientos de operación. Una fórmula numérica compatible no garantiza que todos esos componentes entiendan la excepción. Documentar expresamente que se trata de un enlace punto a punto evita que otra persona copie el prefijo en un segmento donde el razonamiento no corresponde."
+        },
+        {
+          "title": "Qué expresa una ruta /32",
+          "body": "Un /32 fija los treinta y dos bits de la dirección, por lo que representa un solo valor. En una tabla de enrutamiento, una ruta con ese prefijo puede seleccionar un destino de host concreto. No define un rango con dos extremos utilizables ni necesita que inventes un broadcast adicional. Puede aparecer asociada a una dirección de loopback lógica o a una decisión específica de encaminamiento, según el sistema y el diseño. Es importante distinguir esa interfaz lógica de la dirección especial de loopback utilizada por el propio sistema para comunicarse consigo mismo. El mismo tamaño de prefijo puede utilizarse en configuraciones con propósitos diferentes; el contexto decide qué significa operacionalmente. Si el ejercicio presenta una ruta a 192.0.2.44/32, solo ese valor coincide con ella. La dirección 192.0.2.45 queda fuera, aunque sea consecutiva. Comprueba además que la ruta tenga un siguiente salto alcanzable o una salida válida. El prefijo describe qué destinos selecciona la entrada, pero no resuelve por sí solo cómo llegar a ellos."
+        },
+        {
+          "title": "Elegir una representación que explique la intención",
+          "body": "Las expresiones de capacidad deben indicar sus supuestos. Puedes escribir que un /30 convencional ofrece dos direcciones de host, que un /31 soportado sirve a dos extremos punto a punto o que un /32 identifica un destino individual. Son afirmaciones diferentes y no deben sustituirse unas por otras sin explicar la topología. En una revisión, solicita la función del prefijo antes de declarar imposible una configuración por una fórmula memorizada. Después contrasta la documentación y verifica las direcciones realmente asignadas. En nuestro taller, todos los datos pertenecen a transcripciones ficticias y no necesitas configurar un router para resolver la selección. Si más adelante se practica en laboratorio real, conserva las condiciones iniciales y cambia un único enlace autorizado. Comprueba ambos sentidos y la continuidad de la administración. Registra también qué no se probó, por ejemplo la respuesta de otras herramientas de supervisión. Entender una excepción incluye saber cuándo deja de ser aplicable y qué dependencias podrían impedir usarla con seguridad operacional."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué rango completo abarca 192.0.2.8/30?",
+          "scenario": "El bloque del enlace tiene dos bits de host y comienza en el último octeto ocho.",
+          "options": [
+            "192.0.2.8 a 192.0.2.11",
+            "192.0.2.8 a 192.0.2.10",
+            "192.0.2.9 a 192.0.2.12"
+          ],
+          "answer": 0,
+          "explanation": "Dos bits generan cuatro combinaciones, desde ocho hasta once; el bloque siguiente comienza en doce y no forma parte del anterior.",
+          "wrongExplanations": [
+            null,
+            "El intervalo terminado en diez contiene únicamente tres direcciones y deja fuera el último valor del bloque /30.",
+            "Ese intervalo desplaza el comienzo y mezcla hosts del bloque con el inicio del siguiente, alterando la alineación del prefijo."
+          ],
+          "aoi": {
+            "question": "Cuatro valores consecutivos: cuenta también el comienzo del bloque.",
+            "hint": "Suma el tamaño menos uno al ocho que inicia la red.",
+            "correct": "Ocho a once, exacto; la frontera no perdió ninguna dirección.",
+            "soft": "Comprueba que tu intervalo contenga exactamente cuatro valores consecutivos.",
+            "sharp": "Tres valores no forman cuatro por insistencia, cielo; vuelve a contarlos."
+          }
+        },
+        {
+          "prompt": "¿Cuántos hosts convencionales ofrece el /30 del ejemplo?",
+          "scenario": "La práctica utiliza la reserva habitual de red y broadcast dentro de una subred IPv4 de cuatro direcciones.",
+          "options": [
+            "Cuatro",
+            "Dos",
+            "Treinta"
+          ],
+          "answer": 1,
+          "explanation": "Al reservar los dos extremos del bloque convencional quedan dos direcciones para hosts, que pueden corresponder a los routers del enlace.",
+          "wrongExplanations": [
+            "Cuatro cuenta todas las direcciones e incluye red y broadcast, que no se asignan como hosts en este caso convencional.",
+            null,
+            "Treinta indica la longitud del prefijo y no la cantidad de valores que pueden asignarse dentro del bloque presentado."
+          ],
+          "aoi": {
+            "question": "Dos extremos reservados y dos participantes: esta vez la cuenta encaja.",
+            "hint": "Distingue las cuatro direcciones totales de los hosts convencionales restantes.",
+            "correct": "Bien: dos hosts, y dejaste ambas reservas donde correspondía.",
+            "soft": "Revisa si estás contando capacidad total o direcciones convencionales para equipos.",
+            "sharp": "El número de la barra no es un censo, demonios; ya lo hablamos."
+          }
+        },
+        {
+          "prompt": "¿Cuándo pueden utilizarse ambos valores de un /31?",
+          "scenario": "El diseño ficticio conecta dos routers y se contrasta la excepción documentada para prefijos IPv4 de treinta y un bits.",
+          "options": [
+            "En cualquier LAN de cuarenta equipos",
+            "Siempre que se cambie el nombre del router",
+            "En un enlace punto a punto con soporte adecuado"
+          ],
+          "answer": 2,
+          "explanation": "RFC 3021 contempla los dos valores como extremos en enlaces punto a punto; deben verificarse la implementación y las condiciones del diseño.",
+          "wrongExplanations": [
+            "La excepción no convierte dos direcciones en capacidad para una LAN con múltiples puestos; ese escenario requiere otro diseño de direccionamiento.",
+            "Cambiar un nombre no modifica el comportamiento de la implementación ni confirma que soporte correctamente este uso del prefijo.",
+            null
+          ],
+          "aoi": {
+            "question": "La excepción tiene apellido: punto a punto, con soporte comprobado.",
+            "hint": "Identifica la topología y después consulta las capacidades de ambos extremos.",
+            "correct": "Ubicaste la excepción en su contexto; así sí ahorramos direcciones con criterio.",
+            "soft": "Falta verificar la condición del enlace, no una propiedad estética del equipo.",
+            "sharp": "Un nombre nuevo no actualiza el soporte, cariño; no disfraces la duda."
+          }
+        },
+        {
+          "prompt": "¿Qué direcciones forman los extremos de 192.0.2.20/31 en el caso permitido?",
+          "scenario": "El enlace punto a punto del ejercicio admite la utilización de las dos direcciones que contiene ese prefijo.",
+          "options": [
+            "192.0.2.20 y 192.0.2.21",
+            "192.0.2.21 y 192.0.2.22",
+            "192.0.2.20 y 192.0.2.22"
+          ],
+          "answer": 0,
+          "explanation": "El bloque /31 alineado en veinte contiene exactamente veinte y veintiuno; ambos identifican los extremos del enlace bajo la condición indicada.",
+          "wrongExplanations": [
+            null,
+            "Veintidós inicia el siguiente bloque /31, por lo que no pertenece al mismo par que la dirección veintiuno.",
+            "El par propuesto omite veintiuno e incorpora veintidós, mezclando dos bloques distintos y rompiendo la pertenencia al prefijo."
+          ],
+          "aoi": {
+            "question": "Nuestro enlace tiene dos plazas contiguas; ninguna queda en el bloque vecino.",
+            "hint": "Un bit libre permite los últimos valores cero y uno.",
+            "correct": "Veinte y veintiuno: los dos extremos permanecen dentro de su bloque.",
+            "soft": "Compara el inicio alineado y el único valor siguiente que incluye.",
+            "sharp": "Veintidós vuelve a invadir otra subred, tesoro; dile que espere su turno."
+          }
+        },
+        {
+          "prompt": "¿Qué destino selecciona 192.0.2.44/32?",
+          "scenario": "La tabla ficticia contiene una ruta cuyo prefijo fija los treinta y dos bits de la dirección de destino.",
+          "options": [
+            "Todo 192.0.2.0/24",
+            "Únicamente 192.0.2.44",
+            "Cualquier dirección privada"
+          ],
+          "answer": 1,
+          "explanation": "Un /32 contiene una sola dirección y coincide únicamente con ese destino; las direcciones vecinas requieren otras entradas aplicables de la tabla.",
+          "wrongExplanations": [
+            "Un /24 deja ocho bits variables y describe un bloque mucho mayor; no es equivalente a fijar los treinta y dos bits.",
+            null,
+            "La entrada no significa todas las redes privadas, y el valor del ejemplo es una dirección documental con un destino específico."
+          ],
+          "aoi": {
+            "question": "Treinta y dos bits ocupados dejan muy poco sitio para invitados.",
+            "hint": "Si no queda ningún bit variable, cuenta cuántas combinaciones sobreviven.",
+            "correct": "Una sola dirección: reconociste el alcance exacto de esa ruta.",
+            "soft": "Revisa cuántos bits quedan libres antes de ampliar el conjunto de destinos.",
+            "sharp": "El /32 no se ensancha porque te guste su vecino, joder."
+          }
+        },
+        {
+          "prompt": "¿Basta que el cálculo permita /31 para migrar un enlace real?",
+          "scenario": "La hoja del taller acepta el prefijo, pero no se han revisado los routers, la supervisión ni el procedimiento de recuperación.",
+          "options": [
+            "Sí, la aritmética valida todo",
+            "Sí, si ambas interfaces tienen el mismo color",
+            "No; faltan soporte, dependencias y una prueba autorizada"
+          ],
+          "answer": 2,
+          "explanation": "El cálculo solo comprueba capacidad y alineación; la migración requiere confirmar soporte y dependencias, preparar la recuperación y validar el comportamiento del enlace.",
+          "wrongExplanations": [
+            "La aritmética no comprueba cómo interpretan el prefijo los routers o los sistemas de operación que dependen de esa configuración.",
+            "El color de las interfaces no demuestra compatibilidad, continuidad del servicio ni posibilidad de recuperar la administración tras el cambio.",
+            null
+          ],
+          "aoi": {
+            "question": "La cuenta aprueba el dibujo; todavía falta comprobar la operación.",
+            "hint": "Piensa en equipos, supervisión y acceso de recuperación antes del cambio.",
+            "correct": "Ese criterio protege el enlace y a quien deba mantenerlo después.",
+            "soft": "Busca qué condiciones operativas siguen sin comprobarse en el escenario.",
+            "sharp": "Los números no prueban firmware por telepatía, cariño; documenta lo que falta."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La resta automática",
+          "scenario": "Una hoja de cálculo rechaza 192.0.2.20/31 porque descuenta siempre dos direcciones, aunque el enlace ficticio conecta únicamente dos routers compatibles con RFC 3021.",
+          "explanation": "La hoja aplica una regla convencional fuera de su contexto. En ese enlace punto a punto pueden utilizarse las dos direcciones del /31. Es preciso corregir el supuesto de validación y comprobar además las herramientas que dependen de esa hoja."
+        },
+        {
+          "title": "Un destino que no incluye al vecino",
+          "scenario": "Una entrada indica 192.0.2.44/32 y un estudiante espera que también seleccione 192.0.2.45 porque ambas direcciones aparecen juntas en el inventario del laboratorio.",
+          "explanation": "El prefijo /32 especifica exactamente un valor y no engloba al siguiente. Debe buscarse otra ruta para el vecino; la proximidad en una lista no modifica la coincidencia de los treinta y dos bits del destino."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Dos routers ficticios necesitan un enlace dedicado. El equipo compara prefijos pequeños y una ruta de host, evitando aplicar automáticamente las reglas de una LAN convencional.",
+      "scenario": "Dos routers ficticios necesitan un enlace dedicado. El equipo compara prefijos pequeños y una ruta de host, evitando aplicar automáticamente las reglas de una LAN convencional.",
+      "steps": [
+        "Identifica si describes una LAN, un enlace punto a punto o una ruta.",
+        "Cuenta las direcciones del prefijo completo.",
+        "Comprueba las reglas y la compatibilidad propias del tipo de enlace.",
+        "Documenta los extremos y valida el comportamiento previsto."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-point-to-point"
+      ],
+      "aoi": {
+        "intro": "La fórmula necesita contexto; mi paciencia también, cariño.",
+        "theory0": "Un /30 trae cuatro direcciones, no cuatro puestos disponibles.",
+        "theory1": "Ese /31 une dos extremos; no lo conviertas en una LAN improvisada.",
+        "theory2": "Treinta y dos bits fijos apuntan a un único destino.",
+        "theory3": "Explica la intención del enlace antes de presumir de ahorrar direcciones.",
+        "case0": "La hoja calcula deprisa, pero nadie le enseñó esta excepción.",
+        "case1": "Ese vecino de inventario no cabe por simpatía en el /32.",
+        "pass": "Ya reconoces excepciones sin inventarlas. Así sí me dan ganas de consentirte.",
+        "review": "Volvamos al tipo de enlace; estás aplicando la misma resta a todo."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-reparto",
+      "title": "Repartir un /24 con VLSM y margen real",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Traducir necesidades a tamaños de bloque",
+          "body": "VLSM permite usar longitudes de prefijo diferentes al repartir un espacio de direcciones. La decisión empieza con las necesidades de cada segmento, no con una división estética en partes iguales. Para una LAN IPv4 convencional, busca un número de bits de host cuya capacidad, descontando los dos extremos, cubra las direcciones requeridas. Cien puestos y un gateway necesitan ciento una direcciones: un /25 ofrece ciento veintiséis hosts convencionales y resulta suficiente. Un /26 ofrece sesenta y dos, de modo que cubre cincuenta puestos más su gateway. Para diez dispositivos y un gateway, un /28 proporciona catorce direcciones de host. Cuenta también otros recursos que realmente pertenezcan al segmento, como una dirección de gestión asignada a un equipo de red. No añadas una reserva numérica sin identificar su finalidad, pero tampoco olvides interfaces que el diseño sí necesita. Anota el requisito actual y el margen previsto por separado. Así podrás distinguir una capacidad mínima de una decisión de crecimiento deliberada y explicar por qué se escogió cierto prefijo."
+        },
+        {
+          "title": "Alinear bloques dentro del espacio disponible",
+          "body": "El /24 contiene doscientas cincuenta y seis direcciones. Al reservar 192.168.60.0/25 para el aula, ocupas desde cero hasta ciento veintisiete. El siguiente comienzo disponible es ciento veintiocho, que permite situar 192.168.60.128/26 hasta ciento noventa y uno. Después puedes asignar 192.168.60.192/28 para gestión, cuyo último valor es doscientos siete. Los comienzos respetan las fronteras correspondientes a tamaños de ciento veintiocho, sesenta y cuatro y dieciséis direcciones. Es útil empezar por los bloques mayores porque suelen tener menos posiciones posibles; aun así, la tabla debe verificar cada asignación y no aceptar un resultado solo por el orden utilizado. No escribas doscientos como dirección de red de un /28: en ese tamaño, el bloque que contiene doscientos empieza en ciento noventa y dos. Una dirección de interfaz puede pertenecer a ese bloque sin ser su comienzo. El inventario debe diferenciar claramente ambas funciones para no convertir una IP válida de equipo en una etiqueta de red mal interpretada."
+        },
+        {
+          "title": "Detectar solapamientos y describir el sobrante",
+          "body": "Dos bloques se solapan si comparten al menos una dirección. Para comprobarlo en esta práctica, calcula el comienzo y el final de cada intervalo y compáralos. La propuesta /27 que empieza en ciento noventa y dos abarca hasta doscientos veintitrés; por eso se solapa con el /28 de gestión que ya usa ciento noventa y dos a doscientos siete. Que los prefijos tengan tamaños distintos no evita esa intersección. En el reparto válido del ejemplo quedan libres cuarenta y ocho direcciones, desde doscientos ocho hasta doscientos cincuenta y cinco. Ese sobrante no puede describirse como un único bloque CIDR de cuarenta y ocho direcciones: cada bloque CIDR tiene un tamaño que es potencia de dos y exige alineación. Puede representarse, por ejemplo, mediante 192.168.60.208/28 y 192.168.60.224/27. Escribe ambos si necesitas publicarlos como reservas concretas. También puedes conservar un intervalo libre en el inventario, siempre que no lo confundas con un único prefijo que una tabla de rutas deba interpretar literalmente."
+        },
+        {
+          "title": "Comprobar crecimiento y cambios del requisito",
+          "body": "Supón ahora que gestión solicita catorce dispositivos además del gateway. El requisito pasa a quince direcciones de host y deja de caber en el /28 convencional, cuya capacidad es catorce. Necesitas revisar el prefijo y el reparto, no utilizar red o broadcast como plazas adicionales. Un /27 ofrece treinta hosts, pero ocuparía hasta doscientos veintitrés si comienza en ciento noventa y dos. Antes de ampliar, comprueba que el tramo adicional siga libre y que el cambio sea compatible con las rutas, reservas y políticas previstas. Documenta cómo se identificarán los equipos después de la modificación y qué condiciones permitirían volver atrás. En una actividad de diseño, conservar dos versiones de la tabla facilita comparar el requisito inicial con el nuevo. No conviertas el margen del aula en direcciones de gestión sin revisar cómo están segmentadas ambas redes: que las dos reservas pertenezcan al mismo /24 no las vuelve intercambiables operacionalmente. Una buena planificación relaciona capacidad, fronteras y función, y deja visibles las decisiones que todavía dependen de información pendiente."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué prefijo mínimo convencional cubre cien puestos y un gateway?",
+          "scenario": "El segmento del aula necesita ciento una direcciones de host dentro del espacio reservado por la academia.",
+          "options": [
+            "/25",
+            "/26",
+            "/28"
+          ],
+          "answer": 0,
+          "explanation": "Un /25 proporciona ciento veintiséis hosts convencionales y cubre ciento una direcciones; los dos bloques menores no alcanzan ese requisito.",
+          "wrongExplanations": [
+            null,
+            "Un /26 ofrece sesenta y dos hosts convencionales, insuficientes para los cien puestos y su gateway del aula.",
+            "Un /28 ofrece catorce hosts convencionales y está muy por debajo de la capacidad requerida por el aula."
+          ],
+          "aoi": {
+            "question": "Cuenta ciento una direcciones útiles antes de escoger un bloque elegante.",
+            "hint": "Busca la primera capacidad convencional que no quede por debajo del requisito.",
+            "correct": "El /25 cubre lo pedido y deja un margen que puedes explicar.",
+            "soft": "Revisa la capacidad de host del prefijo, no solo su apariencia.",
+            "sharp": "Ese /26 sigue sin sentar a cien puestos, por mucho cariño que le tengas."
+          }
+        },
+        {
+          "prompt": "¿En qué dirección termina 192.168.60.128/26?",
+          "scenario": "El bloque de oficina tiene sesenta y cuatro direcciones totales y comienza en ciento veintiocho.",
+          "options": [
+            "192.168.60.192",
+            "192.168.60.191",
+            "192.168.60.190"
+          ],
+          "answer": 1,
+          "explanation": "Al sumar sesenta y cuatro menos uno al comienzo se obtiene ciento noventa y uno; ciento noventa y dos inicia otro bloque.",
+          "wrongExplanations": [
+            "Ciento noventa y dos es el comienzo siguiente y no debe incorporarse como extremo final del /26 de oficina.",
+            null,
+            "Ciento noventa es el último host convencional, pero el intervalo completo también contiene el extremo de broadcast ciento noventa y uno."
+          ],
+          "aoi": {
+            "question": "El final pertenece a oficina; el siguiente comienzo ya no.",
+            "hint": "Suma sesenta y tres al último octeto que inicia el bloque.",
+            "correct": "Terminaste justo en ciento noventa y uno; ninguna dirección vecina se coló.",
+            "soft": "Comprueba si elegiste el último host o el extremo del bloque completo.",
+            "sharp": "La oficina no puede quedarse también con el comienzo vecino, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué red /28 contiene la dirección de interfaz 192.168.60.200?",
+          "scenario": "El inventario debe distinguir la IP de un dispositivo de gestión del comienzo alineado del bloque que la contiene.",
+          "options": [
+            "192.168.60.200/28",
+            "192.168.60.208/28",
+            "192.168.60.192/28"
+          ],
+          "answer": 2,
+          "explanation": "Los bloques /28 avanzan de dieciséis en dieciséis; doscientos pertenece al intervalo ciento noventa y dos a doscientos siete.",
+          "wrongExplanations": [
+            "Doscientos puede ser una dirección de interfaz dentro del bloque, pero no es un comienzo alineado para identificar esta red /28.",
+            "Doscientos ocho inicia el bloque siguiente y deja fuera a la dirección doscientos que aparece en el dispositivo del ejercicio.",
+            null
+          ],
+          "aoi": {
+            "question": "La dirección del dispositivo y el nombre de su bloque cumplen funciones distintas.",
+            "hint": "Localiza los múltiplos de dieciséis que rodean al valor doscientos.",
+            "correct": "Identificaste .192/28 sin confundir al inquilino con el comienzo de su edificio.",
+            "soft": "Vuelve a las fronteras de dieciséis direcciones antes de etiquetar esa red.",
+            "sharp": "Doscientos no se alinea porque lo escribas después de la palabra red, cielo."
+          }
+        },
+        {
+          "prompt": "¿Qué propuesta se solapa con el /28 de gestión 192.168.60.192/28?",
+          "scenario": "La tabla mantiene gestión entre ciento noventa y dos y doscientos siete y compara otra reserva para el mismo espacio.",
+          "options": [
+            "192.168.60.192/27",
+            "192.168.60.208/28",
+            "192.168.60.224/27"
+          ],
+          "answer": 0,
+          "explanation": "El /27 iniciado en ciento noventa y dos incluye hasta doscientos veintitrés y contiene todas las direcciones ya utilizadas por gestión.",
+          "wrongExplanations": [
+            null,
+            "El /28 iniciado en doscientos ocho comienza después del final de gestión y no comparte direcciones con ese bloque existente.",
+            "El /27 iniciado en doscientos veinticuatro queda separado del intervalo de gestión; su tamaño no provoca por sí mismo una intersección."
+          ],
+          "aoi": {
+            "question": "Dibuja los intervalos; el tamaño distinto no impide que se pisen.",
+            "hint": "Comprueba qué propuesta contiene direcciones entre ciento noventa y dos y doscientos siete.",
+            "correct": "Detectaste la intersección antes de reservar dos veces las mismas direcciones.",
+            "soft": "Compara extremos concretos en lugar de decidir solo por la longitud del prefijo.",
+            "sharp": "Otra reserva encima de gestión no crea espacio nuevo, cariño; despliega la tabla."
+          }
+        },
+        {
+          "prompt": "¿Por qué gestión ya no cabe al pedir catorce dispositivos más un gateway?",
+          "scenario": "El diseño inicial conserva una LAN convencional /28 y el nuevo requisito suma quince direcciones de host.",
+          "options": [
+            "Porque /28 solo permite diez direcciones",
+            "Porque /28 ofrece catorce hosts convencionales",
+            "Porque todos los gateways requieren una red exclusiva"
+          ],
+          "answer": 1,
+          "explanation": "Quince direcciones necesarias superan los catorce hosts convencionales del /28; debe revisarse el tamaño o el requisito sin ocupar extremos reservados.",
+          "wrongExplanations": [
+            "Diez era la cantidad inicial de dispositivos, no la capacidad del prefijo; el bloque /28 contiene dieciséis direcciones totales.",
+            null,
+            "Un gateway puede ocupar una dirección de host del segmento; el problema es la capacidad acumulada, no una obligación de darle otra red."
+          ],
+          "aoi": {
+            "question": "El invitado número quince no cabe en catorce sillas, tesoro.",
+            "hint": "Incluye el gateway y compara esa suma con la capacidad convencional.",
+            "correct": "Señalaste la diferencia exacta entre requisito y capacidad disponible.",
+            "soft": "Cuenta todas las interfaces que necesitan dirección antes de escoger una explicación.",
+            "sharp": "Olvidar al gateway otra vez no lo vuelve invisible, joder; sigue necesitando dirección."
+          }
+        },
+        {
+          "prompt": "¿Cómo puede expresarse el sobrante de .208 a .255 mediante CIDR?",
+          "scenario": "La tabla ya utiliza .0/25, .128/26 y .192/28 y debe documentar las cuarenta y ocho direcciones que quedan libres.",
+          "options": [
+            "Como un único bloque /26 iniciado en .208",
+            "Como cualquier dirección terminada en 48",
+            "Como .208/28 y .224/27"
+          ],
+          "answer": 2,
+          "explanation": "Los bloques propuestos cubren dieciséis y treinta y dos direcciones contiguas, alineadas y sin invadir las reservas anteriores de la academia.",
+          "wrongExplanations": [
+            "Un /26 tiene sesenta y cuatro direcciones y su comienzo debe estar alineado; .208 no es un inicio válido para ese tamaño.",
+            "La terminación decimal cuarenta y ocho no expresa el tamaño del intervalo libre ni establece una longitud de prefijo CIDR.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestro sobrante tiene dos piezas exactas; no hace falta estirarlo.",
+            "hint": "Descompón cuarenta y ocho en dieciséis más treinta y dos respetando sus fronteras.",
+            "correct": "Documentaste el intervalo libre con dos prefijos que sí encajan.",
+            "soft": "Comprueba tamaño y alineación antes de inventarle un único rótulo al sobrante.",
+            "sharp": "Un /26 torcido sigue invadiendo otras reservas, cielo; cuenta sus extremos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Quince no caben en catorce",
+          "scenario": "La academia mantiene diez dispositivos de gestión y un gateway, pero recibe una ampliación hasta catorce dispositivos de gestión sin modificar el prefijo /28 de esa LAN.",
+          "explanation": "Ahora se necesitan quince direcciones de host y el /28 convencional solo admite catorce. Debe revisarse el reparto y comprobar espacio para un bloque mayor; no corresponde reutilizar sus extremos reservados para completar la cantidad."
+        },
+        {
+          "title": "Un sobrante que necesita dos prefijos",
+          "scenario": "Después del reparto original, la hoja conserva libres las direcciones de 192.168.60.208 a 192.168.60.255 y quiere escribirlas como una sola reserva CIDR de cuarenta y ocho direcciones.",
+          "explanation": "Cuarenta y ocho no es una potencia de dos. El intervalo se representa correctamente con .208/28 y .224/27, respetando tamaño y alineación. La hoja puede mostrar el intervalo libre, pero no debe presentarlo como un único prefijo CIDR válido."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una academia ficticia dispone de 192.168.60.0/24 para tres segmentos: cien puestos de aula, cincuenta de oficina y diez dispositivos de gestión. Cada segmento tendrá además un gateway.",
+      "scenario": "Una academia ficticia dispone de 192.168.60.0/24 para tres segmentos: cien puestos de aula, cincuenta de oficina y diez dispositivos de gestión. Cada segmento tendrá además un gateway.",
+      "steps": [
+        "Cuenta todos los equipos que necesitan una dirección, incluidos los gateways.",
+        "Escoge el prefijo mínimo que cubre cada necesidad convencional.",
+        "Asigna primero los bloques mayores, respetando su alineación.",
+        "Comprueba límites, solapamientos y espacio restante en una tabla final."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-private"
+      ],
+      "aoi": {
+        "intro": "Vamos a repartir direcciones, no a recortar necesidades para que luzcan bonitas.",
+        "theory0": "Cuenta también el gateway; los routers no viven del aire, cariño.",
+        "theory1": "Los bloques se alinean por su tamaño, no por tus números favoritos.",
+        "theory2": "Un sobrante de cuarenta y ocho direcciones puede necesitar dos etiquetas.",
+        "theory3": "El crecimiento cambia la cuenta; la elegancia no reemplaza la capacidad.",
+        "case0": "Ese gateway olvidado acaba de quedarse sin silla en gestión.",
+        "case1": "Cuarenta y ocho cabe como intervalo, pero no como un único CIDR.",
+        "pass": "Repartiste con margen y sin pisarte las redes. Me gusta esa competencia.",
+        "review": "Revisemos necesidades y fronteras; el dibujo todavía promete plazas que no tiene."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-ambitos",
+      "title": "Direcciones privadas, compartidas y de documentación",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Reconocer los tres espacios privados de RFC 1918",
+          "body": "Los espacios privados IPv4 definidos en RFC 1918 son 10.0.0.0/8, 172.16.0.0/12 y 192.168.0.0/16. Pueden utilizarse dentro de organizaciones sin convertirlos en asignaciones únicas a escala global. El segundo intervalo comprende desde 172.16.0.0 hasta 172.31.255.255: no abarca todas las direcciones que comienzan por 172. El tercero incluye las direcciones cuyos dos primeros octetos son 192 y 168, no cualquier valor que empiece por 192. Estos límites requieren comparar el prefijo completo, igual que en los cálculos anteriores. En el ejercicio, 172.20.4.8 pertenece al espacio privado citado, mientras 172.32.4.8 queda fuera de ese /12. Esa segunda comprobación solo establece que no está dentro del intervalo; no basta para afirmar quién la administra o si resulta alcanzable desde Internet. Un inventario útil conserva tanto la clasificación como el prefijo concreto de la LAN. Saber que una dirección es privada no determina qué máscara se aplicó a su interfaz."
+        },
+        {
+          "title": "Distinguir otros rangos que tampoco son una asignación pública ordinaria",
+          "body": "El registro de IANA describe espacios con finalidades específicas. Por ejemplo, 100.64.0.0/10 corresponde al espacio compartido utilizado en escenarios de operadores, como CGNAT, y es distinto de los tres bloques privados de RFC 1918. Ver una dirección de ese intervalo en una interfaz del operador no significa que la persona disponga de una dirección pública dedicada ni demuestra por sí mismo un fallo. Las direcciones de enlace local IPv4 y las de loopback también tienen propósitos particulares. No conviene agrupar todos esos casos bajo la etiqueta privada porque se perdería información útil para diagnosticar. El registro ofrece propiedades separadas para distintas clases de utilización; una sola palabra puede ocultar diferencias de alcance. Cuando revises una dirección desconocida, consulta su bloque y su finalidad en lugar de deducir que todo lo ajeno a RFC 1918 es público. Tampoco atribuyas al dispositivo una identidad por la apariencia del número. La clasificación informa sobre el espacio de direcciones, no sobre la persona, el proceso o la legitimidad del tráfico observado."
+        },
+        {
+          "title": "Documentar ejemplos y entender qué no aporta NAT",
+          "body": "En diagramas y ejercicios conviene utilizar direcciones reservadas para documentación, como las de los bloques 192.0.2.0/24, 198.51.100.0/24 y 203.0.113.0/24. Evitan señalar recursos reales cuando se explica una topología. Esos ejemplos no representan servicios públicos que la app deba contactar; aquí se analizan transcripciones locales. Si una práctica dibuja un servidor en 203.0.113.20, no debes intentar localizarlo en Internet para resolver la pregunta. Por otra parte, una organización puede traducir direcciones privadas al salir mediante NAT, pero la traducción no equivale a una política completa de seguridad. Describe una transformación y un estado de asociación, no la identidad confiable del destino ni el cifrado de la comunicación. Los controles de acceso, mantenimiento y protección de transporte se evalúan por separado. Un diagrama que coloque un símbolo de NAT delante de la LAN no demuestra que todo tráfico peligroso esté bloqueado. Indica qué función realiza cada componente antes de atribuirle garantías que no se han comprobado."
+        },
+        {
+          "title": "Evitar ambigüedades al conectar dos espacios privados",
+          "body": "Dos organizaciones pueden usar legítimamente el mismo prefijo privado. El problema aparece si pretenden unir esos espacios y una dirección deja de identificar de forma inequívoca el destino previsto. Imagina una sede y una red doméstica que utilizan ambas 192.168.1.0/24. Al conectar una VPN, un equipo podría considerar local un recurso que se quería alcanzar por el túnel, o seleccionar una ruta que no corresponde a la intención del usuario. Cambiar la contraseña de la VPN no elimina esa coincidencia numérica. El diseño necesita inventario de ambos extremos y una solución explícita, que puede implicar renumeración o mecanismos de traducción adecuados al entorno. No improvises esa solución sobre una conexión de trabajo. En la revisión ficticia basta identificar el solapamiento, describir los destinos afectados y elevar una propuesta verificable. Reserva espacio con un criterio compartido cuando planifiques varias sedes. La libertad de reutilizar direcciones privadas simplifica la asignación local, pero exige coordinación si después se conectan dominios que hasta entonces eran independientes."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuál de estas direcciones pertenece a 172.16.0.0/12?",
+          "scenario": "El inventario compara el segundo octeto con los límites del espacio privado definido para ese bloque.",
+          "options": [
+            "172.20.4.8",
+            "172.32.4.8",
+            "172.8.4.8"
+          ],
+          "answer": 0,
+          "explanation": "El segundo octeto veinte está entre dieciséis y treinta y uno, que son los límites del bloque privado /12 considerado.",
+          "wrongExplanations": [
+            null,
+            "Treinta y dos queda fuera del intervalo privado 172.16.0.0/12; compartir el primer octeto no garantiza pertenencia a ese espacio.",
+            "Ocho está por debajo del segundo octeto inicial del bloque privado; la comparación debe respetar los doce bits de su prefijo."
+          ],
+          "aoi": {
+            "question": "El segundo octeto decide esta diferencia; no te quedes en el 172.",
+            "hint": "Busca un valor comprendido entre dieciséis y treinta y uno.",
+            "correct": "Elegiste el intervalo correcto sin extenderlo a toda la familia 172.",
+            "soft": "Compara también el segundo octeto antes de clasificar la dirección.",
+            "sharp": "Ese 172 inicial sigue sin reclamar todo el planeta, tesoro; compara el bloque."
+          }
+        },
+        {
+          "prompt": "¿Qué describe 100.64.0.0/10 en el registro de IANA?",
+          "scenario": "Una interfaz del operador presenta una dirección de ese intervalo y el alumno debe registrar su finalidad sin inventar una asignación exclusiva.",
+          "options": [
+            "Una red de documentación de Aiocyb",
+            "Un espacio compartido de operadores",
+            "El único bloque privado RFC 1918"
+          ],
+          "answer": 1,
+          "explanation": "Ese /10 es espacio compartido asociado a escenarios de operadores, como CGNAT, y se distingue de los tres espacios privados RFC 1918.",
+          "wrongExplanations": [
+            "Los bloques documentales tienen otros prefijos; identificar este /10 como material de ejemplo perdería su finalidad registrada para operadores.",
+            null,
+            "RFC 1918 define tres espacios distintos y ninguno es 100.64.0.0/10; no debe confundirse su clasificación aunque ambos tengan alcance limitado."
+          ],
+          "aoi": {
+            "question": "El número del operador trae una categoría propia, no una promesa de exclusividad.",
+            "hint": "Separa espacio compartido de operador de espacio privado RFC 1918.",
+            "correct": "Bien clasificado: preservaste la distinción que ayudará al diagnóstico posterior.",
+            "soft": "Busca la finalidad del /10 en vez de reutilizar una etiqueta conocida.",
+            "sharp": "Volver a llamarlo RFC 1918 no cambia el registro, cariño; lee su propósito."
+          }
+        },
+        {
+          "prompt": "¿Qué puede afirmarse al saber que una dirección no es RFC 1918?",
+          "scenario": "La revisión solo ha descartado pertenencia a los tres espacios privados y todavía no consulta otras reservas ni asignaciones.",
+          "options": [
+            "Que es un servidor público legítimo",
+            "Que no necesita controles de acceso",
+            "Que falta comprobar otros usos especiales y su contexto"
+          ],
+          "answer": 2,
+          "explanation": "Excluir RFC 1918 no descarta otros rangos especiales ni establece legitimidad, asignación o conectividad; la clasificación necesita completar su contexto.",
+          "wrongExplanations": [
+            "Existen otros usos especiales y una dirección no autentica al servidor; el descarte de tres bloques no acredita legitimidad pública.",
+            "Los controles dependen de identidades, recursos y políticas; pertenecer o no a un rango privado no elimina la necesidad de autorización.",
+            null
+          ],
+          "aoi": {
+            "question": "Una comprobación negativa no te regala todas las certezas restantes.",
+            "hint": "Recuerda que IANA registra más propósitos que los tres espacios privados.",
+            "correct": "Conservaste la conclusión limitada y dejaste visibles las comprobaciones pendientes.",
+            "soft": "Todavía no conoces el propósito completo de esa dirección concreta.",
+            "sharp": "Que no sea privada no la vuelve un ángel, demonios; termina la revisión."
+          }
+        },
+        {
+          "prompt": "¿Cuál de estos bloques es apropiado para ejemplos documentales IPv4?",
+          "scenario": "El docente necesita dibujar una topología ficticia sin indicar direcciones de recursos reales que los alumnos deban consultar.",
+          "options": [
+            "192.0.2.0/24",
+            "Una dirección tomada de un servidor real del colegio",
+            "Cualquier dirección del vecino"
+          ],
+          "answer": 0,
+          "explanation": "192.0.2.0/24 está reservado para documentación; permite representar ejemplos sin señalar un recurso real cuya dirección pertenezca a otra persona.",
+          "wrongExplanations": [
+            null,
+            "Reutilizar la dirección de un servidor real puede confundir el ejemplo con una instrucción de conexión y expone datos innecesarios del entorno.",
+            "La dirección de otro usuario no se convierte en material documental por copiarla; debe elegirse un espacio reservado para ese propósito."
+          ],
+          "aoi": {
+            "question": "Nuestro dibujo necesita direcciones de ejemplo, no invitados involuntarios.",
+            "hint": "Identifica el bloque reservado expresamente para material de documentación.",
+            "correct": "Ese bloque documental permite explicar la topología sin apuntar a un tercero.",
+            "soft": "Busca un rango pensado para ejemplos antes de copiar datos reales.",
+            "sharp": "El vecino no se matriculó en tu diagrama, cielo; utiliza el bloque documental."
+          }
+        },
+        {
+          "prompt": "¿Qué función describe NAT sin atribuirle una garantía adicional?",
+          "scenario": "Un diagrama sitúa traducción de direcciones en la salida y pretende documentar exactamente qué aporta ese componente.",
+          "options": [
+            "Autenticar automáticamente todo servidor remoto",
+            "Transformar direcciones según las asociaciones de traducción",
+            "Cifrar todas las comunicaciones de la LAN"
+          ],
+          "answer": 1,
+          "explanation": "NAT realiza traducción de direcciones y, según el caso, puertos; la autenticación y el cifrado requieren mecanismos distintos que deben comprobarse aparte.",
+          "wrongExplanations": [
+            "La transformación del origen no verifica la identidad ni la legitimidad de un servidor remoto; esa función necesita controles apropiados adicionales.",
+            null,
+            "Una traducción no cifra por sí misma los datos de aplicación; deben evaluarse la protección de transporte y sus extremos correspondientes."
+          ],
+          "aoi": {
+            "question": "Dejemos a NAT hacer su trabajo sin ascenderlo a hechicero.",
+            "hint": "Piensa en qué valores transforma, no en propiedades que no implementa.",
+            "correct": "Esa descripción conserva su función real y deja claras las protecciones pendientes.",
+            "soft": "Revisa si elegiste una transformación o una garantía que necesita otro mecanismo.",
+            "sharp": "NAT no aprendió criptografía por llevar una caja en el dibujo, joder."
+          }
+        },
+        {
+          "prompt": "¿Qué problema sugiere que sede y casa usen 192.168.1.0/24?",
+          "scenario": "Tras conectar una VPN, un destino del servidor coincide con el bloque que el equipo considera local en la vivienda ficticia.",
+          "options": [
+            "Una contraseña demasiado corta por definición",
+            "Un error inevitable de DNS público",
+            "Un solapamiento de direccionamiento que exige revisar rutas y diseño"
+          ],
+          "answer": 2,
+          "explanation": "El mismo prefijo en ambos extremos puede volver ambiguo el destino y afectar la selección de ruta; debe revisarse el direccionamiento y la topología.",
+          "wrongExplanations": [
+            "La longitud de una contraseña no cambia qué direcciones se consideran locales ni elimina la coincidencia entre los dos prefijos de red.",
+            "El escenario ya presenta una ambigüedad de direcciones; no aporta una consulta DNS fallida que justifique atribuir el problema a ese servicio.",
+            null
+          ],
+          "aoi": {
+            "question": "Las dos redes eligieron el mismo traje; ahora el equipo confunde la invitación.",
+            "hint": "Compara los prefijos locales y los destinos que debería alcanzar el túnel.",
+            "correct": "Detectaste el solapamiento en lugar de culpar a las credenciales sin evidencia.",
+            "soft": "Primero explica la coincidencia numérica que ya muestra el escenario.",
+            "sharp": "Repetir la contraseña no renumera ninguna LAN, cariño; mira las rutas."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El bloque que termina en treinta y uno",
+          "scenario": "Una hoja marca como privada RFC 1918 cualquier dirección cuyo primer octeto sea 172 e incluye 172.32.4.8 junto a 172.20.4.8.",
+          "explanation": "La regla es demasiado amplia. El intervalo privado pertinente abarca segundos octetos de dieciséis a treinta y uno. Debe corregirse esa comparación sin concluir automáticamente que la dirección restante sea pública o esté asignada a una entidad determinada."
+        },
+        {
+          "title": "La VPN con destinos ambiguos",
+          "scenario": "La sede ficticia y la LAN doméstica del alumno utilizan 192.168.1.0/24; después de conectar la VPN, una dirección de servidor coincide con el bloque que el equipo considera local.",
+          "explanation": "Existe un solapamiento que puede afectar la selección de rutas y la interpretación del destino. Hay que revisar el diseño de ambos espacios y las rutas efectivas. Cambiar secretos o repetir la conexión no elimina la coincidencia entre prefijos."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una asociación ficticia compara direcciones de su LAN, una interfaz del operador y diagramas de formación. Necesita clasificarlas sin confundir alcance, propiedad y seguridad.",
+      "scenario": "Una asociación ficticia compara direcciones de su LAN, una interfaz del operador y diagramas de formación. Necesita clasificarlas sin confundir alcance, propiedad y seguridad.",
+      "steps": [
+        "Comprueba si cada dirección pertenece a un rango de uso especial.",
+        "Identifica su finalidad documentada y el ámbito del ejemplo.",
+        "Separa pertenencia numérica de identidad, permisos y conectividad.",
+        "Revisa posibles solapamientos antes de unir dos redes."
+      ],
+      "sourceIds": [
+        "net-private",
+        "net-special"
+      ],
+      "aoi": {
+        "intro": "Clasifiquemos los números sin regalarles identidades que no tienen, cariño.",
+        "theory0": "Ese 172 privado termina en treinta y uno; no conquista todo el primer octeto.",
+        "theory1": "El operador comparte espacio; eso no te entrega una IP pública exclusiva.",
+        "theory2": "NAT transforma direcciones, pero no se convierte por ello en guardián universal.",
+        "theory3": "Dos redes privadas pueden elegir lo mismo y luego llevarse fatal.",
+        "case0": "Tu hoja amplió el rango por entusiasmo; vamos a devolverle sus límites.",
+        "case1": "La VPN no resuelve un choque de direcciones con una contraseña más dramática.",
+        "pass": "Ya diferencias propósito y alcance. Tu inventario empieza a ponerse interesante.",
+        "review": "Revisa el registro y el prefijo; todavía estás clasificando por parecido visual."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-asignacion",
+      "title": "DHCP, reservas y conflictos de direcciones",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Diseñar el ámbito de asignación",
+          "body": "DHCP permite que un cliente obtenga parámetros de configuración a través de un servidor. El ámbito de asignación debe corresponder al segmento previsto y distinguir qué direcciones puede entregar de las que se conservan para otros usos. En la biblioteca, un intervalo de .20 a .99 no incluye el router .1, el servidor .2 ni una impresora estática en .10. Esas decisiones deben aparecer en el inventario. Una exclusión evita que determinadas direcciones del ámbito se ofrezcan dinámicamente, mientras una reserva relaciona una asignación con la identidad de cliente que reconoce la implementación. Reserva no significa necesariamente que el equipo tenga su propia dirección configurada manualmente: puede seguir usando DHCP. Revisa qué identificador utiliza el servidor y cómo se comporta el dispositivo, especialmente si cambia su dirección MAC por funciones de privacidad. El prefijo limita el bloque de red, pero no define por sí mismo el comienzo y el final del conjunto disponible para DHCP. El mismo /24 puede tener un intervalo dinámico reducido y muchas direcciones destinadas a funciones específicas."
+        },
+        {
+          "title": "Interpretar el intercambio sin convertirlo en una receta universal",
+          "body": "La adquisición inicial suele explicarse con Discover, Offer, Request y Acknowledge. El cliente busca configuración, uno o varios servidores pueden ofrecerla, el cliente solicita una propuesta y el servidor confirma el arrendamiento. Es un modelo útil para leer una transcripción, pero no todos los intercambios posteriores repiten esas cuatro fases. Un cliente que conserva información previa puede intentar recuperarla, y una renovación normal utiliza mensajes de solicitud y confirmación sin necesitar otra búsqueda completa. DHCPv4 emplea UDP; los puertos habituales son sesenta y siete para el lado servidor y sesenta y ocho para el cliente. La forma de entrega depende de la fase, las capacidades del cliente y la topología. No afirmes que todos los mensajes son siempre broadcast. Si el servidor está en otra red, un agente de retransmisión puede transportar la solicitud y aportar información del segmento de origen. En el ejercicio se analiza la función de ese relay; no hay que confundirla con la de DNS ni suponer que un router reenvía automáticamente cualquier difusión local entre segmentos."
+        },
+        {
+          "title": "Renovar, revalidar y dejar de utilizar una concesión vencida",
+          "body": "El arrendamiento tiene una duración y puede incluir momentos para renovar o volver a buscar confirmación. Antes de vencer, el cliente intenta conservar la configuración según el estado del protocolo. Si no puede contactar al servidor original y alcanza la fase de revalidación, puede intentar obtener respuesta de otros servidores apropiados. La ausencia de una respuesta en el primer intento no demuestra inmediatamente que la dirección haya caducado. Del mismo modo, conservar un número en pantalla no prueba que el arrendamiento siga vigente. Relaciona el reloj de la transcripción con los tiempos anunciados y comprueba qué eventos se registraron. Cuando una concesión vence sin renovarse, el cliente no debe seguir utilizándola como si fuera indefinida. Algunas plataformas pueden autoconfigurar una dirección de enlace local; esa observación merece investigar la asignación, pero no identifica por sí sola la causa. El servidor podría ser inaccesible, el relay estar mal asociado, el conjunto disponible haberse agotado o existir otra condición. Contrasta el estado antes de cambiar parámetros al azar."
+        },
+        {
+          "title": "Evitar conflictos y comprobar la configuración completa",
+          "body": "Una dirección duplicada puede aparecer si alguien configura manualmente un valor que el servidor también entrega a otro cliente. Resolver el conflicto exige revisar las dos asignaciones y la política del ámbito; reiniciar un portátil no elimina la causa del reparto. Las comprobaciones de conflicto que implementan clientes o servidores ayudan, pero no sustituyen un inventario coherente. Documenta qué equipo utiliza la dirección, por qué mecanismo la recibió y qué evidencia indica duplicación. Tampoco evalúes DHCP solo por el número IPv4. La máscara, el gateway y los servidores DNS pueden pertenecer a una configuración equivocada aunque la dirección parezca familiar. Una confirmación de DHCP no demuestra que todos los servicios posteriores funcionen. En la biblioteca conviene comparar la concesión del puesto con el segmento al que realmente está conectado y con el ámbito autorizado. Si aparece una propuesta inesperada, conserva los datos relevantes y consulta al responsable; la diferencia puede proceder de un servidor no previsto o de un error de topología. Identificar la discrepancia debe preceder a cualquier afirmación sobre intención maliciosa."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué riesgo crea una impresora estática en .30 dentro del conjunto DHCP .20–.99?",
+          "scenario": "El servidor no tiene una exclusión ni una reserva que impida entregar esa dirección a otro cliente del segmento.",
+          "options": [
+            "Una asignación duplicada posible",
+            "Un aumento automático de velocidad",
+            "Una reducción del tamaño del /24"
+          ],
+          "answer": 0,
+          "explanation": "El servidor puede entregar el mismo valor a otro equipo mientras la impresora lo usa manualmente; el ámbito necesita una política coherente de asignación.",
+          "wrongExplanations": [
+            null,
+            "Compartir accidentalmente una dirección no aumenta velocidad; provoca ambigüedad y problemas de conectividad que requieren corregir el reparto.",
+            "El conjunto DHCP no modifica la longitud del prefijo aplicado a la LAN; el conflicto procede de dos asignaciones sobre el mismo valor."
+          ],
+          "aoi": {
+            "question": "Nuestra impresora necesita una asignación coherente, no un competidor con su mismo número.",
+            "hint": "Compara lo configurado manualmente con lo que todavía puede ofrecer el servidor.",
+            "correct": "Detectaste la colisión posible antes de culpar al cableado de la biblioteca.",
+            "soft": "Revisa qué ocurre si llega otro cliente y recibe precisamente .30.",
+            "sharp": "Reiniciar la impresora no excluye su dirección del ámbito, cariño; arregla el reparto."
+          }
+        },
+        {
+          "prompt": "¿Qué distingue una reserva DHCP de una dirección manual en el cliente?",
+          "scenario": "El servidor conserva una asignación para un identificador concreto, mientras el equipo sigue obteniendo su configuración mediante DHCP.",
+          "options": [
+            "Que elimina la necesidad de un servidor",
+            "Que la asignación se controla desde DHCP",
+            "Que siempre bloquea toda dirección MAC aleatoria"
+          ],
+          "answer": 1,
+          "explanation": "La reserva vincula una asignación al identificador que usa la implementación del servidor; el cliente puede continuar solicitando y renovando mediante DHCP.",
+          "wrongExplanations": [
+            "Una reserva necesita el comportamiento del servicio DHCP correspondiente; no convierte automáticamente al cliente en un equipo configurado manualmente.",
+            null,
+            "No puede suponerse un bloqueo universal de aleatorización; deben comprobarse el identificador utilizado y el comportamiento real del cliente y del servidor."
+          ],
+          "aoi": {
+            "question": "Una reserva también puede seguir entrando por la puerta de DHCP.",
+            "hint": "Localiza quién conserva la relación entre identidad de cliente y asignación.",
+            "correct": "Eso: controlas la asignación en el servidor sin inventar una configuración manual.",
+            "soft": "Distingue dónde se define la relación y cómo la obtiene el cliente.",
+            "sharp": "La palabra reserva no desactiva funciones de privacidad por arte de magia, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Qué papel cumple un relay DHCP cuando el servidor está en otra red?",
+          "scenario": "La topología del ejercicio sitúa a los clientes en un segmento y al servicio de asignación en una red diferente.",
+          "options": [
+            "Resolver nombres públicos",
+            "Reemplazar las contraseñas del router",
+            "Retransmitir el intercambio con contexto del segmento de origen"
+          ],
+          "answer": 2,
+          "explanation": "El relay comunica solicitudes y respuestas entre segmentos según su configuración y permite identificar el ámbito adecuado; no realiza la función de resolución DNS.",
+          "wrongExplanations": [
+            "La resolución de nombres corresponde a DNS y no explica cómo llegan al servidor DHCP solicitudes procedentes de otro segmento del laboratorio.",
+            "El relay no cambia credenciales de administración; su función en este caso es transportar información del proceso de asignación entre redes.",
+            null
+          ],
+          "aoi": {
+            "question": "El relay lleva la conversación y su contexto; no rebautiza los servidores.",
+            "hint": "Relaciona el problema de segmentos separados con la función de retransmisión.",
+            "correct": "Identificaste el puente lógico del intercambio sin convertirlo en DNS.",
+            "soft": "Busca cómo recibe el servidor las solicitudes de esa otra red.",
+            "sharp": "Cambiar contraseñas no transporta un Discover, demonios; mira la topología."
+          }
+        },
+        {
+          "prompt": "¿Demuestra un fallo que una renovación no incluya Discover y Offer?",
+          "scenario": "El cliente ya conserva una concesión y la transcripción muestra solicitud de renovación seguida de confirmación del servidor.",
+          "options": [
+            "No; esa fase puede usar solicitud y confirmación",
+            "Sí; toda renovación exige cuatro mensajes nuevos",
+            "Sí; significa que la máscara desapareció"
+          ],
+          "answer": 0,
+          "explanation": "Una renovación no tiene que repetir toda la adquisición inicial; debe interpretarse según el estado del cliente y los tiempos de la concesión.",
+          "wrongExplanations": [
+            null,
+            "El modelo inicial de cuatro fases no describe obligatoriamente cada renovación; exigirlo produciría un diagnóstico falso ante un intercambio válido.",
+            "La ausencia de esos dos mensajes no demuestra pérdida de máscara; hay que revisar la configuración recibida y el estado de la concesión."
+          ],
+          "aoi": {
+            "question": "Nuestro cliente ya tenía habitación; renovar no requiere otra visita guiada.",
+            "hint": "Distingue la adquisición inicial de la renovación de un arrendamiento existente.",
+            "correct": "Leíste la fase correcta y evitaste convertir el esquema en una regla ciega.",
+            "soft": "Mira qué información previa conserva el cliente antes de exigir otra búsqueda.",
+            "sharp": "Otra DORA completa no es obligatoria por tu entusiasmo, cariño; ubica el estado."
+          }
+        },
+        {
+          "prompt": "¿Qué debe comprobarse además de la dirección IPv4 entregada?",
+          "scenario": "Un portátil recibe un valor del bloque esperado, pero no llega al servicio y todavía no se revisan los demás parámetros.",
+          "options": [
+            "Solo el nombre del portátil",
+            "Máscara, gateway, DNS y vigencia de la concesión",
+            "Únicamente el color del conector"
+          ],
+          "answer": 1,
+          "explanation": "El número aislado no confirma una configuración útil: máscara, gateway, DNS y tiempos deben corresponder al segmento y al estado observado del cliente.",
+          "wrongExplanations": [
+            "El nombre puede identificar el equipo, pero no sustituye la revisión de los parámetros que determinan alcance local, salida y resolución de nombres.",
+            null,
+            "El aspecto del conector no informa qué parámetros recibió el cliente ni explica por sí mismo si la concesión sigue vigente."
+          ],
+          "aoi": {
+            "question": "La dirección llegó; ahora toca leer el resto de la invitación.",
+            "hint": "Comprueba los parámetros que permiten interpretar alcance, salida y nombres.",
+            "correct": "Revisaste la configuración completa en lugar de felicitar a un número aislado.",
+            "soft": "Todavía faltan datos del camino y de la vigencia de la asignación.",
+            "sharp": "Un octeto bonito no configura el gateway, joder; termina de leer la concesión."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión admite una dirección de enlace local autoconfigurada tras fallar DHCP?",
+          "scenario": "La transcripción del equipo muestra esa autoconfiguración, pero todavía no aporta estado del servidor, relay ni disponibilidad del conjunto de direcciones.",
+          "options": [
+            "Que el servidor fue atacado con certeza",
+            "Que debe conservarse indefinidamente cualquier concesión vencida",
+            "Que conviene investigar la asignación sin atribuir todavía una causa única"
+          ],
+          "answer": 2,
+          "explanation": "La observación orienta a revisar el proceso de configuración, pero pueden existir causas distintas; se necesitan evidencias sobre servidor, relay y disponibilidad del ámbito.",
+          "wrongExplanations": [
+            "La autoconfiguración no demuestra intención maliciosa ni identifica un ataque; una indisponibilidad o una configuración equivocada también requiere evaluación.",
+            "Una concesión vencida sin renovación no debe tratarse como indefinida; conservarla no resuelve la causa de la falta de configuración válida.",
+            null
+          ],
+          "aoi": {
+            "question": "La señal indica dónde mirar; todavía no eligió un culpable.",
+            "hint": "Contrasta varias condiciones del proceso de asignación antes de declarar su causa.",
+            "correct": "Interpretaste el síntoma con cautela útil y un siguiente paso concreto.",
+            "soft": "Busca evidencia de la causa en vez de convertir el síntoma en sentencia.",
+            "sharp": "Ese enlace local no trae una confesión del atacante, cielo; investiga el reparto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La impresora dentro del conjunto dinámico",
+          "scenario": "Una impresora del taller tiene .30 configurada manualmente, pero el servidor también puede entregar .30 porque el ámbito dinámico comprende .20 a .99 sin exclusiones.",
+          "explanation": "Hay una posibilidad de asignación duplicada que el diseño debe corregir. Se revisan la configuración manual, las reservas y las exclusiones para que el servidor no entregue a otro cliente una dirección ya destinada a esa impresora."
+        },
+        {
+          "title": "Una renovación sin búsqueda inicial",
+          "scenario": "La transcripción muestra un portátil con una concesión previa que envía una solicitud de renovación y recibe confirmación, pero no aparecen mensajes Discover ni Offer nuevos.",
+          "explanation": "La renovación puede usar solicitud y confirmación sin repetir la adquisición inicial completa. La ausencia de Discover y Offer en ese tramo no demuestra un fallo; debe leerse la fase del protocolo junto a la concesión y sus tiempos."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una biblioteca ficticia usa 192.168.70.0/24. El router ocupa .1, el servidor de asignación .2 y las impresoras direcciones documentadas; los portátiles obtienen una configuración temporal.",
+      "scenario": "Una biblioteca ficticia usa 192.168.70.0/24. El router ocupa .1, el servidor de asignación .2 y las impresoras direcciones documentadas; los portátiles obtienen una configuración temporal.",
+      "steps": [
+        "Delimita la red y el intervalo que puede entregar DHCP.",
+        "Separa asignaciones estáticas, reservas y exclusiones.",
+        "Identifica la fase de asignación o renovación que muestra la transcripción.",
+        "Contrasta dirección, gateway, DNS y duración del arrendamiento."
+      ],
+      "sourceIds": [
+        "net-dhcp",
+        "net-cidr"
+      ],
+      "aoi": {
+        "intro": "Repartamos direcciones con memoria, cariño; dos equipos no caben en el mismo número.",
+        "theory0": "El /24 dibuja la red; el ámbito decide qué puede ofrecer el servidor.",
+        "theory1": "DORA ayuda a empezar, pero una renovación no necesita repetir toda la presentación.",
+        "theory2": "Una concesión tiene reloj; conservar el número no detiene el tiempo.",
+        "theory3": "Revisa también gateway y DNS antes de declarar perfecta la entrega.",
+        "case0": "Nuestra impresora se metió en el conjunto dinámico sin reservar su asiento.",
+        "case1": "Ese portátil ya se presentó antes; ahora solo está renovando su estancia.",
+        "pass": "Ya interpretas una concesión completa. Tu criterio empieza a tratarme demasiado bien.",
+        "review": "Busquemos la fase y el ámbito; todavía estás diagnosticando solo por el número."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-rutas",
+      "title": "Elegir la ruta por coincidencia de prefijo más largo",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Distinguir destino, prefijo y siguiente salto",
+          "body": "Una entrada de enrutamiento relaciona un conjunto de destinos con información para continuar el envío. En una tabla simplificada puedes encontrar el prefijo de destino, la interfaz de salida y un siguiente salto cuando corresponde. El destino final del paquete no se convierte en la dirección de ese siguiente salto: son funciones distintas. Para llegar a una red remota, un equipo entrega el tráfico al vecino que actúa como gateway según su decisión de salida. Después, ese router realiza otra búsqueda apropiada para su propio contexto. En este ejercicio solo analizamos una tabla instalada, sin reglas adicionales de selección por política ni tablas múltiples. Esa delimitación permite explicar el mecanismo básico sin prometer que toda plataforma elija siempre únicamente con los datos dibujados. Registra la tabla y el momento de la observación; una ruta puede cambiar. Tampoco confundas el conjunto de rutas aprendidas con las entradas efectivamente disponibles para reenviar. Primero identifica qué información presenta la transcripción y después aplica la regla correspondiente a esa información concreta."
+        },
+        {
+          "title": "Comparar las coincidencias y quedarse con la más específica",
+          "body": "La coincidencia de prefijo más largo elige, entre las entradas aplicables al destino, aquella que fija más bits de su dirección. Si existe una ruta a 10.20.0.0/16 y otra a 10.20.30.0/24, el destino 10.20.30.8 coincide con ambas, pero el /24 es más específico. No es necesario que sus métricas tengan un valor parecido para explicar esa comparación entre prefijos distintos. Una ruta adicional a 10.20.30.7/32 solo coincide con la dirección terminada en siete; no incluye a la terminada en ocho. Para verificar el resultado, escribe qué rango describe cada entrada y marca las que contienen al destino antes de contar su longitud. Elegir primero la barra mayor sin comprobar pertenencia también es un error: el /32 no sirve para cualquier host de ese /24. Esta búsqueda es una propiedad del conjunto de destinos, no una valoración de si el vecino parece cercano o si su nombre resulta más conocido. La explicación debe mencionar tanto coincidencia como especificidad."
+        },
+        {
+          "title": "Separar la ruta por defecto de los criterios entre rutas equivalentes",
+          "body": "La ruta IPv4 0.0.0.0/0 no fija ningún bit del destino y funciona como coincidencia general cuando no hay una entrada aplicable más específica en la tabla analizada. No significa que el destino real sea cero ni que se haya demostrado conectividad con Internet. La salida podría dirigir a otra red interna, a un proveedor o a un camino que no funcione. Entre candidatos al mismo prefijo, la plataforma puede utilizar preferencias de origen, métricas y mecanismos de selección o reparto de carga. Esos criterios tienen su contexto y no deben usarse para sustituir sin más la comparación entre prefijos diferentes. Si la transcripción ya muestra una entrada instalada por prefijo, utiliza esa tabla para la búsqueda del destino y no inventes candidatos que no aparecen. En el ejemplo, una entrada /16 con métrica baja no desplaza al /24 coincidente por tener un número más atractivo. Explica en qué fase se evalúa cada dato antes de concluir que la tabla se contradice o que el router está eligiendo al azar."
+        },
+        {
+          "title": "Verificar el siguiente salto y el camino de vuelta",
+          "body": "Encontrar una ruta aplicable no completa la prueba de comunicación. La interfaz puede estar fuera de servicio, el siguiente salto necesitar resolución, existir un filtro o faltar una ruta de retorno. En una LAN IPv4 convencional, la entrega al vecino requiere resolver la dirección de enlace apropiada según el funcionamiento del segmento. Otras configuraciones pueden resolver recursivamente un siguiente salto; no supongas ese diseño si la transcripción no lo declara. Después de verificar la salida, revisa el retorno desde el destino o desde el equipo que lo administra. Un camino de ida válido y otro de vuelta ausente pueden producir un síntoma que parece un rechazo del servicio. También puede haber asimetría de rutas y controles que mantengan estado. En una incidencia, conserva la dirección de origen, el destino y la tabla de cada punto observado para no mezclar pruebas de equipos diferentes. El resultado útil distingue la entrada seleccionada de las condiciones pendientes del trayecto. Así puedes proponer una comprobación localizada en vez de cambiar la ruta por defecto ante cualquier respuesta inesperada."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué entrada selecciona 10.20.30.8 entre /16 y /24 coincidentes?",
+          "scenario": "La tabla instalada ofrece 10.20.0.0/16 y 10.20.30.0/24 y no contiene otra coincidencia más específica para ese destino.",
+          "options": [
+            "10.20.30.0/24",
+            "10.20.0.0/16 siempre",
+            "Ninguna, porque coinciden dos"
+          ],
+          "answer": 0,
+          "explanation": "El /24 contiene el destino y fija más bits que el /16; la existencia de dos coincidencias no vuelve ambigua esta selección básica.",
+          "wrongExplanations": [
+            null,
+            "El /16 también contiene el destino, pero es menos específico que la entrada /24 disponible para esa misma búsqueda.",
+            "La regla de prefijo más largo permite resolver estas coincidencias; no se descartan todas las entradas por compartir parte de sus rangos."
+          ],
+          "aoi": {
+            "question": "Marca las coincidencias antes de elegir cuál describe el conjunto más pequeño.",
+            "hint": "Entre estas dos entradas aplicables, compara veinticuatro bits con dieciséis.",
+            "correct": "Elegiste el /24 por pertenencia y especificidad, exactamente en ese orden.",
+            "soft": "Comprueba qué entrada fija más bits del destino que se está consultando.",
+            "sharp": "Que ambas coincidan no significa que el router entre en crisis, cielo; compara sus prefijos."
+          }
+        },
+        {
+          "prompt": "¿Cuándo se aplica la ruta 0.0.0.0/0 en esta tabla simplificada?",
+          "scenario": "Se busca un destino para el que no aparece ninguna entrada instalada coincidente con longitud de prefijo mayor que cero.",
+          "options": [
+            "Cuando el destino tiene todos sus octetos en cero",
+            "Cuando no hay una coincidencia más específica",
+            "Solo cuando el equipo garantiza acceso a Internet"
+          ],
+          "answer": 1,
+          "explanation": "El /0 es una coincidencia general; puede seleccionarse al faltar una ruta aplicable más específica, sin demostrar que el trayecto posterior funcione.",
+          "wrongExplanations": [
+            "Los ceros de la representación no exigen un destino compuesto por ceros; la máscara /0 deja sin fijar todos los bits del destino.",
+            null,
+            "La tabla puede contener una ruta por defecto aun con enlaces caídos o sin retorno; su presencia no garantiza conectividad con Internet."
+          ],
+          "aoi": {
+            "question": "El /0 tiene alcance general; no es la dirección de nuestro destino.",
+            "hint": "Piensa en la entrada que queda cuando ninguna coincidencia más larga se aplica.",
+            "correct": "Interpretaste la función de respaldo sin convertirla en garantía de conectividad.",
+            "soft": "Separa el patrón del prefijo de una dirección concreta a la que se envía.",
+            "sharp": "La ruta por defecto no firma contratos con Internet, cariño; solo decide una salida."
+          }
+        },
+        {
+          "prompt": "¿Qué destino coincide con 10.20.30.7/32?",
+          "scenario": "La tabla incluye una excepción de host con los treinta y dos bits fijados y se compara su alcance exacto.",
+          "options": [
+            "Todo 10.20.30.0/24",
+            "10.20.30.8",
+            "Solo 10.20.30.7"
+          ],
+          "answer": 2,
+          "explanation": "El /32 coincide únicamente con el valor terminado en siete; los demás destinos necesitan otra entrada aplicable, aunque pertenezcan a un bloque relacionado.",
+          "wrongExplanations": [
+            "Un /24 incluiría muchas direcciones, pero la excepción /32 de la tabla no deja variables esos ocho bits finales.",
+            "La dirección terminada en ocho difiere en bits que el /32 fija y, por tanto, no pertenece al conjunto de esa entrada.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese /32 tiene un invitado preciso; no admite acompañantes por parecido.",
+            "hint": "Compara todos los bits del destino con los que fija la entrada.",
+            "correct": "Ubicaste la excepción exactamente en el equipo para el que fue declarada.",
+            "soft": "Revisa qué direcciones siguen coincidiendo cuando no queda ningún bit variable.",
+            "sharp": "El vecino terminado en ocho sigue sin invitación, tesoro; aquí la coincidencia es exacta."
+          }
+        },
+        {
+          "prompt": "¿Puede la métrica uno de un /16 desplazar por sí sola al /24 coincidente?",
+          "scenario": "La transcripción muestra ambas entradas ya instaladas y analiza la búsqueda de un destino que pertenece también al /24.",
+          "options": [
+            "No; se selecciona primero la coincidencia de prefijo más largo",
+            "Sí; cualquier número menor gana siempre",
+            "Sí; /16 contiene menos bits y por eso es más específico"
+          ],
+          "answer": 0,
+          "explanation": "En la búsqueda de esa tabla, el /24 coincidente es más específico; los criterios entre candidatos no sustituyen la comparación de longitudes de prefijo.",
+          "wrongExplanations": [
+            null,
+            "Los números de métrica tienen un contexto de selección y no establecen una regla universal que anule cualquier prefijo coincidente más largo.",
+            "Fijar menos bits describe un conjunto más amplio; la especificidad aumenta al fijar más bits compatibles con el destino consultado."
+          ],
+          "aoi": {
+            "question": "La métrica no se cuela por delante de la coincidencia más específica.",
+            "hint": "Distingue una búsqueda entre prefijos distintos de la selección entre candidatos equivalentes.",
+            "correct": "Conservaste la prioridad del prefijo sin inventar un campeonato universal de métricas.",
+            "soft": "Revisa en qué fase del proceso se compara cada dato de la tabla.",
+            "sharp": "Una métrica pequeña no achica el /16 por encanto, demonios; respeta la búsqueda."
+          }
+        },
+        {
+          "prompt": "¿Qué función tiene el siguiente salto de una ruta remota?",
+          "scenario": "El paquete conserva un destino final diferente y la entrada seleccionada indica el vecino al que se entregará para continuar el trayecto.",
+          "options": [
+            "Reemplazar el destino final por su propio nombre",
+            "Indicar el próximo vecino del camino seleccionado",
+            "Demostrar que el servicio destino ya respondió"
+          ],
+          "answer": 1,
+          "explanation": "El siguiente salto identifica el próximo vecino apropiado para continuar el envío; no equivale al destino final ni constituye una respuesta de la aplicación.",
+          "wrongExplanations": [
+            "La función del vecino no consiste en rebautizar al servicio; deben distinguirse el destino IP final y la entrega correspondiente a la siguiente etapa.",
+            null,
+            "La presencia de un siguiente salto en la tabla no acredita que exista comunicación completa ni una respuesta efectiva del servicio remoto."
+          ],
+          "aoi": {
+            "question": "Vamos por etapas; el vecino recibe la entrega, no hereda la identidad del destino.",
+            "hint": "Separa la decisión de próxima entrega del objetivo final del paquete.",
+            "correct": "Eso: un paso del trayecto, descrito sin promesas sobre el servicio final.",
+            "soft": "Pregúntate qué aporta la entrada antes de afirmar que toda la comunicación terminó.",
+            "sharp": "El siguiente salto no contestó la aplicación por figurar en una tabla, cariño."
+          }
+        },
+        {
+          "prompt": "¿Qué falta comprobar después de encontrar una ruta de ida aplicable?",
+          "scenario": "La revisión solo muestra una entrada seleccionable, pero no evidencia sobre interfaz, vecino, filtros ni respuesta desde el destino.",
+          "options": [
+            "Nada: una ruta garantiza la sesión",
+            "Únicamente el nombre comercial del equipo",
+            "El estado del trayecto y la posibilidad de retorno"
+          ],
+          "answer": 2,
+          "explanation": "Una entrada aplicable no demuestra enlaces activos, entrega al vecino, permisos ni ruta de retorno; esas condiciones requieren observaciones adicionales del trayecto.",
+          "wrongExplanations": [
+            "La tabla expresa una decisión de salida y puede conservar entradas que no produzcan comunicación completa por múltiples condiciones pendientes.",
+            "La marca del equipo no sustituye pruebas de conectividad, estado de interfaz, políticas de paso o disponibilidad del retorno del flujo.",
+            null
+          ],
+          "aoi": {
+            "question": "La salida está dibujada; ahora comprobemos si el viaje y la vuelta existen.",
+            "hint": "Recuerda las condiciones que una consulta numérica de prefijos no puede verificar.",
+            "correct": "Dejaste claro qué encontró la tabla y qué sigue pendiente de prueba.",
+            "soft": "Amplía la revisión al trayecto sin atribuirle éxito a una sola entrada.",
+            "sharp": "La ruta de ida no trae el retorno de la mano, joder; busca esa evidencia."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Una excepción solo para un equipo",
+          "scenario": "La tabla contiene 10.20.30.0/24 por un vecino y 10.20.30.7/32 por otro. Se comparan los destinos 10.20.30.7 y 10.20.30.8 en esa misma tabla instalada.",
+          "explanation": "El destino terminado en siete utiliza la coincidencia /32, mientras el terminado en ocho no coincide con ella y selecciona /24. La excepción de host puede explicar caminos distintos sin afirmar que el router ignore sus prefijos."
+        },
+        {
+          "title": "La métrica que no amplía un prefijo",
+          "scenario": "Una entrada instalada 10.20.0.0/16 muestra métrica uno y 10.20.30.0/24 muestra métrica cien. El destino que se analiza es 10.20.30.8 y ambas entradas están disponibles.",
+          "explanation": "Para la búsqueda descrita, el /24 es una coincidencia más específica aunque su métrica sea mayor. La comparación de métricas no sustituye esa regla entre prefijos diferentes; hay que separar selección de candidatos y consulta de la tabla instalada."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una tabla ficticia contiene rutas /16, /24 y /32 para una red interna y una ruta por defecto. Debes explicar qué entrada selecciona cada destino antes de investigar el siguiente salto.",
+      "scenario": "Una tabla ficticia contiene rutas /16, /24 y /32 para una red interna y una ruta por defecto. Debes explicar qué entrada selecciona cada destino antes de investigar el siguiente salto.",
+      "steps": [
+        "Compara el destino con cada prefijo de la tabla instalada.",
+        "Descarta las entradas que no contienen ese destino.",
+        "Escoge la coincidencia con mayor longitud de prefijo.",
+        "Comprueba la salida y el siguiente salto de esa entrada.",
+        "Analiza por separado el camino de retorno."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-switching"
+      ],
+      "aoi": {
+        "intro": "El destino elige una coincidencia; el nombre del router no participa en el concurso.",
+        "theory0": "Siguiente salto y destino final no son la misma dirección, cariño.",
+        "theory1": "Primero comprueba que coincida; después presume de la barra más larga.",
+        "theory2": "La ruta por defecto recoge lo restante, pero no promete Internet.",
+        "theory3": "Encontrar salida no obliga al camino de vuelta a aparecer por educación.",
+        "case0": "Ese /32 cuida un solo equipo; su vecino necesita otra coincidencia.",
+        "case1": "Una métrica pequeña no le roba la especificidad al /24.",
+        "pass": "Ya explicas la selección completa. Así mi ceja puede tomarse un descanso.",
+        "review": "Repasemos coincidencia y alcance; estás eligiendo barras sin mirar el destino."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-traduccion",
+      "title": "NAT, puertos y límites de la traducción",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Seguir una traducción sin perder el flujo original",
+          "body": "NAT transforma información de direcciones cuando el tráfico atraviesa un componente que realiza esa función. Una variante habitual también traduce puertos y permite que varios equipos compartan una dirección de salida. En el ejemplo, 192.168.80.10 utiliza el puerto de origen 51000 para conectarse a 203.0.113.9:443. La oficina representa su salida como 198.51.100.9:62000, conservando una asociación que permite relacionar el retorno con el flujo interior. Todas las direcciones públicas dibujadas pertenecen a espacios documentales; no identifican servidores que la actividad deba contactar. El puerto de destino 443 sigue describiendo el servicio al que se dirige la conexión del ejemplo; el puerto traducido de origen no se convierte por eso en el puerto de escucha del servidor. Anota qué extremo y qué campo se transforma antes de interpretar la tabla. Una lista que solo muestre dos direcciones, sin protocolo, puertos ni momento de observación, puede resultar insuficiente para distinguir conexiones simultáneas o reutilizaciones posteriores de una misma asociación."
+        },
+        {
+          "title": "Entender por qué importan protocolo, estado y duración",
+          "body": "TCP y UDP representan protocolos diferentes, incluso cuando sus números de puerto coinciden. Una entrada de traducción necesita interpretarse según el esquema que utiliza la implementación para distinguir flujos y mantener asociaciones. No asumas que observar el número 62000 en dos filas implica automáticamente un conflicto: revisa el protocolo y los demás campos. Tampoco supongas que una asociación permanece para siempre. Las entradas dinámicas se crean, actualizan y eliminan conforme al tráfico y a las políticas de estado y temporización del equipo. Una conexión inactiva durante suficiente tiempo puede necesitar restablecer su estado antes de volver a funcionar. Para investigar un problema, relaciona capturas o registros con su hora y con ambos lados de la traducción cuando esa información esté disponible. Si reutilizas una tabla antigua para explicar un flujo nuevo, puedes atribuirlo al equipo equivocado. La dirección pública compartida no identifica de forma exclusiva a un portátil. Una atribución útil requiere evidencias conservadas con precisión y un alcance que reconozca lo que esos registros permiten y lo que no."
+        },
+        {
+          "title": "Distinguir salida iniciada y publicación de un servicio",
+          "body": "Que un portátil pueda iniciar una conexión hacia fuera no significa que otro equipo pueda abrir desde fuera cualquier servicio hacia ese portátil. La traducción de salida y la publicación deliberada de un destino interior responden a configuraciones distintas. Una redirección de puertos puede asociar una dirección y puerto visibles desde un lado con un servicio del otro, pero su efecto depende también de rutas, reglas y estado del servicio. No debe describirse como una autorización genérica para toda la LAN. Si la oficina necesita publicar una aplicación, registra quién accede, desde dónde, a qué protocolo y puerto, durante cuánto tiempo y qué identidad validará el servicio. Comprueba el mantenimiento del equipo publicado y la forma de retirar la exposición cuando termine la necesidad. Evita asumir que un cambio en la traducción prepara automáticamente HTTPS o una autenticación adecuada. Publicación, filtrado y protección de la aplicación son decisiones relacionadas, pero cada una necesita evidencia propia y una revisión acorde con el recurso que se pone a disposición."
+        },
+        {
+          "title": "Separar traducción, política y privacidad",
+          "body": "Una tabla NAT no equivale a un firewall completo ni a un túnel cifrado. Puede coexistir con filtrado con estado en un mismo dispositivo, pero esa integración comercial no vuelve idénticas sus funciones. El control de tráfico decide qué comunicaciones se permiten; la traducción relaciona representaciones de direcciones y, cuando corresponde, puertos. El cifrado protege contenido entre extremos definidos por otro mecanismo. Incluso con una dirección de salida compartida, un servicio remoto puede distinguir sesiones mediante cuentas, cookies y otros datos de aplicación. Por tanto, compartir IP no garantiza anonimato. Si también existe traducción en el operador, habrá más de un nivel que considerar para ciertas comprobaciones de alcance o publicación. Identifica qué administra realmente la oficina y qué depende del proveedor. En redes IPv6, disponer de direcciones de alcance global tampoco elimina la necesidad de políticas de acceso, aunque no se utilice la misma traducción de IPv4. La defensa debe derivarse de requisitos y controles concretos; no de la presencia o ausencia de una caja etiquetada NAT en el dibujo de la red."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué representa 62000 en la asociación de salida del ejemplo?",
+          "scenario": "El portátil origina 192.168.80.10:51000 y la salida de la oficina lo representa como 198.51.100.9:62000 hacia un destino HTTPS.",
+          "options": [
+            "El puerto de origen traducido",
+            "El puerto que obligatoriamente escucha el servidor",
+            "La longitud del prefijo de la LAN"
+          ],
+          "answer": 0,
+          "explanation": "La asociación muestra un puerto de origen de la representación exterior; el destino del servicio continúa indicado por su propio puerto de la conexión.",
+          "wrongExplanations": [
+            null,
+            "El puerto de escucha del servidor corresponde al extremo de destino del flujo; no se deduce del valor asignado al origen traducido.",
+            "Un número de puerto no describe una máscara o longitud de prefijo; pertenece a la identificación de la comunicación de transporte."
+          ],
+          "aoi": {
+            "question": "Identifica de qué lado del flujo salió ese número antes de ponerle cargo.",
+            "hint": "Compara el origen interior con su representación exterior en la asociación.",
+            "correct": "Ubicaste el campo traducido sin cambiarle el puerto al servicio remoto.",
+            "soft": "Distingue origen y destino en la tabla antes de interpretar su función.",
+            "sharp": "El 62000 no tomó posesión del servidor, cariño; sigue siendo el origen traducido."
+          }
+        },
+        {
+          "prompt": "¿Qué debe revisarse si dos filas muestran el mismo número de puerto?",
+          "scenario": "Una tabla incluye tráfico TCP y UDP, y todavía no se han comparado protocolos ni extremos de las asociaciones.",
+          "options": [
+            "Solo cuál fila tiene letra más grande",
+            "Protocolo, extremos y esquema de identificación de la implementación",
+            "Únicamente el nombre comercial del router"
+          ],
+          "answer": 1,
+          "explanation": "Un puerto aislado no identifica universalmente una asociación; protocolo y otros campos permiten distinguir flujos y deben interpretarse según la implementación observada.",
+          "wrongExplanations": [
+            "La presentación tipográfica no forma parte de la identificación de flujos ni permite decidir si las asociaciones representan la misma comunicación.",
+            null,
+            "La marca no reemplaza los campos de la tabla; es necesario comparar datos concretos del protocolo, los extremos y el esquema utilizado."
+          ],
+          "aoi": {
+            "question": "Dos cifras iguales no son todavía dos conversaciones iguales, tesoro.",
+            "hint": "Busca qué otros campos distingue la tabla además del puerto mostrado.",
+            "correct": "Comparaste las piezas necesarias antes de declarar un conflicto por parecido.",
+            "soft": "Falta contexto del flujo, no una preferencia estética entre las filas.",
+            "sharp": "Ese número no puede contarte todo solo porque lo repitas más alto, demonios."
+          }
+        },
+        {
+          "prompt": "¿Qué ocurre con las asociaciones NAT dinámicas a lo largo del tiempo?",
+          "scenario": "La oficina revisa una tabla de una sesión antigua y quiere usarla para atribuir tráfico observado mucho después.",
+          "options": [
+            "Se conservan indefinidamente sin cambios",
+            "Identifican para siempre al mismo usuario humano",
+            "Pueden caducar o reutilizarse y requieren contexto temporal"
+          ],
+          "answer": 2,
+          "explanation": "Las asociaciones dependen del tráfico y de temporizaciones de la implementación; una tabla antigua no permite atribuir automáticamente un flujo nuevo al mismo equipo.",
+          "wrongExplanations": [
+            "Una entrada dinámica no es una reserva eterna; puede eliminarse tras inactividad o por otras condiciones del estado de la comunicación.",
+            "Una asociación relaciona datos de red en un contexto, no demuestra una identidad humana permanente ni sustituye evidencias de aplicación o autenticación.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestra tabla tiene fecha; no la conviertas en una biografía eterna.",
+            "hint": "Relaciona el registro con el momento exacto de la comunicación observada.",
+            "correct": "Respetaste la duración de la evidencia y evitaste una atribución automática.",
+            "soft": "Comprueba si la asociación seguía vigente cuando ocurrió el flujo que investigas.",
+            "sharp": "Una fila vieja no conserva al usuario dentro para siempre, cielo; mira el reloj."
+          }
+        },
+        {
+          "prompt": "¿Garantiza una conexión saliente que cualquier servicio interior sea accesible desde fuera?",
+          "scenario": "Un portátil inicia HTTPS, pero el escenario no presenta una publicación de servicios ni reglas que permitan nuevas conexiones entrantes hacia él.",
+          "options": [
+            "No; salida y publicación son condiciones distintas",
+            "Sí; todo origen NAT publica sus servicios",
+            "Sí; compartir IP obliga a abrir todos los puertos"
+          ],
+          "answer": 0,
+          "explanation": "La asociación de una conexión iniciada no demuestra una publicación genérica; el acceso entrante depende de configuraciones, políticas, rutas y servicios específicos.",
+          "wrongExplanations": [
+            null,
+            "Iniciar un flujo no configura automáticamente redirecciones hacia todos los servicios interiores ni confirma que las reglas permitan nuevas sesiones entrantes.",
+            "Compartir una dirección no obliga a permitir todos los puertos; la política y las asociaciones relevantes deben revisarse según el diseño del entorno."
+          ],
+          "aoi": {
+            "question": "Salir a conversar no equivale a dejar tu puerta abierta a cualquiera.",
+            "hint": "Busca evidencia de publicación y política entrante, no solo de una conexión iniciada.",
+            "correct": "Separaste dos condiciones que suelen mezclarse en los dibujos apresurados.",
+            "soft": "La salida observada no muestra todavía una regla para nuevas conexiones entrantes.",
+            "sharp": "Una visita de salida no te convierte en servidor público, cariño; revisa la publicación."
+          }
+        },
+        {
+          "prompt": "¿Qué control debe evaluarse aparte de una redirección de puertos?",
+          "scenario": "La oficina publica una aplicación mediante traducción, pero todavía no ha verificado usuarios, cifrado ni mantenimiento del servicio.",
+          "options": [
+            "El tamaño del icono del router",
+            "La autenticación y protección del servicio publicado",
+            "Solo el color del cable exterior"
+          ],
+          "answer": 1,
+          "explanation": "La traducción no prepara por sí misma identidades, cifrado ni mantenimiento; la aplicación publicada necesita controles de acceso y protección apropiados para su función.",
+          "wrongExplanations": [
+            "El tamaño del icono puede facilitar un dibujo, pero no limita usuarios ni establece protección del contenido que intercambia el servicio.",
+            null,
+            "El color del cable no define quién puede iniciar sesión ni demuestra que la aplicación haya configurado adecuadamente sus controles de seguridad."
+          ],
+          "aoi": {
+            "question": "La dirección ya apunta; ahora toca decidir quién puede entrar y cómo.",
+            "hint": "Distingue conectar con una aplicación de autenticar y proteger su uso.",
+            "correct": "Esa revisión añade los controles que una traducción no estaba implementando.",
+            "soft": "Piensa qué funciones siguen pendientes dentro del propio servicio que se publica.",
+            "sharp": "La redirección no instala un portero por cortesía, joder; revisa la identidad."
+          }
+        },
+        {
+          "prompt": "¿Qué puede afirmarse sobre privacidad al compartir una IP de salida?",
+          "scenario": "Varios portátiles salen con la misma dirección, pero el servicio remoto mantiene cuentas y cookies para sus sesiones.",
+          "options": [
+            "Que ya existe anonimato completo",
+            "Que todas las cuentas se fusionan automáticamente",
+            "Que compartir IP no impide distinguir sesiones por otros datos"
+          ],
+          "answer": 2,
+          "explanation": "Un servicio puede relacionar actividad con cuentas, cookies y otros datos de aplicación; la dirección compartida no garantiza anonimato ni elimina esos identificadores.",
+          "wrongExplanations": [
+            "La IP de salida es solo una parte del contexto; otros identificadores pueden distinguir sesiones o personas según cómo se utilice la aplicación.",
+            "Compartir una dirección no fusiona cuentas del servicio; las identidades y sesiones se gestionan mediante mecanismos de la aplicación, no por esa coincidencia aislada.",
+            null
+          ],
+          "aoi": {
+            "question": "La IP compartida no borra las etiquetas que llevas dentro de la aplicación.",
+            "hint": "Recuerda qué información conservan las cuentas y las sesiones del servicio.",
+            "correct": "Interpretaste el alcance de la traducción sin vender una capa de invisibilidad.",
+            "soft": "Mira qué otros identificadores siguen presentes aunque coincida la dirección exterior.",
+            "sharp": "NAT no se comió tus cookies por compasión, tesoro; siguen aportando contexto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos protocolos con el mismo número",
+          "scenario": "Una transcripción muestra asociaciones que utilizan 62000 para tráfico TCP y UDP. Un alumno afirma que el número repetido demuestra que ambas conexiones son la misma.",
+          "explanation": "El número aislado no basta para identificar el flujo. Deben compararse protocolo, extremos y campos de la asociación según la implementación. TCP y UDP conservan espacios de interpretación distintos aunque sus puertos aparezcan con el mismo valor decimal."
+        },
+        {
+          "title": "Publicar no instala autenticación",
+          "scenario": "La oficina propone una redirección hacia una aplicación interna y cree que la traducción configurará automáticamente los usuarios autorizados y el certificado del servicio.",
+          "explanation": "La redirección relaciona direcciones y puertos; no crea por sí misma autenticación ni protección de transporte. La publicación necesita revisar además identidad, filtrado, mantenimiento, configuración del servicio y un procedimiento claro para retirar la exposición."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una oficina ficticia comparte una salida IPv4. Dos portátiles abren conexiones HTTPS y la tabla de traducción registra direcciones, puertos y protocolos para distinguir los flujos.",
+      "scenario": "Una oficina ficticia comparte una salida IPv4. Dos portátiles abren conexiones HTTPS y la tabla de traducción registra direcciones, puertos y protocolos para distinguir los flujos.",
+      "steps": [
+        "Describe la conexión antes y después de la traducción.",
+        "Relaciona cada entrada con protocolo, puertos y tiempo.",
+        "Distingue el mapeo de salida de una publicación deliberada de servicio.",
+        "Evalúa firewall, autenticación y cifrado como controles separados."
+      ],
+      "sourceIds": [
+        "net-private",
+        "net-firewall"
+      ],
+      "aoi": {
+        "intro": "Sigamos el flujo completo; una IP compartida cuenta solo parte de la historia.",
+        "theory0": "Ese 62000 es un origen traducido, no una coronación del servidor.",
+        "theory1": "Protocolo y tiempo también importan; los números solos son bastante presumidos.",
+        "theory2": "Publicar un puerto es una decisión, no un efecto mágico de salir a Internet.",
+        "theory3": "NAT no se convierte en cifrado por vivir dentro de un aparato caro.",
+        "case0": "TCP y UDP pueden repetir cifra sin compartir la misma conversación.",
+        "case1": "La redirección no sabe quién merece entrar; la aplicación debe comprobarlo.",
+        "pass": "Ya diferencias asociación y permiso. Me estás ahorrando una cantidad deliciosa de suspiros.",
+        "review": "Revisemos cada función por separado; tu caja NAT está prometiendo demasiado."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-desajustes",
+      "title": "Diagnosticar máscaras y gateways con evidencia",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Leer cada interfaz como una observación completa",
+          "body": "Una incidencia de direccionamiento necesita identificar desde qué equipo e interfaz se obtuvo cada dato. Un portátil puede tener Ethernet, Wi-Fi y una interfaz de VPN con configuraciones simultáneas. Mezclar la dirección de una con el gateway de otra produce una ficha que no representa ningún camino real. Registra también si la configuración procede de DHCP o de una asignación manual y cuándo se recogió. En una transcripción de Windows podrías encontrar esos campos en la información de configuración de red; en Linux aparecen mediante sus herramientas de direcciones y rutas. La sintaxis y el formato dependen del entorno, por lo que el ejercicio aporta los valores relevantes sin ejecutar órdenes en tu teléfono. No interpretes el estado de una interfaz desconectada como si fuera la salida activa. La tabla de rutas puede revelar otra preferencia. Primero construye una observación coherente y después formula una hipótesis. Comparar esa ficha con el plan del segmento ayuda a distinguir un valor inesperado de una diferencia que el diseño sí permite."
+        },
+        {
+          "title": "Comparar cómo decide cada extremo",
+          "body": "Supón que A tiene 192.168.90.10/24 y B tiene 192.168.90.130/25. Para A, el bloque local abarca los doscientos cincuenta y seis valores del último octeto. Por ello considera local la dirección de B. Para B, la red /25 empieza en ciento veintiocho, así que A queda fuera de su bloque local. Ambos podrían tomar decisiones de salida diferentes aunque sus cables pertenezcan al mismo entorno físico. Esa diferencia no autoriza a afirmar que toda comunicación fallará siempre: un router, ciertas rutas o controles adicionales pueden cambiar el resultado. Sí permite señalar una asimetría que merece revisarse. Calcula ambos sentidos y escribe cuál intentaría una entrega directa y cuál consultaría una salida para un destino remoto según la tabla del ejemplo. No cambies ambas máscaras para hacerlas coincidir sin conocer el plan correcto. Podrías estar mezclando dos segmentos que se pretendía mantener separados. La hipótesis debe relacionar los valores observados con la topología y con la intención documentada del diseño."
+        },
+        {
+          "title": "Interpretar las pruebas según lo que realmente observan",
+          "body": "Una prueba dirigida a una dirección literal puede ayudar a separar la selección de destino del proceso de resolución de nombres. Eso no significa que abrir una aplicación por IP reproduzca siempre su comportamiento por nombre: HTTPS y otros servicios pueden depender de ese nombre para validar identidad o seleccionar una configuración. Define la prueba antes de usarla como evidencia. Una respuesta ICMP muestra que ese intercambio obtuvo respuesta en sus condiciones; no acredita que todos los puertos o aplicaciones funcionen. La ausencia de respuesta tampoco demuestra por sí sola que el equipo esté apagado, porque pueden intervenir filtrado, pérdida o falta de retorno. Del mismo modo, una asociación de vecino informa sobre la entrega de enlace y su estado, no sobre autorización de usuario. En el taller compara observaciones complementarias: configuración, entrada de ruta y resultado de una prueba concreta. Mantén dirección de origen, destino y momento para no atribuir al problema un éxito obtenido desde otra interfaz o desde un equipo con permisos distintos."
+        },
+        {
+          "title": "Cambiar un dato con una referencia y una forma de comprobarlo",
+          "body": "Una corrección debe derivarse de un valor esperado, no de la necesidad de obtener cualquier respuesta. Si el plan confirma que el puesto debía utilizar /25 y conserva /24 por una configuración manual antigua, identifica ese origen antes de modificarlo. Si debía obtener parámetros del servidor, revisa el ámbito y las opciones que realmente está entregando. Preparar el estado inicial y el resultado esperado permite evaluar si el cambio resuelve el desajuste sin abrir acceso innecesario. Haz una variación delimitada y repite la misma prueba, conservando los resultados anteriores. Cambiar dirección, DNS, máscara y firewall a la vez impide atribuir una mejora a una causa concreta. También puede introducir problemas que queden ocultos por una prueba superficial. Al cerrar la revisión, documenta el parámetro corregido, la referencia usada y qué comprobaciones se realizaron después. Si el síntoma continúa, conserva la nueva evidencia y revisa el siguiente componente justificado. El procedimiento sirve para reducir incertidumbre progresivamente, sin convertir la primera hipótesis plausible en una certeza que nadie ha comprobado."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué dato evita mezclar una IPv4 de Wi-Fi con el gateway de una VPN?",
+          "scenario": "El portátil muestra varias interfaces activas y el grupo prepara una ficha para explicar una prueba concreta.",
+          "options": [
+            "La interfaz y el origen de cada observación",
+            "El nombre del fondo de pantalla",
+            "La posición de la ventana de terminal"
+          ],
+          "answer": 0,
+          "explanation": "Identificar interfaz y procedencia permite relacionar parámetros que pertenecen al mismo contexto; combinar datos de salidas distintas puede crear un diagnóstico ficticio.",
+          "wrongExplanations": [
+            null,
+            "El fondo no establece qué interfaz recibió cada parámetro ni muestra la ruta que corresponde al flujo analizado en la prueba.",
+            "La posición de la ventana no identifica la interfaz de origen ni garantiza que dirección, prefijo y gateway pertenezcan al mismo camino."
+          ],
+          "aoi": {
+            "question": "Nuestra ficha necesita una interfaz, no un collage de números convenientes.",
+            "hint": "Asocia cada valor con el adaptador y la observación que lo proporcionó.",
+            "correct": "Conservaste un contexto coherente antes de empezar a comparar las configuraciones.",
+            "soft": "Revisa de qué interfaz salió cada campo que estás intentando relacionar.",
+            "sharp": "La VPN no presta su gateway al Wi-Fi por estética, cariño; identifica el origen."
+          }
+        },
+        {
+          "prompt": "¿Cómo interpreta A con 192.168.90.10/24 el destino 192.168.90.130?",
+          "scenario": "La pregunta analiza solo la pertenencia numérica al bloque local declarado por A, sin rutas adicionales en esta comparación.",
+          "options": [
+            "Como un destino fuera de 192.168.90.0/24",
+            "Como un destino de su bloque local",
+            "Como su propia dirección de loopback"
+          ],
+          "answer": 1,
+          "explanation": "El /24 de A contiene todos los valores del último octeto de 192.168.90, incluido ciento treinta; eso describe su interpretación local del destino.",
+          "wrongExplanations": [
+            "El destino comparte los veinticuatro bits del prefijo declarado por A, por lo que no queda fuera de ese bloque numérico.",
+            null,
+            "La pertenencia al bloque de una interfaz no convierte al otro equipo en loopback; son funciones diferentes del direccionamiento y del sistema."
+          ],
+          "aoi": {
+            "question": "Calcula la red desde A; todavía no copies la opinión de B.",
+            "hint": "El /24 fija los tres primeros octetos de esta dirección.",
+            "correct": "Leíste la decisión numérica de A desde la configuración que realmente declara.",
+            "soft": "Usa el prefijo de A para esta comparación, no el del otro extremo.",
+            "sharp": "El /25 de B no reescribe la ficha de A, tesoro; calcula cada lado."
+          }
+        },
+        {
+          "prompt": "¿Cómo interpreta B con 192.168.90.130/25 el destino 192.168.90.10?",
+          "scenario": "El análisis utiliza la red local /25 de B, cuyo último octeto de inicio es ciento veintiocho.",
+          "options": [
+            "Como otro host dentro de su /25",
+            "Como su broadcast de destino",
+            "Como un destino fuera de su bloque local"
+          ],
+          "answer": 2,
+          "explanation": "El /25 de B abarca los valores ciento veintiocho a doscientos cincuenta y cinco; diez queda fuera y necesita otra decisión de salida aplicable.",
+          "wrongExplanations": [
+            "El valor diez está por debajo del comienzo de ese /25, aunque comparta los tres primeros octetos con la dirección de B.",
+            "El extremo de broadcast de ese bloque termina en doscientos cincuenta y cinco, no en diez; no debe confundirse ausencia de pertenencia con difusión.",
+            null
+          ],
+          "aoi": {
+            "question": "Ahora mira con los ojos de B: su bloque empieza bastante después.",
+            "hint": "Compara el valor diez con el intervalo que comienza en ciento veintiocho.",
+            "correct": "Reconociste la diferencia entre ambos extremos sin inventar otra máscara para B.",
+            "soft": "Separa el bloque /25 de la coincidencia visual de los primeros octetos.",
+            "sharp": "Esos tres octetos vuelven a distraerte, cielo; la frontera sigue dentro del cuarto."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una respuesta ICMP en la prueba delimitada?",
+          "scenario": "El ejercicio registra una respuesta a esa solicitud, pero no presenta pruebas de inicio de sesión ni conexiones a otros servicios.",
+          "options": [
+            "Que ese intercambio obtuvo respuesta bajo sus condiciones",
+            "Que todos los puertos están abiertos",
+            "Que el usuario está autorizado en cualquier aplicación"
+          ],
+          "answer": 0,
+          "explanation": "La respuesta acredita el intercambio observado en ese contexto; no prueba el funcionamiento o la autorización de servicios y aplicaciones que no se evaluaron.",
+          "wrongExplanations": [
+            null,
+            "Una respuesta a un tipo de intercambio no demuestra que otros puertos o protocolos tengan las mismas reglas, rutas y disponibilidad.",
+            "La autorización de aplicaciones depende de identidades y permisos específicos, que la prueba ICMP no está evaluando en el escenario mostrado."
+          ],
+          "aoi": {
+            "question": "Celebremos lo que respondió sin otorgarle diplomas para lo que no probamos.",
+            "hint": "Ajusta la conclusión al protocolo y al contexto de esa observación.",
+            "correct": "La conclusión quedó del tamaño de la evidencia, justo como la quería.",
+            "soft": "No amplíes el resultado a servicios que todavía no participan en la prueba.",
+            "sharp": "Ese ping no aprobó todos los puertos, demonios; limita la conclusión."
+          }
+        },
+        {
+          "prompt": "¿Qué problema tiene cambiar cuatro parámetros antes de repetir una prueba?",
+          "scenario": "La alumna modifica dirección, máscara, DNS y firewall y luego obtiene un resultado distinto al inicial.",
+          "options": [
+            "Que toda mejora es imposible por definición",
+            "Que no permite atribuir el resultado a un cambio concreto",
+            "Que transforma automáticamente IPv4 en IPv6"
+          ],
+          "answer": 1,
+          "explanation": "Los cambios simultáneos dificultan identificar la causa del resultado y pueden añadir efectos no observados; conviene preparar una variación delimitada con una referencia conocida.",
+          "wrongExplanations": [
+            "Puede existir una mejora, pero no se sabe qué modificación la produjo ni qué efectos adicionales introdujo el conjunto de cambios.",
+            null,
+            "Modificar esos parámetros no convierte el protocolo de red; el problema descrito es la pérdida de atribución y control sobre la prueba comparada."
+          ],
+          "aoi": {
+            "question": "Cuatro cambios juntos nos dejaron una respuesta y demasiadas sospechas.",
+            "hint": "Busca qué dato necesitarías para relacionar causa y resultado con claridad.",
+            "correct": "Elegiste un problema de método en lugar de inventar una transformación del protocolo.",
+            "soft": "La respuesta nueva puede ser real; lo que falta es explicar por qué cambió.",
+            "sharp": "Arreglar a martillazos no conserva la causa, cariño; vuelve a un cambio verificable."
+          }
+        },
+        {
+          "prompt": "¿Basta una diferencia de máscaras para afirmar que toda comunicación fallará?",
+          "scenario": "La ficha muestra decisiones locales diferentes, pero no describe las rutas, los routers ni los filtros que pueden intervenir en el trayecto.",
+          "options": [
+            "Sí, sin excepción en cualquier topología",
+            "Sí, porque las direcciones dejan de existir",
+            "No; es una hipótesis que debe contrastarse con el camino efectivo"
+          ],
+          "answer": 2,
+          "explanation": "La diferencia puede generar decisiones asimétricas, pero el resultado depende también de rutas, entrega, retorno y controles; hace falta completar la evidencia del trayecto.",
+          "wrongExplanations": [
+            "La ficha no describe todas las condiciones de la topología; una afirmación universal ignoraría caminos o configuraciones adicionales que todavía no se han revisado.",
+            "Los valores siguen siendo direcciones; el desajuste afecta su interpretación y decisiones de envío, no provoca que desaparezcan del espacio IPv4.",
+            null
+          ],
+          "aoi": {
+            "question": "La diferencia importa; su efecto concreto todavía necesita pruebas del camino.",
+            "hint": "Distingue una causa plausible de un resultado universal que no observaste.",
+            "correct": "Conservaste la hipótesis útil sin convertirla en una profecía sobre cualquier red.",
+            "soft": "Revisa qué componentes del trayecto siguen fuera de la transcripción disponible.",
+            "sharp": "Las máscaras distintas no firman sentencias universales, joder; comprueba la topología."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Cada extremo dibuja otra red",
+          "scenario": "A declara 192.168.90.10/24 y B declara 192.168.90.130/25. La ficha no muestra las rutas adicionales ni cómo se comporta el router del taller.",
+          "explanation": "A considera a B dentro de su bloque local y B considera a A fuera del suyo. La diferencia justifica investigar el direccionamiento y la topología; no basta para garantizar un fallo universal sin conocer los caminos que realmente existen."
+        },
+        {
+          "title": "Cuatro cambios y una respuesta nueva",
+          "scenario": "Una alumna cambia máscara, DNS, dirección y reglas del equipo antes de repetir la prueba; ahora obtiene respuesta, pero no conserva los valores ni los resultados anteriores.",
+          "explanation": "El resultado nuevo no permite atribuir la mejora a un parámetro concreto y puede ocultar efectos adicionales. Debe reconstruirse el estado conocido y preparar cambios delimitados, asociados a una referencia y una prueba que pueda compararse con la observación inicial."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Dos puestos ficticios comparten un entorno de taller, pero sus fichas muestran prefijos distintos. El grupo debe describir la decisión local de cada equipo antes de cambiar ninguna configuración.",
+      "scenario": "Dos puestos ficticios comparten un entorno de taller, pero sus fichas muestran prefijos distintos. El grupo debe describir la decisión local de cada equipo antes de cambiar ninguna configuración.",
+      "steps": [
+        "Registra dirección, prefijo, gateway e interfaz de cada puesto.",
+        "Calcula por separado qué destinos considera locales cada uno.",
+        "Relaciona esa decisión con la entrega directa o la salida por router.",
+        "Usa una prueba delimitada y conserva sus límites.",
+        "Corrige solo con una configuración de referencia comprobada."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-dhcp"
+      ],
+      "aoi": {
+        "intro": "Diagnostiquemos a cada interfaz por su ficha; mezclar datos también produce fantasmas.",
+        "theory0": "Una VPN y el Wi-Fi pueden tener ideas distintas sobre la salida.",
+        "theory1": "A y B no dibujan la misma frontera aunque compartan tres octetos.",
+        "theory2": "Una respuesta ICMP tiene mérito, pero no representa todas las aplicaciones.",
+        "theory3": "Un cambio comprobable seduce más que cuatro botones pulsados a la vez.",
+        "case0": "Ese /25 ve remoto a A; ahora necesitamos explicar el camino efectivo.",
+        "case1": "El arreglo fue una tormenta de cambios y nadie sabe cuál hizo qué.",
+        "pass": "Ya conviertes síntomas en hipótesis comprobables. Esa calma te queda peligrosamente bien.",
+        "review": "Volvamos al origen de cada dato antes de recetar otra configuración."
+      }
+    },
+    {
+      "id": "ipv4-subnetting-resumen",
+      "title": "Resumir rutas sin ampliar promesas",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Encontrar un prefijo común que cubra exactamente los bloques",
+          "body": "La agregación permite representar varios conjuntos de destinos mediante un prefijo común. Para resumir exactamente 10.40.8.0/24 y 10.40.9.0/24, compara el tercer octeto en binario: ocho se escribe 00001000 y nueve se escribe 00001001. Comparten los siete primeros bits de ese octeto, además de los dieciséis de los dos anteriores. Por eso el prefijo común tiene veintitrés bits y se escribe 10.40.8.0/23. Su rango comprende desde 10.40.8.0 hasta 10.40.9.255, exactamente las dos redes /24 del ejemplo. La máscara equivalente es 255.255.254.0. Verifica el comienzo y el final para comprobar que no añadiste otro tercer octeto. La existencia de un prefijo común no prueba por sí misma que deba anunciarse. Primero explica la equivalencia del conjunto y después revisa si ambas redes deben dirigirse por la misma salida bajo las condiciones del diseño. Un cálculo correcto puede describir una propuesta que todavía necesita comprobaciones operativas antes de aplicarse a una tabla real."
+        },
+        {
+          "title": "Respetar continuidad y alineación",
+          "body": "Dos redes contiguas no siempre forman juntas un único prefijo del tamaño esperado. Por ejemplo, 10.40.9.0/24 y 10.40.10.0/24 son consecutivas, pero no constituyen un /23 alineado que abarque solo esas dos. Los bloques /23 correspondientes empiezan en terceros octetos pares: ocho, diez y así sucesivamente. Un resumen /22 situado en 10.40.8.0 incluiría los terceros octetos ocho, nueve, diez y once, y añadiría destinos ajenos al par solicitado. Puede existir una razón de diseño para un resumen más amplio, pero debe declararse y gestionar esos destinos adicionales; no puede presentarse como equivalencia exacta. Tampoco conviene buscar un rótulo único a cualquier precio. Mantener dos rutas específicas puede ser más claro y correcto que anunciar espacio no previsto. El procedimiento consiste en comparar los bits comunes y traducir ese prefijo a un intervalo verificable. La cercanía decimal o la similitud de los nombres de sede no sustituyen la frontera binaria que define el bloque."
+        },
+        {
+          "title": "Diferenciar el anuncio agregado de la configuración de las LAN",
+          "body": "Un resumen de rutas no une automáticamente segmentos de enlace, no cambia máscaras de los puestos y no elimina VLAN. Si las dos LAN del ejemplo siguen utilizando /24, cada una conserva sus propios extremos y su capacidad convencional de hosts. No puedes sumar el anuncio y asignar a un equipo una dirección que era broadcast de su /24 como si el resumen hubiera transformado su interfaz en /23. El plano de encaminamiento puede mostrar a otros equipos una representación más general mientras el interior conserva rutas y políticas específicas. Por eso la documentación debe separar prefijos de interfaz, anuncios y decisiones de filtrado. Una política de acceso que trate ambas sedes de forma distinta puede seguir necesitando reglas diferenciadas aunque compartan una ruta resumida. El resumen no concede confianza ni autorización entre ellas. Si el grupo quiere cambiar también la segmentación, esa sería otra modificación y necesitaría su propia justificación y sus pruebas. Agrupar destinos en una tabla no autoriza a modificar silenciosamente el diseño de acceso que dependía de mantenerlos separados."
+        },
+        {
+          "title": "Evaluar fallos parciales y rutas más específicas",
+          "body": "La coincidencia de prefijo más largo sigue aplicándose cuando conviven un resumen y entradas más específicas. Una ruta /24 válida puede dirigir su subconjunto por otra salida antes que el /23 que lo contiene. Eso permite expresar excepciones, pero también exige entender qué ocurre cuando esa ruta específica desaparece. El tráfico puede volver a coincidir con el resumen y seguir un camino que no alcanza el destino. Antes de anunciar una agregación, revisa quién administra los bloques, qué caminos existen y cómo se tratarán partes no disponibles. Algunos diseños utilizan rutas de descarte para evitar determinados bucles o anuncios indebidos; no copies esa técnica sin estudiar su propósito y sus efectos en la topología concreta. En nuestra actividad, describe el comportamiento esperado con ambas sedes activas y con una de ellas ausente. Comprueba también el retorno y las políticas relevantes. El cierre del ejercicio debe expresar tanto el ahorro de representación como sus límites: un anuncio compacto resulta útil cuando conserva una interpretación correcta y una respuesta prevista a las excepciones y a los fallos parciales."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué resumen exacto cubre 10.40.8.0/24 y 10.40.9.0/24?",
+          "scenario": "Las dos rutas del ejemplo están alineadas y deben representarse sin añadir terceros octetos distintos de ocho y nueve.",
+          "options": [
+            "10.40.8.0/23",
+            "10.40.8.0/22",
+            "10.40.9.0/23 como red alineada"
+          ],
+          "answer": 0,
+          "explanation": "El /23 iniciado en ocho cubre exactamente ambos /24; sus veintitrés bits comunes describen desde 10.40.8.0 hasta 10.40.9.255.",
+          "wrongExplanations": [
+            null,
+            "El /22 iniciado en ocho también incluye los terceros octetos diez y once, ampliando el alcance más allá de los dos bloques solicitados.",
+            "El comienzo canónico de ese /23 es ocho, no nueve; deben distinguirse una dirección perteneciente al bloque y su frontera de red."
+          ],
+          "aoi": {
+            "question": "Aquí buscamos una pareja exacta, no un resumen con invitados inesperados.",
+            "hint": "Compara los siete primeros bits del tercer octeto ocho y del nueve.",
+            "correct": "Elegiste una agregación alineada que conserva exactamente los destinos pedidos.",
+            "soft": "Comprueba comienzo y final antes de aceptar el prefijo que parece cercano.",
+            "sharp": "El /22 está metiendo otras dos redes en la fiesta, cielo; limita el alcance."
+          }
+        },
+        {
+          "prompt": "¿Por qué los /24 de terceros octetos nueve y diez no forman un /23 exacto?",
+          "scenario": "El grupo quiere cubrir únicamente esas dos redes consecutivas y compara las fronteras de bloques de dos terceros octetos.",
+          "options": [
+            "Porque IPv4 no permite resumir rutas",
+            "Porque el par no coincide con una frontera /23 alineada",
+            "Porque los nombres de sede son diferentes"
+          ],
+          "answer": 1,
+          "explanation": "Los /23 de ese espacio empiezan en terceros octetos pares; nueve y diez cruzan la frontera entre dos pares distintos y no forman uno exacto.",
+          "wrongExplanations": [
+            "La agregación IPv4 sí es posible cuando existe un prefijo adecuado; el problema particular es la alineación del par que se intenta representar.",
+            null,
+            "Los nombres de sede no afectan los bits de sus prefijos; la decisión debe calcularse con los intervalos y sus fronteras binarias."
+          ],
+          "aoi": {
+            "question": "Están uno junto al otro, pero la frontera cae entre parejas diferentes.",
+            "hint": "Dibuja qué redes incluyen los /23 iniciados en ocho y en diez.",
+            "correct": "Detectaste la falta de alineación sin negar la posibilidad general de resumir.",
+            "soft": "La continuidad es necesaria para este caso, pero todavía hay que comprobar la frontera.",
+            "sharp": "Ser vecinos no los vuelve una pareja /23, tesoro; respeta la alineación."
+          }
+        },
+        {
+          "prompt": "¿Qué cambia automáticamente en los puestos al anunciar un resumen /23?",
+          "scenario": "El router resume dos destinos, pero el ejercicio no presenta cambios en interfaces, VLAN ni políticas de acceso de las LAN interiores.",
+          "options": [
+            "Sus máscaras pasan automáticamente a /23",
+            "Las VLAN dejan de existir",
+            "Nada de eso se deduce solo del anuncio"
+          ],
+          "answer": 2,
+          "explanation": "Un anuncio de rutas representa destinos para el encaminamiento; no modifica automáticamente los prefijos de interfaz, las VLAN ni las autorizaciones de los puestos.",
+          "wrongExplanations": [
+            "Las máscaras de los equipos pertenecen a su configuración y no se reescriben por el hecho de que un router anuncie un prefijo agregado.",
+            "Las VLAN son fronteras de enlace definidas en otra parte del diseño; resumir rutas no elimina su configuración ni une automáticamente sus segmentos.",
+            null
+          ],
+          "aoi": {
+            "question": "El sobre compartido no reforma las oficinas que lleva dibujadas dentro.",
+            "hint": "Distingue la representación anunciada de la configuración efectiva de las LAN.",
+            "correct": "Separaste correctamente el anuncio de las interfaces y controles del interior.",
+            "soft": "Revisa qué componente cambió realmente en el escenario antes de extender sus efectos.",
+            "sharp": "Ese anuncio no visitó cada puesto a cambiar máscaras, cariño; conserva las capas."
+          }
+        },
+        {
+          "prompt": "¿Qué entrada selecciona un destino cuando coinciden un /23 y un /24 instalado?",
+          "scenario": "El destino pertenece a ambos prefijos y la tabla contiene las dos entradas válidas sin otras reglas en el escenario simplificado.",
+          "options": [
+            "La entrada /24 más específica",
+            "Siempre la agregación /23",
+            "Ninguna porque está prohibida su coexistencia"
+          ],
+          "answer": 0,
+          "explanation": "La búsqueda conserva la regla de prefijo más largo: el /24 coincidente fija más bits y puede expresar una excepción respecto al resumen /23.",
+          "wrongExplanations": [
+            null,
+            "La presencia de un resumen no anula las coincidencias más específicas; elegir siempre el /23 ignoraría la regla de selección aplicada en esta tabla.",
+            "Un resumen y rutas específicas pueden coexistir en el diseño; esa superposición tiene un significado y no invalida por sí misma la búsqueda."
+          ],
+          "aoi": {
+            "question": "La agregación no abolió nuestra regla favorita de coincidencia, tesoro.",
+            "hint": "Compara cuántos bits fija cada una de las entradas que sí coinciden.",
+            "correct": "Reconociste la excepción más específica sin borrar el resumen de la tabla.",
+            "soft": "Revisa cuál de las coincidencias describe el conjunto más limitado de destinos.",
+            "sharp": "El resumen no tiene prioridad por llevar título elegante, demonios; cuenta sus bits."
+          }
+        },
+        {
+          "prompt": "¿Qué riesgo exige revisar si desaparece una ruta específica y permanece el resumen?",
+          "scenario": "La excepción /24 deja de estar instalada y no se ha probado que la salida del /23 pueda alcanzar los mismos destinos.",
+          "options": [
+            "Que todas las direcciones IPv4 cambian de longitud",
+            "Que el tráfico seleccione un camino general que no alcance esa parte",
+            "Que las cuentas de usuario se fusionen"
+          ],
+          "answer": 1,
+          "explanation": "Sin la coincidencia específica, el destino puede utilizar el resumen; debe comprobarse que ese camino y sus políticas tengan un comportamiento previsto ante la ausencia parcial.",
+          "wrongExplanations": [
+            "La longitud completa de IPv4 continúa siendo treinta y dos bits; retirar una entrada cambia las decisiones disponibles, no el tamaño de sus direcciones.",
+            null,
+            "Las identidades de aplicación no se fusionan por retirar una ruta; el riesgo presentado afecta al encaminamiento y a la disponibilidad de un subconjunto."
+          ],
+          "aoi": {
+            "question": "La excepción se fue; ahora necesitamos saber qué hace la ruta que queda.",
+            "hint": "Simula la búsqueda sin el /24 y comprueba el alcance del camino seleccionado.",
+            "correct": "Evaluaste el fallo parcial que un resumen demasiado optimista podría ocultar.",
+            "soft": "Piensa qué entrada coincide después y qué evidencia tenemos sobre su alcance real.",
+            "sharp": "Conservar el resumen no resucita una sede por orgullo, cariño; prueba el camino restante."
+          }
+        },
+        {
+          "prompt": "¿Qué describe correctamente una revisión final de agregación?",
+          "scenario": "El grupo ya calculó los bits comunes y debe decidir qué más necesita comprobar antes de aplicar el anuncio a su topología.",
+          "options": [
+            "Solo que el rótulo nuevo sea corto",
+            "Solo que ambas oficinas tengan el mismo nombre",
+            "Destinos incluidos, caminos, excepciones, políticas y comportamiento ante fallos"
+          ],
+          "answer": 2,
+          "explanation": "Una agregación útil debe conservar el alcance previsto y un comportamiento comprobable de caminos, controles y excepciones, tanto en funcionamiento normal como ante fallos parciales.",
+          "wrongExplanations": [
+            "Un nombre compacto puede facilitar la lectura, pero no demuestra equivalencia de rangos ni que las salidas y políticas mantengan el comportamiento requerido.",
+            "La coincidencia de nombres no determina límites de prefijo, conectividad, permisos ni qué ocurrirá si desaparece una ruta específica dentro del resumen.",
+            null
+          ],
+          "aoi": {
+            "question": "Un resumen elegante también debe saber comportarse cuando una pieza falta.",
+            "hint": "Combina el cálculo del conjunto con la revisión operativa de la topología.",
+            "correct": "Terminaste con un diseño que explica sus límites, y eso sí merece presumir.",
+            "soft": "La frontera numérica ya está calculada; faltan las condiciones que harán útil el anuncio.",
+            "sharp": "Un rótulo corto no administra los fallos, joder; documenta el comportamiento completo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Una agregación que no une oficinas",
+          "scenario": "Un router del taller anuncia 10.40.8.0/23 hacia otra zona, pero los puestos de ambas sedes conservan prefijos /24 y permanecen en VLAN distintas.",
+          "explanation": "El anuncio resume destinos para el encaminamiento y no modifica las interfaces ni las fronteras de enlace. Las dos LAN conservan sus propios rangos y controles; el grupo no debe cambiar direcciones de host basándose solo en la aparición de ese resumen."
+        },
+        {
+          "title": "Desaparece la excepción más específica",
+          "scenario": "Una ruta /24 dirigía una sede por un camino alternativo y coexistía con un resumen /23. Al retirar esa entrada, el resumen sigue presente, pero no se ha probado si su camino alcanza a la sede.",
+          "explanation": "El destino puede pasar a seleccionar el resumen por falta de una coincidencia más específica. Debe comprobarse el comportamiento del camino y de las políticas ante ese fallo parcial; conservar un anuncio general no demuestra que todos sus destinos sigan disponibles."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Dos sedes ficticias anuncian 10.40.8.0/24 y 10.40.9.0/24 por el mismo camino del laboratorio. Debes evaluar un resumen y explicar qué cambia en el anuncio y qué permanece separado en las LAN.",
+      "scenario": "Dos sedes ficticias anuncian 10.40.8.0/24 y 10.40.9.0/24 por el mismo camino del laboratorio. Debes evaluar un resumen y explicar qué cambia en el anuncio y qué permanece separado en las LAN.",
+      "steps": [
+        "Escribe los rangos de las rutas que quieres resumir.",
+        "Comprueba continuidad, tamaño y frontera binaria común.",
+        "Verifica que el resumen no incluya destinos imprevistos.",
+        "Conserva las excepciones más específicas que requiera el diseño.",
+        "Documenta pruebas, políticas y retorno antes de aplicar cambios."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-switching"
+      ],
+      "aoi": {
+        "intro": "Resumamos rutas, cariño; las promesas no deben crecer más que los prefijos.",
+        "theory0": "Ocho y nueve comparten veintitrés bits: ahí sí tenemos una pareja alineada.",
+        "theory1": "La continuidad decimal no organiza por sí sola las fronteras binarias.",
+        "theory2": "Un anuncio /23 no cambia de oficio a las máscaras /24 de los puestos.",
+        "theory3": "La excepción más específica también necesita un plan para cuando desaparezca.",
+        "case0": "Las oficinas siguen separadas aunque su anuncio viaje dentro del mismo sobre.",
+        "case1": "Quitaste una excepción; ahora toca comprobar adónde nos manda el resumen.",
+        "pass": "Cerraste IPv4 con cuentas y límites claros. Mi orgullo ya está usando todo el bloque.",
+        "review": "Repasa qué agrupa el anuncio y qué todavía depende de las redes interiores."
+      }
+    }
+  ]
+}

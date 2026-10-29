@@ -27,15 +27,15 @@ class LearningOverview {
   int get completedPaths => paths.where((path) => path.isComplete).length;
   int get attemptedLessons =>
       allLessons.where((l) => store.scores.containsKey(l.id)).length;
-  int get gradedQuestions => allLessons
+  int get gradedQuestions => allAssessmentLessons
       .where((l) => store.scores.containsKey(l.id))
       .fold(0, (sum, lesson) => sum + lesson.questions.length);
   int get bestCorrectAnswers =>
-      allLessons.fold(0, (sum, l) => sum + (store.scores[l.id] ?? 0));
+      allAssessmentLessons.fold(0, (sum, l) => sum + (store.scores[l.id] ?? 0));
   double? get bestAccuracy =>
       gradedQuestions == 0 ? null : bestCorrectAnswers / gradedQuestions;
   int get pendingReviews =>
-      allLessons.fold(
+      allAssessmentLessons.fold(
         0,
         (sum, lesson) =>
             sum +

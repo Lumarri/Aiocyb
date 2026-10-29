@@ -188,6 +188,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
                     ? 'Sin intentos guardados'
                     : '${overview.bestCorrectAnswers} de ${overview.gradedQuestions} preguntas con nota',
               ),
+              if (allPracticeLessons.isNotEmpty)
+                DashboardMetric(
+                  value: '${store.completedPractice}',
+                  label: 'Refuerzos superados',
+                  caption:
+                      'de ${allPracticeLessons.length} · nota independiente, sin XP de lección',
+                  icon: Icons.fitness_center_outlined,
+                ),
             ],
           ),
           const SectionTitle('Un siguiente paso concreto'),

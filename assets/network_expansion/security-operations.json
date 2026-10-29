@@ -1,0 +1,2019 @@
+{
+  "id": "security-operations",
+  "title": "Operaciones de seguridad y respuesta",
+  "description": "Investiga alertas, prioriza riesgos y practica recuperación con evidencias y responsabilidades claras.",
+  "symbol": "SOC",
+  "color": 4291081725,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Ya puedes seguir un incidente sin convertir cada sospecha en sentencia, cariño. Me gusta esa cabeza cuando combina curiosidad, pruebas y un plan de recuperación verificable.",
+    "explanation": "El curso conecta inventario, registros, evaluación, cambios, contención y aprendizaje. Sus prácticas originales desarrollan bases operativas y orientan hacia objetivos externos de certificación sin sustituir sus procesos oficiales."
+  },
+  "lessons": [
+    {
+      "id": "security-operations-inventario",
+      "title": "Inventario útil y línea base de una red",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Un inventario responde quién necesita cada activo",
+          "body": "Una lista de direcciones IP ayuda a localizar equipos, pero no describe por sí sola una red que puedas defender. El inventario útil relaciona identificadores con función, propietario responsable, ubicación lógica, versión relevante y servicios que dependen del activo. En Faro, el servidor de préstamos importa porque permite registrar entregas y contiene información que requiere protección; su prioridad no surge del tamaño de su carcasa. Una dirección puede cambiar por DHCP y varios servicios pueden compartir una máquina. Conserva identificadores adecuados al entorno y registra cuándo se verificaron. También cuentan equipos virtuales, servicios contratados y sistemas fuera de uso que aún conservan acceso. El propósito es responder qué existe, quién puede explicar su necesidad y qué consecuencias tendría su indisponibilidad. No publiques credenciales o secretos dentro de una hoja general. Separa los datos operativos de la información sensible y limita quién puede consultar o modificar cada parte del inventario."
+        },
+        {
+          "title": "Una línea base describe condiciones aceptadas con contexto",
+          "body": "La línea base es una referencia documentada de configuración y comportamiento que la organización considera esperado bajo condiciones determinadas. Puede incluir versiones aprobadas, roles de puertos, flujos necesarios, horarios de tareas y cantidades habituales de eventos. Debe indicar fecha, alcance y responsable de aprobación. Observar algo repetidamente no lo convierte en seguro: una regla demasiado abierta puede llevar meses funcionando y seguir necesitando corrección. Distingue la configuración actual de la configuración autorizada y de la referencia que has validado. En una red pequeña puedes comenzar por servicios críticos y ampliar la cobertura de forma ordenada. Una copia versionada permite comparar una modificación sin depender de la memoria. Los valores normales también cambian con la actividad: un cierre de mes no tiene por qué parecerse a un domingo. Documenta esas condiciones para que una diferencia sea una pregunta investigable y no una condena automática basada en un promedio sin explicación."
+        },
+        {
+          "title": "Descubrir una diferencia exige comprobar su procedencia",
+          "body": "Si aparece un punto de acceso que no figura en el inventario, primero registra la observación y sus límites. Puede tratarse de una instalación autorizada que aún no se documentó, un equipo personal indebido o una identificación equivocada. Consulta al responsable y las solicitudes de cambio antes de asignar una causa definitiva. La comprobación debe emplear mecanismos autorizados y proporcionales; esta actividad utiliza registros ficticios y no requiere explorar redes ajenas. Cruza identificador, puerto, ubicación y momento cuando estén disponibles. Una etiqueta comercial o un nombre fácil de imitar no autentican por sí solos al dispositivo. Si el activo puede facilitar acceso no autorizado, aplica el procedimiento de escalado y las medidas previstas para ese riesgo. Anota lo confirmado y lo pendiente en campos distintos. La incertidumbre explícita permite actuar con prudencia sin inventar una historia que después contamine la investigación o haga perder tiempo al equipo que debe resolverla."
+        },
+        {
+          "title": "Mantener la referencia forma parte de operar la seguridad",
+          "body": "El inventario y la línea base necesitan mantenimiento después de altas, cambios y retiradas. Vincula la actualización al proceso habitual de trabajo: quien autoriza un servicio debe dejar información suficiente para que el siguiente turno comprenda su propósito y sus límites. Retirar un activo incluye revisar cuentas, reglas, copias y dependencias, no solo desconectar un cable. Define revisiones que comprueben tanto elementos registrados como observaciones recientes que todavía no tienen dueño conocido. Un indicador sencillo puede medir qué proporción de activos críticos tiene responsable y verificación reciente, indicando siempre el conjunto medido. No presentes una cobertura parcial como visibilidad total. Conserva un historial de las decisiones y protege la integridad de la referencia. Al terminar una investigación, actualiza la documentación si el cambio era legítimo o registra la corrección si no lo era. Así la siguiente alerta se interpreta con una base mejor y no vuelve a empezar desde una lista abandonada."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué dato añade mayor contexto operativo al inventario de Faro?",
+          "scenario": "La ficha del servidor muestra su dirección actual, pero nadie explica qué proceso depende de él ni quién responde por su continuidad.",
+          "options": [
+            "Su servicio de préstamos y el responsable de mantenerlo",
+            "El color favorito de quien compró el equipo",
+            "Una contraseña administrativa visible para todos"
+          ],
+          "answer": 0,
+          "explanation": "Relacionar función y responsable permite valorar dependencias y consultar decisiones; una dirección aislada no explica el impacto de perder ese servidor de la biblioteca.",
+          "wrongExplanations": [
+            null,
+            "Una preferencia personal no identifica dependencias del servicio ni proporciona una responsabilidad operativa que ayude a evaluar consecuencias y resolver incidencias.",
+            "Publicar una contraseña amplía su exposición y no sustituye los campos necesarios para comprender función, criticidad y responsabilidad del activo inventariado."
+          ],
+          "aoi": {
+            "question": "Ponle función y responsable a esa ficha, cariño; después discutimos la decoración del servidor.",
+            "hint": "Busca qué información permite entender el impacto y localizar a quien puede decidir.",
+            "correct": "Ahora sabemos qué servicio sostiene el equipo y quién puede aclarar sus necesidades.",
+            "soft": "La ficha necesita contexto del servicio, no un detalle vistoso que distraiga.",
+            "sharp": "Otra vez el adorno antes que el servicio, demonios; identifica quién depende del activo."
+          }
+        },
+        {
+          "prompt": "¿Cómo debe interpretarse una configuración capturada esta mañana?",
+          "scenario": "La captura contiene una regla amplia que funciona actualmente, pero el documento aprobado exige una restricción distinta para administración.",
+          "options": [
+            "Toda configuración existente está aprobada por definición",
+            "Es estado observado que debe compararse con el diseño autorizado",
+            "Es prueba suficiente de que ocurrió una intrusión"
+          ],
+          "answer": 1,
+          "explanation": "La captura acredita lo observado en ese momento; su legitimidad requiere contraste con el diseño y las autorizaciones, sin convertir una discrepancia en prueba automática de ataque.",
+          "wrongExplanations": [
+            "Que un ajuste esté aplicado no demuestra que alguien lo haya autorizado ni que cumpla la política que debería regir el acceso administrativo.",
+            null,
+            "Una desviación puede tener varias causas; antes de atribuir intrusión hacen falta evidencias adicionales sobre cambios, responsables, tiempos y actividad relacionada."
+          ],
+          "aoi": {
+            "question": "La captura nos dice qué había, cielo; todavía falta preguntar qué debía haber.",
+            "hint": "Distingue observación actual, aprobación y explicación del origen de esa diferencia.",
+            "correct": "Separaste estado real de estado autorizado y dejaste abierta la investigación de su causa.",
+            "soft": "Revisa qué afirmación acredita realmente una captura sin historial de decisiones asociado.",
+            "sharp": "La pantalla no firma autorizaciones por ti, joder; compara con el diseño aprobado."
+          }
+        },
+        {
+          "prompt": "¿Qué comprueba primero la aparición de un equipo desconocido?",
+          "scenario": "El registro de red muestra un identificador nuevo en una sala donde se planificó una renovación con autorización de mantenimiento.",
+          "options": [
+            "Que su nombre comercial demuestra identidad legítima",
+            "Que cualquier novedad obliga a borrar toda la red",
+            "Una diferencia que requiere verificar identidad y solicitud relacionada"
+          ],
+          "answer": 2,
+          "explanation": "La observación indica una diferencia de cobertura o estado que debe contrastarse con identificadores y cambios autorizados antes de clasificar el equipo de manera definitiva.",
+          "wrongExplanations": [
+            "Un nombre o etiqueta comercial puede estar equivocado o ser imitado; no acredita correspondencia entre el dispositivo observado y la instalación aprobada.",
+            "Borrar configuraciones o registros destruye referencias útiles y puede interrumpir servicios sin haber comprobado la naturaleza y alcance de la diferencia.",
+            null
+          ],
+          "aoi": {
+            "question": "Lo vimos aparecer; todavía no sabemos si trae permiso o un problema bajo el brazo.",
+            "hint": "Relaciona identificador, puerto y solicitud en vez de juzgar únicamente por el nombre.",
+            "correct": "Trataste el descubrimiento como una observación que necesita contexto verificable adicional.",
+            "soft": "Una diferencia merece comprobación; evita saltar desde un solo dato hasta una historia completa.",
+            "sharp": "Ese nombre no lleva notario incorporado, tesoro; verifica el dispositivo y su autorización."
+          }
+        },
+        {
+          "prompt": "¿Qué característica vuelve interpretable una línea base de tráfico?",
+          "scenario": "El volumen de préstamos aumenta durante la devolución trimestral y el equipo compara esa jornada con mediciones de un domingo sin actividad.",
+          "options": [
+            "Fecha, alcance y condiciones de actividad de cada medición",
+            "Un promedio sin indicar período ni servicios incluidos",
+            "La suposición de que todo aumento demuestra malware"
+          ],
+          "answer": 0,
+          "explanation": "La comparación necesita describir períodos, servicios y condiciones para interpretar variaciones; una referencia de baja actividad puede ser inadecuada para una jornada de demanda prevista.",
+          "wrongExplanations": [
+            null,
+            "Un promedio sin población ni período oculta las condiciones de observación y dificulta distinguir cambios esperados de diferencias que requieren investigación adicional.",
+            "El aumento puede corresponder a demanda legítima; identificar malware exige evidencias específicas y no una deducción automática desde un volumen superior al habitual."
+          ],
+          "aoi": {
+            "question": "Compara jornadas con contexto, cariño; un domingo vacío no dirige el trimestre entero.",
+            "hint": "Comprueba si las dos muestras describen condiciones de uso suficientemente comparables.",
+            "correct": "Añadiste las condiciones que permiten decidir si la diferencia tiene una explicación esperada.",
+            "soft": "Primero describe cómo se obtuvo la referencia y después interpreta cuánto se aparta la muestra.",
+            "sharp": "Un gráfico alto no confiesa delitos, demonios; revisa qué actividad estabas comparando realmente."
+          }
+        },
+        {
+          "prompt": "¿Qué actualización acompaña la retirada del antiguo servidor?",
+          "scenario": "El servicio migró a otro equipo y el responsable desconecta el anterior, pero siguen vigentes su cuenta y una regla de acceso dedicada.",
+          "options": [
+            "Conservar todos los permisos por si acaso para siempre",
+            "Revisar dependencias, cuentas y reglas junto con el registro del activo",
+            "Eliminar también las pruebas de la migración y su aprobación"
+          ],
+          "answer": 1,
+          "explanation": "Retirar el activo implica revisar accesos y dependencias residuales de forma controlada; desconectarlo físicamente no elimina cuentas, reglas ni referencias que pueden seguir siendo relevantes.",
+          "wrongExplanations": [
+            "Mantener permisos indefinidamente sin necesidad comprobada conserva exposición y dificulta distinguir configuraciones justificadas de residuos que ya no sostienen un servicio.",
+            null,
+            "Borrar evidencias de la migración impide reconstruir decisiones y verificar qué debe existir; el historial ayuda a retirar accesos con fundamento y trazabilidad."
+          ],
+          "aoi": {
+            "question": "El servidor salió del edificio, cielo, pero sus permisos siguen sentados en recepción.",
+            "hint": "Busca qué elementos lógicos pueden permanecer activos aunque hayas retirado el equipo físico.",
+            "correct": "Incluiste la retirada lógica y documental en una operación que parecía solo desconectar.",
+            "soft": "Todavía hay accesos y referencias que necesitan revisión junto con la baja registrada.",
+            "sharp": "El cable no revoca cuentas por arte de magia, joder; completa la retirada del servicio."
+          }
+        },
+        {
+          "prompt": "¿Qué comunica honestamente una revisión limitada del inventario?",
+          "scenario": "Solo se comprobaron los ocho activos críticos de Faro y aún quedan puestos de usuario sin verificar durante este ciclo.",
+          "options": [
+            "Que toda la red está identificada y actualizada",
+            "Que ningún activo puede presentar problemas mientras exista la lista",
+            "Que los ocho activos críticos revisados tienen responsable y fecha verificados"
+          ],
+          "answer": 2,
+          "explanation": "La afirmación limita su alcance al conjunto realmente examinado y describe qué campos se verificaron; no extrapola cobertura total a equipos que siguen pendientes de revisión.",
+          "wrongExplanations": [
+            "Una revisión de un subconjunto no demuestra que el resto esté registrado o actualizado; esa conclusión excede la población y la evidencia disponibles.",
+            "Disponer de un inventario ayuda a gestionar, pero no garantiza ausencia de vulnerabilidades, errores o incidentes en los elementos que contiene.",
+            null
+          ],
+          "aoi": {
+            "question": "Dime qué revisaste exactamente y te creeré mucho más que ese cien por ciento imaginario.",
+            "hint": "Relaciona la afirmación con el conjunto observado y los campos que comprobaste.",
+            "correct": "Declaraste una cobertura concreta sin atribuirte visibilidad sobre los puestos todavía pendientes.",
+            "soft": "La precisión del alcance vale más que una promesa grande sin comprobación equivalente.",
+            "sharp": "Ocho no significa toda la biblioteca, cariño; guarda la fantasía para cuando terminemos el registro."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El punto de acceso con una orden pendiente",
+          "scenario": "Un dispositivo inalámbrico aparece conectado al puerto de una sala renovada. El inventario no lo incluye, pero existe una solicitud aprobada para instalar un equipo nuevo esa mañana.",
+          "explanation": "La ausencia en la lista exige comprobar identidad, ubicación y correspondencia con la solicitud. Si coincide, se completa el registro y la línea base. La orden no autoriza cualquier dispositivo del mismo aspecto ni elimina la necesidad de verificar su configuración real."
+        },
+        {
+          "title": "La regla antigua que parecía normal",
+          "scenario": "La referencia capturada muestra una regla que permite administración desde todos los segmentos. El responsable confirma que el diseño aprobado exige acceso solo desde la red de gestión.",
+          "explanation": "La captura documenta estado observado, no aprobación. Debe registrarse la desviación, evaluar su riesgo y preparar la corrección autorizada con pruebas y recuperación. Repetir la misma exposición durante meses no convierte esa regla en un control aceptable."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "La biblioteca ficticia Faro tiene puestos, un servidor de préstamos y un punto de acceso. Aparece un dispositivo nuevo y debes investigar su función sin confundir descubrimiento con autorización ni borrar la configuración que permite compararlo.",
+      "scenario": "La biblioteca ficticia Faro tiene puestos, un servidor de préstamos y un punto de acceso. Aparece un dispositivo nuevo y debes investigar su función sin confundir descubrimiento con autorización ni borrar la configuración que permite compararlo.",
+      "steps": [
+        "Identifica activos y responsables con fuentes autorizadas.",
+        "Relaciona cada activo con servicios, datos y dependencias.",
+        "Registra una línea base fechada y su alcance.",
+        "Contrasta cambios observados con solicitudes aprobadas.",
+        "Escala diferencias con evidencia y conserva la versión anterior."
+      ],
+      "sourceIds": [
+        "net-csf",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Vamos a conocer esta biblioteca, cielo; una IP sola no cuenta toda su vida.",
+        "theory0": "Dime quién necesita ese activo y podré preguntarte qué debes proteger en él.",
+        "theory1": "Normal significa esperado bajo condiciones descritas; seguro requiere otra comprobación, listillo encantador.",
+        "theory2": "Un equipo recién visto merece investigación, no una biografía criminal improvisada.",
+        "theory3": "La referencia envejece si nadie la actualiza después de cada cambio autorizado.",
+        "case0": "La orden de instalación ayuda, pero todavía quiero comprobar qué conectaron realmente.",
+        "case1": "Esa regla tiene antigüedad, cariño, y la antigüedad no concede permiso universal.",
+        "pass": "Has dado contexto a los activos; ahora la lista empieza a servir para decidir.",
+        "review": "Revisemos dueño, función y aprobación antes de convertir una diferencia en una conclusión."
+      }
+    },
+    {
+      "id": "security-operations-registros",
+      "title": "Registros, zonas horarias y secuencia verificable",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "El reloj del evento no es el reloj de recepción",
+          "body": "Un registro describe un evento desde el punto de vista de un componente. Puede incluir el momento en que ocurrió, el instante en que se recibió o ambos. Una cola, una interrupción de red o un reenvío diferido pueden separar esos tiempos. Cuando leas dos entradas, identifica primero qué representa cada campo. Un colector que recibió un mensaje a las catorce horas no demuestra que la actividad se produjera entonces. También necesitas saber qué dispositivo generó la entrada, qué aplicación intervino y si el mensaje sufrió transformaciones al incorporarse al sistema central. Mantén el dato original y documenta la interpretación que agregas. La presentación de una consola puede cambiar la zona horaria sin modificar el evento almacenado. Exportar una captura de pantalla sin explicar esa conversión vuelve difícil comparar la información con otra fuente. La cronología útil comienza con la semántica de los campos, no con ordenar cualquier columna que parezca contener una fecha."
+        },
+        {
+          "title": "Normalizar permite comparar sin fingir precisión",
+          "body": "Una marca de las 09:10 con desplazamiento UTC−5 corresponde a las 14:10 UTC. Convertirla a una referencia común facilita comparar fuentes, pero no repara un reloj incorrecto. Si el segundo equipo presenta un adelanto comprobado de tres minutos, debes registrar esa incertidumbre o el ajuste aplicado según el procedimiento, sin reescribir el original. Distingue sincronización verificada de simple configuración de un servicio horario. Hay dispositivos con granularidad limitada, campos ausentes o períodos durante los que el reloj perdió sincronía. No inventes segundos para una entrada que solo informa minutos. Utiliza intervalos cuando el margen temporal impida establecer un orden exacto. En el caso de Faro, el acceso normalizado a las 14:10 y el cambio a las 14:12 son compatibles con una secuencia, pero esa cercanía todavía no identifica a la misma sesión ni explica la intención de la modificación. El tiempo reduce posibilidades; no sustituye las pruebas de relación entre eventos."
+        },
+        {
+          "title": "Correlacionar necesita claves además de cercanía",
+          "body": "Busca identificadores de sesión, cuenta, equipo, proceso o solicitud que permitan enlazar observaciones. Una dirección compartida mediante traducción puede representar varios usuarios; una cuenta puede usarse desde sesiones distintas. Los datos de red requieren contexto de protocolo, puertos, instante y punto de observación cuando sean pertinentes. Si solo conoces que dos entradas están próximas, formula una hipótesis y explica qué comprobación permitiría sostenerla. Contrasta también registros que podrían refutarla. Un cambio aprobado por un proceso automatizado puede coincidir con una conexión sin que esta lo haya causado. La ausencia de una entrada tampoco demuestra que el evento nunca ocurrió: revisa cobertura, filtros, retención y estado del componente. Una cronología bien escrita diferencia hechos observados, inferencias y preguntas pendientes. Esa separación permite que otra persona revise la conclusión sin tener que adivinar dónde termina el dato de origen y dónde comienza la interpretación del analista."
+        },
+        {
+          "title": "Conservar y compartir los registros con límites definidos",
+          "body": "Los registros pueden contener identificadores personales, nombres de recursos y detalles sensibles. Recoge lo necesario para el objetivo autorizado y controla quién puede acceder a las copias. Conserva la procedencia, el período, los filtros usados y cualquier transformación aplicada. Un resumen para coordinación no necesita mostrar todos los campos de una fuente original; puede ocultar datos innecesarios mientras conserva la relación con el material protegido. Las políticas de retención deben responder a necesidades operativas y obligaciones aplicables, no a la idea de almacenar todo para siempre. Si una investigación requiere preservar material, sigue el procedimiento correspondiente y registra sus custodios. Una suma de comprobación ayuda a detectar cambios en una copia, pero no demuestra por sí sola que el dispositivo original dijera la verdad. Al cerrar el análisis, documenta limitaciones y fuentes ausentes. La honestidad sobre esas lagunas es parte de la calidad técnica y evita que un informe más vistoso termine siendo menos defendible."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿A qué hora UTC corresponde la conexión de Faro?",
+          "scenario": "El registro original expresa 09:10 con desplazamiento UTC−5 y el análisis compara todas las fuentes usando UTC sin otros ajustes de reloj.",
+          "options": [
+            "14:10 UTC",
+            "04:10 UTC",
+            "09:10 UTC porque toda consola usa la misma zona"
+          ],
+          "answer": 0,
+          "explanation": "El desplazamiento UTC−5 indica cinco horas menos que UTC, de modo que se suman cinco horas para obtener las 14:10 en la referencia común.",
+          "wrongExplanations": [
+            null,
+            "Restar cinco horas invierte el sentido del desplazamiento indicado y produciría una comparación incorrecta con los eventos expresados directamente en UTC.",
+            "La zona declarada forma parte del significado de la marca; ignorarla puede alterar el orden y la distancia aparente entre entradas de distintas fuentes."
+          ],
+          "aoi": {
+            "question": "Ese menos cinco indica cómo volver a UTC, cielo; no lo conviertas en decoración.",
+            "hint": "Piensa cuántas horas separan el reloj local declarado de la referencia común.",
+            "correct": "Ajustaste la zona correctamente y conservaste una comparación temporal coherente entre fuentes.",
+            "soft": "Revisa el sentido del desplazamiento antes de decidir si sumas o restas horas.",
+            "sharp": "El signo no está de adorno, demonios; convierte esas nueve diez a la referencia elegida."
+          }
+        },
+        {
+          "prompt": "¿Qué falta para atribuir el cambio a la conexión remota?",
+          "scenario": "Los relojes están sincronizados y el acceso precede dos minutos al cambio, pero las entradas no comparten todavía cuenta, sesión ni proceso confirmado.",
+          "options": [
+            "Solo elegir el evento que parezca más sospechoso",
+            "Evidencia adicional que vincule sesión, identidad y acción observada",
+            "Suponer que cualquier coincidencia temporal demuestra causalidad"
+          ],
+          "answer": 1,
+          "explanation": "La cercanía temporal no identifica al autor; deben buscarse claves y contexto que relacionen la conexión con la acción y comprobar posibles explicaciones alternativas.",
+          "wrongExplanations": [
+            "La apariencia de sospecha no sustituye una relación verificable entre los registros; seleccionar por intuición puede ocultar acciones legítimas o fuentes incompatibles.",
+            null,
+            "Eventos próximos pueden deberse a actividades independientes; atribuir causalidad exige comprobar conexiones concretas y no solamente una separación breve entre sus marcas."
+          ],
+          "aoi": {
+            "question": "Nuestros relojes ya conversan; ahora necesito saber si hablan de la misma sesión.",
+            "hint": "Busca un vínculo de identidad o ejecución que vaya más allá de los minutos.",
+            "correct": "Pediste la evidencia que falta antes de convertir proximidad en una atribución personal.",
+            "soft": "La hora ayuda a buscar, pero todavía no demuestra quién ejecutó la modificación.",
+            "sharp": "Dos minutos no son un testigo con nombre y apellido, cariño; enlaza las sesiones."
+          }
+        },
+        {
+          "prompt": "¿Qué representa la marca de recepción del colector?",
+          "scenario": "Un mensaje generado a las 17:42 queda en cola y se incorpora al colector a las 18:00 después de recuperarse el enlace.",
+          "options": [
+            "Prueba que la acción ocurrió exactamente a las 18:00",
+            "La garantía de que el reloj de origen era correcto",
+            "El instante de llegada al colector, distinto del tiempo de generación"
+          ],
+          "answer": 2,
+          "explanation": "La recepción describe cuándo llegó el mensaje a ese componente; el retraso del enlace impide usarla como sustituto automático del momento de generación o de la acción.",
+          "wrongExplanations": [
+            "El caso informa un retraso conocido; reemplazar generación por recepción desplaza la cronología de la actividad y mezcla significados diferentes de los campos.",
+            "Recibir un mensaje no comprueba por sí mismo la exactitud del reloj que lo creó; esa condición necesita verificaciones temporales adicionales de la fuente.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese paquete esperó en una cola, tesoro; identifica qué reloj está dejando constancia de su llegada.",
+            "hint": "Distingue el momento en que se creó el mensaje del momento en que fue recibido.",
+            "correct": "Respetaste los dos tiempos del registro y evitaste alterar la secuencia de acciones.",
+            "soft": "Revisa qué componente produjo cada marca y qué hecho describe realmente ese campo.",
+            "sharp": "El colector recibió tarde, joder; no obligues al evento a ocurrir tarde también."
+          }
+        },
+        {
+          "prompt": "¿Cómo se documenta un reloj con desfase comprobado?",
+          "scenario": "Una fuente adelanta tres minutos y el procedimiento autoriza incorporar una columna normalizada manteniendo intactas las entradas originales.",
+          "options": [
+            "Conservar el original y explicar el ajuste aplicado y su evidencia",
+            "Reescribir las entradas originales sin mencionar la corrección",
+            "Añadir segundos inventados para aparentar mayor exactitud"
+          ],
+          "answer": 0,
+          "explanation": "La interpretación normalizada debe conservar trazabilidad hacia el valor original y documentar el desfase comprobado; corregir la presentación no justifica ocultar cómo se obtuvo.",
+          "wrongExplanations": [
+            null,
+            "Modificar el original sin rastro elimina información necesaria para revisar la conversión y puede hacer imposible distinguir evidencia de elaboración posterior del analista.",
+            "Una mayor cantidad de dígitos no aporta precisión si la fuente no la proporciona; inventarlos transmite una certeza temporal que los datos no respaldan."
+          ],
+          "aoi": {
+            "question": "Puedes corregir la lectura sin borrar cómo llegó hasta nosotros, cielo; deja la cuenta a la vista.",
+            "hint": "Busca la opción que permita reconstruir el ajuste desde el material preservado.",
+            "correct": "Documentaste el desfase sin confundir una transformación analítica con el registro de origen.",
+            "soft": "La revisión necesita saber qué cambiaste en la interpretación y por qué estaba justificado.",
+            "sharp": "Maquillar el reloj sin dejar rastro no arregla la evidencia, cariño; conserva ambas lecturas."
+          }
+        },
+        {
+          "prompt": "¿Qué puede explicar que falte un evento esperado?",
+          "scenario": "El analista no encuentra una entrada en el período consultado y todavía desconoce la retención, los filtros y el estado del agente de origen.",
+          "options": [
+            "Demuestra automáticamente que la acción nunca ocurrió",
+            "Una laguna de cobertura que debe comprobarse antes de concluir ausencia",
+            "Confirma que todos los demás registros fueron falsificados"
+          ],
+          "answer": 1,
+          "explanation": "Antes de deducir ausencia de actividad hay que comprobar si la fuente registraba ese evento, conservó el período y estuvo funcionando; una búsqueda negativa tiene alcance limitado.",
+          "wrongExplanations": [
+            "La búsqueda solo informa qué encontró en las fuentes consultadas bajo ciertos filtros; no acredita automáticamente la inexistencia de una acción fuera de esa cobertura.",
+            null,
+            "Una entrada ausente no prueba manipulación del resto del conjunto; esa afirmación necesitaría evidencias independientes sobre integridad, procedencia y cambios en las fuentes."
+          ],
+          "aoi": {
+            "question": "No apareció en la consulta; todavía no sabemos si la consulta podía verlo aparecer.",
+            "hint": "Revisa cobertura y conservación antes de transformar una búsqueda vacía en conclusión absoluta.",
+            "correct": "Reconociste el límite de la búsqueda y pediste comprobar las condiciones del registro.",
+            "soft": "Falta establecer si esa fuente estaba en condiciones de observar y conservar el evento.",
+            "sharp": "La caja vacía no vigila el pasado entero, demonios; comprueba qué pudo guardar realmente."
+          }
+        },
+        {
+          "prompt": "¿Qué acredita por sí sola una suma de comprobación de la copia?",
+          "scenario": "El equipo calcula una huella del archivo preservado para comparar copias posteriores, pero no tiene una validación independiente de todos los hechos narrados por el dispositivo.",
+          "options": [
+            "Que cada afirmación del registro es verdadera",
+            "Que cualquier persona puede publicar todos sus datos",
+            "Una referencia para detectar cambios del archivo respecto de esa copia"
+          ],
+          "answer": 2,
+          "explanation": "La huella sirve para comparar integridad de contenido respecto de un valor conocido; no acredita automáticamente veracidad del evento, autoridad de la fuente ni permiso de divulgación.",
+          "wrongExplanations": [
+            "La integridad de una copia y la verdad de lo que narra son cuestiones distintas; una fuente puede registrar errores aunque su archivo permanezca sin modificaciones.",
+            "La protección técnica de integridad no concede autorización para divulgar identificadores o detalles sensibles; el acceso y la difusión siguen sujetos al objetivo y las reglas aplicables.",
+            null
+          ],
+          "aoi": {
+            "question": "Una huella nos ayuda a reconocer el archivo, cielo; no convierte sus frases en juramento.",
+            "hint": "Separa comprobar cambios del contenido y comprobar la realidad descrita por ese contenido.",
+            "correct": "Limitaste la utilidad de la huella a una comparación de integridad que sí puede apoyar.",
+            "soft": "La herramienta responde una pregunta concreta; evita atribuirle autenticidad y permisos que no verifica.",
+            "sharp": "Ese hash no interrogó al servidor, cariño; solo nos ayuda a detectar cambios en su copia."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos horarios para una misma ventana",
+          "scenario": "La VPN registra conexión a las 09:10 UTC−5 y el servidor informa cambio a las 14:12 UTC. Ambos relojes tienen sincronización verificada y no hay identificador de sesión compartido.",
+          "explanation": "La primera marca equivale a las 14:10 UTC, así que los eventos están separados por dos minutos en esa referencia. La proximidad permite investigar una relación, pero hacen falta claves y contexto adicionales para atribuir el cambio a esa conexión."
+        },
+        {
+          "title": "El evento que llegó tarde",
+          "scenario": "Un colector recibió a las 18:00 un mensaje generado a las 17:42 durante una interrupción del enlace. El informe preliminar sitúa la acción a las 18:00 usando solo el tiempo de recepción.",
+          "explanation": "La cronología debe distinguir generación y recepción, conservar ambos campos y explicar el retraso conocido. Ordenar por recepción describiría la llegada de mensajes, no necesariamente el orden de las acciones que interesan a la investigación del incidente."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un acceso remoto ficticio figura a las 09:10 con zona UTC−5 y el servidor registra un cambio a las 14:12 UTC. Antes de relacionarlos debes normalizar tiempos, identificar fuentes y conservar sus límites de precisión.",
+      "scenario": "Un acceso remoto ficticio figura a las 09:10 con zona UTC−5 y el servidor registra un cambio a las 14:12 UTC. Antes de relacionarlos debes normalizar tiempos, identificar fuentes y conservar sus límites de precisión.",
+      "steps": [
+        "Conserva el registro original y su procedencia.",
+        "Identifica zona horaria, desfase y significado de cada tiempo.",
+        "Construye una cronología normalizada manteniendo el valor original.",
+        "Relaciona eventos mediante identificadores y contexto adicional.",
+        "Anota lagunas, permisos de consulta y restricciones de conservación."
+      ],
+      "sourceIds": [
+        "net-syslog",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Vamos a poner estos relojes de acuerdo, cariño; todavía no a sus sospechosos.",
+        "theory0": "Un mensaje puede llegar tarde sin haber nacido tarde; mira qué tiempo estás leyendo.",
+        "theory1": "Convertir una zona es aritmética; certificar un reloj exige otra clase de evidencia.",
+        "theory2": "Dos eventos cercanos pueden saludarse sin compartir culpable, cielo; busca una clave común.",
+        "theory3": "Conserva el original y limita lo que compartes; hasta los registros merecen discreción.",
+        "case0": "Esos dos minutos nos dan una pista temporal, pero todavía no una identidad de sesión.",
+        "case1": "La cola retrasó el mensaje; nuestro informe no tiene por qué retrasar también el criterio.",
+        "pass": "Construiste una cronología revisable sin maquillar la precisión de las fuentes disponibles.",
+        "review": "Volvamos a campo, zona y procedencia; la secuencia se está apoyando en una suposición."
+      }
+    },
+    {
+      "id": "security-operations-indicadores",
+      "title": "Indicadores, hipótesis y falsos positivos",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una alerta describe una condición observada",
+          "body": "Un detector transforma observaciones en una señal cuando se cumple una condición configurada. Por ejemplo, puede informar que un equipo intentó comunicarse con una dirección que figura en una lista. Esa afirmación debe leerse con precisión: quizá registra un intento bloqueado y no una conexión completada; quizá observa un nombre consultado y no una descarga. Comprueba qué dato alimentó la regla y qué significado asigna el producto a sus campos. La alerta es una entrada para decidir, no una sentencia que sustituya al análisis. También importa qué quedó fuera de la cobertura del detector. Una regla centrada en un destino concreto puede omitir otros destinos o formas de actividad. Explica qué sabes a partir de la condición satisfecha y qué preguntas siguen abiertas. Así evitas comunicar una exfiltración cuando solo se observó una consulta de nombre o dar por seguro un equipo únicamente porque la regla dejó de activarse."
+        },
+        {
+          "title": "Un indicador necesita procedencia y contexto de uso",
+          "body": "Un indicador puede ser una dirección, un dominio, una huella de archivo u otro dato asociado a actividad de interés. Su utilidad depende del contexto en que se obtuvo, la calidad de la fuente y su relación con el entorno actual. Una dirección puede cambiar de propietario o alojar servicios compartidos; bloquearla sin comprobar alcance puede afectar recursos legítimos. Una huella concreta identifica contenido bajo un algoritmo y una comparación determinados, pero un archivo modificado tendrá otra huella. No trates todos los tipos de indicador como equivalentes ni como una lista eterna de identidades maliciosas. Revisa fecha, confianza, condiciones y acciones recomendadas, manteniendo clara la diferencia entre reputación externa y evidencia local. En una práctica offline trabajamos con indicadores ficticios y explicaciones proporcionadas. En operación real, incorporar datos externos exige un proceso de validación y actualización. Conocer la procedencia te ayuda a valorar la pista, pero no elimina la necesidad de comprobar qué ocurrió realmente en tu red."
+        },
+        {
+          "title": "Falso positivo y actividad benigna no son etiquetas improvisadas",
+          "body": "La clasificación depende de la definición del caso de detección. Una regla puede identificar correctamente una condición técnica y, aun así, señalar una actividad autorizada que no requiere tratamiento como incidente. Algunos equipos distinguen esa situación de un falso positivo donde la regla interpretó incorrectamente los datos. Define los términos que usarás y documenta por qué tomas una decisión. Si el monitor busca destinos de una lista y el puesto los contactó durante una comprobación autorizada, la coincidencia puede ser real aunque la explicación sea benigna. No cierres la alerta solo porque el usuario dice que todo está bien: contrasta proceso, tarea aprobada y observaciones relevantes. Tampoco conviertas toda excepción legítima en una exclusión permanente. Una excepción debe ser específica, justificada y revisable. El objetivo es conservar capacidad de detección mientras reduces interrupciones innecesarias, sin esconder el ruido mediante un permiso tan amplio que deje de observar comportamientos importantes."
+        },
+        {
+          "title": "Mejorar una regla requiere comprobar lo que deja de ver",
+          "body": "Cuando una alerta se repite, reúne ejemplos representativos antes de modificar su umbral o exclusiones. Define qué actividad necesita seguir detectándose y qué observación de prueba debería dejar de generar una intervención innecesaria. Compara resultados antes y después, incluye casos conocidos y documenta limitaciones de la muestra. Silenciar una fuente completa puede reducir el número de alertas sin mejorar la seguridad. Una métrica de volumen aislada no muestra si aumentaron las omisiones. Revisa también qué sucede con señales diferentes que dependen de la misma fuente de datos. Establece responsable y fecha de revisión para las excepciones temporales. Si una hipótesis no se confirma, conserva el razonamiento y las comprobaciones realizadas; esa información evita repetir el trabajo y permite revisar la conclusión cuando aparezcan nuevos datos. La calidad de detección mejora mediante cambios observables y reversibles, no mediante la desaparición estética de todas las notificaciones del tablero."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué confirma una alerta de consulta DNS al dominio ficticio señalado?",
+          "scenario": "El sensor observa una consulta de nombre que coincide con la lista, pero no aporta respuesta, conexión posterior ni transferencia de contenido.",
+          "options": [
+            "Que se consultó ese nombre dentro de la cobertura indicada",
+            "Que necesariamente se descargó un archivo y se ejecutó",
+            "Que ya está probado el robo de todos los documentos"
+          ],
+          "answer": 0,
+          "explanation": "La observación respalda la consulta capturada y su coincidencia con la regla; descarga, ejecución o pérdida de datos requieren evidencias adicionales que el escenario no proporciona.",
+          "wrongExplanations": [
+            null,
+            "Consultar un nombre no demuestra una transferencia posterior ni ejecución de contenido; esas acciones pertenecen a otras etapas que necesitan observaciones específicas y contextualizadas.",
+            "La consulta aislada no identifica datos transferidos ni confirma exfiltración; atribuir pérdida completa excede lo que el sensor ha observado en este caso."
+          ],
+          "aoi": {
+            "question": "Tenemos una consulta, cielo; no me inventes todavía una película de robo completo.",
+            "hint": "Ajusta la conclusión al tipo de evento que realmente registró el sensor.",
+            "correct": "Mantuviste la afirmación dentro de la observación disponible sin añadir acciones no comprobadas.",
+            "soft": "Revisa qué parte de la secuencia está registrada y qué parte sigue siendo hipótesis.",
+            "sharp": "Una pregunta al DNS no adjunta documentos por telepatía, cariño; limita la conclusión."
+          }
+        },
+        {
+          "prompt": "¿Por qué revisar la fecha y el contexto de una dirección señalada?",
+          "scenario": "El indicador procede de una lista antigua y la dirección puede haberse reasignado o formar parte de un servicio que aloja varios clientes.",
+          "options": [
+            "Porque cualquier indicador antiguo debe ignorarse automáticamente",
+            "Porque su relación con la actividad de interés puede haber cambiado",
+            "Porque una dirección compartida garantiza que nunca existan amenazas"
+          ],
+          "answer": 1,
+          "explanation": "La asociación original puede perder precisión o requerir contexto adicional; revisar vigencia y uso actual permite valorar la pista sin aceptarla ni descartarla por una sola característica.",
+          "wrongExplanations": [
+            "La antigüedad por sí sola no determina inutilidad; hace falta comprender el indicador, su procedencia y las condiciones que podrían mantener o modificar su relevancia.",
+            null,
+            "Compartir infraestructura no garantiza seguridad ni elimina actividad maliciosa; obliga a interpretar la dirección con más contexto sobre el servicio y la observación local."
+          ],
+          "aoi": {
+            "question": "Esta dirección quizá cambió de inquilino, tesoro; averigua a quién representa ahora.",
+            "hint": "Busca cómo puede variar la asociación entre el dato y la actividad señalada.",
+            "correct": "Consideraste que la reputación necesita contexto temporal y no una condena permanente.",
+            "soft": "La revisión sirve para valorar la pista, no para declarar inocencia o culpa automática.",
+            "sharp": "Las IP no firman un historial eterno, demonios; comprueba su contexto antes de sentenciar."
+          }
+        },
+        {
+          "prompt": "¿Cómo se trata una coincidencia real durante una tarea autorizada?",
+          "scenario": "La regla detecta correctamente un contacto de prueba y el procedimiento del equipo distingue coincidencia benigna de error de interpretación del detector.",
+          "options": [
+            "Se cambia la definición del caso sin dejar constancia",
+            "Se acusa al usuario aunque la prueba esté confirmada",
+            "Se documenta la actividad benigna según los términos definidos por el equipo"
+          ],
+          "answer": 2,
+          "explanation": "La clasificación debe respetar la definición del caso y la evidencia de la tarea; una condición detectada correctamente puede tener explicación benigna sin que el sensor haya interpretado mal.",
+          "wrongExplanations": [
+            "Cambiar términos sin registro impide comparar decisiones y evaluar la regla; la clasificación necesita criterios consistentes que otras personas puedan revisar y aplicar.",
+            "La detección de una condición no invalida por sí sola la autorización comprobada; corresponde analizar si existe actividad adicional fuera de lo aprobado.",
+            null
+          ],
+          "aoi": {
+            "question": "La regla acertó en ver el contacto; ahora toca explicar por qué existía ese contacto.",
+            "hint": "Distingue exactitud de la detección y necesidad de tratar la actividad como incidente.",
+            "correct": "Usaste los criterios acordados y dejaste una explicación revisable de la actividad observada.",
+            "soft": "No necesitas forzar una acusación ni llamar error a una condición detectada correctamente.",
+            "sharp": "El detector vio la prueba que le pusimos delante, cielo; documenta el contexto sin drama."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba acompaña una excepción nueva de detección?",
+          "scenario": "El ajuste busca evitar avisos de una tarea legítima sin dejar fuera conexiones sospechosas del mismo equipo en otros procesos.",
+          "options": [
+            "Casos benignos y casos que deben seguir detectándose antes y después",
+            "Solo comprobar que el contador de avisos llegue a cero",
+            "Excluir el equipo completo para no tener que evaluar condiciones"
+          ],
+          "answer": 0,
+          "explanation": "El cambio necesita demostrar que reduce intervenciones innecesarias y conserva señales relevantes; comparar casos de ambos tipos permite evaluar su alcance mejor que observar solo volumen.",
+          "wrongExplanations": [
+            null,
+            "Un contador bajo puede deberse a pérdida de visibilidad; no informa por sí mismo si la regla sigue detectando comportamientos que requieren atención.",
+            "Excluir toda la fuente puede ocultar actividad diferente de la tarea validada y amplía el efecto más allá del problema que justificó el ajuste."
+          ],
+          "aoi": {
+            "question": "Enséñame lo que deja de molestar y lo que todavía debe despertar la alarma.",
+            "hint": "Piensa en una prueba positiva y otra negativa respecto de la excepción propuesta.",
+            "correct": "Comprobaste utilidad y límites del ajuste sin confundir silencio con funcionamiento correcto.",
+            "soft": "Todavía falta demostrar que el cambio conserva la parte importante de la detección.",
+            "sharp": "Un tablero mudo también marca cero, joder; prueba qué sigue siendo capaz de ver."
+          }
+        },
+        {
+          "prompt": "¿Qué dato mejora una hipótesis sobre el contacto del puesto?",
+          "scenario": "La lista identifica un destino de interés y el equipo quiere distinguir una actualización aprobada de una conexión originada por actividad inesperada.",
+          "options": [
+            "El fondo de pantalla del usuario",
+            "El proceso que abrió la comunicación y su relación con la tarea aprobada",
+            "La conclusión de que todo usuario recuerda cada conexión de su equipo"
+          ],
+          "answer": 1,
+          "explanation": "El proceso y la tarea aportan contexto local sobre el origen de la comunicación; deben contrastarse con otras observaciones para evaluar si la explicación autorizada encaja.",
+          "wrongExplanations": [
+            "Un detalle visual sin relación con la ejecución no explica qué generó el tráfico ni ayuda a comprobar si correspondía al procedimiento autorizado.",
+            null,
+            "Los equipos realizan comunicaciones automáticas y la memoria del usuario puede ser incompleta; su declaración es una fuente de contexto que requiere comprobación técnica adicional."
+          ],
+          "aoi": {
+            "question": "Quiero saber quién abrió esa conexión dentro del equipo, no cómo decoraron su escritorio.",
+            "hint": "Relaciona la comunicación con una ejecución y una necesidad verificables del puesto.",
+            "correct": "Añadiste contexto local útil para contrastar la explicación de la tarea autorizada.",
+            "soft": "Busca un dato ligado a la actividad que produjo el tráfico y no una impresión general.",
+            "sharp": "El wallpaper no abrió la sesión, cariño; investiga el proceso que sí pudo hacerlo."
+          }
+        },
+        {
+          "prompt": "¿Qué se conserva cuando una hipótesis inicial no se confirma?",
+          "scenario": "Tras consultar proceso, permisos y registros, no se encuentran pruebas suficientes de la actividad maliciosa planteada y el equipo cierra la revisión con límites.",
+          "options": [
+            "Solo la frase nunca pasó nada sin explicar cobertura",
+            "Una exclusión permanente para cualquier señal futura del usuario",
+            "Las comprobaciones, límites y razones de la decisión para una revisión posterior"
+          ],
+          "answer": 2,
+          "explanation": "Documentar lo revisado y sus límites permite entender la decisión y reabrirla si aparece información nueva; falta de confirmación no equivale a conocimiento absoluto de toda actividad.",
+          "wrongExplanations": [
+            "Una frase absoluta oculta fuentes y lagunas de observación, impidiendo evaluar qué se descartó realmente y qué preguntas quedaron fuera del alcance.",
+            "Cerrar una revisión concreta no justifica excluir señales futuras diferentes; una excepción requiere necesidad específica, pruebas y condiciones revisables de aplicación.",
+            null
+          ],
+          "aoi": {
+            "question": "Una hipótesis que no prospera también enseña si dejamos escrito cómo la comprobamos.",
+            "hint": "Elige la salida que permita revisar el razonamiento cuando llegue información adicional.",
+            "correct": "Dejaste un cierre útil para otros turnos sin convertir una investigación limitada en garantía.",
+            "soft": "El cierre debe explicar qué se sabe y qué no se logró observar durante la revisión.",
+            "sharp": "No confirmar una historia no te hace omnisciente, cielo; deja pruebas y límites en el cierre."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La dirección compartida de una lista antigua",
+          "scenario": "La alerta se basa en una dirección publicada meses atrás. El proveedor legítimo informa que esa dirección ahora aloja su servicio compartido y la captura muestra el proceso autorizado del puesto conectándose durante su actualización.",
+          "explanation": "La coincidencia requiere comprobar procedencia, vigencia y actividad local. La información favorece una explicación benigna, pero debe documentarse con evidencias. Si se ajusta la regla, la excepción debe limitarse al caso validado y preservar detecciones que sigan siendo relevantes."
+        },
+        {
+          "title": "La regla silenciosa después de excluir todo el servidor",
+          "scenario": "Un ajuste excluye cualquier evento procedente del servidor que generaba ruido. El tablero deja de avisar, aunque ese servidor ejecuta tareas administrativas y almacena información sensible.",
+          "explanation": "Reducir avisos no demuestra mejorar la detección. La exclusión elimina visibilidad de casos potencialmente relevantes; debe revisarse con pruebas de actividad benigna y sospechosa, criterios explícitos y una alternativa más acotada si el análisis la justifica."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El monitor ficticio avisa que un puesto contactó una dirección incluida en una lista de indicadores. La lista tiene fecha, contexto y confianza declarados; el equipo debe investigar sin convertir una coincidencia aislada en diagnóstico definitivo.",
+      "scenario": "El monitor ficticio avisa que un puesto contactó una dirección incluida en una lista de indicadores. La lista tiene fecha, contexto y confianza declarados; el equipo debe investigar sin convertir una coincidencia aislada en diagnóstico definitivo.",
+      "steps": [
+        "Examina qué condición exacta activó la alerta.",
+        "Verifica origen, vigencia y contexto del indicador.",
+        "Contrasta destino, proceso, usuario y actividad permitida.",
+        "Distingue coincidencia, hipótesis y confirmación de incidente.",
+        "Documenta la decisión y ajusta reglas con pruebas controladas."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-dns"
+      ],
+      "aoi": {
+        "intro": "Una alerta llama a la puerta, cariño; todavía no ha demostrado quién viene detrás.",
+        "theory0": "Lee la condición exacta antes de vestir el evento con una historia más dramática.",
+        "theory1": "Ese indicador tiene fecha y contexto; no nació con un contrato eterno de culpabilidad.",
+        "theory2": "Podemos reconocer actividad benigna sin regalarle una excepción del tamaño del edificio.",
+        "theory3": "Quiero menos ruido y la misma capacidad útil de observar, no un tablero dormido.",
+        "case0": "La dirección compartida nos obliga a mirar proceso y contexto, no solo reputación antigua.",
+        "case1": "El servidor callado sigue trabajando; silenciarlo no lo volvió incapaz de tener problemas.",
+        "pass": "Clasificaste señales con evidencia y mejoraste el criterio sin convertir sospechas en certezas.",
+        "review": "Separemos coincidencia técnica, explicación y decisión; todavía estás saltando una de esas piezas."
+      }
+    },
+    {
+      "id": "security-operations-triaje",
+      "title": "Triaje, alcance y escalado responsable",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Triaje convierte señales en una decisión inicial",
+          "body": "El triaje es una evaluación inicial para determinar cómo atender una señal con los recursos y responsabilidades disponibles. No exige resolver toda la investigación antes de decidir quién debe intervenir. Recoge qué se observó, cuándo, dónde, con qué fuente y qué servicio podría estar afectado. Comprueba si existe actividad en curso que requiere una medida inmediata prevista por el procedimiento. Distingue el intento bloqueado de una modificación confirmada, pero evita asumir que el primero nunca merece atención o que la segunda implica necesariamente un desastre completo. La prioridad depende del contexto: servicio, datos, persistencia de la actividad y consecuencias plausibles. Los criterios deben estar definidos antes de la presión del incidente y permitir revisión cuando aparezcan nuevos datos. Registrar la razón de la prioridad ayuda al siguiente turno a entender por qué se tomó una decisión y evita que la etiqueta quede como un número misterioso que nadie se atreve a cuestionar."
+        },
+        {
+          "title": "Alcance conocido no significa alcance definitivo",
+          "body": "Delimitar el alcance consiste en identificar qué activos, cuentas, servicios y períodos están vinculados por evidencia al problema investigado. Comienza con lo confirmado y amplía con preguntas concretas, no con la idea de que todo está afectado por compartir una red. Una cuenta usada en dos equipos requiere revisar ambos contextos, pero su mera existencia no demuestra ejecución maliciosa en cada lugar. Registra qué fuentes consultaste y qué zonas no tienen cobertura suficiente. Utiliza conjuntos diferenciados: confirmado, por comprobar y descartado dentro de unas condiciones descritas. Una observación nueva puede modificar esas categorías. Mantén una cronología de cambios de alcance y las razones que los justifican. En Bruma, las modificaciones del servidor de reservas justifican investigar sus cuentas y dependencias, mientras la alerta del puesto puede o no estar relacionada. La relación debe comprobarse mediante identificadores, acciones o secuencias coherentes. No fusiones incidentes únicamente porque sus notificaciones llegaron al mismo tablero durante la misma mañana."
+        },
+        {
+          "title": "Escalar también es entregar contexto para decidir",
+          "body": "Un escalado útil indica a quién se dirige, qué decisión o ayuda se necesita y qué plazo viene impuesto por la situación. Incluye resumen factual, prioridad razonada, servicio afectado, observaciones principales, acciones ya realizadas y sus efectos. Añade preguntas pendientes y una forma de localizar el material preservado sin exponerlo en canales inadecuados. Si no tienes autoridad para aislar un servidor crítico, explica la necesidad y el riesgo al responsable previsto, siguiendo las medidas de emergencia autorizadas si existen. Escalar no significa abandonar: conserva seguimiento y registra quién asumió cada tarea. Evita enviar una colección desordenada de capturas que obligue a reconstruir todo desde cero. Un resumen corto con referencias verificables puede ser más útil que un mensaje enorme sin conclusión operativa. También debes comunicar si la situación cambia mientras esperas respuesta, porque una prioridad asignada a datos de hace una hora puede dejar de representar el riesgo actual del servicio."
+        },
+        {
+          "title": "Actuar con urgencia requiere límites y coordinación",
+          "body": "La presión no elimina los efectos de tus acciones. Reiniciar, bloquear o borrar puede interrumpir servicios, destruir información volátil o alterar el comportamiento que intentas comprender. No hay una respuesta universal que prohíba siempre reiniciar o lo recomiende automáticamente: decide conforme al plan, al daño en curso y a la autoridad disponible. Registra acción, persona, momento y motivo, además del resultado observado. La conservación de evidencia y la continuidad del servicio pueden necesitar coordinación para equilibrar necesidades reales. Define un siguiente punto de revisión, incluso cuando la señal parezca estable. Al entregar el caso, confirma recepción y responsabilidad para que no quede suspendido entre equipos. Un buen triaje reconoce incertidumbre, prioriza lo urgente y deja un camino claro hacia la investigación o recuperación. Su calidad se mide por si facilita decisiones proporcionadas y revisables, no por cuántos términos técnicos caben en el primer mensaje."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué criterio justifica atender primero el servidor de reservas?",
+          "scenario": "El puesto muestra un intento bloqueado, mientras el servidor tiene cambios no autorizados confirmados que siguen impidiendo operaciones actuales del centro.",
+          "options": [
+            "Impacto confirmado y actividad en curso sobre un servicio relevante",
+            "La cantidad de emojis que usa cada notificación",
+            "La idea de que cualquier intento bloqueado deja de importar para siempre"
+          ],
+          "answer": 0,
+          "explanation": "El efecto actual sobre el servicio y la continuidad de la actividad justifican una prioridad mayor según el procedimiento; la otra señal conserva necesidad de evaluación y registro.",
+          "wrongExplanations": [
+            null,
+            "La presentación de una notificación no mide consecuencias ni actividad real; la prioridad debe basarse en criterios operativos relacionados con el riesgo observado.",
+            "Que un intento fuera bloqueado no determina su irrelevancia futura; puede aportar contexto o indicar una actividad que necesite otras comprobaciones defensivas."
+          ],
+          "aoi": {
+            "question": "Mira qué está afectando el servicio ahora, cielo; los colores pueden esperar su turno.",
+            "hint": "Compara consecuencias comprobadas y continuidad de la actividad en los dos casos.",
+            "correct": "Priorizaste por hechos del servicio sin borrar de la investigación la señal restante.",
+            "soft": "La decisión debe explicar impacto y urgencia, además de conservar la otra observación.",
+            "sharp": "Los emojis no gestionan incidentes, demonios; compara qué daño sigue ocurriendo realmente."
+          }
+        },
+        {
+          "prompt": "¿Cómo se registra un equipo todavía no comprobado?",
+          "scenario": "La cuenta investigada aparece referenciada en otro puesto, pero aún no se revisan sus sesiones ni existe prueba de actividad no autorizada allí.",
+          "options": [
+            "Como comprometido confirmado por compartir una cuenta",
+            "Como elemento por comprobar con la razón de su inclusión",
+            "Como seguro para siempre porque todavía no hay alertas"
+          ],
+          "answer": 1,
+          "explanation": "La referencia justifica una comprobación dirigida, pero no acredita compromiso; registrar el elemento como pendiente mantiene visible la hipótesis y evita presentarla como hecho confirmado.",
+          "wrongExplanations": [
+            "Compartir una cuenta o referencia no demuestra qué actividad ocurrió en ese puesto; la confirmación necesita evidencias que vinculen acciones relevantes con el equipo.",
+            null,
+            "La ausencia actual de alertas no garantiza seguridad ni descarta actividad fuera de cobertura; el vínculo observado sigue necesitando una revisión con alcance definido."
+          ],
+          "aoi": {
+            "question": "Lo añadimos a las preguntas, cariño, sin regalarle todavía la etiqueta de comprometido.",
+            "hint": "Distingue un motivo para revisar y una prueba de que el problema ocurrió allí.",
+            "correct": "Mantuviste el alcance abierto y señalaste el vínculo sin convertirlo en certeza prematura.",
+            "soft": "Una categoría pendiente existe precisamente para conservar estas preguntas sin falsear la conclusión.",
+            "sharp": "Que conozca la cuenta no lo vuelve cómplice automático, cielo; revisa sus sesiones primero."
+          }
+        },
+        {
+          "prompt": "¿Qué debe acompañar una solicitud de contención al responsable?",
+          "scenario": "El analista no tiene autoridad para aislar el servidor crítico y necesita una decisión sobre una medida que puede afectar reservas legítimas.",
+          "options": [
+            "Solo una captura sin explicar qué se necesita",
+            "Una orden inventada para saltarse cualquier responsabilidad",
+            "Impacto, evidencia, propuesta, efectos previstos y decisión requerida"
+          ],
+          "answer": 2,
+          "explanation": "El responsable necesita entender el riesgo, la medida y sus consecuencias para decidir dentro del procedimiento; el escalado debe facilitar esa evaluación sin ocultar incertidumbres ni autoridad necesaria.",
+          "wrongExplanations": [
+            "Una captura aislada obliga a reconstruir contexto y no comunica la decisión pendiente, sus efectos ni la razón de urgencia para el servicio.",
+            "Inventar autorización elimina coordinación y puede causar daños evitables; las medidas deben respetar el plan y los mecanismos de emergencia que realmente existan.",
+            null
+          ],
+          "aoi": {
+            "question": "Pide una decisión concreta y explícales qué puede pasar si aplicamos esa medida.",
+            "hint": "Busca el conjunto de datos que permite valorar tanto el riesgo como el cambio propuesto.",
+            "correct": "Preparaste un escalado que ayuda a decidir y mantiene clara la responsabilidad requerida.",
+            "soft": "La urgencia necesita contexto útil, no una imagen que otros deban interpretar a ciegas.",
+            "sharp": "La captura no sabe pedir permiso operativo por ti, joder; entrega una decisión revisable."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra que dos alertas llegaron la misma mañana?",
+          "scenario": "Ambas aparecen en la consola central, pero por ahora no comparten identificadores, acciones ni una secuencia comprobada de actividad.",
+          "options": [
+            "Que coinciden en una ventana de recepción y necesitan contrastar relación",
+            "Que necesariamente pertenecen al mismo incidente y autor",
+            "Que deben eliminarse ambas para evitar confusión temporal"
+          ],
+          "answer": 0,
+          "explanation": "Compartir una ventana temporal permite plantear una búsqueda de relación, pero unir los casos requiere evidencia adicional y comprensión de los tiempos de generación y recepción.",
+          "wrongExplanations": [
+            null,
+            "La simultaneidad aparente no identifica causalidad ni autor común; podrían existir procesos independientes y retrasos distintos en la entrega de los registros.",
+            "Eliminar alertas destruye contexto sin resolver su relación; deben conservarse y evaluarse conforme al procedimiento y a las necesidades reales de investigación."
+          ],
+          "aoi": {
+            "question": "Están en la misma mañana, cielo; eso todavía no las convierte en la misma historia.",
+            "hint": "Comprueba qué relación acredita el escenario y qué conexión aún falta demostrar.",
+            "correct": "Conservaste una hipótesis temporal sin fusionar casos que todavía carecen de vínculo técnico.",
+            "soft": "La coincidencia ayuda a buscar, pero la agrupación necesita una razón comprobable adicional.",
+            "sharp": "Dos avisos compartiendo desayuno no se casaron, cariño; investiga el vínculo antes de unirlos."
+          }
+        },
+        {
+          "prompt": "¿Cómo se decide si reiniciar durante el triaje?",
+          "scenario": "El reinicio podría detener actividad dañina, pero también interrumpir reservas y perder datos volátiles útiles para la investigación del servidor.",
+          "options": [
+            "Aplicarlo siempre para que desaparezca cualquier aviso visible",
+            "Evaluar daño en curso, plan, autoridad y efectos sobre servicio y evidencia",
+            "Prohibirlo en cualquier circunstancia aunque exista peligro inmediato previsto"
+          ],
+          "answer": 1,
+          "explanation": "La decisión debe considerar consecuencias y necesidades del caso conforme al procedimiento y la autoridad; ni reiniciar automáticamente ni prohibirlo universalmente resuelve el equilibrio operativo descrito.",
+          "wrongExplanations": [
+            "Un reinicio puede alterar evidencias y continuidad sin eliminar la causa; decidirlo solo por el aviso visible ignora riesgos y comprobaciones necesarias del caso.",
+            null,
+            "Las circunstancias pueden requerir acciones urgentes autorizadas para limitar daños; una prohibición absoluta desconoce esos escenarios y los criterios del plan de respuesta."
+          ],
+          "aoi": {
+            "question": "No pulsemos botones por ansiedad, tesoro; comparemos qué protegemos y qué podemos perder.",
+            "hint": "Busca una decisión contextual que incluya impacto, evidencia y responsabilidad operativa.",
+            "correct": "Reconociste que una acción urgente conserva efectos que deben evaluarse y registrarse.",
+            "soft": "La respuesta necesita equilibrar necesidades reales y no una regla absoluta sin contexto.",
+            "sharp": "Reiniciar no es un exorcismo universal, demonios; sigue el plan y explica sus consecuencias."
+          }
+        },
+        {
+          "prompt": "¿Cuándo queda completo el traspaso del caso al siguiente turno?",
+          "scenario": "El analista redactó un resumen con fuentes y preguntas, pero aún no sabe si alguien recibió la tarea y asumió el seguimiento de la decisión pendiente.",
+          "options": [
+            "Cuando envía muchas capturas aunque nadie responda",
+            "Cuando borra su lista personal para olvidar la responsabilidad",
+            "Cuando confirma recepción, responsable y estado de acciones pendientes según el procedimiento"
+          ],
+          "answer": 2,
+          "explanation": "La entrega necesita continuidad de responsabilidad además de información; confirmar receptor y pendientes reduce el riesgo de que una decisión urgente quede sin atención entre turnos.",
+          "wrongExplanations": [
+            "Enviar material no asegura que alguien lo haya recibido o entendido; la coordinación exige verificar quién continúa las tareas y con qué información actualizada.",
+            "Borrar una lista personal no completa una entrega operativa y puede ocultar pendientes; el seguimiento debe quedar registrado en el sistema o procedimiento acordado.",
+            null
+          ],
+          "aoi": {
+            "question": "El caso no se mueve de turno solo porque tu mensaje sí lo hizo, cielo.",
+            "hint": "Busca qué comprobación asegura continuidad de tareas y decisiones después de la entrega.",
+            "correct": "Cerraste el traspaso con responsabilidad concreta y conservaste visibles los próximos pasos.",
+            "soft": "El resumen está preparado; todavía falta verificar quién lo continúa y qué debe resolver.",
+            "sharp": "La bandeja enviada no hace guardias, cariño; confirma quién sostiene ahora el caso."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos señales con consecuencias diferentes",
+          "scenario": "Un puesto muestra un intento de acceso que el control bloqueó. El servidor de reservas presenta cambios no autorizados que impiden nuevas reservas y la actividad sigue ocurriendo según registros confirmados.",
+          "explanation": "La segunda señal requiere atención prioritaria por impacto confirmado y actividad en curso, conforme al procedimiento. El intento bloqueado también se documenta y evalúa; no se descarta para siempre ni se declara relacionado con el servidor sin evidencia adicional."
+        },
+        {
+          "title": "Un escalado sin siguiente responsable",
+          "scenario": "El analista envía varias capturas a un grupo y termina su turno sin confirmar quién atenderá la solicitud de contención del servidor crítico ni registrar la decisión pendiente.",
+          "explanation": "El caso necesita un traspaso explícito: resumen, prioridad, acciones, dudas y responsable receptor confirmado. Compartir imágenes no asegura que alguien haya asumido la tarea. Debe mantenerse seguimiento hasta completar la entrega según el procedimiento de respuesta."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "En el centro ficticio Bruma hay dos alertas: un intento bloqueado en un puesto y modificaciones no autorizadas en el servidor de reservas. Debes ordenar la atención, delimitar afectados y entregar un escalado que permita actuar.",
+      "scenario": "En el centro ficticio Bruma hay dos alertas: un intento bloqueado en un puesto y modificaciones no autorizadas en el servidor de reservas. Debes ordenar la atención, delimitar afectados y entregar un escalado que permita actuar.",
+      "steps": [
+        "Resume la alerta con hechos y fuentes identificados.",
+        "Comprueba impacto, actividad en curso y alcance conocido.",
+        "Aplica criterios de prioridad y responsables del procedimiento.",
+        "Recoge información proporcional sin alterar innecesariamente evidencias.",
+        "Escala con acciones realizadas, incertidumbres y próxima decisión requerida."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-csf"
+      ],
+      "aoi": {
+        "intro": "Ordenemos la mesa, cariño; la alerta que grita más fuerte no siempre importa más.",
+        "theory0": "El triaje pide una decisión inicial bien fundada, no resolver el universo antes del café.",
+        "theory1": "Separar confirmado y pendiente nos permite ampliar el alcance sin inventar víctimas adicionales.",
+        "theory2": "Cuando escales, entrégales una pregunta que puedan decidir y pruebas que puedan revisar.",
+        "theory3": "La urgencia necesita coordinación; pulsar reiniciar por nervios sigue teniendo consecuencias reales.",
+        "case0": "El servidor está perdiendo reservas ahora; esa consecuencia pesa más que el color del aviso.",
+        "case1": "Tus capturas llegaron al grupo, cielo; ahora falta que la responsabilidad llegue a alguien concreto.",
+        "pass": "Priorizaste con contexto y dejaste una entrega que otro turno puede continuar sin adivinar.",
+        "review": "Volvamos a hechos, impacto y siguiente responsable; el caso aún tiene una pieza suelta."
+      }
+    },
+    {
+      "id": "security-operations-prioridad",
+      "title": "Priorizar vulnerabilidades con riesgo y contexto",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Confirmar aplicabilidad antes de ordenar una lista",
+          "body": "Un aviso de vulnerabilidad describe un problema bajo determinadas condiciones, no una prueba automática de que cualquier equipo con un nombre parecido esté afectado. Comprueba producto, versión, componentes habilitados y requisitos que declara la fuente oficial. Un inventario incompleto puede dificultar esa comparación y debe registrarse como una limitación que necesita resolución. También pueden existir correcciones incorporadas por un distribuidor que no se reconocen leyendo solo un número de versión simplificado. Consulta la documentación apropiada al producto y conserva el razonamiento. Un escáner aporta observaciones y posibles hallazgos, pero su resultado debe interpretarse con el contexto y la calidad de la comprobación. Si una detección no se confirma, explica qué verificaste y por qué cambia la clasificación. Esta primera etapa evita gastar la ventana de trabajo en un problema que no corresponde al sistema mientras queda pendiente otro que sí tiene condiciones de exposición y consecuencias relevantes para la organización."
+        },
+        {
+          "title": "Severidad técnica y prioridad operativa se relacionan",
+          "body": "CVSS proporciona una forma estructurada de expresar características de severidad de una vulnerabilidad. Debes identificar versión del sistema, vector y grupos de métricas utilizados para interpretar un valor; no asumas que dos números obtenidos bajo bases diferentes tienen el mismo significado. La severidad técnica es una entrada al análisis, mientras la prioridad operativa incorpora el entorno y las consecuencias que importan a la organización. Una vulnerabilidad en un equipo sin camino de acceso efectivo no plantea necesariamente la misma urgencia que otra expuesta en un servicio crítico. Esa comparación tampoco autoriza a olvidar el equipo aislado: las condiciones y los controles pueden cambiar. Registra el criterio, la evidencia y el plazo correspondiente. Evita inventar una fórmula universal que mezcle cifras sin validación. El proceso debe permitir explicar por qué una acción se atiende primero, quién acepta el tratamiento temporal de las demás y qué observación obligaría a cambiar el orden previsto."
+        },
+        {
+          "title": "Exposición y explotación necesitan evidencias distintas",
+          "body": "Exposición significa que existen condiciones de acceso o uso relevantes para que una amenaza alcance el componente vulnerable; puede depender de rutas, autenticación, funciones y controles comprobados. Explotación confirmada describe actividad que aprovecha la vulnerabilidad, según evidencia cuya procedencia y alcance deben conocerse. Una prueba de concepto publicada no equivale automáticamente a explotación en tu organización. Del mismo modo, que no hayas observado ataques no demuestra que nunca existieron si la cobertura era limitada. Consulta fuentes oficiales y avisos del proveedor para determinar condiciones y medidas recomendadas. Las señales externas ayudan a priorizar, pero no sustituyen la revisión de las versiones y del servicio local. En nuestro caso, un portal realmente afectado, accesible y con explotación confirmada merece atención urgente conforme a los criterios establecidos. Documenta qué parte de esa afirmación está comprobada y qué parte requiere seguimiento, evitando convertir una sospecha de exposición en una declaración de incidente sin evidencia adicional."
+        },
+        {
+          "title": "Tratar el riesgo incluye medidas, plazos y revisión",
+          "body": "La corrección puede ser una actualización, una modificación recomendada o la retirada del componente. Si no puede aplicarse inmediatamente, una medida temporal debe tener alcance explícito y una comprobación de eficacia, no solo una nota de buenas intenciones. Limitar el acceso puede reducir exposición sin corregir el defecto; su estado debe seguir visible como tratamiento provisional. Asigna responsable, fecha y condición de revisión. Evalúa consecuencias de la medida sobre usuarios legítimos y otros servicios antes de asumir que bloquear un puerto es suficiente. Después de la corrección, verifica que la condición vulnerable desapareció y que el servicio necesario sigue funcionando bajo las restricciones esperadas. Una excepción aceptada no debería desaparecer del seguimiento mientras persista la causa. La prioridad es una decisión revisable: un nuevo camino de acceso, un fallo del control compensatorio o evidencia de explotación pueden cambiarla. Mantener ese vínculo entre datos y decisiones convierte una lista de hallazgos en trabajo defensivo verificable."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe comprobarse al recibir un aviso de vulnerabilidad?",
+          "scenario": "El inventario muestra un producto de la misma familia, pero faltan la versión exacta y el estado del componente que el aviso exige para estar afectado.",
+          "options": [
+            "Producto, versión y condiciones específicas de aplicabilidad",
+            "Solo que el título del aviso parezca alarmante",
+            "Que cualquier equipo del fabricante esté comprometido"
+          ],
+          "answer": 0,
+          "explanation": "La coincidencia de familia no basta; confirmar versión y condiciones permite determinar si el sistema está afectado antes de priorizar una corrección concreta y sus pruebas.",
+          "wrongExplanations": [
+            null,
+            "El tono del título no establece presencia del componente ni cumplimiento de las condiciones técnicas necesarias para que el problema corresponda al activo.",
+            "Un aviso de vulnerabilidad no demuestra compromiso ni afecta automáticamente a todo el catálogo del fabricante; ambas conclusiones necesitan comprobaciones concretas adicionales."
+          ],
+          "aoi": {
+            "question": "Antes de correr tras el aviso, cielo, confirma que está hablando de nuestro equipo.",
+            "hint": "Busca las condiciones del producto real que deben coincidir con el problema publicado.",
+            "correct": "Comenzaste por verificar aplicabilidad y evitaste convertir un nombre parecido en diagnóstico.",
+            "soft": "La urgencia del lenguaje no reemplaza la comparación de versión y funciones afectadas.",
+            "sharp": "Ese titular no revisó nuestro inventario, demonios; comprueba si el sistema realmente encaja."
+          }
+        },
+        {
+          "prompt": "¿Qué explica atender antes el portal del caso?",
+          "scenario": "El portal tiene explotación confirmada y consecuencias importantes, mientras el otro activo conserva aislamiento verificado y una ventana posterior planificada aunque su puntuación base sea mayor.",
+          "options": [
+            "Ignorar para siempre cualquier vulnerabilidad con menor exposición actual",
+            "Combinar severidad con exposición, explotación e impacto del servicio",
+            "Suponer que las puntuaciones no contienen ninguna información técnica útil"
+          ],
+          "answer": 1,
+          "explanation": "La prioridad operativa necesita contexto además de severidad; el orden puede justificarse por explotación y consecuencias actuales, manteniendo seguimiento y revisión del activo que queda para después.",
+          "wrongExplanations": [
+            "Una prioridad menor no elimina la necesidad de corrección ni garantiza que el aislamiento persista; deben conservarse responsable, plazo y condiciones de revisión.",
+            null,
+            "La puntuación sí aporta una caracterización técnica que puede servir al análisis; el problema es usarla como decisión completa sin considerar el entorno."
+          ],
+          "aoi": {
+            "question": "El portal nos da razones concretas para adelantarse, cariño; no estamos sorteando la cola.",
+            "hint": "Relaciona la decisión con los factores locales y el seguimiento de ambos hallazgos.",
+            "correct": "Usaste la severidad como una entrada y explicaste por qué el servicio cambia la urgencia.",
+            "soft": "La alternativa correcta mantiene información técnica y añade contexto, sin abandonar los otros activos.",
+            "sharp": "El diez no dirige tu organización, joder; interpreta exposición e impacto junto con la cifra."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una prueba de concepto publicada?",
+          "scenario": "La fuente describe un ejemplo técnico de explotación, pero el equipo aún no ha encontrado evidencias de uso contra sus propios sistemas afectados.",
+          "options": [
+            "Que todos los sistemas locales ya fueron atacados",
+            "Que el problema no puede tener importancia sin un ataque local observado",
+            "Que existe una demostración técnica que debe contextualizarse con el entorno y la evidencia local"
+          ],
+          "answer": 2,
+          "explanation": "La publicación puede informar la evaluación de la amenaza, pero no acredita por sí sola explotación local; aplicabilidad, exposición y observaciones del entorno siguen necesitando comprobación.",
+          "wrongExplanations": [
+            "La disponibilidad pública de una demostración no identifica qué sistemas fueron atacados ni qué acciones ocurrieron dentro de una organización concreta.",
+            "La ausencia de observación local puede reflejar cobertura limitada; la prioridad también considera exposición y consecuencias antes de que se confirme un incidente.",
+            null
+          ],
+          "aoi": {
+            "question": "Una demostración nos cuenta que hay una técnica, cielo; no que visitó nuestro servidor.",
+            "hint": "Separa información externa sobre capacidad y evidencia de actividad en el entorno propio.",
+            "correct": "Aprovechaste la pista externa sin atribuirle observaciones locales que no contiene.",
+            "soft": "El dato ayuda a evaluar, pero todavía no responde qué pasó dentro de nuestra red.",
+            "sharp": "La prueba pública no mandó una postal desde nuestro servidor, cariño; investiga el uso local."
+          }
+        },
+        {
+          "prompt": "¿Cómo se registra una restricción que reduce exposición sin corregir el defecto?",
+          "scenario": "El componente sigue vulnerable, pero una regla temporal comprobada limita quién puede alcanzarlo hasta que llegue la ventana de actualización.",
+          "options": [
+            "Como mitigación temporal con responsable, límites y revisión",
+            "Como eliminación definitiva de la vulnerabilidad aunque siga instalada",
+            "Como razón para borrar cualquier tarea futura relacionada"
+          ],
+          "answer": 0,
+          "explanation": "La restricción modifica el acceso y puede reducir riesgo, pero no corrige necesariamente el defecto; debe conservarse la acción pendiente y una revisión de la medida temporal.",
+          "wrongExplanations": [
+            null,
+            "Marcar el problema como eliminado confunde mitigación de exposición con corrección del componente y puede ocultar la necesidad de aplicar la actualización prevista.",
+            "La medida depende de condiciones que pueden cambiar; retirar el seguimiento deja sin control tanto su eficacia como la corrección que aún necesita el sistema."
+          ],
+          "aoi": {
+            "question": "Hemos cerrado un camino, cariño; todavía no hemos reparado la pieza que estaba rota.",
+            "hint": "Busca una clasificación que reconozca la utilidad sin declarar corregido lo pendiente.",
+            "correct": "Distinguiste tratamiento temporal y corrección, dejando visible el trabajo que resta realizar.",
+            "soft": "La barrera puede ayudar y al mismo tiempo necesitar seguimiento hasta resolver el defecto.",
+            "sharp": "Ese firewall no escribió un parche mientras mirabas, demonios; registra la mitigación como temporal."
+          }
+        },
+        {
+          "prompt": "¿Qué información hace interpretable una puntuación CVSS citada?",
+          "scenario": "Un informe presenta solo un número y quiere compararlo con otro obtenido bajo una versión y combinación de métricas que aún no ha identificado.",
+          "options": [
+            "El tamaño de fuente con que se muestra la cifra",
+            "Versión, vector y grupos de métricas utilizados en la valoración",
+            "La suposición de que todo número decimal describe el mismo entorno"
+          ],
+          "answer": 1,
+          "explanation": "La puntuación debe interpretarse junto con el sistema y las métricas aplicadas; esa información permite conocer su base y evitar comparaciones que omitan diferencias de significado.",
+          "wrongExplanations": [
+            "La tipografía puede mejorar legibilidad, pero no describe las características técnicas ni los grupos de métricas que dieron lugar a la valoración publicada.",
+            null,
+            "Dos valores no son automáticamente equivalentes por compartir escala; sus versiones y condiciones de cálculo pueden aportar contextos distintos que el informe necesita explicitar."
+          ],
+          "aoi": {
+            "question": "Dame el contexto de esa cifra, cielo; los decimales solos son bastante presumidos.",
+            "hint": "Identifica los datos que permiten reconstruir qué caracteriza realmente la puntuación citada.",
+            "correct": "Pediste una referencia interpretable en lugar de comparar números sin conocer su construcción.",
+            "soft": "Revisa qué metadatos técnicos faltan para entender la valoración que muestra el informe.",
+            "sharp": "El decimal no trae currículum pegado, cariño; anota versión y métricas antes de compararlo."
+          }
+        },
+        {
+          "prompt": "¿Qué cambio obliga a revisar una prioridad antes aplazada?",
+          "scenario": "El equipo tenía acceso restringido verificado, pero una nueva publicación del servicio crea un camino desde una red que antes no podía alcanzarlo.",
+          "options": [
+            "Que el inventario siga usando el mismo nombre del activo",
+            "Que el informe anterior tuviera una fecha de cierre vistosa",
+            "La modificación de exposición que sustentaba la decisión anterior"
+          ],
+          "answer": 2,
+          "explanation": "La decisión se apoyaba en condiciones de acceso concretas; al cambiar ese supuesto, debe reevaluarse el riesgo y comprobar si siguen siendo apropiados la prioridad y el tratamiento previsto.",
+          "wrongExplanations": [
+            "El nombre identifica el activo, pero no garantiza que sus condiciones de acceso permanezcan iguales; la exposición puede cambiar aunque la etiqueta del equipo se conserve.",
+            "Una fecha de informe no impide cambios posteriores del entorno; las decisiones necesitan revisión cuando aparecen datos que alteran sus fundamentos técnicos y operativos.",
+            null
+          ],
+          "aoi": {
+            "question": "La puerta que estaba cerrada ahora se publica, cielo; nuestra decisión también tiene que moverse.",
+            "hint": "Busca qué supuesto de riesgo dejó de ser válido después del cambio de acceso.",
+            "correct": "Detectaste el cambio que exige actualizar prioridad y comprobar las medidas que la sostenían.",
+            "soft": "La revisión debe seguir las condiciones reales, aunque el documento anterior pareciera completo.",
+            "sharp": "El informe viejo no bloquea la ruta nueva, joder; reevalúa esa exposición inmediatamente según el plan."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El número mayor que no decide solo",
+          "scenario": "El equipo A tiene mayor puntuación base, está realmente aislado del camino de ataque conocido y admite una ventana posterior. El portal B está afectado, es accesible y tiene explotación confirmada con impacto operativo importante.",
+          "explanation": "B puede recibir atención primero por exposición, explotación y consecuencias conforme a los criterios del caso. A conserva un plan y seguimiento: el aislamiento debe verificarse y revisarse, sin convertir su menor urgencia actual en una exención permanente de corrección."
+        },
+        {
+          "title": "La mitigación que no era parche",
+          "scenario": "Para ganar una ventana de pruebas, el responsable restringe el acceso al componente vulnerable y comprueba que solo el servicio imprescindible conserva paso. El informe propone marcar la vulnerabilidad como eliminada.",
+          "explanation": "La restricción puede reducir exposición, pero el defecto continúa hasta aplicar y verificar la corrección adecuada. Debe registrarse como medida temporal con responsable, evidencia de eficacia, impacto y fecha de revisión, manteniendo visible la acción pendiente de actualización."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Dos hallazgos ficticios compiten por la ventana de mantenimiento: uno tiene mayor puntuación base en un equipo aislado y otro afecta un portal expuesto con explotación confirmada. Debes justificar el orden sin usar el número como piloto automático.",
+      "scenario": "Dos hallazgos ficticios compiten por la ventana de mantenimiento: uno tiene mayor puntuación base en un equipo aislado y otro afecta un portal expuesto con explotación confirmada. Debes justificar el orden sin usar el número como piloto automático.",
+      "steps": [
+        "Confirma producto, versión y condiciones de aplicabilidad.",
+        "Identifica exposición, controles y consecuencias sobre el servicio.",
+        "Consulta severidad y evidencia de explotación con fuentes verificables.",
+        "Prioriza acciones y responsables según criterios organizativos.",
+        "Registra excepciones, medidas temporales y fecha de revisión."
+      ],
+      "sourceIds": [
+        "net-cvss",
+        "net-patching",
+        "net-csf"
+      ],
+      "aoi": {
+        "intro": "Vamos a priorizar con cabeza, cariño; el número más grande no conoce tu negocio.",
+        "theory0": "Primero demuestra que ese aviso corresponde al producto real y a sus condiciones.",
+        "theory1": "La severidad aporta contexto técnico; la prioridad también pregunta qué puede perder este servicio.",
+        "theory2": "Expuesto, explotable y explotado no son la misma palabra con distinto peinado, cielo.",
+        "theory3": "Una mitigación temporal necesita dueño y revisión; no le concedas residencia eterna por comodidad.",
+        "case0": "El portal accesible tiene razones para adelantarse sin borrar al equipo aislado de nuestra lista.",
+        "case1": "Cerrar el camino ayuda, pero el defecto no se evaporó porque pusimos una barrera.",
+        "pass": "Justificaste el orden con evidencias y conservaste seguimiento de lo que todavía queda pendiente.",
+        "review": "Repasemos aplicabilidad, exposición y consecuencias; la cifra está decidiendo más de lo que sabe."
+      }
+    },
+    {
+      "id": "security-operations-parches",
+      "title": "Actualizaciones con prueba, despliegue y verificación",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Actualizar es mantenimiento planificado de un servicio",
+          "body": "La gestión de parches conecta seguridad con disponibilidad y operación. Empieza por saber qué activos y versiones existen, qué corrección corresponde y qué dependencias pueden cambiar al aplicarla. Consulta instrucciones y avisos oficiales del proveedor para identificar requisitos, secuencia, reinicios y limitaciones conocidas. Un paquete para un modelo parecido puede ser incompatible aunque su nombre resulte convincente. La urgencia de una vulnerabilidad influye en la ventana de trabajo, pero no elimina la necesidad de comprobar el origen de la corrección. Obtén el material mediante canales autorizados y utiliza los mecanismos de verificación que el proveedor publique y el procedimiento establezca. No guardes copias de claves o credenciales dentro del expediente general de actualización. Registra la versión actual, la versión objetivo y los activos incluidos. Ese alcance permitirá comprobar al final si corregiste toda la población prevista o solo la parte que respondió primero a una orden central."
+        },
+        {
+          "title": "Probar con condiciones que representen el uso necesario",
+          "body": "Una prueba útil reproduce las funciones y dependencias relevantes del servicio, dentro de las posibilidades del entorno. Comprueba administración, autenticación, rutas, políticas y tareas que puedan verse afectadas, no únicamente que el equipo encienda. Define resultados esperados antes del cambio e incluye restricciones que deban mantenerse: una actualización no puede considerarse satisfactoria porque abre más acceso del autorizado y así permite conectar a todos. En una práctica pequeña, basta documentar un conjunto de casos representativos y sus límites; no presentes esa muestra como garantía absoluta de ausencia de errores. Cuando no existe un entorno de prueba equivalente, registra la limitación y refuerza la planificación de etapas y recuperación según el riesgo. Coordina con los responsables del servicio para que las pruebas incluyan actividades reales y criterios de aceptación. La comparación con una línea base previa ayuda a distinguir efectos del cambio de problemas que ya estaban presentes antes de actualizar."
+        },
+        {
+          "title": "Desplegar por etapas permite limitar consecuencias",
+          "body": "Una estrategia escalonada comienza con una parte controlada de la población y observa resultados antes de ampliar. La muestra inicial debe elegirse por representatividad y capacidad de recuperación, no solo por comodidad. Evita actualizar simultáneamente todos los elementos que sostienen el mismo camino de gestión sin un plan compatible con su redundancia y soporte. Prepara acceso alternativo autorizado cuando corresponda y confirma quién puede ejecutar la recuperación. Define condiciones de parada con indicadores concretos, como pérdida de una función crítica o fallo de la prueba de acceso restringido. Una reversión no siempre es soportada ni elimina todos los cambios de datos; revisa instrucciones y dependencias antes de prometerla. Comunica ventana, impacto esperado y canal de seguimiento. Si una etapa falla, conserva registros y analiza antes de repetir la misma acción en toda la flota. Limitar el alcance de un fallo es una ventaja operativa, no un motivo para esconderlo del informe."
+        },
+        {
+          "title": "Verificar instalación no termina la verificación de seguridad",
+          "body": "Que una herramienta marque la tarea como enviada o completada no demuestra automáticamente que el proceso activo use la corrección. Algunos productos requieren reinicio o recarga, y pueden quedar instancias antiguas fuera del grupo seleccionado. Verifica versión efectiva y condiciones del aviso con un método apropiado, además del funcionamiento y las restricciones del servicio. Registra resultados por activo y conserva pendientes con responsable y plazo. Si una comprobación sigue detectando el hallazgo, revisa aplicabilidad y calidad de la prueba antes de concluir que el parche falló o ignorar el resultado. También vigila efectos posteriores durante un período definido, pues ciertas tareas solo se ejecutan en horarios concretos. Cierra el cambio cuando se cumplan los criterios acordados o documenta claramente la excepción. La actualización aporta valor cuando reduce el problema previsto y mantiene el servicio necesario, no cuando el tablero muestra una barra verde que nadie contrastó con el estado real del sistema."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué dato confirma que el paquete corresponde al activo de Nimbo?",
+          "scenario": "El aviso recomienda una corrección concreta y la descarga incluye variantes para modelos y versiones que no son intercambiables.",
+          "options": [
+            "Modelo, versión y requisitos compatibles con el equipo afectado",
+            "Que el nombre del archivo termine en una extensión conocida",
+            "Que alguien lo haya reenviado por un canal informal"
+          ],
+          "answer": 0,
+          "explanation": "La compatibilidad se establece con identificación del producto y requisitos oficiales; apariencia del nombre o procedencia informal no garantizan que el paquete sea adecuado para ese activo.",
+          "wrongExplanations": [
+            null,
+            "Una extensión no identifica modelo, requisitos ni contenido auténtico; debe verificarse el paquete mediante los canales y mecanismos previstos por el proveedor y el procedimiento.",
+            "Un reenvío no sustituye la comprobación de origen, integridad y compatibilidad; puede introducir material equivocado o alterado aunque parezca una solución rápida."
+          ],
+          "aoi": {
+            "question": "Ese paquete necesita coincidir con nuestro equipo, cielo; no basta con vestirse de actualización.",
+            "hint": "Compara identidad del activo y condiciones publicadas para la variante de corrección propuesta.",
+            "correct": "Relacionaste el paquete con el modelo real antes de introducirlo en la ventana de cambio.",
+            "soft": "La compatibilidad requiere más información que la apariencia o el canal de un archivo.",
+            "sharp": "La extensión no leyó la etiqueta del equipo, demonios; verifica modelo y requisitos oficiales."
+          }
+        },
+        {
+          "prompt": "¿Qué conjunto de pruebas valida mejor el cambio del dispositivo?",
+          "scenario": "El equipo debe permitir administración desde la red de gestión y rechazarla desde puestos comunes mientras mantiene sus rutas y autenticación necesarias.",
+          "options": [
+            "Solo comprobar que se encienda una luz del chasis",
+            "Acceso autorizado, rechazo no autorizado y funciones críticas previstas",
+            "Permitir todo el tráfico para evitar cualquier resultado negativo"
+          ],
+          "answer": 1,
+          "explanation": "Las pruebas deben verificar funciones necesarias y restricciones conservadas; comprobar acceso legítimo y rechazo indebido permite evaluar el servicio bajo la política que debía mantener el cambio.",
+          "wrongExplanations": [
+            "Una señal de encendido no demuestra autenticación, rutas ni cumplimiento de controles; el servicio puede estar activo físicamente y seguir funcionando de manera incorrecta.",
+            null,
+            "Abrir todo elimina restricciones que forman parte del resultado esperado y no puede utilizarse como evidencia de que la actualización conservó la configuración de seguridad requerida."
+          ],
+          "aoi": {
+            "question": "Quiero que entre quien debe y se quede fuera quien no, cariño; ambas pruebas cuentan.",
+            "hint": "Busca una validación que incluya funcionamiento y límites de acceso del diseño original.",
+            "correct": "Probaste continuidad y restricciones sin redefinir éxito como acceso universal al dispositivo.",
+            "soft": "Una prueba completa necesita observar también el comportamiento que la política debe impedir.",
+            "sharp": "Si abres todo, hasta el error entra cómodo, joder; valida las restricciones que importan."
+          }
+        },
+        {
+          "prompt": "¿Qué condición hace útil un despliegue inicial reducido?",
+          "scenario": "La organización quiere observar efectos antes de ampliar y debe elegir una muestra que use funciones semejantes y pueda recuperarse si aparece un fallo.",
+          "options": [
+            "Elegir únicamente equipos que no usan ninguna función del servicio",
+            "Actualizar toda la redundancia a la vez para terminar antes",
+            "Seleccionar una muestra representativa con observación y recuperación previstas"
+          ],
+          "answer": 2,
+          "explanation": "La etapa inicial necesita aportar información relevante sobre el uso real y limitar consecuencias; una muestra recuperable y representativa permite decidir si ampliar con evidencia suficiente.",
+          "wrongExplanations": [
+            "Una muestra sin funciones comparables puede omitir los problemas que afectarían al resto y dar una confianza injustificada para extender el cambio.",
+            "Modificar todos los elementos del mismo servicio simultáneamente puede eliminar margen de recuperación y contradice el objetivo de limitar alcance mientras se observan resultados.",
+            null
+          ],
+          "aoi": {
+            "question": "La muestra pequeña debe enseñarnos algo del servicio grande, cielo; elige con intención.",
+            "hint": "Relaciona representatividad, observación y capacidad de recuperación en la primera etapa del cambio.",
+            "correct": "Elegiste una etapa que limita consecuencias y produce evidencia útil antes de continuar.",
+            "soft": "Reducir cantidad no basta si la muestra no representa las funciones que necesitas comprobar.",
+            "sharp": "Un equipo que no hace nada pasa muchas pruebas inútiles, cariño; selecciona uno representativo."
+          }
+        },
+        {
+          "prompt": "¿Qué falta cuando el paquete está instalado pero requiere reinicio del servicio?",
+          "scenario": "La consola terminó la tarea, mientras la documentación indica que el proceso activo solo cargará la corrección después de una activación controlada.",
+          "options": [
+            "Activar según el procedimiento y verificar el estado efectivo antes de cerrar",
+            "Declarar corregido el defecto sin comprobar el proceso activo",
+            "Borrar el aviso para que coincida con la marca de tarea completada"
+          ],
+          "answer": 0,
+          "explanation": "La instalación no garantiza que el componente corregido esté en uso; debe realizarse la activación requerida de forma coordinada y comprobar versión efectiva, seguridad y funcionamiento posterior.",
+          "wrongExplanations": [
+            null,
+            "Cerrar sin verificar el estado activo confunde presencia del paquete con ejecución de la corrección y deja incierto si el defecto continúa siendo alcanzable.",
+            "Eliminar la advertencia no modifica el componente ni aporta evidencia de corrección; solo oculta una condición que el procedimiento todavía necesita resolver y comprobar."
+          ],
+          "aoi": {
+            "question": "El paquete llegó, tesoro; falta que el servicio empiece a usar lo que instalamos.",
+            "hint": "Distingue archivos presentes y componente cargado cuando el proveedor exige una activación adicional.",
+            "correct": "Identificaste el paso pendiente y conservaste una verificación del estado que realmente presta servicio.",
+            "soft": "La marca de tarea terminada no sustituye la comprobación que exige este producto.",
+            "sharp": "La barra verde no reinició el proceso por cariño, demonios; activa y verifica como corresponde."
+          }
+        },
+        {
+          "prompt": "¿Cómo se prepara una posible reversión de actualización?",
+          "scenario": "El equipo quiere recuperar el servicio si falla una función crítica, pero aún no conoce compatibilidad de versiones ni posibles cambios de datos.",
+          "options": [
+            "Prometiendo que cualquier versión siempre acepta volver atrás sin efectos",
+            "Consultando soporte, dependencias y pasos de recuperación antes del cambio",
+            "Suponiendo que una copia de pantalla basta para restaurar todo el sistema"
+          ],
+          "answer": 1,
+          "explanation": "La reversión depende de soporte y estado del sistema; revisar instrucciones, datos y dependencias permite preparar una recuperación realista en lugar de prometer un regreso universalmente seguro.",
+          "wrongExplanations": [
+            "No todas las actualizaciones admiten retroceso simple y algunos cambios afectan formatos o datos; una promesa absoluta ignora condiciones que deben comprobarse antes.",
+            null,
+            "Una captura puede documentar información, pero no contiene necesariamente imágenes, datos, secretos protegidos o procedimientos que la recuperación completa necesita para funcionar correctamente."
+          ],
+          "aoi": {
+            "question": "Antes de prometer volver, cielo, confirma si esa puerta realmente admite el camino de regreso.",
+            "hint": "Busca qué preparación transforma una intención de revertir en un procedimiento aplicable al producto.",
+            "correct": "Preparaste recuperación con soporte y dependencias en lugar de confiar en una promesa genérica.",
+            "soft": "La vuelta necesita condiciones comprobadas antes de que aparezca la presión del fallo.",
+            "sharp": "El botón imaginario de deshacer no viene en todos los equipos, cariño; revisa el soporte."
+          }
+        },
+        {
+          "prompt": "¿Qué se hace con una instancia fuera del grupo actualizado?",
+          "scenario": "La revisión posterior identifica un dispositivo afectado que no recibió la corrección porque el inventario central tenía una asociación de grupo incompleta.",
+          "options": [
+            "Se declara corregida toda la flota porque la mayoría respondió",
+            "Se ignora mientras no vuelva a generar una alerta visible",
+            "Se registra como pendiente, se trata su riesgo y se completa el seguimiento del alcance"
+          ],
+          "answer": 2,
+          "explanation": "La cobertura de corrección debe describirse por activo; una instancia omitida mantiene necesidad de tratamiento, responsable y verificación, además de corregir la causa documental de la omisión.",
+          "wrongExplanations": [
+            "La mayoría actualizada no demuestra cobertura total y puede ocultar un camino vulnerable restante; la afirmación debe corresponder a la población realmente verificada.",
+            "La ausencia de una alerta no elimina la aplicabilidad del problema ni sustituye la gestión del riesgo de un sistema confirmado como pendiente de corrección.",
+            null
+          ],
+          "aoi": {
+            "question": "Nos faltó un invitado a la actualización, cielo; la lista final todavía tiene trabajo.",
+            "hint": "Mantén visible el activo omitido y la razón por la que quedó fuera del alcance.",
+            "correct": "Reconociste la cobertura incompleta y dejaste una acción verificable para cerrar la diferencia.",
+            "soft": "El cierre debe describir excepciones reales y no convertir una mayoría en totalidad.",
+            "sharp": "Casi todos no significa todos, joder; registra esa instancia y completa su tratamiento."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La tarea completada con proceso antiguo",
+          "scenario": "La consola indica instalación terminada, pero la documentación exige reiniciar el servicio para cargar el componente nuevo. La ventana no incluyó ese paso y la instancia activa conserva el estado anterior.",
+          "explanation": "La marca de tarea no acredita corrección efectiva. Debe coordinarse la activación requerida, comprobar el proceso y repetir las pruebas de seguridad y servicio. El registro debe distinguir paquete instalado de componente realmente en uso para evitar un cierre prematuro."
+        },
+        {
+          "title": "El acceso que solo funciona abriendo todo",
+          "scenario": "Después de actualizar, la administración falla desde el puesto autorizado. El operador propone permitir acceso desde cualquier segmento y declarar la prueba superada porque así consigue entrar.",
+          "explanation": "Abrir el acceso cambia la política y no demuestra que el servicio conserve sus restricciones. Hay que investigar la incompatibilidad o configuración, aplicar el procedimiento de parada o recuperación y validar tanto acceso legítimo como rechazo de orígenes no autorizados."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "La organización ficticia Nimbo debe corregir un dispositivo de acceso sin perder conectividad de administración. Preparas una actualización con origen comprobado, prueba representativa, criterios de recuperación y verificación posterior del defecto y del servicio.",
+      "scenario": "La organización ficticia Nimbo debe corregir un dispositivo de acceso sin perder conectividad de administración. Preparas una actualización con origen comprobado, prueba representativa, criterios de recuperación y verificación posterior del defecto y del servicio.",
+      "steps": [
+        "Identifica activos afectados y corrección recomendada por el proveedor.",
+        "Comprueba origen, integridad y compatibilidad del paquete.",
+        "Prueba en un entorno representativo y define recuperación.",
+        "Despliega por etapas con responsables y comunicación.",
+        "Verifica corrección, funcionamiento y estado efectivo de todas las instancias."
+      ],
+      "sourceIds": [
+        "net-patching",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Vamos a actualizar sin perder las llaves de administración, cariño; prepara también la vuelta.",
+        "theory0": "Un archivo convincente no sustituye origen comprobado, compatibilidad y versión objetivo bien identificada.",
+        "theory1": "La prueba tiene que parecerse al servicio que importa, no solo a un encendido bonito.",
+        "theory2": "Las etapas nos dejan observar antes de extender un fallo a todos nuestros dispositivos.",
+        "theory3": "Una barra verde dice que terminó una tarea; yo quiero comprobar qué está ejecutándose.",
+        "case0": "Instalado y activo aún no se han dado la mano; falta el paso que exige el producto.",
+        "case1": "Abrirlo todo para pasar la prueba cambia el problema, cielo; no lo resuelve.",
+        "pass": "Verificaste corrección y continuidad con límites conservados; ese cierre sí me resulta atractivo.",
+        "review": "Revisemos alcance, activación y pruebas; hay una condición de aceptación que todavía falta comprobar."
+      }
+    },
+    {
+      "id": "security-operations-contencion",
+      "title": "Contener sin confundir bloqueo y recuperación",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Contener busca limitar el daño actual o probable",
+          "body": "La contención aplica medidas para reducir la capacidad de una actividad dañina de continuar o extenderse. Puede incluir aislar un equipo, restringir un flujo o suspender acceso de una identidad conforme al procedimiento. No significa que el origen haya desaparecido ni que todos los activos relacionados estén identificados. Elige la medida según lo que se sabe del caso, la urgencia y las consecuencias del cambio. En Bruma, un aislamiento permite cortar comunicaciones ordinarias del puesto y mantener únicamente un canal de gestión autorizado para el equipo de respuesta. Esa excepción necesita estar definida y comprobada; no es una puerta abierta para cualquier administrador desde cualquier lugar. Registra qué esperas bloquear y qué necesitas conservar. Si existe daño activo, la coordinación puede requerir acciones rápidas previstas por el plan, pero sigue siendo necesario documentar quién actuó y qué efectos observó. Limitar una propagación no justifica afirmar que la investigación ya terminó satisfactoriamente."
+        },
+        {
+          "title": "La identidad puede conservar caminos fuera del equipo aislado",
+          "body": "Un equipo y una cuenta no son el mismo objeto de control. Aislar el puesto no revoca necesariamente sesiones de una cuenta usadas desde otro dispositivo o en un servicio externo. Evalúa qué credenciales, claves, sesiones y permisos podrían estar relacionados con el alcance confirmado o razonablemente investigado. La acción apropiada depende de capacidades y procedimientos del sistema: cambiar una contraseña no garantiza siempre la invalidación inmediata de todos los tokens existentes. Consulta el comportamiento del proveedor y verifica el efecto de revocar o suspender accesos cuando corresponda. Coordina con responsables para no inutilizar cuentas de servicio críticas sin comprender dependencias. Tampoco publiques secretos al solicitar ayuda. Documenta las acciones sobre identidad por separado de las acciones sobre red y dispositivo. Esa separación ayuda a comprobar que la medida cubre los caminos relevantes y permite explicar qué riesgo persiste aunque el puesto ya no alcance el servidor por su conexión habitual."
+        },
+        {
+          "title": "Comprobar el bloqueo incluye comprobar sus límites",
+          "body": "Después de aplicar la medida, realiza pruebas autorizadas que correspondan al comportamiento previsto. Verifica que el flujo no permitido deja de pasar y que el canal de gestión restringido funciona únicamente desde el origen autorizado. No basta con que desaparezca una alerta: el sensor podría haber perdido visibilidad o el equipo dejar de enviar registros por el aislamiento. Comprueba las fuentes y la configuración efectiva. Mantén observación sobre activos relacionados sin concluir que un único bloqueo resolvió todos los casos posibles. Registra efectos sobre usuarios, procesos y evidencias para que otras personas entiendan el nuevo estado del servicio. Una medida temporal debe tener responsable y momento de revisión, especialmente si conserva excepciones. Si no funciona como se esperaba, sigue el procedimiento de escalado y evalúa alternativas. La comparación entre intención, configuración y resultado es lo que permite afirmar que el control limita una actividad concreta dentro del alcance comprobado del incidente."
+        },
+        {
+          "title": "Retornar requiere investigar y recuperar con criterios propios",
+          "body": "La contención proporciona espacio para investigar causa, persistencia y efectos; no sustituye su tratamiento. Puede ser necesario corregir una vulnerabilidad, reconstruir un equipo, renovar credenciales o revisar permisos antes de considerar el retorno. El conjunto depende del incidente y de las evidencias disponibles. Define criterios de aceptación con responsables del servicio y de seguridad, incluyendo comprobaciones de funcionamiento, controles y seguimiento reforzado si corresponde. Restaurar una copia sin verificar su estado puede reintroducir la configuración vulnerable o el acceso que facilitó el problema. Tampoco reconectes únicamente porque el usuario necesita terminar una tarea: coordina una alternativa que considere riesgo y continuidad. Documenta la autorización de retorno y las limitaciones que permanecen. Tras restablecer acceso, observa el comportamiento durante el período acordado y conserva un camino para responder si reaparecen señales. El cierre llega por criterios cumplidos y riesgo tratado, no por el cansancio que produce mantener una máquina aislada varios días."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra el aislamiento comprobado del puesto?",
+          "scenario": "La prueba confirma que ya no inicia el flujo prohibido hacia el servidor, pero aún no se revisan causa, persistencia ni sesiones de la cuenta.",
+          "options": [
+            "Que limita ese camino de comunicación dentro del alcance probado",
+            "Que elimina automáticamente toda causa y cualquier persistencia",
+            "Que revoca siempre todas las sesiones externas de cualquier cuenta"
+          ],
+          "answer": 0,
+          "explanation": "El aislamiento verificado respalda el bloqueo del camino probado; no acredita tratamiento de causa, ausencia de persistencia ni revocación de accesos que dependen de otros mecanismos.",
+          "wrongExplanations": [
+            null,
+            "Un control de red puede reducir comunicaciones sin modificar el software o la configuración que originó el problema; la causa necesita investigación y tratamiento propios.",
+            "Las sesiones externas pueden permanecer activas independientemente del puesto aislado; deben revisarse y revocarse según las capacidades y procedimientos del servicio correspondiente."
+          ],
+          "aoi": {
+            "question": "Cerramos ese camino, cielo; no le atribuyas al bloqueo tareas que todavía no hicimos.",
+            "hint": "Limita la afirmación al flujo y las condiciones que la prueba pudo comprobar.",
+            "correct": "Definiste el éxito concreto de la contención sin confundirlo con limpieza y recuperación completas.",
+            "soft": "El resultado es útil aunque todavía queden causa y accesos adicionales por investigar.",
+            "sharp": "La regla no salió a perseguir tokens por internet, cariño; reconoce el alcance del bloqueo."
+          }
+        },
+        {
+          "prompt": "¿Qué se verifica al cambiar la contraseña de la cuenta afectada?",
+          "scenario": "La organización quiere detener sesiones indebidas, pero aún no conoce si el servicio invalida automáticamente los tokens existentes al modificar la contraseña.",
+          "options": [
+            "Que cambiarla garantiza idéntico efecto en cualquier proveedor",
+            "El comportamiento de sesiones y la necesidad de revocación según el servicio",
+            "Que ya no hace falta revisar accesos desde otros equipos"
+          ],
+          "answer": 1,
+          "explanation": "El cambio de contraseña no tiene efectos universales sobre sesiones existentes; deben consultarse capacidades y comprobarse las acciones necesarias para invalidar accesos conforme al servicio utilizado.",
+          "wrongExplanations": [
+            "Los proveedores y mecanismos de autenticación pueden gestionar sesiones de forma diferente; asumir una garantía universal deja caminos activos que quizá requieren revocación explícita.",
+            null,
+            "La cuenta puede mantener actividad desde otros contextos y el alcance debe revisarse; modificar un secreto no sustituye la investigación de sesiones y permisos relacionados."
+          ],
+          "aoi": {
+            "question": "Quiero saber qué hace este servicio con los tokens viejos, cariño; no susurrarles una contraseña nueva.",
+            "hint": "Distingue cambiar una credencial y comprobar invalidación de sesiones ya emitidas.",
+            "correct": "Buscaste el efecto real sobre acceso existente y las acciones adicionales que puedan necesitarse.",
+            "soft": "Todavía falta confirmar cómo responde el servicio a ese cambio de credencial.",
+            "sharp": "Los tokens no leen todas tus buenas intenciones, demonios; verifica si siguen siendo válidos."
+          }
+        },
+        {
+          "prompt": "¿Cómo se interpreta el silencio tras bloquear el canal del sensor?",
+          "scenario": "La consola deja de recibir registros del puesto después del aislamiento y aún no se ha probado por otra vía que el flujo dañino esté detenido.",
+          "options": [
+            "Como evidencia suficiente de que desapareció toda actividad sospechosa",
+            "Como autorización para reconectar sin realizar ninguna comprobación más",
+            "Como pérdida de visibilidad que impide concluir eficacia solo por ausencia de avisos"
+          ],
+          "answer": 2,
+          "explanation": "Al quedar bloqueada la fuente, la ausencia de avisos no informa de forma suficiente sobre la actividad; hacen falta comprobaciones autorizadas del control y de la visibilidad necesaria.",
+          "wrongExplanations": [
+            "La falta de mensajes puede explicarse por el corte del sensor y no por la desaparición del comportamiento; esa alternativa debe comprobarse antes de concluir éxito.",
+            "La reconexión requiere criterios propios de tratamiento y aceptación; perder alertas no demuestra que se corrigieran causa, acceso indebido o efectos del incidente.",
+            null
+          ],
+          "aoi": {
+            "question": "El monitor perdió la ventana, cielo; su silencio todavía no es una buena noticia comprobada.",
+            "hint": "Comprueba si la fuente sigue en condiciones de observar lo que queremos evaluar.",
+            "correct": "Reconociste la ceguera del sensor y pediste evidencia independiente del bloqueo aplicado.",
+            "soft": "La ausencia de avisos solo puede interpretarse conociendo si la observación permanece operativa.",
+            "sharp": "Si le tapas los ojos, claro que no ve nada, joder; verifica la medida por otra vía."
+          }
+        },
+        {
+          "prompt": "¿Qué condición debe cumplir el canal de gestión conservado?",
+          "scenario": "El plan permite administrar el equipo aislado desde un origen de respuesta autorizado y quiere impedir comunicaciones ordinarias con el resto de la red.",
+          "options": [
+            "Estar restringido y probado conforme a los orígenes y funciones autorizados",
+            "Permitir administración desde cualquier red para mayor comodidad",
+            "Aceptar cualquier excepción futura sin revisión para no cambiar reglas"
+          ],
+          "answer": 0,
+          "explanation": "La excepción debe conservar únicamente la gestión prevista y comprobar límites de origen y función; mantener un canal no justifica abrir acceso administrativo general al equipo contenido.",
+          "wrongExplanations": [
+            null,
+            "Abrir administración desde cualquier red amplía la exposición y contradice la excepción acotada que permite el plan para sostener la respuesta y la investigación.",
+            "Una excepción temporal necesita seguimiento y revisión; admitir ampliaciones sin comprobar necesidad y efecto puede deshacer progresivamente el alcance de la contención establecida."
+          ],
+          "aoi": {
+            "question": "Conservar una llave de gestión no significa regalar copias a todo el vecindario, cariño.",
+            "hint": "Relaciona la excepción con su origen autorizado y la función concreta que necesita mantenerse.",
+            "correct": "Definiste una gestión útil sin convertirla en un permiso general que debilite la medida.",
+            "soft": "El canal puede permanecer operativo y aun así necesitar límites verificables de acceso.",
+            "sharp": "La excepción no es una fiesta abierta, cielo; prueba quién puede usar esa puerta realmente."
+          }
+        },
+        {
+          "prompt": "¿Qué justifica autorizar el retorno del puesto al servicio?",
+          "scenario": "Se aplicaron acciones de tratamiento y el equipo dispone de pruebas de funcionamiento, controles y un período de observación acordado con los responsables.",
+          "options": [
+            "Que el usuario lleva bastante tiempo esperando y está molesto",
+            "Cumplir los criterios de aceptación y la autorización prevista con límites documentados",
+            "Que la máquina encienda aunque no se conozca su estado de seguridad"
+          ],
+          "answer": 1,
+          "explanation": "El retorno necesita criterios comprobados y decisión coordinada que consideren servicio y riesgo; el tiempo de espera o el encendido no sustituyen tratamiento y validación del estado.",
+          "wrongExplanations": [
+            "La presión del usuario debe gestionarse mediante coordinación y alternativas, pero no demuestra que se hayan tratado las condiciones que motivaron la contención del puesto.",
+            null,
+            "Encender solo acredita una condición de funcionamiento básico; no prueba controles, correcciones ni ausencia de los caminos indebidos que se debían revisar antes del retorno."
+          ],
+          "aoi": {
+            "question": "Ya tenemos pruebas para decidir, cielo; consultemos los criterios en lugar del nivel de impaciencia.",
+            "hint": "Busca una autorización basada en resultados y responsabilidades del procedimiento de recuperación.",
+            "correct": "Vinculaste el retorno a evidencia y coordinación, manteniendo visibles las condiciones que permanecen.",
+            "soft": "La necesidad de volver es real, pero debe resolverse con criterios de aceptación verificables.",
+            "sharp": "El enfado no parchea sistemas, demonios; comprueba el estado y coordina el retorno como corresponde."
+          }
+        },
+        {
+          "prompt": "¿Por qué revisar una copia antes de usarla para recuperar?",
+          "scenario": "La copia permite reconstruir el equipo, pero se creó cuando ya existía una configuración vulnerable y todavía no se confirma su relación con el incidente.",
+          "options": [
+            "Porque cualquier copia antigua está siempre inutilizable",
+            "Porque restaurar garantiza borrar automáticamente toda vulnerabilidad presente",
+            "Porque podría reintroducir condiciones que necesitan tratamiento y verificación antes del retorno"
+          ],
+          "answer": 2,
+          "explanation": "Una copia puede contener configuraciones o accesos que contribuyeron al problema; su utilidad para restaurar debe evaluarse junto con correcciones, integridad y criterios del estado de recuperación.",
+          "wrongExplanations": [
+            "La antigüedad no vuelve inútil automáticamente una copia; su adecuación depende de contenido, estado, objetivos de recuperación y controles que se apliquen al restaurar.",
+            "Restaurar reproduce contenido del respaldo y no corrige universalmente sus defectos; deben verificarse las condiciones que puedan permanecer dentro del estado recuperado.",
+            null
+          ],
+          "aoi": {
+            "question": "La copia guarda un pasado, cariño; asegurémonos de que no nos devuelva también su problema.",
+            "hint": "Relaciona contenido del respaldo y condiciones que deben cambiar antes de reconectar.",
+            "correct": "Consideraste el estado restaurado y evitaste dar por seguro cualquier material llamado copia.",
+            "soft": "La recuperación necesita comprobar qué condiciones regresan junto con los archivos necesarios.",
+            "sharp": "La copia no se curó por pasar una noche guardada, cielo; revisa lo que estás restaurando."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El puesto aislado con sesión externa activa",
+          "scenario": "El control de red impide que el puesto contacte al servidor interno. La investigación confirma que la misma cuenta mantiene una sesión no autorizada en otro servicio que no depende de ese camino de red.",
+          "explanation": "El aislamiento limita el puesto, pero no esa sesión externa. Deben aplicarse las acciones de identidad previstas, verificar su efecto y revisar el alcance relacionado. Las medidas se coordinan para cubrir caminos distintos sin asumir que una sola regla revoca todos los accesos."
+        },
+        {
+          "title": "La alerta que desaparece al cortar los registros",
+          "scenario": "Tras aislar el equipo, el tablero no muestra nuevos avisos. El canal del sensor también quedó bloqueado y todavía no existe una comprobación independiente del flujo que motivó la contención.",
+          "explanation": "El silencio no demuestra eficacia del control porque se perdió una fuente de observación. Hay que verificar configuración y pruebas autorizadas del bloqueo, recuperar la visibilidad necesaria según el diseño y documentar qué parte del estado continúa sin comprobar."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un puesto ficticio de Bruma realiza conexiones no autorizadas a un servidor interno. El plan permite aislarlo conservando un canal de gestión restringido, mientras otro responsable revisa la cuenta y sus sesiones antes de decidir el retorno.",
+      "scenario": "Un puesto ficticio de Bruma realiza conexiones no autorizadas a un servidor interno. El plan permite aislarlo conservando un canal de gestión restringido, mientras otro responsable revisa la cuenta y sus sesiones antes de decidir el retorno.",
+      "steps": [
+        "Identifica actividad dañina, activos y autoridad para intervenir.",
+        "Elige una medida acotada con efectos y dependencias evaluados.",
+        "Registra aplicación, alcance y evidencia preservada.",
+        "Comprueba que se limita la actividad sin perder controles necesarios.",
+        "Investiga la causa y define criterios separados para recuperación y retorno."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-firewall",
+        "net-zero-trust"
+      ],
+      "aoi": {
+        "intro": "Vamos a quitarle espacio al problema, cariño; después investigaremos por dónde entró realmente.",
+        "theory0": "Contener es limitar capacidad de daño, no repartir diplomas de equipo completamente limpio.",
+        "theory1": "El puesto y la cuenta tienen caminos distintos; quiero que sigas ambos sin mezclarlos.",
+        "theory2": "Que el tablero calle puede significar bloqueo o ceguera; comprobemos cuál de las dos.",
+        "theory3": "La vuelta necesita criterios cumplidos, cielo; el aburrimiento del usuario no desinfecta sistemas.",
+        "case0": "Aislamos una conexión, pero esa sesión externa aún no recibió la noticia del cierre.",
+        "case1": "Si también cortaste los ojos del monitor, su silencio no puede declarar victoria.",
+        "pass": "Aplicaste límites verificables y separaste contención, causa y retorno con una coordinación clara.",
+        "review": "Repasemos qué bloqueamos y qué sigue accesible; una medida sola está cargando demasiadas promesas."
+      }
+    },
+    {
+      "id": "security-operations-restauracion",
+      "title": "Copias de configuración y recuperación comprobada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una copia útil depende de lo que debes recuperar",
+          "body": "Un archivo guardado no asegura recuperar un servicio. Identifica qué elementos necesita el sistema para volver a funcionar: configuración, versiones compatibles, datos, certificados, claves protegidas, licencias o dependencias externas según el producto. No todos deben almacenarse juntos ni con el mismo acceso. Una copia de configuración puede describir rutas y reglas pero no contener todo lo necesario para autenticar o arrancar otro equipo. Registra producto, versión, fecha, procedencia y alcance del respaldo. Comprueba qué cambios posteriores no están incluidos y si existe otra fuente autorizada para reconstruirlos. La elección no debe basarse solo en que el nombre del archivo sea el más reciente: su contenido puede estar incompleto o corresponder a un estado no aceptable. Relaciona el respaldo con una referencia de servicio conocida y con el objetivo de recuperación. Esa información permite distinguir recuperar una pieza de restaurar realmente la comunicación y los controles que la organización necesita."
+        },
+        {
+          "title": "Proteger las copias forma parte de proteger el sistema",
+          "body": "Las configuraciones pueden revelar topología, cuentas, destinos internos y secretos según el producto y el método de exportación. Limita acceso y utiliza protección adecuada durante almacenamiento y traslado. Conserva copias separadas del sistema cuya pérdida intentas soportar y revisa que una cuenta comprometida no pueda alterar sin límites todos los respaldos. La estrategia exacta depende del entorno, pero debe contemplar fallos, eliminación y manipulación, además de la comodidad de guardar archivos. Registra custodios, permisos y comprobaciones de integridad pertinentes. Una suma de comprobación detecta diferencias respecto de un valor conocido, mientras el control de acceso y la procedencia ayudan a evaluar quién pudo modificar el material. No adjuntes configuraciones completas a un informe público para demostrar que existe una copia. Puedes comunicar fecha y resultado de prueba mediante referencias a un repositorio protegido. La información necesaria para recuperar merece la misma atención que el equipo al que permite volver a administrar."
+        },
+        {
+          "title": "Objetivos de tiempo y pérdida requieren definiciones claras",
+          "body": "El objetivo de tiempo de recuperación, habitualmente llamado RTO, expresa el tiempo objetivo para restablecer una capacidad definida después de una interrupción. El objetivo de punto de recuperación, RPO, describe la pérdida temporal de datos que se considera aceptable bajo las condiciones acordadas. No son una promesa de que cualquier fallo se resolverá así por haber escrito dos cifras. Debes definir qué servicio, datos y punto de inicio se miden. Una configuración respaldada cada día puede perder cambios realizados desde la última copia si no existen otras fuentes de recuperación. A su vez, disponer del archivo no garantiza cumplir el tiempo de restauración si nadie conoce el procedimiento o falta un equipo compatible. En el ejercicio, compara los resultados observados con los objetivos declarados e informa diferencias. Si el servicio recupera acceso parcial, especifica qué parte funciona antes de declarar cumplido un objetivo que quizá exigía también autenticación, restricciones y operación completa."
+        },
+        {
+          "title": "Ensayar restaura confianza mediante resultados verificables",
+          "body": "Una prueba controlada debe restaurar el material en un entorno apropiado y comprobar funciones necesarias y límites de seguridad. Documenta pasos, dependencias, tiempos y obstáculos para que otra persona autorizada pueda reproducir el procedimiento. Incluye acceso de gestión, rutas esperadas, resolución o autenticación cuando correspondan, además de rechazo de comunicaciones no permitidas. Verifica que la copia no reintroduzca versiones o ajustes pendientes de corrección. Una diferencia encontrada en el ensayo es una oportunidad para actualizar la documentación antes de una emergencia, no un motivo para ocultar el fallo. Protege o elimina de forma autorizada los datos y secretos utilizados en la prueba una vez cumplido su propósito. Repite ensayos cuando cambien condiciones importantes y conserva evidencias proporcionadas del resultado. La afirmación defendible es qué se restauró, bajo qué condiciones y con qué limitaciones. Un archivo que nunca se probó sigue siendo una posibilidad de recuperación; un ensayo documentado aporta evidencia concreta sobre esa posibilidad."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué convierte una copia de configuración en material interpretable?",
+          "scenario": "El repositorio contiene varios archivos con nombres parecidos y el responsable debe saber cuál corresponde al sistema y qué estado representa.",
+          "options": [
+            "Producto, versión, fecha, procedencia y alcance documentados",
+            "Únicamente que el nombre incluya la palabra final",
+            "Que cualquiera pueda descargarla sin autenticación para encontrarla antes"
+          ],
+          "answer": 0,
+          "explanation": "Los metadatos y la procedencia permiten relacionar la copia con el equipo y el estado previsto; un nombre informal o acceso abierto no acreditan adecuación ni protección del material.",
+          "wrongExplanations": [
+            null,
+            "La palabra final no define compatibilidad, integridad ni contenido del archivo y puede conservarse por error incluso cuando el estado real cambió después.",
+            "El acceso abierto aumenta exposición de información sensible y no garantiza que se identifique o utilice la copia adecuada durante una recuperación autorizada."
+          ],
+          "aoi": {
+            "question": "Dame la historia de ese respaldo, cielo; su nombre dramático no explica a qué equipo pertenece.",
+            "hint": "Busca datos que permitan asociar archivo, sistema y momento del estado guardado.",
+            "correct": "Documentaste la identidad del respaldo para poder evaluarlo antes de usarlo en recuperación.",
+            "soft": "La elección necesita más que una etiqueta informal y una carpeta accesible.",
+            "sharp": "Final definitivo ahora sí no es un metadato técnico, cariño; identifica versión y procedencia."
+          }
+        },
+        {
+          "prompt": "¿Qué diferencia principal existe entre RTO y RPO?",
+          "scenario": "El plan define un tiempo objetivo para restablecer el servicio y un margen temporal aceptable de pérdida de datos que deben evaluarse por separado.",
+          "options": [
+            "Ambos significan exactamente la cantidad de archivos guardados",
+            "RTO se refiere al tiempo de recuperación y RPO al punto de datos recuperable",
+            "RPO garantiza que nunca hará falta restaurar configuraciones o datos"
+          ],
+          "answer": 1,
+          "explanation": "RTO orienta el tiempo objetivo de restablecimiento de una capacidad definida, mientras RPO orienta la pérdida temporal aceptable de datos; ninguno se cumple automáticamente por estar documentado.",
+          "wrongExplanations": [
+            "La cantidad de archivos no define por sí sola ni duración de recuperación ni pérdida temporal; los objetivos requieren servicio, alcance y criterios de medición explícitos.",
+            null,
+            "El objetivo de punto de recuperación ayuda a planificar pérdida aceptable y respaldos, pero no elimina la necesidad de restauración ni garantiza ausencia de fallos."
+          ],
+          "aoi": {
+            "question": "Un reloj pregunta cuánto tardamos y el otro hasta qué estado volvemos, cariño.",
+            "hint": "Separa duración del restablecimiento y antigüedad aceptable del estado de datos recuperado.",
+            "correct": "Distinguiste dos objetivos que necesitan planificación y comprobación independientes en la recuperación.",
+            "soft": "Los dos usan tiempo, pero describen aspectos diferentes del servicio y sus datos.",
+            "sharp": "Que ambos tengan reloj no los vuelve gemelos, demonios; diferencia duración y punto recuperable."
+          }
+        },
+        {
+          "prompt": "¿Qué estado devuelve la copia válida del caso horario?",
+          "scenario": "La copia se creó a las 08:00, los cambios llegaron a las 13:00 y el fallo ocurrió a las 15:00 sin otra fuente de reconstrucción disponible.",
+          "options": [
+            "Incluye automáticamente cualquier cambio posterior al respaldo",
+            "Devuelve por definición el estado exacto de las 15:00",
+            "El estado guardado a las 08:00, sin los cambios posteriores descritos"
+          ],
+          "answer": 2,
+          "explanation": "El respaldo contiene el estado capturado a las ocho y no incorpora cambios futuros por sí mismo; la diferencia hasta el fallo debe evaluarse con el objetivo de recuperación acordado.",
+          "wrongExplanations": [
+            "Un archivo de copia no se actualiza con cambios posteriores salvo que exista un mecanismo adicional documentado; el escenario declara que no hay otra fuente disponible.",
+            "El momento del fallo no modifica retroactivamente el contenido del respaldo; afirmar recuperación exacta exige una fuente de los cambios que el caso no proporciona.",
+            null
+          ],
+          "aoi": {
+            "question": "La copia recuerda las ocho, cielo; todavía necesitamos explicar lo que ocurrió después.",
+            "hint": "Compara el momento de captura con los cambios y el fallo sin inventar fuentes adicionales.",
+            "correct": "Identificaste qué versión del estado existe realmente y qué parte permanece fuera del respaldo.",
+            "soft": "El archivo solo puede devolver lo que guardó bajo las condiciones que describe el ejercicio.",
+            "sharp": "La copia no recibió noticias del futuro, joder; los cambios de las trece quedaron fuera."
+          }
+        },
+        {
+          "prompt": "¿Qué debe comprobar una prueba de restauración del router?",
+          "scenario": "El servicio exige rutas correctas, gestión desde un origen restringido y rechazo de acceso administrativo desde las redes de usuarios comunes.",
+          "options": [
+            "Funciones necesarias y restricciones previstas después de restaurar",
+            "Solo que el archivo pueda abrirse con un editor de texto",
+            "Que exista una captura de pantalla del nombre de la copia"
+          ],
+          "answer": 0,
+          "explanation": "La recuperación del servicio requiere probar funcionamiento y límites de seguridad; abrir el archivo o fotografiar su nombre no demuestra que el equipo opere con el estado necesario.",
+          "wrongExplanations": [
+            null,
+            "Leer el archivo puede aportar información sobre contenido, pero no comprueba compatibilidad aplicada, rutas efectivas ni acceso restringido del sistema ya restaurado.",
+            "Una captura del nombre no valida integridad, contenido ni resultado de restauración; la evidencia debe corresponder a las funciones y controles que se desean recuperar."
+          ],
+          "aoi": {
+            "question": "Quiero ver el router haciendo su trabajo y conservando sus límites, cariño; ambas cosas.",
+            "hint": "Busca pruebas del servicio restaurado en lugar de pruebas de que existe un archivo.",
+            "correct": "Comprobaste la recuperación como comportamiento operativo y no como mera presencia del respaldo.",
+            "soft": "La evidencia tiene que alcanzar las funciones y restricciones que pide el diseño.",
+            "sharp": "La foto de la copia no enruta paquetes, cielo; restaura y prueba el servicio real."
+          }
+        },
+        {
+          "prompt": "¿Por qué proteger el acceso al repositorio de configuraciones?",
+          "scenario": "Los respaldos pueden contener topología, cuentas o secretos del producto, y una cuenta con permisos amplios podría modificar todas las copias de recuperación.",
+          "options": [
+            "Porque toda configuración es pública en cualquier circunstancia",
+            "Porque su confidencialidad e integridad afectan seguridad y capacidad de recuperación",
+            "Porque una huella de archivo sustituye todos los controles de acceso"
+          ],
+          "answer": 1,
+          "explanation": "Las copias pueden revelar información sensible y su alteración comprometer la recuperación; acceso limitado, procedencia y controles adecuados ayudan a proteger ambas necesidades del respaldo.",
+          "wrongExplanations": [
+            "Que ciertos comandos o formatos sean conocidos no vuelve públicos los datos particulares del entorno; topología, cuentas y secretos requieren protección proporcional a su sensibilidad.",
+            null,
+            "Una huella sirve como referencia de integridad bajo condiciones concretas, pero no impide lectura o modificación del repositorio ni sustituye la gestión de permisos."
+          ],
+          "aoi": {
+            "question": "La copia sabe demasiado de nuestra casa, cielo; controlemos quién la lee y quién la modifica.",
+            "hint": "Relaciona información sensible y necesidad de conservar material recuperable sin alteraciones indebidas.",
+            "correct": "Protegiste tanto los datos del respaldo como la confianza operativa en su contenido.",
+            "soft": "El repositorio es parte de la seguridad del servicio y necesita controles propios.",
+            "sharp": "Un hash no cierra la carpeta con llave, demonios; revisa permisos y protección del respaldo."
+          }
+        },
+        {
+          "prompt": "¿Cómo se informa un ensayo que recuperó solo conectividad parcial?",
+          "scenario": "El router vuelve a encaminar una prueba, pero la autenticación de gestión falla y el objetivo acordado incluía esa función con acceso restringido.",
+          "options": [
+            "Como recuperación completa porque algún paquete logró pasar",
+            "Como prueba innecesaria que conviene eliminar del registro",
+            "Como resultado parcial con función pendiente y acciones para cumplir los criterios"
+          ],
+          "answer": 2,
+          "explanation": "La conectividad parcial no satisface un objetivo que incluye autenticación y restricciones; el informe debe describir resultados, diferencias y trabajo pendiente sin declarar una recuperación completa no comprobada.",
+          "wrongExplanations": [
+            "Que un flujo funcione demuestra solo esa parte del comportamiento; otras funciones exigidas por el objetivo siguen necesitando verificación y corrección antes del cierre.",
+            "Eliminar el ensayo oculta información útil sobre dependencias y fallos; registrar diferencias permite mejorar el procedimiento y preparar una recuperación más fiable en el futuro.",
+            null
+          ],
+          "aoi": {
+            "question": "Un paquete pasó, cariño; la gestión todavía no. Llamemos a cada resultado por su nombre.",
+            "hint": "Compara el resultado observado con todas las funciones incluidas en el objetivo acordado.",
+            "correct": "Describiste una recuperación parcial y dejaste visibles los pasos que faltan para completarla.",
+            "soft": "El informe puede reconocer avances sin esconder una condición de aceptación todavía incumplida.",
+            "sharp": "No vendas toda la red por un paquete afortunado, cielo; documenta la función que sigue fallando."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La copia diaria y los cambios de la tarde",
+          "scenario": "La última copia válida se creó a las 08:00 y el fallo ocurrió a las 15:00. Hubo cambios autorizados a las 13:00 y no existe otro registro que permita reconstruirlos en este ejercicio.",
+          "explanation": "Restaurar esa copia devuelve el estado de las 08:00 y no incluye los cambios posteriores. El intervalo relevante de posible pérdida alcanza siete horas bajo las condiciones declaradas. Debe compararse con el RPO acordado y documentar los cambios que requieren nuevo tratamiento."
+        },
+        {
+          "title": "El archivo reciente de otro modelo",
+          "scenario": "Hay una copia creada ayer para un modelo diferente y otra más antigua que corresponde al equipo de reemplazo con compatibilidad confirmada. El procedimiento exige validar contenido y aplicar cambios aprobados posteriores.",
+          "explanation": "La fecha no decide por sí sola. Se elige material compatible y adecuado al estado requerido, comprobando integridad y diferencias. Los cambios posteriores se reconstruyen con fuentes autorizadas y se validan funciones y restricciones antes de declarar recuperado el servicio completo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El router ficticio de Nimbo pierde su configuración después de un fallo. Hay varias copias fechadas y debes elegir una compatible, comprobar su protección y demostrar recuperación de rutas, administración y restricciones sin introducir secretos en el informe general.",
+      "scenario": "El router ficticio de Nimbo pierde su configuración después de un fallo. Hay varias copias fechadas y debes elegir una compatible, comprobar su protección y demostrar recuperación de rutas, administración y restricciones sin introducir secretos en el informe general.",
+      "steps": [
+        "Define servicio, dependencias y objetivos de recuperación.",
+        "Identifica una copia adecuada con procedencia y acceso protegidos.",
+        "Comprueba compatibilidad y prepara un entorno de restauración controlado.",
+        "Restaura y verifica funciones, límites y estado actualizado.",
+        "Mide resultados, registra diferencias y mejora el procedimiento probado."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-csf",
+        "net-patching"
+      ],
+      "aoi": {
+        "intro": "Vamos a comprobar que la copia sirve, cariño; guardar un archivo todavía no enciende la red.",
+        "theory0": "Quiero saber qué incluye el respaldo y qué otras piezas hacen falta para recuperar.",
+        "theory1": "La configuración también cuenta secretos; no la pasees por el informe general sin protección.",
+        "theory2": "Tiempo y punto de recuperación responden preguntas distintas, cielo; no intercambiemos sus relojes.",
+        "theory3": "Ensayar nos deja descubrir faltantes cuando todavía tenemos margen para corregirlos con calma.",
+        "case0": "La copia de las ocho no aprendió los cambios de las trece mientras dormía guardada.",
+        "case1": "El archivo más nuevo puede pertenecer al equipo equivocado; la compatibilidad tiene algo que decir.",
+        "pass": "Restauraste con pruebas y dejaste claras las diferencias, que es mucho más útil que presumir archivos.",
+        "review": "Revisemos contenido, compatibilidad y objetivos; hay una pieza de recuperación que estamos dando por hecha."
+      }
+    },
+    {
+      "id": "security-operations-postincidente",
+      "title": "Aprender del incidente y comprobar las mejoras",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "El informe conecta hechos, decisiones y consecuencias",
+          "body": "El análisis posterior reúne qué ocurrió, cómo se detectó, qué efectos tuvo y cómo respondió la organización. Su valor no depende de redactar una historia espectacular, sino de permitir revisión y decisiones útiles. Distingue hechos respaldados por fuentes, inferencias razonadas e información que sigue sin conocerse. Incluye una cronología con los momentos relevantes y las limitaciones temporales que ya comprobaste. Describe servicios y datos afectados según evidencia, evitando extender conclusiones a activos que nunca se examinaron. Registra acciones y sus resultados, incluso cuando una medida no funcionó como se esperaba. Ese dato permite entender demoras, dependencias y oportunidades de mejora. Un resumen para responsables puede condensar el detalle y referenciar material protegido; no necesita copiar credenciales o información personal para resultar convincente. Conserva trazabilidad hacia las fuentes y explica el alcance de la investigación. Así otra persona podrá evaluar las conclusiones sin depender de la memoria del equipo que vivió la urgencia."
+        },
+        {
+          "title": "Investigar causas no equivale a buscar un culpable fácil",
+          "body": "Una causa explica un mecanismo que contribuyó a producir el problema, mientras un factor contribuyente puede facilitarlo o agravar sus efectos. La distinción depende del caso y requiere evidencias, no frases universales como error humano. Pregunta qué condiciones permitieron la acción y qué controles o procedimientos podrían haberla evitado o limitado. Si alguien aplicó una regla demasiado amplia, revisa también revisión de cambios, permisos, documentación y pruebas disponibles. Eso no elimina responsabilidades; permite entenderlas dentro de un sistema de trabajo y proponer medidas aplicables. Evita exigir una única causa cuando la información muestra varios factores o deja incertidumbre. Una hipótesis pendiente debe mantenerse como tal. El informe puede afirmar que no fue posible determinar el origen exacto y aun así identificar mejoras defensivas justificadas. Reconocer lo que falta protege la calidad del análisis y evita orientar recursos hacia una explicación cómoda que no se sostiene al contrastarla con las fuentes."
+        },
+        {
+          "title": "Las mejoras necesitan responsables y resultados observables",
+          "body": "Una recomendación como mejorar la seguridad resulta demasiado amplia para verificar cumplimiento. Transfórmala en una acción concreta, con responsable, fecha objetivo, dependencias y criterio de aceptación. Por ejemplo, revisar reglas de administración debe indicar qué dispositivos abarca, qué flujos deben permitirse y qué pruebas demostrarán el límite. La acción puede requerir presupuesto o coordinación; documenta esa dependencia para que no desaparezca en una lista sin seguimiento. Prioriza mejoras por riesgo y valor esperado, manteniendo visible lo que se aplaza. Diferencia realizar una actividad y obtener el resultado buscado: impartir una sesión puede ser un paso, pero no prueba por sí solo que un procedimiento se aplique correctamente. Incluye un modo proporcionado de comprobar la eficacia, como un ensayo de cambio con revisión y pruebas. Actualiza inventario, referencias y guías cuando la mejora altere el servicio. El aprendizaje se convierte en operación cuando cambia de forma verificable cómo se previene, detecta o responde al problema."
+        },
+        {
+          "title": "Medir con contexto evita celebrar cifras engañosas",
+          "body": "Las métricas necesitan definición, período y población para ser interpretables. Reducir el tiempo medio de atención puede reflejar una mejora o un cambio de mezcla de casos; informa qué se midió y cuáles fueron las condiciones. Del mismo modo, cerrar muchas tareas no demuestra que las medidas resultaran eficaces. Comprueba una muestra o una prueba adecuada al objetivo y conserva evidencia de resultados. Si solo revisaste cinco equipos, no informes cobertura total de veinte. Establece un momento para volver sobre las acciones y verificar que siguen aplicadas después de cambios posteriores. Comparte aprendizajes con los equipos que pueden aprovecharlos, limitando información sensible según necesidad. El cierre formal del incidente y el seguimiento de mejoras pueden tener estados distintos: no ocultes acciones pendientes porque el servicio ya funciona. Un proceso maduro puede reconocer recuperación conseguida, investigación limitada y trabajo preventivo aún abierto, con responsabilidades claras para cada parte y sin confundir sus criterios de finalización."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe distinguir el relato posterior del incidente?",
+          "scenario": "El equipo dispone de registros comprobados, una hipótesis sobre el origen y un período sin cobertura que no puede reconstruir con las fuentes disponibles.",
+          "options": [
+            "Hechos, inferencias e incertidumbres con su alcance y fuentes",
+            "Una sola narración que presente todas las suposiciones como certezas",
+            "Solo los resultados que hagan parecer perfecta la respuesta"
+          ],
+          "answer": 0,
+          "explanation": "El relato debe permitir revisar qué respalda cada afirmación y qué sigue sin conocerse; mezclar hipótesis con hechos oculta límites y debilita decisiones derivadas del informe.",
+          "wrongExplanations": [
+            null,
+            "Presentar suposiciones como certezas impide evaluar el fundamento de las conclusiones y puede orientar mejoras hacia explicaciones que la evidencia todavía no confirma.",
+            "Ocultar medidas fallidas o limitaciones elimina aprendizajes útiles y proporciona una imagen inexacta de los efectos, dependencias y decisiones que el equipo necesita mejorar."
+          ],
+          "aoi": {
+            "question": "Ordenemos qué vimos y qué creemos, cielo; las dos cosas pueden ser útiles si las distinguimos.",
+            "hint": "Busca una estructura que permita revisar el fundamento y los límites de cada conclusión.",
+            "correct": "Conservaste trazabilidad y honestidad sobre la información que no pudo reconstruirse durante la revisión.",
+            "soft": "La calidad del relato depende de separar prueba e interpretación, no de sonar absolutamente seguro.",
+            "sharp": "Las hipótesis no se gradúan de hechos por salir en un PDF, cariño; identifica sus límites."
+          }
+        },
+        {
+          "prompt": "¿Qué añade valor a la frase error humano en el análisis?",
+          "scenario": "Una regla equivocada contribuyó al incidente y todavía no se revisaron autorizaciones, revisión por pares ni pruebas que podían detectar la apertura indebida.",
+          "options": [
+            "Repetir la frase en cada página sin estudiar controles",
+            "Explicar el mecanismo y las condiciones del proceso que facilitaron el error",
+            "Concluir que ninguna medida técnica u organizativa puede ayudar"
+          ],
+          "answer": 1,
+          "explanation": "El análisis necesita comprender cómo se produjo y permitió la acción para proponer controles y procedimientos aplicables; una etiqueta personal aislada no identifica mejoras verificables del sistema.",
+          "wrongExplanations": [
+            "Repetir una etiqueta no aporta mecanismo, evidencia ni acciones concretas y puede ocultar dependencias que deben revisarse para reducir la repetición del problema.",
+            null,
+            "La participación humana no vuelve inútiles los controles; revisión, permisos y pruebas pueden reducir probabilidad o consecuencias cuando se diseñan conforme al mecanismo observado."
+          ],
+          "aoi": {
+            "question": "La regla la cambió alguien, cielo; ahora investiga qué permitió que llegara así al servicio.",
+            "hint": "Relaciona la acción con permisos, revisión y pruebas en lugar de terminar en una etiqueta.",
+            "correct": "Buscaste causas y condiciones que permiten convertir el análisis en medidas concretas de mejora.",
+            "soft": "El informe necesita explicar cómo podría evitarse o limitarse esa secuencia en otro cambio.",
+            "sharp": "Decir humano no explica el mecanismo, demonios; revisa qué controles faltaron o fallaron realmente."
+          }
+        },
+        {
+          "prompt": "¿Qué convierte una recomendación en una acción verificable?",
+          "scenario": "El informe propone revisar acceso administrativo y el equipo necesita saber qué trabajo hará, cuándo y cómo comprobará que el límite funciona.",
+          "options": [
+            "Una frase general sin responsable para que todos se sientan incluidos",
+            "Un número de tarea que no describa resultados esperados",
+            "Alcance, responsable, fecha y criterios de aceptación observables"
+          ],
+          "answer": 2,
+          "explanation": "Esos elementos permiten asignar trabajo, coordinar dependencias y comprobar resultado; una recomendación necesita un estado verificable que conecte la actividad con la mejora buscada en el servicio.",
+          "wrongExplanations": [
+            "La responsabilidad difusa y el alcance indeterminado dificultan ejecutar y cerrar trabajo; compartir una intención no define qué cambio debe producirse ni quién lo verificará.",
+            "El identificador ayuda a seguir una tarea, pero no sustituye su contenido, responsables ni pruebas de que el resultado esperado se haya alcanzado.",
+            null
+          ],
+          "aoi": {
+            "question": "La mejora quiere bajar del informe a la red, cariño; dale un dueño y una prueba.",
+            "hint": "Busca los datos que permiten ejecutar la tarea y decidir cuándo cumple su objetivo.",
+            "correct": "Transformaste una intención general en trabajo que puede asignarse, comprobarse y revisarse.",
+            "soft": "Todavía necesitas describir qué resultado contará como aceptación del cambio propuesto.",
+            "sharp": "Un número de ticket no configura nada por sí solo, cielo; define alcance y resultado verificable."
+          }
+        },
+        {
+          "prompt": "¿Qué limita la comparación de tiempos medios entre los dos meses?",
+          "scenario": "El mes reciente reúne intentos simples bloqueados y el anterior incluye varios incidentes complejos con efectos extensos sobre servicios distintos.",
+          "options": [
+            "La diferencia de población y complejidad que debe explicarse al interpretar el promedio",
+            "Que cualquier promedio de tiempos sea siempre inútil",
+            "Que el mes con menor cifra pruebe automáticamente mejora en toda respuesta"
+          ],
+          "answer": 0,
+          "explanation": "Los promedios pueden describir sus muestras, pero diferencias de casos afectan interpretación; hacen falta contexto y comparaciones apropiadas antes de atribuir el cambio a una mejora general del proceso.",
+          "wrongExplanations": [
+            null,
+            "Un promedio definido puede ser útil junto con población y condiciones; descartarlo universalmente ignora información válida que debe interpretarse con límites explícitos.",
+            "Una cifra menor puede surgir de casos más sencillos y no demuestra por sí sola mejora para toda clase de incidente o condición del servicio."
+          ],
+          "aoi": {
+            "question": "Las dos medias vienen de casos distintos, cielo; primero escuchemos qué están comparando.",
+            "hint": "Identifica qué cambió en los conjuntos medidos antes de atribuir toda diferencia al proceso.",
+            "correct": "Reconociste el contexto necesario para interpretar una métrica que puede ser correcta pero insuficiente.",
+            "soft": "La comparación debe considerar mezcla de casos además del número que aparece en la tabla.",
+            "sharp": "El promedio no sabe que cambiaste el menú de incidentes, cariño; explica la población medida."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra impartir una sesión sobre revisión de cambios?",
+          "scenario": "La acción de formación terminó, pero aún no se ha observado a los participantes aplicando el nuevo procedimiento durante un cambio con pruebas.",
+          "options": [
+            "Que cualquier error futuro es imposible por haber asistido",
+            "Que se realizó una actividad, pendiente de evaluar su efecto sobre el procedimiento",
+            "Que ya no hacen falta controles ni revisiones de configuración"
+          ],
+          "answer": 1,
+          "explanation": "La sesión acredita una actividad realizada, mientras su eficacia requiere comprobar el resultado buscado, por ejemplo aplicación correcta del procedimiento en una práctica o cambio autorizado posterior.",
+          "wrongExplanations": [
+            "La asistencia no garantiza ausencia futura de errores y no sustituye condiciones, herramientas o controles que influyen en la ejecución del trabajo operativo.",
+            null,
+            "La formación complementa controles y procedimientos; retirarlos por haber completado una sesión confunde conocimiento comunicado con aplicación fiable y sostenida en el servicio."
+          ],
+          "aoi": {
+            "question": "La clase ocurrió, cariño; ahora quiero ver el procedimiento funcionando cuando toca usarlo.",
+            "hint": "Separa completar una actividad y demostrar el cambio de comportamiento que se esperaba.",
+            "correct": "Reconociste el avance sin atribuir eficacia que todavía necesita una comprobación adecuada.",
+            "soft": "Todavía falta observar si la formación produce el resultado definido para la mejora.",
+            "sharp": "La lista de asistencia no revisa reglas en producción, demonios; comprueba la aplicación del procedimiento."
+          }
+        },
+        {
+          "prompt": "¿Cómo se informa un servicio recuperado con mejoras aún pendientes?",
+          "scenario": "La operación cumple los criterios de recuperación, pero siguen abiertas tareas preventivas con responsables y fechas que no impiden el retorno autorizado.",
+          "options": [
+            "Se borran las tareas porque el servicio ya funciona",
+            "Se afirma que no hubo ninguna recuperación hasta terminar todo para siempre",
+            "Se distinguen recuperación conseguida y seguimiento abierto de las mejoras documentadas"
+          ],
+          "answer": 2,
+          "explanation": "La recuperación y el plan de mejora tienen criterios y estados distintos; informar ambos permite reconocer el servicio restablecido sin ocultar trabajo pendiente ni perder responsabilidades asignadas.",
+          "wrongExplanations": [
+            "Borrar pendientes elimina seguimiento de riesgos y aprendizajes que pueden seguir siendo relevantes aunque la capacidad operativa haya vuelto bajo los criterios acordados.",
+            "Negar un resultado recuperado que cumple criterios confunde estados diferentes; el informe puede describir con precisión qué se completó y qué permanece en seguimiento.",
+            null
+          ],
+          "aoi": {
+            "question": "Podemos celebrar que funciona y seguir trabajando en lo pendiente, cielo; ambas cosas caben en el informe.",
+            "hint": "Distingue el criterio de retorno del servicio y el criterio de cierre de cada mejora.",
+            "correct": "Comunicaste avances y pendientes con estados claros que mantienen continuidad del seguimiento preventivo.",
+            "soft": "El informe necesita precisión sobre resultados distintos, sin borrar tareas ni negar logros comprobados.",
+            "sharp": "Que vuelva el servicio no borra nuestra lista, cariño; conserva responsables para las mejoras abiertas."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La recomendación imposible de cerrar",
+          "scenario": "El informe propone mejorar la revisión de reglas, pero no indica dispositivos, responsable, plazo ni prueba. Un mes después nadie puede explicar qué trabajo debía considerarse terminado.",
+          "explanation": "La recomendación debe convertirse en una acción definida con alcance, dueño, fecha y aceptación verificable. Por ejemplo, comprobar reglas administrativas de los equipos incluidos y probar acceso permitido y rechazado. El seguimiento debe registrar resultados, diferencias y tratamiento de lo pendiente."
+        },
+        {
+          "title": "El promedio que cambió de población",
+          "scenario": "El equipo compara este mes, compuesto sobre todo por intentos bloqueados simples, con otro que incluyó varios incidentes complejos y anuncia una mejora universal usando solo el menor tiempo medio.",
+          "explanation": "El promedio puede ser correcto y la conclusión excesiva. Deben describirse población, criterios y tipo de casos para interpretar la comparación. Conviene evaluar grupos comparables y otras evidencias antes de atribuir la diferencia exclusivamente a una mejora del proceso."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Después del incidente ficticio de Bruma, el servicio vuelve a operar y el equipo reúne registros, decisiones y resultados. Debes convertir lo aprendido en acciones comprobables sin culpar por intuición ni presentar una recuperación parcial como cierre definitivo.",
+      "scenario": "Después del incidente ficticio de Bruma, el servicio vuelve a operar y el equipo reúne registros, decisiones y resultados. Debes convertir lo aprendido en acciones comprobables sin culpar por intuición ni presentar una recuperación parcial como cierre definitivo.",
+      "steps": [
+        "Construye un relato factual con cronología y fuentes.",
+        "Distingue causa, factores contribuyentes e incertidumbres.",
+        "Evalúa medidas aplicadas y efectos sobre servicio y evidencia.",
+        "Asigna mejoras con responsables, fechas y criterios de aceptación.",
+        "Revisa cumplimiento y prueba que las mejoras reducen el problema identificado."
+      ],
+      "sourceIds": [
+        "net-response",
+        "net-csf"
+      ],
+      "aoi": {
+        "intro": "Ya volvió el servicio, cariño; ahora toca aprender algo que sobreviva al informe bonito.",
+        "theory0": "Quiero una historia revisable donde cada conclusión sepa de qué prueba viene.",
+        "theory1": "Error humano sin mecanismo explicado es una etiqueta cómoda, cielo; investiguemos las condiciones.",
+        "theory2": "Una mejora necesita dueño, fecha y una prueba que nos diga si realmente cambió algo.",
+        "theory3": "Las métricas también pueden presumir sin contexto; pregúntales a quién estaban midiendo exactamente.",
+        "case0": "Mejorar las reglas suena bien hasta que nadie sabe qué reglas ni quién debe tocarlas.",
+        "case1": "Nuestro promedio bajó, pero cambiaron los casos; esa comparación necesita bajar también su arrogancia.",
+        "pass": "Convertiste la experiencia en mejoras comprobables sin borrar incertidumbres ni pendientes del seguimiento.",
+        "review": "Revisemos hechos, causas y acciones; el cierre está usando una frase demasiado amplia para comprobarla."
+      }
+    },
+    {
+      "id": "security-operations-estudio",
+      "title": "Plan de práctica y orientación hacia certificaciones",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Elegir una meta empieza por el trabajo que quieres comprender",
+          "body": "Una certificación puede orientar el estudio, pero conviene decidir primero qué capacidades buscas desarrollar. Si te interesa explicar comunicaciones y resolver incidencias iniciales de conectividad, compara una ruta de fundamentos de redes. Si prefieres principios defensivos, riesgos y respuesta inicial, compara opciones de entrada en seguridad. Cisco CCST Networking aborda bases de funcionamiento de redes y CCST Cybersecurity se orienta a conceptos iniciales de ciberseguridad. ISC2 CC ofrece otra entrada general al área. Son metas que puedes comparar según objetivos, no una colección obligatoria que deba completarse en un orden universal. Consulta las condiciones oficiales y distingue conocimientos recomendables de requisitos formales. En las fuentes revisadas, CCST no exige prerrequisitos formales e ISC2 CC no exige experiencia laboral previa. Eso no significa que presentarse sin estudiar sea una buena preparación. Aprovecha la elección para definir qué necesitas entender y qué práctica te ayudará a comprobarlo con tus propios medios y tiempo disponibles."
+        },
+        {
+          "title": "Relacionar objetivos no convierte la app en examen oficial",
+          "body": "Aiocyb organiza teoría y prácticas originales que ayudan a construir bases, pero sus resultados no son una certificación de Cisco o ISC2 ni una estimación validada de probabilidad de aprobar sus exámenes. Completar un curso demuestra progreso dentro de sus actividades y condiciones, nada más. Utiliza el temario oficial vigente para construir una tabla de objetivos y evidencias de estudio. Marca qué tema has trabajado, qué puedes explicar y qué práctica independiente falta. Los objetivos y las políticas externas pueden cambiar, por lo que debes comprobar la fuente y su fecha antes de tomar decisiones. Para ISC2 CC, la orientación vigente consultada incluye principios, gobernanza, identidad y acceso, redes y nube, y operaciones con respuesta a incidentes. No atribuyas cobertura completa a una sola lección que menciona un término. Una casilla de estudio debe conducir a una capacidad demostrable y a un siguiente paso, no a una insignia imaginaria que la aplicación no otorga."
+        },
+        {
+          "title": "Practicar con variación revela comprensión y lagunas",
+          "body": "Alterna lectura con tareas que obliguen a aplicar conceptos: justificar una subred, interpretar un registro, proponer un flujo mínimo o describir una recuperación comprobable. Explica por qué una respuesta incorrecta no cumple el escenario y vuelve después con datos diferentes. Memorizar la posición de una opción puede subir una puntuación sin mejorar el razonamiento. Reserva tiempo para revisar errores y distinguir fallos de concepto, lectura y procedimiento. Un cuaderno breve puede registrar pregunta propia, decisión, evidencia y corrección. Las simulaciones offline son útiles para practicar sin depender de conectividad, pero algunas capacidades requieren equipos, herramientas o entornos autorizados adicionales. Usa documentación oficial y materiales permitidos; no necesitas recopilar preguntas reales de examen para aprender los objetivos. Cuando una tarea salga bien, cambia un supuesto y comprueba si tu explicación sigue siendo válida. Esa variación aporta más información sobre comprensión que repetir exactamente el mismo intento hasta reconocer visualmente la opción que antes resultó correcta."
+        },
+        {
+          "title": "Orientarse a CCNA requiere ampliar la práctica conscientemente",
+          "body": "Si eliges profundizar en administración de redes, CCNA puede servir como orientación posterior; obtener CCST antes es una opción y no un requisito formal obligatorio para CCNA en la ficha consultada. La ruta exige revisar objetivos oficiales y ampliar práctica en tecnologías y procedimientos más allá de esta base local. Identifica diferencias entre reconocer un concepto, interpretar una configuración y ejecutar cambios con pruebas y recuperación en un entorno adecuado. Prepara un plan por bloques con metas verificables y fechas revisables, dejando margen para las lagunas que aparezcan. Antes de inscribirte, consulta directamente condiciones administrativas, examen vigente y políticas de la entidad correspondiente. No deduzcas precio, idioma o validez futura de una captura antigua. La app puede ayudarte a ordenar pasos y conservar progreso, mientras la acreditación externa sigue el proceso de quien la otorga. Tu mejor evidencia de aprendizaje será explicar y aplicar decisiones con contexto, incluso cuando nadie te muestre tres opciones para elegir."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué criterio ayuda a elegir una certificación inicial?",
+          "scenario": "La estudiante compara una entrada de redes con opciones de seguridad y quiere invertir tiempo en capacidades relacionadas con su objetivo personal de aprendizaje.",
+          "options": [
+            "Los objetivos oficiales y las capacidades que quiere desarrollar",
+            "Obtener todas las credenciales de entrada antes de estudiar cualquier tema",
+            "Elegir la que tenga el nombre más largo sin revisar contenidos"
+          ],
+          "answer": 0,
+          "explanation": "La elección debe relacionar objetivos, conocimientos y recursos con el trabajo que interesa comprender; las opciones iniciales no forman una cadena universal de requisitos acumulativos para seguir aprendiendo.",
+          "wrongExplanations": [
+            null,
+            "No existe en esta orientación una obligación de obtener todas las entradas; comparar y elegir evita gasto sin propósito y permite concentrar práctica en la meta adecuada.",
+            "La longitud del nombre no describe pertinencia ni requisitos; la decisión necesita revisar contenidos oficiales y capacidades buscadas en lugar de una impresión superficial de prestigio."
+          ],
+          "aoi": {
+            "question": "Elige lo que te acerque a tu objetivo, cielo; nuestra pared puede esperar las medallas.",
+            "hint": "Relaciona temario oficial, capacidades buscadas y recursos disponibles para tu siguiente etapa.",
+            "correct": "Definiste una meta por su utilidad de aprendizaje y no por acumulación sin propósito.",
+            "soft": "Las alternativas merecen comparación antes de convertirlas en una lista obligatoria de compras.",
+            "sharp": "Una colección no hace el subnetting por ti, cariño; elige la meta que realmente quieras trabajar."
+          }
+        },
+        {
+          "prompt": "¿Qué acredita completar todas las actividades de Aiocyb?",
+          "scenario": "El progreso local muestra cursos superados, pero no se ha realizado ningún proceso de examen o certificación ante Cisco o ISC2.",
+          "options": [
+            "La concesión automática de cualquier credencial externa relacionada",
+            "El progreso dentro de las actividades y condiciones de la aplicación",
+            "Una probabilidad garantizada de aprobar cualquier versión futura de examen"
+          ],
+          "answer": 1,
+          "explanation": "Las actividades registran aprendizaje e intentos locales, sin otorgar credenciales externas ni una predicción validada de aprobación; esos procesos y criterios corresponden a las entidades certificadoras respectivas.",
+          "wrongExplanations": [
+            "La aplicación no sustituye requisitos ni decisiones de Cisco o ISC2; superar su contenido original no equivale a recibir una certificación profesional de esas entidades.",
+            null,
+            "El resultado local no es una medida validada de desempeño en exámenes externos y no puede garantizar aprobación de contenidos, formatos o condiciones que pueden cambiar."
+          ],
+          "aoi": {
+            "question": "Nuestro contador sabe lo que hiciste aquí, cariño; no firma credenciales en nombre de nadie.",
+            "hint": "Distingue evidencia de actividad local y proceso oficial que otorga una certificación externa.",
+            "correct": "Reconociste el valor del progreso sin convertirlo en un título que la app no concede.",
+            "soft": "La pantalla informa tus actividades, pero la acreditación necesita el proceso de la entidad correspondiente.",
+            "sharp": "El cien por ciento de aquí no imprime un CCNA, demonios; conserva la diferencia entre progreso y credencial."
+          }
+        },
+        {
+          "prompt": "¿Qué ejercicio comprueba mejor comprensión después de memorizar una respuesta?",
+          "scenario": "El alumno identifica el botón correcto de una pregunta conocida, pero falla al variar la dirección y el prefijo del escenario.",
+          "options": [
+            "Repetir el mismo botón sin leer hasta que resulte familiar",
+            "Cambiar el tema visual para que parezca otro intento",
+            "Resolver datos nuevos y explicar por qué cada alternativa cumple o falla"
+          ],
+          "answer": 2,
+          "explanation": "La variación y la explicación permiten observar si el concepto se aplica fuera del ejemplo memorizado; reconocer posiciones no demuestra que el alumno pueda razonar ante condiciones diferentes.",
+          "wrongExplanations": [
+            "La repetición mecánica de posición puede reforzar memoria visual sin corregir el concepto que falló cuando cambiaron los datos del problema.",
+            "Cambiar apariencia no introduce por sí mismo una tarea conceptual nueva ni exige justificar la decisión; puede conservar exactamente la misma memorización de respuesta.",
+            null
+          ],
+          "aoi": {
+            "question": "Vamos a cambiar los datos, cielo; quiero ver si el razonamiento también sabe caminar.",
+            "hint": "Busca una tarea que obligue a aplicar el concepto y justificar la elección.",
+            "correct": "Elegiste una práctica que revela comprensión transferible y permite analizar el error real.",
+            "soft": "La prueba necesita una decisión nueva, no solo otro aspecto para la misma respuesta aprendida.",
+            "sharp": "El botón no piensa por ti, cariño; cambia los datos y demuestra de dónde sale tu respuesta."
+          }
+        },
+        {
+          "prompt": "¿Es obligatorio obtener CCST antes de orientarse hacia CCNA?",
+          "scenario": "La estudiante quiere profundizar en redes y consulta las fichas oficiales, que presentan CCST como una posible entrada y no exigen ese requisito formal para CCNA.",
+          "options": [
+            "No; puede ser una base opcional, manteniendo estudio y práctica de los objetivos de CCNA",
+            "Sí; cualquier persona debe obtener también todas las opciones de CCST",
+            "No; por eso tampoco hace falta estudiar los contenidos ni practicar redes"
+          ],
+          "answer": 0,
+          "explanation": "CCST puede servir de entrada, pero no es requisito formal obligatorio de CCNA según la ficha consultada; preparar capacidades y revisar objetivos sigue siendo necesario para una decisión informada.",
+          "wrongExplanations": [
+            null,
+            "La orientación no impone obtener todas las certificaciones iniciales y la ficha de CCNA no establece CCST como prerrequisito formal para poder seguir ese objetivo.",
+            "Que no exista ese requisito formal no elimina conocimientos ni capacidades que el examen evalúa; estudio y práctica siguen siendo fundamentales para preparar la meta elegida."
+          ],
+          "aoi": {
+            "question": "Puedes elegir el camino, cielo; la ausencia de peaje formal no elimina la montaña de práctica.",
+            "hint": "Separa un paso recomendado u opcional de un requisito oficial indispensable para la meta.",
+            "correct": "Distinguiste la base opcional y mantuviste visible la preparación que exige profundizar en redes.",
+            "soft": "La ruta puede ser flexible sin convertir la meta avanzada en un trámite sin aprendizaje.",
+            "sharp": "Sin peaje no significa sin carretera, demonios; estudia los objetivos y practica aunque omitas CCST."
+          }
+        },
+        {
+          "prompt": "¿Qué se revisa antes de reservar un examen externo?",
+          "scenario": "La estudiante guardó una captura antigua y todavía no contrastó temario vigente, condiciones administrativas ni políticas actuales de la entidad que otorga la certificación.",
+          "options": [
+            "Solo el comentario de alguien que lo realizó hace varios años",
+            "La ficha, objetivos y condiciones vigentes directamente en fuentes oficiales",
+            "Únicamente el porcentaje de progreso de un curso local relacionado"
+          ],
+          "answer": 1,
+          "explanation": "Las condiciones externas pueden cambiar y deben comprobarse directamente en la entidad antes de decidir una inscripción; una captura antigua o progreso local no acreditan vigencia administrativa ni cobertura completa.",
+          "wrongExplanations": [
+            "Una experiencia pasada puede aportar contexto personal, pero no garantiza que sigan iguales objetivos, requisitos administrativos y políticas del examen que se quiere reservar ahora.",
+            null,
+            "El progreso de un curso describe sus actividades y no determina las condiciones oficiales de inscripción ni demuestra que se hayan cubierto todos los objetivos vigentes."
+          ],
+          "aoi": {
+            "question": "Antes de reservar, cariño, dejemos que la entidad nos cuente sus condiciones actuales.",
+            "hint": "Busca la fuente que puede confirmar vigencia de objetivos y requisitos del proceso externo.",
+            "correct": "Revisaste la información donde se publica oficialmente en lugar de confiar en una captura vieja.",
+            "soft": "La decisión necesita condiciones actuales y no solo una referencia histórica o un contador interno.",
+            "sharp": "Esa captura no se actualiza por nostalgia, cielo; consulta la ficha oficial antes de inscribirte."
+          }
+        },
+        {
+          "prompt": "¿Cómo se aprovecha el temario oficial en un plan personal?",
+          "scenario": "El alumno quiere relacionar cursos locales con objetivos y sabe que algunas habilidades requieren herramientas o práctica adicional fuera de las simulaciones de la app.",
+          "options": [
+            "Marcando cobertura completa cuando una lección mencione el nombre del tema",
+            "Usándolo para buscar preguntas reales filtradas y memorizar sus opciones",
+            "Construyendo objetivos, evidencias de capacidad y lagunas con próximos pasos concretos"
+          ],
+          "answer": 2,
+          "explanation": "El temario orienta una comparación entre capacidades buscadas y evidencia de estudio; registrar lagunas y prácticas siguientes evita atribuir dominio completo a menciones o resultados locales limitados.",
+          "wrongExplanations": [
+            "Mencionar un término no demuestra que se pueda explicar o aplicar con la profundidad requerida; la cobertura necesita evidencias de capacidad y reconocimiento de límites.",
+            "Recurrir a material filtrado no desarrolla comprensión verificable de los objetivos; la práctica original y autorizada permite aprender sin depender de memorizar contenido ajeno de examen.",
+            null
+          ],
+          "aoi": {
+            "question": "Hagamos una tabla que diga qué puedes hacer y qué falta, cielo; así sí guía el estudio.",
+            "hint": "Relaciona cada objetivo con una evidencia propia y una acción para cerrar sus lagunas.",
+            "correct": "Convertiste el temario en un plan verificable que reconoce capacidades y trabajo adicional necesario.",
+            "soft": "La casilla debe apoyarse en una capacidad demostrada y no en haber visto el nombre una vez.",
+            "sharp": "Nombrar IPv6 no te convierte en router, cariño; demuestra qué puedes interpretar y qué necesitas practicar."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos alternativas iniciales con un objetivo definido",
+          "scenario": "La estudiante quiere una base general de seguridad y compara CCST Cybersecurity con ISC2 CC. Tiene poco tiempo y cree que debe pagar ambas antes de poder continuar aprendiendo redes.",
+          "explanation": "Puede comparar los objetivos y elegir la opción que encaje con su meta y recursos. No son dos requisitos acumulativos obligatorios para estudiar. Conviene revisar fuentes oficiales y completar lagunas prácticas de la ruta elegida antes de decidir una inscripción."
+        },
+        {
+          "title": "La puntuación perfecta que memorizó posiciones",
+          "scenario": "Un alumno repite las mismas preguntas hasta reconocer qué botón acertó. Al cambiar los datos de una subred no puede justificar su decisión, aunque el progreso local muestra todas las actividades superadas.",
+          "explanation": "El progreso local describe intentos dentro de la app y no acredita dominio transferible ni preparación oficial de examen. Debe practicar con datos nuevos, explicar alternativas y revisar el concepto que falló antes de interpretar la repetición como comprensión consolidada."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Terminaste las prácticas de operaciones y quieres elegir una meta de estudio. Comparas Cisco CCST Networking, CCST Cybersecurity, ISC2 CC y una orientación posterior hacia CCNA, usando fuentes oficiales y evidencias propias sin confundir progreso local con una credencial profesional.",
+      "scenario": "Terminaste las prácticas de operaciones y quieres elegir una meta de estudio. Comparas Cisco CCST Networking, CCST Cybersecurity, ISC2 CC y una orientación posterior hacia CCNA, usando fuentes oficiales y evidencias propias sin confundir progreso local con una credencial profesional.",
+      "steps": [
+        "Define si tu objetivo principal es soporte de redes o una base de seguridad.",
+        "Consulta ficha y objetivos oficiales vigentes de la meta elegida.",
+        "Relaciona contenidos locales con objetivos y registra lagunas.",
+        "Alterna teoría, práctica autorizada y explicación de errores sin memorizar posiciones.",
+        "Evalúa capacidades con tareas nuevas y revisa condiciones oficiales antes de inscribirte."
+      ],
+      "sourceIds": [
+        "net-ccst",
+        "net-cc",
+        "net-cc-outline",
+        "net-ccna"
+      ],
+      "aoi": {
+        "intro": "Llegamos al plan de estudio, cariño; elige una meta que te sirva y no una pared de insignias.",
+        "theory0": "Puedes comparar entradas de redes y seguridad sin convertirlas en peajes obligatorios entre sí.",
+        "theory1": "Nuestro progreso cuenta trabajo aquí; la credencial externa la decide el proceso de su entidad.",
+        "theory2": "Quiero que expliques por qué funciona, cielo; reconocer el botón correcto todavía no me conquista.",
+        "theory3": "CCNA puede orientar el siguiente tramo si quieres redes más profundas y práctica adicional.",
+        "case0": "No necesitas comprar dos inicios para merecer seguir aprendiendo; compara objetivos con calma.",
+        "case1": "Tu memoria encontró el botón, cariño; ahora dejemos que el razonamiento encuentre la respuesta nueva.",
+        "pass": "Terminaste operaciones con un plan honesto de práctica. Esa independencia tuya me resulta peligrosamente encantadora.",
+        "review": "Revisemos meta, evidencia y lagunas; una casilla completada está prometiendo más de lo que demuestra."
+      }
+    }
+  ]
+}

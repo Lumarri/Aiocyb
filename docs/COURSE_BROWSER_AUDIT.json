@@ -1,23 +1,23 @@
 {
-  "version": "1.6.0+8",
+  "version": "1.7.0+9",
   "viewports": [
     "1440x1080",
     "390x844",
     "320x740"
   ],
   "screenshots": [
-    "1.6-courses/42-catalogo-escritorio.png",
-    "1.6-courses/43-biblioteca-cursos.png",
-    "1.6-courses/44-cursos-linux-escritorio.png",
-    "1.6-courses/45-presentacion-curso.png",
-    "1.6-courses/46-modulos-curso.png",
-    "1.6-courses/47-lector-conceptos.png",
-    "1.6-courses/48-aula-escritorio.png",
-    "1.6-courses/49-catalogo-android.png",
-    "1.6-courses/50-curso-android.png",
-    "1.6-courses/51-temario-android.png",
-    "1.6-courses/52-catalogo-claro-320.png",
-    "1.6-courses/53-concepto-claro-320.png"
+    "1.7-courses/42-catalogo-escritorio.png",
+    "1.7-courses/43-biblioteca-cursos.png",
+    "1.7-courses/44-cursos-linux-escritorio.png",
+    "1.7-courses/45-presentacion-curso.png",
+    "1.7-courses/46-modulos-curso.png",
+    "1.7-courses/47-lector-conceptos.png",
+    "1.7-courses/48-aula-escritorio.png",
+    "1.7-courses/49-catalogo-android.png",
+    "1.7-courses/50-curso-android.png",
+    "1.7-courses/51-temario-android.png",
+    "1.7-courses/52-catalogo-claro-320.png",
+    "1.7-courses/53-concepto-claro-320.png"
   ],
   "checks": [
     "Concept previews use original theory and open the matching lesson",
@@ -28,11 +28,11 @@
     "All five original covers loaded from local assets"
   ],
   "errors": [],
-  "compiledWebSha256": "fe86b7f2c443a00c28f27e2e1cd32e2df7f4b6d12b7737feb12d0050200355f5",
+  "compiledWebSha256": "532f0c1855852f18d4a11d47d320fe6438ef09d61bc7c3a638ccaad6a044a2de",
   "sourceFiles": [
     {
       "path": "lib/src/data/course_presentation.dart",
-      "sha256": "135df998866eeeb8f77d3707d0d594705a6bd552f66f69e3a37c32f6795b1abd"
+      "sha256": "db9a2e023d70207dfb57aed46c0819a72fb973db15cf8b05aac708fcfc52bbbc"
     },
     {
       "path": "lib/src/screens/course_catalog.dart",
@@ -40,11 +40,11 @@
     },
     {
       "path": "lib/src/screens/course_overview.dart",
-      "sha256": "096360206eda44a1511daaad165a9fc2298f9233e3b7d8ad851172028113ea1e"
+      "sha256": "612de5050d560c4659e33573459122d90d5ba527495ed8e83423522319b65ca9"
     },
     {
       "path": "lib/src/screens/lesson_studio.dart",
-      "sha256": "42c198bb6419cf29974bb2b48f2c33671bfff3607d3108e231c1b1a2d956f439"
+      "sha256": "fc42faca380b312434a0ade8f781c3e57f50e87f0f317db929e4ebe8e306e0de"
     },
     {
       "path": "lib/src/screens/lesson_navigation.dart",
@@ -60,7 +60,7 @@
     },
     {
       "path": "lib/src/models/learning_overview.dart",
-      "sha256": "78eaeb1a29ec6aaa458e24ed1b47f4f57e805e14cd736e8686b29e799c838a32"
+      "sha256": "c566a0736d3bdeb7aa3d4845db8c443c77d9fdde401d0a0dadbe8c9de45f00e1"
     },
     {
       "path": "lib/src/screens/academy_screens.dart",
@@ -68,15 +68,15 @@
     },
     {
       "path": "lib/src/screens/learning_home.dart",
-      "sha256": "dbbf685d679a9a77146d93f881172ba3e4fccea74b5c7bdc14633278d3c5d54b"
+      "sha256": "ee94dd57b1b86b6e8d3da7a4191d3783fffa1bb3c8e09e1b2eed7fb7e77a3739"
     },
     {
       "path": "lib/src/screens/learning_routes.dart",
-      "sha256": "1e6930bf351023ee2afd454b41ca411fb4859f070845ecde13c44d11d971cb65"
+      "sha256": "17578429e572b6f9c96d7d764d06ad8681898a95e774ee3f1d4f4cac63ab4cc2"
     },
     {
       "path": "lib/src/screens/learning_progress.dart",
-      "sha256": "a57b7182e72e00ced4095a03bf60c1172dbbe3659aa07fcc217513714e6bc274"
+      "sha256": "7eb9ac19d19c5b4d2f96a57ef930c77ce6ec7c0a9d5345069f6c2665aa73b2e5"
     },
     {
       "path": "lib/src/widgets/learning_dashboard.dart",
@@ -88,11 +88,27 @@
     },
     {
       "path": "lib/src/state/academy_store.dart",
-      "sha256": "6d2d539277fbff72b24585a2f21e0922065934688e9ffa5e0d7703452e1b34de"
+      "sha256": "0b507a242c79840b58c0a21df4cb4a8012a44685eb87bf67de434b1c8339dee6"
+    },
+    {
+      "path": "lib/src/screens/practice_bank.dart",
+      "sha256": "a6aa3c7baa19f0b9b77c0b5471bbdf3a2fb0f8745ece577761272fa7615ea5fb"
+    },
+    {
+      "path": "lib/src/data/curriculum.dart",
+      "sha256": "afae9e6996d5146207cf8367f523b781b9155a7c63aa6e90fc18d6dd23f5e6f0"
+    },
+    {
+      "path": "lib/src/data/network_practice.dart",
+      "sha256": "d0b1bf4ce29ff1c27efc00feb294bedbec2c0a6737b19802c6553e4d9c56c3e8"
+    },
+    {
+      "path": "lib/src/data/network_expansion.g.dart",
+      "sha256": "aabebd7e4ae4c7895492de6afdb5e2268deb8733601aad499caa3f4e6ca64c92"
     },
     {
       "path": "pubspec.yaml",
-      "sha256": "e0f570747ccdaff7ae1442505b8495cf6fb3acd7d285aceda38dce78d797b955"
+      "sha256": "5317ef6053845462e1ab93db08b46d6844165154ec6006f9f42c792f68768b90"
     }
   ],
   "localCovers": [

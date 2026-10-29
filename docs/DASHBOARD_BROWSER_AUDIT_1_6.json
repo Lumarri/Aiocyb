@@ -1,0 +1,108 @@
+{
+  "version": "1.6.0+8",
+  "viewports": [
+    "1440x1080",
+    "390x844",
+    "320x740"
+  ],
+  "paths": [
+    {
+      "id": "start",
+      "totalsVerified": true
+    },
+    {
+      "id": "networks",
+      "totalsVerified": true
+    },
+    {
+      "id": "recovery",
+      "totalsVerified": true
+    },
+    {
+      "id": "build",
+      "totalsVerified": true
+    },
+    {
+      "id": "linux",
+      "totalsVerified": true
+    }
+  ],
+  "checks": [
+    "Home resumes the original Linux lesson and shows three recommendations",
+    "All five paths expose real totals; final Linux course remains accessible",
+    "Course search handles reversed words and exposes the original 1/3 grade",
+    "Completed and started filters distinguish failed attempts and ungraded visits",
+    "Review shortcut includes original course and diagnostic mistakes",
+    "Legacy starts migrate and remain started after visiting a different course and reloading",
+    "Grades, diagnostic, favorite lesson and neon preferences are retained",
+    "Home, routes and progress work in light mode with enlarged text at 320px"
+  ],
+  "screenshots": [
+    "54-inicio-escritorio.png",
+    "55-rutas-escritorio.png",
+    "56-ruta-linux-detalle.png",
+    "57-recorrido-cursos.png",
+    "58-progreso-escritorio.png",
+    "59-notas-por-curso.png",
+    "60-cursos-completados.png",
+    "61-inicio-android.png",
+    "62-rutas-android.png",
+    "63-ruta-android.png",
+    "64-progreso-android.png",
+    "65-inicio-claro-320.png",
+    "66-ruta-clara-320.png",
+    "67-progreso-claro-320.png"
+  ],
+  "errors": [],
+  "compiledWebSha256": "fe86b7f2c443a00c28f27e2e1cd32e2df7f4b6d12b7737feb12d0050200355f5",
+  "sourceFiles": [
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "78eaeb1a29ec6aaa458e24ed1b47f4f57e805e14cd736e8686b29e799c838a32"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "6d2d539277fbff72b24585a2f21e0922065934688e9ffa5e0d7703452e1b34de"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "dbbf685d679a9a77146d93f881172ba3e4fccea74b5c7bdc14633278d3c5d54b"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "a57b7182e72e00ced4095a03bf60c1172dbbe3659aa07fcc217513714e6bc274"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "1e6930bf351023ee2afd454b41ca411fb4859f070845ecde13c44d11d971cb65"
+    },
+    {
+      "path": "lib/src/screens/dashboard_actions.dart",
+      "sha256": "0b212488660e475e92c0065f92fca59cbe56840843266e698a2a3b9217ecc49b"
+    },
+    {
+      "path": "lib/src/screens/academy_screens.dart",
+      "sha256": "afac73698cd8334087e5fdd7633ec3bf3fbfc94fac6364ba2f822abe1bd6c025"
+    },
+    {
+      "path": "lib/src/screens/explore_screens.dart",
+      "sha256": "29bb65de3c35d0d99eb6af8c3ce321b516aa49f96e4159e3436822ffba1c820b"
+    },
+    {
+      "path": "lib/src/widgets/learning_dashboard.dart",
+      "sha256": "e5ea71bbfbc7baf0fde992f35084b16c62fc9864efc241f63dbb948b0eb66a34"
+    },
+    {
+      "path": "lib/src/widgets/learning_link.dart",
+      "sha256": "0e9fe4bf40d5788d1c2884e02208e75fadf342ad6b7d07f9f71b348243ef9846"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "e0f570747ccdaff7ae1442505b8495cf6fb3acd7d285aceda38dce78d797b955"
+    }
+  ],
+  "status": "passed",
+  "externalRequestsBlocked": 0,
+  "preservedGrades": 11,
+  "expectedXP": 500
+}

@@ -21,41 +21,44 @@ void main() {
         InMemorySharedPreferencesAsync.empty(),
   );
 
-  test('Six complete routes contain 240 distinct, usable micro-lessons', () {
-    expect(extendedCourses, hasLength(6));
-    expect(courses, hasLength(25));
-    expect(allLessons, hasLength(430));
-    final sourceIds = sources.map((source) => source.id).toSet();
-    final ids = <String>{};
-    final theories = <String>{};
-    final scripts = <String>{};
-    for (final course in extendedCourses) {
-      expect(course.lessons, hasLength(40), reason: course.id);
-      for (final lesson in course.lessons) {
-        expect(ids.add(lesson.id), isTrue, reason: lesson.id);
-        expect(theories.add(lesson.sections.single.body), isTrue);
-        expect(
-          lesson.sections.single.body.split(RegExp(r'\s+')).length,
-          greaterThanOrEqualTo(60),
-        );
-        expect(lesson.questions, hasLength(1));
-        expect(
-          lesson.sourceIds.every(sourceIds.contains),
-          isTrue,
-          reason: lesson.id,
-        );
-        for (final line in lesson.tutor.values) {
-          expect(scripts.add(line), isTrue, reason: lesson.id);
-        }
-        final question = lesson.questions.single;
-        for (var choice = 0; choice < 3; choice++) {
-          if (choice != question.answer) {
-            expect(question.wrongExplanations[choice], isNotEmpty);
+  test(
+    'Six original network courses contain 240 distinct, usable micro-lessons',
+    () {
+      expect(extendedCourses, hasLength(6));
+      expect(courses, hasLength(31));
+      expect(allLessons, hasLength(490));
+      final sourceIds = sources.map((source) => source.id).toSet();
+      final ids = <String>{};
+      final theories = <String>{};
+      final scripts = <String>{};
+      for (final course in extendedCourses) {
+        expect(course.lessons, hasLength(40), reason: course.id);
+        for (final lesson in course.lessons) {
+          expect(ids.add(lesson.id), isTrue, reason: lesson.id);
+          expect(theories.add(lesson.sections.single.body), isTrue);
+          expect(
+            lesson.sections.single.body.split(RegExp(r'\s+')).length,
+            greaterThanOrEqualTo(60),
+          );
+          expect(lesson.questions, hasLength(1));
+          expect(
+            lesson.sourceIds.every(sourceIds.contains),
+            isTrue,
+            reason: lesson.id,
+          );
+          for (final line in lesson.tutor.values) {
+            expect(scripts.add(line), isTrue, reason: lesson.id);
+          }
+          final question = lesson.questions.single;
+          for (var choice = 0; choice < 3; choice++) {
+            if (choice != question.answer) {
+              expect(question.wrongExplanations[choice], isNotEmpty);
+            }
           }
         }
       }
-    }
-  });
+    },
+  );
 
   testWidgets(
     'A long course keeps its final lesson accessible through the course outline',

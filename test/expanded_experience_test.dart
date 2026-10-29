@@ -6,6 +6,7 @@ import 'package:aiocyb/src/data/aoi_library.dart';
 import 'package:aiocyb/src/data/curriculum.dart';
 import 'package:aiocyb/src/data/learning_paths.dart';
 import 'package:aiocyb/src/data/linux_curriculum.g.dart';
+import 'package:aiocyb/src/data/network_expansion.g.dart';
 import 'package:aiocyb/src/data/offline_labs.dart';
 import 'package:aiocyb/src/data/secure_curriculum.g.dart';
 import 'package:aiocyb/src/models/aoi_dialogue.dart';
@@ -106,7 +107,9 @@ void main() {
     final previous = courses
         .where(
           (course) =>
-              !secureCourses.contains(course) && !linuxCourses.contains(course),
+              !secureCourses.contains(course) &&
+              !linuxCourses.contains(course) &&
+              !advancedNetworkCourses.contains(course),
         )
         .expand((course) => course.lessons)
         .toList();

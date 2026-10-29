@@ -73,7 +73,7 @@ class AcademyStore extends ChangeNotifier {
         heardDialogueIds.addAll(heard.whereType<String>());
       }
       if (savedScores is Map) {
-        for (final lesson in allLessons) {
+        for (final lesson in allAssessmentLessons) {
           final value = savedScores[lesson.id];
           if (value is int && value >= 0 && value <= lesson.questions.length) {
             scores[lesson.id] = value;
@@ -101,7 +101,7 @@ class AcademyStore extends ChangeNotifier {
       final mistakes = data['mistakeCounts'];
       if (mistakes is Map) {
         final validKeys = {
-          for (final lesson in allLessons)
+          for (final lesson in allAssessmentLessons)
             for (var i = 0; i < lesson.questions.length; i++) '${lesson.id}:$i',
           for (var i = 0; i < diagnosticQuestions.length; i++) 'diagnostic:$i',
         };
@@ -128,6 +128,7 @@ class AcademyStore extends ChangeNotifier {
       (scores[lesson.id] ?? 0) >= passingScore(lesson);
   int passingScore(Lesson lesson) => (lesson.questions.length * 2 / 3).ceil();
   int get completedLessons => allLessons.where(isComplete).length;
+  int get completedPractice => allPracticeLessons.where(isComplete).length;
   int get xp => completedLessons * 50;
   double courseProgress(Course course) =>
       course.lessons.where(isComplete).length / course.lessons.length;
@@ -258,7 +259,10 @@ class AcademyStore extends ChangeNotifier {
 
   void _rememberStartedCourse(Lesson lesson) {
     for (final course in courses) {
-      if (course.lessons.any((entry) => entry.id == lesson.id)) {
+      if ([
+        ...course.lessons,
+        ...course.practiceLessons,
+      ].any((entry) => entry.id == lesson.id)) {
         startedCourseIds.add(course.id);
         return;
       }

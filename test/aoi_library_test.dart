@@ -5,6 +5,7 @@ import 'package:aiocyb/src/data/aoi_library.dart';
 import 'package:aiocyb/src/data/curriculum.dart';
 import 'package:aiocyb/src/data/linux_curriculum.g.dart';
 import 'package:aiocyb/src/data/micro_lesson_dialogues.dart';
+import 'package:aiocyb/src/data/network_expansion.g.dart';
 import 'package:aiocyb/src/models/aoi_dialogue.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -64,7 +65,9 @@ void main() {
       final diagnostic = entry.lessonId == 'diagnostic';
       final lesson = diagnostic
           ? null
-          : allLessons.singleWhere((lesson) => lesson.id == entry.lessonId);
+          : allAssessmentLessons.singleWhere(
+              (lesson) => lesson.id == entry.lessonId,
+            );
       final questions = lesson?.questions ?? diagnosticQuestions;
       final maxAnchor = switch (entry.stage) {
         AoiStage.intro || AoiStage.courseComplete => 1,
@@ -186,7 +189,7 @@ void main() {
         seenIds: {},
         onSeen: (_) {},
       );
-      for (final lesson in allLessons) {
+      for (final lesson in allAssessmentLessons) {
         for (var index = 0; index < lesson.questions.length; index++) {
           for (
             var choice = 0;
@@ -214,7 +217,7 @@ void main() {
       seenIds: {},
       onSeen: (_) {},
     );
-    for (final lesson in allLessons) {
+    for (final lesson in allAssessmentLessons) {
       final question = lesson.questions.first;
       final choice = (question.answer + 1) % question.options.length;
       final first = session.open(
@@ -232,10 +235,13 @@ void main() {
       )!;
       expect(repeat.id, isNot(first.id), reason: lesson.id);
       expect(repeat.text, isNot(first.text), reason: lesson.id);
-      final linux = linuxCourses.any(
-        (course) => course.lessons.contains(lesson),
-      );
-      expect(first.expression, linux ? 'pouting' : 'disappointed');
+      final expressive =
+          linuxCourses.any((course) => course.lessons.contains(lesson)) ||
+          advancedNetworkCourses.any(
+            (course) => course.lessons.contains(lesson),
+          ) ||
+          allPracticeLessons.contains(lesson);
+      expect(first.expression, expressive ? 'pouting' : 'disappointed');
       expect(repeat.expression, 'exasperated');
       expect(
         session

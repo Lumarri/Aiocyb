@@ -11,6 +11,7 @@ import '../theme.dart';
 import '../widgets/aoi_classroom.dart';
 import '../widgets/common.dart';
 import 'aoi_session_state.dart';
+import 'certifications.dart';
 import 'lesson_screens.dart';
 import 'learning_routes.dart';
 export 'learning_routes.dart';
@@ -53,6 +54,11 @@ const exploreSections = [
     'Reconoce los pasos que ya has dado en la academia.',
     Icons.workspace_premium_outlined,
   ),
+  (
+    'Guía de certificaciones',
+    'Compara CCST, ISC2 CC y una futura orientación a CCNA.',
+    Icons.verified_outlined,
+  ),
 ];
 
 void openExploreSection(BuildContext context, int index, AcademyStore store) {
@@ -64,6 +70,7 @@ void openExploreSection(BuildContext context, int index, AcademyStore store) {
         1 => LabsScreen(store: store),
         2 => LibraryScreen(store: store),
         3 => ReviewListScreen(store: store),
+        5 => CertificationsScreen(store: store),
         _ => AchievementsScreen(store: store),
       },
     ),
@@ -320,7 +327,7 @@ class ReviewListScreen extends StatelessWidget {
     listenable: store,
     builder: (context, _) {
       final pending = [
-        for (final lesson in [...allLessons, diagnosticReviewLesson])
+        for (final lesson in [...allAssessmentLessons, diagnosticReviewLesson])
           for (var i = 0; i < lesson.questions.length; i++)
             if (store.needsReview(lesson.id, i)) (lesson, i),
       ];

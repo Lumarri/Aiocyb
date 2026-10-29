@@ -6,20 +6,23 @@ Academia de ciberseguridad para principiantes, desarrollada en Flutter con Andro
 
 Código fuente: [Lumarri/Aiocyb](https://github.com/Lumarri/Aiocyb). Icono nuevo para Android, web y Windows: [diseño y regeneración](docs/ICONO.md).
 
-## Versión 1.6
+## Versión 1.7
 
-Inicio prioriza la última lección, cuatro indicadores reales, accesos de estudio y tres cursos sugeridos. Rutas ofrece un directorio visual de cinco recorridos y una ficha para cada uno. Mi progreso muestra avance global, precisión de mejores intentos y notas agrupadas por curso, con filtros y búsqueda. Los cursos comenzados se conservan entre sesiones y las tarjetas de navegación incluyen etiquetas accesibles.
+La ampliación añade seis cursos de redes prácticas y defensa: **60 lecciones profundas, 360 ejercicios y 120 casos resueltos**. Los seis cursos de redes anteriores incorporan otros **240 ejercicios de refuerzo**, con notas independientes. El catálogo reúne **31 cursos, 490 lecciones y 1530 ejercicios**, además de las cinco preguntas del diagnóstico inicial.
 
-Diseño actual: [INTERFAZ_1_6.md](docs/INTERFAZ_1_6.md). Verificación de la entrega: [VERIFICACION_1_6.md](docs/VERIFICACION_1_6.md).
+Inicio conserva la última lección y añade acceso a la guía de certificaciones. Rutas reúne seis recorridos y Mi progreso distingue los refuerzos de las lecciones y sus XP. La guía offline compara **Cisco CCST Networking, CCST Cybersecurity, ISC2 CC y una orientación posterior a CCNA**: explica conocimientos previos, objetivos, cursos relacionados y brechas, con enlaces oficiales para copiar. El avance local no representa preparación de examen ni una credencial obtenida; CCST Cybersecurity e ISC2 CC son alternativas iniciales.
 
-La sección de cursos adopta una estructura de plataforma educativa: catálogo visual con cinco portadas originales, filtros por área y progreso, búsqueda sin distinguir tildes y orden por duración o nombre. Cada curso incorpora objetivos propios, habilidades, presentación, temario por módulos y tres conceptos que abren su teoría completa. El aula permite navegar entre lecciones desde el temario. Se mantienen los 25 cursos, las notas y Aoi con sus diálogos contextuales.
+Contenido de la ampliación: [REDES_1_7.md](docs/REDES_1_7.md). Verificación de la entrega: [VERIFICACION_1_7.md](docs/VERIFICACION_1_7.md). Se conservan como antecedentes el [diseño](docs/INTERFAZ_1_6.md) y la [verificación de 1.6](docs/VERIFICACION_1_6.md).
+
+La sección de cursos mantiene catálogo visual con cinco portadas originales, filtros por área y progreso, búsqueda sin distinguir tildes y orden por duración o nombre. Cada curso incorpora objetivos, habilidades, presentación, temario por módulos y conceptos que abren su teoría completa. La sexta ruta reutiliza la portada de redes. El aula permite navegar entre lecciones y conserva a Aoi con sus diálogos fijos según el contexto.
 
 El catálogo y las fichas mantienen el [diseño de 1.5](docs/INTERFAZ_1_5.md). Portadas originales y prompts: [PORTADAS_1_5.md](docs/PORTADAS_1_5.md). La [verificación de 1.5](docs/VERIFICACION_1_5.md) se conserva como antecedente.
 
 - Presentación con alias opcional y Aoi Bite como tutora guía.
 - Inicio con la última lección incompleta, avance, experiencia, accesos y cursos sugeridos.
-- Veinticinco cursos: tres iniciales, seis de redes, seis de malware, cuatro de criptografía/web/código y seis nuevos de Linux, terminal y registros. En total, **430 lecciones y 930 ejercicios**.
-- La ruta nueva incluye **60 lecciones, 240 ejercicios, 120 casos resueltos y 40 097 palabras de teoría**; cada lección contiene 623–711 palabras y 29 intervenciones propias de Aoi. Son **1 746 líneas únicas**, con explicaciones específicas para las respuestas correctas y ambos distractores.
+- Treinta y un cursos: tres iniciales, seis de redes cotidianas, seis de malware, cuatro de criptografía/web/código, seis de Linux y seis de redes prácticas y ciberdefensa.
+- La nueva ruta de redes incluye **39 621 palabras de teoría**, con 600–705 por lección, dos casos resueltos y seis preguntas en cada una. La ampliación completa aporta **4026 líneas originales de Aoi**, incluidas las reacciones de los 240 refuerzos y los seis cierres de curso.
+- Linux conserva **60 lecciones, 240 ejercicios, 120 casos resueltos y 40 097 palabras de teoría**; cada lección contiene 623–711 palabras y 29 intervenciones propias de Aoi. Son **1746 líneas únicas**, con explicaciones específicas para las respuestas correctas y ambos distractores.
 - Se conservan los ocho retratos anteriores y se añaden ocho expresiones: curiosidad, concentración, sorpresa, alivio, reto juguetón, puchero, rubor pícaro y celebración final. Se seleccionan por etapa y resultado, sin controles manuales de diálogo.
 - Los cuatro cursos de criptografía, web y código tienen **diez lecciones y treinta ejercicios cada uno**. Cada lección contiene 600–900 palabras de teoría, dos casos resueltos y tres ejercicios con situaciones propias. Esa ruta aporta 27 038 palabras de teoría, 80 casos y 964 intervenciones originales de Aoi.
 - En la ruta de malware, cada lección contiene **600–900 palabras de teoría**, cuatro conceptos, **dos casos resueltos** y cuatro ejercicios con caso propio. El contador de teoría excluye diálogos, casos, pasos y respuestas.
@@ -27,15 +30,15 @@ El catálogo y las fichas mantienen el [diseño de 1.5](docs/INTERFAZ_1_5.md). P
 - Teoría, diagramas con iconos originales de Cisco, procedimientos y casos ficticios.
 - Búsqueda de cursos por palabras y filtros por área y progreso; orden por ruta, duración o nombre. Los estados incluyen las visitas y los intentos sin aprobar.
 - Progreso persistente: mejor nota por lección y 50 XP por primera aprobación.
-- Centro **Explorar** con rutas de aprendizaje, laboratorio offline, biblioteca, repaso de errores y logros.
+- Centro **Explorar** con rutas de aprendizaje, laboratorio offline, biblioteca, repaso de errores, logros y guía de certificaciones.
 - Cuatro laboratorios con tres etapas cada uno, feedback por decisión y reacciones suaves o mordaces según los fallos registrados. Sus resultados no modifican notas ni XP de cursos.
 - Biblioteca con búsqueda en teoría, filtro por curso, favoritos y paginación. Los marcadores también se gestionan desde el aula.
-- Repaso de errores de cursos y diagnóstico con el contexto original de Aoi. Resolverlo conserva la nota del curso; un fallo posterior vuelve a abrir el repaso.
-- Ocho logros calculados a partir del progreso real y cinco rutas que organizan todos los cursos sin bloquearlos.
+- Repaso de errores de cursos, refuerzos y diagnóstico con el contexto original de Aoi. Resolverlo conserva la nota; un fallo posterior vuelve a abrir el repaso.
+- Ocho logros calculados a partir del progreso real y seis rutas que organizan todos los cursos sin bloquearlos.
 - Configuración de **neón cian o violeta**, brillo suave, modo claro/oscuro, texto ampliado y reinicio con confirmación. Tema, brillo y favoritos se guardan localmente.
 - Fuentes y créditos consultables dentro de la app.
 
-Las lecciones iniciales y de criptografía, web y código se aprueban con dos de tres respuestas correctas; las microlecciones de redes, resolviendo su único ejercicio; malware y Linux, con tres de cuatro. Los reintentos son ilimitados y no reducen la mejor nota. Un intento incompleto no guarda una nota; los errores comprobados sí se recuerdan para ajustar la reacción de Aoi.
+Las lecciones iniciales y de criptografía, web y código se aprueban con dos de tres respuestas correctas; las microlecciones de redes y sus refuerzos, resolviendo su ejercicio; malware y Linux, con tres de cuatro; las nuevas lecciones de redes prácticas y defensa, con cuatro de seis. Los 240 refuerzos guardan nota y errores por separado, sin XP adicionales ni alterar las aprobaciones anteriores. Son opcionales para la finalización de sus cursos. Los reintentos no reducen la mejor nota y un intento incompleto no guarda calificación; los errores comprobados sí se recuerdan.
 
 La personalidad y apariencia de Aoi Bite están definidas en [docs/AOI_BITE.md](docs/AOI_BITE.md). Su humor e ironía son rasgos fijos, sin interruptor para desactivarlos. Incluye dieciséis ilustraciones originales de la tutora adulta parcialmente cíborg. El aula mantiene a Aoi visible junto al contenido. Cada situación tiene un diálogo fijo: no hay controles para cambiarlo ni consultar un historial. Ante el primer error es suave; si vuelves a fallar ese ejercicio, responde con más mordacidad. Celebra los aciertos y la primera finalización de un curso con gestos propios.
 
@@ -72,10 +75,27 @@ El banco inicial conserva **585 intervenciones con explicaciones únicas**. Las 
 | Procesos y servicios de Linux | 10 lecciones profundas y 40 ejercicios de recursos, unidades, tareas, paquetes y diagnóstico local |
 | Leer registros sin inventar historias | 10 lecciones profundas y 40 ejercicios de fuentes, campos, tiempo, autenticación, web y correlación |
 | Investiga un caso en Linux | 10 lecciones profundas y 40 ejercicios de un caso defensivo completo y ficticio |
+| IPv4 y subnetting con criterio | 10 lecciones, 60 ejercicios y 20 casos de prefijos, VLSM, asignación, rutas y traducción |
+| IPv6: del prefijo al diagnóstico | 10 lecciones, 60 ejercicios y 20 casos de notación, alcance, SLAAC, DHCPv6, vecinos y MTU |
+| VLAN, switching y enrutamiento | 10 lecciones, 60 ejercicios y 20 casos de MAC, puertos, troncales, bucles, OSPF y ACL |
+| Diagnóstico de redes basado en evidencias | 10 lecciones, 60 ejercicios y 20 casos de ICMP, DNS/TLS, DHCP, TCP, rendimiento y capturas |
+| Defensa de redes y acceso controlado | 10 lecciones, 60 ejercicios y 20 casos de zonas, políticas, VPN, detección y controles de acceso |
+| Operaciones de seguridad y respuesta | 10 lecciones, 60 ejercicios y 20 casos de inventario, registros, priorización, parches y recuperación |
 
-Temarios: [redes y navegación](docs/CURSOS.md), [prácticas iniciales](docs/PRACTICAS_INICIALES.md), [malware y recuperación](docs/MALWARE_CURSOS.md), [criptografía, web y código](docs/SECURE_CURSOS.md) y [Linux, terminal y registros](docs/LINUX_CURSOS.md). La ampliación conserva IDs, notas, XP, errores, favoritos, preferencias y finalización de los diecinueve cursos anteriores. Banco visual y prompts nuevos: [AOI_EXPRESIONES_1_4.md](docs/AOI_EXPRESIONES_1_4.md).
+Los seis cursos de redes cotidianas conservan sus 40 microlecciones y ahora ofrecen 40 refuerzos adicionales por curso: 80 ejercicios en cada uno. Temarios: [redes prácticas y defensa](docs/REDES_1_7.md), [redes y navegación](docs/CURSOS.md), [prácticas iniciales](docs/PRACTICAS_INICIALES.md), [malware](docs/MALWARE_CURSOS.md), [criptografía, web y código](docs/SECURE_CURSOS.md) y [Linux](docs/LINUX_CURSOS.md). Se conservan IDs, notas, XP, errores, favoritos, preferencias y finalización de los 25 cursos anteriores. Banco visual y prompts: [AOI_EXPRESIONES_1_4.md](docs/AOI_EXPRESIONES_1_4.md).
 
 ## Capturas
+
+Versión 1.7: redes, refuerzos y orientación de certificaciones.
+
+- [Guía de certificaciones en escritorio](docs/screenshots/1.7-networks/01-guia-certificaciones-escritorio.png)
+- [Ruta de redes y ciberdefensa](docs/screenshots/1.7-networks/03-ruta-redes-y-ciberdefensa.png)
+- [Teoría profunda con Aoi](docs/screenshots/1.7-networks/04-teoria-profunda-con-aoi.png)
+- [Refuerzo superado con nota independiente](docs/screenshots/1.7-networks/06-refuerzo-superado-nota-independiente.png)
+- [Certificaciones en la vista para Android](docs/screenshots/1.7-networks/09-certificaciones-android.png)
+- [Meta CCNA en modo claro a 320 px](docs/screenshots/1.7-networks/10-meta-ccna-clara-320.png)
+
+Antecedentes de la versión 1.6:
 
 - [Inicio en escritorio](docs/screenshots/54-inicio-escritorio.png)
 - [Directorio de rutas](docs/screenshots/55-rutas-escritorio.png)
@@ -212,12 +232,13 @@ python tool/compile_practice.py
 python tool/compile_malware.py
 python tool/compile_secure_courses.py
 python tool/compile_linux_courses.py
+python tool/compile_network_expansion.py
 python tool/audit_aoi_visuals.py
 flutter analyze
 flutter test
 ```
 
-Las 60 pruebas cubren persistencia, mejores notas, XP sin duplicados, errores de almacenamiento, reinicio, presentación, búsqueda, temas neón, teoría profunda, casos, favoritos, repaso, laboratorios y conservación de las 370 notas anteriores y sus 18 500 XP. Verifican las ocho expresiones de Aoi añadidas en 1.4, aprobación con dos de tres o tres de cuatro respuestas según el curso y celebración una sola vez. Las pruebas de la interfaz nueva recorren filtros, orden, conceptos vinculados a su teoría original, continuación de lecciones, temario dentro del aula, texto ampliado a 320 px y escritorio a 1440 px. La verificación actual está en [docs/VERIFICACION_1_6.md](docs/VERIFICACION_1_6.md). Las nueve pruebas nuevas verifican los paneles, los estados de curso, la migración de cursos comenzados, los cálculos y las acciones accesibles.
+Las pruebas cubren persistencia, mejores notas, XP sin duplicados, errores de almacenamiento, reinicio, búsqueda, temas, teoría, casos, favoritos, repaso y laboratorios. La ampliación verifica la migración desde 1.6, las notas independientes de refuerzos, el umbral de cuatro de seis y la guía de certificaciones. Los recorridos de interfaz comprueban navegación, filtros, conceptos, continuación, texto ampliado a 320 px y escritorio a 1440 px. Resultados y límites de la entrega: [VERIFICACION_1_7.md](docs/VERIFICACION_1_7.md).
 
 Después de compilar el APK, `python tool/audit_release.py --aapt <ruta-a-aapt.exe>` comprueba su versión, contenido, imágenes y ausencia de permiso de Internet. El recorrido `tool/malware_smoke.cjs` usa Playwright sobre una vista previa web local para comprobar los seis cursos con las peticiones externas bloqueadas.
 
@@ -241,6 +262,9 @@ tool/compile_malware.py             Validación de extensión y compilación off
 assets/secure/                      Originales Markdown, 40 lecciones y 120 ejercicios
 tool/secure_editorial.py            Transcripción literal a JSON estructurado
 tool/compile_secure_courses.py      Auditoría y constantes de los cuatro cursos nuevos
+assets/network_expansion/           60 lecciones profundas y 240 refuerzos adicionales
+tool/compile_network_expansion.py   Validación editorial y exportación offline
+lib/src/data/certification_guides.dart Orientación independiente y referencias oficiales
 lib/src/data/offline_labs.dart      Cuatro simulaciones y sus guiones fijos
 tool/audit_labs.py                  Exportación y auditoría de etapas y diálogos
 tool/experience_smoke.cjs           Recorrido visual con peticiones externas bloqueadas

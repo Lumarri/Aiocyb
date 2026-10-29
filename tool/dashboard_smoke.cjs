@@ -5,6 +5,8 @@ const assert = require('node:assert/strict');
 const { createHash } = require('node:crypto');
 const { chromium } = require(process.env.AIOCYB_PLAYWRIGHT || 'playwright');
 const root = path.resolve(__dirname, '..');
+const version = fs.readFileSync(path.join(root, 'pubspec.yaml'), 'utf8').match(/^version:\s*(\S+)/m)[1];
+const screenshotFolder = `${version.split('.').slice(0, 2).join('.')}-dashboard`;
 const base = process.env.AIOCYB_PREVIEW_URL || 'http://127.0.0.1:8896';
 const read = relative => JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8'));
 const linux = read('assets/linux/linux-start.json');
@@ -17,10 +19,11 @@ const initial = { onboarded: true, name: 'Alex', darkMode: true, neonTheme: 'cya
   favoriteLessons: [linux.lessons[0].id], mistakeCounts: { 'passwords:1': 1, 'diagnostic:2': 1 }, heardDialogueIds: [] };
 const paths = [
   ['start', 'Tu primera defensa', '3 cursos · 30 lecciones · 90 ejercicios'],
-  ['networks', 'Conecta con criterio', '6 cursos · 240 lecciones · 240 ejercicios'],
+  ['networks', 'Conecta con criterio', '6 cursos · 240 lecciones · 480 ejercicios'],
   ['recovery', 'Prevenir, responder y recuperar', '6 cursos · 60 lecciones · 240 ejercicios'],
   ['build', 'Construye seguridad', '4 cursos · 40 lecciones · 120 ejercicios'],
   ['linux', 'Linux: observa, comprende e investiga', '6 cursos · 60 lecciones · 240 ejercicios'],
+  ['advanced-networks', 'Redes prácticas y ciberdefensa', '6 cursos · 60 lecciones · 360 ejercicios'],
 ];
 const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -30,7 +33,7 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const page = await context.newPage();
   let blocked = 0, mobile = false;
   const errors = [];
-  const report = { version: fs.readFileSync(path.join(root, 'pubspec.yaml'), 'utf8').match(/^version:\s*(\S+)/m)[1],
+  const report = { version,
     viewports: ['1440x1080', '390x844', '320x740'], paths: [], checks: [], screenshots: [], errors };
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', route => {
@@ -62,14 +65,21 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
   const capture = async name => {
     await page.mouse.move(5, 5); await page.waitForTimeout(1800);
-    await page.screenshot({ path: path.join(root, 'docs/screenshots', name) });
-    report.screenshots.push(name);
+    fs.mkdirSync(path.join(root, 'docs/screenshots', screenshotFolder), { recursive: true });
+    const relative = path.join(screenshotFolder, name);
+    await page.screenshot({ path: path.join(root, 'docs/screenshots', relative) });
+    report.screenshots.push(relative.split(path.sep).join('/'));
   };
   const search = async value => {
     const field = page.getByRole('textbox', { name: /Buscar en mi progreso/ });
-    await field.click(); await page.waitForTimeout(250);
-    await field.press('ControlOrMeta+A'); await field.press('Backspace'); await page.waitForTimeout(100);
-    if (value) await field.pressSequentially(value, { delay: 50 });
+    await field.click(); await page.waitForTimeout(650);
+    await page.waitForFunction(() => {
+      const active = document.activeElement;
+      return active && /^(INPUT|TEXTAREA)$/.test(active.tagName) && !active.disabled;
+    });
+    await page.keyboard.press('ControlOrMeta+A'); await page.keyboard.press('Backspace');
+    await page.waitForTimeout(250);
+    if (value) await page.keyboard.type(value, { delay: 80 });
     await page.waitForTimeout(650);
     await page.waitForFunction(text => [...document.querySelectorAll('input,textarea')]
       .some(input => input.value === text), value, { timeout: 5000 });
@@ -84,7 +94,7 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     await expectText('Hola, Alex'); await expectText(linux.lessons[0].title);
     await capture('54-inicio-escritorio.png');
     await click('Continuar aprendiendo'); await expectText(linux.lessons[0].aoi.intro); await back();
-    await click(/^Mis rutas/); await expectText('5 rutas disponibles');
+    await click(/^Mis rutas/); await expectText('6 rutas disponibles');
     await capture('55-rutas-escritorio.png');
     for (const [id, title, totals] of paths) {
       await click(new RegExp(escape(title))); await expectText(totals);
@@ -98,10 +108,11 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       report.paths.push({ id, totalsVerified: true });
       await back();
     }
+    await scrollTop();
     await click('En curso', 'checkbox'); await expectText('2 rutas disponibles');
     await click('Completadas', 'checkbox'); await expectText('Todavía no hay rutas con este estado.');
     await click('Ver todas las rutas'); await back();
-    await nav('Mi progreso'); await expectText('10 de 430 lecciones superadas');
+    await nav('Mi progreso'); await expectText('10 de 490 lecciones superadas');
     await expectText('31 de 33 preguntas con nota'); await capture('58-progreso-escritorio.png');
     await search('cuentas tus'); await expectText('Mejor resultado: 1/3');
     await capture('59-notas-por-curso.png');
@@ -112,7 +123,7 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     await nav('Inicio'); await click(/^Repasar errores/); await expectText('2 ejercicios pendientes.');
     await back();
     report.checks.push('Home resumes the original Linux lesson and shows three recommendations',
-      'All five paths expose real totals; final Linux course remains accessible',
+      'All six paths expose real totals, including 240 separate network reinforcements; final Linux course remains accessible',
       'Course search handles reversed words and exposes the original 1/3 grade',
       'Completed and started filters distinguish failed attempts and ungraded visits',
       'Review shortcut includes original course and diagnostic mistakes');
@@ -145,6 +156,9 @@ const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       'lib/src/screens/learning_home.dart', 'lib/src/screens/learning_progress.dart', 'lib/src/screens/learning_routes.dart',
       'lib/src/screens/dashboard_actions.dart', 'lib/src/screens/academy_screens.dart', 'lib/src/screens/explore_screens.dart',
       'lib/src/widgets/learning_dashboard.dart', 'lib/src/widgets/learning_link.dart',
+      'lib/src/data/learning_paths.dart', 'lib/src/data/curriculum.dart',
+      'lib/src/data/course_presentation.dart', 'lib/src/data/network_expansion.g.dart',
+      'lib/src/data/network_practice.dart', 'lib/src/screens/certifications.dart',
       'pubspec.yaml'].map(file => ({ path: file, sha256: digest(file) }));
     report.status = 'passed'; report.externalRequestsBlocked = blocked;
     report.preservedGrades = Object.keys(restored.scores).length; report.expectedXP = 500;

@@ -1,0 +1,107 @@
+{
+  "version": "1.6.0+8",
+  "viewports": [
+    "1440x1080",
+    "390x844",
+    "320x740"
+  ],
+  "screenshots": [
+    "1.6-courses/42-catalogo-escritorio.png",
+    "1.6-courses/43-biblioteca-cursos.png",
+    "1.6-courses/44-cursos-linux-escritorio.png",
+    "1.6-courses/45-presentacion-curso.png",
+    "1.6-courses/46-modulos-curso.png",
+    "1.6-courses/47-lector-conceptos.png",
+    "1.6-courses/48-aula-escritorio.png",
+    "1.6-courses/49-catalogo-android.png",
+    "1.6-courses/50-curso-android.png",
+    "1.6-courses/51-temario-android.png",
+    "1.6-courses/52-catalogo-claro-320.png",
+    "1.6-courses/53-concepto-claro-320.png"
+  ],
+  "checks": [
+    "Concept previews use original theory and open the matching lesson",
+    "In-class syllabus replaces the lesson and Back returns directly to the course",
+    "Accent-insensitive search, empty results and reset work on Android-sized layout",
+    "Original grade retained across navigation and reload",
+    "Light/violet theme and large text persist at 320px",
+    "All five original covers loaded from local assets"
+  ],
+  "errors": [],
+  "compiledWebSha256": "fe86b7f2c443a00c28f27e2e1cd32e2df7f4b6d12b7737feb12d0050200355f5",
+  "sourceFiles": [
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "135df998866eeeb8f77d3707d0d594705a6bd552f66f69e3a37c32f6795b1abd"
+    },
+    {
+      "path": "lib/src/screens/course_catalog.dart",
+      "sha256": "d870e80cc931770c5b3d41f805657978368c55baec39fc02a7a84f7a4dc68a0b"
+    },
+    {
+      "path": "lib/src/screens/course_overview.dart",
+      "sha256": "096360206eda44a1511daaad165a9fc2298f9233e3b7d8ad851172028113ea1e"
+    },
+    {
+      "path": "lib/src/screens/lesson_studio.dart",
+      "sha256": "42c198bb6419cf29974bb2b48f2c33671bfff3607d3108e231c1b1a2d956f439"
+    },
+    {
+      "path": "lib/src/screens/lesson_navigation.dart",
+      "sha256": "e33eacfd67cfd0d4e3b87ab59dce066df885d5679117c1cbb3bf443acb84182f"
+    },
+    {
+      "path": "lib/src/widgets/course_visuals.dart",
+      "sha256": "7f5faf1e527942c983b7b2783464585abc1e0651603928b945890f25510f2761"
+    },
+    {
+      "path": "lib/src/widgets/common.dart",
+      "sha256": "4365c4091be1e73075497b458dbe040b5a5b0a6dc553c88e1177b0b8cb8a5edf"
+    },
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "78eaeb1a29ec6aaa458e24ed1b47f4f57e805e14cd736e8686b29e799c838a32"
+    },
+    {
+      "path": "lib/src/screens/academy_screens.dart",
+      "sha256": "afac73698cd8334087e5fdd7633ec3bf3fbfc94fac6364ba2f822abe1bd6c025"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "dbbf685d679a9a77146d93f881172ba3e4fccea74b5c7bdc14633278d3c5d54b"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "1e6930bf351023ee2afd454b41ca411fb4859f070845ecde13c44d11d971cb65"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "a57b7182e72e00ced4095a03bf60c1172dbbe3659aa07fcc217513714e6bc274"
+    },
+    {
+      "path": "lib/src/widgets/learning_dashboard.dart",
+      "sha256": "e5ea71bbfbc7baf0fde992f35084b16c62fc9864efc241f63dbb948b0eb66a34"
+    },
+    {
+      "path": "lib/src/widgets/learning_link.dart",
+      "sha256": "0e9fe4bf40d5788d1c2884e02208e75fadf342ad6b7d07f9f71b348243ef9846"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "6d2d539277fbff72b24585a2f21e0922065934688e9ffa5e0d7703452e1b34de"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "e0f570747ccdaff7ae1442505b8495cf6fb3acd7d285aceda38dce78d797b955"
+    }
+  ],
+  "localCovers": [
+    "defense-v1.png",
+    "linux-v1.png",
+    "networks-v1.png",
+    "recovery-v1.png",
+    "secure-build-v1.png"
+  ],
+  "externalRequestsBlocked": 0,
+  "status": "passed"
+}

@@ -1,0 +1,13 @@
+# Fuentes comprobadas para la guía inicial
+
+Consulta: 28 de octubre de 2026. No se copian exámenes ni se distribuyen PDF de terceros. La app ofrecerá orientación original y enlaces a las entidades.
+
+- Cisco CCST Networking y CCST Cybersecurity: https://www.cisco.com/site/us/en/learn/training-certifications/certifications/support-technician/index.html . La ficha señala ausencia de requisitos formales previos. Networking es un primer paso posible hacia CCNA; no se debe convertir ese orden orientativo en un prerrequisito obligatorio.
+- Cisco CCNA: https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html . La ruta antigua `/associate/ccna/` devuelve 404; la URL vigente se obtuvo siguiendo el catálogo oficial. Verificar su ficha antes de concretar datos del examen.
+- ISC2 CC: https://www.isc2.org/certifications/cc y https://www.isc2.org/certifications/cc/cc-certification-exam-outline . No requiere experiencia profesional previa; revisar el procedimiento oficial de examen y certificación, no presentar un curso local como la credencial.
+- **Importante para exactitud:** una consulta inicial mostró una lista HTML antigua. La nueva comprobación del 28 de octubre ya presenta los dominios actuales en la ficha general y confirma vigencia desde **1 de septiembre de 2026** en el temario. El PDF español enlazado oficialmente coincide: principios de seguridad, gobernanza, IAM, redes/nube, y operaciones/respuesta. La guía sigue esa versión vigente.
+- PDF español consultado, enlazar sin incluirlo en el repositorio: https://edge.sitecorecloud.io/internationf173-xmc4e73-prodbc0f-9660/media/Project/ISC2/Main/Media/documents/exam-outlines/2026/EXAMS-CC_Exam_Outline-01-2026_Spanish.pdf . Ocho páginas. No hace falta mostrar porcentajes, duración, número de preguntas ni precios en la app; son datos que el alumno debe volver a consultar antes de inscribirse.
+
+La cobertura de Aiocyb se describirá como relación orientativa con sus cursos, junto a brechas: práctica real de administración y equipos para CCNA; gobierno, nube, identidad y condiciones del examen para CC. Un porcentaje local cuenta únicamente lecciones estudiadas, no probabilidad de aprobar ni una certificación conseguida. CCST Cybersecurity e ISC2 CC pueden ser alternativas según objetivo; no se exige comprar todas las credenciales.
+
+Nota técnica de fuentes de red: RFC 8415 ya aparece obsoleto y remite a **RFC 9915** para DHCPv6. La ampliación usa esa referencia actual. RFC 8446 también remite a RFC 9846; comprobarlo antes de presentar una referencia TLS como la especificación más reciente.

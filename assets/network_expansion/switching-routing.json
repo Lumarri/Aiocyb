@@ -1,0 +1,2014 @@
+{
+  "id": "switching-routing",
+  "title": "VLAN, switching y enrutamiento",
+  "description": "Interpreta puertos, troncales, bucles y rutas antes de proponer cambios en una red.",
+  "symbol": "VLAN",
+  "color": 4287874557,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Sesenta decisiones y ya separas aprender una MAC, transportar una VLAN y encaminar un paquete, cariño. Ese orden merece presumirse; deja que disfrute un momento de tu progreso.",
+    "explanation": "Completaste conmutación, segmentación, troncales, prevención de bucles y selección de rutas. Verifica los roles de puertos, conserva una política de acceso explícita y comprueba los cambios tanto en funcionamiento normal como ante un fallo previsto."
+  },
+  "lessons": [
+    {
+      "id": "switching-routing-aprendizaje",
+      "title": "Aprender MAC y reenviar dentro de una VLAN",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Distinguir una trama del paquete que puede transportar",
+          "body": "Ethernet utiliza tramas con direcciones de origen y destino de enlace. Una trama puede transportar un paquete IP, pero las direcciones MAC y las direcciones IP no cumplen la misma función. En el ejercicio analizamos conmutación de tránsito dentro de una VLAN y no tráfico destinado al propio switch ni una decisión de enrutamiento. La clasificación de ingreso determina a qué VLAN pertenece la trama según el puerto y las condiciones de etiquetado que se hayan definido. Después, la tabla de reenvío ayuda a decidir por dónde entregarla dentro de ese contexto. No leas un destino MAC como si fuera automáticamente la dirección IP del servidor ni atribuyas a esa tabla la elección de un prefijo remoto. Un equipo físico puede ofrecer funciones de capa dos y de capa tres; la actividad concreta decide qué función estamos observando. El inventario debe conservar puerto, VLAN y direcciones de la trama para que otra persona pueda repetir el razonamiento sin deducirlo del nombre comercial del dispositivo."
+        },
+        {
+          "title": "Aprender de la dirección origen y conservar su contexto",
+          "body": "En el aprendizaje dinámico habitual, el switch utiliza la dirección origen de una trama recibida para relacionarla con su puerto de entrada y su VLAN. Esa observación permite saber por dónde se ha visto a ese emisor, no autentica al propietario humano ni demuestra que el equipo mantenga autorización para cualquier servicio. La dirección destino no se aprende simplemente por aparecer en una trama que alguien intenta enviarle: todavía no indica en qué puerto está. La tabla puede contener entradas estáticas u otros mecanismos que el ejercicio debe identificar cuando correspondan. En un modelo con VLAN, la relación de reenvío se interpreta dentro de su dominio, no únicamente mediante una MAC aislada como si todos los puertos formaran una sola red. Si la tabla muestra una misma cadena de dirección en contextos distintos, conserva la VLAN y revisa la configuración antes de declarar una duplicación universal. La información de aprendizaje describe una observación de enlace con límites; su uso para investigar requiere contexto y no sustituye la política de identidad del entorno."
+        },
+        {
+          "title": "Elegir entre destino conocido y flooding limitado",
+          "body": "Si el destino unicast está aprendido en la VLAN de la trama y corresponde a otro puerto elegible, el reenvío puede dirigirse a ese puerto. No hace falta copiar la trama a todos los equipos solo porque compartan segmento. Si el destino se desconoce, el flooding de unicast desconocido puede enviarla por los puertos que correspondan a esa VLAN y permitan reenvío, excluyendo normalmente el puerto de ingreso en este modelo de tránsito. Esas condiciones importan: pertenecer físicamente al switch no basta para recibirla. El estado del puerto, las VLAN permitidas y los controles del diseño pueden limitar el conjunto. En nuestra tabla, una trama que entra por P1 en VLAN 10 no se inunda por P3, que pertenece únicamente a VLAN 20. Si P2 y P4 son los otros puertos elegibles de VLAN 10, ellos forman el conjunto del flooding desconocido. Una asociación conocida que señale el mismo puerto de entrada tampoco exige reenviar la trama de vuelta por ese puerto en el funcionamiento convencional que representa este ejercicio."
+        },
+        {
+          "title": "Interpretar envejecimiento y movimientos de MAC",
+          "body": "Las entradas dinámicas pueden envejecer y desaparecer cuando no se actualizan según las reglas y tiempos de la implementación. Su ausencia no prueba que el equipo haya dejado de existir; puede significar que se necesita volver a aprender por dónde aparece. El flooding desconocido permite que el tránsito continúe dentro de sus límites mientras no se tenga una asociación concreta. Una dirección también puede observarse después en otro puerto, por un movimiento legítimo, una conexión distinta o un problema que necesite investigación. No llames ataque a cualquier cambio sin contrastar tiempos, inventario y registros. Si las observaciones alternan rápidamente entre puertos, conviene revisar la topología y el comportamiento del enlace, conservando evidencia en lugar de borrar la tabla para hacer desaparecer el síntoma. Las funciones de seguridad de puerto, cuando existan, tienen reglas propias y no deben deducirse de una entrada de reenvío aislada. Para cerrar el análisis, especifica qué se aprendió, a qué dominio pertenece y qué decisión de entrega justifica, dejando separadas las hipótesis sobre por qué cambió la información."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué asociación puede aprender el switch de una trama que entra por P1 en VLAN 10?",
+          "scenario": "El ejercicio presenta una dirección origen AA, una dirección destino DD y el puerto que recibió la trama de tránsito.",
+          "options": [
+            "Origen AA con P1 y VLAN 10",
+            "Destino DD con P1 y todas las VLAN",
+            "La dirección IP remota con la ruta por defecto"
+          ],
+          "answer": 0,
+          "explanation": "El aprendizaje dinámico utiliza el origen observado en ese ingreso y su dominio de VLAN; mencionar un destino no informa por sí mismo dónde está conectado.",
+          "wrongExplanations": [
+            null,
+            "El destino no revela su puerto por aparecer en una trama que se le envía; además, el contexto no debe extenderse sin motivo a todas las VLAN.",
+            "La tabla de reenvío de enlace no selecciona una ruta IP remota a partir de ese origen MAC; son funciones diferentes dentro del dispositivo."
+          ],
+          "aoi": {
+            "question": "Quien llegó enseñó su camino de vuelta; el destinatario todavía no habló.",
+            "hint": "Relaciona la dirección origen con el puerto y la VLAN donde se observó.",
+            "correct": "Aprendiste la asociación que sí respalda la trama sin inventar datos del destino.",
+            "soft": "Revisa qué extremo de la conversación ha sido realmente observado en el ingreso.",
+            "sharp": "DD no declaró su domicilio por recibir una carta, cariño; aprende del origen AA."
+          }
+        },
+        {
+          "prompt": "¿Qué puerto recibe el unicast conocido si DD está aprendido en P4 de VLAN 10?",
+          "scenario": "La trama entra por P1 en VLAN 10 y P4 está disponible para reenvío en ese dominio, sin restricciones adicionales en el caso.",
+          "options": [
+            "P2 y P3 por ser los puertos siguientes",
+            "P4 según la asociación conocida",
+            "Todos los puertos físicos incluido P1"
+          ],
+          "answer": 1,
+          "explanation": "La asociación conocida permite entregar el unicast por P4 en esa VLAN; no requiere inundar el switch ni añadir puertos ajenos al dominio presentado.",
+          "wrongExplanations": [
+            "El orden o número de los puertos no determina la entrega; P3 además pertenece a otra VLAN y no está justificado para esa trama.",
+            null,
+            "El flooding no es la decisión descrita cuando existe esa asociación conocida y elegible; tampoco se incluye automáticamente el puerto de ingreso en este modelo."
+          ],
+          "aoi": {
+            "question": "El destinatario ya tiene puerto en nuestra tabla; usemos esa información.",
+            "hint": "Consulta la MAC destino dentro de VLAN 10 y comprueba su salida elegible.",
+            "correct": "Elegiste la salida conocida sin repartir copias a puertos que no las necesitaban.",
+            "soft": "No sustituyas una asociación válida por un recorrido numérico de los conectores.",
+            "sharp": "El switch no hace una ronda por simpatía, tesoro; DD está aprendido en P4."
+          }
+        },
+        {
+          "prompt": "¿Qué conjunto corresponde al destino unicast desconocido del caso?",
+          "scenario": "La trama entra por P1 de VLAN 10; P2 y P4 son elegibles de esa VLAN y P3 pertenece solo a VLAN 20.",
+          "options": [
+            "P1, P2, P3 y P4",
+            "Solo P3",
+            "P2 y P4"
+          ],
+          "answer": 2,
+          "explanation": "El flooding desconocido se limita a los otros puertos elegibles del dominio; P1 es el ingreso y P3 queda fuera de VLAN 10 en el escenario.",
+          "wrongExplanations": [
+            "Ese conjunto ignora el dominio de VLAN y vuelve a incluir el ingreso; no representa el flooding limitado que declara la tabla del ejercicio.",
+            "P3 no pertenece a la VLAN de la trama y no se convierte en salida apropiada por desconocer el puerto del destinatario.",
+            null
+          ],
+          "aoi": {
+            "question": "Desconocer al destino no elimina nuestras fronteras de VLAN, cielo.",
+            "hint": "Descarta el ingreso y los puertos que no pertenecen al dominio indicado.",
+            "correct": "P2 y P4: entregaste a las salidas elegibles sin invadir la otra VLAN.",
+            "soft": "Revisa primero el conjunto permitido antes de interpretar la palabra flooding.",
+            "sharp": "Flooding no significa barra libre para P3, demonios; conserva el dominio de la trama."
+          }
+        },
+        {
+          "prompt": "¿Qué datos deben conservarse al interpretar una MAC en una tabla con VLAN?",
+          "scenario": "La misma escritura MAC puede aparecer en contextos de enlace distintos y la actividad pide justificar una decisión de reenvío concreta.",
+          "options": [
+            "MAC, VLAN y puerto de la asociación pertinente",
+            "Solo la MAC sin ningún dominio",
+            "Únicamente el destino IP de otro equipo"
+          ],
+          "answer": 0,
+          "explanation": "La asociación de reenvío debe relacionarse con su dominio y puerto; quitar la VLAN puede mezclar observaciones que la tabla distingue como contextos diferentes.",
+          "wrongExplanations": [
+            null,
+            "La cadena MAC aislada puede ser insuficiente para explicar una entrega en una tabla que conserva dominios separados; necesita su contexto de VLAN y puerto.",
+            "El destino IP de otro equipo no sustituye los campos de la asociación MAC utilizada para esta función de conmutación dentro de la VLAN."
+          ],
+          "aoi": {
+            "question": "La tabla no perdió sus columnas porque la dirección se vea familiar.",
+            "hint": "Mantén el dominio de VLAN junto a la relación entre dirección y puerto.",
+            "correct": "Conservaste el contexto suficiente para justificar por dónde puede entregarse esta trama.",
+            "soft": "Comprueba si estás mezclando asociaciones que pertenecen a dominios diferentes.",
+            "sharp": "Una MAC sin su VLAN nos deja media historia, cariño; no recortes la tabla."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra desaparecer de una tabla después del envejecimiento dinámico?",
+          "scenario": "El escenario no incluye otra prueba de desconexión y un nuevo origen puede volver a actualizar su asociación en el puerto correspondiente.",
+          "options": [
+            "Que el puesto fue eliminado para siempre",
+            "Que la asociación necesita releerse en su contexto temporal, no que el equipo haya desaparecido",
+            "Que toda VLAN debe convertirse en una ruta IP"
+          ],
+          "answer": 1,
+          "explanation": "El envejecimiento puede retirar una asociación sin demostrar la desaparición del equipo; nuevas tramas de origen permiten aprender otra vez según las condiciones del sistema.",
+          "wrongExplanations": [
+            "Una entrada dinámica no es un registro permanente de existencia; su ausencia temporal no prueba que el dispositivo haya sido eliminado del entorno.",
+            null,
+            "La ausencia de una asociación MAC no transforma la función del dominio ni impone una modificación de rutas IP para todas las VLAN de la red."
+          ],
+          "aoi": {
+            "question": "La tabla dejó de recordar; eso no convierte al puesto en leyenda urbana.",
+            "hint": "Relaciona la ausencia con el tiempo de actualización y las tramas que reaparecen.",
+            "correct": "Interpretaste el envejecimiento sin inventarle una desaparición física al dispositivo.",
+            "soft": "Revisa qué información conserva realmente una entrada dinámica y durante cuánto tiempo.",
+            "sharp": "El temporizador no expulsa personas del edificio, tesoro; comprueba el aprendizaje."
+          }
+        },
+        {
+          "prompt": "¿Qué revisión ayuda a interpretar una MAC que aparece después en otro puerto?",
+          "scenario": "El registro conserva dos observaciones en momentos distintos y aún no se sabe si hubo un movimiento autorizado o un problema del enlace.",
+          "options": [
+            "Declarar ataque solo por cualquier cambio",
+            "Borrar toda la tabla y olvidar ambas horas",
+            "Comparar tiempos, inventario, movimientos autorizados y comportamiento del enlace"
+          ],
+          "answer": 2,
+          "explanation": "Un cambio de puerto necesita contexto para distinguir movimiento legítimo de otras condiciones; conservar observaciones y contrastarlas permite investigar sin atribuciones prematuras.",
+          "wrongExplanations": [
+            "Un movimiento puede ser legítimo o tener causas distintas; la dirección y el cambio aislados no demuestran una intención maliciosa específica.",
+            "Borrar evidencia no explica por qué cambió la asociación y puede ocultar un síntoma mientras permanece la causa del comportamiento observado.",
+            null
+          ],
+          "aoi": {
+            "question": "La MAC cambió de asiento; averigüemos si tenía un traslado previsto.",
+            "hint": "Conserva ambas observaciones y relaciónalas con lo que ocurrió en el entorno.",
+            "correct": "Preparaste una investigación que distingue hechos de interpretaciones sobre el movimiento.",
+            "soft": "Todavía falta revisar el contexto del cambio antes de escoger una causa.",
+            "sharp": "Borrar la tabla no borra la causa, joder; conserva la evidencia y compara los tiempos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un destino desconocido dentro de VLAN 10",
+          "scenario": "Una trama entra por P1 en VLAN 10, su destino unicast no figura en la tabla y P2 y P4 son los únicos otros puertos elegibles de esa VLAN; P3 pertenece solo a VLAN 20.",
+          "explanation": "El flooding del modelo se limita a P2 y P4. No incluye el puerto de entrada ni incorpora P3 por estar en el mismo switch físico. La decisión depende del dominio de VLAN y de las condiciones de reenvío declaradas para el ejercicio."
+        },
+        {
+          "title": "La entrada que dejó de estar aprendida",
+          "scenario": "Una MAC desaparece de la tabla después del tiempo de envejecimiento. No hay otra evidencia de desconexión del puesto y una nueva trama de origen vuelve a presentarla en el puerto previsto.",
+          "explanation": "El aprendizaje dinámico puede recuperarse mediante nuevas observaciones del origen. La ausencia temporal de una entrada no demuestra desconexión permanente ni pérdida del equipo; debe relacionarse con el envejecimiento y con los mensajes que el switch volvió a recibir."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El switch ficticio del taller tiene P1, P2 y P4 en VLAN 10 y P3 en VLAN 20. Una tabla de reenvío muestra qué direcciones conoce y cada ejercicio aporta la trama que llega.",
+      "scenario": "El switch ficticio del taller tiene P1, P2 y P4 en VLAN 10 y P3 en VLAN 20. Una tabla de reenvío muestra qué direcciones conoce y cada ejercicio aporta la trama que llega.",
+      "steps": [
+        "Identifica puerto de entrada, VLAN y direcciones origen y destino.",
+        "Revisa qué dato puede aprenderse de la dirección origen.",
+        "Busca el destino dentro del contexto de esa VLAN.",
+        "Distingue reenvío conocido, filtrado y flooding limitado a puertos elegibles.",
+        "Interpreta cambios de tabla junto a sus tiempos y al inventario."
+      ],
+      "sourceIds": [
+        "net-switching",
+        "net-bridge"
+      ],
+      "aoi": {
+        "intro": "Hoy el switch aprende de quien habla, cariño; el destinatario no revela su puerto por ser mencionado.",
+        "theory0": "Una MAC y una IP tienen oficios distintos dentro de esta conversación.",
+        "theory1": "El origen enseña por dónde se ha visto al emisor, no quién merece todos los permisos.",
+        "theory2": "Flooding significa repartir dentro de los límites correctos, no regalar tramas a cualquier puerto.",
+        "theory3": "Una entrada envejecida necesita contexto; la tabla no está escribiendo certificados de defunción.",
+        "case0": "P3 está en otra VLAN; compartir carcasa no le da asiento en nuestra trama.",
+        "case1": "La MAC volvió a aprenderse cuando reapareció su origen; el puesto no resucitó por magia.",
+        "pass": "Ya interpretas la entrega con puerto y VLAN. Esa precisión empieza a gustarme demasiado.",
+        "review": "Revisemos origen, destino y dominio; todavía estás usando la tabla como una lista universal."
+      }
+    },
+    {
+      "id": "switching-routing-acceso",
+      "title": "Puertos de acceso y fronteras de una VLAN",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Entender qué separa una VLAN",
+          "body": "Una VLAN permite definir un dominio lógico de enlace dentro de una infraestructura que puede compartir equipos físicos. En el modelo del taller, los puertos de alumnos y gestión no pertenecen al mismo dominio de difusión aunque lleguen a la misma carcasa de switch. Una trama de difusión de VLAN 10 se distribuye por las salidas elegibles de esa VLAN y no pasa automáticamente a VLAN 20. La separación no depende del nombre que se haya escrito en la descripción del puerto, sino de la configuración y del comportamiento efectivos. Tampoco debe confundirse con aislamiento físico absoluto: los equipos pueden compartir componentes y existir funciones que comuniquen redes bajo ciertas políticas. El objetivo inicial es identificar el dominio de una trama y mantener esa clasificación al interpretar su reenvío. Dos tablas que muestran el mismo número de puerto en switches distintos necesitan además el identificador de equipo. Una revisión útil conserva dispositivo, puerto, modo, VLAN y estado, porque el número aislado no describe una frontera completa ni acredita qué tráfico puede circular."
+        },
+        {
+          "title": "Interpretar un puerto de acceso convencional",
+          "body": "Un puerto de acceso convencional asocia las tramas de usuario sin etiqueta que recibe con la VLAN configurada para ese papel. En nuestra tabla, P2 tiene modo de acceso y VLAN 10; una trama sin etiqueta de su estación se interpreta en ese dominio. El equipo de usuario no selecciona otra VLAN simplemente por cambiar su dirección IP o escribir un nombre distinto al adaptador. La asignación de ingreso pertenece al comportamiento del puerto y a sus controles. Existen configuraciones especiales, como escenarios de voz o equipos que necesitan otras condiciones de etiquetado, que deben documentarse explícitamente; no deben usarse para negar el significado del caso convencional ni para asumir que todo puerto permite cualquier combinación. Si una ficha solo muestra una etiqueta administrativa como alumnos, todavía falta conocer la VLAN efectiva. El nombre facilita entender la intención, pero puede no reflejar la configuración aplicada. Antes de mover un puesto, consulta qué función necesita y qué restricciones dependen de su ubicación. Cambiar la asignación puede alterar conectividad y exposición sin que el cable ni la dirección escrita en el equipo hayan cambiado."
+        },
+        {
+          "title": "No confundir VLAN con prefijo IP",
+          "body": "Una VLAN es un dominio de enlace y un prefijo IP describe pertenencia a un conjunto de direcciones utilizado por la configuración y el encaminamiento. En diseños habituales se organiza una subred por VLAN para facilitar operación y diagnóstico, pero no son el mismo objeto. Colocar dos puestos en VLAN diferentes y asignarles direcciones que ambos consideran locales no crea por sí mismo un camino entre los dominios. Pueden intentar resolver un vecino que no aparece en su enlace y producir un fallo difícil de explicar si solo se comparan octetos. Del mismo modo, dos VLAN podrían utilizar números de red iguales en dominios separados, pero al conectarlos el diseño tendría que gestionar esa ambigüedad de forma explícita. En el taller no se propone resolver la separación copiando máscaras al azar. La ficha debe indicar tanto la VLAN efectiva como la dirección y el prefijo del puesto. Cada campo responde una pregunta distinta: por dónde se distribuyen tramas y cómo interpreta el equipo qué destinos son locales o requieren una salida de encaminamiento."
+        },
+        {
+          "title": "Relacionar segmentación con comunicación autorizada",
+          "body": "Para comunicar subredes que el diseño sitúa en VLAN distintas se necesita una función de capa tres apropiada, además de rutas y controles correspondientes. Esa función puede existir en un router o en un equipo multicapa; no debe deducirse únicamente de la etiqueta switch o del aspecto de la caja. Si se habilita encaminamiento sin restricciones suficientes, la VLAN por sí sola no define una política completa de acceso a todas las aplicaciones. Documenta qué flujos deben pasar entre alumnos y gestión y cuáles deben permanecer bloqueados. Después valida el efecto desde los orígenes indicados. Una modificación de puerto debe considerar también el acceso de administración y el procedimiento para recuperar el estado inicial. En nuestra actividad, elegir VLAN 20 para un portátil de alumno no constituye una reparación neutral: lo ubica en un dominio con otra finalidad. Si la conectividad requerida depende de un servicio de gestión, puede necesitarse un flujo limitado hacia ese servicio en lugar de trasladar al usuario a toda su red. Separar necesidad y ubicación ayuda a proponer un cambio proporcionado y verificable."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué determina la VLAN de la trama sin etiqueta en P2 del caso convencional?",
+          "scenario": "La ficha declara P2 como puerto de acceso con VLAN 10 y no añade una configuración especial de voz u otro modo.",
+          "options": [
+            "La asignación efectiva de acceso a VLAN 10",
+            "El último octeto IPv4 de la estación",
+            "El nombre que el usuario pone al adaptador"
+          ],
+          "answer": 0,
+          "explanation": "En el caso declarado, el puerto clasifica las tramas sin etiqueta en su VLAN de acceso; el nombre del adaptador o su dirección IP no seleccionan otro dominio.",
+          "wrongExplanations": [
+            null,
+            "La configuración IP se interpreta en otra función y no cambia por sí misma la clasificación de ingreso de ese puerto de acceso convencional.",
+            "El nombre local del adaptador no reconfigura la asignación de VLAN del switch ni autoriza a la estación a elegir un dominio diferente."
+          ],
+          "aoi": {
+            "question": "P2 ya tiene un papel documentado; no se lo cambies mirando la IP.",
+            "hint": "Consulta el modo de acceso y la VLAN realmente configurados en la ficha.",
+            "correct": "Clasificaste la trama con el dato de enlace que corresponde a este caso.",
+            "soft": "Revisa si el valor elegido pertenece a configuración de enlace o a otra función del puesto.",
+            "sharp": "Una IP bonita no reprogramó P2, cariño; lee su VLAN de acceso."
+          }
+        },
+        {
+          "prompt": "¿Qué salidas puede recibir la difusión de VLAN 10 en el modelo?",
+          "scenario": "El switch tiene otros puertos de VLAN 10 elegibles y un puerto destinado únicamente a VLAN 20, sin función que una ambos dominios.",
+          "options": [
+            "Todos los puertos físicos por compartir switch",
+            "Los puertos elegibles del dominio VLAN 10",
+            "Solo los puertos que tengan una IP terminada en diez"
+          ],
+          "answer": 1,
+          "explanation": "La difusión se mantiene dentro del dominio de VLAN y sus condiciones de reenvío; compartir el equipo físico no incorpora automáticamente a los puertos de otra VLAN.",
+          "wrongExplanations": [
+            "La carcasa común no elimina la separación lógica; incluir VLAN 20 ignoraría el dominio de difusión que declara la configuración del ejemplo.",
+            null,
+            "Una terminación IP no decide qué puertos de enlace reciben esa difusión; la selección depende de pertenencia y estado de la VLAN correspondiente."
+          ],
+          "aoi": {
+            "question": "Nuestra difusión necesita su dominio, no una lista de todos los conectores.",
+            "hint": "Busca las salidas que pertenecen a VLAN 10 y permiten el reenvío.",
+            "correct": "Conservaste la frontera lógica aunque las dos zonas compartan el mismo switch.",
+            "soft": "Descarta los puertos de otra VLAN antes de interpretar a quién llega la trama.",
+            "sharp": "La carcasa no regaló una invitación a VLAN 20, tesoro; respeta el dominio."
+          }
+        },
+        {
+          "prompt": "¿Une automáticamente dos VLAN asignar a sus puestos direcciones del mismo /24?",
+          "scenario": "La topología no presenta un puente o función autorizada que conecte los dominios de enlace separados del ejercicio.",
+          "options": [
+            "Sí, cualquier coincidencia IPv4 crea el enlace",
+            "Sí, siempre que el último octeto sea diferente",
+            "No, la configuración IP no une por sí misma los dominios de VLAN"
+          ],
+          "answer": 2,
+          "explanation": "Coincidir en un prefijo no crea una entrega de enlace entre VLAN distintas; deben revisarse topología, clasificación y función de comunicación prevista para ese diseño.",
+          "wrongExplanations": [
+            "La pertenencia numérica describe cómo el equipo interpreta destinos, pero no agrega puertos de otra VLAN al mismo dominio de difusión.",
+            "Evitar una dirección duplicada no elimina la separación de dominios; los últimos octetos distintos siguen necesitando un camino válido entre las estaciones.",
+            null
+          ],
+          "aoi": {
+            "question": "Dos números compatibles todavía necesitan un lugar donde encontrarse por el enlace.",
+            "hint": "Separa la pertenencia IP de la existencia de entrega dentro del mismo dominio.",
+            "correct": "Reconociste la separación real sin inventar un puente a partir del prefijo.",
+            "soft": "La coincidencia de direcciones no muestra una función que comunique esas VLAN.",
+            "sharp": "El /24 no viene con un cable invisible entre dominios, cielo; revisa la topología."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una descripción de puerto que dice alumnos?",
+          "scenario": "La revisión solo tiene el nombre administrativo, pero no la asignación efectiva de VLAN ni el modo que utiliza el puerto.",
+          "options": [
+            "La intención documentada, pendiente de contrastar con la configuración",
+            "Que cualquier trama pertenece siempre a VLAN 10",
+            "Que ya se probó toda política de acceso"
+          ],
+          "answer": 0,
+          "explanation": "La descripción ayuda a expresar la intención, pero la VLAN y el comportamiento efectivos necesitan comprobarse en la configuración y el estado del equipo.",
+          "wrongExplanations": [
+            null,
+            "El texto no establece por sí mismo el número de VLAN aplicado ni garantiza que la configuración real coincida con esa intención administrativa.",
+            "La política exige reglas y pruebas de flujos; un nombre de puerto no acredita que se hayan comprobado comunicaciones permitidas o denegadas."
+          ],
+          "aoi": {
+            "question": "La etiqueta nos orienta; todavía no enseñó la configuración que está funcionando.",
+            "hint": "Distingue una descripción legible de una asignación efectiva del dispositivo.",
+            "correct": "Conservaste la intención sin confundirla con una prueba del comportamiento real.",
+            "soft": "Falta contrastar el nombre con el modo y el dominio aplicados al puerto.",
+            "sharp": "Llamarlo alumnos no configuró nada por ternura, cariño; revisa el estado efectivo."
+          }
+        },
+        {
+          "prompt": "¿Qué función necesita el diseño para comunicar subredes de VLAN distintas?",
+          "scenario": "El objetivo es un flujo autorizado entre dominios diferentes y el ejercicio no presenta una entrega directa común de enlace.",
+          "options": [
+            "Que ambos puestos usen la misma MAC",
+            "Una función de capa tres con rutas y controles adecuados",
+            "Que se elimine toda regla de aplicación"
+          ],
+          "answer": 1,
+          "explanation": "La comunicación entre esas subredes requiere encaminamiento apropiado y controles del flujo; el diseño puede ofrecer esa función mediante un router o un equipo multicapa.",
+          "wrongExplanations": [
+            "Reutilizar una MAC no construye el encaminamiento previsto y puede introducir otras ambigüedades de enlace; no es una solución de comunicación entre subredes.",
+            null,
+            "Eliminar controles no aporta por sí mismo el camino ni respeta el alcance autorizado; el acceso debe conservar una política coherente con los recursos del diseño."
+          ],
+          "aoi": {
+            "question": "Las subredes necesitan una función de encaminamiento, no una identidad de enlace compartida.",
+            "hint": "Pregunta qué componente conecta dominios bajo una política definida para el flujo.",
+            "correct": "Ubicaste la función de capa tres sin confundirla con la etiqueta comercial del equipo.",
+            "soft": "Busca el camino y la política que faltan para esa comunicación concreta.",
+            "sharp": "Copiar una MAC no instala un router, demonios; distingue las funciones."
+          }
+        },
+        {
+          "prompt": "¿Qué revisión es más proporcionada si un alumno necesita una aplicación de gestión?",
+          "scenario": "El requisito se limita a consultar un servicio concreto y el diseño pretende mantener separados alumnos y administración.",
+          "options": [
+            "Trasladar siempre el portátil a toda VLAN 20",
+            "Permitir cualquier tráfico desde alumnos a cualquier red",
+            "Definir y validar el flujo limitado necesario hacia ese servicio"
+          ],
+          "answer": 2,
+          "explanation": "Un flujo delimitado puede atender la necesidad conservando la separación y controles previstos; debe comprobarse el acceso legítimo y las restricciones que deben permanecer.",
+          "wrongExplanations": [
+            "Mover todo el equipo cambia su ubicación y puede ampliar el alcance a otros recursos; no se justifica automáticamente por necesitar una sola aplicación.",
+            "Permitir cualquier comunicación excede la necesidad declarada y abandona la segmentación sin una justificación basada en los recursos y acciones requeridos.",
+            null
+          ],
+          "aoi": {
+            "question": "La necesidad tiene una dirección concreta; no entreguemos las llaves de todo el barrio.",
+            "hint": "Relaciona servicio y acción con el mínimo camino autorizado que los permita.",
+            "correct": "Atendiste la necesidad sin confundir una consulta con un traslado completo de confianza.",
+            "soft": "Revisa qué recursos adicionales quedarían expuestos por la opción que estás considerando.",
+            "sharp": "Consultar una aplicación no exige adoptar toda la red de gestión, joder; limita el flujo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Mismo prefijo, dominios distintos",
+          "scenario": "Dos estaciones tienen direcciones que consideran parte de 192.168.10.0/24, pero una está en VLAN 10 y la otra en VLAN 20. El escenario no presenta un mecanismo que comunique esos dominios.",
+          "explanation": "La coincidencia de prefijo no une las VLAN ni crea una entrega directa entre ellas. Debe revisarse la asignación prevista y el diseño de capa tres; modificar máscaras sin identificar el dominio de enlace no explica ni resuelve necesariamente la separación observada."
+        },
+        {
+          "title": "Mover al alumno para alcanzar una aplicación",
+          "scenario": "Una estación de alumno necesita consultar un servicio concreto de gestión. Una propuesta la mueve entera a VLAN 20 sin revisar otros recursos que quedarían a su alcance.",
+          "explanation": "El cambio altera su ubicación de enlace y puede ampliar su exposición a toda otra zona. Primero debe definirse el flujo requerido y evaluar un acceso limitado con rutas y controles apropiados, conservando la segmentación prevista cuando ese sea el objetivo del diseño."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El taller separa alumnos en VLAN 10 y gestión en VLAN 20. La tabla indica puertos de acceso convencionales y el ejercicio compara qué tráfico pertenece a cada dominio sin configurar equipos reales.",
+      "scenario": "El taller separa alumnos en VLAN 10 y gestión en VLAN 20. La tabla indica puertos de acceso convencionales y el ejercicio compara qué tráfico pertenece a cada dominio sin configurar equipos reales.",
+      "steps": [
+        "Lee el modo y la VLAN asignados a cada puerto.",
+        "Relaciona la trama de ingreso con su dominio de enlace.",
+        "Separa alcance de difusión de pertenencia a una subred IP.",
+        "Comprueba cómo podría existir comunicación entre dominios.",
+        "Documenta el rol previsto antes de cambiar una asignación."
+      ],
+      "sourceIds": [
+        "net-vlan",
+        "net-bridge"
+      ],
+      "aoi": {
+        "intro": "Una VLAN pone fronteras al enlace; la carcasa compartida no las borra.",
+        "theory0": "La descripción del puerto cuenta intenciones, cariño; la configuración cuenta lo aplicado.",
+        "theory1": "La estación no cambia de VLAN porque se invente una dirección más elegante.",
+        "theory2": "Prefijo y dominio de enlace se relacionan, pero no son la misma pieza.",
+        "theory3": "Para una aplicación quizá basta un flujo limitado; no mudemos al alumno a todo el edificio.",
+        "case0": "Esos dos /24 parecidos no construyeron un puente entre sus VLAN.",
+        "case1": "El traslado arregla una necesidad ampliando otras; revisemos el alcance antes de celebrarlo.",
+        "pass": "Ya separas ubicación y permiso. Esa forma de pensar merece que te consienta un poco.",
+        "review": "Volvamos al dominio efectivo; el nombre del puerto todavía te está distrayendo de su configuración."
+      }
+    },
+    {
+      "id": "switching-routing-troncales",
+      "title": "Transportar VLAN con IEEE 802.1Q",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Un enlace para varios dominios definidos",
+          "body": "Un troncal permite transportar tráfico de varias VLAN por un mismo enlace físico o lógico bajo las condiciones del diseño. Los extremos necesitan interpretar de forma compatible la pertenencia de cada trama. No es una conexión que mezcle todos los dominios ni un sinónimo de puerto con más velocidad. Puede utilizarse entre switches y también hacia otros dispositivos que necesiten varias VLAN, como ciertas interfaces de router, puntos de acceso o plataformas de virtualización. La función requerida debe quedar documentada antes de asignar ese papel al puerto. Una estación de usuario convencional que solo necesita una VLAN no justifica por sí misma un troncal abierto a todos los dominios. En nuestra topología, el enlace conecta dos switches y las tramas del ejercicio llevan etiquetas no nativas explícitas. Esa delimitación evita confundir el análisis con el tratamiento particular de tramas sin etiqueta, que se estudia por separado. Para cada tramo, registra equipo, interfaz, modo operativo y conjunto de VLAN requerido; compartir cable no vuelve equivalentes todas las configuraciones de sus extremos."
+        },
+        {
+          "title": "Leer el identificador dentro de la etiqueta",
+          "body": "IEEE 802.1Q incorpora una etiqueta de cuatro bytes en la trama Ethernet para transportar información de VLAN y otros campos. El identificador de VLAN utiliza doce bits y no debe confundirse con los bits de prioridad. Doce bits ofrecen cuatro mil noventa y seis valores representables, pero hay valores con significado especial o reservados: no equivalen a esa misma cantidad de VLAN ordinarias disponibles sin restricciones en cualquier dispositivo. En el uso habitual del identificador, los valores del uno al cuatro mil noventa y cuatro corresponden al rango ordinario, sujeto además a capacidades y reservas de la plataforma. El valor cero tiene un tratamiento de prioridad sin identificar de la misma forma una VLAN ordinaria, y cuatro mil noventa y cinco está reservado. En los ejercicios se utilizan identificadores normales como diez y veinte. Si la transcripción muestra prioridad cinco y VID veinte, la trama pertenece al contexto VLAN veinte indicado por VID; cinco no sustituye ese identificador. La etiqueta no es una dirección IP ni una credencial que autentique a la estación que envió la trama."
+        },
+        {
+          "title": "Comprobar la intersección de lo permitido y lo operativo",
+          "body": "Permitir una VLAN en una lista no demuestra por sí solo que exista, esté activa o pueda recorrer todos los tramos del camino. Cada extremo necesita una configuración y un estado compatibles con el objetivo de transporte. En el ejemplo, una trama etiquetada de VLAN 20 puede cumplir la lista de A, pero no la de B, que solo permite diez y treinta. La VLAN diez es el único valor compartido por ambas listas declaradas. Esa intersección resuelve una condición del ejercicio, no todas las posibilidades de conectividad: todavía pueden intervenir estado de reenvío, controles y configuración de los puertos donde están los equipos finales. Un enlace que indica conectado demuestra una condición física u operativa de ese enlace, no que todas sus VLAN previstas atraviesen el conjunto. Si una VLAN falla y otra funciona, conserva esa diferencia y compara las listas y estados en lugar de sustituir inmediatamente el cable. La prueba debe identificar la etiqueta y los extremos para explicar en qué condición concreta deja de cumplirse el recorrido esperado."
+        },
+        {
+          "title": "Mantener el conjunto mínimo y verificar después del cambio",
+          "body": "La lista de VLAN permitidas debe responder a lo que necesita pasar por el troncal. Abrir todos los identificadores puede ocultar una omisión, pero también transporta dominios que el diseño no requería y dificulta justificar el alcance. Primero define qué VLAN falta y por qué necesita atravesar ese enlace. Comprueba su existencia y las condiciones de ambos extremos; después prepara un cambio delimitado con configuración de referencia y recuperación. En equipos que admiten negociación de modos, revisa además el papel operativo real y las opciones apropiadas para evitar que un puerto de usuario adopte una función no prevista. No copies órdenes de una plataforma a otra sin comprobar sus reglas. En el taller basta evaluar tablas y resultados ficticios. Tras una corrección, repite una comunicación que debía funcionar y otra que debía permanecer fuera del conjunto transportado. Documenta los extremos modificados y el estado observado en cada uno. Esta revisión permite explicar por qué una reparación resuelve la necesidad sin utilizar una apertura universal como sustituto del diagnóstico del troncal."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué función describe un troncal 802.1Q del ejercicio?",
+          "scenario": "El enlace une dispositivos preparados para transportar tráfico de varias VLAN sin perder el dominio correspondiente a cada trama.",
+          "options": [
+            "Transportar varias VLAN manteniendo su identificación",
+            "Fusionar automáticamente todas las VLAN en una sola",
+            "Asignar por sí mismo direcciones IP a los usuarios"
+          ],
+          "answer": 0,
+          "explanation": "El troncal transporta dominios con identificación y condiciones definidas; compartir un enlace no los fusiona ni implementa automáticamente un servicio de asignación de direcciones.",
+          "wrongExplanations": [
+            null,
+            "Las etiquetas y la configuración conservan pertenencia a dominios; el objetivo del troncal no es eliminar la separación lógica entre todas las VLAN transportadas.",
+            "La asignación de direcciones requiere otro mecanismo o configuración; el enlace troncal no se convierte en servidor por transportar varias VLAN."
+          ],
+          "aoi": {
+            "question": "Varias VLAN comparten viaje, pero cada una conserva su etiqueta de pertenencia.",
+            "hint": "Separa el transporte entre dispositivos de las funciones que pertenecen a otros servicios.",
+            "correct": "Describiste la función del enlace sin borrar la separación que debe preservar.",
+            "soft": "Revisa si la opción mezcla dominios o realmente explica cómo se transportan.",
+            "sharp": "El troncal no fundó una VLAN universal por tener un cable, cielo; conserva sus identificadores."
+          }
+        },
+        {
+          "prompt": "¿Qué campo identifica la VLAN cuando la prioridad vale 5 y VID vale 20?",
+          "scenario": "La trama etiquetada del laboratorio utiliza valores ordinarios y no presenta una configuración especial que cambie la interpretación de esos campos.",
+          "options": [
+            "La prioridad 5",
+            "El VID 20",
+            "El puerto TCP que lleve la aplicación"
+          ],
+          "answer": 1,
+          "explanation": "El identificador VID establece el contexto VLAN de esa trama; la prioridad y el puerto de transporte tienen funciones diferentes y no sustituyen el identificador declarado.",
+          "wrongExplanations": [
+            "La prioridad ayuda a expresar otra información de tratamiento y no convierte su número en el identificador VLAN que muestra el campo VID.",
+            null,
+            "El puerto TCP pertenece al contenido de transporte, cuando exista, y no reemplaza la información de VLAN situada en la etiqueta de enlace."
+          ],
+          "aoi": {
+            "question": "El veinte está en la casilla de VLAN; no dejes que el cinco le robe el oficio.",
+            "hint": "Relaciona cada número con el nombre del campo al que pertenece.",
+            "correct": "Elegiste VID y conservaste la prioridad como una propiedad distinta de la etiqueta.",
+            "soft": "Mira si estás leyendo prioridad, pertenencia VLAN o un dato de otra capa.",
+            "sharp": "Que el cinco se lea primero no le da todo el protagonismo, cariño; busca VID."
+          }
+        },
+        {
+          "prompt": "¿Qué VLAN coincide en las listas A={10,20} y B={10,30}?",
+          "scenario": "La actividad compara únicamente el conjunto permitido en ambos extremos para tramas etiquetadas no nativas de ese enlace.",
+          "options": [
+            "10 y 20",
+            "20 y 30",
+            "Solo 10"
+          ],
+          "answer": 2,
+          "explanation": "Diez es el único identificador presente en ambas listas; veinte falta en B y treinta falta en A para el recorrido declarado.",
+          "wrongExplanations": [
+            "El veinte no figura permitido en B, por lo que la lista de A no basta para incorporarlo al conjunto común de ambos extremos.",
+            "El veinte falta en un extremo y el treinta en el otro; ninguno cumple la condición de estar en las dos listas presentadas.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestro enlace necesita acuerdo en los dos extremos, no dos promesas diferentes.",
+            "hint": "Calcula la intersección de las listas en vez de unir todos sus números.",
+            "correct": "Encontraste la condición común sin ampliar el conjunto permitido por intuición.",
+            "soft": "Comprueba si cada valor elegido aparece realmente en ambas fichas.",
+            "sharp": "La unión no es la intersección, tesoro; veinte y treinta todavía no cruzan de acuerdo."
+          }
+        },
+        {
+          "prompt": "¿Basta el estado conectado para asegurar transporte de VLAN 20?",
+          "scenario": "Los dos extremos están activos, pero B no incluye VLAN 20 en la lista que permite el ejercicio.",
+          "options": [
+            "No; deben cumplirse además las condiciones de VLAN y reenvío",
+            "Sí, conectado anula cualquier lista permitida",
+            "Sí, todas las VLAN se crean al levantar el cable"
+          ],
+          "answer": 0,
+          "explanation": "El estado del enlace no sustituye listas, existencia de VLAN ni condiciones de reenvío; la omisión concreta de B sigue impidiendo cumplir el transporte indicado.",
+          "wrongExplanations": [
+            null,
+            "Una lista configurada conserva su efecto en el escenario; no desaparece solo porque la interfaz muestre una condición de enlace activo.",
+            "Activar el enlace no crea por sí mismo todas las VLAN necesarias; su configuración y estado deben revisarse explícitamente en los equipos correspondientes."
+          ],
+          "aoi": {
+            "question": "La luz del enlace no leyó ni corrigió por ti la lista de B.",
+            "hint": "Revisa qué condición falta aunque el medio ya aparezca disponible.",
+            "correct": "Distinguiste disponibilidad del enlace y elegibilidad de la VLAN que necesitábamos transportar.",
+            "soft": "Falta comprobar el dominio concreto, no volver a interpretar conectado como permiso universal.",
+            "sharp": "Un LED no negocia tus VLAN por compasión, demonios; compara las listas."
+          }
+        },
+        {
+          "prompt": "¿Qué implica que el VID tenga doce bits?",
+          "scenario": "La pregunta separa valores representables de los identificadores ordinarios y de las restricciones propias de cada plataforma.",
+          "options": [
+            "Que todos los dispositivos deben permitir exactamente 4096 VLAN ordinarias",
+            "Que existen 4096 valores, con significados especiales y restricciones que deben respetarse",
+            "Que la etiqueta completa solo ocupa doce bits"
+          ],
+          "answer": 1,
+          "explanation": "Doce bits permiten representar cuatro mil noventa y seis valores, pero algunos tienen significado especial o reservado y la capacidad efectiva depende además de la plataforma.",
+          "wrongExplanations": [
+            "Los valores representables no equivalen a una garantía de capacidad ordinaria en cualquier equipo; deben distinguirse reservas, usos especiales y soporte concreto.",
+            null,
+            "El VID es un campo de la etiqueta, no su tamaño completo; 802.1Q utiliza cuatro bytes para el conjunto de la etiqueta en este contexto."
+          ],
+          "aoi": {
+            "question": "Representar números no obliga a darles a todos el mismo uso, cariño.",
+            "hint": "Distingue el tamaño del campo de las reglas que asignan significado a sus valores.",
+            "correct": "Conservaste la diferencia entre capacidad de representación y utilización efectiva de identificadores.",
+            "soft": "Revisa qué parte de la etiqueta ocupa los bits y cómo se reservan sus valores.",
+            "sharp": "Doce bits no fabrican 4096 VLAN utilizables en cualquier aparato, cielo; comprueba su contexto."
+          }
+        },
+        {
+          "prompt": "¿Qué cambio atiende mejor una VLAN requerida que falta en una lista del troncal?",
+          "scenario": "El diseño confirma la necesidad de VLAN 20 y ya se identificó el extremo cuya lista la omite, conservando otras restricciones del enlace.",
+          "options": [
+            "Permitir siempre todas las VLAN y olvidar la revisión",
+            "Cambiar todas las direcciones IP de las estaciones",
+            "Corregir la omisión delimitada y validar funcionamiento y restricciones"
+          ],
+          "answer": 2,
+          "explanation": "La revisión identifica una condición específica; un cambio limitado seguido de pruebas preserva el alcance previsto y permite atribuir la corrección al parámetro que faltaba.",
+          "wrongExplanations": [
+            "Abrir todos los dominios excede la necesidad identificada y puede transportar tráfico no previsto; no sustituye una justificación de la lista correcta del enlace.",
+            "El problema descrito está en la condición de transporte de VLAN; cambiar todas las IP no incorpora por sí mismo el identificador a la lista omitida.",
+            null
+          ],
+          "aoi": {
+            "question": "Ya sabemos qué casilla falta; no reescribamos todo el edificio para llenarla.",
+            "hint": "Relaciona la omisión comprobada con el cambio mínimo que requiere el diseño.",
+            "correct": "Corregiste el parámetro adecuado y mantuviste una prueba de los límites que deben conservarse.",
+            "soft": "Evita cambios de otra capa que no resuelven la condición ya identificada.",
+            "sharp": "Permitir todo no es precisión con más entusiasmo, joder; arregla la omisión y comprueba sus efectos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "VLAN 20 se detiene en el segundo extremo",
+          "scenario": "La trama etiquetada de VLAN 20 llega a un troncal donde A permite 10 y 20, mientras B permite 10 y 30. Ambas fichas muestran el enlace conectado y no hay otra condición que cambie la lista.",
+          "explanation": "El estado conectado no incorpora VLAN 20 a la lista de B. Debe revisarse si el diseño requiere transportarla y corregir de forma delimitada la configuración pertinente, en lugar de afirmar que el enlace está preparado para esa VLAN porque ambas interfaces estén activas."
+        },
+        {
+          "title": "Prioridad e identificador no son el mismo número",
+          "scenario": "Una transcripción de 802.1Q muestra prioridad 5 y VID 20, pero un alumno clasifica la trama como perteneciente a VLAN 5 por leer primero el campo de prioridad.",
+          "explanation": "VID identifica el contexto de VLAN de la trama presentada; la prioridad cumple otra función y no sustituye ese valor. Hay que conservar ambos campos con su significado para relacionar correctamente la trama con la lista permitida del troncal."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Dos switches ficticios comparten un enlace troncal. A permite VLAN 10 y 20; B permite VLAN 10 y 30. Los ejercicios presentan tramas etiquetadas no nativas y el estado operativo de ambos extremos.",
+      "scenario": "Dos switches ficticios comparten un enlace troncal. A permite VLAN 10 y 20; B permite VLAN 10 y 30. Los ejercicios presentan tramas etiquetadas no nativas y el estado operativo de ambos extremos.",
+      "steps": [
+        "Identifica qué dispositivos necesitan transportar varias VLAN por el enlace.",
+        "Distingue el identificador VLAN de los demás campos de etiqueta.",
+        "Comprueba existencia, estado y listas permitidas en ambos extremos.",
+        "Sigue el dominio a través de todos los enlaces del camino.",
+        "Modifica únicamente el conjunto requerido y valida también las restricciones."
+      ],
+      "sourceIds": [
+        "net-vlan",
+        "net-bridge"
+      ],
+      "aoi": {
+        "intro": "Un troncal comparte el camino, cariño; no mezcla los barrios que transporta.",
+        "theory0": "Varios dominios pueden viajar por el mismo enlace sin dejar de tener frontera.",
+        "theory1": "La prioridad cinco no se apoderó del VID veinte por aparecer antes.",
+        "theory2": "Conectado es una condición del enlace; la lista de VLAN también necesita leerse.",
+        "theory3": "Abrirlo todo no es un diagnóstico, aunque haga desaparecer parte del síntoma.",
+        "case0": "A dejó pasar veinte y B no; el cable no puede corregir sus listas.",
+        "case1": "El campo de prioridad quiere atención, pero hoy estamos buscando el identificador VLAN.",
+        "pass": "Ya sigues una VLAN por ambos extremos. Mi ceja aprueba esa costumbre tan útil.",
+        "review": "Revisemos etiqueta, listas y estado antes de bendecir un troncal solo porque está conectado."
+      }
+    },
+    {
+      "id": "switching-routing-nativa",
+      "title": "VLAN nativa y clasificación de tramas sin etiqueta",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Preguntar primero si existe una etiqueta que interpretar",
+          "body": "Una trama con un identificador VLAN explícito y una trama sin etiqueta no aportan la misma información de pertenencia al receptor. En una configuración habitual de troncal 802.1Q, existe un tratamiento definido para tráfico sin etiqueta mediante la VLAN nativa o el identificador de ingreso correspondiente al contexto de la plataforma. No conviene comenzar una investigación suponiendo que toda trama que atraviesa un troncal lleva siempre una etiqueta visible. Tampoco debe suponerse que todas las plataformas manejan igual cada excepción. El ejercicio declara un modelo concreto para que puedas seguir la clasificación: las tramas sin etiqueta recibidas en el troncal se asignan a la VLAN nativa indicada por ese extremo. Si la captura muestra una etiqueta normal aceptada por la configuración, se interpreta su VID conforme a las condiciones del puerto. Documenta qué caso estás observando antes de comparar números. Una ficha que solo registra modo troncal y omite el tratamiento de ingreso deja incompleta la explicación de cómo una trama concreta entra en un dominio de enlace."
+        },
+        {
+          "title": "Comprender el efecto de una discrepancia entre extremos",
+          "body": "En el modelo presentado, A usa VLAN 10 como nativa y transmite sin etiqueta el tráfico de ese dominio bajo su configuración. B recibe esa trama sin etiqueta y la clasifica en su VLAN nativa 20. El resultado es una interpretación distinta de la pertenencia, no una modificación espontánea de la IP del puesto. La misma trama puede terminar asociada a otro dominio cuando se atraviesa ese enlace mal coordinado. En entornos reales, algunas funciones de consistencia o protección pueden detectar la discrepancia y limitar el reenvío. Por eso no conviertas el resultado simplificado del caso en una predicción universal para cualquier switch o protocolo de control. Sí permite justificar por qué ambos extremos deben compartir un diseño compatible de clasificación y tratamiento de etiquetas. La corrección se basa en la configuración autorizada y en el tráfico requerido. Cambiar siempre la nativa a uno porque sea un valor conocido no prueba que se haya conservado la intención de la topología ni que ese dominio deba transportar comunicaciones sin etiqueta."
+        },
+        {
+          "title": "Mantener separados VID explícito y asignación de ingreso sin etiqueta",
+          "body": "Si una trama aceptada llega con VID 10, ese dato no se reemplaza automáticamente por la VLAN nativa 20 de B solo porque la nativa tenga otro valor. Es necesario distinguir el caso etiquetado del caso sin etiqueta y considerar las reglas de admisión que declara el equipo. Una VLAN de acceso convencional también puede clasificar tramas sin etiqueta en su dominio asignado, pero su papel no es equivalente a transportar cualquier VLAN de un troncal. El concepto de identificador de ingreso ayuda a explicar qué ocurre cuando la trama no trae una pertenencia explícita utilizable en ese contexto. En equipos que admiten etiquetar también el tráfico nativo, la opción debe planificarse con compatibilidad de ambos extremos y con las necesidades de los dispositivos conectados. Activarla en un solo lugar no demuestra que todos interpreten correctamente el resultado. Mantén la matriz de capacidades y el estado efectivo en vez de deducir el comportamiento de una etiqueta de menú o de una guía escrita para otro modelo de plataforma."
+        },
+        {
+          "title": "Revisar el alcance del cambio y los controles complementarios",
+          "body": "Utilizar una VLAN nativa sin puestos de usuario puede formar parte de un diseño para reducir ciertos usos accidentales del tráfico sin etiqueta. No constituye una garantía que sustituya modos explícitos de puerto, conjuntos permitidos, controles de acceso o pruebas de segmentación. La modificación tiene que conservar las comunicaciones necesarias y contemplar funciones de control propias de los equipos, que pueden tener reglas particulares. En el laboratorio, documenta qué nativa exige el plan, qué muestra cada extremo y qué pruebas permitirán observar que la clasificación coincide después del cambio. Incluye una trama etiquetada prevista y el caso de tráfico sin etiqueta, además de comprobar que un dominio no requerido siga fuera del transporte permitido. Prepara una recuperación que no dependa únicamente del enlace que estás modificando si ese enlace participa también en la administración. El resultado útil no es que ambos menús tengan el mismo número por casualidad, sino que el comportamiento declarado y observado conserve la pertenencia y las restricciones que el diseño necesita en cada extremo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿En qué VLAN clasifica B la trama sin etiqueta del caso básico?",
+          "scenario": "A la envía como tráfico de su nativa 10 y B declara nativa 20, sin controles adicionales que cambien la recepción descrita.",
+          "options": [
+            "VLAN 20 según la clasificación de B",
+            "VLAN 10 porque A lo pensó primero",
+            "Todas las VLAN permitidas simultáneamente"
+          ],
+          "answer": 0,
+          "explanation": "B interpreta el ingreso sin etiqueta con su nativa 20; la intención de A no aporta un VID que el receptor pueda usar en esa trama del modelo.",
+          "wrongExplanations": [
+            null,
+            "La trama no contiene una etiqueta que comunique directamente esa pertenencia y B aplica la regla de ingreso que declara su propia configuración.",
+            "Una trama sin etiqueta no se replica como pertenencia simultánea a todas las VLAN; se clasifica según las condiciones concretas del puerto receptor."
+          ],
+          "aoi": {
+            "question": "Sigue la regla de B al recibir; la trama no conserva en secreto la intención de A.",
+            "hint": "Consulta qué dominio asigna B al ingreso que no trae etiqueta utilizable.",
+            "correct": "Identificaste el cambio de clasificación que produce la discrepancia entre extremos.",
+            "soft": "La respuesta debe explicar la recepción concreta, no solo el dominio de salida.",
+            "sharp": "B no leyó la mente de A por el cable, cariño; aplica su nativa declarada."
+          }
+        },
+        {
+          "prompt": "¿Qué dato necesita la investigación además de saber que el puerto es troncal?",
+          "scenario": "La captura del ejercicio puede incluir tramas sin etiqueta y la ficha no documenta cómo las clasifica el receptor.",
+          "options": [
+            "Solo la velocidad física del enlace",
+            "El tratamiento de ingreso y la VLAN nativa o PVID pertinente",
+            "Únicamente el DNS del portátil"
+          ],
+          "answer": 1,
+          "explanation": "El modo troncal no completa la interpretación de una trama sin etiqueta; hace falta conocer qué regla y dominio de ingreso aplica ese extremo.",
+          "wrongExplanations": [
+            "La velocidad no establece la pertenencia de la trama sin etiqueta ni resuelve la omisión de clasificación que describe la ficha del receptor.",
+            null,
+            "DNS pertenece a otra función y no determina el dominio de enlace que asigna el puerto al recibir una trama Ethernet sin etiqueta."
+          ],
+          "aoi": {
+            "question": "Nuestro troncal necesita explicar qué hace con el tráfico que no trae VID.",
+            "hint": "Busca el dato que clasifica el ingreso sin etiqueta en ese extremo.",
+            "correct": "Completaste la ficha del enlace con la condición que faltaba para interpretar la trama.",
+            "soft": "Revisa qué pregunta de pertenencia sigue sin contestar el modo troncal aislado.",
+            "sharp": "El DNS no le pone VLAN a esa trama, tesoro; mira la clasificación del puerto."
+          }
+        },
+        {
+          "prompt": "¿Qué ocurre con un VID 10 explícito aceptado por la configuración de B?",
+          "scenario": "El caso especifica una trama etiquetada normal y B permite su ingreso; la nativa de B es 20.",
+          "options": [
+            "Siempre se convierte en VLAN 20 por ser nativa",
+            "Se reparte obligatoriamente entre 10 y 20",
+            "Se interpreta como VID 10 conforme al caso etiquetado"
+          ],
+          "answer": 2,
+          "explanation": "La pertenencia explícita aceptada no se sustituye automáticamente por la nativa destinada al caso sin etiqueta; deben mantenerse separados los dos procedimientos del escenario.",
+          "wrongExplanations": [
+            "Esa opción confunde el tratamiento de una trama sin etiqueta con otra que sí trae un identificador aceptado; el dato explícito requiere su propia interpretación.",
+            "El caso no indica una pertenencia doble ni una replicación de dominio; describe una trama con VID concreto admitida en el puerto.",
+            null
+          ],
+          "aoi": {
+            "question": "La etiqueta sí llegó esta vez; no actúes como si siguiera faltando.",
+            "hint": "Distingue el caso de VID explícito aceptado del ingreso sin etiqueta.",
+            "correct": "Conservaste la información que la trama trae y dejaste la nativa en su función.",
+            "soft": "Revisa si el escenario presenta etiqueta o te pide completar una pertenencia ausente.",
+            "sharp": "La nativa no puede apropiarse de todo por llamarse nativa, cielo; lee el VID recibido."
+          }
+        },
+        {
+          "prompt": "¿Qué justifica elegir el valor de VLAN nativa al corregir la discrepancia?",
+          "scenario": "Las fichas difieren y el grupo debe preparar una modificación que conserve la topología y el tráfico autorizado.",
+          "options": [
+            "El diseño comprobado y compatible de ambos extremos",
+            "Usar siempre el número uno sin revisar el plan",
+            "Elegir el número más grande para aumentar seguridad automáticamente"
+          ],
+          "answer": 0,
+          "explanation": "La elección necesita relación con el plan, el soporte y el comportamiento requerido; igualar un número por costumbre no demuestra una clasificación apropiada del enlace.",
+          "wrongExplanations": [
+            null,
+            "Un valor conocido puede no corresponder a la intención del diseño; debe comprobarse qué dominio y tratamiento se requieren realmente en los extremos.",
+            "La magnitud del identificador no implementa seguridad ni demuestra compatibilidad; el efecto depende del papel de la VLAN y de los controles configurados."
+          ],
+          "aoi": {
+            "question": "La solución tiene que coincidir con el plan, no con el número que te cae mejor.",
+            "hint": "Contrasta qué tratamiento necesita el enlace y qué admiten sus participantes.",
+            "correct": "Elegiste una corrección con fundamento y dejaste fuera la superstición numérica.",
+            "soft": "Un valor idéntico solo ayuda si representa el comportamiento que el diseño necesita.",
+            "sharp": "Una VLAN más grande de número no lleva armadura extra, demonios; comprueba su función."
+          }
+        },
+        {
+          "prompt": "¿Basta activar etiquetado nativo en A sin confirmar el soporte de B?",
+          "scenario": "La opción existe en A, pero el caso no documenta cómo tratará B las tramas resultantes ni sus requisitos de control.",
+          "options": [
+            "Sí, toda opción de un extremo se replica en el otro",
+            "No, falta verificar compatibilidad y comportamiento del enlace completo",
+            "Sí, porque ninguna trama vuelve a necesitar clasificación"
+          ],
+          "answer": 1,
+          "explanation": "El soporte unilateral no demuestra interpretación compatible del vecino; deben comprobarse las capacidades y condiciones de ambos extremos y validar el tráfico necesario después del cambio.",
+          "wrongExplanations": [
+            "Las funciones no se configuran universalmente en el vecino por aparecer en un menú; esa suposición ignora versiones, capacidades y configuración del otro extremo.",
+            null,
+            "Las tramas siguen necesitando interpretación de pertenencia y reglas de admisión; activar una opción no elimina esas funciones ni acredita su compatibilidad."
+          ],
+          "aoi": {
+            "question": "Una opción de A todavía no nos ha presentado las capacidades de B.",
+            "hint": "Revisa cómo recibe el vecino lo que la modificación propone transmitirle.",
+            "correct": "Mantuviste la comprobación del conjunto antes de declarar resuelto un problema del enlace.",
+            "soft": "Todavía falta contrastar el efecto sobre el otro extremo y sus condiciones.",
+            "sharp": "A no actualizó a B mientras presumías del menú, cariño; verifica ambos lados."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra por sí sola una VLAN nativa sin puestos de usuario?",
+          "scenario": "El diseño la utiliza como una medida para ciertos casos de tráfico sin etiqueta, pero aún necesita roles de puerto, listas y políticas apropiadas.",
+          "options": [
+            "Que ningún ataque de enlace será posible",
+            "Que todos los recursos quedan autenticados",
+            "Una decisión de diseño cuyo alcance debe combinarse con otros controles"
+          ],
+          "answer": 2,
+          "explanation": "Esa elección puede reducir determinados usos accidentales, pero no sustituye modos de puerto, restricciones de transporte ni controles de recurso y pruebas de segmentación.",
+          "wrongExplanations": [
+            "Una configuración aislada no garantiza ausencia de amenazas; su efecto debe limitarse a los comportamientos que realmente modifica y a las condiciones de la plataforma.",
+            "La pertenencia de una VLAN no autentica automáticamente recursos o usuarios; esa función necesita mecanismos distintos relacionados con el servicio y sus identidades.",
+            null
+          ],
+          "aoi": {
+            "question": "La medida ayuda en su sitio; no le encargues que vigile toda la ciudad.",
+            "hint": "Relaciona la elección con los casos que cambia y los controles que siguen pendientes.",
+            "correct": "Conservaste su utilidad sin presentar una decisión de diseño como garantía universal.",
+            "soft": "Busca qué otras funciones necesita la topología aunque la nativa no tenga usuarios.",
+            "sharp": "Una VLAN vacía no contrató seguridad para todo el edificio, joder; mantén el alcance real."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La trama que cambia de dominio al llegar",
+          "scenario": "A transmite sin etiqueta una trama de su nativa VLAN 10. B clasifica las tramas sin etiqueta del troncal en su nativa VLAN 20 y el caso excluye controles adicionales que impidan esa recepción.",
+          "explanation": "B la incorpora al dominio 20 según su clasificación de ingreso, aunque A la asoció al 10. La discrepancia requiere contrastar el plan de ambos extremos. No se explica cambiando la dirección IP del usuario ni negando que la trama pueda viajar sin etiqueta en el modelo declarado."
+        },
+        {
+          "title": "Una opción sin soporte común",
+          "scenario": "A permite activar etiquetado del tráfico nativo, pero la ficha de B no confirma un comportamiento compatible. El grupo propone habilitarlo solo en A y considerar solucionada toda la discrepancia.",
+          "explanation": "La posibilidad de un extremo no demuestra compatibilidad del enlace completo. Hay que revisar capacidades, diseño y pruebas de ambos extremos antes del cambio, manteniendo una recuperación y sin asumir que una opción de menú impone el mismo comportamiento al dispositivo vecino."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El troncal ficticio trata tramas sin etiqueta mediante una VLAN nativa. A utiliza VLAN 10 y B utiliza VLAN 20; la actividad aísla esa clasificación básica y declara que no interviene otro mecanismo de bloqueo.",
+      "scenario": "El troncal ficticio trata tramas sin etiqueta mediante una VLAN nativa. A utiliza VLAN 10 y B utiliza VLAN 20; la actividad aísla esa clasificación básica y declara que no interviene otro mecanismo de bloqueo.",
+      "steps": [
+        "Identifica si la trama lleva un VID explícito o llega sin etiqueta.",
+        "Consulta el papel de la VLAN nativa o PVID en cada extremo.",
+        "Compara la clasificación de salida y entrada a través del enlace.",
+        "Contrasta el diseño autorizado antes de elegir un cambio.",
+        "Valida compatibilidad y tráfico requerido en ambos extremos."
+      ],
+      "sourceIds": [
+        "net-vlan",
+        "net-bridge"
+      ],
+      "aoi": {
+        "intro": "Antes de leer el VID, cariño, comprueba si la trama siquiera lo trae.",
+        "theory0": "Sin etiqueta necesitamos una clasificación de ingreso, no una suposición compartida a medias.",
+        "theory1": "A y B asignaron distinto barrio a la misma trama; ahí está la discrepancia.",
+        "theory2": "La nativa no pisa cualquier VID explícito por tener un nombre importante.",
+        "theory3": "Una opción compatible necesita dos extremos y un plan, no un gesto triunfal.",
+        "case0": "Nuestra trama salió como diez y B la recibió como veinte; sigue sus reglas declaradas.",
+        "case1": "A presume de una función que todavía no sabemos interpretar en B.",
+        "pass": "Ya distingues los dos tipos de ingreso. Esa atención me está resultando encantadoramente útil.",
+        "review": "Repasemos presencia de etiqueta y reglas de ingreso; estás mezclando casos que el enlace separa."
+      }
+    },
+    {
+      "id": "switching-routing-intervlan",
+      "title": "Puertas de enlace y comunicación entre VLAN",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Separar el dominio de enlace del recorrido de capa tres",
+          "body": "Un puesto en 192.168.10.25/24 y un servidor en 192.168.20.80/24 pertenecen a subredes distintas en el escenario. Si el destino no es local según la máscara del puesto, este busca entregar el paquete a su puerta de enlace alcanzable dentro de su propio segmento. No intenta aprender directamente la MAC del servidor remoto como si compartieran enlace. La primera trama se dirige a la MAC del siguiente salto local; el paquete conserva como destino IP al servidor, salvo transformaciones adicionales que el caso no contempla. Un troncal capaz de transportar las VLAN 10 y 20 no realiza por sí mismo el enrutamiento entre ambas. Transportar dominios etiquetados y decidir un siguiente salto IP son funciones diferentes. Para conectar esas subredes hace falta una función de capa tres configurada y operativa, además de una política que permita el flujo requerido. Antes de buscar una regla extraña, dibuja las dos entregas locales que rodean al encaminamiento: puesto hacia su puerta y router hacia el servidor."
+        },
+        {
+          "title": "Reconocer SVI y subinterfaces sin confundir sus requisitos",
+          "body": "En un switch con capacidad de capa tres puede existir una interfaz VLAN o SVI que aporta la dirección de puerta de enlace para un segmento. En otra topología, un router utiliza subinterfaces asociadas a distintas VLAN sobre un enlace troncal, diseño conocido como router on a stick. Son maneras de proporcionar interfaces lógicas de capa tres; ninguna funciona por escribir solamente una dirección en una ficha. La disponibilidad efectiva depende del estado administrativo, de las condiciones de enlace y VLAN de la plataforma y de que el equipo admita y tenga habilitada la función necesaria. En el modelo del curso, la SVI 10 usa 192.168.10.1/24 y la SVI 20 usa 192.168.20.1/24. El puesto utiliza la primera; el servidor utiliza la segunda. No se asigna la misma puerta literal a ambos porque sus subredes sean distintas. Si se emplea un router con subinterfaces, el troncal debe transportar las pertenencias previstas y su clasificación tiene que coincidir con la configuración de esas interfaces."
+        },
+        {
+          "title": "Revisar rutas y regreso aunque las redes parezcan cercanas",
+          "body": "Cuando las interfaces pertinentes están operativas y se cumplen las condiciones del equipo, sus redes pueden aparecer como conectadas en la tabla de rutas. Eso describe alcance de capa tres, no una autorización universal de aplicaciones. El dispositivo todavía puede aplicar controles y necesita resolver la entrega del siguiente salto. La respuesta del servidor exige su propia decisión de encaminamiento. Si el servidor carece de una puerta correcta para un destino remoto, observar una petición en su captura no prueba que pueda contestar al cliente. Del mismo modo, una SVI visible en la configuración no acredita que esté disponible en el estado operativo. Contrasta dirección y máscara del host, vecinos, estado de interfaces y tabla efectiva del dispositivo, conservando el momento de la observación. El recorrido puede ser asimétrico en algunas redes; en una actividad con firewall de estado esa diferencia también puede importar. No declares funcional el servicio solo porque exista una ruta en un equipo intermedio o porque una petición haya alcanzado uno de los extremos."
+        },
+        {
+          "title": "Añadir una política que conserve la intención de segmentación",
+          "body": "Separar VLAN limita dominios de enlace, pero habilitar enrutamiento sin restricciones puede permitir comunicaciones que el diseño quería controlar. La práctica pide usuarios hacia un servicio web concreto y prohíbe administración directa de los servidores desde esos puestos. Traduce ese requisito a origen, destino, protocolo, puerto y sentido, ubicando el control en el camino real. Comprueba tanto la conexión necesaria como una comunicación que debe rechazarse. Si el firewall mantiene estado, distingue el permiso para iniciar el servicio de la aceptación de respuestas asociadas según sus reglas. No abras todo el segmento remoto para hacer desaparecer un síntoma de aplicación. Registra las evidencias que permitirán diferenciar fallo de encaminamiento, rechazo de política y servicio detenido. La validación termina cuando el flujo autorizado funciona y el resto conserva el tratamiento previsto, con direcciones y puertas coherentes en ambos extremos. Esa combinación permite explicar por qué dos segmentos pueden comunicarse de forma controlada sin fingir que una VLAN es por sí sola una frontera completa de autorización."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿A qué MAC dirige el puesto la primera trama hacia otra subred?",
+          "scenario": "El cliente 192.168.10.25/24 usa 192.168.10.1 como puerta y solicita el servidor 192.168.20.80 sin transformaciones adicionales.",
+          "options": [
+            "A la MAC de su puerta de enlace local",
+            "A una MAC que deduce del nombre del servidor",
+            "A todas las MAC de VLAN 20 directamente"
+          ],
+          "answer": 0,
+          "explanation": "El destino IP es remoto según su máscara, así que entrega la trama al siguiente salto local y mantiene el destino IP del servidor en el paquete.",
+          "wrongExplanations": [
+            null,
+            "Un nombre o dirección remota no permite deducir una MAC de entrega local; la decisión necesita la puerta alcanzable en el segmento del cliente.",
+            "El puesto no difunde directamente una entrega de enlace por una VLAN distinta para sustituir el encaminamiento; utiliza la función de su puerta local."
+          ],
+          "aoi": {
+            "question": "Tu primera entrega es local aunque la petición tenga destino en otro barrio.",
+            "hint": "Compara la subred del destino con la del cliente y localiza su siguiente salto.",
+            "correct": "Elegiste la MAC de entrega adecuada sin cambiar el destino IP del servicio.",
+            "soft": "Revisa qué vecino puede recibir físicamente esa primera trama desde el puesto.",
+            "sharp": "La MAC remota no aparece por telepatía entre VLAN, cielo; busca tu puerta local."
+          }
+        },
+        {
+          "prompt": "¿Qué falta si solo existe un troncal entre switches de capa dos?",
+          "scenario": "El enlace permite las VLAN 10 y 20, pero no hay una función de capa tres que conecte las subredes del caso.",
+          "options": [
+            "Un número de VLAN idéntico para todos los usuarios",
+            "Una función de enrutamiento con interfaces y controles apropiados",
+            "La obligación de borrar las máscaras de todos los puestos"
+          ],
+          "answer": 1,
+          "explanation": "El troncal transporta pertenencias de enlace, mientras la comunicación entre estas subredes requiere una función de encaminamiento y una política que permita el servicio previsto.",
+          "wrongExplanations": [
+            "Unificar dominios elimina parte del diseño de separación y no explica cómo proporcionar comunicación controlada entre las dos subredes que solicita el ejercicio.",
+            null,
+            "Las máscaras son necesarias para determinar alcance local y siguiente salto; borrarlas no añade al esquema la función de encaminamiento que falta."
+          ],
+          "aoi": {
+            "question": "Permitir dos VID en el cable no ha creado todavía un router entre ellos.",
+            "hint": "Busca la función que toma decisiones IP entre las dos interfaces de subred.",
+            "correct": "Separaste transportar una VLAN de encaminar un paquete entre segmentos.",
+            "soft": "La lista permitida resuelve transporte del enlace; falta otra función para cruzar subredes.",
+            "sharp": "El troncal no ascendió a router por llevar dos VLAN, demonios; identifica la función ausente."
+          }
+        },
+        {
+          "prompt": "¿Cuál es la puerta prevista para el servidor de VLAN 20?",
+          "scenario": "El servidor usa 192.168.20.80/24 y el diseño presenta SVI 10 en 192.168.10.1 y SVI 20 en 192.168.20.1.",
+          "options": [
+            "192.168.10.1 porque todos deben copiar al cliente",
+            "Cualquier dirección remota cuyo último octeto sea uno",
+            "192.168.20.1 dentro de su segmento local"
+          ],
+          "answer": 2,
+          "explanation": "La SVI 20 proporciona en el diseño el siguiente salto local para el servidor; copiar la puerta del cliente la sitúa fuera de su subred declarada.",
+          "wrongExplanations": [
+            "La puerta del cliente pertenece a otro segmento y no constituye el siguiente salto local normal del servidor bajo las condiciones que define esta actividad.",
+            "El último octeto no determina el papel de puerta por sí solo; deben coincidir el alcance local y la interfaz prevista en la topología.",
+            null
+          ],
+          "aoi": {
+            "question": "El servidor tiene su propia salida; no le copies la dirección al vecino de enfrente.",
+            "hint": "Identifica cuál SVI comparte la subred declarada del servidor y cumple ese papel.",
+            "correct": "Ubicaste la puerta del servidor en el segmento que realmente puede alcanzar localmente.",
+            "soft": "Comprueba máscara y dirección de la SVI antes de elegir por el último octeto.",
+            "sharp": "Acabar en uno no es un título de puerta universal, cariño; compara toda la subred."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba falta si solo observaste llegar una petición al servidor?",
+          "scenario": "La captura confirma el paquete del cliente remoto, pero aún no se ha observado una respuesta ni el funcionamiento de la aplicación.",
+          "options": [
+            "Verificar la configuración y el recorrido de respuesta además del servicio",
+            "Declarar aprobada cualquier sesión futura entre las VLAN",
+            "Suponer que todo firewall permite el regreso sin comprobar sus reglas"
+          ],
+          "answer": 0,
+          "explanation": "La ida observada no demuestra una respuesta correcta, una política compatible ni el éxito de aplicación; deben comprobarse esos elementos del flujo completo antes de cerrar la actividad.",
+          "wrongExplanations": [
+            null,
+            "Una petición aislada no acredita todas las sesiones ni el regreso; esa conclusión supera el alcance de la evidencia disponible en esta captura del caso.",
+            "Los dispositivos pueden tener políticas y comportamientos distintos; el estado y las reglas deben comprobarse en vez de dar por aceptado cualquier paquete de respuesta."
+          ],
+          "aoi": {
+            "question": "Nuestra captura vio entrar a alguien; todavía no vio cómo consigue volver.",
+            "hint": "Busca la evidencia que falta para acreditar un intercambio completo de aplicación.",
+            "correct": "Pediste comprobar el regreso y evitaste cerrar una investigación con medio recorrido.",
+            "soft": "Distingue recepción de petición de éxito completo antes de dar el servicio por aprobado.",
+            "sharp": "Una foto de la llegada no demuestra el viaje de vuelta, tesoro; sigue la respuesta."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra mejor el estado de una interfaz VLAN configurada?",
+          "scenario": "La dirección aparece escrita en el archivo, pero los usuarios no alcanzan esa puerta y el equipo tiene condiciones operativas específicas.",
+          "options": [
+            "El nombre elegante de la interfaz en el documento",
+            "Su estado efectivo y las condiciones de VLAN y enlace del equipo",
+            "Solo que el número de VLAN sea menor que cien"
+          ],
+          "answer": 1,
+          "explanation": "La presencia en configuración no acredita disponibilidad; hay que consultar el estado operativo y los requisitos de la plataforma para que la interfaz y su red conectada resulten utilizables.",
+          "wrongExplanations": [
+            "Un nombre descriptivo ayuda a documentar, pero no informa por sí mismo del estado administrativo, enlace o condiciones necesarias para utilizar la interfaz del caso.",
+            null,
+            "El tamaño del identificador no establece disponibilidad de capa tres; la operatividad depende del equipo y de su configuración y estado efectivos, no de ese umbral inventado."
+          ],
+          "aoi": {
+            "question": "La SVI tiene dirección en el papel; ahora quiero verla sostener su papel en el equipo.",
+            "hint": "Consulta el estado operativo y los requisitos que la plataforma aplica a esa interfaz.",
+            "correct": "Buscaste disponibilidad real y dejaste de tratar una línea escrita como prueba de funcionamiento.",
+            "soft": "El documento explica la intención; necesitamos contrastarla con el estado que presenta el dispositivo.",
+            "sharp": "Una dirección configurada no levanta mágicamente el enlace, joder; comprueba su estado efectivo."
+          }
+        },
+        {
+          "prompt": "¿Qué validación conserva la intención de segmentación entre usuarios y servidores?",
+          "scenario": "La política permite el servicio web previsto y rechaza la administración directa desde puestos de usuario hacia los servidores.",
+          "options": [
+            "Abrir toda comunicación y comprobar solamente que hay respuesta",
+            "Mover todos los puestos al segmento de servidores sin revisar requisitos",
+            "Probar el servicio permitido y una conexión de administración que debe rechazarse"
+          ],
+          "answer": 2,
+          "explanation": "Las pruebas positiva y negativa verifican tanto la utilidad requerida como la restricción que justifica el diseño; permitir cualquier tráfico no conserva esa intención de segmentación.",
+          "wrongExplanations": [
+            "Abrir todo puede ocultar el síntoma, pero destruye la restricción solicitada y no demuestra que la política distinga el servicio autorizado de la administración prohibida.",
+            "Trasladar puestos cambia el diseño sin acreditar el permiso necesario; además no verifica la restricción específica que el ejercicio exige mantener entre usuarios y servidores.",
+            null
+          ],
+          "aoi": {
+            "question": "Quiero ver funcionar lo permitido y detenerse lo prohibido; tráeme las dos evidencias.",
+            "hint": "Traduce cada parte de la política a una prueba con origen y servicio concretos.",
+            "correct": "Validaste la comunicación útil junto con la restricción que la acompaña en el diseño.",
+            "soft": "Revisa cuál de tus pruebas acredita realmente que la administración siga restringida.",
+            "sharp": "Si abres todo, claro que algo responde, cielo; ahora demuestra que el límite todavía existe."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El troncal transporta ambas VLAN y nadie encamina",
+          "scenario": "Un switch de capa dos admite VLAN 10 y 20 en el enlace, pero el esquema no incluye router ni función de capa tres. Un usuario espera alcanzar el servidor de la otra subred.",
+          "explanation": "Transportar ambas VLAN conserva sus dominios sobre el enlace, pero no crea el salto de capa tres entre subredes. Hace falta un dispositivo o función de encaminamiento con interfaces y política apropiadas; cambiar únicamente la lista del troncal no cumple esa función."
+        },
+        {
+          "title": "La petición llega y la respuesta no encuentra salida",
+          "scenario": "El servidor 192.168.20.80/24 recibe una petición de 192.168.10.25, pero tiene como puerta 192.168.10.1 sin un mecanismo especial declarado. La puerta prevista en su segmento es 192.168.20.1.",
+          "explanation": "La configuración de regreso no corresponde al siguiente salto local del servidor. Debe revisarse la puerta 192.168.20.1 prevista y el recorrido de respuesta. Una captura de petición recibida acredita ese tramo de ida, no una sesión completa ni una respuesta correctamente encaminada."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El edificio ficticio separa usuarios en VLAN 10 y servidores en VLAN 20. Cada segmento tiene su propia subred; revisaremos cómo alcanzan una puerta de enlace, cómo se encamina un paquete y dónde limitar el servicio autorizado.",
+      "scenario": "El edificio ficticio separa usuarios en VLAN 10 y servidores en VLAN 20. Cada segmento tiene su propia subred; revisaremos cómo alcanzan una puerta de enlace, cómo se encamina un paquete y dónde limitar el servicio autorizado.",
+      "steps": [
+        "Distingue las VLAN y subredes de los dos extremos.",
+        "Comprueba la puerta de enlace del puesto y su interfaz de capa tres.",
+        "Verifica transporte de la VLAN, estado de interfaz y rutas necesarias.",
+        "Sigue el paquete de ida y el de respuesta.",
+        "Aplica una política explícita para el servicio que debe comunicarse."
+      ],
+      "sourceIds": [
+        "net-intervlan",
+        "net-firewall"
+      ],
+      "aoi": {
+        "intro": "Hoy conectaremos dos barrios, cariño; primero necesitamos sus puertas de verdad.",
+        "theory0": "El paquete piensa en el servidor remoto y la trama busca al vecino siguiente.",
+        "theory1": "Una SVI dibujada todavía no nos ha demostrado estar operativa.",
+        "theory2": "Que la petición llegue no concede a la respuesta un mapa de regreso.",
+        "theory3": "Quiero ese servicio permitido y la administración protegida; las dos pruebas cuentan.",
+        "case0": "El troncal lleva dos barrios, pero todavía no hemos construido su cruce.",
+        "case1": "El servidor recibió visita y puso la puerta de salida en otra calle.",
+        "pass": "Ya seguiste ida, regreso y permiso. Ese recorrido sí merece mi sonrisa satisfecha.",
+        "review": "Volvamos al siguiente salto local antes de culpar al servicio de todas las desgracias."
+      }
+    },
+    {
+      "id": "switching-routing-bucles",
+      "title": "Redundancia y prevención de bucles de capa dos",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Reconocer por qué un ciclo de conmutación puede ser destructivo",
+          "body": "La redundancia física permite disponer de otro camino si falla un enlace, pero un ciclo activo de reenvío Ethernet puede repetir tramas y provocar una tormenta que consuma capacidad. La cabecera Ethernet ordinaria no aporta el mecanismo de límite de saltos propio de un paquete IP para resolver ese ciclo de puenteo. Un broadcast y determinado tráfico de destino desconocido pueden circular por las ramas del dominio cuando no existe una topología de reenvío que lo evite. Aumentar velocidad no elimina el problema estructural; puede aumentar la cantidad de tráfico repetido que los equipos procesan. También pueden observarse cambios rápidos del aprendizaje de una misma MAC entre puertos cuando las copias recorren caminos distintos. Ese síntoma necesita contexto, porque un movimiento legítimo también cambia la tabla. Relaciona la forma del cableado, los contadores y los registros de tiempo antes de asignar una causa. El objetivo del ejercicio no es eliminar cualquier enlace redundante, sino conservar alternativas evitando ciclos activos dentro del alcance que administra el protocolo de prevención de bucles."
+        },
+        {
+          "title": "Interpretar la raíz mediante identificadores y contexto de instancia",
+          "body": "Spanning Tree utiliza información de control para construir una topología sin ciclos de reenvío. En la elección de raíz se compara el identificador de bridge: una prioridad inferior resulta preferida y, cuando los componentes anteriores empatan, la dirección MAC sirve para desempatar. En implementaciones con identificador de sistema extendido, el contexto de VLAN o instancia también forma parte de lo que muestra el equipo. Por eso compara valores equivalentes dentro de la misma instancia, sin mezclar tablas de distintas VLAN. En el ejemplo simplificado A tiene prioridad 4096 y B tiene 8192, con el resto del contexto igual: A es preferido para raíz aunque la MAC de B sea menor. La raíz del árbol describe una función de capa dos; no determina que ese dispositivo sea la puerta de enlace IP ni el servidor DNS. El diseño debe elegir una raíz prevista y alternativas coherentes con la topología. Dejar que cualquier alta de un equipo cambie ese papel por accidente puede alterar caminos y capacidad disponibles sin responder a la intención de la red."
+        },
+        {
+          "title": "Leer un estado de descarte como parte de la protección",
+          "body": "Según la variante de Spanning Tree y la presentación del fabricante, un puerto puede figurar bloqueado o descartando tráfico de datos para evitar un ciclo. En RSTP, el estado discarding no equivale por sí solo a un cable roto ni a una interfaz apagada. Puede corresponder a un papel alternativo que mantiene una opción para cuando cambie la topología. Roles y estados son conceptos relacionados, pero diferentes: el papel explica la posición del puerto y el estado describe su tratamiento operativo dentro del protocolo. Consulta la instancia, la raíz, el camino y los eventos antes de declarar un fallo. Si hay redundancia de equipos o enlaces, la recuperación debe probarse bajo condiciones autorizadas, observando convergencia y continuidad del servicio en vez de prometer interrupción cero en cualquier plataforma. Un grupo agregado de enlaces exige además configuración compatible y una negociación o coordinación adecuada cuando corresponda. Conectar dos cables en paralelo sin ese diseño no crea automáticamente una agregación segura ni duplica de manera utilizable el ancho de banda."
+        },
+        {
+          "title": "Aplicar protecciones según el papel del puerto",
+          "body": "Un puerto de borde conecta normalmente un terminal y puede tener un tratamiento de transición rápida conforme al diseño. Ese papel no debe asignarse indiscriminadamente a enlaces entre switches. Una protección como BPDU Guard puede deshabilitar un puerto ante la recepción de BPDUs en el contexto configurado, evitando que un punto previsto para terminales incorpore un puente inesperado. No se debe extender ciegamente a todo troncal sin considerar que allí se espera precisamente intercambio de control. Otras funciones, como Root Guard, persiguen condiciones diferentes y requieren su propio análisis de ubicación. Antes de reactivar una interfaz protegida, identifica la causa, contrasta el dispositivo conectado y elimina el cambio no autorizado; limitarse a levantarla repetidamente puede restaurar el mismo riesgo. Documenta qué protección debe operar, cómo se verifica y quién autoriza una modificación. La disponibilidad mejora cuando la topología redundante y sus controles tienen una intención conocida, no cuando se desactiva el mecanismo que estaba evitando que todos los caminos reenviaran al mismo tiempo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué riesgo crea el triángulo si todas sus ramas reenvían sin control?",
+          "scenario": "Tres switches comparten un dominio Ethernet con caminos cíclicos activos y el escenario no incluye agregación ni prevención de bucles.",
+          "options": [
+            "Repetición de tramas y posible tormenta de capa dos",
+            "La conversión automática de todas las IP en IPv6",
+            "Una elección obligatoria del servidor DNS como raíz"
+          ],
+          "answer": 0,
+          "explanation": "Un ciclo activo puede reenviar copias repetidamente y consumir recursos del dominio; la redundancia física necesita un mecanismo que evite ese ciclo de reenvío en el escenario.",
+          "wrongExplanations": [
+            null,
+            "El cableado cíclico no cambia por sí mismo la familia de direcciones IP; el riesgo descrito se origina en el reenvío repetido de tramas Ethernet.",
+            "El papel de DNS no determina la topología del árbol de capa dos ni evita el ciclo activo que presenta este triángulo de switches."
+          ],
+          "aoi": {
+            "question": "Antes de celebrar tres caminos activos, mira qué harán las copias en ese ciclo.",
+            "hint": "Sigue una trama de difusión por las tres ramas y pregunta dónde terminaría.",
+            "correct": "Identificaste el peligro del ciclo sin atribuirle funciones ajenas al puenteo.",
+            "soft": "Revisa qué ocurre con una trama que puede volver a entrar por otra rama.",
+            "sharp": "El triángulo no inventa IPv6, cielo; puede fabricar copias hasta asfixiar el dominio."
+          }
+        },
+        {
+          "prompt": "¿Qué switch se prefiere como raíz en la comparación simplificada?",
+          "scenario": "A presenta prioridad 4096 y B prioridad 8192, con idéntico contexto de instancia; la MAC de B es menor.",
+          "options": [
+            "B porque cualquier MAC menor gana antes de la prioridad",
+            "A porque su prioridad inferior se compara primero",
+            "El que tenga la dirección de puerta de enlace más alta"
+          ],
+          "answer": 1,
+          "explanation": "En el identificador de bridge la prioridad tiene precedencia sobre el desempate por MAC; con el resto del contexto igual, el valor 4096 de A resulta preferido.",
+          "wrongExplanations": [
+            "La MAC sirve para resolver un empate de los componentes anteriores; no anula la diferencia de prioridad que el escenario proporciona entre ambos candidatos.",
+            null,
+            "La dirección de puerta IP no decide esta comparación de identificadores de capa dos; mezclarla con la elección de raíz confunde funciones distintas del dispositivo."
+          ],
+          "aoi": {
+            "question": "B tiene una MAC menor, pero todavía no ha llegado su turno de desempatar.",
+            "hint": "Compara primero las prioridades manteniendo igual la instancia del ejemplo.",
+            "correct": "Respetaste el orden de comparación y elegiste la raíz por los datos pertinentes.",
+            "soft": "La MAC no salta por delante de una prioridad diferente en este caso.",
+            "sharp": "B no se cuela en la fila por su MAC bonita, tesoro; primero va la prioridad."
+          }
+        },
+        {
+          "prompt": "¿Qué significa necesariamente un puerto alternativo en discarding de RSTP?",
+          "scenario": "El enlace físico funciona y el diseño prevé una rama de reserva dentro de la instancia que se está observando.",
+          "options": [
+            "Que el cable está roto en todos los casos",
+            "Que el puerto se convirtió en servidor DHCP",
+            "Que evita reenviar datos por esa rama en el estado observado"
+          ],
+          "answer": 2,
+          "explanation": "Discarding describe el tratamiento de tráfico dentro del protocolo y puede corresponder al camino alternativo previsto; por sí solo no prueba avería física ni desconexión administrativa del puerto.",
+          "wrongExplanations": [
+            "El escenario confirma enlace físico y reserva prevista; el estado del árbol no permite concluir universalmente que el cable esté averiado sin otras evidencias del equipo.",
+            "El estado de Spanning Tree no asigna al puerto la función de servidor DHCP; esa interpretación mezcla un control de capa dos con un servicio de configuración IP.",
+            null
+          ],
+          "aoi": {
+            "question": "Mira qué protege ese estado antes de declararlo un cable muerto.",
+            "hint": "Distingue estado de reenvío, papel alternativo y disponibilidad física del enlace.",
+            "correct": "Interpretaste el descarte dentro del árbol sin inventar una avería del medio.",
+            "soft": "La reserva puede estar operativa físicamente y no reenviar datos en esa instancia.",
+            "sharp": "Ese puerto puede estar trabajando precisamente al quedarse quieto, cariño; no lo resucites a golpes."
+          }
+        },
+        {
+          "prompt": "¿La raíz de Spanning Tree tiene que ser la puerta de enlace IP?",
+          "scenario": "El inventario muestra un switch como raíz y otro dispositivo proporciona la puerta de los usuarios de la VLAN.",
+          "options": [
+            "No, son funciones distintas aunque puedan coexistir en un equipo",
+            "Sí, la raíz siempre debe resolver también todos los nombres DNS",
+            "Sí, porque el árbol reemplaza cualquier tabla de rutas IP"
+          ],
+          "answer": 0,
+          "explanation": "La raíz pertenece a la organización del árbol de capa dos; la puerta realiza encaminamiento IP y puede estar en otro dispositivo según el diseño de la topología.",
+          "wrongExplanations": [
+            null,
+            "La elección de raíz no impone servicio DNS ni reúne automáticamente todas las funciones de red en un dispositivo; cada papel necesita configuración y requisitos propios.",
+            "Spanning Tree no sustituye el proceso de selección de rutas entre redes IP; construir una topología de puenteo sin ciclos resuelve una función diferente."
+          ],
+          "aoi": {
+            "question": "Nuestro árbol necesita una raíz; los paquetes remotos necesitan una puerta. Son dos papeles.",
+            "hint": "Relaciona cada función con la capa y la decisión que realmente toma.",
+            "correct": "Separaste los papeles del diseño y permitiste que el inventario los ubique donde corresponde.",
+            "soft": "Pregúntate si elegir un camino de puenteo equivale a decidir un siguiente salto IP.",
+            "sharp": "La raíz no obtuvo un ascenso automático a router y DNS, demonios; respeta sus funciones."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene hacer tras un disparo de BPDU Guard en un puerto de borde?",
+          "scenario": "El registro coincide con la conexión de un switch no previsto en un punto destinado a un terminal individual.",
+          "options": [
+            "Desactivar la protección en todos los enlaces para que no moleste",
+            "Investigar la conexión y validar el papel autorizado antes de reactivar",
+            "Reactivarlo sin revisar la causa tantas veces como se deshabilite"
+          ],
+          "answer": 1,
+          "explanation": "La recepción de control inesperado debe contrastarse con el diseño y el dispositivo conectado; resolver la causa evita restablecer repetidamente la condición que activó la protección.",
+          "wrongExplanations": [
+            "Eliminar controles en todos los enlaces amplía el cambio y no explica la conexión inesperada; la solución necesita centrarse en la causa y el papel del puerto afectado.",
+            null,
+            "Repetir la reactivación no elimina el switch ni valida su autorización; puede restaurar la misma condición y prolongar el riesgo o la interrupción que se investiga."
+          ],
+          "aoi": {
+            "question": "La protección nos está contando algo del vecino; primero comprobemos quién apareció.",
+            "hint": "Relaciona el evento con el dispositivo conectado y el uso previsto de ese punto.",
+            "correct": "Atendiste la causa del disparo y mantuviste una recuperación coherente con el diseño.",
+            "soft": "Levantar una interfaz no responde todavía por qué recibió ese control inesperado.",
+            "sharp": "No le des otra vez al botón por pura rabia, joder; mira qué enchufaron ahí."
+          }
+        },
+        {
+          "prompt": "¿Dos cables paralelos crean automáticamente una agregación segura de enlaces?",
+          "scenario": "El grupo conecta ambos switches con dos cables, pero no configura ni comprueba un grupo de agregación compatible.",
+          "options": [
+            "Sí, cada cable adicional duplica siempre la capacidad útil",
+            "Sí, porque cualquier bucle se convierte espontáneamente en un grupo lógico",
+            "No, hacen falta un diseño y una configuración compatibles de agregación"
+          ],
+          "answer": 2,
+          "explanation": "El paralelismo físico no acredita una agregación lógica; debe existir configuración y coordinación compatibles, además de verificar el tratamiento de los enlaces y la prevención de ciclos correspondiente.",
+          "wrongExplanations": [
+            "La capacidad útil depende de la agregación y del comportamiento de reparto, entre otras condiciones; sumar cables sin configurar no garantiza duplicación ni ausencia de ciclos.",
+            "Un ciclo no se transforma por sí mismo en un grupo lógico coordinado; asumirlo omite las condiciones necesarias en ambos extremos de la conexión.",
+            null
+          ],
+          "aoi": {
+            "question": "Dos cables son dos cables hasta que el diseño y los extremos acuerdan otra cosa.",
+            "hint": "Comprueba qué grupo lógico existe y cómo lo interpretan los dispositivos participantes.",
+            "correct": "Exigiste coordinación real en vez de atribuir capacidades automáticas al cableado paralelo.",
+            "soft": "Mira la configuración del grupo antes de sumar velocidades sobre el papel.",
+            "sharp": "El segundo cable no firmó un acuerdo de agregación al enchufarse, cielo; comprueba ambos extremos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El alternativo que estaba haciendo su trabajo",
+          "scenario": "El triángulo tiene un puerto alternativo en estado discarding para la instancia observada. El enlace físico está activo, los usuarios trabajan y el diagrama prevé ese camino como reserva.",
+          "explanation": "El estado puede ser la protección esperada contra un ciclo, no una avería física. Se deben contrastar raíz, roles y diseño antes de modificarlo. Forzar reenvío en todas las ramas puede introducir el problema que el árbol mantiene controlado."
+        },
+        {
+          "title": "Un switch donde se esperaba un terminal",
+          "scenario": "Un puerto de borde con BPDU Guard se deshabilita después de que alguien conecta un switch no previsto. El grupo propone reactivarlo varias veces sin revisar qué está conectado.",
+          "explanation": "La acción de protección debe investigarse en relación con el papel del puerto y el dispositivo añadido. Reactivarlo sin resolver la causa puede reproducir la condición. Primero se valida el diseño autorizado y se retira o regulariza la conexión conforme al procedimiento correspondiente."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Tres switches ficticios forman un triángulo de enlaces de capa dos. Queremos conservar una alternativa ante una avería sin mantener un ciclo de reenvío que multiplique tráfico; observaremos raíz, roles y estado antes de tocar un puerto.",
+      "scenario": "Tres switches ficticios forman un triángulo de enlaces de capa dos. Queremos conservar una alternativa ante una avería sin mantener un ciclo de reenvío que multiplique tráfico; observaremos raíz, roles y estado antes de tocar un puerto.",
+      "steps": [
+        "Dibuja qué enlaces comparten el dominio de capa dos.",
+        "Compara los identificadores de bridge y la raíz esperada.",
+        "Consulta roles y estados dentro de la instancia pertinente.",
+        "Distingue un camino alternativo protegido de una avería.",
+        "Prueba una recuperación autorizada y conserva las protecciones de borde adecuadas."
+      ],
+      "sourceIds": [
+        "net-stp",
+        "net-bridge"
+      ],
+      "aoi": {
+        "intro": "Ese tercer cable promete respaldo, cariño; veamos que no prometa también una tormenta.",
+        "theory0": "Ethernet no va a contar saltos IP para rescatar un ciclo de puenteo.",
+        "theory1": "La raíz se elige con su identificador, no por parecer el switch más importante.",
+        "theory2": "Un puerto descartando puede estar salvando la red; no le grites todavía.",
+        "theory3": "Las protecciones tienen ubicación y propósito, igual que mis regaños más precisos.",
+        "case0": "Nuestro alternativo parece quieto porque su trabajo consiste en no cerrar ese ciclo.",
+        "case1": "El puerto protestó por un vecino inesperado; escuchemos la causa antes de levantarlo.",
+        "pass": "Conservaste respaldo y control del ciclo. Eso sí es una topología que me da tranquilidad.",
+        "review": "Repasemos instancia, rol y estado; estás tratando una reserva prevista como si fuera una avería."
+      }
+    },
+    {
+      "id": "switching-routing-estaticas",
+      "title": "Rutas estáticas, alcance del siguiente salto y retirada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Leer una ruta como una instrucción de alcance concreto",
+          "body": "Una ruta estática expresa una decisión administrativa para alcanzar un prefijo mediante una interfaz, un siguiente salto o una combinación que depende de la plataforma y del tipo de enlace. No comunica automáticamente esa decisión a todos los demás dispositivos de la red. En la maqueta, R1 tiene 10.80.0.0/16 por 192.0.2.2 y una ruta por defecto por 198.51.100.2. El siguiente salto de la sucursal es una dirección de tránsito, no la dirección final de cada servidor de ese prefijo. Antes de juzgar la ruta, comprueba que el destino real esté dentro del bloque y que el equipo esté consultando la tabla o contexto de encaminamiento correcto. Dos tablas aisladas pueden contener entradas distintas sin que una contradiga a la otra. El archivo de configuración registra intención; la tabla efectiva muestra qué decisiones están disponibles en el momento observado. Si la plataforma aplica preferencias entre candidatos, hay que comprobar qué opción se instaló y por qué, en lugar de asumir que toda línea configurada está participando en el reenvío."
+        },
+        {
+          "title": "Resolver la entrega sin confundir ruta y vecino",
+          "body": "Un siguiente salto necesita resultar alcanzable según las reglas del dispositivo. En un enlace Ethernet ordinario, la entrega del paquete también requiere una asociación de enlace pertinente, como la entrada ARP del vecino IPv4 local. Que una ruta aparezca instalada no garantiza que el vecino responda o que el enlace posterior funcione. Puede existir una resolución recursiva mediante otra entrada de encaminamiento; su validez depende de la implementación y no debe formar una dependencia imposible de resolver. Para esta práctica, 192.0.2.2 está en el tránsito directamente conectado a R1. Si desaparece la asociación de vecino, captura solicitudes y respuestas autorizadas, revisa estado de interfaz y contrasta direcciones antes de tocar rutas ajenas. Una orden de ruta que menciona solo una interfaz Ethernet puede tener un comportamiento diferente de la que identifica explícitamente al siguiente salto. Evita extrapolar una sintaxis abreviada a cualquier medio o equipo. La ficha de cambio tiene que registrar la forma admitida y el estado real que se espera observar después de aplicarla."
+        },
+        {
+          "title": "Comprobar el regreso y la dependencia de cada tramo",
+          "body": "R1 puede entregar una petición a R2 y aun así no existir una respuesta útil para el usuario. R2 necesita conocer el destino remoto, los dispositivos posteriores deben permitir el servicio y el extremo remoto necesita un camino de regreso hacia la red original. Una ruta estática es una pieza local de ese recorrido, no un contrato de conectividad de extremo a extremo. En el ejemplo, la sucursal recibe tráfico de 10.20.30.0/24; su tabla debe disponer de una decisión apropiada para responder a ese origen. Si utiliza otra salida por defecto, la respuesta puede perderse o encontrar controles incompatibles con el trayecto. Separa evidencia de recepción, de salida y de aplicación mediante observaciones con tiempos coincidentes. No añadas una ruta simétrica de memoria si la topología tiene otro diseño autorizado; identifica el camino que realmente necesita la respuesta. La prueba debe explicar qué equipo tomó cada decisión y qué parte sigue sin observarse, incluyendo la posibilidad de que un rechazo de política o un servicio detenido se parezcan a un problema de encaminamiento."
+        },
+        {
+          "title": "Diseñar qué ocurre cuando una ruta desaparece",
+          "body": "Una entrada más específica puede ocultar el efecto de una ruta por defecto hasta que se retira. Si desaparece 10.80.0.0/16 y permanece la salida general, un destino de ese bloque puede coincidir con ella. Eso no garantiza recuperación: esa salida quizá no conozca la sucursal y puede enviar tráfico por un lugar que el diseño no pretendía utilizar. El comportamiento de fallo debe definirse expresamente. Algunas redes utilizan una alternativa con seguimiento de disponibilidad; otras necesitan evitar una salida no deseada mediante decisiones de descarte y políticas apropiadas. Son elecciones distintas y deben probarse conforme a la plataforma, sin aplicar una receta universal. Retirar una ruta tampoco borra necesariamente sesiones de aplicaciones ni todos los estados de los controles intermedios. Antes del cambio, registra caminos esperados, criterios de éxito y condiciones para volver atrás. Después, prueba destinos internos y externos pertinentes, revisa el siguiente salto efectivo y conserva una evidencia de regreso. La lección termina cuando puedes explicar el funcionamiento normal y el de fallo, no cuando una línea de configuración parece correctamente escrita."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra la ruta estática instalada en R1 por sí sola?",
+          "scenario": "La tabla contiene 10.80.0.0/16 por 192.0.2.2, pero no se han comprobado vecino, respuesta remota ni servicio.",
+          "options": [
+            "Una decisión local disponible para ese prefijo en el contexto observado",
+            "El éxito completo de cualquier aplicación en toda la sucursal",
+            "Que todos los routers remotos recibieron automáticamente la misma ruta"
+          ],
+          "answer": 0,
+          "explanation": "La entrada acredita una decisión local de encaminamiento, pero la entrega al vecino y el recorrido completo necesitan evidencias adicionales que el escenario todavía no proporciona.",
+          "wrongExplanations": [
+            null,
+            "La tabla no demuestra estado de aplicación ni regreso; una entrada local puede coexistir con fallos posteriores, controles restrictivos o ausencia de respuesta del destino.",
+            "Una ruta estática local no se difunde por sí sola a todos los equipos; cualquier distribución exige mecanismos y configuración adicionales que aquí no se declaran."
+          ],
+          "aoi": {
+            "question": "Esa entrada nos cuenta el plan de R1; todavía no nos cuenta toda la conversación.",
+            "hint": "Limita la conclusión a lo que muestra la tabla efectiva en ese dispositivo.",
+            "correct": "Acotaste correctamente la evidencia sin prometer el estado de los demás tramos.",
+            "soft": "Separa la decisión local de las condiciones que necesita un servicio de extremo a extremo.",
+            "sharp": "La tabla de R1 no certificó todo el universo de la sucursal, cielo; mide su alcance."
+          }
+        },
+        {
+          "prompt": "¿Qué investigación corresponde a solicitudes ARP sin respuesta del siguiente salto?",
+          "scenario": "El tránsito Ethernet de R1 tiene la ruta instalada y no consigue resolver 192.0.2.2 durante una prueba limitada.",
+          "options": [
+            "Cambiar todos los nombres DNS de la empresa inmediatamente",
+            "Revisar enlace, direccionamiento y respuesta del vecino de tránsito",
+            "Declarar que el servidor remoto respondió correctamente a la aplicación"
+          ],
+          "answer": 1,
+          "explanation": "La observación localiza una dificultad de entrega al siguiente salto de enlace; revisar interfaz, direcciones y vecino responde a esa evidencia antes de modificar otros componentes sin relación demostrada.",
+          "wrongExplanations": [
+            "El problema observado trata de resolución del vecino en el tránsito; cambiar nombres de toda la organización no explica ni corrige directamente esa ausencia de respuesta ARP.",
+            null,
+            "No se ha observado una entrega al vecino ni respuesta de aplicación; esa conclusión contradice el alcance limitado de la prueba que presenta el escenario."
+          ],
+          "aoi": {
+            "question": "El paquete tiene un plan y le falta un vecino que acepte la entrega.",
+            "hint": "Sitúa ARP en el tránsito local antes de buscar causas en la aplicación remota.",
+            "correct": "Relacionaste la evidencia con el componente que puede explicar esa entrega pendiente.",
+            "soft": "Busca qué asociación de enlace falta para utilizar el siguiente salto que la tabla eligió.",
+            "sharp": "El DNS corporativo no contesta ARP por tu vecino, demonios; atiende ese tránsito primero."
+          }
+        },
+        {
+          "prompt": "¿Qué necesita comprobar la sucursal para responder a 10.20.30.0/24?",
+          "scenario": "La petición de esa red llega a un servidor remoto, pero aún no se ha identificado la decisión de encaminamiento de su respuesta.",
+          "options": [
+            "Que R1 conserve una captura de pantalla de su ruta",
+            "Que el nombre del servidor tenga menos de diez letras",
+            "Un camino de regreso apropiado y controles compatibles con la respuesta"
+          ],
+          "answer": 2,
+          "explanation": "La respuesta se encamina desde el extremo remoto y necesita alcanzar el origen por un camino permitido; la ida observada y la tabla de R1 no acreditan ese regreso.",
+          "wrongExplanations": [
+            "Una captura local de R1 documenta una observación, pero no establece la decisión que tomarán el servidor y los dispositivos de la sucursal al responder.",
+            "La longitud del nombre no determina la ruta hacia el origen ni sustituye una puerta y decisiones de encaminamiento apropiadas para la respuesta del servicio.",
+            null
+          ],
+          "aoi": {
+            "question": "La sucursal ya recibió la petición; ahora tiene que saber cómo contestar al origen.",
+            "hint": "Consulta desde el lado remoto la decisión para la red del cliente y sus controles.",
+            "correct": "Pediste comprobar el regreso en el lugar donde se decide y se transmite.",
+            "soft": "La ruta del cliente no sustituye la tabla que necesita utilizar el extremo remoto.",
+            "sharp": "Tu captura en R1 no le dibuja el regreso al servidor, cariño; revisa su salida."
+          }
+        },
+        {
+          "prompt": "¿Qué puede ocurrir al retirar la específica mientras queda una ruta por defecto?",
+          "scenario": "R1 pierde 10.80.0.0/16 y conserva una salida general que no fue validada para tráfico de la sucursal.",
+          "options": [
+            "El destino puede usar la salida general sin que eso garantice un camino apropiado",
+            "El destino queda necesariamente sin ninguna coincidencia en la tabla",
+            "La salida general aprende todos los servidores internos al instante"
+          ],
+          "answer": 0,
+          "explanation": "La ruta por defecto puede coincidir cuando falta la específica, pero no demuestra alcance, autorización o regreso para ese prefijo; ese comportamiento debe preverse y validarse en el diseño.",
+          "wrongExplanations": [
+            null,
+            "La salida general existe justamente como coincidencia menos específica; su presencia impide afirmar que el destino quedará sin decisión solo por retirar la entrada de sucursal.",
+            "La selección de una salida no crea conocimiento universal en el proveedor ni aprende automáticamente todos los destinos internos que el diseño necesita alcanzar."
+          ],
+          "aoi": {
+            "question": "La específica se fue, pero la general sigue en la mesa y puede recibir ese destino.",
+            "hint": "Revisa la coincidencia disponible después de retirar la entrada del prefijo interno.",
+            "correct": "Anticipaste la decisión de fallo sin confundir coincidencia con conectividad autorizada.",
+            "soft": "Vuelve a leer qué entrada permanece y qué garantías no aporta esa permanencia.",
+            "sharp": "La ruta por defecto no desaparece por solidaridad, tesoro; comprueba dónde mandará ese tráfico."
+          }
+        },
+        {
+          "prompt": "¿Una estática de R1 configura automáticamente el regreso en otros routers?",
+          "scenario": "La actividad solo declara una entrada local y no incluye un protocolo ni un mecanismo de distribución de rutas.",
+          "options": [
+            "Sí, cualquier ruta local se copia a toda la topología",
+            "No, las decisiones de los otros equipos requieren su propia configuración o aprendizaje",
+            "Sí, siempre que el siguiente salto termine en el octeto dos"
+          ],
+          "answer": 1,
+          "explanation": "La estática expresa una decisión del equipo que la contiene; sin un mecanismo adicional declarado no debe suponerse que otras tablas aprenden el regreso ni que cambian de forma coordinada.",
+          "wrongExplanations": [
+            "La copia universal no forma parte de una entrada estática local; requiere una distribución configurada y sus condiciones, que el escenario no incluye entre las evidencias.",
+            null,
+            "El valor final de la dirección de tránsito no implementa propagación de rutas ni determina cómo los dispositivos remotos conocen el origen de las respuestas."
+          ],
+          "aoi": {
+            "question": "La instrucción de R1 no ha enviado por sí sola nuevas instrucciones al resto.",
+            "hint": "Busca si el escenario declara algún mecanismo que distribuya rutas entre los equipos.",
+            "correct": "Conservaste la responsabilidad de cada tabla y evitaste una propagación imaginaria.",
+            "soft": "Distingue configurar una decisión local de comunicar alcance mediante un mecanismo adicional.",
+            "sharp": "Terminar en dos no activa mensajería mágica de rutas, joder; cada tabla necesita su explicación."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene registrar antes de retirar una ruta durante mantenimiento?",
+          "scenario": "La ventana afecta a un prefijo interno, a su posible alternativa y al acceso de administración por caminos relacionados.",
+          "options": [
+            "Solo la hora de cierre sin comprobar recorridos",
+            "Una promesa de que no cambiarán sesiones ni estados en ningún equipo",
+            "Caminos esperados, pruebas y criterios concretos de recuperación o vuelta atrás"
+          ],
+          "answer": 2,
+          "explanation": "La retirada necesita una intención observable para funcionamiento y fallo, junto con criterios para recuperar si los recorridos o servicios no cumplen lo previsto; una promesa general no aporta esa verificación.",
+          "wrongExplanations": [
+            "Cerrar por horario sin validar decisiones ni servicio puede ocultar una salida incorrecta; la prueba debe relacionarse con el prefijo afectado y el comportamiento esperado de sus caminos.",
+            "Los cambios de rutas no garantizan por sí solos continuidad de todas las sesiones o estados; deben considerarse el diseño y los controles que intervienen en el recorrido.",
+            null
+          ],
+          "aoi": {
+            "question": "Antes de quitar la línea, quiero saber qué haremos si su ausencia cambia más de lo previsto.",
+            "hint": "Define resultados observables tanto del cambio como de su recuperación autorizada.",
+            "correct": "Preparaste una retirada comprobable y una forma concreta de volver a un estado válido.",
+            "soft": "Una ventana con horario todavía necesita condiciones técnicas de éxito y de recuperación.",
+            "sharp": "El reloj no valida rutas por ti, cielo; escribe qué vas a comprobar y cómo volverás."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La ruta está pero el vecino no contesta",
+          "scenario": "R1 muestra instalada la ruta a 10.80.0.0/16 por 192.0.2.2. En el tránsito Ethernet aparecen solicitudes ARP para ese vecino sin respuesta durante la prueba autorizada.",
+          "explanation": "La decisión de encaminamiento no basta para entregar una trama al siguiente salto. Hay que investigar alcance local, interfaz y vecino, conservando esa distinción. Borrar todas las rutas no responde a la evidencia localizada en la entrega de enlace del tránsito."
+        },
+        {
+          "title": "La retirada que activa una salida inesperada",
+          "scenario": "La ruta específica de sucursal se elimina durante una ventana y sigue presente una salida por defecto hacia otro proveedor. El plan no permite enviar el tráfico interno por esa salida.",
+          "explanation": "El destino puede pasar a coincidir con la ruta general, pero esa coincidencia no cumple la intención del diseño. La retirada necesita un comportamiento de fallo definido y controles o alternativas apropiadas, verificados con el siguiente salto efectivo y pruebas del prefijo afectado."
+        }
+      ],
+      "diagram": "network",
+      "intro": "La sede ficticia usa una ruta estática hacia una sucursal y otra salida por defecto. Analizaremos qué significa que una ruta esté configurada, que resulte utilizable y que el servicio remoto realmente responda.",
+      "scenario": "La sede ficticia usa una ruta estática hacia una sucursal y otra salida por defecto. Analizaremos qué significa que una ruta esté configurada, que resulte utilizable y que el servicio remoto realmente responda.",
+      "steps": [
+        "Lee prefijo, siguiente salto e interfaz con su contexto.",
+        "Contrasta configuración con la tabla efectiva y la entrega al vecino.",
+        "Comprueba ida y regreso desde los extremos relevantes.",
+        "Define el comportamiento si desaparece el camino específico.",
+        "Valida la retirada y la recuperación con pruebas de alcance limitado."
+      ],
+      "sourceIds": [
+        "net-cidr",
+        "net-intervlan"
+      ],
+      "aoi": {
+        "intro": "Una ruta escrita es una intención, cariño; vamos a exigirle pruebas de entrega.",
+        "theory0": "Lee el prefijo y el tránsito sin convertir al vecino en destino final.",
+        "theory1": "La tabla puede tener un plan aunque el vecino todavía no conteste.",
+        "theory2": "Ahora sigue la respuesta; las rutas de R1 no gobiernan toda la sucursal.",
+        "theory3": "Al retirar la específica, la salida por defecto también quiere participar en la historia.",
+        "case0": "R1 sabe a quién entregar, pero nadie está respondiendo por esa dirección de tránsito.",
+        "case1": "La ruta general estaba esperando su oportunidad; comprueba que el plan la autorice.",
+        "pass": "Ya explicas ruta, vecino, regreso y retirada. Eso me ahorra cuatro regaños y merece un guiño.",
+        "review": "Repasa qué evidencia demuestra cada tramo antes de culpar a una sola línea estática."
+      }
+    },
+    {
+      "id": "switching-routing-ospf",
+      "title": "Vecinos OSPF y rutas calculadas por costo",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Entender la información que intercambia un protocolo de estado de enlace",
+          "body": "OSPF es un protocolo de enrutamiento de estado de enlace. Los routers participantes distribuyen información que permite construir una visión de la topología dentro del alcance de sus áreas y calcular caminos. El modelo de esta lección se limita a OSPFv2 para IPv4; otras versiones y extensiones necesitan revisar su propia documentación. Una interfaz debe participar en el contexto adecuado para descubrir vecinos e intercambiar control. No basta con que dos equipos utilicen una marca comercial igual o dispongan de una ruta por defecto. El protocolo utiliza IP directamente, con número de protocolo 89 en este caso, y no una conexión TCP o un puerto UDP inventado para explicarlo. Los mensajes de descubrimiento y el intercambio posterior cumplen papeles diferentes. Distinguirlos permite localizar un problema: no ver mensajes, no reconocer al vecino y no completar una sincronización son observaciones que requieren investigaciones distintas. Anota interfaz, dirección, área y tiempo junto con el estado del proceso antes de proponer una modificación general que pueda borrar precisamente las evidencias necesarias para entenderlo."
+        },
+        {
+          "title": "Comprobar compatibilidad y leer el estado dentro del tipo de red",
+          "body": "La formación de vecindad exige condiciones compatibles entre los participantes del enlace. El área, los intervalos pertinentes y los requisitos de autenticación son ejemplos de parámetros que deben contrastarse junto con conectividad y tipo de red. Compartir subred no resuelve una diferencia de área. Además, vecindad y adyacencia completa no son sinónimos universales: en una red de difusión, los papeles de router designado y de respaldo influyen en qué relaciones llegan a sincronización completa. Dos participantes que no tienen esos papeles pueden permanecer en 2-Way entre sí conforme al diseño, por lo que ese estado no demuestra automáticamente una avería. La interpretación requiere identificar quién es cada vecino y qué relación se espera en ese medio. Si una relación que sí debería sincronizarse queda detenida, compara los detalles y registros del estado antes de reiniciar. Algunas incompatibilidades, como condiciones de MTU durante el intercambio, requieren revisar el momento y los mensajes concretos. Una orden de reinicio puede provocar una interrupción sin corregir el parámetro que seguirá siendo incompatible al volver a comenzar."
+        },
+        {
+          "title": "Comparar caminos con costos declarados y alcance equivalente",
+          "body": "Para caminos comparables dentro del caso, OSPF utiliza una métrica de costo acumulado. El trayecto A tiene dos enlaces de costos 10 y 20; el trayecto B tiene costos 5 y 40. Sus sumas son 30 y 45 respectivamente, de modo que A tiene el menor costo declarado aunque B comience con un enlace de valor inferior. No se compara únicamente el primer tramo ni se interpreta el resultado como milisegundos de respuesta. La asignación de costos puede depender de parámetros de interfaz y de ajustes del diseño; no es una medición automática del ping de la aplicación. En escenarios reales también importan tipo y procedencia de ruta, entre otras reglas, así que el ejercicio declara candidatos comparables para evitar una conclusión incompleta. Cuando se presentan caminos de igual costo, puede existir reparto de tráfico según capacidades y configuración, pero eso no implica que cada paquete alterne universalmente ni que una aplicación obtenga la suma de todas las velocidades. Documenta qué métrica se está comparando y bajo qué condiciones para que el cálculo sea reproducible."
+        },
+        {
+          "title": "Separar base topológica, ruta elegida y servicio disponible",
+          "body": "La base de estado de enlace contiene información para el cálculo; la tabla de rutas refleja decisiones instaladas tras aplicar las reglas y preferencias pertinentes. Ver un anuncio no demuestra que ese prefijo sea la ruta efectiva para un destino, ni que el servicio remoto responda. Hay que seguir el cálculo, consultar el prefijo seleccionado y comprobar el siguiente salto y el regreso. Si la tabla cambia después de una modificación, registra qué anuncio o condición lo explica en vez de atribuir todo al último comando ejecutado. El diseño también necesita limitar quién puede participar en el protocolo y proteger sus intercambios con mecanismos admitidos y actuales en las plataformas involucradas. El hecho de intercambiar rutas no autoriza automáticamente todas las aplicaciones de usuario. Para cerrar el laboratorio, contrasta vecinos esperados, sincronización pertinente, rutas efectivas y pruebas de servicio antes y después del cambio. Conserva una recuperación que no dependa de borrar todos los procesos. Así puedes explicar una corrección concreta y sus consecuencias sin confundir salud del control de enrutamiento con una garantía completa de disponibilidad o autorización."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué camino tiene menor costo en la comparación declarada de OSPF?",
+          "scenario": "Los dos candidatos son comparables: A suma enlaces de costos 10 y 20, mientras B suma enlaces de costos 5 y 40.",
+          "options": [
+            "A, con costo acumulado 30 frente a 45",
+            "B, porque su primer enlace tiene costo 5",
+            "Ambos, porque solo importa tener dos enlaces"
+          ],
+          "answer": 0,
+          "explanation": "La métrica acumulada del trayecto A es 30 y la del B es 45; comparar únicamente el primer tramo omite el costo del resto del camino declarado.",
+          "wrongExplanations": [
+            null,
+            "El valor 5 pertenece solo al comienzo de B y no compensa automáticamente su segundo tramo de 40; el total es el que se compara aquí.",
+            "El número de enlaces no sustituye sus costos; dos trayectos con la misma cantidad de tramos pueden tener sumas distintas bajo los valores que proporciona el ejercicio."
+          ],
+          "aoi": {
+            "question": "El enlace barato del principio todavía tiene que pagar el resto del recorrido.",
+            "hint": "Suma los costos de cada trayecto completo antes de comparar sus resultados.",
+            "correct": "Elegiste el costo total menor y no dejaste que el primer enlace te distrajera.",
+            "soft": "Revisa si comparaste el trayecto completo o solo el tramo que más te gustó.",
+            "sharp": "Ese cinco inicial no paga el cuarenta siguiente, tesoro; suma todo el maldito camino."
+          }
+        },
+        {
+          "prompt": "¿Qué indica una diferencia de área en el mismo enlace del caso?",
+          "scenario": "R1 usa área 0 y R2 área 10, mientras el diseño autoriza área 0 y los equipos comparten alcance de tránsito.",
+          "options": [
+            "Que la conectividad física iguala automáticamente cualquier área distinta",
+            "Una incompatibilidad que debe corregirse conforme al diseño antes de validar la relación",
+            "Que ambos equipos ya instalaron todas las rutas del otro"
+          ],
+          "answer": 1,
+          "explanation": "La formación de la relación prevista requiere área compatible; poder alcanzarse en el enlace no corrige ese parámetro ni demuestra que se hayan intercambiado e instalado rutas correctamente.",
+          "wrongExplanations": [
+            "Compartir medio o direcciones de tránsito no reescribe los parámetros del protocolo; la diferencia de área sigue necesitando revisión y una corrección autorizada del extremo pertinente.",
+            null,
+            "La discrepancia no acredita sincronización ni rutas instaladas; esa conclusión salta precisamente las comprobaciones de vecindad, intercambio y tabla efectiva que faltan en el escenario."
+          ],
+          "aoi": {
+            "question": "El cable los conecta, pero sus parámetros todavía no cuentan la misma historia.",
+            "hint": "Contrasta el área de ambos extremos con el plan que declara el ejercicio.",
+            "correct": "Detectaste el desacuerdo concreto que requiere corrección antes de seguir validando.",
+            "soft": "No confundas alcance IP del tránsito con compatibilidad completa del protocolo de enrutamiento.",
+            "sharp": "El cable no negoció que cero y diez fueran iguales, cielo; corrige el área prevista."
+          }
+        },
+        {
+          "prompt": "¿Un estado 2-Way entre dos routers de difusión siempre prueba una avería?",
+          "scenario": "Ninguno de los dos es designado ni respaldo, y ambos mantienen las adyacencias completas que el esquema espera con los otros participantes.",
+          "options": [
+            "Sí, cualquier vecino debe aparecer Full con todos los demás",
+            "Sí, indica que el cable siempre pierde exactamente la mitad del tráfico",
+            "No, puede corresponder a la relación normal para esos papeles"
+          ],
+          "answer": 2,
+          "explanation": "En ese medio los papeles influyen en qué relaciones necesitan adyacencia completa; el estado debe compararse con el diseño y no tratarse como fallo por su nombre aislado.",
+          "wrongExplanations": [
+            "Exigir Full entre todos ignora la organización de adyacencias de una red de difusión y contradice el contexto de papeles que la actividad proporciona para estos vecinos.",
+            "El nombre del estado no mide un porcentaje de pérdida del enlace; interpretar 2-Way como mitad de tráfico inventa una relación que el protocolo no expresa.",
+            null
+          ],
+          "aoi": {
+            "question": "Antes de rescatar a ese vecino, comprueba si necesita otra relación distinta.",
+            "hint": "Relaciona el estado con el tipo de red y los papeles designado y respaldo.",
+            "correct": "Interpretaste el estado dentro del diseño y evitaste reparar una condición que puede ser normal.",
+            "soft": "Revisa qué adyacencias completas exige realmente esa red antes de juzgar todas las líneas iguales.",
+            "sharp": "Dos no significa media red rota, cariño; los nombres de estado no son porcentajes de desastre."
+          }
+        },
+        {
+          "prompt": "¿Qué transporte usa OSPFv2 en la explicación de esta lección?",
+          "scenario": "La captura autorizada muestra sus intercambios de control IPv4 y queremos identificar la cabecera pertinente sin inventar un servicio de aplicación.",
+          "options": [
+            "IP directamente, con número de protocolo 89",
+            "Una sesión TCP obligatoria hacia puerto 443",
+            "Datagramas UDP obligatorios hacia puerto 53"
+          ],
+          "answer": 0,
+          "explanation": "OSPFv2 utiliza directamente el protocolo IP identificado como 89; no necesita la sesión TCP o el servicio UDP que las otras opciones atribuyen incorrectamente a este intercambio de control.",
+          "wrongExplanations": [
+            null,
+            "TCP hacia 443 se asocia a otros usos y no describe el transporte de OSPFv2; aplicar ese filtro podría ocultar precisamente el control que se intenta observar.",
+            "UDP hacia 53 corresponde a otro tipo de servicio habitual y no identifica los mensajes OSPFv2; el número de protocolo IP es el dato pertinente del caso."
+          ],
+          "aoi": {
+            "question": "La captura necesita mirar el protocolo que realmente lleva estos mensajes entre routers.",
+            "hint": "Distingue un identificador de protocolo IP de los puertos de un transporte como TCP.",
+            "correct": "Elegiste la identificación de control adecuada sin convertir OSPF en un servicio web.",
+            "soft": "Revisa si la opción describe una cabecera IP o inventa un puerto ajeno al protocolo.",
+            "sharp": "OSPF no se disfrazó de DNS para hablar, demonios; identifica su protocolo IP."
+          }
+        },
+        {
+          "prompt": "¿El costo OSPF declarado equivale a milisegundos de ping de la aplicación?",
+          "scenario": "El diseño asigna métricas a las interfaces y compara sumas de caminos, sin medir la respuesta del servicio remoto.",
+          "options": [
+            "Sí, siempre convierte automáticamente cada ping en el costo exacto",
+            "No, es una métrica de encaminamiento y no esa medición de aplicación",
+            "Sí, siempre incluye el tiempo que el usuario tarda en escribir"
+          ],
+          "answer": 1,
+          "explanation": "El costo es la métrica utilizada por el cálculo según la configuración y reglas del protocolo; no representa por sí mismo una medición de latencia de la aplicación remota.",
+          "wrongExplanations": [
+            "La actividad no declara esa conversión y el protocolo no utiliza cada ping de aplicación como costo universal; confundirlos cambia el significado de los valores del diseño.",
+            null,
+            "El tiempo de escritura del usuario no forma parte de esa métrica de enlace; la selección de rutas necesita interpretar los costos y condiciones del protocolo, no esa demora humana."
+          ],
+          "aoi": {
+            "question": "No conviertas nuestra suma de costos en un cronómetro de la página remota.",
+            "hint": "Pregunta qué define la métrica y qué tendría que medir una prueba de latencia.",
+            "correct": "Conservaste el significado del costo sin atribuirle una medición que no realizó.",
+            "soft": "La comparación de rutas no aporta automáticamente el tiempo observado por una aplicación.",
+            "sharp": "Mi paciencia sí cuenta segundos, cielo; el costo OSPF no es tu ping por decreto."
+          }
+        },
+        {
+          "prompt": "¿Qué falta comprobar después de ver un anuncio en la base de estado de enlace?",
+          "scenario": "El prefijo aparece en información topológica, pero el equipo aún no ha mostrado la ruta efectiva ni una prueba completa del servicio.",
+          "options": [
+            "Que todos los servicios estén aprobados por aparecer el anuncio",
+            "Que la tabla de rutas sea innecesaria en cualquier protocolo dinámico",
+            "La selección instalada, el siguiente salto y el recorrido permitido del servicio"
+          ],
+          "answer": 2,
+          "explanation": "La información anunciada alimenta el cálculo, pero hay que comprobar qué ruta se instala y cómo se entrega y responde el tráfico permitido; el anuncio aislado no demuestra esos resultados.",
+          "wrongExplanations": [
+            "Un anuncio de alcance no autoriza todas las aplicaciones ni acredita disponibilidad remota; faltan decisiones y controles de datos que la base topológica no demuestra por sí sola.",
+            "El cálculo necesita producir decisiones de encaminamiento utilizables; la tabla efectiva sigue siendo evidencia relevante y no desaparece porque el protocolo sea dinámico.",
+            null
+          ],
+          "aoi": {
+            "question": "El mapa recibió un dato; ahora quiero ver qué decisión tomó el equipo y qué funcionó.",
+            "hint": "Consulta la ruta efectiva y sigue el flujo permitido después del intercambio de control.",
+            "correct": "Comprobaste el paso del anuncio al reenvío y mantuviste la validación del servicio.",
+            "soft": "Distingue información para calcular de la decisión instalada y de su resultado práctico.",
+            "sharp": "Un anuncio no vino con garantía de aplicación feliz, joder; revisa tabla, entrega y regreso."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El vecino está en otra área",
+          "scenario": "Dos interfaces IPv4 se alcanzan en el tránsito, pero R1 configura el enlace en área 0 y R2 lo configura en área 10. El plan aprobado indica área 0 en ambos extremos.",
+          "explanation": "La conectividad de enlace no elimina la incompatibilidad de área para la relación prevista. Debe corregirse el parámetro conforme al plan y validar el intercambio; reiniciar repetidamente sin resolver la diferencia reproduce la condición y no aporta una solución fundamentada."
+        },
+        {
+          "title": "Dos vecinos que no necesitan sincronizar entre sí",
+          "scenario": "En una red de difusión, dos routers que no son designado ni respaldo se muestran mutuamente en 2-Way y mantienen las adyacencias completas esperadas con los participantes correspondientes.",
+          "explanation": "Ese estado puede ser normal en ese tipo de red y con esos papeles. Hay que contrastar la relación esperada antes de declararlo fallo. Forzar una reparación basada únicamente en que todas las líneas no dicen Full ignora el diseño de las adyacencias."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Los routers ficticios intercambian información mediante OSPFv2 para IPv4. Compararemos caminos de costos declarados y observaremos qué significa descubrir un vecino, sincronizar información e instalar una ruta, sin reiniciar el proceso a ciegas.",
+      "scenario": "Los routers ficticios intercambian información mediante OSPFv2 para IPv4. Compararemos caminos de costos declarados y observaremos qué significa descubrir un vecino, sincronizar información e instalar una ruta, sin reiniciar el proceso a ciegas.",
+      "steps": [
+        "Identifica versión, interfaces participantes y área del enlace.",
+        "Compara los parámetros de vecindad y el estado observado.",
+        "Distingue base de estado de enlace y tabla de rutas.",
+        "Suma costos de los caminos comparables del caso.",
+        "Conserva evidencias antes de corregir un parámetro incompatible."
+      ],
+      "sourceIds": [
+        "net-ospf",
+        "net-cidr"
+      ],
+      "aoi": {
+        "intro": "Ahora los routers compartirán mapas, cariño; revisaremos quién escucha y qué ruta resulta.",
+        "theory0": "OSPFv2 usa control sobre IP; no le inventes un puerto para sentirte a salvo.",
+        "theory1": "Un estado de vecino necesita contexto, igual que mi ceja levantada.",
+        "theory2": "Suma el camino entero; el primer enlace no decide por simpatía.",
+        "theory3": "La base topológica informa al cálculo, pero todavía quiero ver la tabla efectiva.",
+        "case0": "Los dos equipos se oyen y aun así discrepan sobre el área del enlace.",
+        "case1": "Esos dos vecinos pueden quedarse en 2-Way sin necesitar que los salves.",
+        "pass": "Ya comparas control, cálculo y servicio por separado. Me encanta esa precisión tan poco presumida.",
+        "review": "Volvamos a área, papeles y costos antes de usar un reinicio como explicación universal."
+      }
+    },
+    {
+      "id": "switching-routing-acl",
+      "title": "Listas de acceso: orden, dirección y alcance de una regla",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Convertir una intención en campos de un paquete",
+          "body": "Una política necesita expresar quién inicia qué comunicación hacia qué recurso. Decir que un grupo tiene acceso a un servidor deja abiertas preguntas sobre protocolos, servicios y sentido. En el ejemplo, el origen pertenece a 192.0.2.0/24, el destino exacto es 198.51.100.20 y la petición utiliza TCP con puerto de destino 443. El puerto de origen del cliente puede ser efímero; no se debe exigir que también sea 443 por confundirlo con el servicio remoto. Las direcciones de documentación de la actividad representan equipos ficticios, y la lista describe lógica, no sintaxis universal de un fabricante. Antes de redactar la regla, dibuja la petición en el punto donde será evaluada. Si el camino incluye traducciones, el control puede observar direcciones distintas según su posición y la arquitectura del dispositivo. Por eso el requisito funcional y los campos realmente visibles deben contrastarse. Una regla técnicamente válida puede no coincidir con ningún paquete si se escribió para otra etapa del recorrido o para un origen que el control ya no observa."
+        },
+        {
+          "title": "Aplicar la primera coincidencia sin leer reglas posteriores como reparación",
+          "body": "La lista del ejercicio usa evaluación ordenada de primera coincidencia. La línea 10 permite el flujo concreto descrito; la línea 20 rechaza el resto del tráfico hacia el servidor y la línea 30 rechaza cualquier otro paquete. Si un paquete coincide con la primera, esa es la decisión y no continúa buscando una prohibición posterior que la deshaga. Del mismo modo, una denegación amplia colocada antes del permiso específico puede impedir que este llegue a examinarse. El orden forma parte de la política efectiva. Escribe los campos de un paquete y contrástalos de arriba abajo, anotando la primera regla que coincide, no la que te gustaría que decidiera. El tratamiento final de una lista puede depender de plataforma, familia y contexto; aquí el rechazo final está declarado para que no tengas que adivinarlo. En una revisión real, confirma la semántica y los valores por defecto de ese tipo de objeto. No todos los productos ni todos los motores de políticas se interpretan con la misma mecánica que esta lista didáctica."
+        },
+        {
+          "title": "Precisar sentido y estado en vez de usar etiquetas ambiguas",
+          "body": "Entrada y salida son relativas a la interfaz y al dispositivo observados. Una petición entra por un lado y sale por otro; una regla situada en sentido equivocado puede no evaluar el flujo que pretende controlar. Identifica la interfaz concreta y una flecha antes de usar esas palabras. Además, una ACL de paquetes sin seguimiento de conexión no equivale a un firewall de estado. La respuesta cambia direcciones y papeles de puertos: en este caso procede del puerto de servicio 443 y vuelve al puerto utilizado por el cliente. Una política de retorno debe considerar el mecanismo real del control, sin abrir todo el segmento solo por no haber descrito esa respuesta. Algunos filtros interpretan indicadores TCP, pero una condición de cabecera aislada no demuestra por sí misma todo el historial de una conexión. El seguimiento de estado también tiene reglas, límites y tiempos. La explicación del laboratorio declara qué modelo se utiliza para que puedas evaluar tanto el inicio como el regreso sin adjudicar capacidades que el dispositivo no ofrece."
+        },
+        {
+          "title": "Validar especificidad y evitar permisos accidentales",
+          "body": "Una prueba positiva confirma que el servicio previsto puede iniciarse bajo las condiciones ensayadas. Una prueba negativa comprueba una restricción concreta, como administración TCP al puerto 22 desde los usuarios. Ninguna prueba aislada acredita todas las combinaciones posibles, así que el conjunto debe derivarse de los requisitos y del riesgo. Si se permite antes cualquier destino a cualquier puerto desde todo el segmento, una denegación posterior del servicio administrativo puede quedar sin efecto para esos paquetes. Los contadores y registros ayudan a relacionar el resultado con la regla, pero necesitan contexto temporal y no deben recopilar datos innecesarios. Conserva una prueba de administración del propio equipo cuando modifiques controles que puedan cortar ese acceso, con una recuperación previamente definida. Al cerrar la actividad, documenta el flujo, la ubicación, la primera coincidencia esperada y el resultado observado para permiso y rechazo. Así la política puede revisarse con ejemplos reproducibles en vez de depender de una frase imprecisa como que el servidor quedó protegido o de una única conexión que respondió por casualidad."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué paquete coincide con el permiso específico del ejemplo?",
+          "scenario": "La regla permite TCP desde 192.0.2.0/24 hacia 198.51.100.20 con puerto de destino 443 y no restringe el puerto efímero del cliente.",
+          "options": [
+            "192.0.2.30:52014 hacia 198.51.100.20:443 mediante TCP",
+            "192.0.2.30:52014 hacia 198.51.100.20:22 mediante TCP",
+            "192.0.2.30:52014 hacia 198.51.100.21:443 mediante TCP"
+          ],
+          "answer": 0,
+          "explanation": "El primer paquete cumple origen, destino exacto, protocolo y servicio declarados; los otros cambian respectivamente el puerto de destino o el recurso que el permiso identifica expresamente.",
+          "wrongExplanations": [
+            null,
+            "El puerto de destino 22 no coincide con el servicio 443 de la regla; compartir origen y servidor no convierte cualquier servicio en parte del permiso específico.",
+            "La dirección 198.51.100.21 representa otro destino y no cumple el host exacto de la regla, aunque utilice el mismo protocolo y puerto de servicio."
+          ],
+          "aoi": {
+            "question": "Lee los cuatro campos relevantes; que tres coincidan todavía puede no ser suficiente.",
+            "hint": "Compara el host de destino y el puerto del servicio junto con el origen y protocolo.",
+            "correct": "Elegiste el paquete que satisface todos los límites expresos del permiso.",
+            "soft": "Localiza qué campo cambió en las otras opciones y por qué importa para la regla.",
+            "sharp": "El servidor vecino y el puerto vecino no vienen incluidos por simpatía, cielo; respeta los campos."
+          }
+        },
+        {
+          "prompt": "¿Qué decide una lista de primera coincidencia con permiso amplio antes del rechazo?",
+          "scenario": "La primera línea permite cualquier TCP de usuarios al servidor y la segunda rechaza específicamente su puerto administrativo 22.",
+          "options": [
+            "El rechazo posterior siempre anula cualquier permiso anterior",
+            "El permiso anterior decide también esa petición al puerto 22",
+            "Ambas reglas se cancelan y no queda ninguna decisión"
+          ],
+          "answer": 1,
+          "explanation": "El paquete administrativo ya coincide con el permiso amplio y la evaluación termina allí; el rechazo posterior no se consulta para corregir esa decisión en el modelo declarado.",
+          "wrongExplanations": [
+            "Esa prioridad del rechazo no forma parte de la mecánica descrita; asumirla ignora que la lista termina la evaluación cuando encuentra la primera coincidencia aplicable.",
+            null,
+            "Las reglas no se cancelan algebraicamente por tener acciones distintas; la posición y las condiciones determinan cuál es la primera que coincide con el paquete concreto."
+          ],
+          "aoi": {
+            "question": "El permiso encontró al paquete primero; la prohibición de abajo todavía no tuvo turno.",
+            "hint": "Recorre la lista de arriba abajo y detente en la primera condición satisfecha.",
+            "correct": "Identificaste el permiso accidental que deja sin efecto práctico la restricción posterior.",
+            "soft": "Revisa si estás siguiendo el orden declarado o inventando una prioridad automática para rechazos.",
+            "sharp": "La segunda regla no tiene máquina del tiempo, tesoro; el permiso de arriba ya decidió."
+          }
+        },
+        {
+          "prompt": "¿Qué dato falta al decir únicamente que la ACL se aplica de entrada?",
+          "scenario": "El equipo tiene varias interfaces y no se especifica cuál observará la petición de usuarios hacia el servidor.",
+          "options": [
+            "El color del cable de administración del laboratorio",
+            "La longitud del nombre comercial del firewall",
+            "La interfaz y el sentido del flujo respecto de ese punto"
+          ],
+          "answer": 2,
+          "explanation": "Entrada es una relación con un punto del dispositivo; sin identificar la interfaz no se sabe qué recorrido evalúa el control ni si la petición pasa por ese sentido.",
+          "wrongExplanations": [
+            "El color físico del cable no identifica de forma suficiente el punto lógico donde se evalúa el paquete ni sustituye la interfaz y dirección que requiere la política.",
+            "El nombre comercial no describe el trayecto del paquete dentro de la topología; la aplicación del control necesita ubicación y orientación concretas para poder verificarse.",
+            null
+          ],
+          "aoi": {
+            "question": "Una flecha sin punto de referencia todavía puede señalar cualquier lado del esquema.",
+            "hint": "Dibuja por dónde llega la petición al dispositivo y en qué interfaz se examina.",
+            "correct": "Ubicaste el control en el recorrido en vez de confiar en una palabra aislada.",
+            "soft": "Relaciona entrada con una interfaz determinada antes de decidir si verá el paquete.",
+            "sharp": "De entrada a dónde, cariño; el diagrama necesita una puerta concreta, no una palabra suelta."
+          }
+        },
+        {
+          "prompt": "¿Por qué es incorrecto exigir origen 443 a esta petición del cliente?",
+          "scenario": "La captura del caso muestra origen 52014 y destino 443, mientras el requisito permite iniciar el servicio web desde ese puesto.",
+          "options": [
+            "Porque confunde el puerto efímero del cliente con el puerto del servicio remoto",
+            "Porque TCP prohíbe utilizar cualquier puerto por encima de mil",
+            "Porque toda petición web debe carecer de puertos de transporte"
+          ],
+          "answer": 0,
+          "explanation": "La regla debe representar la dirección de la petición observada; el servicio reside en el puerto de destino 443 y el origen 52014 corresponde al extremo local del cliente.",
+          "wrongExplanations": [
+            null,
+            "TCP dispone de un espacio de puertos que incluye el valor presentado; inventar ese límite no explica la discrepancia entre la regla y la petición válida del escenario.",
+            "Una conexión TCP utiliza puertos para identificar extremos; eliminarlos de la explicación impide describir el flujo y no corrige el requisito erróneo sobre el puerto de origen."
+          ],
+          "aoi": {
+            "question": "La petición tiene dos extremos y solo uno está ofreciendo ese servicio concreto.",
+            "hint": "Identifica cuál campo pertenece al cliente y cuál al servicio que quiere alcanzar.",
+            "correct": "Separaste el extremo efímero del cliente del puerto que identifica al servidor.",
+            "soft": "Vuelve a leer la flecha de la petición antes de copiar el puerto en ambos lados.",
+            "sharp": "No vistas al cliente con el uniforme del servidor, demonios; cada puerto tiene su papel."
+          }
+        },
+        {
+          "prompt": "¿Una ACL sin seguimiento de conexión conoce por sí sola toda la sesión previa?",
+          "scenario": "El ejercicio diferencia filtrado de paquetes y firewall de estado y pide explicar cómo debe tratarse el tráfico de respuesta.",
+          "options": [
+            "Sí, cualquier filtro recuerda automáticamente todos los intercambios previos",
+            "No, hay que considerar sus capacidades reales y una política de retorno apropiada",
+            "Sí, basta con que un paquete contenga una bandera TCP cualquiera"
+          ],
+          "answer": 1,
+          "explanation": "Un filtro sin seguimiento no aporta por definición el historial completo de conexión; la política debe evaluarse según sus capacidades y el tratamiento explícito que necesita la respuesta en ese contexto.",
+          "wrongExplanations": [
+            "La memoria de sesión no se presume en cualquier filtro; atribuirla a una ACL sin seguimiento confunde el mecanismo del control y puede dejar un regreso sin tratamiento correcto.",
+            null,
+            "Un indicador de cabecera aislado no demuestra todo el intercambio previo; usarlo como prueba universal de sesión conocida omite las condiciones y límites del mecanismo de estado."
+          ],
+          "aoi": {
+            "question": "Las capacidades del control deciden qué puede saber de una conversación anterior.",
+            "hint": "Comprueba si existe seguimiento real de conexión y cómo se permite el regreso.",
+            "correct": "Respetaste el modelo del filtro y pediste una respuesta compatible con sus capacidades.",
+            "soft": "Distingue mirar campos del paquete de mantener y validar contexto de una conexión.",
+            "sharp": "Una bandera TCP no trae pegado todo el historial, joder; comprueba qué recuerda el control."
+          }
+        },
+        {
+          "prompt": "¿Qué conjunto mínimo refleja los dos objetivos de la política descrita?",
+          "scenario": "Usuarios deben poder iniciar el servicio 443 hacia el host autorizado y no deben iniciar administración 22 hacia ese mismo host.",
+          "options": [
+            "Probar solo que cualquier página externa responde desde otro equipo",
+            "Abrir todos los puertos y evitar revisar los resultados de rechazo",
+            "Comprobar el servicio permitido y el rechazo de administración desde el origen previsto"
+          ],
+          "answer": 2,
+          "explanation": "Las pruebas se vinculan a permiso y restricción concretos en el punto relevante; verificar un sitio ajeno o abrir todo no acredita que la política solicitada se aplique al flujo previsto.",
+          "wrongExplanations": [
+            "La página externa puede usar otro destino y recorrido; su respuesta no demuestra cómo decide el control sobre el servidor y servicios específicos de esta actividad.",
+            "Abrir todos los puertos contradice la restricción administrativa y eliminaría la condición que debe verificarse; evitar resultados negativos impide acreditar el objetivo de protección.",
+            null
+          ],
+          "aoi": {
+            "question": "Trae una evidencia por cada parte del requisito, que hoy no regalo aprobaciones por intuición.",
+            "hint": "Usa el origen real y los dos servicios que la política distingue expresamente.",
+            "correct": "Relacionaste las pruebas con la intención completa y no solo con una conexión conveniente.",
+            "soft": "Revisa qué resultado debería observarse para el servicio útil y para la administración restringida.",
+            "sharp": "Abrirlo todo no es aprobar la política, cielo; demuestra que también sabe decir que no."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El permiso amplio que deja muda a la prohibición",
+          "scenario": "La lista evalúa primero permitir cualquier TCP desde usuarios hacia el servidor y después rechazar TCP al puerto 22. Un usuario intenta iniciar administración por ese puerto.",
+          "explanation": "La primera regla ya permite el paquete y finaliza la decisión en el modelo declarado. La prohibición posterior no repara ese permiso amplio. Es necesario ajustar especificidad y orden conforme al requisito y volver a probar el servicio permitido y la administración restringida."
+        },
+        {
+          "title": "El cliente al que le exigieron puerto de servidor",
+          "scenario": "La petición válida sale de 192.0.2.30 con puerto de origen 52014 hacia 198.51.100.20 con puerto de destino 443. La regla errónea exige también 443 como puerto de origen.",
+          "explanation": "La regla confunde el puerto local del cliente con el servicio de destino y no representa la petición descrita. Debe corregirse según los campos observados y el requisito, considerando además el tratamiento real de la respuesta en ese punto de control."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Usaremos una lista esquemática que decide por la primera coincidencia y termina rechazando lo demás. La política permite TCP desde 192.0.2.0/24 hacia 198.51.100.20 al puerto de destino 443; no es una configuración para copiar en equipos reales.",
+      "scenario": "Usaremos una lista esquemática que decide por la primera coincidencia y termina rechazando lo demás. La política permite TCP desde 192.0.2.0/24 hacia 198.51.100.20 al puerto de destino 443; no es una configuración para copiar en equipos reales.",
+      "steps": [
+        "Describe el flujo con direcciones, protocolo y puertos.",
+        "Ubica el control en una interfaz y un sentido concretos.",
+        "Recorre las reglas en orden hasta la primera coincidencia.",
+        "Distingue filtrado de paquetes y seguimiento de conexiones.",
+        "Prueba un flujo permitido y otros que deben rechazarse."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-tcp"
+      ],
+      "aoi": {
+        "intro": "Una regla es una decisión concreta, cariño; vamos a quitarle las ambigüedades peligrosas.",
+        "theory0": "El cliente no tiene que ponerse el puerto del servidor para pedirle ese servicio.",
+        "theory1": "Aquí decide la primera coincidencia; las líneas siguientes no viajan atrás en el tiempo.",
+        "theory2": "Entrada y salida necesitan una interfaz, o solo estamos agitando palabras.",
+        "theory3": "Quiero un permiso demostrado y una prohibición que todavía funcione después del cambio.",
+        "case0": "Ese permiso enorme se tragó la restricción antes de que pudiera hablar.",
+        "case1": "Al cliente le pedimos una conexión, no que se disfrace de servidor por su puerto.",
+        "pass": "Ya puedes explicar qué paquete decide cada línea. Esa claridad me resulta deliciosamente práctica.",
+        "review": "Repasa campos, orden y ubicación; una regla bonita que nunca coincide no está ayudando."
+      }
+    },
+    {
+      "id": "switching-routing-cambios",
+      "title": "Cambios de switching y rutas con recuperación comprobable",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Definir el cambio por su efecto y sus dependencias",
+          "body": "Una modificación de red necesita un propósito concreto y un alcance identificable. Cambiar una lista de VLAN permitidas puede afectar usuarios, enlaces redundantes y también la VLAN que transporta la administración. Agregar una ruta puede cambiar el siguiente salto de un servidor o de la propia sesión del operador. Antes de ejecutar, registra dispositivo, contexto, versión pertinente y estado efectivo de los componentes relacionados. El diseño esperado no sustituye la observación del estado que realmente existe. En la actividad, el troncal permite VLAN 10, 20 y 99; la última lleva administración y debe conservarse mientras se incorpora VLAN 30. Una propuesta que reemplace la lista por 10, 20 y 30 cumple parte del objetivo y elimina una dependencia esencial. Comparar el conjunto anterior con el nuevo revela ese efecto antes de aplicarlo. El objetivo de revisar una diferencia no es contar comandos, sino explicar qué comunicaciones podrían cambiar y qué funciones dependen del mismo punto que se modifica durante la ventana."
+        },
+        {
+          "title": "Preparar una recuperación accesible cuando falle el camino principal",
+          "body": "Una copia anterior es útil si puede identificarse y restaurarse con los recursos disponibles durante el incidente. Debe corresponder al equipo y momento correctos, conservarse de acuerdo con la sensibilidad de su contenido y tener un procedimiento de uso conocido. Si la recuperación exige entrar exclusivamente por la VLAN que acabas de retirar, el plan depende del mismo camino que puede fallar. Según las posibilidades del entorno, puede necesitarse consola local, acceso de administración independiente o un mecanismo de confirmación y reversión soportado y probado por la plataforma. No todos los equipos ofrecen las mismas funciones ni todos los cambios son reversibles con una sola orden. Define qué persona o medio autorizado puede intervenir y qué evidencia disparará el regreso al estado anterior. La recuperación no debe descansar en que una sesión actual siga abierta indefinidamente. También deben estar disponibles las credenciales necesarias y las instrucciones pertinentes conforme al procedimiento de acceso, sin publicar secretos en el informe de cambio ni convertir una copia de configuración en un archivo distribuido sin control."
+        },
+        {
+          "title": "Distinguir validación de sintaxis, estado y servicio",
+          "body": "Que una propuesta sea sintácticamente válida no demuestra que preserve el diseño ni que los equipos vecinos acepten el resultado. La revisión previa debe contrastar modo de puerto, conjuntos transportados, clasificación de etiquetas y caminos de administración, además de rutas y controles pertinentes. Después de aplicar, consulta el estado efectivo y verifica flujos representativos de lo permitido y de lo restringido. Incluye una nueva conexión de administración desde el punto previsto; una sesión preexistente puede sobrevivir temporalmente por estados, rutas o condiciones que no estarán disponibles para la siguiente. En el troncal del caso, la lista final debe conservar 99 e incorporar 30, y ambos extremos necesitan una interpretación compatible. Una conexión que atraviesa otra rama del diseño tampoco valida automáticamente el enlace modificado. Relaciona cada prueba con su camino y conserva horarios y resultados para comparar. Si aparecen errores, aplica los criterios previamente definidos en vez de encadenar cambios improvisados que amplíen el alcance y hagan más difícil identificar qué condición provocó el resultado observado."
+        },
+        {
+          "title": "Confirmar persistencia y comunicar el estado final real",
+          "body": "Las plataformas pueden distinguir estado activo, configuración candidata y configuración de arranque o mecanismos equivalentes. La forma de guardar y confirmar depende del equipo. No supongas que una modificación aplicada sobrevivirá al reinicio ni guardes un estado defectuoso solo para terminar la ventana. Primero valida según el plan y después confirma la persistencia apropiada, registrando cómo se comprobó. Si se revierte, verifica también el estado recuperado y documenta cualquier diferencia que siga pendiente. No hace falta reiniciar una red de producción de manera improvisada para responder a esta pregunta; la prueba debe estar diseñada y autorizada conforme al entorno. El informe final indica intención, diferencia aplicada, evidencias, resultado y acción de seguimiento, sin presentar intentos fallidos como funcionamiento confirmado. Actualiza los diagramas y la referencia de configuración cuando corresponda para que la siguiente intervención no parta de un dibujo antiguo. Un cierre útil permite a otro operador reconocer qué quedó activo, qué persistirá y cómo se justificó esa conclusión con pruebas relacionadas directamente con el cambio."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué error contiene la propuesta de lista permitida del troncal?",
+          "scenario": "Se cambia el conjunto 10,20,99 por 10,20,30 para añadir el nuevo segmento, y VLAN 99 transporta la administración que debe conservarse.",
+          "options": [
+            "Elimina VLAN 99 mientras incorpora VLAN 30",
+            "Obliga a que todas las IP cambien a versión seis",
+            "Mantiene necesariamente todas las dependencias anteriores sin revisarlas"
+          ],
+          "answer": 0,
+          "explanation": "La sustitución quita 99 del conjunto y amenaza la administración declarada; revisar la diferencia completa revela ese efecto aunque el segmento nuevo haya sido incorporado correctamente.",
+          "wrongExplanations": [
+            null,
+            "Modificar una lista de VLAN no cambia automáticamente la familia de direcciones de todos los equipos; el problema concreto es la pertenencia de administración omitida en el conjunto.",
+            "La lista nueva no conserva 99, por lo que no puede presumirse que mantenga todas las dependencias; el escenario identifica precisamente una comunicación que utiliza ese dominio."
+          ],
+          "aoi": {
+            "question": "No mires solo el número añadido; compara también qué número desapareció.",
+            "hint": "Contrasta los dos conjuntos y relaciona cada diferencia con los servicios que transporta.",
+            "correct": "Detectaste la dependencia eliminada antes de convertirla en una pérdida de administración.",
+            "soft": "La nueva VLAN puede estar presente mientras otra función esencial queda fuera del enlace.",
+            "sharp": "Añadir treinta no te da permiso de borrar nuestra salida noventa y nueve, cielo; compara conjuntos."
+          }
+        },
+        {
+          "prompt": "¿Qué hace utilizable la recuperación si el cambio corta la gestión principal?",
+          "scenario": "La propuesta puede afectar la misma VLAN por la que entra el operador y existe una copia anterior identificada del equipo.",
+          "options": [
+            "Depender solo de que la sesión actual no se cierre nunca",
+            "Un medio autorizado disponible que no dependa exclusivamente del camino afectado",
+            "Guardar la copia sin saber qué equipo o momento representa"
+          ],
+          "answer": 1,
+          "explanation": "La recuperación necesita un acceso y procedimiento disponibles bajo la condición de fallo prevista; una copia correcta ayuda, pero no resuelve por sí sola una gestión que queda inaccesible.",
+          "wrongExplanations": [
+            "Una sesión puede perderse o dejar de permitir operaciones y no es una garantía de recuperación; el plan debe considerar cómo intervenir cuando falle ese camino.",
+            null,
+            "Una copia sin identidad ni momento verificables puede restaurar un estado inapropiado; la recuperación exige correspondencia y un procedimiento además de acceso utilizable durante el fallo."
+          ],
+          "aoi": {
+            "question": "Nuestra salida de emergencia debe seguir existiendo cuando falle la entrada que estamos tocando.",
+            "hint": "Pregunta cómo se restaurará la configuración si ya no puedes entrar por la VLAN principal.",
+            "correct": "Preparaste una recuperación que contempla la condición de fallo y no solo el caso cómodo.",
+            "soft": "Revisa qué parte del plan depende todavía del mismo enlace que puedes interrumpir.",
+            "sharp": "Una copia detrás de la puerta que acabas de cerrar no viene a rescatarte, tesoro."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra que la propuesta pase una validación de sintaxis?",
+          "scenario": "La herramienta acepta las órdenes, pero aún no se han contrastado las VLAN necesarias ni las pruebas de usuarios y administración.",
+          "options": [
+            "Que cualquier servicio remoto estará disponible después del cambio",
+            "Que el diseño de seguridad quedó aprobado para todas las aplicaciones",
+            "Que el texto cumple esa comprobación, sin acreditar todavía el resultado operativo"
+          ],
+          "answer": 2,
+          "explanation": "La aceptación sintáctica tiene alcance limitado y no demuestra intención correcta, compatibilidad vecina o funcionamiento de los flujos; esos resultados necesitan revisión y pruebas distintas del texto.",
+          "wrongExplanations": [
+            "La disponibilidad depende de estado, caminos, controles y servicios que la sintaxis no comprueba universalmente; aceptar las órdenes no acredita todas esas condiciones remotas.",
+            "La corrección formal no autoriza todos los flujos ni demuestra que la política preserve el diseño; hace falta contrastar requisitos y evidencias del comportamiento efectivo.",
+            null
+          ],
+          "aoi": {
+            "question": "La herramienta pudo leer las órdenes; todavía no nos dijo que fueran una buena idea.",
+            "hint": "Separa la validez del texto de la comprobación del efecto que tendrá en la red.",
+            "correct": "Limitaste la conclusión a la comprobación realizada y mantuviste las pruebas necesarias.",
+            "soft": "Revisa qué requisitos de servicio siguen sin evidencia después de aceptar la sintaxis.",
+            "sharp": "Que el equipo entienda la orden no significa que aplauda tu diseño, demonios; valida el efecto."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba de administración conviene incluir después de cambiar rutas y controles?",
+          "scenario": "La sesión que estaba abierta sigue activa, pero el objetivo exige conservar acceso de gestión desde un puesto autorizado tras la modificación.",
+          "options": [
+            "Iniciar una conexión nueva por el recorrido de administración previsto",
+            "Contar la sesión antigua como garantía suficiente de todos los accesos futuros",
+            "Probar solamente un sitio externo desde un teléfono sin relación con la gestión"
+          ],
+          "answer": 0,
+          "explanation": "Una conexión nueva verifica condiciones que la sesión preexistente puede no volver a ejercitar; debe relacionarse con el camino y origen autorizados para acreditar la gestión necesaria tras el cambio.",
+          "wrongExplanations": [
+            null,
+            "Una sesión previa puede mantenerse bajo estados o condiciones diferentes y no garantiza futuras conexiones; el objetivo necesita una comprobación nueva del recorrido de administración.",
+            "Un sitio externo y un origen ajeno no prueban el acceso de gestión al equipo modificado; la evidencia debe corresponder al servicio y recorrido que requiere el plan."
+          ],
+          "aoi": {
+            "question": "La sesión que ya estaba dentro no prueba que podamos volver a abrir la puerta.",
+            "hint": "Reproduce una entrada nueva desde el puesto y el camino que el diseño autoriza.",
+            "correct": "Comprobaste la capacidad de acceso futuro en vez de confiar solo en una sesión superviviente.",
+            "soft": "Piensa qué condiciones volvería a evaluar una conexión iniciada después de la modificación.",
+            "sharp": "Que sigas dentro no demuestra que puedas regresar, cariño; abre una sesión nueva por donde toca."
+          }
+        },
+        {
+          "prompt": "¿Cuándo debe confirmarse la persistencia de un estado modificado?",
+          "scenario": "La plataforma distingue configuración activa y de arranque, y el plan aún necesita verificar el comportamiento después de aplicar las órdenes.",
+          "options": [
+            "Siempre antes de revisar cualquier resultado para ahorrar tiempo",
+            "Después de validar el estado previsto y mediante el procedimiento de la plataforma",
+            "Nunca, porque toda configuración activa se conserva universalmente al reiniciar"
+          ],
+          "answer": 1,
+          "explanation": "La persistencia debe corresponder a un estado validado y al mecanismo real del equipo; guardar sin pruebas puede conservar un error y asumir persistencia universal ignora diferencias de plataforma.",
+          "wrongExplanations": [
+            "Guardar primero puede hacer permanente una condición defectuosa y no sustituye las comprobaciones; la secuencia necesita vincular aceptación y persistencia con los resultados que exige el plan.",
+            null,
+            "La actividad declara estados distintos y las plataformas no garantizan esa equivalencia universal; debe verificarse cómo queda confirmado o guardado el estado que se pretende conservar."
+          ],
+          "aoi": {
+            "question": "No vamos a inmortalizar una configuración solo porque haya sido la última del turno.",
+            "hint": "Relaciona la confirmación con las pruebas y con el mecanismo documentado del dispositivo.",
+            "correct": "Vinculaste la persistencia al estado comprobado y al procedimiento que realmente soporta el equipo.",
+            "soft": "Guardar no certifica que el cambio esté bien; primero faltan los criterios de aceptación.",
+            "sharp": "No guardes el desastre por cansancio, joder; valida antes y confirma con el procedimiento correcto."
+          }
+        },
+        {
+          "prompt": "¿Qué debe reflejar un cierre tras revertir una modificación defectuosa?",
+          "scenario": "El cambio no cumplió sus pruebas y se restauró el estado anterior mediante el medio autorizado de recuperación del laboratorio.",
+          "options": [
+            "Que el cambio nuevo funciona aunque solo se haya restaurado el anterior",
+            "Únicamente que terminó la ventana, sin evidencias ni diferencias pendientes",
+            "El resultado de la reversión, su validación y cualquier seguimiento que siga pendiente"
+          ],
+          "answer": 2,
+          "explanation": "El informe debe describir el estado final real y las evidencias de recuperación, diferenciando el intento del resultado; también necesita dejar visibles las condiciones que requieran seguimiento posterior.",
+          "wrongExplanations": [
+            "Afirmar éxito del cambio nuevo falsea lo observado después de una reversión; la restauración acredita otro estado y tiene que documentarse conforme a las pruebas realizadas.",
+            "El horario no informa si la recuperación funcionó ni qué queda activo; omitir resultados y pendientes dificulta la siguiente intervención y puede ocultar una condición sin resolver.",
+            null
+          ],
+          "aoi": {
+            "question": "Volver atrás puede ser la decisión correcta; el informe debe contar dónde quedamos de verdad.",
+            "hint": "Identifica el estado recuperado y la evidencia que permite entregarlo al siguiente operador.",
+            "correct": "Documentaste la recuperación sin convertir el intento fallido en un éxito que no ocurrió.",
+            "soft": "Distingue el objetivo original del resultado final que realmente muestran las pruebas.",
+            "sharp": "El informe no es una novela para quedar bien, cielo; escribe qué quedó funcionando y qué falta."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La lista nueva que olvidó administración",
+          "scenario": "El troncal tenía permitidas VLAN 10, 20 y 99. La propuesta para añadir VLAN 30 reemplaza el conjunto por 10, 20 y 30, aunque la administración depende de 99.",
+          "explanation": "La diferencia incorpora el nuevo servicio pero elimina una dependencia del operador. Debe corregirse antes de aplicar y validarse el acceso de administración con recuperación independiente. El éxito de un usuario en VLAN 30 no demostraría que la gestión siga disponible."
+        },
+        {
+          "title": "La sesión antigua que ocultaba una gestión inalcanzable",
+          "scenario": "Tras cambiar rutas y controles, la sesión existente del operador sigue abierta. Una conexión nueva desde el puesto de administración autorizado no consigue alcanzar el equipo por el recorrido previsto.",
+          "explanation": "La sesión antigua no acredita que el acceso necesario para futuras conexiones funcione. La validación debe considerar la prueba nueva y sus evidencias de camino y control; los criterios de recuperación o corrección definidos siguen pendientes antes de confirmar el cambio como exitoso."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El mantenimiento ficticio modifica un troncal y una ruta que comparten el acceso de administración. Prepararemos estado anterior, dependencias, pruebas y recuperación para evitar que una sesión abierta nos haga creer que el cambio ya terminó bien.",
+      "scenario": "El mantenimiento ficticio modifica un troncal y una ruta que comparten el acceso de administración. Prepararemos estado anterior, dependencias, pruebas y recuperación para evitar que una sesión abierta nos haga creer que el cambio ya terminó bien.",
+      "steps": [
+        "Inventaría el equipo, las dependencias y el acceso de administración.",
+        "Conserva configuración anterior y un medio de recuperación autorizado.",
+        "Revisa la diferencia propuesta y sus criterios de aceptación.",
+        "Aplica el cambio acotado y valida datos y administración.",
+        "Decide confirmar o revertir según evidencias y documenta la persistencia prevista."
+      ],
+      "sourceIds": [
+        "net-intervlan",
+        "net-firewall"
+      ],
+      "aoi": {
+        "intro": "Vamos a cambiar la red, cariño; primero quiero saber cómo volveremos a entrar.",
+        "theory0": "La diferencia entre listas puede borrar tu propia silla mientras añades otra VLAN.",
+        "theory1": "Una copia inaccesible durante el fallo todavía no es una recuperación utilizable.",
+        "theory2": "La sintaxis aprobó el texto; ahora falta que aprueben el diseño y las pruebas.",
+        "theory3": "Guardaremos un estado validado, no el último estado que te dejó agotado.",
+        "case0": "Añadiste treinta y desapareció noventa y nueve; ese pequeño detalle contiene nuestra administración.",
+        "case1": "La sesión vieja aguanta, pero la puerta nueva no abre. Eso todavía necesita explicación.",
+        "pass": "Plan, pruebas y recuperación comprobados. Puedes presumir un poco; yo vigilo que no te excedas.",
+        "review": "Repasemos dependencias y criterios antes de confirmar un cambio con media evidencia pendiente."
+      }
+    }
+  ]
+}

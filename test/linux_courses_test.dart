@@ -5,6 +5,7 @@ import 'package:aiocyb/src/data/aoi_library.dart';
 import 'package:aiocyb/src/data/curriculum.dart';
 import 'package:aiocyb/src/data/learning_paths.dart';
 import 'package:aiocyb/src/data/linux_curriculum.g.dart';
+import 'package:aiocyb/src/data/network_expansion.g.dart';
 import 'package:aiocyb/src/models/aoi_dialogue.dart';
 import 'package:aiocyb/src/screens/lesson_screens.dart';
 import 'package:aiocyb/src/state/academy_store.dart';
@@ -34,9 +35,9 @@ void main() {
 
   test('Six complete original courses match editorial sources and the chosen depth', () {
     expect(linuxCourses, hasLength(6));
-    expect(courses, hasLength(25));
-    expect(allLessons, hasLength(430));
-    expect(allLessons.expand((lesson) => lesson.questions), hasLength(930));
+    expect(courses, hasLength(31));
+    expect(allLessons, hasLength(490));
+    expect(allLessons.expand((lesson) => lesson.questions), hasLength(1290));
     final sourceIds = sources.map((source) => source.id).toSet();
     expect(sourceIds.length, sources.length);
     final lines = <String>{},
@@ -178,7 +179,11 @@ void main() {
     'All 370 previous grades and preferences survive adding sixty lessons',
     () async {
       final previous = courses
-          .where((course) => !linuxCourses.contains(course))
+          .where(
+            (course) =>
+                !linuxCourses.contains(course) &&
+                !advancedNetworkCourses.contains(course),
+          )
           .expand((course) => course.lessons)
           .toList();
       expect(previous, hasLength(370));

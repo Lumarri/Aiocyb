@@ -7,6 +7,7 @@ import '../state/academy_store.dart';
 import '../widgets/common.dart';
 import '../widgets/learning_dashboard.dart';
 import 'dashboard_actions.dart';
+import 'certifications.dart';
 import 'explore_screens.dart';
 import 'lesson_screens.dart';
 
@@ -140,7 +141,8 @@ class HomeScreen extends StatelessWidget {
             children: [
               DashboardShortcut(
                 title: 'Mis rutas',
-                subtitle: 'Cinco caminos para elegir',
+                subtitle:
+                    '${overview.paths.length} ${overview.paths.length == 1 ? 'camino' : 'caminos'} para elegir',
                 icon: Icons.route_outlined,
                 onTap: () => openExploreSection(context, 0, store),
               ),
@@ -163,6 +165,12 @@ class HomeScreen extends StatelessWidget {
                 subtitle: 'Practica con simulaciones',
                 icon: Icons.science_outlined,
                 onTap: () => openExploreSection(context, 1, store),
+              ),
+              DashboardShortcut(
+                title: 'Certificaciones',
+                subtitle: 'Elige una meta y sus siguientes pasos',
+                icon: Icons.verified_outlined,
+                onTap: () => openCertifications(context, store),
               ),
             ],
           ),

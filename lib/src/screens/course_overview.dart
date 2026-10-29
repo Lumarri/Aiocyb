@@ -9,6 +9,7 @@ import '../widgets/aoi_portrait.dart';
 import '../widgets/common.dart';
 import '../widgets/course_visuals.dart';
 import 'lesson_navigation.dart';
+import 'practice_bank.dart';
 
 class CourseScreen extends StatefulWidget {
   const CourseScreen({super.key, required this.course, required this.store});
@@ -167,6 +168,49 @@ class _CourseScreenState extends State<CourseScreen> {
                                 ),
                               ),
                               const SizedBox(height: 20),
+                              if (course.practiceLessons.isNotEmpty) ...[
+                                Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(18),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${course.practiceLessons.length} ejercicios de refuerzo',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium,
+                                        ),
+                                        const SizedBox(height: 8),
+                                        const Text(
+                                          'Casos adicionales con Aoi y nota independiente. Las lecciones del temario conservan su avance.',
+                                        ),
+                                        const SizedBox(height: 12),
+                                        FilledButton.tonalIcon(
+                                          icon: const Icon(
+                                            Icons.psychology_outlined,
+                                          ),
+                                          label: const Text(
+                                            'Practicar refuerzos',
+                                          ),
+                                          onPressed: () => Navigator.push<void>(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (_) =>
+                                                  PracticeBankScreen(
+                                                    course: course,
+                                                    store: store,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                              ],
                               for (
                                 var start = 0;
                                 start < course.lessons.length;

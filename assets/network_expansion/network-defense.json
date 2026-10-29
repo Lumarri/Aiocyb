@@ -1,0 +1,2020 @@
+{
+  "id": "network-defense",
+  "title": "Defensa de redes y acceso controlado",
+  "description": "Diseña zonas, firewalls, VPN y controles verificables sin confundir conectividad con confianza.",
+  "symbol": "DEF",
+  "color": 4291081725,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Sesenta decisiones defensivas y ya exiges permisos concretos, pruebas negativas y una recuperación, cariño. Esa red conserva utilidad sin regalar todas las puertas; estoy disfrutando mucho de tu criterio.",
+    "explanation": "Completaste segmentación, políticas de tráfico, controles de salida, acceso remoto, VPN, defensa del host y validación. Combina identidad, estado, cifrado y observabilidad según el recurso; revisa las excepciones y conserva pruebas del permiso y de la restricción."
+  },
+  "lessons": [
+    {
+      "id": "network-defense-zonas",
+      "title": "Separar recursos y dibujar los caminos que sí necesitan existir",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Definir una zona por requisitos que puedan explicarse",
+          "body": "Una zona agrupa elementos que comparten un tratamiento de seguridad previsto dentro del diseño. Puede ayudar a separar invitados, administración, puestos de usuario, servicios públicos y recursos internos, pero su utilidad depende de qué requisitos representa. Dar nombres distintos a subredes no implementa automáticamente una política entre ellas. Antes de trazar límites, identifica activos, datos, consecuencias de exposición y actores que necesitan utilizarlos. Dos dispositivos del mismo departamento pueden requerir tratamientos diferentes por su función, soporte o privilegios. En la maqueta, el portal procesa solicitudes de usuarios y la base de datos solo necesita recibir consultas del componente autorizado del portal. Pertenecer a la misma organización no justifica que cualquier puesto acceda directamente al servicio de datos. Tampoco basta describir una zona como segura sin indicar frente a qué acciones y bajo qué condiciones. El diagrama debe permitir que otra persona relacione cada agrupación con un riesgo y una necesidad verificable, de modo que los cambios de función o sensibilidad lleven a revisar el tratamiento en vez de conservar la pertenencia por costumbre."
+        },
+        {
+          "title": "Dibujar flujos entre componentes y sus dependencias",
+          "body": "Un flujo autorizado se describe con iniciador, destino, servicio y condiciones relevantes. Usuarios hacia portal web no equivale a usuarios hacia cualquier puerto de todos los servidores. Portal hacia base de datos tampoco concede a cada usuario una conexión directa a esa base. El diseño necesita contemplar dependencias legítimas como resolución de nombres, sincronización temporal, actualizaciones y registros, con alcance y responsables propios. No se deben añadir excepciones generales porque un servicio dejó de funcionar y aún no se identificó su dependencia. Registra qué componente inicia cada comunicación y qué controles de recurso siguen siendo necesarios después de que la red permita el trayecto. Una aplicación puede autorizar acciones de usuarios distintos aun cuando sus conexiones compartan infraestructura. Esa relación exige distinguir conectividad entre componentes de permisos funcionales sobre los datos. El mapa de flujos también ayuda durante una incidencia: permite reconocer conexiones inesperadas y decidir si una aparente anomalía contradice el diseño o corresponde a una dependencia documentada que el operador todavía no había consultado."
+        },
+        {
+          "title": "Poner el control en un camino que el tráfico realmente utiliza",
+          "body": "Un límite necesita un mecanismo que evalúe la comunicación pertinente, como un firewall de red, un control del host u otra función adecuada a la arquitectura. Si dos puestos comparten dominio de enlace y se comunican directamente, un firewall situado únicamente en la salida a internet puede no observar ese intercambio. Su existencia en el dibujo no demuestra control de todos los movimientos internos. Revisa caminos normales, redundantes y de administración para evitar rutas que eludan la evaluación prevista. Las VLAN y subredes facilitan organización y separación de ciertos ámbitos, pero necesitan una política explícita cuando se habilita comunicación entre ellas. El alcance del control puede depender de la topología y de capacidades del equipo; no debe deducirse solo de un icono o del nombre comercial. Después de ubicarlo, prueba tanto el servicio necesario como un flujo que deba rechazarse desde el origen relevante. Una conexión favorable por otro camino no valida el punto que pretendías comprobar, por lo que cada evidencia debe relacionarse con su recorrido."
+        },
+        {
+          "title": "Conservar autorización del recurso aunque la red permita llegar",
+          "body": "La ubicación dentro de una red no otorga por sí misma confianza a una cuenta o dispositivo. Los recursos pueden requerir autenticación, autorización y condiciones del equipo, además de protección del canal y registro de acciones. Permitir que un cliente alcance el portal no implica concederle cualquier operación de negocio ni acceso administrativo. Esa distinción permite combinar segmentación con controles de identidad sin pedir a un único dispositivo que resuelva todos los riesgos. También limita consecuencias cuando un puesto resulta comprometido: las comunicaciones y privilegios innecesarios no deberían estar disponibles simplemente por compartir dirección de origen conocida. La validación debe abarcar el permiso de red y las restricciones del recurso que correspondan al caso. Al cerrar el diseño, conserva inventario, matriz de comunicaciones, puntos de control y preguntas pendientes sobre capacidad o soporte. Revisa esa referencia cuando se incorporen servicios y evita tratar una arquitectura como garantía perpetua. El resultado útil es un conjunto explicable de caminos y condiciones, con evidencia de que funciona lo necesario y se limita lo que la necesidad no justifica."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué acceso de red corresponde a los usuarios según el requisito del portal?",
+          "scenario": "El diseño permite usar el servicio web y reserva la conexión al servicio de base de datos al componente autorizado del portal.",
+          "options": [
+            "El servicio web del portal, con sus permisos de recurso correspondientes",
+            "Todos los puertos de cada servidor por pertenecer a la organización",
+            "Acceso directo obligatorio a la base desde cualquier puesto"
+          ],
+          "answer": 0,
+          "explanation": "La necesidad descrita autoriza el flujo hacia el portal y no amplía automáticamente las comunicaciones a todos los servicios ni a la base de datos.",
+          "wrongExplanations": [
+            null,
+            "Pertenecer a la organización no define una necesidad de todos los puertos; esa amplitud elimina la distinción de flujos que justifica el diseño.",
+            "El componente del portal, no cada puesto, necesita ese servicio de base; abrirlo directamente a usuarios contradice la separación que declara el caso."
+          ],
+          "aoi": {
+            "question": "Lee quién utiliza cada componente antes de dar permiso al siguiente tramo.",
+            "hint": "Distingue la acción del usuario del flujo interno que necesita ejecutar el portal.",
+            "correct": "Conservaste el acceso útil y los límites entre componentes de la aplicación.",
+            "soft": "Revisa si el origen que propones coincide con quien realmente necesita iniciar ese servicio.",
+            "sharp": "Usar el portal no da pase a su trastienda completa, cielo; respeta el flujo requerido."
+          }
+        },
+        {
+          "prompt": "¿Qué aporta definir zonas solo con nombres y subredes distintas?",
+          "scenario": "El esquema dibuja grupos separados, pero no declara qué controles evalúan sus comunicaciones ni qué servicios deberían permitirse.",
+          "options": [
+            "Una garantía completa de que ningún grupo puede comunicarse con otro",
+            "Organización inicial que aún necesita política y mecanismos de control verificables",
+            "Autenticación automática de todas las cuentas que entren en esas subredes"
+          ],
+          "answer": 1,
+          "explanation": "La agrupación ayuda a expresar intención, pero no demuestra restricciones implementadas; hace falta ubicar y validar controles y permisos para los flujos pertinentes.",
+          "wrongExplanations": [
+            "Un diagrama o direccionamiento diferente no prueba la política efectiva de las rutas y controles; la comunicación podría seguir habilitada sin restricciones entre grupos.",
+            null,
+            "La subred no autentica por sí sola cuentas ni concede identidad válida; ese objetivo requiere mecanismos de acceso y autorización del recurso."
+          ],
+          "aoi": {
+            "question": "Las zonas nos organizan el problema; todavía falta demostrar qué decisiones se aplican entre ellas.",
+            "hint": "Busca qué mecanismo implementa el tratamiento que el dibujo solo está proponiendo.",
+            "correct": "Separaste intención de implementación y dejaste la verificación en el diseño.",
+            "soft": "Pregunta qué evidencia muestra una restricción real además del nombre de la zona.",
+            "sharp": "Una subred bautizada segura no se defiende por el nombre, tesoro; muestra los controles."
+          }
+        },
+        {
+          "prompt": "¿Por qué un firewall de salida puede no controlar dos equipos de la misma VLAN?",
+          "scenario": "El tráfico entre ellos se entrega directamente mediante el switch y no se declara otro mecanismo que lo envíe a ese firewall.",
+          "options": [
+            "Porque todo tráfico local está cifrado obligatoriamente por el switch",
+            "Porque cualquier interfaz de firewall ve todos los paquetes de todos los puertos",
+            "Porque el intercambio no atraviesa necesariamente ese punto de control"
+          ],
+          "answer": 2,
+          "explanation": "El control necesita estar en el trayecto o disponer de un mecanismo pertinente para evaluar el flujo; su ubicación en la salida no cubre automáticamente comunicaciones locales.",
+          "wrongExplanations": [
+            "La condición relevante es el recorrido y no un cifrado universal del switch que el escenario no declara como causa de invisibilidad.",
+            "La presencia del firewall no crea observación global de todas las interfaces; cada diseño debe demostrar qué tráfico llega realmente al punto de evaluación.",
+            null
+          ],
+          "aoi": {
+            "question": "Sigue la flecha entre los puestos y mira si visita alguna vez la salida.",
+            "hint": "Ubica el recorrido de enlace frente al lugar donde está instalado el control.",
+            "correct": "Relacionaste cobertura con camino real en vez de con la importancia del icono.",
+            "soft": "Revisa si la comunicación que quieres limitar pasa por la interfaz que la evalúa.",
+            "sharp": "El firewall no estira los brazos por todos los puertos del switch, cariño; sigue el trayecto."
+          }
+        },
+        {
+          "prompt": "¿La ubicación interna basta para confiar en una cuenta o un dispositivo?",
+          "scenario": "El recurso contiene datos sensibles y el diseño necesita limitar acciones aunque el cliente consiga alcanzarlo desde una subred conocida.",
+          "options": [
+            "No, hacen falta condiciones de autenticación y autorización pertinentes al recurso",
+            "Sí, toda cuenta interna obtiene cualquier acción sin comprobaciones adicionales",
+            "Sí, compartir prefijo sustituye por completo la protección del canal"
+          ],
+          "answer": 0,
+          "explanation": "La ubicación no acredita identidad o necesidad de acciones; los controles del recurso y del canal siguen teniendo funciones propias además del permiso de red.",
+          "wrongExplanations": [
+            null,
+            "El acceso interno no justifica privilegios universales y puede coexistir con cuentas o dispositivos comprometidos; se necesitan decisiones de autorización específicas del recurso.",
+            "El prefijo organiza alcance y no proporciona por sí mismo cifrado o autenticación; confundir esas funciones deja sin resolver requisitos distintos de protección."
+          ],
+          "aoi": {
+            "question": "Nuestra red puede dejarte llegar y el recurso todavía tiene que decidir qué puedes hacer.",
+            "hint": "Separa alcance de red, identidad y autorización de acciones sobre los datos.",
+            "correct": "Conservaste controles del recurso sin convertir una dirección interna en confianza automática.",
+            "soft": "Pregunta qué información acredita a la cuenta y qué permiso justifica su acción.",
+            "sharp": "Compartir pasillo no te entrega todas las llaves, demonios; comprueba identidad y privilegios."
+          }
+        },
+        {
+          "prompt": "¿Cómo deben tratarse dependencias como DNS, hora y registros al diseñar zonas?",
+          "scenario": "El portal necesita funciones de soporte, pero aún no se ha documentado qué componentes y servicios concretos las proporcionan.",
+          "options": [
+            "Como permiso general de cualquier tráfico para evitar investigar dependencias",
+            "Como flujos necesarios con alcance, responsables y condiciones propios",
+            "Como funciones que nunca requieren ninguna comunicación entre componentes"
+          ],
+          "answer": 1,
+          "explanation": "Las dependencias deben identificarse y autorizarse con precisión; abrir todo oculta necesidades reales y negar cualquier flujo puede impedir el servicio que el diseño busca conservar.",
+          "wrongExplanations": [
+            "El permiso general amplía alcance sin distinguir necesidad y dificulta verificar límites; documentar cada dependencia permite mantener utilidad con control revisable.",
+            null,
+            "Las funciones pueden necesitar comunicaciones concretas según la arquitectura; suponer ausencia universal evita descubrir y permitir los servicios de soporte que corresponden."
+          ],
+          "aoi": {
+            "question": "El soporte también merece una flecha clara y un responsable, no una amnistía de puertos.",
+            "hint": "Identifica qué componente presta cada función y quién necesita comunicarse con él.",
+            "correct": "Incorporaste dependencias al diseño sin ampliar el permiso más de lo justificado.",
+            "soft": "Revisa qué requisito concreto explica cada excepción que estás añadiendo.",
+            "sharp": "DNS y hora no vienen con permiso para todo el universo, joder; dibuja sus flujos necesarios."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra mejor que un límite de zonas conserva utilidad y restricción?",
+          "scenario": "El requisito permite el portal desde usuarios y rechaza acceso directo al servicio de base desde esos mismos puestos.",
+          "options": [
+            "Probar cualquier conexión externa por una rama distinta del esquema",
+            "Comprobar solo que el dibujo tenga colores suficientemente diferentes",
+            "Ensayar ambos resultados desde el origen previsto y por los puntos de control pertinentes"
+          ],
+          "answer": 2,
+          "explanation": "Las pruebas deben relacionarse con el permiso y la restricción concretos, verificando el recorrido relevante; el diseño visual o un flujo ajeno no acreditan esos resultados.",
+          "wrongExplanations": [
+            "Una conexión distinta puede evitar los controles y servicios afectados; no valida que la política del portal y base funcione para los usuarios previstos.",
+            "El color expresa una agrupación y no demuestra decisiones de tráfico; la evidencia debe proceder de comprobaciones del comportamiento implementado bajo el requisito.",
+            null
+          ],
+          "aoi": {
+            "question": "Quiero que el usuario llegue al portal y se detenga antes del servicio que no le corresponde.",
+            "hint": "Traduce cada parte del requisito a una prueba con origen, destino y resultado esperado.",
+            "correct": "Validaste el límite completo sin quedarte únicamente con el camino que responde.",
+            "soft": "Revisa qué prueba acredita la restricción y cuál demuestra el acceso útil.",
+            "sharp": "Los colores no rechazan conexiones, cielo; prueba el permiso y el límite donde realmente operan."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El permiso al portal que alguien extendió a toda la base",
+          "scenario": "Los usuarios necesitan iniciar el servicio web del portal, y el diseño reserva el acceso a base de datos al componente del portal. La propuesta permite a todos los puestos conectarse directamente a esa base.",
+          "explanation": "La propuesta amplía el acceso más allá del flujo requerido. Debe conservarse la separación entre uso del portal y comunicación de sus componentes, con permisos concretos y controles de identidad apropiados; una necesidad funcional de usuarios no justifica cualquier camino al almacenamiento."
+        },
+        {
+          "title": "El firewall de salida que no veía el intercambio interno",
+          "scenario": "Dos equipos de la misma VLAN se comunican directamente por el switch. El único firewall está en la salida a internet y el informe afirma que evalúa todas las comunicaciones entre esos dos puestos.",
+          "explanation": "Ese trayecto local puede no atravesar el firewall de salida. Para controlar la comunicación hay que ubicar mecanismos en un punto pertinente o modificar el diseño conforme al requisito, y validarlo; el icono en el perímetro no demuestra cobertura de todos los flujos internos."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El centro ficticio distingue invitados, usuarios, portal y base de datos. Los usuarios necesitan el portal por su servicio web; solo el portal debe iniciar el servicio de base de datos. Diseñaremos zonas a partir de recursos y flujos, no de colores en un plano.",
+      "scenario": "El centro ficticio distingue invitados, usuarios, portal y base de datos. Los usuarios necesitan el portal por su servicio web; solo el portal debe iniciar el servicio de base de datos. Diseñaremos zonas a partir de recursos y flujos, no de colores en un plano.",
+      "steps": [
+        "Identifica recursos, criticidad y actores que los necesitan.",
+        "Agrupa zonas según requisitos y riesgo, no solo por comodidad.",
+        "Dibuja flujos autorizados y dependencias de soporte.",
+        "Ubica controles donde realmente atraviese cada comunicación.",
+        "Valida límites de red y permisos del recurso por separado."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-zero-trust"
+      ],
+      "aoi": {
+        "intro": "Vamos a dibujar permisos, cariño; los colores del plano solos no cuidan los datos.",
+        "theory0": "Una zona necesita un motivo de riesgo y función, no una etiqueta que diga segura.",
+        "theory1": "El usuario usa el portal y el portal consulta la base; no regales todos los caminos por parentesco.",
+        "theory2": "Nuestro control debe ver la comunicación que dice controlar, qué capricho tan razonable.",
+        "theory3": "Llegar al recurso no concede cualquier acción; la identidad sigue teniendo trabajo.",
+        "case0": "La necesidad de abrir el portal no entregó a cada puesto una silla junto a la base.",
+        "case1": "Ese intercambio se queda en el switch; el firewall de salida no lo vio pasar.",
+        "pass": "Ya conectas zonas, recorridos e identidad. Esa defensa sí tiene razones que puedo revisar contigo.",
+        "review": "Repasemos quién necesita cada flujo antes de convertir una agrupación en confianza automática."
+      }
+    },
+    {
+      "id": "network-defense-politica",
+      "title": "Matriz de acceso, objetos y excepciones con responsable",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Traducir una tarea legítima a un permiso de alcance conocido",
+          "body": "Una matriz de acceso relaciona funciones que necesitan comunicarse con recursos y servicios concretos. En el laboratorio solo tres agentes de copia deben iniciar TCP hacia el servidor de respaldo por el puerto 9443, valor definido para esta aplicación ficticia y no recomendación universal. La necesidad no concede ese servicio a todos los puestos ni autoriza administración del servidor. Registra el iniciador real, las direcciones o identidades que el punto de control pueda evaluar, destino, protocolo, puerto y condiciones pertinentes de operación. El permiso de red tampoco entrega automáticamente credenciales de aplicación o capacidad de leer todas las copias; el recurso mantiene sus propias autorizaciones. Incluye dependencias demostradas, como resolución o acceso a una infraestructura de confianza, en entradas específicas y justificadas en vez de agregar un permiso general. La matriz debe poder responder quién pidió el flujo, para qué sirve y qué ocurre si se restringe. Ese contexto permite revisar cambios de aplicación sin confundir una conexión técnicamente posible con una necesidad que alguien ha validado y sigue siendo vigente."
+        },
+        {
+          "title": "Examinar objetos y grupos como conjuntos efectivos",
+          "body": "Los objetos facilitan administrar direcciones, servicios o identidades, pero sus nombres pueden ocultar un alcance más amplio que el esperado. Un grupo llamado agentes puede contener tres servidores, toda una subred o grupos anidados. Consulta su contenido efectivo antes de afirmar qué permite la regla que lo utiliza. Si el objeto cambia después, varias políticas pueden ampliar su alcance sin modificar el texto visible de cada regla. Por eso una revisión necesita identificar referencias y consecuencias de actualizar membresía. Los objetos basados en nombres o información dinámica requieren comprender cómo los resuelve y actualiza la plataforma; no todos los equipos interpretan esos datos igual ni siguen necesariamente la elección de un cliente. El inventario y la evidencia del control deben mantenerse relacionados para evitar direcciones obsoletas o recursos reasignados. No uses una etiqueta de función como prueba suficiente de identidad de usuario. Si la arquitectura admite decisiones por identidad o estado del dispositivo, revisa sus fuentes y condiciones; si solo evalúa IP, documenta ese límite en vez de atribuirle una autenticación que no realiza."
+        },
+        {
+          "title": "Dar a las excepciones un propósito y una condición de retirada",
+          "body": "Una excepción temporal puede ser necesaria durante una migración o una recuperación, pero tiene que describir qué se permite, a quién, por qué y hasta cuándo o bajo qué condición deja de ser válida. Asigna responsable y revisión, además del riesgo aceptado conforme al procedimiento del entorno. Temporal escrito en el nombre no impone una caducidad técnica. Cuando la plataforma admite programación o expiración, configura y verifica ese mecanismo; cuando no, utiliza un seguimiento operativo que no dependa del recuerdo informal de quien estuvo de turno. Evita ampliar origen, destino y servicio a cualquier valor solo porque falta investigar una dependencia. Esa ampliación puede resolver un síntoma a costa de eliminar controles que el requisito no pedía retirar. Define también qué prueba permitirá volver a la política ordinaria y qué servicio podría verse afectado al cerrar la excepción. El registro debe conservar la decisión y su justificación sin almacenar secretos innecesarios, de modo que una revisión futura distinga un permiso aprobado y vigente de una apertura que quedó abandonada por accidente."
+        },
+        {
+          "title": "Revisar con pruebas y una ventana de uso pertinente",
+          "body": "La aceptación combina prueba del flujo necesario con intentos acotados que deben rechazarse, desde orígenes y servicios relacionados con el requisito. En el ejemplo, un agente autorizado debe iniciar la copia, mientras un puesto no incluido no obtiene el mismo acceso por compartir edificio. Revisa registros o contadores para relacionar cada resultado con el control pertinente, sin tratar un contador de cero durante un minuto como prueba de que una regla de mantenimiento mensual nunca se usa. La decisión de retirar debe considerar ventana, finalidad, propietarios y dependencias. Los cambios se preparan con recuperación y no deben eliminar el acceso necesario para administrar el propio control. Después, confirma la política efectiva y actualiza la matriz y sus referencias. El resultado útil permite a otra persona conocer qué permisos existen, qué conjuntos representan sus objetos y qué excepciones siguen abiertas. Una política pequeña puede ser más comprensible, pero su calidad se valora por necesidad, precisión y verificación, no simplemente por cantidad de líneas ni por haber borrado las reglas menos visibles."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué permiso representa la necesidad de copia declarada en el laboratorio?",
+          "scenario": "Solo tres agentes identificados deben iniciar TCP 9443 hacia el servidor de respaldo y no se autoriza administración adicional del destino.",
+          "options": [
+            "El servicio concreto desde esos agentes hacia el recurso previsto",
+            "Cualquier protocolo desde todos los puestos hacia cualquier destino",
+            "Acceso administrativo universal porque existe una función de respaldo"
+          ],
+          "answer": 0,
+          "explanation": "La necesidad define iniciadores y servicio específicos; ampliar participantes, destinos o administración introduce permisos que la tarea de copia no justifica en el caso.",
+          "wrongExplanations": [
+            null,
+            "La amplitud elimina los límites del requisito y no conserva la distinción entre agentes autorizados y puestos que no necesitan ese servicio.",
+            "La función de copia no equivale a administración universal; red y aplicación deben otorgar únicamente las capacidades pertinentes al flujo y tarea definidos."
+          ],
+          "aoi": {
+            "question": "La tarea tiene participantes concretos; no invites a toda la red por comodidad.",
+            "hint": "Compara cada campo del permiso con quien inicia y el servicio que realmente necesita.",
+            "correct": "Representaste la copia sin extender sus privilegios a tareas o equipos ajenos.",
+            "soft": "Revisa qué parte de la regla no tiene una necesidad explícita en el escenario.",
+            "sharp": "Hacer copias no exige repartir llaves maestras, cielo; limita agentes, recurso y servicio."
+          }
+        },
+        {
+          "prompt": "¿Qué debes consultar antes de confiar en el nombre de un objeto usado por reglas?",
+          "scenario": "El objeto se llama agentes de copia, pero aún no se ha revisado si contiene equipos individuales, subredes o grupos anidados.",
+          "options": [
+            "Solo que el nombre parezca profesional y tenga pocas letras",
+            "Su contenido efectivo y las referencias que podrían afectarse al modificarlo",
+            "El orden alfabético de los nombres sin mirar sus miembros"
+          ],
+          "answer": 1,
+          "explanation": "La membresía y referencias determinan alcance y consecuencias; una etiqueta no garantiza que el objeto represente únicamente a los participantes que el requisito autoriza.",
+          "wrongExplanations": [
+            "El estilo del nombre no demuestra composición y puede ocultar conjuntos amplios; hacen falta datos del contenido real y del uso en políticas.",
+            null,
+            "El orden de nombres organiza la lista, pero no explica qué direcciones o grupos contiene el objeto ni qué permisos cambiarían junto con él."
+          ],
+          "aoi": {
+            "question": "El nombre se presentó; ahora quiero conocer a todos los miembros que trajo detrás.",
+            "hint": "Desglosa el conjunto y revisa dónde lo utiliza la política antes de tocarlo.",
+            "correct": "Contrastaste alcance real y dependencias en vez de aprobar una etiqueta por su apariencia.",
+            "soft": "Pregunta si el conjunto puede ser mayor que la función que su nombre promete.",
+            "sharp": "Agentes no significa exactamente tres por decreto, tesoro; abre el objeto y cuenta su alcance."
+          }
+        },
+        {
+          "prompt": "¿Escribir temporal en una regla garantiza que deje de aplicarse después?",
+          "scenario": "La plataforma no tiene expiración configurada y tampoco existe tarea de revisión, responsable o condición operativa de cierre.",
+          "options": [
+            "Sí, cualquier nombre con esa palabra activa siempre un temporizador",
+            "Sí, las reglas olvidan automáticamente sus permisos al terminar una reunión",
+            "No, necesita un mecanismo de caducidad o seguimiento efectivo y verificado"
+          ],
+          "answer": 2,
+          "explanation": "La etiqueta no modifica por sí misma la vigencia; hacen falta controles técnicos admitidos o un proceso de retirada con responsable y condiciones comprobables.",
+          "wrongExplanations": [
+            "El comportamiento depende de capacidades y configuración reales; una palabra descriptiva no activa universalmente una función que el escenario declara ausente.",
+            "El final de una reunión no es una condición técnica de aplicación de política; la retirada requiere un mecanismo o decisión operativa explícita.",
+            null
+          ],
+          "aoi": {
+            "question": "La regla no lee nuestras intenciones; hay que preparar cómo termina su permiso.",
+            "hint": "Busca una condición de cierre implementada o un seguimiento con responsable identificable.",
+            "correct": "Distinguiste la intención temporal de la forma real de aplicarla y retirarla.",
+            "soft": "Revisa qué acción o mecanismo hará que la excepción deje efectivamente de estar vigente.",
+            "sharp": "Temporal en el nombre no es un reloj mágico, cariño; dale fecha, condición y dueño reales."
+          }
+        },
+        {
+          "prompt": "¿Qué indica un contador cero durante un minuto sobre una regla mensual?",
+          "scenario": "La regla sostiene un mantenimiento programado y la muestra de observación no incluye la ventana en que esa función se ejecuta.",
+          "options": [
+            "Solo ausencia de uso observado en esa muestra, no inutilidad demostrada de la regla",
+            "Que la función mensual nunca existió ni volverá a necesitar acceso",
+            "Que deben borrarse también todas las políticas referenciadas sin revisión"
+          ],
+          "answer": 0,
+          "explanation": "El intervalo no representa el uso previsto, de modo que la decisión de retirar necesita calendario, finalidad y contraste con el propietario y dependencias del servicio.",
+          "wrongExplanations": [
+            null,
+            "Una muestra fuera de ventana no acredita inexistencia histórica o futura; esa conclusión confunde ausencia de observación con falta de necesidad de la función.",
+            "La retirada de otras políticas amplía impacto sin fundamento y puede cortar dependencias; la revisión debe relacionarse con necesidad y evidencia pertinente de cada permiso."
+          ],
+          "aoi": {
+            "question": "Ese minuto no asistió al mantenimiento mensual; su silencio tiene un alcance muy pequeño.",
+            "hint": "Compara el período de observación con el calendario y propósito real de la regla.",
+            "correct": "Limitaste la conclusión y mantuviste una revisión vinculada a la función prevista.",
+            "soft": "Revisa si la ventana elegida permite observar la actividad que intentas evaluar.",
+            "sharp": "Un minuto sin visitas no clausura un servicio mensual, demonios; consulta cuándo trabaja."
+          }
+        },
+        {
+          "prompt": "¿Qué debe incluir la revisión de una excepción de acceso de la migración?",
+          "scenario": "La apertura adicional tuvo una necesidad concreta y el equipo necesita decidir si retirarla al terminar la ventana autorizada.",
+          "options": [
+            "Únicamente un nombre nuevo para que parezca parte del diseño permanente",
+            "Propósito, alcance, responsable, vigencia y prueba de retorno a la política ordinaria",
+            "Cualquier permiso general sin registro para evitar futuras preguntas"
+          ],
+          "answer": 1,
+          "explanation": "Esos elementos permiten evaluar necesidad, riesgo y retirada con pruebas; conservar una apertura sin contexto dificulta saber si sigue autorizada y qué consecuencias tendría cerrarla.",
+          "wrongExplanations": [
+            "Cambiar el nombre no valida la necesidad ni regulariza el alcance por sí mismo; la decisión necesita una revisión del propósito y estado final.",
+            null,
+            "Eliminar el registro y ampliar permisos impide una revisión responsable; la excepción debe ser rastreable y conservar condiciones de cierre acordes con la función."
+          ],
+          "aoi": {
+            "question": "La excepción necesita explicar por qué entró y cómo sabremos que puede salir.",
+            "hint": "Relaciona la revisión con necesidad vigente, dueño y validación del cierre.",
+            "correct": "Preparaste una excepción revisable y una retirada que considera el servicio que podría afectarse.",
+            "soft": "Pregunta qué información permitirá decidir sobre ella cuando termine la ventana.",
+            "sharp": "Renombrar la apertura no la vuelve inocente, joder; revisa necesidad, alcance y salida."
+          }
+        },
+        {
+          "prompt": "¿Un control basado solo en IP autentica automáticamente al usuario de la aplicación?",
+          "scenario": "La ficha declara evaluación de direcciones y no incluye integración de identidad, mientras el recurso exige permisos de cuenta separados.",
+          "options": [
+            "Sí, toda dirección conocida contiene una identidad de usuario verificada",
+            "Sí, pertenecer al objeto concede además lectura de todas las copias",
+            "No, hay que documentar ese límite y mantener autorización de aplicación apropiada"
+          ],
+          "answer": 2,
+          "explanation": "La dirección aporta una condición de red y no prueba por sí sola identidad o permisos funcionales; la arquitectura debe conservar los controles de cuenta y recurso pertinentes.",
+          "wrongExplanations": [
+            "La correspondencia entre dirección y persona requiere mecanismos y contexto que no se declaran; atribuir autenticación universal al filtro excede sus capacidades del caso.",
+            "Pertenecer al conjunto de origen no justifica acceso a todo contenido; los privilegios sobre copias pertenecen a otra decisión que debe validar la aplicación.",
+            null
+          ],
+          "aoi": {
+            "question": "El filtro reconoció una dirección; todavía no nos dijo quién usa la cuenta ni qué puede leer.",
+            "hint": "Separa campos que evalúa el control de red de permisos que decide el recurso.",
+            "correct": "Conservaste la autorización funcional y describiste honestamente la capacidad del control.",
+            "soft": "Revisa si tu mecanismo observa identidad o solo una dirección del paquete.",
+            "sharp": "La IP no viene con el carnet del usuario pegado, cielo; respeta el límite y verifica permisos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El grupo de agentes que incluía toda la subred",
+          "scenario": "La política permite TCP 9443 desde un objeto llamado agentes de copia. Su contenido efectivo incluye toda la subred de usuarios, aunque el requisito identifica solo tres equipos concretos.",
+          "explanation": "El nombre no limita la membresía real. Debe ajustarse el conjunto a los iniciadores autorizados y revisar otras referencias al objeto antes de cambiarlo, comprobando que la copia funcione desde los agentes y que los puestos ajenos conserven su restricción."
+        },
+        {
+          "title": "La excepción temporal sin forma de terminar",
+          "scenario": "Durante una migración se abre un permiso con temporal en el nombre. No tiene expiración soportada ni tarea de retirada, responsable o condición de cierre, y la ventana ya terminó.",
+          "explanation": "La etiqueta no implementa caducidad ni garantiza seguimiento. Se necesita identificar responsable, validar si la necesidad sigue vigente y retirar o regularizar según el procedimiento, incluyendo pruebas de servicio y registro de la decisión que eviten conservar una apertura olvidada."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Tres agentes ficticios deben iniciar copias hacia respaldo.example mediante un servicio TCP 9443 declarado. Convertiremos esa necesidad en una política revisable, con alcance exacto, dependencias y una excepción temporal que tenga condiciones de cierre.",
+      "scenario": "Tres agentes ficticios deben iniciar copias hacia respaldo.example mediante un servicio TCP 9443 declarado. Convertiremos esa necesidad en una política revisable, con alcance exacto, dependencias y una excepción temporal que tenga condiciones de cierre.",
+      "steps": [
+        "Identifica iniciador, recurso, servicio y necesidad operativa.",
+        "Desglosa objetos y grupos para conocer su alcance efectivo.",
+        "Registra propietario, justificación y vigencia de cada excepción.",
+        "Define pruebas de permiso y de accesos que deben seguir restringidos.",
+        "Revisa uso y cierre sin borrar reglas solo por una muestra incompleta."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-zero-trust"
+      ],
+      "aoi": {
+        "intro": "Escribiremos permisos que puedan explicarse mañana, cariño; también cuando tú no estés de turno.",
+        "theory0": "La copia necesita tres agentes y un servicio, no acceso a todo por espíritu de equipo.",
+        "theory1": "El nombre del objeto puede presumir de precisión mientras su contenido abre una avenida.",
+        "theory2": "Temporal necesita una salida real, no solo una etiqueta que suene responsable.",
+        "theory3": "Un minuto sin uso no conoce el calendario completo del servicio que estás revisando.",
+        "case0": "Ese grupo dijo tres agentes y trajo toda la subred; toca revisar a sus invitados.",
+        "case1": "La excepción terminó su ventana, pero nadie preparó cómo retirarla ni quién debía hacerlo.",
+        "pass": "Matriz, objetos y excepciones con dueño. Me gusta que tu política se deje revisar sin misterio.",
+        "review": "Volvamos al alcance efectivo y a la necesidad vigente antes de aprobar otra apertura demasiado cómoda."
+      }
+    },
+    {
+      "id": "network-defense-estado",
+      "title": "Seguimiento de conexiones, respuestas y cambios de política",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Relacionar la respuesta con una comunicación permitida",
+          "body": "Un firewall con seguimiento de estado conserva contexto de comunicaciones que observa para aplicar su política. Ese contexto puede permitir tratar respuestas asociadas a un inicio autorizado de manera distinta de una nueva petición no solicitada. En la maqueta, el cliente utiliza puerto 53000 y solicita TCP al 443 del portal; el regreso presenta los papeles de direcciones y puertos invertidos según el punto de observación. No necesita por esa razón una apertura universal de cualquier servicio entrante hacia todos los clientes. Sin embargo, el comportamiento exacto depende de plataforma, configuración, reglas y estados admitidos. Hay que comprobar cómo se reconoce la conversación y qué paquetes se aceptan realmente. La existencia de una tabla de estado no reemplaza la necesidad de una regla apropiada para iniciar el servicio ni demuestra que toda respuesta posible sea legítima. Si intervienen traducciones, su relación con el seguimiento y con los campos visibles también debe consultarse en el equipo. El objetivo es explicar una asociación concreta dentro del modelo declarado, no presentar estado como una autorización automática para todo tráfico que parezca regresar."
+        },
+        {
+          "title": "Distinguir historial de conexión e indicadores aislados",
+          "body": "Los indicadores TCP aportan información del segmento, pero un bit ACK aislado no certifica todo el historial de una sesión ni la identidad de su emisor. Un filtro que se limita a comprobar ciertos campos no equivale necesariamente a un motor que sigue fases y contexto de la conexión. Incluso este último tiene condiciones y límites que deben revisarse según la implementación. Para UDP, que no tiene el establecimiento de conexión propio de TCP, algunos controles mantienen asociaciones temporales basadas en extremos y tráfico observado. Esa memoria lógica no inventa un intercambio SYN ni convierte UDP en TCP. Los tiempos de inactividad y los patrones de aplicación pueden determinar cuándo deja de existir la asociación. Si una respuesta llega después del período permitido, quizá se evalúe de otra forma, por lo que conviene registrar tiempo y estado en vez de agregar una excepción amplia ante cada síntoma. Tampoco una sesión de transporte conocida demuestra que la aplicación autorice una cuenta o que el contenido sea benigno. Son preguntas distintas que necesitan controles y evidencias acordes con el recurso."
+        },
+        {
+          "title": "Comprobar simetría de observación y coordinación entre dispositivos",
+          "body": "Un control puede necesitar ver partes relevantes de ambos sentidos para reconocer correctamente la conversación. Si la petición atraviesa un firewall y la respuesta llega por otro que no comparte el contexto necesario, este segundo dispositivo puede tratarla como tráfico sin la asociación esperada. La topología, las políticas y las capacidades de coordinación determinan el resultado; no se debe declarar que cualquier asimetría falla ni que cualquier par de firewalls comparte estados por estar instalado junto. Un diseño redundante requiere comprobar soporte, configuración y comportamiento durante transición, además del funcionamiento normal. Los caminos de administración también pueden depender del estado que se pretende investigar, de modo que reiniciar tablas o equipos sin plan puede cortar precisamente el acceso necesario. Consulta registros, rutas y contexto de ambos puntos con tiempos relacionados para localizar la diferencia. Una respuesta rechazada por falta de asociación no se resuelve necesariamente permitiendo cualquier entrada. La corrección debe conservar la intención del diseño y comprobar qué recorrido y coordinación necesita la conversación autorizada en las condiciones observadas."
+        },
+        {
+          "title": "Evaluar política nueva y sesiones que ya estaban abiertas",
+          "body": "Modificar una regla no garantiza universalmente que todos los estados existentes cambien de inmediato de la misma forma. Algunas plataformas permiten decidir cómo se reevalúan o eliminan asociaciones; otras aplican comportamientos distintos según la función y configuración. Por eso una retirada de acceso debe incluir pruebas de una sesión anterior y de un inicio nuevo cuando el requisito necesita revocación efectiva. No basta observar que una conexión nueva falla y asumir que cualquier conversación previa dejó de transportar datos. Define el resultado esperado y consulta el mecanismo de invalidación admitido, con cuidado del impacto sobre sesiones legítimas. La validación también debe comprobar que las respuestas del servicio que sigue permitido conservan su asociación correcta después del cambio. Registra qué regla y estado explican cada resultado sin divulgar datos sensibles innecesarios. El cierre útil diferencia permiso inicial, seguimiento, regreso y revocación, y mantiene controles de aplicación para lo que el estado de red no puede demostrar. Esa precisión permite aprovechar el filtrado con estado sin tratarlo como garantía de autenticidad, disponibilidad o seguridad del contenido completo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué permite explicar el estado en el modelo de respuesta declarado?",
+          "scenario": "El cliente inició TCP permitido hacia el portal y el firewall observa el regreso pertinente dentro de la asociación que mantiene.",
+          "options": [
+            "Tratar la respuesta asociada según el contexto y política de esa conversación",
+            "Abrir automáticamente cualquier servicio entrante de todos los clientes",
+            "Autorizar por sí mismo todas las acciones de la cuenta en la aplicación"
+          ],
+          "answer": 0,
+          "explanation": "El seguimiento relaciona tráfico con una conversación observada bajo sus reglas; no convierte esa asociación en un permiso universal de red o de aplicación.",
+          "wrongExplanations": [
+            null,
+            "La respuesta de una conexión concreta no justifica cualquier inicio entrante; ampliar así el permiso elimina límites que el estado ayuda a mantener.",
+            "Los permisos funcionales necesitan decisiones del recurso y cuenta; el contexto de transporte no acredita por sí solo autorización de todas las acciones."
+          ],
+          "aoi": {
+            "question": "Nuestra respuesta tiene una relación concreta; no le demos pase libre a todo lo que llegue.",
+            "hint": "Relaciona el paquete de regreso con el inicio permitido y el estado que el equipo observa.",
+            "correct": "Conservaste la utilidad del seguimiento sin ampliar indebidamente su alcance de autorización.",
+            "soft": "Pregunta qué conversación reconoce el equipo y qué permiso específico aplica a su regreso.",
+            "sharp": "Una respuesta conocida no invitó a todo internet, cielo; mantén el contexto de esa conexión."
+          }
+        },
+        {
+          "prompt": "¿Un control que asocia temporalmente UDP crea el establecimiento SYN de TCP?",
+          "scenario": "El equipo mantiene información de extremos y tiempos para un flujo UDP, sin declarar un protocolo adicional de aplicación que cambie ese transporte.",
+          "options": [
+            "Sí, cualquier memoria del firewall transforma UDP en TCP",
+            "No, mantiene un contexto lógico sin inventar ese establecimiento TCP",
+            "Sí, todos los datagramas UDP contienen obligatoriamente SYN y ACK"
+          ],
+          "answer": 1,
+          "explanation": "El control puede usar asociaciones y tiempos sobre UDP, pero eso no cambia el protocolo ni añade las fases de establecimiento que caracterizan al intercambio TCP.",
+          "wrongExplanations": [
+            "La memoria del dispositivo no altera automáticamente la cabecera o semántica del transporte; confundir seguimiento con transformación cambia el significado del caso.",
+            null,
+            "Esos indicadores pertenecen a otro transporte y no están obligatoriamente presentes en datagramas UDP; la asociación depende del mecanismo del control, no de esa apertura."
+          ],
+          "aoi": {
+            "question": "El firewall puede recordar extremos sin obligar al datagrama a llevar otro uniforme.",
+            "hint": "Distingue la memoria del control de las funciones que realmente define el protocolo de transporte.",
+            "correct": "Separaste contexto de seguimiento y semántica del transporte sin inventar una apertura inexistente.",
+            "soft": "Revisa qué información observa el control y qué campos aporta realmente UDP.",
+            "sharp": "Recordar una conversación no convierte UDP en TCP, tesoro; no le inventes un SYN."
+          }
+        },
+        {
+          "prompt": "¿Qué investigar si el regreso pasa por otro firewall sin estado compartido necesario?",
+          "scenario": "F1 vio la petición y F2 recibe la respuesta, pero el caso confirma que F2 no dispone de la asociación que necesita su política.",
+          "options": [
+            "Solo cambiar el tema visual del panel de administración",
+            "Que ambos equipos comparten estados siempre por tener la misma marca",
+            "El recorrido y la coordinación o tratamiento de estado admitido por el diseño"
+          ],
+          "answer": 2,
+          "explanation": "La diferencia de observación y contexto puede explicar el rechazo; hay que revisar caminos y capacidades reales antes de cambiar permisos o atribuir coordinación inexistente.",
+          "wrongExplanations": [
+            "La apariencia del panel no altera el recorrido ni aporta la asociación que falta; no responde a la evidencia técnica que presenta el caso.",
+            "La marca no garantiza sincronización efectiva ni compatibilidad configurada; el diseño debe demostrar qué estados se comparten y bajo qué condiciones entre dispositivos.",
+            null
+          ],
+          "aoi": {
+            "question": "La respuesta llegó al compañero que no recuerda la apertura; revisemos cómo debe funcionar ese diseño.",
+            "hint": "Relaciona las rutas de ambos sentidos con el contexto disponible en cada control.",
+            "correct": "Ubicaste la pregunta en camino y coordinación en lugar de inventar memoria compartida.",
+            "soft": "Comprueba qué datos necesita F2 y qué mecanismo real se los proporciona, si existe.",
+            "sharp": "Estar juntos en el rack no comparte recuerdos, cariño; verifica la coordinación de esos firewalls."
+          }
+        },
+        {
+          "prompt": "¿Una bandera ACK aislada prueba todo el historial y autenticidad de una sesión?",
+          "scenario": "La revisión compara una condición de cabecera con un mecanismo que mantiene contexto, y no hay evidencia adicional de identidad del emisor.",
+          "options": [
+            "No, es un campo del segmento y necesita interpretación y controles adicionales",
+            "Sí, acredita cualquier sesión previa aunque el equipo nunca la observara",
+            "Sí, concede autenticación de usuario para todos los recursos remotos"
+          ],
+          "answer": 0,
+          "explanation": "Un indicador no demuestra por sí solo historial completo ni identidad; la interpretación del transporte y los permisos requieren contexto y mecanismos adecuados a cada objetivo.",
+          "wrongExplanations": [
+            null,
+            "El campo puede aparecer sin que ese control conozca una apertura previa; asumir historial universal omite lo que realmente se observó de la conexión.",
+            "La identidad y autorización de cuentas no se acreditan por un bit de transporte; esos requisitos necesitan controles propios del recurso o arquitectura."
+          ],
+          "aoi": {
+            "question": "La bandera aporta información, pero no viene acompañada de toda la vida de la conexión.",
+            "hint": "Separa un dato de cabecera del contexto observado y de la autenticación del recurso.",
+            "correct": "Limitaste el significado del campo y mantuviste necesarias las demás comprobaciones.",
+            "soft": "Pregunta qué evidencia acredita realmente la sesión y quién está autorizado en la aplicación.",
+            "sharp": "Un ACK no trae curriculum ni carnet de usuario, demonios; no le atribuyas una identidad completa."
+          }
+        },
+        {
+          "prompt": "¿Qué falta para verificar revocación si solo se rechaza una conexión nueva?",
+          "scenario": "La política exige retirar acceso también a sesiones anteriores y no se ha revisado cómo trata la plataforma los estados ya existentes.",
+          "options": [
+            "Declarar revocado todo acceso sin más observaciones",
+            "Probar sesiones existentes y revisar el mecanismo de reevaluación o invalidación pertinente",
+            "Permitir cualquier regreso para no tener que consultar estados"
+          ],
+          "answer": 1,
+          "explanation": "La prueba nueva no cubre por sí sola conversaciones previas; el requisito necesita comprobar su tratamiento y aplicar el mecanismo admitido que corresponda a la revocación.",
+          "wrongExplanations": [
+            "La conclusión universal supera lo observado y puede dejar acceso anterior activo; cada condición del requisito debe relacionarse con evidencia pertinente del equipo.",
+            null,
+            "Permitir todo contradice la retirada y no explica el comportamiento de asociaciones anteriores; la revisión debe centrarse en política y estados relevantes."
+          ],
+          "aoi": {
+            "question": "La nueva conexión ya recibió su no; todavía falta saber qué pasó con la antigua.",
+            "hint": "Incluye el caso previo y consulta cómo la plataforma aplica cambios a sus asociaciones.",
+            "correct": "Completaste la pregunta de revocación en vez de limitarla a nuevos intentos.",
+            "soft": "Revisa qué parte del acceso anterior sigue sin prueba bajo la política modificada.",
+            "sharp": "Cerrar a los recién llegados no expulsó necesariamente a quienes estaban dentro, joder; comprueba ambas sesiones."
+          }
+        },
+        {
+          "prompt": "¿Una sesión conocida por el firewall demuestra contenido benigno y permiso de aplicación?",
+          "scenario": "El control reconoce el transporte permitido, pero la cuenta y los datos siguen sujetos a validaciones del recurso y otros mecanismos de defensa.",
+          "options": [
+            "Sí, cualquier sesión con estado elimina toda posibilidad de contenido dañino",
+            "Sí, el seguimiento reemplaza todas las decisiones de cuenta y recurso",
+            "No, esas propiedades requieren controles y evidencias distintos del estado de red"
+          ],
+          "answer": 2,
+          "explanation": "El contexto de transporte no certifica intención o autorización funcional; la protección necesita combinar mecanismos pertinentes al contenido, identidad y acciones del recurso.",
+          "wrongExplanations": [
+            "Una conversación permitida puede transportar acciones no deseadas o datos que requieren otros controles; el seguimiento no ofrece esa garantía universal sobre el contenido.",
+            "El estado no conoce por sí solo todas las reglas de negocio o privilegios de cuenta; sustituirlas por alcance de red elimina una función necesaria de autorización.",
+            null
+          ],
+          "aoi": {
+            "question": "El firewall reconoció el camino de la conversación; todavía no aprobó todas sus intenciones.",
+            "hint": "Relaciona cada propiedad que buscas con el control que puede evaluarla realmente.",
+            "correct": "Mantuviste defensa de recurso y contenido junto al seguimiento que ayuda en la red.",
+            "soft": "Revisa qué comprobaciones no forman parte de recordar extremos y fase de transporte.",
+            "sharp": "Una sesión reconocida también puede portarse mal, cielo; conserva los controles que miran otras cosas."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La respuesta que llegó al equipo sin contexto",
+          "scenario": "La petición pasa por F1 y la respuesta por F2. El diseño del caso declara que no comparten el estado necesario y F2 registra ausencia de asociación para esa conversación.",
+          "explanation": "La investigación debe relacionar camino y contexto de ambos controles. Permitir toda entrada no conserva la intención original. Se necesita revisar topología o coordinación admitida y validar la conversación de ida y regreso conforme al diseño, sin atribuir capacidades compartidas no configuradas."
+        },
+        {
+          "title": "La regla retirada que no verificó sesiones previas",
+          "scenario": "Tras retirar un permiso, una conexión nueva se rechaza. El objetivo requiere revocar también acceso anterior, pero aún no se ha probado una sesión que ya estaba abierta ni revisado el tratamiento de sus estados.",
+          "explanation": "El rechazo nuevo no acredita por sí solo revocación de conversaciones existentes. Debe consultarse el comportamiento de la plataforma, aplicar el mecanismo apropiado si hace falta y comprobar ambos casos, conservando recuperación y evaluando el impacto sobre sesiones que deban permanecer legítimamente disponibles."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El firewall ficticio permite al cliente iniciar TCP hacia el portal y evalúa respuestas asociadas mediante estado. Analizaremos qué recuerda ese mecanismo, qué no autentica y por qué un camino asimétrico puede necesitar una revisión diferente de una ACL simple.",
+      "scenario": "El firewall ficticio permite al cliente iniciar TCP hacia el portal y evalúa respuestas asociadas mediante estado. Analizaremos qué recuerda ese mecanismo, qué no autentica y por qué un camino asimétrico puede necesitar una revisión diferente de una ACL simple.",
+      "steps": [
+        "Identifica la regla que permite iniciar y los campos observados.",
+        "Consulta el modelo y estado pertinente de la conversación.",
+        "Relaciona respuesta, temporización y camino de regreso.",
+        "Distingue indicadores de cabecera de contexto real de conexión.",
+        "Verifica sesiones existentes y nuevas cuando cambia la política."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-tcp"
+      ],
+      "aoi": {
+        "intro": "El estado recuerda contexto, cariño; vamos a preguntar exactamente qué conversación reconoce.",
+        "theory0": "El regreso asociado no necesita que regalemos cualquier servicio entrante a todo el mundo.",
+        "theory1": "Una bandera TCP no trae una biografía autenticada de la conexión.",
+        "theory2": "Dos firewalls vecinos todavía no demostraron compartir lo que uno de ellos observó.",
+        "theory3": "Retirar una regla exige revisar qué ocurre también con quienes ya estaban dentro.",
+        "case0": "La petición pasó por uno y la respuesta llegó a otro sin el recuerdo necesario.",
+        "case1": "La puerta nueva cerró, pero todavía falta comprobar la sesión que ya estaba abierta.",
+        "pass": "Ya separas inicio, asociación y revocación. Esa precisión tiene un encanto peligrosamente convincente.",
+        "review": "Repasemos qué contexto conserva el equipo antes de atribuirle recuerdos que no ha demostrado tener."
+      }
+    },
+    {
+      "id": "network-defense-salida",
+      "title": "Control de salida y resolución de nombres autorizada",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Aplicar una política también al tráfico que sale",
+          "body": "Una conexión iniciada desde dentro puede ser legítima, innecesaria o dañina según el recurso, el origen y la acción. La dirección de inicio no demuestra confianza. Un equipo comprometido puede intentar utilizar servicios permitidos para acciones ajenas a su función, y un usuario legítimo puede enviar información a un destino equivocado. El control de salida debe partir de necesidades como actualizaciones, resolución, registros o servicios de negocio, con responsables y alcance conocidos. No significa bloquear indiscriminadamente todo sin plan ni permitir cualquier destino porque la aplicación una vez necesitó internet. Documenta quién inicia, qué recurso requiere y qué condición puede evaluar el mecanismo disponible. Una política por destinos puede necesitar adaptarse a cambios de infraestructura o servicios compartidos, por lo que la revisión no termina al escribir una dirección inicial. El permiso de red sigue combinado con identidad de aplicación, protección del equipo y controles de datos pertinentes. Su papel es reducir comunicaciones injustificadas y aportar observabilidad, sin pretender que una única lista conozca automáticamente todas las intenciones del tráfico."
+        },
+        {
+          "title": "Conservar resolución necesaria sin reducir DNS a una sola receta",
+          "body": "En el diseño del laboratorio, los clientes utilizan resolutores autorizados y los controles permiten sus comunicaciones necesarias. DNS puede utilizar UDP y TCP; bloquear TCP por considerar que solo sirve para transferencias de zona puede romper consultas legítimas y generar fallos difíciles de interpretar. La política necesita comprobar requisitos de clientes, resolutores y respuestas, no suponer que toda consulta cabe siempre en la misma forma de transporte. También existen mecanismos de resolución cifrada, como DNS sobre HTTPS, cuyo uso debe relacionarse con la configuración y política del entorno. Proteger el canal hacia un resolutor no implica que cualquier nombre devuelto sea honesto ni que todos los observadores pierdan información de actividad. El resolutor sigue teniendo una función y un contexto de confianza que deben elegirse deliberadamente. Cambiarlo por uno externo puede alterar nombres internos, políticas o exposición de consultas. La validación debe conservar las funciones que el entorno necesita y comprobar el control real, sin presentar cifrado de transporte como una aprobación universal de destinos o contenidos."
+        },
+        {
+          "title": "Evaluar listas, destinos compartidos y cobertura incompleta",
+          "body": "Las listas de dominios o direcciones pueden ayudar a restringir destinos conocidos, pero tienen límites de actualización y alcance. Un servicio puede compartir dirección con otros recursos o cambiar de infraestructura; bloquear una IP sin revisar ese contexto puede afectar comunicaciones legítimas que no eran el objetivo. Del mismo modo, permitir una dirección compartida no demuestra que toda actividad hacia ella corresponda a la aplicación autorizada. La interpretación depende de las capacidades del control y de qué información tiene disponible en ese punto. Una restricción de DNS tampoco detiene por sí sola cualquier comunicación no deseada que utilice otros mecanismos o servicios ya permitidos. No hace falta enseñar evasiones para reconocer esa cobertura limitada: basta mantener controles complementarios de equipo, cuenta, aplicación y datos. Cuando se añade un indicador a una lista, registra procedencia, vigencia, impacto esperado y criterio de revisión. Una coincidencia puede ser una señal para investigar y no una prueba automática de compromiso del usuario. La decisión debe integrar contexto en vez de tratar un dato aislado como explicación completa de la actividad."
+        },
+        {
+          "title": "Validar el servicio útil y observar sin acumular datos innecesarios",
+          "body": "Después de ajustar salida, comprueba actualizaciones y resolución desde el componente pertinente, junto con una comunicación que deba quedar restringida según la política. La prueba necesita representar el protocolo y recorrido reales, y no solo una conexión favorable a un destino ajeno. Relaciona resultados con registros o contadores apropiados para saber qué control tomó la decisión. Los nombres consultados y patrones temporales pueden revelar información sobre personas y funciones, por lo que el registro debe tener finalidad, acceso y retención acordes con el entorno. Conserva lo necesario para diagnóstico y respuesta sin convertir la supervisión en una recopilación indefinida de contenido. También deben comprobarse cambios futuros del servicio autorizado y revisarse excepciones que ya no sean necesarias. El informe final distingue lo que la política limita, qué funciones conserva y qué riesgos siguen dependiendo de otros mecanismos. Así el control de salida reduce superficie y ayuda a investigar, mientras mantiene expectativas realistas sobre cifrado, reputación de destinos y la visibilidad que puede ofrecer cada punto de la arquitectura."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Una conexión iniciada desde la red interna es necesariamente confiable?",
+          "scenario": "La arquitectura debe controlar comunicaciones salientes y contempla que un equipo o cuenta internos puedan actuar fuera de su función prevista.",
+          "options": [
+            "No, la dirección de inicio no acredita legitimidad de toda acción o destino",
+            "Sí, toda actividad interna es autorizada por pertenecer al mismo edificio",
+            "Sí, el inicio local elimina necesidad de controles de equipo y aplicación"
+          ],
+          "answer": 0,
+          "explanation": "La ubicación del iniciador no prueba intención o autorización; el flujo necesita relacionarse con función, destino y controles apropiados al recurso y datos.",
+          "wrongExplanations": [
+            null,
+            "El edificio no define todos los permisos y puede contener equipos comprometidos o acciones erróneas; la necesidad debe evaluarse para la comunicación concreta.",
+            "Los controles complementarios siguen abordando riesgos que la dirección de inicio no resuelve; eliminarlos atribuye confianza universal a una condición de red."
+          ],
+          "aoi": {
+            "question": "El paquete salió de dentro; eso todavía no nos cuenta para qué ni si corresponde.",
+            "hint": "Relaciona la conexión con la función autorizada y no solo con su origen geográfico.",
+            "correct": "Mantuviste una evaluación de necesidad en lugar de confianza automática por ubicación.",
+            "soft": "Pregunta qué evidencia autoriza la acción además de que empiece en una IP interna.",
+            "sharp": "Salir de casa no convierte al paquete en santo, cielo; comprueba destino, función y permiso."
+          }
+        },
+        {
+          "prompt": "¿Es correcto bloquear todo TCP DNS porque solo serviría para transferencias de zona?",
+          "scenario": "El resolutor autorizado debe atender consultas legítimas y la política pretende conservar la resolución normal del entorno.",
+          "options": [
+            "Sí, cualquier consulta ordinaria utiliza obligatoriamente solo UDP",
+            "No, TCP también forma parte de la operación necesaria de DNS",
+            "Sí, así se garantiza que nunca habrá fallos de resolución"
+          ],
+          "answer": 1,
+          "explanation": "DNS necesita soporte operativo de TCP además de UDP según sus condiciones; limitarlo a transferencias de zona ignora usos legítimos y puede provocar fallos de consultas.",
+          "wrongExplanations": [
+            "La afirmación universal de UDP no representa los requisitos actuales de DNS y puede eliminar un transporte necesario para determinadas respuestas o condiciones de operación.",
+            null,
+            "Bloquear un transporte requerido no garantiza resolución y puede causar el síntoma; la validación debe comprobar comunicaciones pertinentes hacia los resolutores autorizados."
+          ],
+          "aoi": {
+            "question": "El tamaño habitual de una consulta no elimina las condiciones donde TCP es necesario.",
+            "hint": "Distingue un uso posible de TCP de todos los usos que el protocolo requiere soportar.",
+            "correct": "Conservaste el transporte necesario sin usar una simplificación que rompería consultas legítimas.",
+            "soft": "Revisa si la política permite los mecanismos que necesita realmente el resolutor del diseño.",
+            "sharp": "TCP DNS no vive únicamente de transferir zonas, tesoro; esa costumbre no es un requisito técnico."
+          }
+        },
+        {
+          "prompt": "¿Qué garantiza por sí solo cifrar consultas hacia un resolutor mediante HTTPS?",
+          "scenario": "La aplicación usa un canal protegido pertinente, pero no se ha investigado la legitimidad del destino web que el nombre resuelto identifica.",
+          "options": [
+            "Que cualquier sitio resultante es honesto y autoriza todas las acciones",
+            "Que el resolutor deja de conocer necesariamente toda consulta que procesa",
+            "Protección del transporte bajo sus condiciones, sin aprobar universalmente los destinos resueltos"
+          ],
+          "answer": 2,
+          "explanation": "La protección del canal trata el intercambio con el resolutor y no certifica honestidad de cada recurso posterior ni elimina su función de procesamiento de consultas.",
+          "wrongExplanations": [
+            "La legitimidad de un sitio requiere otras comprobaciones y no se deduce del cifrado de resolución; una conexión protegida puede devolver nombres de recursos diversos.",
+            "El resolutor tiene que procesar la consulta conforme al mecanismo; cifrar el trayecto no implica que ese participante desaparezca del contexto de confianza y observación.",
+            null
+          ],
+          "aoi": {
+            "question": "El canal se protegió; los destinos todavía no recibieron un certificado de buenas intenciones.",
+            "hint": "Separa privacidad del transporte de resolución y legitimidad del recurso que se visita después.",
+            "correct": "Respetaste el alcance del cifrado sin prometer una aprobación que no realiza.",
+            "soft": "Pregunta qué participante procesa la consulta y qué propiedad comprueba realmente el canal.",
+            "sharp": "HTTPS al resolutor no bendijo todos los sitios del mundo, cariño; mantén las otras comprobaciones."
+          }
+        },
+        {
+          "prompt": "¿Qué debes revisar antes de bloquear una IP compartida por varios servicios?",
+          "scenario": "El indicador señala una dirección que también utiliza una aplicación legítima necesaria para el entorno durante la ventana del cambio.",
+          "options": [
+            "El alcance compartido, vigencia del dato y efectos sobre funciones legítimas",
+            "Solo que el número de la dirección aparezca en una lista cualquiera",
+            "Que el bloqueo elimine automáticamente toda amenaza de cualquier protocolo"
+          ],
+          "answer": 0,
+          "explanation": "La dirección puede incluir más recursos que el objetivo inicial; el cambio necesita valorar contexto e impacto y comprobar que conserva las funciones requeridas según el diseño.",
+          "wrongExplanations": [
+            null,
+            "La aparición aislada no demuestra vigencia o cobertura apropiadas; usarla sin contexto puede bloquear recursos legítimos y atribuir una causa que no se ha confirmado.",
+            "Una restricción puntual no cubre todas las amenazas o protocolos; esa promesa ignora límites del indicador, del control y de otros caminos o servicios permitidos."
+          ],
+          "aoi": {
+            "question": "Nuestra lista mira una dirección que alberga varios recursos; revisemos a quién alcanza la decisión.",
+            "hint": "Relaciona el indicador con infraestructura compartida y necesidades actuales del entorno.",
+            "correct": "Evaluaste impacto y alcance antes de convertir una coincidencia en bloqueo general sin contexto.",
+            "soft": "Revisa qué comunicaciones legítimas quedarían incluidas junto con el objetivo de la restricción.",
+            "sharp": "Bloquear el edificio también alcanza a sus otros vecinos, demonios; comprueba el impacto compartido."
+          }
+        },
+        {
+          "prompt": "¿Una restricción DNS elimina por sí sola toda comunicación saliente dañina?",
+          "scenario": "La arquitectura conserva otros servicios permitidos y necesita una defensa que considere equipo, identidad, aplicación y datos además de resolución.",
+          "options": [
+            "Sí, cualquier acción no deseada requiere obligatoriamente una consulta visible bloqueable",
+            "No, su cobertura es limitada y debe combinarse con otros mecanismos pertinentes",
+            "Sí, la lista reemplaza cualquier gestión de privilegios o protección del equipo"
+          ],
+          "answer": 1,
+          "explanation": "La restricción actúa sobre determinadas comunicaciones y visibilidad; no demuestra ausencia de toda actividad no deseada ni reemplaza controles que observan otros recursos y acciones.",
+          "wrongExplanations": [
+            "El supuesto universal no está justificado y omite diferencias de arquitectura, transportes y servicios permitidos; la cobertura debe evaluarse conforme a los mecanismos reales.",
+            null,
+            "Una lista no gestiona por sí sola todas las cuentas, dispositivos o decisiones de negocio; esos controles mantienen funciones necesarias fuera de la resolución de nombres."
+          ],
+          "aoi": {
+            "question": "La lista ayuda en su alcance; no le encargues vigilar todo lo que hace una cuenta o equipo.",
+            "hint": "Identifica qué riesgos no observa o decide el mecanismo de resolución que estamos usando.",
+            "correct": "Conservaste capas complementarias y una expectativa ajustada al control que sí tenemos.",
+            "soft": "Pregunta qué parte de la actividad podría requerir información de aplicación o del propio equipo.",
+            "sharp": "Una lista DNS no ascendió a guardiana de cada byte, joder; conserva las otras defensas."
+          }
+        },
+        {
+          "prompt": "¿Qué manejo corresponde a registros de nombres y patrones de consulta?",
+          "scenario": "La supervisión sirve para diagnóstico y respuesta y puede revelar actividades de personas o funciones del entorno observado.",
+          "options": [
+            "Conservar todo contenido indefinidamente y distribuirlo sin finalidad concreta",
+            "Publicar consultas completas como requisito universal para cualquier análisis",
+            "Definir finalidad, acceso y retención proporcionales a la necesidad del entorno"
+          ],
+          "answer": 2,
+          "explanation": "Los registros pueden aportar evidencia y también exposición; su manejo necesita propósito y límites que permitan investigar sin acumular ni divulgar datos innecesarios de forma indiscriminada.",
+          "wrongExplanations": [
+            "La conservación y distribución sin alcance amplían exposición sin demostrar utilidad; el diseño debe identificar qué evidencia hace falta y quién necesita consultarla.",
+            "Publicar todo no es condición técnica para analizar un caso y puede revelar información innecesaria; el material compartido debe ajustarse a la pregunta y autorización.",
+            null
+          ],
+          "aoi": {
+            "question": "Los nombres consultados cuentan cosas del entorno; cuidemos también esa evidencia mientras la usamos.",
+            "hint": "Vincula lo que registras con la pregunta, quién lo revisa y cuánto tiempo lo necesita.",
+            "correct": "Combinaste observabilidad útil y manejo razonado de los datos que produce.",
+            "soft": "Revisa qué justifica conservar o compartir cada parte de la actividad registrada.",
+            "sharp": "El registro no es un escaparate del vecindario, cielo; dale propósito, acceso y retención adecuados."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "DNS parecía pequeño hasta que necesitó TCP",
+          "scenario": "El entorno permite consultas UDP al resolutor autorizado y bloquea TCP DNS por asumir que solo lo usan transferencias de zona. Algunas resoluciones legítimas fallan bajo las condiciones del servicio.",
+          "explanation": "La suposición sobre TCP es incorrecta para la operación general de DNS. Deben revisarse requisitos y permitir el transporte necesario hacia los participantes autorizados, validando consultas representativas y la restricción restante sin abrir indiscriminadamente toda comunicación de salida."
+        },
+        {
+          "title": "La dirección bloqueada que alojaba otros recursos",
+          "scenario": "Un indicador de interés apunta a una IP que también utiliza una aplicación legítima del entorno. El cambio propuesto bloquea esa dirección sin revisar servicios compartidos, vigencia o impacto.",
+          "explanation": "La dirección puede abarcar más recursos que el indicador inicial. Hay que evaluar contexto y alternativas del control, documentar efectos y validar las funciones necesarias, sin convertir una coincidencia de infraestructura en prueba automática de que todo recurso compartido sea malicioso."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El servidor ficticio necesita actualizaciones y consultas al resolutor autorizado. La política de salida debe conservar esas funciones sin tratar toda conexión iniciada desde dentro como confiable ni prometer que bloquear un dominio detenga cualquier amenaza.",
+      "scenario": "El servidor ficticio necesita actualizaciones y consultas al resolutor autorizado. La política de salida debe conservar esas funciones sin tratar toda conexión iniciada desde dentro como confiable ni prometer que bloquear un dominio detenga cualquier amenaza.",
+      "steps": [
+        "Inventaría servicios salientes, destinos y dependencias justificadas.",
+        "Distingue resolución de nombres, canal protegido y legitimidad del recurso.",
+        "Conserva los transportes necesarios del servicio autorizado.",
+        "Evalúa efectos compartidos de dominios, direcciones y listas.",
+        "Prueba utilidad, restricciones y registro mínimo de los resultados."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-dns-tcp",
+        "net-doh"
+      ],
+      "aoi": {
+        "intro": "Lo que sale de casa también necesita criterio, cariño; el origen interno no lo vuelve inocente.",
+        "theory0": "La salida tiene funciones legítimas que podemos justificar sin abrir el mapa entero.",
+        "theory1": "DNS usa más de una forma de transporte; no le cortes una pierna por una costumbre vieja.",
+        "theory2": "Una dirección compartida puede alojar varios vecinos y nuestras listas deben reconocer ese alcance.",
+        "theory3": "Los registros ayudan, pero también contienen pistas personales que merecen un manejo razonado.",
+        "case0": "TCP no vino solo a transferir zonas; algunas consultas también necesitan que lo dejes trabajar.",
+        "case1": "La IP compartía edificio con una función legítima; revisemos el impacto antes de bloquear todo.",
+        "pass": "Salida controlada y servicios útiles comprobados. Tu defensa ya sabe poner límites sin montar un apagón.",
+        "review": "Repasemos necesidad, transporte y cobertura antes de atribuir a una lista más poderes de los que tiene."
+      }
+    },
+    {
+      "id": "network-defense-remota",
+      "title": "VPN de acceso remoto, MFA y alcance del túnel",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Tratar la entrada remota como un recurso que requiere protección",
+          "body": "Una VPN de acceso remoto establece un camino protegido entre un cliente y una infraestructura de acceso bajo sus protocolos y configuración. Esa entrada también es un servicio expuesto que necesita soporte, actualizaciones, administración protegida y supervisión. La seguridad no depende solamente de que el usuario vea conectado en una pantalla. Verifica que el perfil y el destino procedan del proceso autorizado y que el cliente compruebe la identidad del servidor según el mecanismo previsto. Un perfil recibido por un mensaje inesperado no merece confianza automática aunque prometa resolver una incidencia. El usuario debe conocer el procedimiento legítimo de acceso y de recuperación sin compartir secretos con quien se presente como soporte. La organización, a su vez, necesita gestionar cuentas, dispositivos y permisos de entrada conforme al recurso. Una cuenta válida de VPN no tiene por qué obtener todas las redes internas ni privilegios administrativos. El caso utiliza un portal concreto para que puedas distinguir establecer el túnel, autorizar un alcance de red y decidir qué acciones permite la aplicación a esa persona."
+        },
+        {
+          "title": "Combinar factores y condiciones del equipo sin prometer inmunidad",
+          "body": "La autenticación multifactor añade comprobaciones que reducen dependencia de un único secreto, pero su eficacia depende del mecanismo y de cómo se usa. Cuando resulte compatible y apropiado, conviene favorecer métodos resistentes al phishing y un proceso de recuperación igualmente cuidado. Aprobar una solicitud inesperada porque se repite no valida que alguien de soporte la haya iniciado legítimamente. Una cuenta comprometida o una recuperación débil pueden afectar el acceso aunque el túnel cifre los datos en tránsito. También importa el dispositivo: versión soportada, actualizaciones, protección y condiciones de gestión que el diseño exija. Una verificación de estado no demuestra ausencia absoluta de amenazas; aporta señales para una decisión de acceso con límites. Documenta qué condiciones se comprueban y qué sucede cuando dejan de cumplirse, utilizando mecanismos admitidos por la arquitectura. No pidas al alumno credenciales reales para entender estas decisiones. En la actividad, las pantallas y datos son ficticios, y las opciones evalúan si el procedimiento conserva identidad y alcance sin introducir excepciones improvisadas ante un aviso."
+        },
+        {
+          "title": "Diferenciar túnel completo y selección de rutas efectivas",
+          "body": "Una política de túnel puede dirigir el tráfico previsto hacia la VPN o seleccionar solo ciertos destinos, dejando otros fuera. La modalidad dividida permite esa coexistencia conforme al diseño, mientras una política completa busca encaminar el alcance definido por la organización mediante la infraestructura remota. Los nombres de menú no acreditan por sí solos el recorrido efectivo de cada paquete. Revisa rutas específicas, tratamiento local, exclusiones, resolución y las dos familias IP si están habilitadas. Una política aplicada solo a IPv4 no demuestra qué ocurre con IPv6. Además, tráfico que queda fuera del túnel puede seguir utilizando protección de aplicación como HTTPS; fuera de VPN no significa universalmente contenido sin cifrar. El cifrado de la VPN protege el tramo hasta su extremo bajo sus condiciones, no convierte automáticamente todo camino posterior ni todo contenido en seguro. La validación necesita relacionar cada prueba con la dirección y familia que utiliza realmente el cliente. Evita modificar la política administrada para esconder un síntoma sin conocer las dependencias y restricciones que pretende conservar."
+        },
+        {
+          "title": "Validar recurso, permisos y retirada de la sesión",
+          "body": "Después de establecer el túnel, comprueba que el portal previsto funcione con la cuenta y acciones autorizadas, y que un recurso no permitido siga restringido. Si el túnel conecta pero el portal no abre, separa resolución, rutas, control y aplicación antes de ampliar permisos. Los registros deben relacionar identidad, momento y resultado con una finalidad de supervisión, evitando almacenar secretos o contenido innecesario. También hay que considerar la desconexión y la retirada de acceso de cuentas o dispositivos: eliminar una condición de entrada puede necesitar tratar sesiones existentes conforme a las capacidades de la plataforma. La pérdida de conectividad debe recuperarse por canales autorizados, sin instalar perfiles desconocidos ni desactivar comprobaciones de identidad. Al cerrar el caso, documenta qué camino y alcance se verificaron, qué condiciones del equipo se evaluaron y qué riesgos siguen dependiendo de controles del recurso. Así la VPN cumple su función dentro de la defensa sin presentarse como anonimato absoluto, permiso universal o una cura de amenazas que pueden existir antes y después del tramo protegido."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Conectar la VPN concede automáticamente acceso a todos los servidores internos?",
+          "scenario": "La persona necesita un portal asignado y la política mantiene administración y otros recursos fuera de su alcance autorizado.",
+          "options": [
+            "No, túnel y permisos de recursos requieren decisiones específicas del diseño",
+            "Sí, una conexión válida elimina todos los límites posteriores",
+            "Sí, el cliente obtiene por ello administración universal de cada equipo"
+          ],
+          "answer": 0,
+          "explanation": "El túnel establece un camino y no justifica permisos ilimitados; los controles de red y aplicación siguen restringiendo recursos y acciones según la necesidad.",
+          "wrongExplanations": [
+            null,
+            "La autenticación de entrada no elimina las políticas de acceso; ampliar todo contradice los límites que el escenario define para la persona y su tarea.",
+            "Los privilegios administrativos necesitan autorización propia y no se derivan del estado conectado de una VPN cuyo propósito es alcanzar un portal concreto."
+          ],
+          "aoi": {
+            "question": "Entrar por la puerta no equivale a recibir cada llave del edificio.",
+            "hint": "Relaciona el alcance de la cuenta con el recurso y tarea autorizados.",
+            "correct": "Separaste conectividad remota de privilegios y conservaste el límite que corresponde al usuario.",
+            "soft": "Revisa qué parte del requisito concede realmente los permisos que estás proponiendo.",
+            "sharp": "La VPN no te nombró administradora del universo, cielo; conserva el alcance de la cuenta."
+          }
+        },
+        {
+          "prompt": "¿Qué hacer ante solicitudes de aprobación MFA inesperadas que se repiten?",
+          "scenario": "La persona no inició el acceso y un mensaje no verificado insiste en que debe aprobar para que soporte arregle la conexión.",
+          "options": [
+            "Aprobar una cualquiera para terminar el ruido sin comprobar su origen",
+            "No aprobarlas y verificar o reportar por el procedimiento autorizado",
+            "Compartir el factor con el remitente para que lo use por su cuenta"
+          ],
+          "answer": 1,
+          "explanation": "Una solicitud no iniciada requiere contraste y respuesta por canales legítimos; la repetición o una afirmación de soporte no justifica autorizar un acceso desconocido.",
+          "wrongExplanations": [
+            "La repetición no acredita legitimidad y aprobar puede autorizar al solicitante equivocado; debe comprobarse el contexto antes de conceder el acceso remoto.",
+            null,
+            "Compartir el factor elimina control de la autorización y no verifica al supuesto soporte; la recuperación debe utilizar mecanismos y canales previamente autorizados."
+          ],
+          "aoi": {
+            "question": "Ese aviso insiste mucho, pero todavía no demuestra que la solicitud sea tuya.",
+            "hint": "Relaciona la aprobación con un inicio conocido y verifica cualquier petición ajena por otra vía legítima.",
+            "correct": "Conservaste el control del factor y pediste verificar la situación antes de autorizar.",
+            "soft": "Pregunta qué evidencia tienes de haber iniciado ese acceso y de quién pide la aprobación.",
+            "sharp": "Que insista no lo vuelve legítimo, tesoro; no apruebes un acceso que no reconoces."
+          }
+        },
+        {
+          "prompt": "¿Un perfil llamado completo acredita IPv6 si solo se probó IPv4?",
+          "scenario": "El equipo tiene ambas familias habilitadas y aún no se revisaron rutas, exclusiones ni resolución relacionadas con IPv6.",
+          "options": [
+            "Sí, el nombre demuestra automáticamente el recorrido de cualquier protocolo",
+            "Sí, cualquier prueba IPv4 mide también todos los flujos IPv6",
+            "No, deben comprobarse las familias y condiciones efectivas del alcance requerido"
+          ],
+          "answer": 2,
+          "explanation": "La prueba cubre una familia y la etiqueta no sustituye evidencias de política efectiva; IPv6 necesita verificarse según las rutas y controles del diseño.",
+          "wrongExplanations": [
+            "El nombre no muestra la configuración o recorrido de cada familia; tratarlo como cobertura universal omite precisamente las comprobaciones que faltan en el escenario.",
+            "IPv4 e IPv6 pueden seguir condiciones diferentes, por lo que una prueba de una no certifica automáticamente rutas o tratamiento de la otra.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestro informe habló con IPv4; IPv6 todavía no presentó su recorrido.",
+            "hint": "Consulta qué familias utiliza el cliente y qué evidencia existe para cada una.",
+            "correct": "Mantuviste cobertura verificable en vez de confiar únicamente en una etiqueta del perfil.",
+            "soft": "Revisa qué tráfico ejercitó realmente la prueba que intentas generalizar.",
+            "sharp": "Completo escrito en el menú no rellenó las pruebas de IPv6, cariño; verifica esa familia."
+          }
+        },
+        {
+          "prompt": "¿Qué significa que parte del tráfico quede fuera de una VPN dividida?",
+          "scenario": "La política selecciona determinados destinos para el túnel y otras conexiones pueden utilizar sus propios protocolos de aplicación protegidos.",
+          "options": [
+            "Que ese tráfico no utiliza ese túnel, sin afirmar ausencia universal de cifrado de aplicación",
+            "Que todo su contenido viaja necesariamente legible sin ninguna protección posible",
+            "Que toda conexión externa obtiene por ello permisos administrativos internos"
+          ],
+          "answer": 0,
+          "explanation": "Fuera del túnel describe el recorrido VPN y no todas las propiedades de la aplicación; HTTPS u otros mecanismos pueden proteger el tráfico bajo sus propias condiciones.",
+          "wrongExplanations": [
+            null,
+            "La ausencia de ese túnel no elimina automáticamente protección de aplicación; equiparar ambos conceptos atribuye una exposición universal que el escenario no demuestra.",
+            "El recorrido externo no concede privilegios internos y no reemplaza las reglas de cuenta o recurso; esa conclusión mezcla alcance de rutas con autorización administrativa."
+          ],
+          "aoi": {
+            "question": "La ruta nos dice si usa este túnel; la aplicación puede tener otra protección de canal.",
+            "hint": "Separa el cifrado VPN del que aporta el protocolo utilizado por la conexión.",
+            "correct": "Interpretaste el trayecto sin inventar una ausencia universal de protección del contenido.",
+            "soft": "Pregunta qué mecanismo de aplicación podría seguir activo aunque el tráfico no entre al túnel.",
+            "sharp": "Fuera de esta VPN no significa desnudo por decreto, demonios; comprueba también el canal de aplicación."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba diferencia una VPN útil de un permiso remoto excesivo?",
+          "scenario": "La cuenta necesita el portal web y no debe iniciar administración de otro recurso interno ajeno a su función.",
+          "options": [
+            "Abrir todos los recursos para que cualquier prueba obtenga respuesta",
+            "Comprobar portal autorizado y restricción del recurso no permitido con la cuenta prevista",
+            "Probar únicamente que el icono del cliente cambie de color"
+          ],
+          "answer": 1,
+          "explanation": "Las dos comprobaciones validan utilidad y límite de alcance para la identidad pertinente; ni una apertura general ni el icono acreditan ese requisito completo.",
+          "wrongExplanations": [
+            "Abrir todo elimina la restricción y amplía privilegios sin necesidad; hacer responder cualquier destino no conserva el diseño de acceso asignado al usuario.",
+            null,
+            "El indicador refleja algún estado del cliente, pero no demuestra recurso, cuenta, camino y restricciones de aplicación que el caso necesita validar."
+          ],
+          "aoi": {
+            "question": "Quiero una conexión útil que siga sabiendo decir no donde corresponde.",
+            "hint": "Traduce permiso y restricción a pruebas desde la identidad y cliente que usarán el acceso.",
+            "correct": "Validaste el alcance completo del usuario sin confundir facilidad de conexión con privilegios adecuados.",
+            "soft": "Revisa qué prueba acredita que el recurso ajeno siga fuera de los permisos de esa cuenta.",
+            "sharp": "El icono verde no revisó tus privilegios, joder; prueba el recurso permitido y el límite."
+          }
+        },
+        {
+          "prompt": "¿Qué debe hacerse si un perfil inesperado promete arreglar la conexión remota?",
+          "scenario": "Llega por un mensaje no verificado y pide instalarlo o desactivar comprobaciones de identidad sin confirmar el procedimiento administrado.",
+          "options": [
+            "Instalarlo siempre porque cualquier archivo con VPN en el nombre es oficial",
+            "Desactivar toda validación para evitar más mensajes y continuar con cualquier destino",
+            "Verificar perfil y procedimiento por los canales autorizados antes de cambiar el cliente"
+          ],
+          "answer": 2,
+          "explanation": "La procedencia y finalidad necesitan contraste independiente; un perfil o una petición de reducir comprobaciones no merece confianza por prometer una solución rápida de conectividad.",
+          "wrongExplanations": [
+            "El nombre del archivo no autentica al remitente ni al destino configurado; aceptarlo automáticamente puede cambiar el acceso hacia una infraestructura no autorizada.",
+            "Eliminar comprobaciones oculta señales y cambia la protección; no demuestra que el nuevo perfil o servidor sean los previstos por el procedimiento legítimo.",
+            null
+          ],
+          "aoi": {
+            "question": "La prisa del mensaje no demuestra la procedencia del perfil que quiere entrar en tu cliente.",
+            "hint": "Consulta el procedimiento conocido y confirma el cambio con la entidad que administra el acceso.",
+            "correct": "Conservaste procedencia e identidad del acceso antes de aceptar una supuesta reparación.",
+            "soft": "Pregunta quién autorizó el perfil y qué canal independiente permite comprobar esa decisión.",
+            "sharp": "VPN en el nombre no es una firma oficial, cielo; verifica quién te está cambiando la puerta."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El túnel conectó y el recurso seguía restringido",
+          "scenario": "La cuenta establece la VPN correctamente y alcanza el portal asignado. No puede iniciar administración hacia otro servidor que la política no incluye; el grupo interpreta esa restricción como prueba de VPN averiada.",
+          "explanation": "El establecimiento y el alcance autorizado son decisiones distintas. Si el portal funciona y la administración no está permitida, esa restricción puede ser el resultado previsto. Debe contrastarse el requisito antes de ampliar acceso para hacer desaparecer un supuesto fallo."
+        },
+        {
+          "title": "El nombre completo que no acreditaba ambas familias",
+          "scenario": "El perfil se describe como túnel completo, pero el informe solo ha revisado rutas y una prueba IPv4. El cliente también dispone de IPv6 y todavía no se ha observado cómo trata esa familia.",
+          "explanation": "La etiqueta no acredita el recorrido de IPv6 ni toda la política efectiva. Deben comprobarse familias, rutas y resolución pertinentes para el alcance requerido, evitando declarar cobertura universal a partir de una prueba que solo ejercitó una de ellas."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una persona ficticia necesita acceder desde fuera al portal de trabajo mediante una VPN administrada. Revisaremos identidad, estado del dispositivo, rutas y permisos sin confundir túnel conectado con acceso ilimitado o protección de cualquier actividad.",
+      "scenario": "Una persona ficticia necesita acceder desde fuera al portal de trabajo mediante una VPN administrada. Revisaremos identidad, estado del dispositivo, rutas y permisos sin confundir túnel conectado con acceso ilimitado o protección de cualquier actividad.",
+      "steps": [
+        "Verifica el perfil y la puerta remota por el procedimiento autorizado.",
+        "Comprueba autenticación, factores y condiciones del dispositivo.",
+        "Identifica rutas y resolución previstas para ambas familias IP.",
+        "Prueba el recurso permitido y una restricción pertinente.",
+        "Verifica desconexión y retirada de acceso según la necesidad operativa."
+      ],
+      "sourceIds": [
+        "net-remote-vpn",
+        "net-vpn-routing",
+        "net-zero-trust"
+      ],
+      "aoi": {
+        "intro": "La VPN es una entrada y un trayecto, cariño; vamos a revisar quién entra y hasta dónde.",
+        "theory0": "Conectado no significa autorizado a cada rincón de la red interna.",
+        "theory1": "Los factores y el estado del equipo aportan condiciones, no una promesa de invulnerabilidad.",
+        "theory2": "El nombre del perfil no nos enseña todavía todas las rutas de cada familia.",
+        "theory3": "Quiero el portal funcionando y el recurso ajeno todavía restringido; así se verifica el alcance.",
+        "case0": "Nuestra cuenta entró y respetó su límite; quizá no había una avería que reparar.",
+        "case1": "Ese perfil dijo completo, pero aún no hemos escuchado qué hace con IPv6.",
+        "pass": "Ya verificas identidad, camino y permiso. Mi sonrisa acaba de establecer una sesión bastante satisfecha.",
+        "review": "Repasemos qué conecta y qué autoriza antes de llamar solución a ampliar todo el acceso."
+      }
+    },
+    {
+      "id": "network-defense-sedes",
+      "title": "VPN entre sedes: pares, tráfico protegido y regreso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Separar infraestructura de transporte y direcciones de la aplicación",
+          "body": "En una VPN IPsec entre sedes, los gateways establecen protección para tráfico definido por su arquitectura y política. En el modelo de túnel, un paquete interno puede conservar origen y destino de las redes de aplicación mientras una cabecera exterior permite transportarlo entre los extremos de la VPN. Las direcciones de gateway y las de un servidor interno cumplen papeles distintos. La maqueta conecta 10.44.1.0/24 con 10.55.2.0/24 mediante pares externos representados por direcciones de documentación; no invita a realizar conexiones a infraestructura real. Una solicitud del cliente hacia el servidor debe seguir dirigida al recurso interno previsto, no sustituir sin explicación su destino por la IP del par remoto. El camino exterior necesita conectividad y controles pertinentes, y el interior necesita selección, rutas y permisos propios. IPsec en ese diseño protege tráfico de capa IP; no fusiona automáticamente ambas sedes en una sola VLAN ni proporciona cualquier función de puenteo Ethernet. Registra esa distinción para que el diagrama permita identificar qué direcciones verá cada punto de observación y qué comunicación necesita investigar el operador."
+        },
+        {
+          "title": "No equiparar negociación de control y entrega efectiva de datos",
+          "body": "IKEv2 permite negociar asociaciones y condiciones de seguridad según sus mecanismos y configuración. Autenticar al par esperado y disponer de negociación de control no prueba por sí solo que cada prefijo o servicio interno tenga protección y recorrido correctos. El tráfico de datos necesita las asociaciones pertinentes y una selección compatible con el diseño. Algunas arquitecturas se apoyan en interfaces y rutas, otras expresan selección mediante políticas, y los detalles dependen de la plataforma. Compara lo configurado con el estado efectivo de ambos extremos, incluyendo identidades y condiciones de vigencia sin copiar claves o secretos en el informe. Los parámetros criptográficos deben corresponder a recomendaciones y capacidades actuales de la implementación, no a una receta histórica trasladada sin revisión. Si el control está disponible pero los datos no progresan, separa esa evidencia de un fracaso completo de negociación. Un indicador de conectado puede resumir solo parte del proceso y no debe sustituir una prueba de la comunicación que el usuario necesita entre las sedes."
+        },
+        {
+          "title": "Verificar selección, rutas y respuesta en ambos lados",
+          "body": "El paquete del cliente debe coincidir con el tráfico que la arquitectura pretende proteger y alcanzar el gateway adecuado. El extremo remoto debe aceptar el contexto, entregar al servidor y permitir una respuesta que encuentre el regreso. Una ruta hacia la sede no autoriza por sí sola todos sus servicios, y una política de protección no reemplaza las decisiones de encaminamiento necesarias. Si los contadores de un extremo muestran envío protegido pero aún no se observa recepción pertinente del otro, hay que investigar el tramo y sus límites de visibilidad antes de atribuir causa única. También conviene comprobar si existen traducciones que alteren los campos relevantes de selección o retorno. Las redes internas solapadas complican distinguir destinos cuando ambos lados utilizan el mismo prefijo. La VPN no renumera automáticamente esas redes para resolver la ambigüedad. Puede necesitarse un rediseño de direccionamiento o una traducción deliberada y compatible, con documentación de sus efectos. No añadas una ruta por defecto improvisada para ocultar el conflicto sin entender qué dirección debe representar a cada recurso."
+        },
+        {
+          "title": "Probar datos representativos y conservar control del cambio",
+          "body": "La encapsulación añade sobrecarga y puede afectar el tamaño disponible para transportar paquetes internos. Si mensajes pequeños funcionan y transferencias mayores fallan, la MTU del camino y los mensajes de control pertinentes son hipótesis a comprobar, no una causa confirmada solo por ese patrón. Otros límites de aplicación, política o trayecto también pueden influir. Utiliza pruebas acotadas con tamaños y condiciones representativos, evitando asumir una reducción fija universal para cualquier modo y combinación de protocolos. La disponibilidad debe verificarse junto con el servicio autorizado y sus restricciones, no únicamente mediante un ping entre gateways. Si se modifica selección, rutas o parámetros de seguridad, prepara recuperación y observa ambos extremos para evitar entregar una sede aparentemente conectada con regreso incorrecto. El cierre registra pares verificados, redes y servicios ensayados, estado relevante y resultados de ida y vuelta. Esa información permite diferenciar protección del tramo, alcance interno y autorización de aplicación sin atribuir al túnel garantías que su negociación o cifrado no demuestran por sí solos."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué diferencia existe entre dirección del par VPN y destino interno del servicio?",
+          "scenario": "El cliente solicita un servidor remoto y el modelo utiliza una cabecera exterior entre gateways para transportar el paquete interno protegido.",
+          "options": [
+            "Cumplen papeles distintos de transporte del túnel y recurso de aplicación",
+            "Son siempre la misma dirección porque el cifrado elimina destinos internos",
+            "La dirección del par concede automáticamente todos los permisos del servidor"
+          ],
+          "answer": 0,
+          "explanation": "La cabecera exterior relaciona extremos del túnel y el paquete interno identifica la comunicación de aplicación; confundirlos impide seguir correctamente selección y entrega al recurso.",
+          "wrongExplanations": [
+            null,
+            "El modelo conserva una comunicación interna y otra función de transporte exterior; el cifrado no obliga a que todos los destinos se vuelvan la IP del gateway.",
+            "Una dirección de gateway no autoriza operaciones del recurso ni sustituye identidad o políticas; permisos de aplicación requieren decisiones distintas del transporte protegido."
+          ],
+          "aoi": {
+            "question": "Nuestro paquete viaja entre gateways para llegar a un recurso que tiene su propia dirección.",
+            "hint": "Identifica qué cabecera describe cada trayecto y qué extremo espera alcanzar la aplicación.",
+            "correct": "Separaste el transporte exterior del destino que realmente necesita el cliente.",
+            "soft": "Revisa si estás enviando la solicitud al recurso o confundiendo su identidad con la del par.",
+            "sharp": "El gateway no se convirtió en cada servidor de la sede, cielo; conserva los papeles de sus direcciones."
+          }
+        },
+        {
+          "prompt": "¿Negociación IKE disponible demuestra acceso a cualquier prefijo o servicio interno?",
+          "scenario": "La consola solo confirma estado de control y aún no se revisan selección protegida, asociaciones de datos ni recorrido del servidor solicitado.",
+          "options": [
+            "Sí, cualquier negociación incluye necesariamente todos los destinos y aplicaciones",
+            "No, deben verificarse cobertura, datos, rutas y permisos del servicio previsto",
+            "Sí, elimina la necesidad de comprobar cualquier regreso remoto"
+          ],
+          "answer": 1,
+          "explanation": "El control negociado es una parte del funcionamiento y no acredita todos los prefijos o servicios; la comunicación necesita verificaciones pertinentes de protección y recorrido.",
+          "wrongExplanations": [
+            "La selección y políticas pueden limitar alcance, por lo que la negociación no implica cobertura universal de destinos o aplicaciones no comprobados en el caso.",
+            null,
+            "La respuesta necesita su propio camino y tratamiento; el estado de control no demuestra por sí mismo retorno correcto desde el servidor hacia el cliente."
+          ],
+          "aoi": {
+            "question": "El indicador habló de control; todavía falta escuchar los datos y el regreso de nuestro servicio.",
+            "hint": "Distingue la negociación de los resultados concretos que exige la aplicación entre sedes.",
+            "correct": "Pediste verificar cobertura efectiva y recorrido en vez de aprobar todo por un indicador.",
+            "soft": "Pregunta qué evidencia del servicio no está incluida en el estado que muestra la consola.",
+            "sharp": "IKE conectado no aprobó todos los servidores, tesoro; comprueba el tráfico que realmente necesita el usuario."
+          }
+        },
+        {
+          "prompt": "¿Qué ocurre automáticamente con dos prefijos internos solapados al crear IPsec?",
+          "scenario": "Las dos sedes usan 10.44.1.0/24 y el requisito necesita distinguir recursos locales y remotos sin una traducción o renumeración declarada.",
+          "options": [
+            "El túnel crea siempre nuevas direcciones únicas para ambas redes",
+            "El cifrado decide qué recurso quiso decir cada usuario sin revisar rutas",
+            "No resuelve por sí solo la ambigüedad; hace falta planificación del direccionamiento"
+          ],
+          "answer": 2,
+          "explanation": "La protección del transporte no renumera universalmente las redes; el conflicto necesita un diseño deliberado que permita representar destinos y validar selección, rutas y retorno.",
+          "wrongExplanations": [
+            "El caso no declara un mecanismo de renumeración y IPsec no lo aporta automáticamente por existir; esa suposición evita resolver la ambigüedad real.",
+            "El cifrado no interpreta intención humana ni elimina decisiones de encaminamiento; recursos con direcciones solapadas requieren una representación y política coherentes para distinguirlos.",
+            null
+          ],
+          "aoi": {
+            "question": "La protección no puede adivinar cuál de dos direcciones iguales necesitabas alcanzar.",
+            "hint": "Relaciona el conflicto de alcance con un diseño explícito de representación de recursos.",
+            "correct": "Reconociste el solapamiento como problema de diseño en vez de esperar que lo arregle el túnel.",
+            "soft": "Revisa qué mecanismo concreto haría distinguibles los destinos bajo el requisito del caso.",
+            "sharp": "Cifrar dos direcciones iguales no las vuelve distintas, cariño; planifica cómo representar cada recurso."
+          }
+        },
+        {
+          "prompt": "¿Qué falta si la solicitud llega al servidor pero no vuelve una respuesta útil?",
+          "scenario": "El cliente está en una sede y el servidor en otra; aún no se comprueban la salida remota y el tratamiento protegido del regreso.",
+          "options": [
+            "Verificar ruta de respuesta, selección y políticas pertinentes del otro sentido",
+            "Declarar que la ida garantiza cualquier respuesta sin revisar condiciones",
+            "Cambiar el destino de aplicación por el gateway externo sin otra justificación"
+          ],
+          "answer": 0,
+          "explanation": "El regreso necesita decisiones y protección compatibles con el flujo de origen; observar llegada no acredita salida del servidor ni entrega posterior a la otra sede.",
+          "wrongExplanations": [
+            null,
+            "Una petición recibida cubre un tramo y no demuestra retorno; esa conclusión omite precisamente las condiciones que la actividad todavía mantiene sin comprobar.",
+            "Cambiar al gateway altera el recurso solicitado y no resuelve de forma justificada el camino de respuesta que debe investigarse entre las redes internas."
+          ],
+          "aoi": {
+            "question": "El servidor recibió la visita; ahora debe encontrar cómo contestar hacia el origen real.",
+            "hint": "Sigue la respuesta desde la sede remota por sus rutas, protección y controles.",
+            "correct": "Mantuviste la verificación del regreso sin confundir llegada con intercambio completo.",
+            "soft": "Revisa qué decisiones necesita el otro lado antes de enviar la respuesta del servicio.",
+            "sharp": "La ida no alquiló automáticamente el regreso, demonios; comprueba también la salida de la otra sede."
+          }
+        },
+        {
+          "prompt": "¿Qué sugiere que funcionen paquetes pequeños y fallen transferencias mayores?",
+          "scenario": "El camino incluye encapsulación y aún no se han medido tamaños disponibles, mensajes de control ni otras condiciones del servicio.",
+          "options": [
+            "Una prueba definitiva de que toda clave criptográfica está comprometida",
+            "Una hipótesis sobre tamaño o MTU, entre otras, que necesita comprobación",
+            "Una obligación universal de reducir siempre exactamente cien bytes"
+          ],
+          "answer": 1,
+          "explanation": "El patrón puede orientar a tamaño y descubrimiento de MTU, pero no confirma una causa única ni una reducción fija válida para todas las combinaciones de túnel.",
+          "wrongExplanations": [
+            "El tamaño observado no demuestra robo de claves ni autentica una actividad hostil; esa atribución requiere otras evidencias que el escenario no proporciona.",
+            null,
+            "La sobrecarga depende de mecanismos y condiciones concretos; prescribir una cifra universal sin medición no responde al diagnóstico del camino ni a su configuración real."
+          ],
+          "aoi": {
+            "question": "El patrón nos da una pista de tamaño; todavía no nos entrega un diagnóstico firmado.",
+            "hint": "Formula una prueba que relacione encapsulación, tamaños y evidencia del camino pertinente.",
+            "correct": "Usaste el síntoma para orientar una hipótesis sin convertirla en receta universal.",
+            "soft": "Pregunta qué observación confirmaría esa causa frente a otras posibilidades de servicio.",
+            "sharp": "No recetes cien bytes por superstición, joder; mide qué tamaño y mecanismo están interviniendo."
+          }
+        },
+        {
+          "prompt": "¿Autenticar al gateway remoto concede a cualquier usuario todas las acciones internas?",
+          "scenario": "El diseño verifica al par del túnel, pero los recursos mantienen cuentas, permisos y controles de aplicación separados.",
+          "options": [
+            "Sí, la identidad del par reemplaza cualquier política de usuario y recurso",
+            "Sí, toda persona de esa sede obtiene administración universal de las aplicaciones",
+            "No, identidad del par y autorización funcional responden preguntas diferentes"
+          ],
+          "answer": 2,
+          "explanation": "Verificar al extremo del túnel no acredita privilegios de todas las personas o acciones; los recursos necesitan sus propias decisiones de identidad y autorización pertinentes.",
+          "wrongExplanations": [
+            "La identidad del gateway no contiene por sí sola todas las reglas de negocio o usuarios; sustituirlas elimina controles que el diseño mantiene expresamente separados.",
+            "La ubicación en la sede no justifica administración universal y puede incluir cuentas con necesidades distintas; sus privilegios requieren autorización propia del recurso.",
+            null
+          ],
+          "aoi": {
+            "question": "El par demostró quién es; los usuarios todavía deben demostrar qué les corresponde hacer.",
+            "hint": "Separa autenticación del extremo protegido y permisos sobre datos o funciones de aplicación.",
+            "correct": "Conservaste autorización de recursos junto con la protección que aporta el enlace entre sedes.",
+            "soft": "Revisa qué identidad verificó realmente el mecanismo y qué decisiones siguen siendo de la aplicación.",
+            "sharp": "El gateway no firmó carnets de administrador para toda la sede, cielo; conserva los permisos del recurso."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El control negociaba y faltaba la selección de un prefijo",
+          "scenario": "La consola informa negociación entre pares, pero el nuevo segmento de servidores no aparece en la selección protegida pertinente del diseño. El informe da por validado el servicio de ese segmento solo por el indicador general.",
+          "explanation": "La negociación de control no acredita cobertura de todos los prefijos. Debe revisarse la selección efectiva de ambos extremos y el recorrido del servicio, conservando rutas y permisos apropiados; el indicador no sustituye evidencia de datos protegidos y respuesta del segmento nuevo."
+        },
+        {
+          "title": "Las dos sedes que usaban el mismo bloque",
+          "scenario": "Ambas redes internas utilizan 10.44.1.0/24 y los clientes necesitan distinguir un recurso local de otro remoto con direcciones que se solapan. La propuesta espera que IPsec cambie automáticamente las direcciones para resolverlo.",
+          "explanation": "El túnel no realiza por sí solo una renumeración que elimine ese conflicto. El diseño debe resolver direccionamiento y representación de recursos mediante planificación o mecanismos deliberados y compatibles, validando rutas, selección y retorno en vez de atribuir una corrección automática al cifrado."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Dos sedes ficticias conectan redes internas distintas mediante gateways IPsec. La consola informa negociación disponible, pero debemos verificar qué tráfico está protegido y si el servicio completa su recorrido sin confundir pares del túnel con destinos internos.",
+      "scenario": "Dos sedes ficticias conectan redes internas distintas mediante gateways IPsec. La consola informa negociación disponible, pero debemos verificar qué tráfico está protegido y si el servicio completa su recorrido sin confundir pares del túnel con destinos internos.",
+      "steps": [
+        "Distingue direcciones de los gateways y redes internas protegidas.",
+        "Comprueba identidad del par y asociaciones pertinentes.",
+        "Relaciona selección de tráfico, rutas y políticas de ambos extremos.",
+        "Sigue datos y respuesta con contadores y observaciones acotadas.",
+        "Valida tamaños representativos y documenta límites o cambios del diseño."
+      ],
+      "sourceIds": [
+        "net-ipsec",
+        "net-ikev2",
+        "net-firewall"
+      ],
+      "aoi": {
+        "intro": "El túnel conecta gateways, cariño; los usuarios todavía buscan sus recursos internos concretos.",
+        "theory0": "Cabecera exterior e interior cuentan trayectos relacionados, pero no llevan los mismos papeles.",
+        "theory1": "La negociación se presentó bien; ahora tiene que demostrar cobertura y datos del servicio.",
+        "theory2": "Cada sede necesita un camino de regreso que corresponda a sus direcciones y políticas.",
+        "theory3": "El tamaño también importa al encapsular, pero vamos a comprobarlo sin recetar un número mágico.",
+        "case0": "Ese prefijo nuevo quedó fuera de la selección aunque el indicador general siga sonriendo.",
+        "case1": "Las dos sedes repitieron bloque; el cifrado no salió a renumerarlas por iniciativa propia.",
+        "pass": "Ya verificas pares, selección y servicio. Esa forma de conectar sedes me parece bastante encantadora.",
+        "review": "Repasemos qué negoció y qué tráfico protegió antes de dar toda la sede por validada."
+      }
+    },
+    {
+      "id": "network-defense-host",
+      "title": "Firewall del host: proteger el último tramo",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Reconocer dónde se aplica cada decisión",
+          "body": "Un firewall de red controla tráfico que atraviesa el punto donde está situado. Un firewall del host aplica controles en el propio equipo, según sus capacidades y política. Esta diferencia importa cuando dos dispositivos comparten segmento y su comunicación no cruza el gateway que contiene el filtro perimetral. También importa cuando un portátil abandona la oficina: la política del equipo puede acompañarlo aunque ya no atraviese la infraestructura corporativa. Ninguno de esos hechos demuestra que el endpoint sea invulnerable ni que el perímetro resulte inútil. Son posiciones de control con alcances complementarios. En nuestra maqueta, un servidor admite consultas desde una aplicación autorizada, pero no necesita administración desde todos los vecinos de su VLAN. Primero dibujamos el camino efectivo y después identificamos qué dispositivo toma cada decisión. Una regla instalada en otro recorrido no protege mágicamente este intercambio. El inventario debe indicar sistema, interfaces, servicios y responsables para saber qué política revisar y quién puede cambiarla sin perder la trazabilidad del acceso."
+        },
+        {
+          "title": "Vincular reglas a servicios y contextos concretos",
+          "body": "La necesidad se expresa mediante origen permitido, destino, servicio y condiciones relevantes. Algunas soluciones del host pueden incorporar identidad de aplicación o perfiles asociados al contexto de red; otras ofrecen criterios diferentes. No copies nombres de menús como si todas las plataformas implementaran lo mismo. Un perfil más restrictivo en una red compartida puede reducir exposición, pero su selección efectiva debe comprobarse: una etiqueta amistosa del Wi-Fi no acredita confianza. También hay que distinguir un proceso que escucha en todas las interfaces de otro ligado a una dirección concreta. Permitir un puerto en el firewall no inicia automáticamente un servidor, y detener un servidor no equivale a verificar la política de filtrado. Si una aplicación cambia de ejecutable o ruta tras actualizarse, revisa cómo afecta a reglas que dependan de esa identidad. El objetivo es conservar el servicio necesario con una excepción delimitada, explicada y mantenible; no desbloquear toda la máquina para evitar identificar qué flujo requiere realmente la aplicación."
+        },
+        {
+          "title": "Comprobar entrada, salida y ambas familias",
+          "body": "La entrada suele concentrar atención, pero una política también puede controlar salidas según requisitos de la organización. Autorizar todo el tráfico saliente no asegura que una aplicación comprometida solo hable con destinos legítimos. Restringirlo sin inventario tampoco garantiza seguridad: podría interrumpir actualizaciones, resolución de nombres o servicios esenciales. Define el comportamiento esperado y prueba dependencias representativas. Cuando existe doble pila, comprueba que el alcance incluye IPv4 e IPv6 según el diseño; aprobar una familia no acredita la otra. La interpretación de reglas de respuesta depende de si el mecanismo mantiene estado y de cómo la plataforma resuelve prioridades. El laboratorio utiliza decisiones declaradas, sin asumir una sintaxis universal. Para una consulta permitida, observa aplicación, conexión y registro pertinente. Para una consulta prohibida, documenta el rechazo esperado y evita inferirlo solo de un tiempo de espera, que también puede originarse en caída del servicio o problemas del camino. La combinación permite evaluar disponibilidad y restricción con evidencias distintas."
+        },
+        {
+          "title": "Desplegar sin perder el control administrativo",
+          "body": "Una modificación del firewall local puede cortar la sesión con la que se administra el equipo. Prepara una vía de recuperación autorizada, guarda la configuración conocida y define qué resultados obligarían a revertir. Cambia una excepción concreta y verifica su efecto antes de acumular más modificaciones. Desactivar por completo la protección puede ocultar la regla defectuosa y ampliar exposición de otros servicios; no constituye una solución duradera al fallo observado. Los registros deben conservar contexto suficiente para relacionar regla, sentido y servicio, con acceso restringido y sin recopilar contenido innecesario. Una vez validado el cambio, registra responsable, motivo, fecha de revisión y resultado de las pruebas. Revisa también las excepciones antiguas: un permiso que fue útil para una migración puede seguir abierto cuando el proyecto ya terminó. El cierre demuestra qué comunicaciones funcionan, cuáles se restringen y qué límites siguen presentes. El firewall del host complementa actualizaciones, identidad y permisos de aplicación, sin sustituir esas defensas ni acreditar por sí solo la salud del dispositivo."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué filtro perimetral protege automáticamente un intercambio que no lo atraviesa?",
+          "scenario": "Dos equipos de la misma VLAN intercambian tráfico local y no se ha situado otro control en ese trayecto.",
+          "options": [
+            "Ninguno por su mera existencia; hay que identificar un punto de control efectivo",
+            "Cualquier regla del gateway se aplica aunque el tráfico nunca llegue allí",
+            "El nombre de la VLAN convierte al gateway en observador obligatorio"
+          ],
+          "answer": 0,
+          "explanation": "Una política necesita un punto de aplicación en el recorrido pertinente; el filtro que no recibe ese intercambio no decide automáticamente su autorización local.",
+          "wrongExplanations": [
+            null,
+            "El escenario excluye ese paso por el gateway; la presencia de una regla allí no hace que intercepte cualquier conversación entre equipos vecinos.",
+            "La etiqueta de la VLAN no redirige obligatoriamente cada trama hacia un filtro perimetral; debe comprobarse la arquitectura y su aplicación real de controles."
+          ],
+          "aoi": {
+            "question": "Aquí los vecinos se hablan sin pasar por la recepción que querías usar como guardia.",
+            "hint": "Sigue físicamente el intercambio y localiza dónde puede tomarse una decisión de filtrado.",
+            "correct": "Identificaste que un control necesita participar realmente en el recorrido que pretende proteger.",
+            "soft": "Revisa qué dispositivo recibe ese tráfico antes de adjudicarle poderes sobre la conversación.",
+            "sharp": "El gateway no es un vigilante omnipresente, cielo; si no ve el tráfico, esa regla no lo filtra."
+          }
+        },
+        {
+          "prompt": "¿Abrir un puerto local pone en marcha por sí mismo el servidor?",
+          "scenario": "La política permite TCP hacia un puerto, pero el proceso correspondiente sigue detenido y no aparece ninguna escucha activa.",
+          "options": [
+            "Sí, el firewall crea automáticamente el proceso de aplicación necesario",
+            "No, permitir tráfico y ejecutar una aplicación son condiciones diferentes",
+            "Sí, una regla convierte cualquier puerto en servidor disponible"
+          ],
+          "answer": 1,
+          "explanation": "La regla permite un tratamiento de tráfico, mientras que la disponibilidad requiere un proceso escuchando y otras condiciones pertinentes; son comprobaciones separadas del mismo servicio.",
+          "wrongExplanations": [
+            "Permitir una conexión no crea el software ni inicia su ejecución; el escenario mantiene detenido al proceso que debería atender las solicitudes.",
+            null,
+            "Un puerto autorizado no contiene por sí mismo una aplicación ejecutándose; afirmar disponibilidad omite la ausencia explícita de una escucha en el host."
+          ],
+          "aoi": {
+            "question": "La regla abrió el paso, pero todavía no hay nadie atendiendo detrás de esa puerta.",
+            "hint": "Distingue la decisión del filtro de la presencia efectiva del proceso que responde.",
+            "correct": "Conservaste separadas autorización de red y ejecución del servicio que necesita el usuario.",
+            "soft": "Mira qué evidencia de escucha falta aunque el permiso ya esté escrito.",
+            "sharp": "El firewall no contrató un servidor imaginario, cariño; comprueba también el proceso que debe escuchar."
+          }
+        },
+        {
+          "prompt": "¿Qué evidencia falta al aprobar solamente IPv4 en un host de doble pila?",
+          "scenario": "El requisito incluye conexiones IPv4 e IPv6, pero todas las pruebas realizadas usaron direcciones de la primera familia.",
+          "options": [
+            "Nada, ambas familias reciben necesariamente idéntica política y resultado",
+            "Basta cambiar el nombre visible de la red a uno confiable",
+            "Verificar los flujos y controles pertinentes de IPv6 según el diseño"
+          ],
+          "answer": 2,
+          "explanation": "El resultado observado solo cubre la familia utilizada; una configuración de doble pila requiere verificar también el alcance efectivo de IPv6 y sus restricciones previstas.",
+          "wrongExplanations": [
+            "Las políticas o recorridos pueden diferir entre familias y el escenario no demuestra equivalencia; extrapolar pruebas IPv4 deja sin validar el requisito restante.",
+            "Un nombre de red no modifica ni acredita las decisiones de filtrado sobre IPv6; faltan pruebas concretas de los flujos que se deben permitir o rechazar.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestra lista incluye dos familias y solo una ha pasado por la mesa de pruebas.",
+            "hint": "Relaciona cada parte del requisito con la familia que realmente transportó la conexión ensayada.",
+            "correct": "Detectaste el requisito pendiente sin inventar equivalencia entre familias que no fueron comprobadas.",
+            "soft": "Pregunta qué parte del servicio sigue sin una observación directa de su comportamiento.",
+            "sharp": "Probar IPv4 no firma automáticamente el examen de IPv6, tesoro; a esa familia también la revisamos."
+          }
+        },
+        {
+          "prompt": "¿Qué preparación reduce el riesgo de perder administración al cambiar reglas locales?",
+          "scenario": "La sesión remota actual es la única vía disponible y el cambio podría bloquear su propio tráfico de gestión.",
+          "options": [
+            "Preparar recuperación autorizada, respaldo y criterios de reversión antes de aplicar",
+            "Aplicar primero y borrar cualquier copia de la política anterior",
+            "Desactivar todos los controles de manera permanente para conservar acceso"
+          ],
+          "answer": 0,
+          "explanation": "Una vía de recuperación y una configuración conocida permiten responder a un bloqueo; deben existir antes de cambiar la política que sostiene la propia administración remota.",
+          "wrongExplanations": [
+            null,
+            "Eliminar la referencia anterior y actuar sin recuperación agrava el riesgo descrito; después del bloqueo podría no existir un modo autorizado de corregir la política.",
+            "La desactivación permanente amplía exposición y evita resolver la excepción concreta; no constituye una preparación proporcional ni una política operativa mantenible para el equipo."
+          ],
+          "aoi": {
+            "question": "Antes de cerrar esa puerta quiero saber dónde guardaste la llave de emergencia autorizada.",
+            "hint": "Piensa cómo corregirías la política si la misma sesión de configuración dejara de funcionar.",
+            "correct": "Preparaste recuperación antes del cambio que podría interrumpir tu acceso al equipo.",
+            "soft": "Revisa qué harías después del bloqueo y qué recurso debes preparar previamente.",
+            "sharp": "No cierres tu propia consola y luego improvises, joder; prepara la recuperación antes de tocar reglas."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión permite un tiempo de espera de una conexión que debe prohibirse?",
+          "scenario": "La actividad no muestra registros del filtro y tampoco confirma que el servicio estuviera disponible durante la prueba negativa.",
+          "options": [
+            "Demuestra por sí solo que la regla exacta rechazó el intento",
+            "Es compatible con varias causas; falta evidencia que atribuya el rechazo al control",
+            "Demuestra que el firewall ejecutó correctamente todas las aplicaciones locales"
+          ],
+          "answer": 1,
+          "explanation": "La falta de respuesta puede originarse en filtrado, servicio detenido u otros problemas; sin contexto adicional no acredita que actuara la regla específica que se pretendía validar.",
+          "wrongExplanations": [
+            "El resultado no distingue caída de aplicación, camino o decisión de política; atribuirlo exclusivamente a una regla sobrepasa las observaciones disponibles del ejercicio.",
+            null,
+            "Un tiempo de espera no acredita ejecución correcta de aplicaciones y no aporta una prueba general del host; solo describe el resultado limitado del intento realizado."
+          ],
+          "aoi": {
+            "question": "El silencio del servidor no vino con una nota que explique exactamente quién lo causó.",
+            "hint": "Busca una observación del control que diferencie rechazo previsto de indisponibilidad accidental.",
+            "correct": "Mantuviste la atribución dentro de lo que realmente demuestra la prueba negativa.",
+            "soft": "Recuerda qué otras causas podrían dejar sin respuesta a ese mismo intento de conexión.",
+            "sharp": "El silencio no es una confesión del firewall, cielo; necesitamos evidencia de la decisión concreta."
+          }
+        },
+        {
+          "prompt": "¿Cómo se mantiene una excepción local que nació para una migración temporal?",
+          "scenario": "La migración terminó y una regla amplia sigue activa sin dueño, revisión programada ni necesidad actual documentada.",
+          "options": [
+            "Se conserva para siempre porque alguna vez resultó útil en el proyecto",
+            "Se cambia su nombre y eso demuestra automáticamente que sigue siendo necesaria",
+            "Se revisan necesidad, alcance y responsable para retirarla o delimitarla con pruebas"
+          ],
+          "answer": 2,
+          "explanation": "Los permisos deben corresponder a necesidades actuales y tener responsables; revisar y validar la excepción permite reducir exposición sin eliminar a ciegas una dependencia todavía necesaria.",
+          "wrongExplanations": [
+            "Una utilidad histórica no demuestra necesidad presente y dejar reglas sin revisión acumula exposición; el escenario exige comprobar el servicio y su dependencia actuales.",
+            "Renombrar no modifica el alcance ni aporta evidencia funcional del permiso; la revisión requiere verificar necesidad, responsable y resultados del comportamiento esperado.",
+            null
+          ],
+          "aoi": {
+            "question": "Esa excepción lleva más tiempo alojada que el proyecto que supuestamente justificaba su presencia.",
+            "hint": "Relaciona el permiso con una necesidad vigente antes de decidir su mantenimiento o retirada.",
+            "correct": "Propusiste una revisión verificable en vez de regalar permanencia eterna a una excepción temporal.",
+            "soft": "Mira qué datos faltan para justificar hoy un permiso creado bajo otras condiciones.",
+            "sharp": "La migración ya se fue, cariño; su excepción no obtiene residencia eterna por caer simpática."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos vecinos que nunca visitaban el perímetro",
+          "scenario": "El servidor y un portátil de pruebas comparten VLAN. El equipo cree que una regla en el gateway perimetral bloqueará automáticamente la administración entre ambos, aunque el recorrido local no atraviesa ese gateway.",
+          "explanation": "La política solo se aplica donde existe un punto de control pertinente. Debe verificarse el recorrido local y configurar restricciones en el host u otra arquitectura que realmente vea ese tráfico, manteniendo únicamente la administración autorizada y probando también un origen que deba rechazarse."
+        },
+        {
+          "title": "La excepción que cerró la propia consola",
+          "scenario": "La administradora modifica remotamente reglas locales y propone aplicarlas sin respaldo ni acceso alternativo. Una prioridad incorrecta podría bloquear la misma sesión utilizada para corregirlas.",
+          "explanation": "Antes de aplicar debe conservar una política conocida y una recuperación autorizada, además de criterios de reversión. La comprobación debe abarcar el servicio requerido y la continuidad administrativa, evitando que una excepción mal ordenada deje al equipo inaccesible sin un procedimiento acordado."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El portátil ficticio de una analista cambia entre oficina, casa y una red compartida. Un servidor interno también recibe conexiones de equipos de su misma VLAN. Aoi propone revisar qué controles actúan en cada recorrido sin suponer que todo pasa por el gateway perimetral.",
+      "scenario": "El portátil ficticio de una analista cambia entre oficina, casa y una red compartida. Un servidor interno también recibe conexiones de equipos de su misma VLAN. Aoi propone revisar qué controles actúan en cada recorrido sin suponer que todo pasa por el gateway perimetral.",
+      "steps": [
+        "Dibuja el recorrido real entre origen y servicio.",
+        "Identifica la política efectiva del host y su contexto de red.",
+        "Define permisos mínimos de entrada y salida según la necesidad.",
+        "Prueba un flujo autorizado y otro que debe rechazarse.",
+        "Conserva administración de emergencia, registros y recuperación del cambio."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-zero-trust"
+      ],
+      "aoi": {
+        "intro": "El portátil salió de la oficina; sus puertos no necesitan salir de fiesta con cualquiera.",
+        "theory0": "Dibujemos por dónde circula esa conexión antes de presumir que la vigila el perímetro.",
+        "theory1": "Una excepción pequeña y entendible resulta mucho más atractiva que abrirlo todo por pereza.",
+        "theory2": "Miremos también las salidas y las dos familias, que las omisiones saben colarse discretamente.",
+        "theory3": "Guarda una forma de volver a entrar antes de cerrar tu propia puerta administrativa.",
+        "case0": "Esos dos vecinos se hablaban directamente; el gateway no estaba invitado a la conversación.",
+        "case1": "Tu sesión necesita una salida de emergencia antes de estrenar reglas, encanto.",
+        "pass": "Ahora delimitas servicios y conservas recuperación; esa mezcla de precisión y prudencia me gusta.",
+        "review": "Repasemos el recorrido y el permiso específico antes de culpar al equipo entero."
+      }
+    },
+    {
+      "id": "network-defense-deteccion",
+      "title": "IDS e IPS: alertar, investigar y bloquear con criterio",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Diferenciar observación y capacidad de intervención",
+          "body": "Un sistema de detección de intrusiones analiza eventos o tráfico para señalar actividad que merece atención. Un sistema de prevención incorpora capacidades para intentar detener actividad según su posición, configuración y mecanismos. Las etiquetas comerciales no sustituyen comprobar el modo efectivo: un producto capaz de bloquear puede estar funcionando solamente como observador. Un sensor que recibe una copia de tráfico no está necesariamente en el camino para descartar el paquete original. En cambio, un dispositivo situado en línea puede introducir decisiones sobre el flujo y también convertirse en una dependencia de disponibilidad. Deben conocerse su comportamiento ante fallos, capacidad y procedimiento de recuperación. El laboratorio representa esos modos sin exigir marcas concretas ni instrucciones para intervenir redes ajenas. El objetivo consiste en reconocer qué observó el control, qué acción podía ejecutar y cuál ejecutó realmente. Una alerta registrada acredita una detección del mecanismo; no demuestra por sí sola que el flujo se bloqueara, ni que el servicio quedara protegido frente a todas las variantes posibles de una amenaza."
+        },
+        {
+          "title": "Interpretar una señal sin convertirla en veredicto",
+          "body": "Una firma busca patrones definidos; un enfoque basado en anomalías compara comportamientos con referencias y criterios de desviación. Ninguno elimina automáticamente errores. Un falso positivo señala como problemático algo que, tras investigarse, no corresponde a la amenaza planteada. Un falso negativo deja sin detectar una actividad que sí debía identificarse. La ausencia de alertas no prueba ausencia de incidentes. Para analizar una señal necesitamos tiempo, origen, destino, servicio, regla y evidencia pertinente, además del contexto operativo. Una tarea autorizada de inventario puede producir muchas conexiones y parecer sospechosa si se ignora el calendario. Esa explicación debe contrastarse con alcance y registros; no basta que alguien recuerde vagamente una prueba. Tampoco conviene atribuir intención a una persona solo porque una dirección aparezca en un evento. Traducciones, equipos compartidos y cambios de asignación pueden afectar la atribución. La investigación conserva observaciones separadas de hipótesis y registra qué dato permitiría confirmar o descartar cada interpretación relevante sin presentar conjeturas como hechos."
+        },
+        {
+          "title": "Entender las zonas que el sensor no ve",
+          "body": "La cobertura depende de ubicación, configuración y entrega de información. Una copia de tráfico incompleta puede perder paquetes y dificultar reconstrucciones; un sensor de un segmento no ve automáticamente todos los demás. El cifrado puede limitar la inspección del contenido por un observador intermedio, aunque todavía existan metadatos disponibles según el protocolo y el punto de observación. No significa que el cifrado sea un fallo ni que cualquier alerta permita leer mensajes protegidos. Los eventos del endpoint y la aplicación pueden complementar información sin suponer visibilidad universal. Cuando se recopilan datos, limita alcance, acceso y conservación a la necesidad autorizada. Las credenciales y contenidos sensibles no deben terminar indiscriminadamente en informes. También hay que vigilar la salud del sensor: un tablero vacío podría reflejar falta de actividad, un colector caído o un enlace de copia incorrecto. Para interpretar silencio, verifica primero que la fuente recibe y procesa señales esperadas mediante un ensayo benigno acordado. Esa comprobación añade evidencia de funcionamiento, aunque no demuestre detección de toda amenaza imaginable."
+        },
+        {
+          "title": "Ajustar respuestas con pruebas y responsabilidades",
+          "body": "Activar bloqueo sobre una regla ruidosa puede interrumpir servicios legítimos. Antes de promoverla a prevención, revisa precisión observada, impacto posible, excepciones necesarias y responsables de respuesta. Es útil evaluar con eventos benignos conocidos y señales simuladas de laboratorio, registrando resultados y límites. Una excepción debe ser específica, justificada y revisable; silenciar toda una categoría para ocultar una alerta molesta puede eliminar señales valiosas. Si la evidencia sostiene un incidente, la contención sigue el procedimiento autorizado y considera alcance, continuidad y preservación pertinente. No todas las alertas requieren aislar inmediatamente una red completa. La urgencia y la incertidumbre se comunican explícitamente para que el equipo pueda decidir con criterio. El cierre documenta evidencia, conclusión, acciones, efectos y ajustes pendientes. Las métricas deben considerar calidad de detección y capacidad de investigación, no solo contar alertas como si más volumen significara más protección. La tecnología ayuda a observar y actuar, pero su utilidad depende de cobertura, contexto, mantenimiento y un proceso humano capaz de responder a lo que realmente encuentra."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué demuestra una alerta de un sensor configurado únicamente para observar?",
+          "scenario": "El sensor recibe una copia de tráfico y registra una coincidencia sin acción externa de bloqueo declarada.",
+          "options": [
+            "Que detectó una condición según su mecanismo, sin probar que descartó el tráfico original",
+            "Que bloqueó necesariamente todo paquete que provocó cualquier coincidencia",
+            "Que no es necesario investigar contexto porque una firma acredita intención"
+          ],
+          "answer": 0,
+          "explanation": "El modo observador permite generar señales pero no acredita descarte del paquete original; la investigación debe verificar contexto y acciones efectivamente realizadas por los controles.",
+          "wrongExplanations": [
+            null,
+            "El escenario no sitúa al sensor como filtro del paquete original ni declara bloqueo externo; atribuir prevención automática contradice su modo de funcionamiento.",
+            "Una coincidencia puede tener explicaciones diferentes y no demuestra intención personal; el contexto y las evidencias siguen siendo necesarios para determinar qué ocurrió."
+          ],
+          "aoi": {
+            "question": "El sensor nos contó lo que vio, pero no dijo haber detenido ese paquete.",
+            "hint": "Relaciona su posición y configuración con las acciones que realmente puede ejecutar.",
+            "correct": "Distinguiste la señal registrada de una prevención que el caso nunca demostró.",
+            "soft": "Mira si la evidencia describe una observación o una acción efectiva sobre el flujo.",
+            "sharp": "La alarma no se convirtió en barrera por gritar fuerte, encanto; revisa el modo del sensor."
+          }
+        },
+        {
+          "prompt": "¿Qué interpretación corresponde a una actividad legítima marcada como amenaza tras investigarla?",
+          "scenario": "El análisis confirma un inventario autorizado dentro de su alcance y concluye que la alerta no representa la amenaza señalada.",
+          "options": [
+            "Es un falso negativo porque el sensor sí emitió una alerta",
+            "Es un falso positivo respecto a la amenaza que se estaba evaluando",
+            "Es prueba automática de un compromiso confirmado en todos los destinos"
+          ],
+          "answer": 1,
+          "explanation": "Al marcar como amenaza una actividad que la investigación considera legítima, la señal constituye un falso positivo respecto a ese criterio; no demuestra un incidente confirmado.",
+          "wrongExplanations": [
+            "Un falso negativo implica falta de detección de actividad que debía identificarse; aquí sí existe una señal y el problema es su interpretación como amenaza.",
+            null,
+            "El análisis del caso confirma actividad autorizada dentro del alcance, por lo que extenderlo a compromiso de todos los destinos contradice la evidencia proporcionada."
+          ],
+          "aoi": {
+            "question": "Nuestro inventario hizo ruido, pero la investigación ya comprobó que seguía el permiso acordado.",
+            "hint": "Piensa si el mecanismo omitió una amenaza o señaló indebidamente una actividad legítima.",
+            "correct": "Clasificaste la detección errónea sin confundir una señal excesiva con una amenaza omitida.",
+            "soft": "Revisa qué resultado confirmó la investigación y si existió o faltó una alerta.",
+            "sharp": "El sensor acusó de más esta vez, cielo; no lo llames amenaza invisible cuando sí levantó la voz."
+          }
+        },
+        {
+          "prompt": "¿Un panel sin alertas acredita ausencia de incidentes en toda la organización?",
+          "scenario": "Todavía no se verifica si el sensor recibe tráfico ni si cubre otros segmentos donde existen servicios relevantes.",
+          "options": [
+            "Sí, un panel vacío demuestra protección completa de cualquier segmento",
+            "Sí, porque todo cifrado elimina automáticamente cualquier actividad sospechosa",
+            "No, hay límites de cobertura, posibles fallos y amenazas no detectadas"
+          ],
+          "answer": 2,
+          "explanation": "El silencio puede relacionarse con falta de observación o detección y no cubre automáticamente segmentos ajenos; se necesitan comprobaciones de salud, alcance y otras evidencias pertinentes.",
+          "wrongExplanations": [
+            "La ausencia de eventos no demuestra que el sensor funcione ni observe todos los servicios; esa conclusión omite precisamente las verificaciones pendientes del escenario.",
+            "El cifrado protege propiedades concretas del transporte pero no elimina toda amenaza; además puede limitar contenidos observables, sin convertir el panel vacío en garantía global.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese tablero está muy tranquilo; primero averigüemos si realmente está escuchando a alguien.",
+            "hint": "Distingue ausencia de señales visibles y evidencia suficiente sobre funcionamiento y cobertura del control.",
+            "correct": "Reconociste que el silencio requiere contexto y no equivale a una organización libre de incidentes.",
+            "soft": "Pregunta qué segmentos y condiciones de recepción todavía no se han comprobado.",
+            "sharp": "Un tablero mudo no firma un certificado de paz mundial, joder; comprueba que recibe lo que debe."
+          }
+        },
+        {
+          "prompt": "¿Qué comprobación ayuda a valorar un posible inventario autorizado tras una alerta?",
+          "scenario": "Coinciden aproximadamente origen y fecha con una tarea aprobada, pero aún no se compararon sus destinos ni el horario preciso.",
+          "options": [
+            "Contrastar alcance, tiempos y registros de la actividad antes de cerrar la investigación",
+            "Ignorar todos los eventos de ese origen para siempre por coincidir la fecha",
+            "Acusar inmediatamente a la persona del equipo por el nombre de la firma"
+          ],
+          "answer": 0,
+          "explanation": "La coincidencia inicial proporciona una hipótesis que debe contrastarse con el alcance y los tiempos autorizados; así puede sostenerse una conclusión documentada sobre la actividad observada.",
+          "wrongExplanations": [
+            null,
+            "Una excepción ilimitada eliminaría visibilidad futura y no comprueba las conexiones actuales; un permiso concreto no autoriza automáticamente toda actividad de ese origen.",
+            "La alerta no acredita identidad personal ni intención y el escenario admite una explicación legítima; acusar sin contraste supera la evidencia disponible."
+          ],
+          "aoi": {
+            "question": "El calendario da una pista, pero todavía debemos ver si los destinos estaban invitados.",
+            "hint": "Compara la actividad observada con los límites concretos de la autorización existente.",
+            "correct": "Pediste los datos necesarios para confirmar alcance en lugar de absolver o acusar por intuición.",
+            "soft": "Mira qué coincidencias ya existen y cuáles faltan para sostener el cierre.",
+            "sharp": "Una fecha parecida no bendice cada conexión, cariño; contrasta también destinos y ventana exacta."
+          }
+        },
+        {
+          "prompt": "¿Qué conviene evaluar antes de convertir una regla ruidosa en bloqueo automático?",
+          "scenario": "La regla produjo alertas legítimas y falsas, y el servicio afectado es importante para el trabajo diario.",
+          "options": [
+            "Solo su nombre comercial, porque eso acredita precisión y ausencia de impacto",
+            "Precisión observada, impacto, excepciones delimitadas y procedimiento de recuperación",
+            "Únicamente el número de alertas, sin comprobar qué representan"
+          ],
+          "answer": 1,
+          "explanation": "La prevención puede afectar tráfico legítimo, por lo que necesita evaluar calidad de señal, consecuencias y recuperación; el volumen o la etiqueta comercial no sustituyen esas verificaciones.",
+          "wrongExplanations": [
+            "Un nombre no demuestra el comportamiento de esta regla con el servicio concreto; la decisión requiere evidencia de precisión y efectos operativos en su despliegue.",
+            null,
+            "Contar señales sin revisar su significado puede premiar ruido y provocar bloqueos innecesarios; falta relacionar las alertas con actividad real y continuidad del servicio."
+          ],
+          "aoi": {
+            "question": "Si la regla va a cortar conversaciones, quiero saber a quién podría dejar hablando solo.",
+            "hint": "Considera tanto la amenaza que pretende frenar como el servicio legítimo que podría interrumpir.",
+            "correct": "Relacionaste la decisión preventiva con evidencia de precisión y consecuencias del cambio.",
+            "soft": "Revisa qué información faltaría para recuperar el servicio si la regla bloqueara de más.",
+            "sharp": "Más alertas no hacen infalible a una regla, tesoro; antes de darle tijeras revisamos dónde va a cortar."
+          }
+        },
+        {
+          "prompt": "¿Qué límite introduce el cifrado para un observador intermedio de red?",
+          "scenario": "El tráfico está cifrado y el sensor no dispone de un mecanismo autorizado que le proporcione su contenido en claro.",
+          "options": [
+            "Puede leer cualquier contraseña solo porque conoce la dirección del servidor",
+            "No puede observar absolutamente ningún dato de la comunicación bajo ninguna condición",
+            "Puede limitar inspección del contenido, aunque existan metadatos según el protocolo"
+          ],
+          "answer": 2,
+          "explanation": "La visibilidad depende del punto y del protocolo; el contenido cifrado puede no estar disponible para inspección, mientras ciertos metadatos siguen siendo observables sin revelar todo el mensaje.",
+          "wrongExplanations": [
+            "Conocer una dirección no descifra por sí mismo credenciales ni contenido; el escenario no declara un mecanismo que entregue esos datos al observador.",
+            "El cifrado no elimina universalmente todos los metadatos del transporte y del contexto; afirmar invisibilidad absoluta también excede las condiciones descritas para el sensor.",
+            null
+          ],
+          "aoi": {
+            "question": "El sobre protege el mensaje, aunque todavía podamos observar parte de su recorrido y tamaño.",
+            "hint": "Separa contenido protegido de los metadatos que el punto de observación podría registrar.",
+            "correct": "Describiste el límite de inspección sin inventar lectura completa ni invisibilidad absoluta.",
+            "soft": "Revisa si estás confundiendo no leer el mensaje con no observar ningún indicio del intercambio.",
+            "sharp": "La IP no es una llave de descifrado, cielo; distingue el contenido del rastro que aún puede verse."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Una alerta y ningún paquete descartado",
+          "scenario": "El producto dispone de funciones de prevención, pero el sensor recibe solamente una copia del tráfico y su configuración actual registra eventos sin ordenar una acción de bloqueo externa.",
+          "explanation": "La capacidad anunciada del producto no demuestra prevención en este despliegue. Debe verificarse el modo efectivo y la acción registrada; en el escenario la señal informa una detección, sin acreditar que el paquete original haya sido descartado por ese sensor."
+        },
+        {
+          "title": "El inventario que parecía una intrusión",
+          "scenario": "Una alerta muestra conexiones a muchos equipos durante la ventana de un inventario aprobado. El origen coincide, pero todavía falta comparar destinos y horario exactos con el alcance autorizado.",
+          "explanation": "El calendario proporciona una hipótesis legítima que necesita contraste, no una absolución automática. Comparar alcance, tiempos y registros permite distinguir actividad esperada de conexiones ajenas al permiso, documentando la conclusión sin borrar la regla completa para dejar de verla."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Un sensor ficticio informa de una secuencia de conexiones poco habitual hacia un servidor de pruebas. El equipo necesita interpretar la alerta, revisar qué tráfico pudo observar y decidir una respuesta proporcionada sin declarar una intrusión únicamente por el nombre de una firma.",
+      "scenario": "Un sensor ficticio informa de una secuencia de conexiones poco habitual hacia un servidor de pruebas. El equipo necesita interpretar la alerta, revisar qué tráfico pudo observar y decidir una respuesta proporcionada sin declarar una intrusión únicamente por el nombre de una firma.",
+      "steps": [
+        "Identifica posición, modo y cobertura del sensor.",
+        "Lee la alerta junto con sus datos de contexto.",
+        "Contrasta actividad esperada y evidencias de otros sistemas.",
+        "Estima impacto antes de activar una prevención automática.",
+        "Documenta la investigación y ajusta sin borrar la visibilidad necesaria."
+      ],
+      "sourceIds": [
+        "net-idps",
+        "net-response",
+        "net-firewall"
+      ],
+      "aoi": {
+        "intro": "La alerta levantó la mano; todavía no presentó un expediente completo sobre lo ocurrido.",
+        "theory0": "Primero dime si este sensor mira una copia o participa en el camino real.",
+        "theory1": "Una firma tiene nombre dramático, pero nosotros vamos a leer evidencias con calma.",
+        "theory2": "Las zonas sin visibilidad no desaparecen porque el tablero tenga un color tranquilizador.",
+        "theory3": "Bloquear exige pensar en el servicio que también podría llevarse un golpe.",
+        "case0": "Ese sensor está mirando desde la grada; su alerta no significa que haya detenido el partido.",
+        "case1": "El inventario tiene permiso, pero vamos a comprobar que sus pasos respetaron el alcance.",
+        "pass": "Interpretaste cobertura, contexto y respuesta sin condenar a nadie por una etiqueta alarmista.",
+        "review": "Volvamos a la evidencia disponible y a lo que el sensor realmente podía observar."
+      }
+    },
+    {
+      "id": "network-defense-zero-trust",
+      "title": "Acceso por identidad, dispositivo y recurso",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Sustituir confianza implícita por decisiones explícitas",
+          "body": "Zero trust describe principios y arquitecturas que centran las decisiones en recursos, sujetos y contexto, sin otorgar confianza implícita únicamente por ubicación de red o propiedad del equipo. No significa que una organización deba sospechar arbitrariamente de toda persona ni pedir una contraseña en cada clic. Significa que una conexión desde dentro de la oficina no constituye, por sí sola, autorización suficiente para cualquier recurso. Una trabajadora puede estar correctamente autenticada y aun así carecer de permiso para modificar un repositorio financiero. El diseño necesita saber qué recurso se solicita, qué operación se intenta y con qué condiciones puede concederse. La red sigue siendo útil para transporte, observación y controles, pero su ubicación deja de funcionar como credencial universal. En nuestra maqueta, consultar documentación y administrar sus permisos son acciones distintas. Ambas pueden viajar por el mismo segmento, pero requieren decisiones diferentes. La política debe reflejar esas necesidades de negocio con reglas comprensibles y responsables definidos, evitando convertir un concepto arquitectónico en un eslogan que supuestamente resuelve cualquier riesgo."
+        },
+        {
+          "title": "Combinar señales sin confundirlas con garantías absolutas",
+          "body": "La identidad del sujeto, la autenticación utilizada y el estado del dispositivo pueden aportar señales a la decisión. Un equipo administrado con controles requeridos ofrece información distinta de un dispositivo del que no existe inventario reciente. Sin embargo, una etiqueta de cumplimiento no demuestra ausencia de compromiso; la decisión depende de calidad, vigencia y alcance de la evidencia. Autenticación y autorización son funciones diferenciadas: verificar quién presenta una identidad no concede automáticamente todas las operaciones. También conviene distinguir cuentas humanas y de servicios, que pueden necesitar mecanismos y restricciones propios. En el laboratorio, una cuenta válida solicita lectura desde un equipo cuyo estado dejó de actualizarse. La política debe expresar cómo tratar esa incertidumbre: exigir verificación adicional, limitar acceso o rechazar según el riesgo y la arquitectura. No existe una respuesta universal basada únicamente en que el dispositivo sea personal. Evita recopilar señales sin propósito; el diseño debe limitar datos y acceso a lo necesario para decidir y explicar sus consecuencias de manera proporcional."
+        },
+        {
+          "title": "Limitar permisos y revisar cambios relevantes",
+          "body": "El mínimo privilegio vincula acceso con la tarea necesaria, no con una pertenencia amplia que conceda funciones innecesarias. Una autorización de lectura para un recurso no debería interpretarse como administración de toda la infraestructura. La decisión puede delimitar sesión, recurso, operación y condiciones según capacidades reales. Las arquitecturas distinguen componentes que evalúan política y puntos que la hacen efectiva; una regla escrita pero no aplicada en el recorrido del acceso no produce el resultado esperado. Además, el contexto puede cambiar después de una admisión inicial: una cuenta se revoca, un dispositivo deja de satisfacer requisitos o aparece una señal relevante. El sistema necesita mecanismos para reevaluar o terminar acceso conforme a su diseño. No presupongas revocación instantánea universal; prueba tiempos y condiciones efectivos, incluidos servicios con sesiones ya establecidas. El cierre de una cuenta y el fin de cada sesión no siempre ocurren simultáneamente. Documentar esos límites permite evaluar riesgo residual y evita prometer que una modificación administrativa ya interrumpió todas las comunicaciones existentes sin haberlo comprobado."
+        },
+        {
+          "title": "Construir una transición operable y verificable",
+          "body": "Una adopción gradual comienza con inventario de recursos, flujos y dependencias, seguida de un caso acotado con criterios de éxito. No exige comprar un producto único ni sustituir toda la red de una vez. La segmentación y los firewalls pueden formar parte del diseño, pero no reemplazan identidad, autorización y estado pertinente del dispositivo. Para el repositorio de prueba definimos un usuario lector, una operación administrativa no permitida y escenarios de estado aceptable o desconocido. También comprobamos qué ocurre si el servicio que evalúa política deja de estar disponible, sin improvisar que siempre debe abrir o cerrar todos los accesos. La decisión de continuidad depende del riesgo, el servicio y el mecanismo acordado. Las excepciones de emergencia necesitan autorización, alcance limitado, registro y revisión. Una política inaccesible o imposible de recuperar puede perjudicar la operación sin aportar una defensa sostenible. El informe final describe pruebas positivas, negativas, cambios de contexto y límites conocidos. Así la arquitectura se evalúa por decisiones efectivas sobre recursos concretos y por su operación, no por una etiqueta de marketing."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué evita otorgar confianza únicamente por ubicación según estos principios?",
+          "scenario": "Una cuenta interna solicita una operación administrativa que su rol no incluye y se apoya en estar conectada a la LAN.",
+          "options": [
+            "Evaluar identidad, operación y condiciones pertinentes sobre el recurso solicitado",
+            "Permitir cualquier operación porque el tráfico procede de una dirección interna",
+            "Conceder administración a todos los dispositivos propiedad de la organización"
+          ],
+          "answer": 0,
+          "explanation": "La decisión debe corresponder al sujeto y la operación sobre el recurso; estar dentro de la red no sustituye autorización ni aporta privilegios administrativos por sí mismo.",
+          "wrongExplanations": [
+            null,
+            "La ubicación interna no demuestra el permiso concreto y el caso lo excluye del rol; permitirlo introduciría precisamente la confianza implícita que se pretende evitar.",
+            "La propiedad del dispositivo es una característica del contexto, no una concesión universal de administración; los privilegios deben limitarse a las necesidades autorizadas del recurso."
+          ],
+          "aoi": {
+            "question": "La cuenta llegó por la puerta interna, pero eso no le da todas las llaves del edificio.",
+            "hint": "Relaciona el permiso con la acción requerida y no solamente con el lugar de conexión.",
+            "correct": "Centraste la decisión en el acceso concreto en vez de regalar privilegios por ubicación.",
+            "soft": "Revisa qué dato demuestra autorización para administrar y cuál solo describe el origen.",
+            "sharp": "La LAN no reparte coronas de administrador, cariño; ese rol tiene que autorizar la operación."
+          }
+        },
+        {
+          "prompt": "¿Autenticar correctamente a una persona autoriza todas sus operaciones sobre un servicio?",
+          "scenario": "El sistema reconoce la identidad, pero las tareas de lectura y administración pertenecen a permisos separados en el recurso.",
+          "options": [
+            "Sí, la autenticación elimina cualquier necesidad de permisos adicionales",
+            "No, todavía debe evaluarse qué operaciones tiene autorizadas esa identidad",
+            "Sí, siempre que la cuenta use un dispositivo con inventario reciente"
+          ],
+          "answer": 1,
+          "explanation": "Verificar identidad no determina automáticamente todas sus facultades; la autorización debe relacionar la operación solicitada con los permisos aplicables al recurso y las condiciones relevantes.",
+          "wrongExplanations": [
+            "Reconocer quién se presenta no concede cualquier tarea y el escenario separa funciones; omitir autorización permitiría operaciones que no corresponden a esa identidad.",
+            null,
+            "El inventario del dispositivo aporta contexto, pero no transforma los derechos de la cuenta en permisos universales; sigue siendo necesaria una decisión sobre la operación."
+          ],
+          "aoi": {
+            "question": "Ya sabemos quién eres; ahora falta saber qué puedes hacer con ese recurso concreto.",
+            "hint": "Separa la comprobación de identidad de la concesión de una función del servicio.",
+            "correct": "Mantuviste la autorización como decisión propia después de verificar la identidad presentada.",
+            "soft": "Mira qué pregunta responde la autenticación y qué parte del permiso aún queda pendiente.",
+            "sharp": "Saber tu nombre no me obliga a prestarte cada llave, cielo; los permisos siguen contando."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una etiqueta de cumplimiento del dispositivo por sí sola?",
+          "scenario": "El inventario marca el equipo como conforme con ciertos controles, pero no garantiza observación completa ni ausencia de compromiso.",
+          "options": [
+            "Demuestra que jamás puede existir actividad maliciosa en ese dispositivo",
+            "Concede automáticamente todos los permisos de cualquier cuenta del equipo",
+            "Aporta una señal de estado dentro de su alcance y vigencia"
+          ],
+          "answer": 2,
+          "explanation": "La etiqueta resume condiciones comprobadas bajo un alcance y momento determinados; puede contribuir a una decisión sin demostrar invulnerabilidad ni modificar por sí sola permisos del recurso.",
+          "wrongExplanations": [
+            "Ninguna etiqueta de controles concretos acredita ausencia absoluta de compromiso y el escenario limita su observación; esa conclusión excede lo que la evidencia puede sostener.",
+            "La señal del dispositivo y los permisos de la identidad tienen funciones distintas; cumplir requisitos no concede automáticamente operaciones que el recurso no autorizó.",
+            null
+          ],
+          "aoi": {
+            "question": "Esa pegatina verde informa algo útil, pero no pienso convertirla en certificado de inmortalidad.",
+            "hint": "Considera qué controles y momento representa realmente la señal que muestra el inventario.",
+            "correct": "Interpretaste el estado como evidencia limitada sin atribuirle garantías ni privilegios universales.",
+            "soft": "Pregunta qué observó la evaluación y qué aspectos siguen fuera de su alcance.",
+            "sharp": "El equipo está conforme con ciertos requisitos, tesoro; no ascendió a criatura imposible de comprometer."
+          }
+        },
+        {
+          "prompt": "¿Qué debe verificarse tras deshabilitar una cuenta con sesiones ya establecidas?",
+          "scenario": "La aplicación puede conservar sesiones previas y aún no existe evidencia de sus plazos efectivos de reevaluación o terminación.",
+          "options": [
+            "Cómo se propaga la revocación y cuándo termina efectivamente el acceso existente",
+            "Que el cambio de cuenta obliga instantáneamente a cerrar cualquier sesión universalmente",
+            "Que ninguna sesión importa mientras el usuario conserve la misma dirección IP"
+          ],
+          "answer": 0,
+          "explanation": "La revocación administrativa debe relacionarse con los mecanismos reales de la aplicación; comprobar reevaluación y cierre permite identificar acceso residual sin prometer una terminación universal instantánea.",
+          "wrongExplanations": [
+            null,
+            "Las plataformas pueden manejar sesiones y propagación de formas diferentes; el escenario no demuestra cierre inmediato y exige precisamente comprobar su comportamiento efectivo.",
+            "La dirección de red no acredita autorización vigente ni elimina el riesgo de sesiones previas; importa si el acceso sigue aceptándose tras la revocación."
+          ],
+          "aoi": {
+            "question": "El panel dijo cuenta deshabilitada; ahora quiero comprobar qué pasó con las sesiones que ya existían.",
+            "hint": "Sigue el cambio administrativo hasta su efecto observable en una sesión del recurso.",
+            "correct": "Exigiste evidencia de terminación real en lugar de asumir propagación instantánea a todos los servicios.",
+            "soft": "Revisa qué parte del proceso está confirmada y cuál todavía depende de la aplicación.",
+            "sharp": "La cuenta perdió permiso en el panel, joder; verifica que la sesión también recibió la noticia."
+          }
+        },
+        {
+          "prompt": "¿Cómo conviene iniciar una transición hacia decisiones de acceso más explícitas?",
+          "scenario": "La organización desconoce dependencias de varias aplicaciones y propone reemplazar toda la arquitectura en una única noche sin pruebas.",
+          "options": [
+            "Comprar cualquier producto con esa etiqueta y aceptar que resuelve todas las dependencias",
+            "Inventariar recursos y flujos, elegir un caso acotado y definir pruebas y recuperación",
+            "Eliminar todos los firewalls porque la identidad vuelve innecesario cualquier control de red"
+          ],
+          "answer": 1,
+          "explanation": "Un inventario y un piloto delimitado permiten comprender dependencias y verificar decisiones antes de ampliar el cambio; la arquitectura necesita operación y recuperación además de tecnología.",
+          "wrongExplanations": [
+            "La etiqueta comercial no acredita inventario, integración ni decisiones efectivas del caso; adquirir un producto no demuestra que las dependencias queden resueltas automáticamente.",
+            null,
+            "Los controles de red pueden complementar la arquitectura y no desaparecen por introducir identidad; retirarlos sin analizar su función podría eliminar restricciones necesarias."
+          ],
+          "aoi": {
+            "question": "Antes de reformar todo el edificio, vamos a saber qué puertas y servicios sostiene.",
+            "hint": "Busca un primer alcance que permita comprobar requisitos y recuperar la operación si algo falla.",
+            "correct": "Elegiste una transición verificable que aprende de dependencias reales antes de ampliar el despliegue.",
+            "soft": "Mira qué información falta y qué tamaño de cambio permitiría comprobarla sin improvisar.",
+            "sharp": "Un adhesivo de zero trust no documenta tus aplicaciones, cariño; empieza por inventario y un piloto serio."
+          }
+        },
+        {
+          "prompt": "¿Qué operación adicional concede un permiso de lectura limitado a un repositorio?",
+          "scenario": "La política autoriza únicamente consultar documentación y no contiene una regla que permita modificar cuentas o administrar infraestructura.",
+          "options": [
+            "Administración completa de todos los servidores de la misma organización",
+            "Cambiar cualquier permiso porque lectura incluye control de identidades",
+            "Ninguna administración adicional por sí mismo; debe existir autorización pertinente"
+          ],
+          "answer": 2,
+          "explanation": "El permiso está delimitado a consulta y no contiene facultades administrativas; conceder otras operaciones requeriría una autorización específica acorde con la necesidad y la política del recurso.",
+          "wrongExplanations": [
+            "La lectura de un repositorio no describe privilegios sobre servidores ajenos y extenderla transforma un permiso limitado en acceso amplio sin justificación del caso.",
+            "Consultar contenido y administrar identidades son funciones diferentes; el permiso declarado no incluye modificar reglas ni convertir al lector en responsable de todos los accesos.",
+            null
+          ],
+          "aoi": {
+            "question": "El permiso dice leer documentación, no inaugurar un reinado administrativo sobre la infraestructura.",
+            "hint": "Comprueba el verbo y el recurso que la política autorizó antes de ampliar sus efectos.",
+            "correct": "Respetaste el alcance de lectura sin inventar facultades administrativas que la política no concede.",
+            "soft": "Revisa si la operación propuesta figura realmente dentro del permiso descrito.",
+            "sharp": "Leer una guía no te nombra emperador de los servidores, cielo; cada operación necesita su autorización."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dentro de la oficina y fuera del permiso",
+          "scenario": "Una cuenta válida de lectura usa un equipo corporativo dentro de la LAN e intenta modificar los permisos del repositorio. La tarea de administración corresponde a otro rol y no aparece autorizada.",
+          "explanation": "La ubicación y la propiedad del equipo no conceden por sí solas esa operación. La política debe evaluar el rol y el recurso, permitiendo la lectura requerida y rechazando la modificación no autorizada, aunque ambas solicitudes procedan de la misma red interna."
+        },
+        {
+          "title": "La cuenta revocada y la sesión persistente",
+          "scenario": "La responsable deshabilita una cuenta y afirma que todas sus sesiones terminaron inmediatamente. La aplicación conserva una sesión anterior y aún no se verifican mecanismos ni plazos de reevaluación.",
+          "explanation": "Deshabilitar la cuenta es una acción importante, pero no acredita por sí sola el fin instantáneo de cada sesión existente. Deben comprobarse propagación, condiciones de reevaluación y terminación efectiva del acceso, documentando cualquier intervalo residual y el procedimiento previsto para reducirlo."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "Una investigadora ficticia necesita consultar un repositorio desde dos dispositivos distintos. Aoi revisa por qué conocer la contraseña o estar conectado a la oficina no basta para aprobar todas las acciones sobre cualquier recurso.",
+      "scenario": "Una investigadora ficticia necesita consultar un repositorio desde dos dispositivos distintos. Aoi revisa por qué conocer la contraseña o estar conectado a la oficina no basta para aprobar todas las acciones sobre cualquier recurso.",
+      "steps": [
+        "Identifica recurso, sujeto y operación solicitada.",
+        "Comprueba identidad y estado pertinente del dispositivo.",
+        "Aplica una decisión de acceso limitada a la necesidad.",
+        "Observa cambios relevantes y revocación según la arquitectura.",
+        "Evalúa continuidad, privacidad y recuperación de la política."
+      ],
+      "sourceIds": [
+        "net-zero-trust",
+        "net-firewall",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Estar dentro de la oficina no te convierte en dueño de cada carpeta, encanto.",
+        "theory0": "Vamos a preguntar quién solicita qué, en lugar de confiar en la silla donde se sentó.",
+        "theory1": "El estado del equipo es una señal; no pienso tratar una pegatina verde como oráculo.",
+        "theory2": "Ese permiso de lectura no viene con una corona de administrador escondida debajo.",
+        "theory3": "Una arquitectura también necesita recuperarse cuando falla quien decide los accesos.",
+        "case0": "La cuenta llegó desde dentro, pero sigue sin tener permiso para cambiar esos roles.",
+        "case1": "Revocar una cuenta y terminar sus sesiones requiere comprobar cómo funciona realmente esta aplicación.",
+        "pass": "Definiste identidad, operación y contexto con precisión; esa forma de pedir acceso sí tiene encanto.",
+        "review": "Revisemos qué condición aportaba evidencia y cuál estabas convirtiendo en confianza automática."
+      }
+    },
+    {
+      "id": "network-defense-validacion",
+      "title": "Validar segmentación y recuperar cambios con evidencias",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Traducir requisitos en una matriz comprobable",
+          "body": "Una segmentación útil comienza por necesidades: quién necesita comunicarse con qué recurso, mediante qué servicio y para qué operación. Una matriz de flujos recoge origen, destino, dirección, protocolo o servicio, motivo y responsable. También identifica comunicaciones que deben rechazarse. Separar equipos en VLAN distintas no demuestra por sí solo que existan restricciones entre ellas; el enrutamiento podría permitir un alcance más amplio del necesario. La matriz conecta la intención con reglas y puntos de aplicación efectivos. En nuestro escenario, usuarios consultan una aplicación, invitados acceden únicamente a servicios externos autorizados y la administración se limita a una estación concreta. Esas frases deben concretarse lo suficiente para diseñar ensayos, sin publicar secretos o información sensible innecesaria. Una dependencia desconocida se registra como tal y se investiga con alcance aprobado, en vez de conceder acceso general para hacer desaparecer cualquier síntoma. El resultado debe permitir a otro operador entender la necesidad, reproducir la prueba dentro del permiso y comparar lo observado con una condición de aceptación acordada."
+        },
+        {
+          "title": "Combinar pruebas positivas y negativas representativas",
+          "body": "Una prueba positiva confirma un flujo que debe funcionar; una negativa intenta una comunicación que la política debe impedir. Ambas son necesarias porque un sistema que bloquea todo puede aparentar restricción mientras deja inutilizable el servicio. El origen de prueba importa: comprobar desde la consola administrativa no representa necesariamente el recorrido de un invitado. También importan familia de direcciones, destino, servicio y estado de sesión. Una conexión ya establecida puede recibir tratamiento diferente después de una modificación, según el mecanismo, por lo que se documenta si el ensayo utiliza una sesión nueva o existente. Las pruebas deben ser benignas, acotadas y autorizadas; no requieren explotar equipos ni generar volúmenes que alteren la disponibilidad. Un tiempo de espera no identifica por sí solo la regla que actuó. Combina respuesta observada con registros o contadores pertinentes y comprueba que el servicio estaba disponible para un origen permitido. Así se distingue un rechazo previsto de una aplicación caída o un camino roto que produciría un síntoma parecido."
+        },
+        {
+          "title": "Conservar evidencias que permitan explicar resultados",
+          "body": "El registro de una prueba incluye fecha con zona horaria, equipo de origen, destino, servicio, resultado esperado, resultado observado y referencias de evidencia relevantes. Los relojes y el contexto deben permitir relacionar eventos sin atribuir automáticamente identidad humana a cada dirección. Una captura o registro representa lo visible desde su punto y durante su intervalo; no acredita todos los caminos posibles de una red. Si existen rutas alternativas, dos familias de IP o accesos remotos distintos, selecciona casos que cubran esas diferencias según el riesgo. Evita convertir el número de pruebas en una garantía absoluta. Una matriz cubierta demuestra los casos ensayados bajo sus condiciones, no la inexistencia de cualquier vulnerabilidad futura. Protege las evidencias con acceso y conservación adecuados, ocultando secretos y contenidos ajenos al objetivo. Si un resultado contradice la intención, conserva la observación y plantea una hipótesis comprobable. Cambiar varias reglas simultáneamente hasta obtener una pantalla verde dificulta explicar qué corrección produjo el efecto y puede introducir permisos adicionales que queden fuera de la revisión."
+        },
+        {
+          "title": "Ensayar recuperación y entregar un cambio mantenible",
+          "body": "Antes del despliegue se necesita una configuración conocida, una copia utilizable y una forma autorizada de aplicar la recuperación. Exportar un archivo no demuestra que pueda restaurarse: hay que comprobar compatibilidad, integridad y procedimiento en un entorno adecuado. El plan define criterios de reversión, responsables y dependencias afectadas. Si se pierde acceso al servicio crítico o al control administrativo, el equipo debe saber cuándo detener el cambio y cómo volver al estado acordado, sin improvisar excepciones universales. Una reversión también se valida con pruebas: regresar a una configuración anterior no garantiza por sí solo que cada componente haya recuperado su operación. La entrega final incluye matriz, resultados, diferencias respecto al diseño, riesgos conocidos y próximas revisiones. Los permisos temporales llevan caducidad o revisión definida. Una nueva aplicación o un cambio de direccionamiento puede alterar los requisitos, así que la documentación necesita mantenimiento. Completar este curso significa poder defender una decisión con evidencia y reconocer sus límites, no prometer una red imposible de atacar ni sustituir la formación adicional que requiera cada responsabilidad profesional."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué información vuelve comprobable una necesidad de comunicación entre segmentos?",
+          "scenario": "El requisito dice que ciertas personas necesitan una aplicación, pero aún no identifica origen, destino, servicio ni responsable.",
+          "options": [
+            "Una matriz que delimite flujos, motivos, responsables y resultados esperados",
+            "Una lista de colores para las VLAN sin describir comunicaciones requeridas",
+            "Una afirmación de que cualquier segmentación impide todo acceso entre redes"
+          ],
+          "answer": 0,
+          "explanation": "Delimitar origen, destino y servicio vincula necesidad con controles y pruebas; motivo y responsable permiten justificar y mantener la autorización durante cambios posteriores del entorno.",
+          "wrongExplanations": [
+            null,
+            "Los colores pueden ayudar a dibujar, pero no expresan qué comunicación debe funcionar ni permiten diseñar una comprobación verificable de su permiso.",
+            "La separación lógica no demuestra todas las restricciones y pueden existir rutas permitidas; el resultado requiere revisar políticas y ensayar los flujos pertinentes."
+          ],
+          "aoi": {
+            "question": "La aplicación necesita un permiso que podamos describir y comprobar, no solamente un color bonito.",
+            "hint": "Busca los datos que permitirían reproducir la comunicación y compararla con una intención clara.",
+            "correct": "Convertiste una necesidad vaga en condiciones útiles para diseñar reglas y ensayos verificables.",
+            "soft": "Revisa si la propuesta permite saber exactamente qué conexión debe aprobarse y por qué.",
+            "sharp": "Una VLAN morada no redacta tus requisitos, cariño; escribe origen, destino y servicio con su motivo."
+          }
+        },
+        {
+          "prompt": "¿Por qué una validación necesita también casos de comunicación permitida?",
+          "scenario": "La política debe proteger servidores sin impedir que usuarios autorizados utilicen la aplicación necesaria para trabajar.",
+          "options": [
+            "Porque cualquier conexión positiva elimina la necesidad de probar restricciones",
+            "Porque bloquear todo puede ocultar una indisponibilidad en lugar de demostrar la política",
+            "Porque una prueba permitida concede autorización automática a todos los invitados"
+          ],
+          "answer": 1,
+          "explanation": "La validación debe comprobar disponibilidad requerida y restricciones; un sistema que falla para todos no demuestra que discrimine correctamente entre comunicaciones autorizadas y prohibidas.",
+          "wrongExplanations": [
+            "Una conexión permitida acredita un caso concreto, pero no demuestra rechazo de otros orígenes o servicios; siguen siendo necesarias las pruebas negativas pertinentes.",
+            null,
+            "El éxito de un origen autorizado no modifica permisos de otros segmentos y no concede facultades adicionales; cada caso se evalúa conforme a su propio requisito."
+          ],
+          "aoi": {
+            "question": "Si nadie puede trabajar, no vamos a llamar perfecta a la defensa solo porque todo se calle.",
+            "hint": "Considera cómo distinguirías una política correcta de un servicio completamente fuera de operación.",
+            "correct": "Incluiste disponibilidad autorizada junto con restricciones y evitaste aprobar un bloqueo indiscriminado.",
+            "soft": "Piensa qué resultado produciría una aplicación caída tanto para usuarios como para invitados.",
+            "sharp": "Apagarlo todo también bloquea, cielo; nuestra red tiene que proteger y dejar funcionar lo autorizado."
+          }
+        },
+        {
+          "prompt": "¿Desde dónde debe ensayarse un caso que representa el acceso de invitados?",
+          "scenario": "La consola de administración y la red de invitados atraviesan controles distintos antes de llegar al recurso de prueba.",
+          "options": [
+            "Siempre desde administración porque su mayor privilegio representa a cualquier usuario",
+            "Desde cualquier origen indistinto porque todas las rutas aplican idénticas decisiones",
+            "Desde un origen que represente el recorrido y condiciones reales del invitado"
+          ],
+          "answer": 2,
+          "explanation": "El resultado depende del origen y los controles atravesados; una consola con otro recorrido no acredita el comportamiento esperado de invitados bajo sus propias condiciones de acceso.",
+          "wrongExplanations": [
+            "Los privilegios administrativos pueden alterar permisos y recorrido, por lo que no constituyen una representación equivalente del segmento de invitados que se necesita comprobar.",
+            "El escenario declara controles diferentes y no permite asumir resultados idénticos; elegir un origen indistinto dejaría sin evaluar precisamente la condición relevante del caso.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestra prueba de invitados necesita entrar por su camino, no por la puerta del personal.",
+            "hint": "Relaciona el origen del ensayo con las reglas que realmente procesarán esa comunicación.",
+            "correct": "Elegiste un punto de prueba representativo del segmento cuya política querías validar.",
+            "soft": "Mira si la consola propuesta atraviesa los mismos controles que el invitado del requisito.",
+            "sharp": "El pase de administración no representa a los invitados, tesoro; prueba desde el recorrido que les corresponde."
+          }
+        },
+        {
+          "prompt": "¿Qué distingue disponer de un archivo de respaldo y demostrar recuperación?",
+          "scenario": "El equipo exportó la configuración, pero no comprobó compatibilidad, procedimiento de aplicación ni acceso autorizado después de un fallo.",
+          "options": [
+            "La recuperación requiere verificar que puede restaurarse y recuperar la operación prevista",
+            "La mera existencia de cualquier archivo demuestra restauración correcta de todos los equipos",
+            "Cambiar la extensión del archivo garantiza automáticamente que será compatible"
+          ],
+          "answer": 0,
+          "explanation": "Una copia necesita integridad, compatibilidad y un procedimiento aplicable; ensayar y comprobar operación aporta evidencia de recuperación que la existencia aislada del archivo no proporciona.",
+          "wrongExplanations": [
+            null,
+            "El archivo no demuestra que pueda leerse o aplicarse en el equipo pertinente ni que exista acceso para restaurarlo; faltan verificaciones esenciales del proceso.",
+            "La extensión visible no transforma contenido ni acredita compatibilidad con versiones y plataformas; la restauración exige comprobaciones concretas sobre archivo, procedimiento y resultado."
+          ],
+          "aoi": {
+            "question": "Quiero saber si ese respaldo puede traernos de vuelta, no solo si aparece en la carpeta.",
+            "hint": "Piensa qué tendrías que hacer después de un fallo para volver al estado operativo acordado.",
+            "correct": "Diferenciaste guardar una copia de comprobar que realmente sirve para recuperar el sistema.",
+            "soft": "Revisa qué pasos siguen sin evidencia aunque el archivo ya exista en el disco.",
+            "sharp": "El respaldo no se restaura por mirarlo con cariño, joder; comprueba procedimiento, acceso y operación final."
+          }
+        },
+        {
+          "prompt": "¿Qué debe registrar una prueba para que otro operador interprete su resultado?",
+          "scenario": "Se guarda únicamente una imagen con una marca verde, sin origen, destino, hora ni resultado esperado de la actividad.",
+          "options": [
+            "Solo el color del indicador porque contiene toda la explicación necesaria",
+            "Condiciones, tiempo, origen, destino, expectativa, observación y evidencia pertinente",
+            "Únicamente el nombre de quien diseñó la interfaz del tablero"
+          ],
+          "answer": 1,
+          "explanation": "El contexto permite relacionar observación y requisito, reproducir el caso y reconocer sus límites; una marca aislada no explica qué comunicación se ensayó ni qué debía ocurrir.",
+          "wrongExplanations": [
+            "El color resume una presentación y puede omitir criterio o alcance; sin condiciones y expectativa no permite justificar el comportamiento de la comunicación probada.",
+            null,
+            "La autoría de una interfaz no describe la prueba de red ni sus resultados; faltan datos que vinculen condiciones del ensayo con la intención de la política."
+          ],
+          "aoi": {
+            "question": "La marca verde queda preciosa, pero otra persona necesita saber qué hiciste para merecerla.",
+            "hint": "Busca información que conecte el resultado visible con un flujo y una condición de aceptación.",
+            "correct": "Pediste un registro explicable que permite evaluar el resultado sin depender de quien tomó la captura.",
+            "soft": "Mira qué preguntas tendría alguien que solo recibe esa imagen sin conocer el laboratorio.",
+            "sharp": "Una captura verde no cuenta toda la historia, cariño; dale contexto antes de presumir de validación."
+          }
+        },
+        {
+          "prompt": "¿Qué alcance tiene aprobar todos los casos de una matriz de pruebas definida?",
+          "scenario": "El equipo ensayó los flujos seleccionados bajo condiciones documentadas, sin estudiar cada vulnerabilidad o camino futuro posible.",
+          "options": [
+            "Demuestra que nunca podrá aparecer ninguna vulnerabilidad en esa organización",
+            "Concede una certificación profesional externa a quien ejecutó las pruebas",
+            "Acredita los casos y condiciones ensayados, manteniendo límites y revisiones necesarias"
+          ],
+          "answer": 2,
+          "explanation": "La evidencia respalda el alcance efectivamente probado y no garantiza inexistencia universal de riesgos futuros; documentar límites y revisar cambios conserva una interpretación honesta de la validación.",
+          "wrongExplanations": [
+            "Un conjunto finito de pruebas no cubre cualquier vulnerabilidad o cambio futuro; esa promesa excede las condiciones y casos que el escenario documenta.",
+            "Las certificaciones profesionales tienen entidades y procesos propios; completar una validación local no concede una credencial externa ni sustituye sus requisitos oficiales.",
+            null
+          ],
+          "aoi": {
+            "question": "Terminamos la matriz definida; ahora describamos con precisión qué evidencia ganamos y qué límites conserva.",
+            "hint": "Distingue cobertura de casos concretos y garantías absolutas sobre cualquier riesgo futuro.",
+            "correct": "Cerraste la validación con un alcance honesto en lugar de prometer seguridad imposible de demostrar.",
+            "soft": "Revisa si la conclusión habla de lo observado o está extendiéndose a condiciones nunca ensayadas.",
+            "sharp": "Aprobamos esos casos, cielo; no acabamos de firmar un pacto de invulnerabilidad con el universo."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La red que aprobó porque nada funcionaba",
+          "scenario": "La prueba de invitados termina en tiempo de espera y el informe afirma que la segmentación es correcta. Tampoco funciona la aplicación desde usuarios autorizados y nadie comprobó su disponibilidad.",
+          "explanation": "El rechazo aparente no basta: un servicio caído puede explicar ambos resultados. Primero debe verificarse un caso permitido y después atribuir el rechazo al control pertinente con evidencia, evitando aprobar una red que restringe por fallo general en lugar de aplicar la política requerida."
+        },
+        {
+          "title": "El respaldo que nunca se pudo restaurar",
+          "scenario": "Existe un archivo exportado antes del cambio, pero nadie verifica su integridad ni el acceso necesario para aplicarlo. El plan lo presenta como recuperación ya demostrada de todos los equipos.",
+          "explanation": "La existencia del archivo no acredita restauración. Deben validarse compatibilidad, procedimiento y acceso autorizado en condiciones adecuadas, con responsables y criterios de reversión; después hay que comprobar la operación recuperada en vez de suponerla por disponer de una copia."
+        }
+      ],
+      "diagram": "defense",
+      "intro": "El laboratorio termina con una pequeña red ficticia de usuarios, invitados y servidores. La entrega exige demostrar qué servicios funcionan, qué accesos están restringidos y cómo recuperar la configuración si el cambio afecta una dependencia que no figuraba en el mapa inicial.",
+      "scenario": "El laboratorio termina con una pequeña red ficticia de usuarios, invitados y servidores. La entrega exige demostrar qué servicios funcionan, qué accesos están restringidos y cómo recuperar la configuración si el cambio afecta una dependencia que no figuraba en el mapa inicial.",
+      "steps": [
+        "Convierte necesidades de comunicación en una matriz de flujos.",
+        "Define casos permitidos y prohibidos con criterios observables.",
+        "Ensaya desde los orígenes reales y registra puntos de decisión.",
+        "Prueba recuperación con respaldo y acceso autorizado.",
+        "Entrega resultados, límites, responsables y revisión pendiente."
+      ],
+      "sourceIds": [
+        "net-firewall",
+        "net-zero-trust",
+        "net-response"
+      ],
+      "aoi": {
+        "intro": "Llegamos a la entrega: quiero pruebas que expliquen la red, no una ceremonia de luces verdes.",
+        "theory0": "La matriz pone nombres concretos a lo que debe pasar y a lo que debe frenarse.",
+        "theory1": "También probaremos lo permitido; bloquearlo todo sería una defensa bastante inútil para trabajar.",
+        "theory2": "Anota condiciones y evidencias para que otra persona pueda entender exactamente tu resultado.",
+        "theory3": "El respaldo tiene que saber volver, no limitarse a ocupar un rincón del disco.",
+        "case0": "Si ni los autorizados entran, ese rechazo no merece todavía una medalla de segmentación.",
+        "case1": "El archivo existe; ahora falta demostrar que puede devolver el equipo a un estado operativo.",
+        "pass": "Terminaste defensa con decisiones justificadas y recuperación comprobable. Ven, te ganaste mi celebración más presumida.",
+        "review": "Revisemos la matriz y los límites del ensayo antes de declarar que todo quedó resuelto."
+      }
+    }
+  ]
+}

@@ -56,4 +56,17 @@ const learningPaths = [
       'linux-investigation',
     ],
   ),
+  LearningPath(
+    'advanced-networks',
+    'Redes prácticas y ciberdefensa',
+    'Planifica direcciones, conecta segmentos, investiga fallos y valida defensas con evidencias.',
+    [
+      'ipv4-subnetting',
+      'ipv6-foundations',
+      'switching-routing',
+      'network-diagnostics',
+      'network-defense',
+      'security-operations',
+    ],
+  ),
 ];

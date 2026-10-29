@@ -94,7 +94,7 @@ void main() {
     expect(overview.completedPaths, 0);
     expect(overview.paths.first.completedLessons, 10);
     expect(overview.paths.first.progress, closeTo(1 / 3, .000001));
-    expect(store.progress, closeTo(10 / 430, .000001));
+    expect(store.progress, closeTo(10 / 490, .000001));
     expect(overview.activePath.path.id, 'linux');
     expect(overview.activePath.nextLesson.id, store.lastLessonId);
     expect(overview.recommendedCourses.map((c) => c.id), [
@@ -132,11 +132,12 @@ void main() {
       for (final lesson in allLessons) lesson.id: lesson.questions.length,
     };
     overview = LearningOverview(store);
-    expect(overview.completedCourses, 25);
-    expect(overview.completedPaths, 5);
-    expect(overview.gradedQuestions, 930);
+    expect(overview.completedCourses, 31);
+    expect(overview.completedPaths, 6);
+    expect(overview.gradedQuestions, 1290);
+    expect(store.completedPractice, 0);
     expect(overview.bestAccuracy, 1);
-    expect(store.xp, 21500);
+    expect(store.xp, 24500);
     expect(
       overview.paths.every((p) => p.isComplete && p.progress == 1),
       isTrue,
@@ -209,6 +210,7 @@ void main() {
         ),
       );
       expect(find.text('Hola, Alex'), findsOneWidget);
+      expect(find.text('6 caminos para elegir'), findsOneWidget);
       expect(find.byType(CourseCard), findsNWidgets(3));
       expect(find.text('En curso · 0% completado'), findsOneWidget);
       await tapLabel(tester, 'Continuar aprendiendo');
@@ -226,12 +228,13 @@ void main() {
   );
 
   testWidgets(
-    'Routes expose all five paths and all six Linux courses without locking the last course',
+    'Routes expose all six paths and all six Linux courses without locking the last course',
     (tester) async {
       addTearDown(() => tester.binding.setSurfaceSize(null));
       final store = partialStore();
       await showScreen(tester, RoutesScreen(store: store));
-      expect(find.byType(PathSummaryCard), findsNWidgets(5));
+      expect(find.text('6 CAMINOS · UN MISMO CRITERIO'), findsOneWidget);
+      expect(find.byType(PathSummaryCard), findsNWidgets(6));
       await tapLabel(tester, 'Linux: observa, comprende e investiga');
       expect(find.byType(PathDetailScreen), findsOneWidget);
       final linux = LearningOverview(store).activePath;
@@ -253,7 +256,7 @@ void main() {
         findsOneWidget,
       );
       await tapLabel(tester, 'Ver todas las rutas');
-      expect(find.byType(PathSummaryCard), findsNWidgets(5));
+      expect(find.byType(PathSummaryCard), findsNWidgets(6));
       expect(store.xp, 500);
     },
   );

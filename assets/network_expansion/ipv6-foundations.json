@@ -1,0 +1,2013 @@
+{
+  "id": "ipv6-foundations",
+  "title": "IPv6: del prefijo al diagnóstico",
+  "description": "Interpreta direcciones, anuncios, vecinos y rutas IPv6 sin trasladar reglas equivocadas de IPv4.",
+  "symbol": "IPv6",
+  "color": 4289170426,
+  "category": "Redes prácticas y ciberdefensa",
+  "closure": {
+    "text": "Sesenta ejercicios y ya no miras IPv6 como una contraseña larguísima, cariño. Entiendes prefijos, vecinos y rutas; admito que tu precisión acaba de ponerme de buen humor.",
+    "explanation": "Completaste representación, alcance, autoconfiguración, descubrimiento y diagnóstico IPv6. Conserva contexto de interfaz, verifica ambos protocolos en redes duales y relaciona los controles con los flujos realmente permitidos."
+  },
+  "lessons": [
+    {
+      "id": "ipv6-foundations-notacion",
+      "title": "Leer y normalizar una dirección IPv6",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Ocho grupos para representar ciento veintiocho bits",
+          "body": "IPv6 utiliza direcciones de ciento veintiocho bits. En su escritura hexadecimal pura, el valor completo se organiza en ocho grupos de dieciséis bits separados por dos puntos. Cada grupo puede contener hasta cuatro dígitos hexadecimales, que emplean los símbolos del cero al nueve y de la a a la f. La dirección 2001:0db8:0000:0000:0000:0000:0000:0020 tiene ocho grupos y sirve como ejemplo documental. Los dígitos no se interpretan como octetos decimales de IPv4: un grupo ffff representa un valor hexadecimal de dieciséis bits. Al revisar una ficha, distingue un error de escritura de una forma abreviada válida. Letras fuera del conjunto hexadecimal, grupos demasiado largos o una cantidad incompatible de grupos necesitan revisión. Existen representaciones con una parte final expresada como IPv4 para contextos definidos, pero esta primera práctica utiliza únicamente grupos hexadecimales. Esa delimitación permite aprender a expandir y comparar sin considerar inválida cualquier otra notación que una herramienta legítima pueda documentar para un propósito específico."
+        },
+        {
+          "title": "Quitar ceros iniciales sin cambiar el valor de un grupo",
+          "body": "Los ceros situados al principio de un grupo pueden omitirse. Por ejemplo, 0db8 se escribe db8 y 0020 se escribe 20. En cambio, quitar los ceros finales de 1200 para dejar 12 cambia su valor; no es una abreviatura equivalente. Un grupo compuesto únicamente por ceros puede representarse mediante un solo cero antes de aplicar otras reglas de compresión. Mayúsculas y minúsculas hexadecimales pueden expresar el mismo valor, aunque una escritura canónica consistente facilite comparar inventarios y registros. No conviertas diferencias de formato en supuestos cambios de dirección. Si una herramienta devuelve grupos con ceros iniciales y otra los omite, expande ambos valores o utiliza una comparación consciente del tipo de dato. Una comparación literal de texto puede fallar aun cuando los ciento veintiocho bits coincidan. El prefijo de red es otro dato: dos escrituras equivalentes de la dirección no garantizan que las fichas indiquen la misma longitud de prefijo. Conserva ambos elementos cuando documentes qué configuración se observó en una interfaz concreta del laboratorio."
+        },
+        {
+          "title": "Entender la doble separación y recuperar lo omitido",
+          "body": "La secuencia de dos puntos dobles permite representar una cadena continua de grupos iguales a cero. Solo puede aparecer una vez en una dirección para que la expansión sea inequívoca. En 2001:db8::20 aparecen tres grupos escritos; la compresión completa los cinco grupos de cero necesarios para llegar a ocho. No significa que cada doble separación equivalga siempre a un número fijo de grupos. Debes contar los grupos presentes y recuperar los omitidos según el tamaño total. La escritura canónica descrita por RFC 5952 comprime la secuencia más larga de grupos cero y, si hay un empate, utiliza la primera. Esas recomendaciones evitan múltiples presentaciones preferidas del mismo valor, pero no convierten automáticamente en otra dirección una notación alternativa válida. Al revisar 2001:db8::1::2, el problema es distinto: hay dos compresiones y no puede determinarse de forma única cuántos grupos omitió cada una. Solicita una escritura corregida antes de calcular pertenencia a un prefijo o relacionar esa cadena con una observación de tráfico."
+        },
+        {
+          "title": "Separar dirección, prefijo y delimitadores de una aplicación",
+          "body": "Un prefijo IPv6 indica cuántos bits iniciales identifican el bloque considerado. En un /64, la frontera coincide con cuatro grupos de dieciséis bits de la representación completa. No significa que existan sesenta y cuatro direcciones ni que el valor completo haya cambiado de tamaño. Para comparar 2001:db8:40:1::20/64 y 2001:db8:40:2::20/64, expande lo necesario: difieren en el cuarto grupo, que todavía pertenece al prefijo, y por eso no comparten ese /64. Además, una aplicación puede añadir delimitadores para evitar confundir los dos puntos de la dirección con un puerto. En una URL como https://[2001:db8::20]:443/, los corchetes delimitan el literal IPv6 y el número posterior señala el puerto. Los corchetes no son bits adicionales de la dirección ni forman parte del prefijo. Interpretar correctamente esa estructura evita separar una dirección en lugares arbitrarios. Las cadenas del laboratorio son documentos para analizar localmente; no representan servicios a los que la actividad deba conectarse para comprobar una respuesta."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuántos bits contiene una dirección IPv6 completa?",
+          "scenario": "La práctica usa ocho grupos hexadecimales puros y cada grupo representa dieciséis posiciones binarias.",
+          "options": [
+            "128 bits",
+            "64 bits",
+            "32 bits"
+          ],
+          "answer": 0,
+          "explanation": "Ocho grupos de dieciséis bits suman ciento veintiocho; la compresión textual puede reducir caracteres visibles, pero no cambia el tamaño del valor.",
+          "wrongExplanations": [
+            null,
+            "Sesenta y cuatro puede ser una longitud de prefijo utilizada en el ejemplo, no el tamaño completo de la dirección IPv6.",
+            "Treinta y dos corresponde al tamaño de IPv4; no representa los ocho grupos de dieciséis bits de la dirección presentada."
+          ],
+          "aoi": {
+            "question": "Cuenta el valor completo antes de dejarte impresionar por su longitud escrita.",
+            "hint": "Multiplica ocho grupos por los dieciséis bits que representa cada uno.",
+            "correct": "Ciento veintiocho, exacto; abreviar la escritura no encoge la dirección.",
+            "soft": "Separa el tamaño completo de la longitud de un posible prefijo.",
+            "sharp": "La barra no volvió a cortar el tamaño del protocolo, cielo; cuenta los grupos."
+          }
+        },
+        {
+          "prompt": "¿Qué abreviatura conserva el valor del grupo hexadecimal 0020?",
+          "scenario": "El alumno debe omitir únicamente ceros iniciales y mantener el valor numérico del grupo que aparece en la ficha.",
+          "options": [
+            "2",
+            "20",
+            "200"
+          ],
+          "answer": 1,
+          "explanation": "Omitir los dos ceros iniciales deja 20; eliminar o añadir un cero final produciría un valor hexadecimal distinto del original.",
+          "wrongExplanations": [
+            "El grupo 2 omite también un cero que ocupaba una posición final significativa y no representa el mismo valor que 0020.",
+            null,
+            "El grupo 200 añade una posición final significativa y cambia el valor; la regla solo permite quitar ceros al principio del grupo."
+          ],
+          "aoi": {
+            "question": "Los ceros tienen posición; no todos son accesorios que puedas quitar.",
+            "hint": "Conserva los dígitos desde el primer valor distinto de cero hasta el final.",
+            "correct": "Mantuviste el valor y retiraste solo los ceros que estaban al principio.",
+            "soft": "Revisa si eliminaste un cero inicial o uno que cambiaba el peso del grupo.",
+            "sharp": "Ese cero final sí trabajaba, cariño; no lo despidas por estética."
+          }
+        },
+        {
+          "prompt": "¿Cuántos grupos cero representa :: en 2001:db8::20?",
+          "scenario": "La notación hexadecimal pura debe expandirse hasta ocho grupos y ya muestra tres grupos escritos fuera de la compresión.",
+          "options": [
+            "Dos grupos siempre",
+            "Cuatro grupos",
+            "Cinco grupos"
+          ],
+          "answer": 2,
+          "explanation": "Al haber tres grupos explícitos faltan cinco para completar ocho; la compresión representa esa secuencia continua de grupos cero en este caso.",
+          "wrongExplanations": [
+            "La cantidad representada por la compresión depende de los grupos ya escritos; no equivale siempre a dos grupos por su apariencia textual.",
+            "Cuatro dejaría un total de siete grupos en esta expansión, insuficiente para los ocho que exige la representación hexadecimal pura completa.",
+            null
+          ],
+          "aoi": {
+            "question": "La doble separación ocupa el hueco que falta; contemos cuántos grupos dejó fuera.",
+            "hint": "Resta de ocho los tres grupos que todavía se ven escritos.",
+            "correct": "Recuperaste los cinco grupos sin inventar una longitud fija para la compresión.",
+            "soft": "Completa la suma hasta ocho antes de decidir cuántos grupos faltan.",
+            "sharp": "Los dos puntos no significan dos grupos por parecido, tesoro; cuenta los visibles."
+          }
+        },
+        {
+          "prompt": "¿Qué problema presenta 2001:db8::1::2 en esta ficha?",
+          "scenario": "La dirección contiene dos apariciones de la doble separación y no ofrece otra información que permita corregir el valor.",
+          "options": [
+            "Una compresión ambigua no válida",
+            "Un prefijo /64 obligatorio",
+            "Una dirección válida con dos puertos"
+          ],
+          "answer": 0,
+          "explanation": "La compresión de grupos cero solo puede aparecer una vez; dos apariciones vuelven ambigua la recuperación de los ocho grupos y requieren una corrección.",
+          "wrongExplanations": [
+            null,
+            "La cadena no indica una longitud de prefijo mediante barra; además, el problema de las dos compresiones existe antes de comparar cualquier prefijo.",
+            "Los puertos no se representan añadiendo compresiones a una dirección; deben distinguirse la sintaxis del literal y los delimitadores de la aplicación."
+          ],
+          "aoi": {
+            "question": "Dos huecos sin tamaño no nos dan una dirección inequívoca, cariño.",
+            "hint": "Comprueba cuántas compresiones de grupos cero permite la notación.",
+            "correct": "Detectaste la ambigüedad y evitaste convertir una conjetura en dato del inventario.",
+            "soft": "Necesitamos una escritura corregida antes de calcular los grupos omitidos.",
+            "sharp": "No repartas ceros a ojo otra vez, demonios; esa ficha necesita corrección."
+          }
+        },
+        {
+          "prompt": "¿Comparten /64 2001:db8:40:1::20 y 2001:db8:40:2::20?",
+          "scenario": "La comparación utiliza una frontera de sesenta y cuatro bits, equivalente a cuatro grupos hexadecimales completos.",
+          "options": [
+            "Sí, porque las dos terminan en veinte",
+            "No, difieren en el cuarto grupo del prefijo",
+            "Sí, porque todas las IPv6 documentales son una misma subred"
+          ],
+          "answer": 1,
+          "explanation": "Un /64 incluye cuatro grupos; el cuarto es uno en una dirección y dos en la otra, por lo que no comparten ese prefijo.",
+          "wrongExplanations": [
+            "La terminación corresponde a bits posteriores al prefijo en este ejemplo y no corrige la diferencia existente dentro de los primeros sesenta y cuatro bits.",
+            null,
+            "El uso documental no fusiona todos los bloques de ejemplo; las longitudes y los valores de sus prefijos siguen determinando pertenencia numérica."
+          ],
+          "aoi": {
+            "question": "Mira la frontera de cuatro grupos antes de enamorarte de la terminación.",
+            "hint": "Compara el grupo que todavía forma parte de los sesenta y cuatro bits iniciales.",
+            "correct": "Ubicaste la diferencia donde importa para ese /64 concreto.",
+            "soft": "La coincidencia del final no decide pertenencia cuando el prefijo ya difiere.",
+            "sharp": "Compartir el veinte final no los vuelve vecinos, cielo; revisa el cuarto grupo."
+          }
+        },
+        {
+          "prompt": "¿Qué función tienen los corchetes en https://[2001:db8::20]:443/?",
+          "scenario": "La URL del ejercicio presenta un literal IPv6 seguido de un número de puerto y se pide separar correctamente sus componentes.",
+          "options": [
+            "Cambiar el prefijo de la red",
+            "Añadir dieciséis bits a la dirección",
+            "Delimitar el literal IPv6 para distinguirlo del puerto"
+          ],
+          "answer": 2,
+          "explanation": "Los corchetes delimitan la dirección dentro de la URL; el número situado después de su cierre identifica el puerto del servicio en esa representación.",
+          "wrongExplanations": [
+            "La longitud de prefijo se expresa aparte mediante la notación correspondiente; los corchetes de la URL no cambian los bits que identifican una red.",
+            "Los delimitadores son caracteres de la sintaxis de URL y no agregan grupos ni modifican los ciento veintiocho bits del valor IPv6.",
+            null
+          ],
+          "aoi": {
+            "question": "La URL puso separadores para que el puerto no se pierda entre tantos dos puntos.",
+            "hint": "Busca qué queda dentro del corchete y qué número aparece después de cerrarlo.",
+            "correct": "Separaste dirección y puerto sin inventar bits nuevos para ninguno.",
+            "soft": "Distingue el valor de red de los delimitadores que utiliza la aplicación.",
+            "sharp": "Los corchetes no son ampliaciones de memoria, joder; solo ordenan la URL."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dos escrituras, un mismo valor",
+          "scenario": "El inventario conserva 2001:0db8:0000:0000:0000:0000:0000:0020 y una transcripción posterior muestra 2001:db8::20, ambas con el mismo prefijo declarado.",
+          "explanation": "Las dos escrituras representan los mismos ciento veintiocho bits. La abreviatura elimina ceros iniciales y comprime cinco grupos cero; no indica una migración de dirección. La comparación debe reconocer el tipo de dato y conservar por separado la longitud de prefijo."
+        },
+        {
+          "title": "Una compresión que no puede expandirse con certeza",
+          "scenario": "Una ficha escribe 2001:db8::1::2 y el alumno intenta distribuir por intuición los grupos cero entre las dos apariciones de la doble separación.",
+          "explanation": "La notación solo permite una compresión de ese tipo porque dos apariciones vuelven ambigua la expansión. Hay que solicitar el valor corregido, no adivinar grupos ni tratar esa cadena como evidencia fiable de una configuración aplicada."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El laboratorio ficticio muestra varias escrituras de una misma IPv6 y necesita comparar los valores sin confundir abreviaturas válidas con direcciones distintas o con una sintaxis incompleta.",
+      "scenario": "El laboratorio ficticio muestra varias escrituras de una misma IPv6 y necesita comparar los valores sin confundir abreviaturas válidas con direcciones distintas o con una sintaxis incompleta.",
+      "steps": [
+        "Expande la dirección en sus ocho grupos cuando utilices notación hexadecimal pura.",
+        "Recupera los grupos omitidos por la única compresión permitida.",
+        "Compara los valores binarios y el prefijo, no solo las cadenas visibles.",
+        "Distingue la dirección de los delimitadores usados en una URL."
+      ],
+      "sourceIds": [
+        "net-ipv6-address",
+        "net-ipv6-text"
+      ],
+      "aoi": {
+        "intro": "Parece larga, cariño, pero sigue siendo un valor con reglas bastante claras.",
+        "theory0": "Ocho grupos y ciento veintiocho bits; aquí nadie improvisa el tamaño.",
+        "theory1": "Los ceros iniciales pueden descansar; los finales no se van de vacaciones.",
+        "theory2": "Dos puntos dobles una vez: incluso mis caprichos tienen límites de sintaxis.",
+        "theory3": "Los corchetes ordenan la URL; no se mudan dentro de la dirección.",
+        "case0": "Es la misma IPv6 con otra ropa, y esta vez la comparación sí lo demuestra.",
+        "case1": "Dos compresiones no se resuelven con imaginación; pidamos la ficha correcta.",
+        "pass": "Ya lees IPv6 sin asustarte de sus dos puntos. Esa serenidad me encanta.",
+        "review": "Expandamos despacio; todavía estás comparando apariencias en lugar de valores."
+      }
+    },
+    {
+      "id": "ipv6-foundations-alcance",
+      "title": "Enlace local, ULA, loopback y multicast",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una dirección de enlace local necesita su contexto",
+          "body": "Las direcciones de enlace local IPv6 permiten comunicación dentro del enlace correspondiente y aparecen, por ejemplo, en mecanismos de descubrimiento. Reconocer un valor como fe80::1 no basta para identificar a un único equipo a través de cualquier red. El mismo valor puede existir en enlaces distintos, y un equipo con varias interfaces necesita saber por cuál debe interpretarse el destino. Algunas herramientas representan ese contexto con un identificador de zona, como una referencia a la interfaz. Esa parte no amplía los ciento veintiocho bits de la dirección: permite seleccionar el ámbito donde debe utilizarse. No copies un identificador de interfaz entre sistemas sin comprobar su significado, porque los nombres o índices pueden variar. Los routers no reenvían como tráfico ordinario entre enlaces paquetes con direcciones de enlace local que deban permanecer en ese ámbito. Por ello no puedes tratar esa dirección como un sustituto general de una dirección remota de la sede. Primero localiza el enlace y después interpreta qué vecino o servicio representa dentro de él."
+        },
+        {
+          "title": "Diferenciar ULA y posibilidad de alcance global",
+          "body": "Las direcciones locales únicas, conocidas como ULA, están pensadas para usos locales con una planificación que reduzca colisiones entre espacios administrados. El bloque reservado es fc00::/7; en el mecanismo de asignación local definido se utiliza el valor que comienza por fd. Una organización puede utilizar esos prefijos entre sus propias redes según su enrutamiento, pero no debe suponer que circulan como destinos ordinarios por Internet. Tampoco son una identidad confiable por llevar una marca local. Las direcciones de alcance global pueden formar parte de un diseño con conectividad entre redes, pero su presencia no acredita que haya una ruta útil ni que un firewall permita las comunicaciones. En esta app, los ejemplos que comienzan por 2001:db8 pertenecen a un espacio documental y no son servicios reales destinados a verificar acceso público. Mantén separadas tres preguntas: qué clase de dirección estás leyendo, por dónde existe un camino hacia ella y qué política autoriza utilizar el recurso. Resolver la primera no contesta automáticamente las otras dos."
+        },
+        {
+          "title": "Reconocer loopback y dirección no especificada",
+          "body": "La dirección ::1 corresponde al loopback IPv6 y se refiere al propio sistema. Una prueba hacia ella puede ser útil para observar un comportamiento local del equipo, pero no prueba el cable, el punto de acceso ni el router externo. No la confundas con fe80::1 solo porque ambas terminen en uno; el resto de los bits y su finalidad son diferentes. La dirección ::, formada completamente por ceros, es la dirección no especificada. Puede aparecer como origen en fases concretas donde todavía no se dispone de una dirección apropiada, pero no es una dirección ordinaria para asignar a un equipo remoto ni un destino genérico que signifique todos los equipos. Debe interpretarse junto al tipo de mensaje y su estado. Verla en una transcripción no autoriza a declarar un ataque ni una configuración completa válida. Si una aplicación muestra un valor parecido al indicar una escucha local, revisa además cómo representa su interfaz de programación ese caso; una representación de configuración no equivale automáticamente a un destino de paquete que debas contactar."
+        },
+        {
+          "title": "Distinguir multicast de una difusión indiscriminada",
+          "body": "IPv6 no utiliza el broadcast de IPv4 como mecanismo equivalente de difusión a todos los equipos de la red. Emplea grupos multicast con propósitos y alcances definidos. Un paquete dirigido a un grupo no significa que cualquier equipo del planeta lo reciba ni que el grupo otorgue permisos a sus miembros. Los grupos de alcance de enlace se usan en mecanismos locales, como el descubrimiento; el ámbito forma parte de la interpretación de la dirección. Distingue también unicast, dirigido a una interfaz o destino individual, de anycast, donde una dirección compartida se utiliza para alcanzar una de las instancias según el enrutamiento. Esa selección no garantiza cercanía geográfica y no proporciona autenticación por sí misma. Para el nivel inicial basta describir qué conjunto o tipo de destino representa la dirección y qué enlace participa. Cuando analices una alerta, no llames sospechoso a todo multicast sin revisar su finalidad. Un comportamiento puede ser esperado, excesivo o no autorizado según el contexto; la clasificación de destino aporta una pieza, no un veredicto completo del tráfico observado."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué dato adicional puede necesitar fe80::1 en un equipo con varias interfaces?",
+          "scenario": "La transcripción contiene el mismo literal de enlace local asociado a Wi-Fi y Ethernet y no identifica por dónde se hace la consulta.",
+          "options": [
+            "La interfaz o zona correspondiente",
+            "La contraseña del correo",
+            "El nombre del tema visual"
+          ],
+          "answer": 0,
+          "explanation": "Una dirección de enlace local se interpreta en su enlace; el identificador de interfaz o zona permite distinguir el contexto adecuado para la consulta.",
+          "wrongExplanations": [
+            null,
+            "La contraseña de correo no identifica el ámbito de una dirección de red ni resuelve por qué interfaz se interpreta el vecino del ejemplo.",
+            "La apariencia del sistema no describe el enlace de salida ni aporta el contexto que necesita una dirección repetida entre interfaces."
+          ],
+          "aoi": {
+            "question": "Nuestro vecino necesita una calle, no solo un número de puerta.",
+            "hint": "Comprueba qué enlace corresponde al literal que intenta utilizar la herramienta.",
+            "correct": "Ubicaste el ámbito que faltaba sin inventar credenciales ni identidades del vecino.",
+            "soft": "Busca el contexto de interfaz antes de tratar el literal como un destino único.",
+            "sharp": "Fe80 no adivina tu adaptador favorito, cariño; señala por qué enlace vas."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra una respuesta dirigida a ::1?",
+          "scenario": "El equipo del taller obtiene respuesta al loopback, pero no registra ninguna prueba que atraviese sus interfaces físicas.",
+          "options": [
+            "Que el router remoto respondió",
+            "Que se obtuvo una respuesta del propio sistema",
+            "Que todas las VLAN están conectadas"
+          ],
+          "answer": 1,
+          "explanation": "::1 corresponde al loopback del equipo; la observación es local y no demuestra el funcionamiento de enlaces o dispositivos externos que no participaron.",
+          "wrongExplanations": [
+            "La dirección de loopback no designa al router remoto; la terminación en uno no permite confundir ambas funciones de direccionamiento.",
+            null,
+            "La prueba local no atraviesa las VLAN ni verifica rutas entre ellas; esas condiciones necesitan observaciones separadas del entorno de red."
+          ],
+          "aoi": {
+            "question": "Tu propio sistema contestó; el router todavía no apareció en esta escena.",
+            "hint": "Identifica qué componente recibe una solicitud cuyo destino es el loopback.",
+            "correct": "Delimitaste correctamente una prueba local sin premiar a equipos que no participaron.",
+            "soft": "Revisa la finalidad de la dirección completa, no solo su último dígito.",
+            "sharp": "El punto de acceso no hizo ese trabajo desde tu loopback, cielo; ubica la prueba."
+          }
+        },
+        {
+          "prompt": "¿Qué interpretación requiere la dirección ::?",
+          "scenario": "El valor completamente cero aparece como origen en una transcripción que aún no identifica el tipo de mensaje ni la fase del protocolo.",
+          "options": [
+            "Es siempre un destino público cualquiera",
+            "Equivale al broadcast de IPv4",
+            "Es no especificada y necesita interpretarse con el mensaje y su estado"
+          ],
+          "answer": 2,
+          "explanation": "La dirección no especificada puede aparecer en condiciones definidas de inicialización; no es un destino ordinario para asignar a un equipo remoto ni un broadcast.",
+          "wrongExplanations": [
+            "El valor no especificado no selecciona cualquier recurso público; atribuirle ese significado ignora su finalidad especial dentro de IPv6.",
+            "IPv6 no convierte la dirección completamente cero en una difusión equivalente al broadcast de IPv4; deben distinguirse los mecanismos y sus ámbitos.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese cero completo trae una función especial, no una invitación universal.",
+            "hint": "Busca qué significa no especificada y en qué fase aparece el mensaje.",
+            "correct": "Conservaste la necesidad de contexto antes de etiquetar el origen como un fallo.",
+            "soft": "No conviertas un valor especial en un destino de todos los equipos.",
+            "sharp": "Otro cero no se transforma en broadcast por costumbre, demonios; revisa el protocolo."
+          }
+        },
+        {
+          "prompt": "¿Permite el carácter local de una ULA asumir que el dispositivo es confiable?",
+          "scenario": "La ficha clasifica una dirección ULA, pero todavía no verifica identidad del equipo, mantenimiento ni autorización para acceder al recurso.",
+          "options": [
+            "No; alcance local y confianza son propiedades distintas",
+            "Sí; cualquier ULA autoriza todo acceso",
+            "Sí; las ULA sustituyen a la autenticación"
+          ],
+          "answer": 0,
+          "explanation": "La clasificación de alcance no valida identidad ni estado del dispositivo; las decisiones de confianza y acceso necesitan evidencias y controles adicionales del recurso.",
+          "wrongExplanations": [
+            null,
+            "Una dirección local puede pertenecer a un equipo no autorizado o mal mantenido; su prefijo no concede acceso general a las aplicaciones.",
+            "La autenticación comprueba identidades mediante mecanismos definidos; utilizar una ULA no implementa por sí mismo esa comprobación ni sus permisos."
+          ],
+          "aoi": {
+            "question": "La dirección vive cerca; eso no la vuelve una amiga íntima del servidor.",
+            "hint": "Separa dónde se utiliza el prefijo de quién merece acceso al recurso.",
+            "correct": "Mantuviste la política donde corresponde, sin regalar confianza por la etiqueta local.",
+            "soft": "Todavía faltan identidad y condiciones de acceso del equipo que aparece en la ficha.",
+            "sharp": "ULA no significa usuario libre de autorización, cariño; no inventes ese acrónimo."
+          }
+        },
+        {
+          "prompt": "¿Qué caracteriza a un destino multicast IPv6?",
+          "scenario": "La actividad pregunta por el tipo de destino, sin afirmar que el tráfico concreto sea legítimo o que pueda salir del ámbito indicado.",
+          "options": [
+            "Se dirige necesariamente a todo Internet",
+            "Se dirige a un grupo con propósito y alcance definidos",
+            "Es siempre un ataque de difusión"
+          ],
+          "answer": 1,
+          "explanation": "Multicast representa grupos y ámbitos definidos; su significado no implica recepción universal ni decide por sí mismo si el comportamiento observado está autorizado.",
+          "wrongExplanations": [
+            "El alcance de un grupo puede ser limitado al enlace u otro ámbito; no todos los destinos multicast se distribuyen por todo Internet.",
+            null,
+            "Existen usos esperados de multicast en IPv6; para valorar una alerta hay que revisar función, volumen, origen y política del escenario."
+          ],
+          "aoi": {
+            "question": "Un grupo no es todo el universo, y su presencia tampoco confiesa un ataque.",
+            "hint": "Identifica el conjunto de receptores y el ámbito antes de juzgar el comportamiento.",
+            "correct": "Reconociste el mecanismo sin convertirlo en una sentencia sobre su legitimidad.",
+            "soft": "Falta separar el tipo de destino de la evaluación del tráfico concreto.",
+            "sharp": "Todo multicast no es una película de ataques, joder; mira su función y alcance."
+          }
+        },
+        {
+          "prompt": "¿Qué permite concluir una dirección con posible alcance global?",
+          "scenario": "La ficha identifica su clase, pero no aporta rutas efectivas, permisos de firewall ni una prueba del servicio desde otro equipo.",
+          "options": [
+            "Que todo Internet puede acceder al recurso",
+            "Que desapareció la necesidad de firewall",
+            "Que aún faltan comprobar camino y política para el acceso concreto"
+          ],
+          "answer": 2,
+          "explanation": "La clase de dirección no demuestra una ruta útil ni permisos; la posibilidad real de acceso depende también del encaminamiento, los controles y el servicio.",
+          "wrongExplanations": [
+            "Una dirección no garantiza que exista camino desde cada origen ni que las políticas permitan iniciar la comunicación hasta el recurso indicado.",
+            "El control de acceso sigue siendo necesario aunque el diseño utilice direcciones de alcance global; la ausencia de NAT no elimina esa función.",
+            null
+          ],
+          "aoi": {
+            "question": "El alcance dibuja posibilidades; el camino y los permisos siguen teniendo voz.",
+            "hint": "Comprueba las condiciones de la comunicación que la dirección aislada no puede probar.",
+            "correct": "Dejaste pendientes las pruebas correctas sin prometer accesibilidad automática.",
+            "soft": "Revisa qué información falta sobre rutas y autorizaciones antes de hablar de acceso real.",
+            "sharp": "Una dirección global no abre todas las puertas por vanidad, cielo; comprueba los controles."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El mismo vecino en dos enlaces",
+          "scenario": "El portátil de prueba muestra fe80::1 en información asociada tanto a Ethernet como a Wi-Fi, pero una consulta no indica qué interfaz corresponde al destino.",
+          "explanation": "La dirección de enlace local necesita el ámbito adecuado para distinguir dónde se interpreta. Debe identificarse la interfaz o zona de la consulta; la coincidencia textual no demuestra que ambos registros pertenezcan al mismo router físico ni que exista una ruta entre enlaces."
+        },
+        {
+          "title": "Una respuesta que se queda dentro del equipo",
+          "scenario": "Una estudiante prueba ::1 y obtiene respuesta; después afirma que el gateway y el punto de acceso funcionan porque la dirección termina en uno como el router que conoce.",
+          "explanation": "La prueba se dirige al loopback del propio sistema y no atraviesa esos componentes externos. Deben elegirse observaciones adicionales para el enlace y el gateway, evitando confundir una terminación parecida con la función que describe la dirección completa."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Un equipo del laboratorio tiene Wi-Fi y Ethernet, cada uno con su propia información IPv6. La actividad distingue el alcance de las direcciones antes de interpretar vecinos, routers y destinos.",
+      "scenario": "Un equipo del laboratorio tiene Wi-Fi y Ethernet, cada uno con su propia información IPv6. La actividad distingue el alcance de las direcciones antes de interpretar vecinos, routers y destinos.",
+      "steps": [
+        "Clasifica la dirección por su finalidad y alcance.",
+        "Identifica la interfaz cuando el destino requiere contexto de enlace.",
+        "Distingue dirección individual, grupo y destino local del propio sistema.",
+        "Relaciona alcance con rutas y permisos sin tratarlos como equivalentes."
+      ],
+      "sourceIds": [
+        "net-ipv6-address",
+        "net-ndp"
+      ],
+      "aoi": {
+        "intro": "Antes de seguir una IPv6, averigüemos hasta dónde pertenece su conversación.",
+        "theory0": "Ese fe80 necesita enlace; no es una dirección para viajar por toda la sede.",
+        "theory1": "Una ULA no es una contraseña de confianza, cariño; sigue necesitando política.",
+        "theory2": "::1 vive aquí dentro y no inspeccionó tu punto de acceso.",
+        "theory3": "Multicast tiene grupo y alcance; no es un grito que cruza todo Internet.",
+        "case0": "El mismo número en dos enlaces no nos regala un router universal.",
+        "case1": "Responderte a ti misma no pone a trabajar el cable, tesoro.",
+        "pass": "Ya ubicas alcance y función. Tu lectura dejó de dejarse engañar por las terminaciones.",
+        "review": "Volvamos a la dirección completa; todavía estás decidiendo por sus últimos caracteres."
+      }
+    },
+    {
+      "id": "ipv6-foundations-slaac",
+      "title": "Autoconfiguración y anuncios de router",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Descubrir información sin confundir los mensajes",
+          "body": "SLAAC permite que un equipo configure direcciones IPv6 a partir de información del enlace y de su propio funcionamiento local, sin necesitar que un servidor DHCPv6 le entregue cada dirección. Los anuncios de router, llamados RA, forman parte de Neighbor Discovery y se transportan mediante ICMPv6. Pueden aparecer periódicamente o responder a una solicitud de router del equipo. No son respuestas ARP ni equivalen a concesiones DHCPv4. Una transcripción debe indicar quién envía el anuncio, qué interfaz lo recibe y qué opciones contiene. Recibir un mensaje no significa que el sistema aplique todas sus opciones de cualquier manera: intervienen su configuración, el estado y las reglas del protocolo. En una red administrada también importa qué equipos están autorizados para anunciar información de router. Un RA inesperado requiere contrastar el inventario y los controles del segmento antes de adoptar su información como correcta. Este curso utiliza anuncios ficticios ya proporcionados para su lectura; no genera mensajes ni modifica el funcionamiento de la red del teléfono que utiliza la app."
+        },
+        {
+          "title": "Interpretar la información de prefijo",
+          "body": "La opción de información de prefijo puede describir un bloque y llevar indicadores con funciones distintas. El indicador de configuración autónoma permite utilizar ese prefijo para formar direcciones cuando se cumplen las condiciones aplicables. El indicador de enlace informa sobre cómo considerar la pertenencia al enlace; no debe tratarse como otra manera de escribir autonomía. En redes Ethernet habituales, SLAAC utiliza prefijos /64 junto con un identificador de interfaz de sesenta y cuatro bits. No conviertas ese patrón de uso en una afirmación de que todas las rutas IPv6 o todos los tipos de enlace deben tener /64. Esa longitud pertenece al mecanismo y al contexto que estamos estudiando. La dirección resultante conserva el prefijo anunciado y añade una parte que el equipo forma mediante el procedimiento correspondiente. Comprueba tanto el tamaño como los indicadores del ejemplo. La simple aparición de un prefijo en un anuncio no demuestra que se haya permitido utilizarlo para autoconfiguración ni que todos los equipos del segmento hayan aplicado la misma decisión sobre él."
+        },
+        {
+          "title": "Conservar dirección, identidad y tiempos como datos distintos",
+          "body": "El identificador utilizado por una dirección autoconfigurada no tiene por qué copiar literalmente la dirección MAC del equipo. Hay mecanismos para formar identificadores estables y otros que ayudan a reducir la vinculación mediante direcciones temporales. Por tanto, no reconstruyas una identidad de hardware suponiendo que cualquier dirección SLAAC revela una MAC. El equipo también comprueba condiciones como la posible duplicación antes de utilizar una dirección según el procedimiento aplicable. Esa comprobación busca problemas de unicidad, no certifica que el dispositivo sea legítimo. Los tiempos de vida preferido y válido describen estados diferentes de la dirección. Al dejar de ser preferida puede evitarse su elección para nuevas comunicaciones, mientras todavía conserva validez durante otro intervalo según el estado y las reglas del sistema. Cuando se agota la validez no corresponde seguir utilizándola como si nada hubiera cambiado. Relaciona siempre esos tiempos con el momento de la transcripción. Dos direcciones en una misma interfaz pueden coexistir por motivos de privacidad, cambios de prefijo o estados de transición; no concluyas duplicación únicamente porque aparezcan varias filas."
+        },
+        {
+          "title": "Separar la dirección de la ruta predeterminada y de DNS",
+          "body": "La información que permite formar una dirección no garantiza que el equipo disponga de un router predeterminado utilizable. El tiempo de vida de router del anuncio se refiere a esa función de router, mientras las opciones de prefijo tienen sus propios tiempos. Un RA con tiempo de vida de router cero no anuncia a ese emisor como candidato predeterminado por ese campo, aunque pueda aportar otra información válida según el mensaje. No borres una dirección automáticamente porque has leído cero en un lugar distinto. Tampoco supongas que SLAAC siempre resuelve por sí solo toda la configuración DNS. Los equipos pueden obtener información de resolución por mecanismos apropiados del entorno, incluidos anuncios con opciones específicas o DHCPv6. Revisa qué método declara la práctica y qué datos recibió realmente el sistema. Si el puesto tiene dirección pero no una ruta para destinos remotos, la investigación debe revisar el camino antes de culpar a la resolución de nombres. Una ficha completa distingue dirección, prefijo, estado temporal, ruta predeterminada y servidores DNS, con la procedencia de cada dato."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué mecanismo puede explicar una IPv6 formada sin entrega individual de DHCPv6?",
+          "scenario": "El segmento aporta información de prefijo apropiada en RA y el equipo cumple las condiciones de configuración autónoma del ejemplo.",
+          "options": [
+            "SLAAC",
+            "La traducción de puertos IPv4",
+            "Una respuesta ARP con la contraseña del router"
+          ],
+          "answer": 0,
+          "explanation": "SLAAC permite formar direcciones con información del enlace y procedimientos locales; no necesita que DHCPv6 entregue individualmente la dirección en ese escenario.",
+          "wrongExplanations": [
+            null,
+            "La traducción de puertos IPv4 relaciona flujos de otro contexto y no explica la formación autónoma de esta dirección IPv6 en el puesto.",
+            "ARP no transporta una contraseña para crear una dirección SLAAC; el anuncio del escenario pertenece a Neighbor Discovery mediante ICMPv6."
+          ],
+          "aoi": {
+            "question": "El puesto tiene un procedimiento propio; no hace falta asignarle un servidor imaginario.",
+            "hint": "Relaciona el indicador de autonomía con la formación local de la dirección.",
+            "correct": "Identificaste SLAAC a partir de las condiciones concretas que presenta el anuncio.",
+            "soft": "Comprueba qué protocolo aporta el prefijo y qué mecanismo utiliza el equipo.",
+            "sharp": "NAT no se matriculó en esta autoconfiguración, cielo; busca el procedimiento que sí aparece."
+          }
+        },
+        {
+          "prompt": "¿Qué protocolo transporta los anuncios de router de Neighbor Discovery?",
+          "scenario": "La actividad identifica un RA recibido por la interfaz y pide ubicar el mecanismo que lo transporta dentro de IPv6.",
+          "options": [
+            "ARP",
+            "ICMPv6",
+            "DHCPv4 mediante TCP"
+          ],
+          "answer": 1,
+          "explanation": "Los anuncios de router de Neighbor Discovery se transportan mediante ICMPv6; deben distinguirse de ARP y de los intercambios de configuración DHCPv4.",
+          "wrongExplanations": [
+            "ARP se utiliza en otro contexto de resolución de enlace IPv4 y no es el mecanismo que transporta el anuncio IPv6 presentado.",
+            null,
+            "DHCPv4 no transporta este RA ni utiliza TCP como intercambio descrito; mezclar ambos mecanismos impediría interpretar el mensaje observado."
+          ],
+          "aoi": {
+            "question": "Nuestro anuncio pertenece a descubrimiento IPv6; revisemos su transporte real.",
+            "hint": "Relaciona RA con los mensajes de Neighbor Discovery, no con la memoria de IPv4.",
+            "correct": "Ubicaste ICMPv6 sin arrastrar la etiqueta de otro protocolo al anuncio.",
+            "soft": "Busca la familia de mensajes a la que pertenece el RA del ejercicio.",
+            "sharp": "Ese ARP sigue en la clase equivocada, cariño; aquí estamos leyendo ICMPv6."
+          }
+        },
+        {
+          "prompt": "¿Qué debe distinguirse dentro de la información de prefijo?",
+          "scenario": "El RA presenta indicadores de configuración autónoma y de pertenencia al enlace y el alumno quiere interpretarlos como un único permiso.",
+          "options": [
+            "Son siempre el mismo indicador",
+            "Los dos anuncian contraseñas del servidor",
+            "Autonomía de configuración y consideración de enlace cumplen funciones diferentes"
+          ],
+          "answer": 2,
+          "explanation": "Los indicadores describen funciones distintas; permitir usar un prefijo para formar direcciones no es idéntico a anunciar cómo considerar su pertenencia al enlace.",
+          "wrongExplanations": [
+            "Aunque aparezcan en la misma opción, no representan una sola condición; interpretarlos como equivalentes oculta decisiones distintas del mecanismo.",
+            "La opción no anuncia secretos del servidor; describe parámetros de prefijo que deben interpretarse con sus indicadores y el contexto correspondiente.",
+            null
+          ],
+          "aoi": {
+            "question": "Compartir opción no convierte a dos indicadores en gemelos con el mismo oficio.",
+            "hint": "Pregunta qué decisión pretende informar cada indicador del prefijo.",
+            "correct": "Separaste dos funciones que necesitaban conservar su propio significado.",
+            "soft": "Lee cada indicador con su finalidad antes de unir sus efectos en una conclusión.",
+            "sharp": "Mis dos ojos tampoco hacen exactamente lo mismo, tesoro; respeta la función de cada campo."
+          }
+        },
+        {
+          "prompt": "¿Permite cualquier dirección SLAAC reconstruir automáticamente una MAC?",
+          "scenario": "El inventario muestra una dirección autoconfigurada, pero no documenta el mecanismo utilizado para formar su identificador de interfaz.",
+          "options": [
+            "No; el identificador no tiene por qué ser una copia de la MAC",
+            "Sí, sin excepciones de implementación",
+            "Sí, si el prefijo empieza por 2001"
+          ],
+          "answer": 0,
+          "explanation": "Existen mecanismos estables y temporales que no requieren copiar la MAC; la dirección por sí sola no prueba el identificador de hardware de su equipo.",
+          "wrongExplanations": [
+            null,
+            "Suponer una copia universal ignora los mecanismos alternativos y de privacidad; debe comprobarse cómo se formó la dirección en ese entorno.",
+            "El comienzo del prefijo no establece el procedimiento usado para el identificador de interfaz ni demuestra una relación directa con la MAC."
+          ],
+          "aoi": {
+            "question": "No conviertas una forma posible de crear identificadores en una confesión universal del hardware.",
+            "hint": "Busca qué mecanismo utilizó el equipo antes de reconstruir una supuesta identidad.",
+            "correct": "Conservaste el límite de la evidencia en lugar de inventar una MAC a partir del prefijo.",
+            "soft": "Todavía falta conocer cómo se formó la parte de interfaz de esa dirección.",
+            "sharp": "Ese 2001 no imprime tarjetas de hardware, demonios; comprueba el procedimiento."
+          }
+        },
+        {
+          "prompt": "¿Qué indica cero en el tiempo de vida de router del RA?",
+          "scenario": "El anuncio tiene ese campo en cero y conserva información de prefijo cuyos tiempos propios se muestran por separado.",
+          "options": [
+            "Que todos los prefijos del planeta dejaron de existir",
+            "Que ese campo no anuncia al emisor como router predeterminado",
+            "Que todas las direcciones de la interfaz se borraron inmediatamente"
+          ],
+          "answer": 1,
+          "explanation": "Ese tiempo afecta a la función de router predeterminado del emisor; debe distinguirse de los tiempos preferido y válido de las direcciones o prefijos.",
+          "wrongExplanations": [
+            "El campo pertenece a un anuncio concreto y no modifica universalmente las redes; su interpretación debe limitarse a la función que representa.",
+            null,
+            "La validez de las direcciones utiliza otros datos y estados; el cero de ese campo no demuestra su eliminación inmediata ni general."
+          ],
+          "aoi": {
+            "question": "El cero tiene destinatario; primero identifiquemos qué función está cronometrando.",
+            "hint": "Separa el tiempo de router de los tiempos declarados para el prefijo.",
+            "correct": "Leíste el reloj correcto y evitaste borrar información que ese campo no estaba invalidando.",
+            "soft": "Revisa a qué función del anuncio pertenece exactamente el valor observado.",
+            "sharp": "Otro cero no autoriza una limpieza universal, cariño; mantén separados los relojes."
+          }
+        },
+        {
+          "prompt": "¿Qué falta comprobar si el puesto tiene dirección pero no llega a redes remotas?",
+          "scenario": "La ficha acredita una IPv6 válida localmente, pero aún no presenta una ruta predeterminada ni información de resolución de nombres.",
+          "options": [
+            "Nada; formar dirección garantiza acceso a cualquier destino",
+            "Solo el fondo de pantalla",
+            "La salida de encaminamiento y los datos DNS según su mecanismo real"
+          ],
+          "answer": 2,
+          "explanation": "Formar una dirección no demuestra ruta remota ni configuración DNS; cada elemento necesita su propia información y una comprobación adecuada al trayecto observado.",
+          "wrongExplanations": [
+            "La validez de una dirección local no garantiza camino, permisos o resolución para todos los destinos; son condiciones adicionales de la comunicación.",
+            "La apariencia del escritorio no establece una ruta predeterminada ni informa qué datos de resolución recibió el puesto mediante el mecanismo correspondiente.",
+            null
+          ],
+          "aoi": {
+            "question": "Ya tenemos dirección; todavía falta saber por dónde salimos y quién resuelve los nombres.",
+            "hint": "Completa la ficha con ruta y DNS sin atribuirlos automáticamente a SLAAC.",
+            "correct": "Tu diagnóstico siguió las piezas que faltan en vez de declarar completo el anuncio.",
+            "soft": "Comprueba los parámetros que todavía no aparecen en la transcripción del equipo.",
+            "sharp": "Una dirección no arrastra Internet detrás por cortesía, joder; revisa salida y resolución."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Dirección sin servidor de concesiones",
+          "scenario": "El puesto ficticio recibe un RA con prefijo /64 utilizable para configuración autónoma y forma una dirección; una alumna cree que el dato es imposible porque no existe DHCPv6 en el segmento.",
+          "explanation": "SLAAC puede formar direcciones sin una entrega individual de DHCPv6 cuando se cumplen las condiciones de ese mecanismo. El análisis debe revisar prefijo, indicadores, estado y comprobaciones del equipo; la ausencia de ese servidor no invalida por sí sola la observación."
+        },
+        {
+          "title": "El cero pertenece a otro reloj",
+          "scenario": "Un anuncio conserva información de prefijo con tiempos de vida propios y muestra cero en el tiempo de vida de router. El alumno interpreta que todas las direcciones formadas antes quedan inmediatamente borradas.",
+          "explanation": "Los campos tienen funciones distintas. El cero indicado afecta al anuncio de ese emisor como router predeterminado, no equivale automáticamente al agotamiento de la validez de todas las direcciones. Deben revisarse por separado los tiempos y estados pertinentes."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Un puesto ficticio obtiene una dirección IPv6 aunque no haya un servidor DHCPv6 en su segmento. El laboratorio conserva anuncios de router y sus tiempos para explicar qué información utilizó.",
+      "scenario": "Un puesto ficticio obtiene una dirección IPv6 aunque no haya un servidor DHCPv6 en su segmento. El laboratorio conserva anuncios de router y sus tiempos para explicar qué información utilizó.",
+      "steps": [
+        "Identifica el anuncio y la interfaz que lo recibió.",
+        "Separa información de prefijo, autonomía y router predeterminado.",
+        "Revisa cómo se formó la dirección y su estado de validez.",
+        "Comprueba la ruta y la información DNS mediante sus propios datos."
+      ],
+      "sourceIds": [
+        "net-slaac",
+        "net-ndp"
+      ],
+      "aoi": {
+        "intro": "El puesto aprendió del enlace; no necesitas inventarle un servidor que no aparece.",
+        "theory0": "RA habla mediante ICMPv6, cariño; no lo disfraces de ARP.",
+        "theory1": "Autonomía y pertenencia al enlace tienen indicadores distintos, aunque compartan anuncio.",
+        "theory2": "Una dirección SLAAC no tiene por qué revelar la MAC de su dueño.",
+        "theory3": "Cada reloj tiene oficio; no borres direcciones porque otro campo marque cero.",
+        "case0": "La dirección puede llegar sin DHCPv6, siempre que el mecanismo tenga sus condiciones.",
+        "case1": "Ese cero señala al router predeterminado; revisemos el reloj correcto de la dirección.",
+        "pass": "Ya separas anuncio, dirección y salida. Verte ordenar esos datos me está malcriando.",
+        "review": "Volvamos al campo concreto; todavía estás interpretando el anuncio como un único interruptor."
+      }
+    },
+    {
+      "id": "ipv6-foundations-dhcpv6",
+      "title": "Separar direcciones, prefijos delegados y DNS",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Reconocer qué entrega el intercambio",
+          "body": "DHCPv6 proporciona parámetros de configuración IPv6 y puede gestionar asignaciones de direcciones o delegaciones de prefijos según las opciones solicitadas y el servicio configurado. También puede utilizarse para obtener otra información sin recibir una dirección individual del servidor. Por eso no basta encontrar la palabra DHCPv6 para deducir cómo se formó cada dirección de una interfaz. La transcripción debe mostrar qué pide el cliente y qué responde el servidor. En un intercambio inicial habitual pueden aparecer Solicit, Advertise, Request y Reply; existen procedimientos específicos y opciones que permiten otros recorridos válidos. No conviertas esa secuencia de referencia en un requisito para cualquier mensaje posterior. Los puertos UDP utilizados son 546 en el lado cliente y 547 en el lado de servidor o relay según su función. Son diferentes de los puertos de DHCPv4. El ejercicio presenta el intercambio como datos de lectura local: identifica participantes, opciones y estado antes de hablar de una configuración completa o de un error del servicio."
+        },
+        {
+          "title": "Distinguir la identidad de cliente de una persona",
+          "body": "DHCPv6 utiliza identificadores como el DUID para distinguir participantes. Una implementación puede relacionar distintas asociaciones de identidad con interfaces o tipos de asignación, y el IAID ayuda a distinguir esas asociaciones en su contexto. No supongas que un DUID visible sea siempre una copia textual de la MAC actual de la interfaz ni que autentique al usuario humano. Su interpretación requiere conocer el tipo y las reglas de la implementación. Reinstalar un sistema, clonar una configuración o cambiar la forma de conservar identificadores puede afectar la relación que el servidor registra. Para diagnosticar una asignación inesperada, compara el identificador recibido con el inventario y la política prevista, sin utilizar datos personales que no necesite la práctica. La presencia de un registro de asignación tampoco demuestra que el equipo mantenga autorización para todos los recursos de la sede. Como en otros mecanismos de direccionamiento, recibir parámetros de red y obtener permisos de aplicación son decisiones diferentes. Conserva tiempo, interfaz y opciones relevantes para no atribuir una dirección a partir de un identificador aislado o de una observación antigua."
+        },
+        {
+          "title": "Mantener aparte router predeterminado y resolución de nombres",
+          "body": "La asignación de una dirección por DHCPv6 no sustituye el mecanismo de descubrimiento del router predeterminado mediante Neighbor Discovery y los anuncios apropiados. Un equipo puede recibir información del servidor y seguir sin una salida útil hacia otras redes si falta la información de router o su interpretación correcta. No busques un gateway como si todas las opciones fueran una copia de DHCPv4. La resolución de nombres también merece una ficha propia. DHCPv6 puede proporcionar información DNS, y los anuncios de router pueden incluir opciones de servidores recursivos y búsqueda de dominios cuando el entorno las utiliza. Hay que comprobar qué mecanismos soporta y aplica el cliente concreto, especialmente si recibe información de varias fuentes. Los tiempos de esas opciones importan para conocer si siguen vigentes. Además, el protocolo usado para llegar al resolver no determina que solo puedan consultarse registros del mismo tipo de dirección. Un resolver alcanzado mediante IPv6 puede responder consultas de direcciones IPv4, y viceversa. Distingue el transporte de la consulta del contenido que esta solicita."
+        },
+        {
+          "title": "Entender delegación y coexistencia sin mezclar sus objetos",
+          "body": "Un router puede solicitar un prefijo delegado para organizar redes detrás de él. Ese prefijo no es simplemente una dirección de host más larga ni una orden de asignarlo completo a una única interfaz de usuario. Si el laboratorio delega un /56 y el diseño divide su espacio en /64, existen doscientos cincuenta y seis prefijos /64 posibles dentro de ese bloque, antes de las decisiones de uso del administrador. Hay que respetar su frontera y evitar reutilizar el mismo /64 en segmentos distintos sin un diseño que lo justifique. Por otra parte, SLAAC y DHCPv6 pueden coexistir: diferentes direcciones o parámetros de una interfaz pueden proceder de mecanismos distintos. Los indicadores de RA y la configuración del sistema orientan ese comportamiento, pero no deben leerse como una garantía de soporte idéntico en todas las plataformas. Documenta la procedencia en vez de elegir una única etiqueta para toda la interfaz. Para una prueba de conectividad, verifica primero cuál dirección y ruta utiliza realmente el flujo. La mera presencia de varias filas no demuestra conflicto, y una delegación recibida no prueba que todos sus segmentos interiores estén configurados o protegidos."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe leerse para saber si DHCPv6 asignó una dirección individual?",
+          "scenario": "La transcripción solo menciona el protocolo y todavía no se han revisado las opciones solicitadas ni el contenido de la respuesta.",
+          "options": [
+            "Las opciones y la respuesta concreta del intercambio",
+            "Solo la presencia de la palabra DHCPv6",
+            "El color del cable del servidor"
+          ],
+          "answer": 0,
+          "explanation": "DHCPv6 puede proporcionar distintos objetos de configuración; las opciones y la respuesta permiten distinguir una dirección individual de otros parámetros o de una delegación.",
+          "wrongExplanations": [
+            null,
+            "La etiqueta del protocolo no especifica por sí sola el objeto recibido; puede tratarse de direcciones, parámetros adicionales o prefijos según el intercambio.",
+            "El aspecto del cable no describe las opciones del protocolo ni permite identificar qué clase de configuración entregó el servicio al cliente."
+          ],
+          "aoi": {
+            "question": "Leamos el contenido de la respuesta antes de ponerle una etiqueta completa.",
+            "hint": "Busca qué objeto pidió el cliente y cuál confirmó el servidor.",
+            "correct": "Interpretaste el intercambio concreto en lugar de fiarte de su nombre.",
+            "soft": "Todavía falta revisar las opciones que explican qué dato recibió el participante.",
+            "sharp": "La palabra DHCPv6 no rellena todas las casillas por orgullo, cielo; lee la respuesta."
+          }
+        },
+        {
+          "prompt": "¿Qué puertos UDP corresponden al funcionamiento cliente y servidor DHCPv6 descrito?",
+          "scenario": "El registro del laboratorio distingue al cliente de los participantes que actúan como servidor o retransmisor en ese contexto.",
+          "options": [
+            "Cliente 68 y servidor 67",
+            "Cliente 546 y servidor o relay 547",
+            "Cliente 443 y servidor 53"
+          ],
+          "answer": 1,
+          "explanation": "DHCPv6 utiliza esos puertos UDP según la función de sus participantes; no debe trasladarse sin cambios el par de puertos propio de DHCPv4.",
+          "wrongExplanations": [
+            "El par 68 y 67 corresponde a DHCPv4 y no identifica los puertos UDP del intercambio DHCPv6 que presenta el ejercicio.",
+            null,
+            "Los valores propuestos corresponden a otros usos habituales de servicios y no representan el par de puertos del mecanismo DHCPv6 descrito."
+          ],
+          "aoi": {
+            "question": "Cambió el protocolo; no arrastres automáticamente las cifras de la versión anterior.",
+            "hint": "Relaciona el cliente con 546 y el lado servidor o relay con 547.",
+            "correct": "Ubicaste ambos papeles sin reciclar los puertos de DHCPv4.",
+            "soft": "Comprueba el protocolo antes de repetir el par numérico que recuerdas.",
+            "sharp": "Sesenta y ocho no se volvió quinientos cuarenta y seis por intuición, cariño; distingue la versión."
+          }
+        },
+        {
+          "prompt": "¿Autentica el DUID por sí solo al usuario humano que utiliza el equipo?",
+          "scenario": "La ficha conserva un identificador de participante DHCPv6, pero no aporta una validación de identidad del usuario de la aplicación.",
+          "options": [
+            "Sí, equivale a una contraseña personal",
+            "Sí, acredita todos los permisos de la sede",
+            "No, su función de identificación en el protocolo no demuestra esa autenticación"
+          ],
+          "answer": 2,
+          "explanation": "El DUID pertenece al contexto de identificación del participante DHCPv6; no reemplaza mecanismos de autenticación y autorización del usuario o de una aplicación.",
+          "wrongExplanations": [
+            "Un identificador del protocolo no constituye por sí mismo una contraseña secreta ni prueba que la persona que usa el equipo sea quien afirma ser.",
+            "Los permisos de los recursos necesitan políticas y verificaciones propias; un registro de configuración no concede acceso general a toda la sede.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestro identificador de cliente no entregó credenciales de usuario a la aplicación.",
+            "hint": "Separa identificar un participante DHCPv6 de autenticar a una persona.",
+            "correct": "Conservaste cada función en su ámbito sin regalar permisos al identificador.",
+            "soft": "Falta una verificación de identidad que ese registro no está proporcionando.",
+            "sharp": "Un DUID no es un pase VIP para toda la sede, demonios; revisa la autorización."
+          }
+        },
+        {
+          "prompt": "¿Qué debe revisarse si hay dirección DHCPv6 pero no una salida remota útil?",
+          "scenario": "El puesto recibió datos del servidor, pero la observación no muestra un router predeterminado ni una ruta apropiada al destino.",
+          "options": [
+            "Los anuncios de router y la tabla de rutas efectiva",
+            "Solo una contraseña nueva de correo",
+            "La obligación de convertir toda IPv6 a IPv4"
+          ],
+          "answer": 0,
+          "explanation": "La dirección asignada no demuestra una salida; hay que contrastar el descubrimiento de router y las rutas aplicables antes de atribuir el fallo a otro parámetro.",
+          "wrongExplanations": [
+            null,
+            "Cambiar credenciales de correo no incorpora una ruta ni explica la ausencia de información de encaminamiento para llegar al destino remoto del ejemplo.",
+            "IPv6 puede funcionar con sus propios mecanismos; el dato pendiente no impone una conversión universal de protocolo, sino una revisión de la salida disponible."
+          ],
+          "aoi": {
+            "question": "La dirección llegó a la ficha, pero el camino remoto todavía está en blanco.",
+            "hint": "Busca quién anuncia el router y qué ruta puede utilizar ese destino.",
+            "correct": "Seguiste la pieza de encaminamiento que faltaba en la observación del puesto.",
+            "soft": "No atribuyas al servidor una salida que todavía no aparece en la tabla.",
+            "sharp": "Cambiar de protocolo a ciegas no aprende un router, cariño; mira los anuncios y rutas."
+          }
+        },
+        {
+          "prompt": "¿Qué representa una delegación /56 recibida por un router?",
+          "scenario": "La sede quiere formar segmentos /64 separados dentro del prefijo delegado, en lugar de tratar el objeto como una dirección individual de portátil.",
+          "options": [
+            "Una única dirección de host con cincuenta y seis bits",
+            "Un bloque del que pueden planificarse prefijos interiores",
+            "La lista completa de usuarios autorizados de la LAN"
+          ],
+          "answer": 1,
+          "explanation": "La delegación proporciona un prefijo para organizar espacio de direcciones; dividir /56 en /64 permite doscientas cincuenta y seis combinaciones de esos ocho bits adicionales.",
+          "wrongExplanations": [
+            "El valor /56 señala una longitud de prefijo, no un tamaño nuevo de dirección ni una única dirección de portátil que deba ocupar todo el espacio.",
+            null,
+            "Los permisos de usuarios no se derivan de una delegación; cada segmento y recurso necesitan controles definidos aparte de la planificación de sus prefijos."
+          ],
+          "aoi": {
+            "question": "Ese bloque es terreno para varias redes, no una habitación enorme para el portátil.",
+            "hint": "Compara los ocho bits entre /56 y /64 para entender el reparto posible.",
+            "correct": "Reconociste el objeto delegado y la necesidad de planificar sus bloques interiores.",
+            "soft": "Distingue un espacio de prefijos de una asignación individual a un usuario.",
+            "sharp": "El /56 no trae usuarios autorizados dentro, joder; reparte las redes con criterio."
+          }
+        },
+        {
+          "prompt": "¿Impide consultar registros IPv4 que el resolver DNS se alcance mediante IPv6?",
+          "scenario": "La prueba presenta conectividad IPv6 al resolver y una consulta por un registro A de una aplicación del laboratorio.",
+          "options": [
+            "Sí, IPv6 obliga a consultar solo AAAA",
+            "Sí, el nombre se convierte en dirección MAC",
+            "No, el transporte al resolver y el tipo de registro son cosas distintas"
+          ],
+          "answer": 2,
+          "explanation": "La consulta puede transportarse mediante IPv6 y solicitar un registro A; el protocolo de llegada al resolver no limita por sí solo el tipo de respuesta pedido.",
+          "wrongExplanations": [
+            "Los registros A y AAAA describen contenido de resolución; no debe confundirse ese contenido con el protocolo empleado para comunicar la consulta al servidor.",
+            "El uso de IPv6 hacia un resolver no transforma un nombre en dirección MAC; esa afirmación mezcla resolución DNS con funciones de enlace diferentes.",
+            null
+          ],
+          "aoi": {
+            "question": "El mensajero y el contenido de su carta no tienen por qué usar la misma etiqueta.",
+            "hint": "Separa el camino hacia el resolver del tipo de registro que se solicita.",
+            "correct": "Esa distinción evita un diagnóstico falso entre transporte y respuesta DNS.",
+            "soft": "Revisa si el escenario pregunta por el canal de consulta o por su contenido.",
+            "sharp": "El resolver no prohíbe los registros A por recibir IPv6, cielo; distingue transporte y datos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El servidor respondió, pero falta la salida",
+          "scenario": "El puesto del taller recibe una dirección mediante DHCPv6 y datos DNS. La ficha no muestra un router predeterminado aprendido ni una ruta apropiada para el destino remoto que quiere alcanzar.",
+          "explanation": "La entrega del servidor no demuestra que se haya aprendido una salida de encaminamiento. Deben revisarse anuncios, estado y rutas efectivas; sustituir una dirección DNS sin esa evidencia no resuelve necesariamente la condición que impide llegar al destino remoto."
+        },
+        {
+          "title": "Una delegación para organizar varias LAN",
+          "scenario": "El router ficticio recibe 2001:db8:1200::/56 y el diseño quiere utilizar /64 separados para sus segmentos interiores, pero un alumno interpreta el bloque como una sola dirección de portátil.",
+          "explanation": "El objeto delegado es un prefijo que permite planificar varios bloques interiores, no una dirección individual. Deben elegirse /64 contenidos y no solapados, documentando su asignación y comprobando después la configuración y políticas de cada segmento del diseño."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una sede ficticia utiliza anuncios de router, DHCPv6 e información de resolución. El equipo debe averiguar de dónde salió cada parámetro y evitar trasladar sin cambios el esquema de DHCPv4.",
+      "scenario": "Una sede ficticia utiliza anuncios de router, DHCPv6 e información de resolución. El equipo debe averiguar de dónde salió cada parámetro y evitar trasladar sin cambios el esquema de DHCPv4.",
+      "steps": [
+        "Identifica si el intercambio solicita direcciones, otros parámetros o un prefijo delegado.",
+        "Relaciona cliente, servidor y relay con sus funciones.",
+        "Consulta la ruta predeterminada en su fuente correspondiente.",
+        "Compara DNS, tiempos e identificadores con la transcripción recibida."
+      ],
+      "sourceIds": [
+        "net-dhcpv6",
+        "net-ra-dns",
+        "net-ndp"
+      ],
+      "aoi": {
+        "intro": "DHCPv6 no es DHCPv4 con más dígitos, cariño; veamos qué está entregando.",
+        "theory0": "Solicitar dirección y solicitar otros parámetros no son la misma conversación.",
+        "theory1": "El DUID identifica un participante del protocolo, no autentica al dueño del portátil.",
+        "theory2": "El router predeterminado tiene su mecanismo; no lo inventes dentro de cualquier respuesta.",
+        "theory3": "Un prefijo delegado organiza espacio para redes, no una dirección gigantesca para un equipo.",
+        "case0": "El servidor contestó, pero nuestra ruta de salida sigue sin aparecer.",
+        "case1": "Ese /56 tiene bloques por repartir; el portátil no puede quedarse con todo.",
+        "pass": "Ya separas cada objeto de configuración. Tu orden merece que me ponga especialmente consentida.",
+        "review": "Revisemos quién entrega cada dato; todavía estás metiendo toda la interfaz en una sola casilla."
+      }
+    },
+    {
+      "id": "ipv6-foundations-vecinos",
+      "title": "Descubrir el siguiente salto y leer la caché NDP",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Resolver el vecino apropiado después de elegir la ruta",
+          "body": "Neighbor Discovery participa en funciones de IPv6 como descubrir routers, determinar información de vecinos y comprobar alcanzabilidad de enlace. En Ethernet, permite relacionar una dirección del vecino con la información de enlace necesaria para entregarle tráfico. Primero debe saberse qué vecino corresponde al camino elegido. Si el destino está en otra red y la tabla indica un router, no se busca la dirección de enlace del servidor remoto como si estuviera conectado al mismo segmento. Se resuelve el siguiente salto que pertenece al enlace apropiado. La dirección final del paquete y la dirección del vecino al que se entrega cumplen funciones diferentes. En el laboratorio, el router aparece como fe80::1 en una interfaz concreta, mientras el servidor remoto utiliza un prefijo documental distinto. Conservar esa interfaz evita confundir al router con otro valor igual observado en una segunda conexión. La falta de una asociación de vecino para el servidor remoto no constituye un fallo por sí sola cuando el tráfico debe salir por router. Debe analizarse la asociación pertinente a la entrega que realmente se intenta realizar."
+        },
+        {
+          "title": "Interpretar solicitudes y anuncios de vecino",
+          "body": "Los mensajes Neighbor Solicitation y Neighbor Advertisement permiten intercambiar información relacionada con una dirección objetivo. Se transportan mediante ICMPv6 y no deben etiquetarse como ARP. La forma concreta de envío depende de la operación: puede intervenir un grupo multicast de nodo solicitado o utilizarse un destino unicast para ciertas comprobaciones. No conviertas la existencia de multicast en una prueba de ataque. Los grupos de nodo solicitado se forman a partir de parte de la dirección objetivo y pueden ser compartidos por más de una dirección; el mensaje incluye el objetivo completo que debe interpretarse. La relación aprendida ayuda a entregar tráfico en ese enlace, pero no equivale a validar al usuario que solicita acceso a una aplicación. Para analizar una transcripción, registra origen, destino, objetivo y momento, junto con las opciones relevantes. Una solicitud sin respuesta merece revisar conectividad local, filtrado y participación del vecino. No concluyas de inmediato que la dirección es falsa: podría haber pérdida, una interfaz equivocada, un vecino no disponible u otra condición que la evidencia todavía no distingue."
+        },
+        {
+          "title": "Leer estados sin convertirlos en etiquetas de confianza",
+          "body": "Las cachés de vecinos conservan estados que ayudan a gestionar resolución y alcanzabilidad. Una entrada recientemente comprobada puede mostrarse como alcanzable; una entrada que conserva información pero necesita volver a confirmar su uso puede aparecer como obsoleta o STALE, según la herramienta. Esta última no significa automáticamente dirección inválida, infección o suplantación. El protocolo puede utilizar la información disponible y realizar comprobaciones posteriores conforme a su estado. Una entrada incompleta indica que la resolución necesaria todavía no se ha completado. La denominación exacta que muestra una plataforma debe contrastarse con su documentación, especialmente al comparar transcripciones de sistemas diferentes. Registra también cuándo se observó el estado: una captura aislada no demuestra que haya permanecido igual durante toda una incidencia. Si después cambia, relaciona ese cambio con los mensajes y el tráfico observado. Ningún estado de esta caché acredita por sí mismo que el dispositivo sea confiable o que una persona posea autorización de aplicación. La palabra alcanzable describe una condición de red, no una evaluación completa de seguridad del vecino."
+        },
+        {
+          "title": "Evaluar duplicación y protección del descubrimiento",
+          "body": "La detección de direcciones duplicadas utiliza mecanismos de descubrimiento para comprobar una dirección antes de utilizarla en las condiciones pertinentes. Encontrar evidencia de otro participante que ya usa el mismo valor exige revisar el origen de ambas configuraciones y la topología. No resuelvas una coincidencia borrando todas las cachés sin conservar la observación: podrías perder información útil y dejar intacta la causa. Tampoco interpretes una comprobación de unicidad como autenticación del equipo. En redes administradas conviene definir qué dispositivos pueden anunciar información y qué controles del enlace ayudan a limitar mensajes inesperados. Esos controles deben configurarse para funciones concretas; bloquear indiscriminadamente ICMPv6 puede romper descubrimiento y conectividad necesaria. En la práctica solo se leen mensajes y se eligen comprobaciones apropiadas. Para una incidencia real, conservar tiempos, interfaces y objetivos permite contrastar la observación con inventario y registros sin capturar datos ajenos innecesarios. Una respuesta proporcionada identifica primero la función alterada, mantiene una vía de operación conocida y evalúa el alcance antes de proponer cambios en todo el segmento."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué vecino debe resolverse para enviar al destino remoto del ejemplo?",
+          "scenario": "La tabla indica salida por Ethernet mediante fe80::1 y el servidor pertenece a otra red del laboratorio.",
+          "options": [
+            "El siguiente salto fe80::1 de esa interfaz",
+            "Siempre la dirección de enlace del servidor remoto",
+            "Cualquier vecino que responda primero"
+          ],
+          "answer": 0,
+          "explanation": "La entrega en el enlace corresponde al siguiente salto indicado por la ruta; el servidor remoto no tiene por qué ser un vecino directo de Ethernet.",
+          "wrongExplanations": [
+            null,
+            "Resolver directamente al destino como vecino ignoraría la separación entre redes que presenta la ruta; hay que entregar primero al router de ese enlace.",
+            "Responder antes no convierte a un equipo en el siguiente salto autorizado por la tabla; debe respetarse la ruta y la interfaz del flujo."
+          ],
+          "aoi": {
+            "question": "Nuestra entrega de este tramo termina en el router, no en el servidor remoto.",
+            "hint": "Relaciona la salida de la tabla con el vecino que pertenece al enlace.",
+            "correct": "Elegiste al siguiente salto adecuado sin trasladar el servidor a nuestra Ethernet.",
+            "soft": "Busca qué dirección señala la ruta para la entrega inmediata.",
+            "sharp": "El primer vecino simpático no sustituye al gateway, cariño; sigue la tabla."
+          }
+        },
+        {
+          "prompt": "¿Qué mecanismo transporta NS y NA de IPv6?",
+          "scenario": "El laboratorio presenta solicitudes y anuncios de vecino y pregunta cómo ubicarlos sin confundirlos con otro protocolo de enlace.",
+          "options": [
+            "ARP de IPv4",
+            "ICMPv6 dentro de Neighbor Discovery",
+            "DNS autoritativo"
+          ],
+          "answer": 1,
+          "explanation": "Las solicitudes y anuncios de vecino pertenecen a Neighbor Discovery y se transportan mediante ICMPv6; deben distinguirse de ARP y de consultas de nombres.",
+          "wrongExplanations": [
+            "ARP no es el mecanismo de descubrimiento de vecinos IPv6 que muestra el ejercicio; reutilizar su etiqueta ocultaría funciones y mensajes diferentes.",
+            null,
+            "DNS resuelve nombres y otros datos definidos para su servicio, pero no transporta estos mensajes ICMPv6 de descubrimiento de vecinos del enlace."
+          ],
+          "aoi": {
+            "question": "Estos vecinos ya tienen su protocolo; no les prestes una etiqueta de IPv4.",
+            "hint": "Ubica NS y NA dentro de los mensajes de descubrimiento IPv6.",
+            "correct": "Reconociste la familia correcta y dejaste ARP fuera de esta conversación.",
+            "soft": "Comprueba qué función cumple el mensaje antes de clasificar su transporte.",
+            "sharp": "DNS no vino a responder un Neighbor Advertisement, tesoro; mira el tipo de mensaje."
+          }
+        },
+        {
+          "prompt": "¿Qué permite concluir una entrada STALE por sí sola?",
+          "scenario": "La observación muestra ese estado de caché y no aporta evidencia de cambios ilegítimos, fallos prolongados ni comportamiento posterior.",
+          "options": [
+            "Que el vecino fue atacado con certeza",
+            "Que la dirección nunca podrá usarse otra vez",
+            "Que hay información cuyo estado necesita interpretarse y comprobarse según el protocolo"
+          ],
+          "answer": 2,
+          "explanation": "STALE no demuestra compromiso ni inutilidad definitiva; debe interpretarse con los tiempos, las comprobaciones posteriores y la documentación de la plataforma observada.",
+          "wrongExplanations": [
+            "Una etiqueta temporal de alcanzabilidad no acredita intención maliciosa o compromiso; esa conclusión requeriría evidencias adicionales del comportamiento y su contexto.",
+            "El estado no condena permanentemente la dirección; pueden existir comprobaciones y transiciones posteriores válidas dentro del funcionamiento del descubrimiento.",
+            null
+          ],
+          "aoi": {
+            "question": "La etiqueta envejeció; no declaró culpable al vecino del laboratorio.",
+            "hint": "Separa el estado de alcanzabilidad de una evaluación de seguridad del dispositivo.",
+            "correct": "Mantuviste el significado temporal sin convertirlo en un diagnóstico inventado.",
+            "soft": "Revisa qué comprobación necesita el estado antes de declarar un fallo definitivo.",
+            "sharp": "STALE no es el nombre de un villano, demonios; interpreta la caché con calma."
+          }
+        },
+        {
+          "prompt": "¿Autentica al usuario una detección de duplicados satisfactoria?",
+          "scenario": "El equipo comprueba condiciones de unicidad de una dirección, pero la actividad no incluye un inicio de sesión ni validación de credenciales del usuario.",
+          "options": [
+            "No, unicidad de dirección y autenticación son funciones distintas",
+            "Sí, concede todos los permisos del servidor",
+            "Sí, convierte cualquier aplicación en confiable"
+          ],
+          "answer": 0,
+          "explanation": "Comprobar duplicación atiende a la utilización de una dirección en su contexto; no sustituye una verificación de identidad ni establece permisos de aplicación para la persona.",
+          "wrongExplanations": [
+            null,
+            "Los permisos de recursos requieren políticas y mecanismos de identidad apropiados; una comprobación de unicidad no los concede por haber terminado sin duplicados.",
+            "La confianza en una aplicación depende de otras evidencias y controles; el resultado sobre una dirección no evalúa su código, mantenimiento o comportamiento."
+          ],
+          "aoi": {
+            "question": "Una dirección sin duplicado no trae una credencial humana escondida dentro.",
+            "hint": "Distingue la propiedad numérica comprobada de la identidad que falta validar.",
+            "correct": "Separaste unicidad y autorización sin inventar un acceso que nadie comprobó.",
+            "soft": "Busca qué afirmación respalda realmente la comprobación de direcciones duplicadas.",
+            "sharp": "La ausencia de duplicados no reparte permisos por generosidad, cariño; revisa la identidad."
+          }
+        },
+        {
+          "prompt": "¿Por qué debe conservarse el objetivo completo en una solicitud de vecino?",
+          "scenario": "La transcripción utiliza un grupo multicast de nodo solicitado que puede estar relacionado con más de una dirección del enlace.",
+          "options": [
+            "Porque el grupo autentica por sí solo a todos sus miembros",
+            "Porque el grupo no basta para identificar de forma única todo el objetivo",
+            "Porque el objetivo siempre es una contraseña de usuario"
+          ],
+          "answer": 1,
+          "explanation": "El grupo deriva de parte de la dirección y puede ser compartido; el objetivo completo del mensaje permite interpretar qué dirección se está consultando en el intercambio.",
+          "wrongExplanations": [
+            "Pertenecer o recibir en un grupo no constituye autenticación de los participantes; su función de entrega no establece identidad ni permisos de aplicación.",
+            null,
+            "El objetivo es información de la dirección del descubrimiento, no una contraseña personal; no debe interpretarse como un secreto de autenticación del usuario."
+          ],
+          "aoi": {
+            "question": "El grupo aproxima la conversación; el mensaje conserva qué dirección está buscando.",
+            "hint": "Comprueba qué información se derivó parcialmente y cuál sigue completa en el objetivo.",
+            "correct": "Conservaste el dato que evita confundir direcciones que comparten grupo de entrega.",
+            "soft": "No atribuyas al grupo más capacidad de identificación de la que realmente describe.",
+            "sharp": "Compartir grupo no fusiona direcciones por simpatía, cielo; lee el objetivo completo."
+          }
+        },
+        {
+          "prompt": "¿Qué riesgo tiene bloquear todo ICMPv6 para evitar mensajes inesperados?",
+          "scenario": "La propuesta no distingue funciones y podría eliminar también los intercambios necesarios para que el equipo descubra vecinos y routers.",
+          "options": [
+            "Ninguno, IPv6 funciona siempre sin esos mensajes",
+            "Que toda IPv6 se convierte automáticamente en broadcast",
+            "Que se rompan funciones necesarias de descubrimiento y conectividad"
+          ],
+          "answer": 2,
+          "explanation": "ICMPv6 participa en funciones esenciales; un filtrado indiscriminado puede impedir descubrimiento y comunicaciones necesarias. Las reglas deben distinguir propósito y contexto del tráfico.",
+          "wrongExplanations": [
+            "El funcionamiento IPv6 depende de mensajes de control en sus contextos correspondientes; eliminarlos todos no mantiene automáticamente las funciones de red.",
+            "El filtrado no transforma IPv6 en un mecanismo de broadcast; el problema es impedir mensajes necesarios sin una política que distinga sus funciones.",
+            null
+          ],
+          "aoi": {
+            "question": "No cures un mensaje inesperado dejando sordos a todos los vecinos.",
+            "hint": "Identifica qué funciones legítimas utilizan el protocolo que quieren bloquear entero.",
+            "correct": "Elegiste una revisión específica en lugar de una prohibición que desarma el enlace.",
+            "soft": "Revisa qué comunicaciones necesarias dejarían de circular junto al tráfico que preocupa.",
+            "sharp": "Apagar ICMPv6 a martillazos no es segmentación, joder; define controles con contexto."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La entrada STALE que todavía tiene información",
+          "scenario": "Una transcripción conserva una asociación de vecino en estado STALE y un alumno concluye que el dispositivo fue comprometido, sin revisar mensajes posteriores ni el significado de ese estado.",
+          "explanation": "Ese estado no demuestra compromiso; puede indicar información que necesita una nueva comprobación de alcanzabilidad. Debe interpretarse con los tiempos y las transiciones del protocolo. El análisis de seguridad necesita evidencias distintas de una etiqueta temporal aislada de la caché."
+        },
+        {
+          "title": "El servidor que está detrás del router",
+          "scenario": "El destino pertenece a otra red y la tabla señala fe80::1 por Ethernet. El equipo no tiene una asociación de vecino para la dirección del servidor remoto y un alumno considera esa ausencia como el fallo principal.",
+          "explanation": "La entrega local debe resolver al siguiente salto indicado, no necesariamente al servidor que está en otra red. Hay que revisar la asociación del router en esa interfaz y las condiciones posteriores del camino, conservando la diferencia entre destino final y vecino de enlace."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Un equipo ficticio quiere enviar tráfico IPv6 a otra red. Su tabla indica un router de enlace local y la actividad muestra mensajes de descubrimiento y estados de vecinos de la interfaz.",
+      "scenario": "Un equipo ficticio quiere enviar tráfico IPv6 a otra red. Su tabla indica un router de enlace local y la actividad muestra mensajes de descubrimiento y estados de vecinos de la interfaz.",
+      "steps": [
+        "Determina si el destino es local o necesita un siguiente salto.",
+        "Identifica la dirección de vecino que debe resolverse en ese enlace.",
+        "Relaciona solicitudes y anuncios con su objetivo completo.",
+        "Lee el estado de la caché según su significado temporal.",
+        "Separa descubrimiento de autorización e identidad del recurso."
+      ],
+      "sourceIds": [
+        "net-ndp",
+        "net-ipv6"
+      ],
+      "aoi": {
+        "intro": "Busquemos al vecino del enlace, cariño; el servidor remoto no vive debajo de cada cable.",
+        "theory0": "La ruta decide a quién entregamos el siguiente tramo antes de consultar su dirección de enlace.",
+        "theory1": "NS y NA hablan de un objetivo completo, no de parecidos entre las etiquetas.",
+        "theory2": "STALE necesita contexto temporal; no es una confesión de malware.",
+        "theory3": "Unicidad y confianza se llevan bien, pero siguen siendo comprobaciones diferentes.",
+        "case0": "Nuestra caché envejeció su comprobación, no escribió una novela de intrusiones.",
+        "case1": "El servidor espera detrás del router; aquí necesitamos localizar a ese siguiente salto.",
+        "pass": "Ya lees la caché con criterio. Me encanta cuando una palabra deja de asustarte.",
+        "review": "Volvamos a interfaz, objetivo y estado antes de condenar otra entrada."
+      }
+    },
+    {
+      "id": "ipv6-foundations-mtu",
+      "title": "ICMPv6 y tamaño de paquetes en el camino",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Separar MTU de tamaño útil de la aplicación",
+          "body": "La MTU expresa un límite de tamaño en el contexto de la interfaz o del enlace que se está describiendo. Cuando aquí hablamos de una MTU IP de mil doscientos ochenta bytes, ese límite incluye la cabecera IPv6 y la información que transporta, no solo el contenido de una aplicación. La cabecera IPv6 básica ocupa cuarenta bytes. Si además el ejemplo utiliza UDP con ocho bytes de cabecera y no presenta extensiones ni otra sobrecarga, quedan mil doscientos treinta y dos bytes para los datos UDP dentro de ese límite. Esa cuenta depende expresamente de sus supuestos; no constituye una capacidad universal para cualquier túnel o protocolo. IPv6 requiere que el enlace pueda manejar su tamaño mínimo previsto, recurriendo a adaptaciones inferiores cuando el medio lo necesite. No interpretes esa condición como permiso para ignorar cabeceras adicionales o límites específicos del camino. La ficha debe indicar qué tamaño se está midiendo y dónde. Comparar carga de aplicación con un límite que incluye más capas puede producir una conclusión incorrecta aun cuando los números aislados parezcan compatibles."
+        },
+        {
+          "title": "Entender por qué un router IPv6 no fragmenta como se imagina",
+          "body": "En IPv6, los routers que reenvían tráfico no fragmentan un paquete para hacerlo caber en el siguiente enlace. Si un paquete es demasiado grande para continuar por una salida aplicable, el comportamiento correspondiente incluye descartarlo y comunicar la condición mediante un mensaje Packet Too Big según las reglas del protocolo. El emisor necesita ajustar su comportamiento al límite del camino. Cuando existe fragmentación IPv6, la realiza el origen con la información y las cabeceras apropiadas; no debe describirse como una operación automática de cada router intermedio. Distingue también segmentación de transporte y fragmentación IP: que TCP envíe datos en segmentos adecuados no significa que un router haya dividido después un paquete IPv6. Para interpretar la transcripción, identifica quién originó el paquete, quién encontró el límite y qué tamaño se anunció. No atribuyas al destino final un rechazo de autenticación si lo observado es un error de tamaño en una etapa anterior del trayecto. Un cambio en el camino puede introducir un límite distinto, aunque la aplicación y las direcciones no hayan variado."
+        },
+        {
+          "title": "Relacionar descubrimiento de MTU con mensajes de control",
+          "body": "El descubrimiento de MTU del camino ayuda al emisor a conocer un tamaño que pueda recorrer la ruta sin superar los límites relevantes. Los mensajes ICMPv6 Packet Too Big aportan información para esa adaptación. No son una petición para abrir todas las aplicaciones ni una credencial que deba aceptarse sin contexto. Los equipos y filtros deben tratar esos mensajes de forma apropiada al tráfico y al estado que representan. Un bloqueo indiscriminado puede impedir que el emisor aprenda el límite y producir problemas con ciertos tamaños. Aun así, observar una transferencia detenida no demuestra automáticamente ese bloqueo: también pueden intervenir pérdida, congestión, fallos de aplicación u otras condiciones. Busca mensajes, tamaños y comparaciones reproducibles antes de decidir. El camino puede cambiar y una observación antigua de MTU no tiene por qué describir todos los flujos futuros. Documenta dirección, interfaz, túnel y momento, junto con el tamaño que se está comprobando. El objetivo es relacionar la limitación con una etapa concreta, manteniendo separadas la evidencia del error y las hipótesis sobre su causa."
+        },
+        {
+          "title": "Conservar los controles necesarios para que la red funcione",
+          "body": "ICMPv6 participa en mensajes de error y en funciones como descubrimiento; no debe resumirse como una herramienta que solo sirve para hacer eco. Otros mensajes permiten informar de problemas de destino, tiempo de vida u otros parámetros según sus condiciones. Una política de filtrado útil distingue tipos, procedencia y relación con el tráfico permitido, apoyándose en las capacidades de la plataforma y en el diseño administrado. No uses una incidencia de tamaño como motivo para desactivar todo el firewall o permitir indiscriminadamente cualquier paquete. En el taller, una comparación controlada puede mantener origen, destino y servicio, variar el tamaño y revisar qué mensajes aparecen en cada caso. Conserva también lo que esa prueba no distingue. Si se sospecha un túnel, comprueba qué límite se refiere al paquete interior y qué sobrecarga añade la encapsulación, sin restar números de una capa a otra de manera arbitraria. Una corrección razonada permite repetir la transferencia prevista y revisar comunicaciones que deben seguir bloqueadas. Aprender el procedimiento significa justificar esas condiciones, no memorizar un valor de MTU que se aplique a todas las redes."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Cuántos datos UDP caben con MTU IP 1280 y cabeceras de 40 y 8 bytes?",
+          "scenario": "El ejemplo declara IPv6 básico, UDP y ausencia de extensiones o sobrecargas adicionales dentro del límite indicado.",
+          "options": [
+            "1232 bytes",
+            "1240 bytes",
+            "1280 bytes"
+          ],
+          "answer": 0,
+          "explanation": "Al restar cuarenta y ocho bytes de cabeceras a mil doscientos ochenta quedan mil doscientos treinta y dos bytes de datos UDP.",
+          "wrongExplanations": [
+            null,
+            "Mil doscientos cuarenta solo descuenta la cabecera IPv6 y olvida los ocho bytes adicionales de UDP que también deben entrar en el paquete.",
+            "El límite indicado incluye cabeceras; utilizarlo íntegramente para datos añadiría sobrecarga por encima de la MTU que fija el ejercicio."
+          ],
+          "aoi": {
+            "question": "No dejes a UDP viajando gratis: sus ocho bytes también cuentan.",
+            "hint": "Resta del límite ambas cabeceras declaradas, sin inventar otras capas en este caso.",
+            "correct": "La cuenta incluyó todos los bytes que el supuesto nos pedía considerar.",
+            "soft": "Revisa si la cifra elegida dejó espacio para la cabecera de transporte.",
+            "sharp": "UDP no cabe en un hueco imaginario, cariño; suma primero ambas cabeceras."
+          }
+        },
+        {
+          "prompt": "¿Qué participante realiza fragmentación IPv6 cuando corresponde utilizarla?",
+          "scenario": "La actividad distingue al origen de los routers que reenvían paquetes por enlaces con distintos límites de tamaño.",
+          "options": [
+            "Cada router intermedio automáticamente",
+            "El origen con el mecanismo IPv6 apropiado",
+            "El servidor DNS por el nombre del destino"
+          ],
+          "answer": 1,
+          "explanation": "La fragmentación IPv6 corresponde al origen; los routers intermedios no dividen automáticamente los paquetes para adaptarlos al siguiente enlace del camino.",
+          "wrongExplanations": [
+            "Los routers no realizan esa fragmentación IPv6 al reenviar; deben tratar la condición de tamaño según el mecanismo de error correspondiente.",
+            null,
+            "DNS resuelve información de nombres y no fragmenta paquetes IPv6 del flujo por aparecer en la configuración de resolución del equipo."
+          ],
+          "aoi": {
+            "question": "Nuestro router no lleva tijeras de fragmentación para cada paquete grande.",
+            "hint": "Distingue al emisor original de los equipos que solo reenvían el tráfico.",
+            "correct": "Ubicaste la función en el origen y dejaste claras las responsabilidades del trayecto.",
+            "soft": "Comprueba qué protocolo se está estudiando antes de trasladar una idea de otro caso.",
+            "sharp": "El router no se puso a recortar por insistencia, tesoro; revisa quién fragmenta en IPv6."
+          }
+        },
+        {
+          "prompt": "¿Qué aporta un mensaje Packet Too Big al emisor?",
+          "scenario": "El mensaje del escenario informa de un problema de tamaño al continuar por un tramo del camino y debe interpretarse con su tráfico asociado.",
+          "options": [
+            "Una contraseña nueva del gateway",
+            "Autorización para cualquier aplicación",
+            "Información para adaptar el tamaño al límite del camino"
+          ],
+          "answer": 2,
+          "explanation": "El mensaje comunica una condición de tamaño útil para ajustar el envío; debe relacionarse con el contexto y no equivale a una autorización general de acceso.",
+          "wrongExplanations": [
+            "Los errores de tamaño no entregan secretos de administración; esa interpretación no corresponde a la función del mensaje ICMPv6 que presenta la actividad.",
+            "El control de acceso sigue dependiendo de la política; informar un límite de tamaño no concede permiso para servicios o flujos que antes estaban bloqueados.",
+            null
+          ],
+          "aoi": {
+            "question": "La red informa que algo no cabe; escuchemos ese dato sin regalar permisos.",
+            "hint": "Relaciona la señal con el tamaño del paquete y el tramo que no puede reenviarlo.",
+            "correct": "Interpretaste la ayuda al emisor sin convertir el error en una credencial.",
+            "soft": "Busca qué condición de envío intenta comunicar ese tipo de mensaje.",
+            "sharp": "Packet Too Big no significa permiso demasiado grande, cielo; conserva su función de control."
+          }
+        },
+        {
+          "prompt": "¿Prueba una transferencia grande fallida que ICMPv6 esté bloqueado?",
+          "scenario": "La observación solo compara mensajes pequeños y grandes, sin capturas de errores ni verificación de rutas, túneles o filtros.",
+          "options": [
+            "No; es una hipótesis que necesita evidencias adicionales",
+            "Sí, siempre es esa única causa",
+            "Sí, porque UDP no tiene cabecera"
+          ],
+          "answer": 0,
+          "explanation": "El síntoma puede orientar a MTU y errores de control, pero también admite otras causas; deben contrastarse tamaños, mensajes y condiciones del trayecto.",
+          "wrongExplanations": [
+            null,
+            "Sin evidencias del filtro o de los mensajes no se distingue un bloqueo de otras condiciones de transporte, pérdida o aplicación que pueden producir síntomas parecidos.",
+            "UDP sí incluye cabecera, y la observación presentada no determina una causa por negar ese dato básico del protocolo de transporte."
+          ],
+          "aoi": {
+            "question": "La diferencia de tamaño nos señaló una pregunta, no una respuesta completa.",
+            "hint": "Revisa qué evidencias faltan para localizar el límite y explicar el fallo.",
+            "correct": "Conservaste una hipótesis útil sin confundir correlación con causa demostrada.",
+            "soft": "Todavía no sabes qué mensaje o etapa del camino produjo el resultado observado.",
+            "sharp": "Una transferencia detenida no escribió el nombre del culpable, demonios; busca pruebas."
+          }
+        },
+        {
+          "prompt": "¿Por qué puede ser problemático bloquear indiscriminadamente ICMPv6?",
+          "scenario": "La política propuesta no distingue errores relacionados con tráfico permitido ni funciones necesarias de descubrimiento del enlace.",
+          "options": [
+            "Porque convierte todos los datos en texto sin cifrar",
+            "Porque puede impedir funciones de control necesarias para la conectividad",
+            "Porque modifica automáticamente la longitud de todas las IPv6"
+          ],
+          "answer": 1,
+          "explanation": "El bloqueo general puede eliminar mensajes necesarios de descubrimiento y adaptación al camino; una política adecuada debe distinguir sus tipos, contexto y función.",
+          "wrongExplanations": [
+            "El filtrado de esos mensajes no transforma automáticamente el cifrado de una aplicación; el problema descrito afecta a funciones de control y operación de la red.",
+            null,
+            "Las direcciones IPv6 siguen teniendo ciento veintiocho bits; impedir mensajes de control puede romper su funcionamiento sin cambiar el tamaño de sus valores."
+          ],
+          "aoi": {
+            "question": "El control de la red también necesita circular para cumplir su trabajo.",
+            "hint": "Piensa qué perderían descubrimiento y adaptación si se eliminan todos esos mensajes.",
+            "correct": "Elegiste una política con contexto en lugar de silenciar funciones esenciales del enlace.",
+            "soft": "Distingue bloquear un comportamiento concreto de impedir toda una familia necesaria.",
+            "sharp": "Cerrar toda esa conversación no la vuelve segura por quedarse muda, cariño; define las reglas."
+          }
+        },
+        {
+          "prompt": "¿Qué debe aclararse al revisar MTU en un túnel?",
+          "scenario": "La transcripción muestra un límite y una sobrecarga de encapsulación, pero no identifica todavía si la cifra se refiere al paquete interior o al exterior.",
+          "options": [
+            "Solo la marca del ratón del puesto",
+            "Que cualquier valor 1500 funciona en todo túnel",
+            "Qué capa y qué paquete incluye cada tamaño indicado"
+          ],
+          "answer": 2,
+          "explanation": "La comparación necesita distinguir paquete interior, encapsulación y límite correspondiente; restar o sumar valores de capas diferentes sin contexto puede producir una MTU incorrecta.",
+          "wrongExplanations": [
+            "La marca del dispositivo de entrada no informa del tamaño de paquetes ni del límite que presenta el túnel en la transcripción.",
+            "Un valor habitual de ciertos enlaces no garantiza capacidad de cualquier túnel; la encapsulación y los límites concretos deben revisarse con sus supuestos.",
+            null
+          ],
+          "aoi": {
+            "question": "No mezclemos la maleta con su caja de transporte antes de medirlas.",
+            "hint": "Identifica qué incluye el límite y dónde se añade la sobrecarga del túnel.",
+            "correct": "Separaste las capas que faltaban para que la comparación de tamaños tuviera sentido.",
+            "soft": "Antes de ajustar números, nombra el paquete al que pertenece cada cifra.",
+            "sharp": "Mil quinientos no es una bendición universal, joder; calcula sobre el contexto del túnel."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La cuenta que olvidó UDP",
+          "scenario": "El ejercicio fija MTU IP de 1280 bytes, cabecera IPv6 básica de 40 y UDP de 8, sin otras extensiones. Un alumno propone usar 1240 bytes de datos UDP porque solo restó la cabecera IPv6.",
+          "explanation": "La carga UDP también debe descontar sus ocho bytes de cabecera: quedan 1232 bytes de datos en los supuestos declarados. La propuesta de 1240 superaría el límite total al añadir ambas cabeceras, y no debe aceptarse por olvidar una capa."
+        },
+        {
+          "title": "Una pista de tamaño que todavía necesita pruebas",
+          "scenario": "La transferencia ficticia responde con mensajes pequeños y se detiene con mensajes mayores, pero la captura no muestra todavía el límite del túnel ni mensajes de control asociados.",
+          "explanation": "El síntoma justifica investigar tamaños, MTU y filtrado de errores, pero no identifica por sí solo una causa. Hay que conservar el mismo contexto, comparar resultados y buscar evidencia de la etapa que limita el paquete antes de atribuir el fallo a un bloqueo concreto."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una transferencia ficticia funciona con mensajes pequeños, pero se interrumpe al enviar más datos a través de un túnel. El taller compara tamaños, mensajes de control y límites del trayecto.",
+      "scenario": "Una transferencia ficticia funciona con mensajes pequeños, pero se interrumpe al enviar más datos a través de un túnel. El taller compara tamaños, mensajes de control y límites del trayecto.",
+      "steps": [
+        "Distingue datos de aplicación, paquete IP y capacidad del enlace.",
+        "Calcula la cabecera declarada antes de comparar tamaños.",
+        "Busca evidencia de límites del camino y mensajes Packet Too Big.",
+        "Comprueba filtros y respuesta del emisor sin atribuir una causa única al síntoma."
+      ],
+      "sourceIds": [
+        "net-ipv6",
+        "net-pmtu"
+      ],
+      "aoi": {
+        "intro": "Aquí el tamaño sí tiene contexto, cariño: aclaremos qué bytes está contando cada capa.",
+        "theory0": "Los datos de aplicación no viajan solos; sus cabeceras también ocupan sitio.",
+        "theory1": "Un router IPv6 no corta paquetes por su cuenta para hacerte un favor.",
+        "theory2": "Packet Too Big informa un límite; no pide que abras todas las puertas.",
+        "theory3": "Una comparación de tamaños merece método, no un firewall apagado por impaciencia.",
+        "case0": "Te faltaron ocho bytes de UDP; pequeñitos, pero capaces de arruinar la cuenta.",
+        "case1": "La transferencia grande falla y nos da una pista, no una confesión de la causa.",
+        "pass": "Ya cuentas capas y límites sin mezclar sus tamaños. Mi implante está discretamente impresionado.",
+        "review": "Repasemos qué incluye cada cifra antes de recetar otra MTU universal."
+      }
+    },
+    {
+      "id": "ipv6-foundations-dual",
+      "title": "Probar IPv4 e IPv6 en una red de doble pila",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Dos familias pueden ofrecer experiencias distintas",
+          "body": "Una red de doble pila mantiene capacidades IPv4 e IPv6 que pueden coexistir en el mismo equipo y para una misma aplicación. No debes suponer que sus rutas, controles o resultados son idénticos. El equipo puede tener una dirección válida en ambas familias y utilizar salidas diferentes según el destino y la selección realizada por el sistema o la aplicación. Un resultado positivo tiene que indicar qué dirección se utilizó para ser útil como evidencia. Decir que el sitio funciona no distingue si respondió por IPv4, por IPv6 o si un intento falló antes de encontrar una alternativa. Conserva origen, destino, familia e interfaz junto con el momento de la observación. En el laboratorio se proporcionan esos campos para que puedas compararlos sin generar tráfico real. Si dos compañeros obtienen resultados distintos, revisa si hicieron la misma prueba desde el mismo contexto. Una aplicación puede comportarse de forma diferente aun cuando ambas personas escriban el mismo nombre, porque el conjunto de direcciones disponible y la selección de camino no necesariamente coinciden."
+        },
+        {
+          "title": "Relacionar registros A y AAAA con sus destinos",
+          "body": "Un registro A aporta una dirección IPv4 asociada al nombre consultado y un AAAA aporta una dirección IPv6. La presencia de ambos no demuestra que el servidor funcione por las dos familias ni que todos los clientes puedan alcanzar esas direcciones. El registro puede estar desactualizado, corresponder a otra vista de resolución o señalar un servicio cuyo camino aún no está operativo. Además, el transporte utilizado para consultar DNS no obliga a solicitar registros de una sola familia. Distingue la dirección del resolver, el tipo de registro pedido y el destino que finalmente usa la aplicación. Un cliente puede intentar alternativas según sus capacidades y su implementación; no conviertas una preferencia observada en una regla de todos los navegadores o sistemas. Si una prueba por nombre funciona mientras un camino documentado falla, conserva ambos resultados y revisa qué alternativa produjo el éxito. El funcionamiento por una familia no borra el defecto de la otra. Una corrección útil debe explicar si se necesita ajustar publicación DNS, encaminamiento, servicio o controles, en vez de cambiar todos esos componentes simultáneamente."
+        },
+        {
+          "title": "Revisar controles en las dos familias",
+          "body": "Un servicio que escucha mediante IPv6 necesita una política de acceso coherente con el objetivo de protección del recurso. No basta que una prueba IPv4 haya sido bloqueada para declarar que el acceso no autorizado está impedido en toda la red. Algunas plataformas permiten políticas comunes a varias familias; otras requieren expresar o activar condiciones específicas. Lo importante es comprobar el efecto, no duplicar reglas a ciegas. En una matriz de validación, escribe origen autorizado, origen no autorizado, destino, protocolo, puerto, familia y resultado esperado. Después compara los resultados observados por IPv4 e IPv6. Si una condición debía quedar denegada y solo se probó en IPv4, la revisión está incompleta, aunque la regla tenga un nombre tranquilizador. Incluye la administración del dispositivo cuando corresponda: una interfaz de gestión podría estar disponible por una familia distinta de la utilizada habitualmente. Mantén el mismo objetivo de permisos mínimos y documentación para ambos caminos. La presencia de IPv6 no exige menos control; tampoco justifica una prohibición indiscriminada que rompa funciones necesarias sin analizar qué comunicaciones requiere realmente el entorno."
+        },
+        {
+          "title": "Corregir el camino identificado sin ocultar la diferencia",
+          "body": "Cuando una prueba IPv6 falla y una IPv4 funciona, describe la diferencia antes de decidir el cambio. Comprueba dirección utilizada, ruta efectiva, vecino, mensajes de control, estado del servicio y retorno según lo que aporte la evidencia. No atribuyas automáticamente el resultado al protocolo completo: el problema puede estar en una publicación concreta, una política o un tramo del trayecto. Desactivar una familia puede formar parte de una prueba temporal autorizada y documentada, pero no explica por sí mismo el defecto ni garantiza una solución mantenible. En el ejemplo, si el AAAA apunta a un destino que todavía no se ha habilitado, debe revisarse esa publicación y su plan de despliegue. Si la aplicación usa IPv6 correctamente pero los controles solo cubren IPv4, el trabajo pendiente pertenece a la política y su validación. Al cerrar, conserva las pruebas positivas y negativas de ambas familias y registra la condición que motivó la corrección. Eso permite distinguir un servicio realmente preparado para doble pila de uno que parece funcionar porque un cliente encontró silenciosamente otro camino disponible."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué información necesita acompañar una prueba exitosa en doble pila?",
+          "scenario": "El nombre de la aplicación tiene A y AAAA y el objetivo es saber qué camino funcionó realmente en la observación.",
+          "options": [
+            "La dirección y familia utilizadas por la prueba",
+            "Solo el color de la página",
+            "Una afirmación de que todas las redes funcionan"
+          ],
+          "answer": 0,
+          "explanation": "La dirección utilizada y su familia permiten delimitar el resultado; un éxito por nombre puede depender de una alternativa sin probar ambos caminos disponibles.",
+          "wrongExplanations": [
+            null,
+            "La presentación de la página no identifica el trayecto de red ni demuestra qué familia entregó la respuesta que hizo funcionar la aplicación.",
+            "Una prueba delimitada no evalúa todas las redes; ampliar su conclusión ocultaría condiciones de familia, ruta y origen que deben documentarse."
+          ],
+          "aoi": {
+            "question": "Tenemos una respuesta; ahora pongámosle el camino que realmente recorrió.",
+            "hint": "Registra el destino efectivo en lugar de quedarte únicamente con el nombre escrito.",
+            "correct": "Delimitaste el éxito sin premiar automáticamente al camino que no se observó.",
+            "soft": "Busca los campos que permiten distinguir IPv4 de IPv6 en esa prueba.",
+            "sharp": "Una página bonita no nos dice qué familia la trajo, cielo; mira el destino efectivo."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra que un nombre tenga un registro AAAA?",
+          "scenario": "DNS devuelve una dirección IPv6 asociada al nombre, pero todavía no se ha comprobado el servicio ni el camino hasta esa dirección.",
+          "options": [
+            "Que cualquier cliente puede acceder sin reglas",
+            "Que existe esa información de resolución, pendiente de comprobar conectividad y servicio",
+            "Que el registro A dejó de existir"
+          ],
+          "answer": 1,
+          "explanation": "El AAAA aporta un destino IPv6 para el nombre; su presencia no prueba rutas, permisos, estado de aplicación ni alcance desde el origen considerado.",
+          "wrongExplanations": [
+            "Los permisos y la conectividad requieren evidencias propias; publicar un registro no permite automáticamente a todos los clientes utilizar el servicio.",
+            null,
+            "Un nombre puede tener registros A y AAAA simultáneamente; añadir o consultar uno no elimina necesariamente la información del otro tipo."
+          ],
+          "aoi": {
+            "question": "El directorio dio una dirección; todavía no visitó el edificio.",
+            "hint": "Distingue la publicación DNS de una comprobación efectiva del destino publicado.",
+            "correct": "Interpretaste la respuesta de nombres sin convertirla en una garantía del servicio.",
+            "soft": "Todavía faltan observaciones sobre la aplicación y el camino hacia esa IPv6.",
+            "sharp": "Un AAAA no viene con un firewall obediente de regalo, cariño; prueba el acceso."
+          }
+        },
+        {
+          "prompt": "¿Debe una consulta AAAA viajar necesariamente por IPv6 hacia el resolver?",
+          "scenario": "La actividad separa el canal utilizado para hablar con DNS del tipo de dirección que la respuesta solicita.",
+          "options": [
+            "Sí, sin ninguna otra posibilidad",
+            "Sí, porque A y AAAA usan servidores obligatoriamente distintos",
+            "No, el transporte de consulta y el tipo de registro son independientes"
+          ],
+          "answer": 2,
+          "explanation": "El cliente puede consultar un AAAA mediante un canal DNS IPv4 si el servicio lo permite; el tipo de registro no obliga a utilizar esa misma familia como transporte.",
+          "wrongExplanations": [
+            "La información pedida pertenece al contenido de DNS y no establece por sí sola la familia del trayecto empleado para llegar al resolver.",
+            "Un resolver puede atender distintos tipos de registro; no deben inventarse servidores separados obligatorios únicamente por la diferencia entre A y AAAA.",
+            null
+          ],
+          "aoi": {
+            "question": "El tipo de dato solicitado no eligió por sí mismo el vehículo de la consulta.",
+            "hint": "Separa dirección del resolver y contenido de la petición que recibe.",
+            "correct": "Mantuviste independientes el transporte de DNS y la dirección que se quiere obtener.",
+            "soft": "Comprueba si estás leyendo el destino del mensaje o el registro que solicita.",
+            "sharp": "AAAA no reservó un transporte exclusivo por tener cuatro letras, tesoro; distingue ambas piezas."
+          }
+        },
+        {
+          "prompt": "¿Basta bloquear por IPv4 para declarar protegido un servicio que también escucha en IPv6?",
+          "scenario": "La política exige impedir un origen no autorizado y el segundo camino no se ha validado todavía.",
+          "options": [
+            "No, debe comprobarse el efecto de la política también por IPv6",
+            "Sí, los protocolos comparten automáticamente todas las decisiones",
+            "Sí, el nombre de la regla basta como evidencia"
+          ],
+          "answer": 0,
+          "explanation": "El servicio dispone de otro camino que necesita validación; hay que comprobar la política por ambas familias según las capacidades reales de la plataforma.",
+          "wrongExplanations": [
+            null,
+            "No existe una garantía universal de que todo control IPv4 tenga el mismo efecto IPv6; debe revisarse y probarse la implementación del entorno concreto.",
+            "Un nombre de regla describe intención, pero no demuestra la configuración efectiva ni su efecto sobre un flujo de otra familia que no se ha probado."
+          ],
+          "aoi": {
+            "question": "Nuestra política necesita cubrir el servicio, no solo la prueba que resultó más cómoda.",
+            "hint": "Busca el camino disponible que todavía no aparece en la matriz de validación.",
+            "correct": "Extendiste la comprobación al alcance real del servicio sin inventar una equivalencia automática.",
+            "soft": "Falta observar qué ocurre con el mismo requisito de acceso por la otra familia.",
+            "sharp": "El nombre de la regla no hizo una segunda prueba por telepatía, demonios; comprueba IPv6."
+          }
+        },
+        {
+          "prompt": "¿Qué implica que el cliente abra la página por IPv4 después de fallar IPv6?",
+          "scenario": "La traza identifica ambos intentos y documenta que únicamente el camino IPv4 terminó entregando respuesta de la aplicación.",
+          "options": [
+            "Que ambas familias quedaron comprobadas correctamente",
+            "Que el éxito final no demuestra funcionamiento del camino IPv6",
+            "Que IPv6 nunca puede utilizar HTTPS"
+          ],
+          "answer": 1,
+          "explanation": "La alternativa IPv4 explica el éxito observado, pero deja pendiente el camino IPv6 fallido; deben conservarse y analizarse por separado los dos resultados.",
+          "wrongExplanations": [
+            "La traza muestra un resultado diferente para cada familia; tratarlos como dos éxitos borraría evidencia relevante de la conectividad que sigue sin funcionar.",
+            null,
+            "HTTPS puede operar sobre IPv6; un fallo concreto no establece una imposibilidad general del protocolo o de la aplicación en otras condiciones."
+          ],
+          "aoi": {
+            "question": "El cliente encontró otra puerta; la primera sigue necesitando que revisemos su cerradura.",
+            "hint": "Relaciona el resultado positivo con el destino que realmente respondió al final.",
+            "correct": "Conservaste el fallo como trabajo pendiente en lugar de esconderlo detrás de la alternativa.",
+            "soft": "Revisa si el éxito corresponde al intento inicial o al camino que se usó después.",
+            "sharp": "Que IPv4 te rescatara no absolvió al otro trayecto, cariño; mantén ambos resultados."
+          }
+        },
+        {
+          "prompt": "¿Cuál es un cierre adecuado para una corrección de doble pila?",
+          "scenario": "El equipo ajustó una condición concreta y necesita demostrar que conserva la disponibilidad prevista y las restricciones del diseño.",
+          "options": [
+            "Una única captura del logotipo del servicio",
+            "Borrar toda evidencia del intento que falló",
+            "Pruebas positivas y negativas por las familias que requiere el servicio"
+          ],
+          "answer": 2,
+          "explanation": "El cierre debe comprobar tanto acceso legítimo como denegaciones previstas en los caminos relevantes; así conserva disponibilidad y política con evidencias comparables del cambio.",
+          "wrongExplanations": [
+            "Un logotipo no demuestra qué flujos funcionaron ni qué restricciones siguen activas; la revisión necesita pruebas asociadas a direcciones, orígenes y familias concretas.",
+            "Borrar los fallos dificulta explicar la causa y comparar la corrección; debe conservarse evidencia suficiente del antes y después sin incluir datos sensibles innecesarios.",
+            null
+          ],
+          "aoi": {
+            "question": "Arreglar una puerta no exige olvidar qué dejamos permitido y qué debía seguir cerrado.",
+            "hint": "Incluye éxito y bloqueo, asociados a los caminos que realmente utiliza el servicio.",
+            "correct": "Ese cierre comprueba la corrección sin ampliar permisos por accidente.",
+            "soft": "Revisa si tus pruebas cubren tanto la función legítima como las restricciones que debían mantenerse.",
+            "sharp": "Una captura del logotipo no valida dos pilas, joder; conserva resultados de cada condición."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "El éxito que utilizó otra familia",
+          "scenario": "La aplicación del taller termina abriéndose, pero la traza muestra que el intento al destino IPv6 no obtuvo respuesta y el resultado positivo utilizó una dirección IPv4 del registro A.",
+          "explanation": "El resultado demuestra funcionamiento por la familia utilizada al final, no una conectividad IPv6 completa. Deben conservarse los dos resultados y revisar el camino o publicación IPv6 que sigue pendiente, sin presentar la alternativa exitosa como prueba de que ambos trayectos funcionan."
+        },
+        {
+          "title": "Una denegación probada solo por IPv4",
+          "scenario": "La política debe impedir acceso desde una zona de invitados. El equipo verifica una denegación IPv4 y declara terminado el trabajo, aunque el mismo servicio también escucha en IPv6 y no se ha probado ese camino.",
+          "explanation": "La revisión no cubre todavía todas las condiciones previstas. Es necesario probar el origen invitado frente al servicio por IPv6 y contrastar las reglas aplicables, conservando también pruebas de que los accesos legítimos siguen funcionando por las familias que exige el diseño."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una aplicación ficticia dispone de registros A y AAAA. Funciona para algunos puestos mediante IPv4, mientras otra prueba muestra una ruta IPv6 sin respuesta; la actividad separa ambos caminos y sus controles.",
+      "scenario": "Una aplicación ficticia dispone de registros A y AAAA. Funciona para algunos puestos mediante IPv4, mientras otra prueba muestra una ruta IPv6 sin respuesta; la actividad separa ambos caminos y sus controles.",
+      "steps": [
+        "Identifica qué familia utilizó realmente cada prueba.",
+        "Consulta los registros de destino sin confundirlos con el transporte de DNS.",
+        "Comprueba direccionamiento, salida y retorno de cada familia.",
+        "Contrasta comunicaciones permitidas y bloqueadas por ambos caminos.",
+        "Documenta la diferencia antes de proponer una corrección."
+      ],
+      "sourceIds": [
+        "net-ipv6",
+        "net-dns"
+      ],
+      "aoi": {
+        "intro": "Si el sitio abrió, averigüemos por qué camino antes de darle dos medallas.",
+        "theory0": "Doble pila significa dos familias que merecen observaciones propias, cariño.",
+        "theory1": "Un AAAA publicado todavía necesita una aplicación y un trayecto que respondan.",
+        "theory2": "El firewall debe cumplir la política por ambos caminos, no solo por el que miraste.",
+        "theory3": "Desactivar una familia puede esconder la pista que necesitábamos explicar.",
+        "case0": "El cliente encontró IPv4; nuestro problema IPv6 no desapareció por discreción.",
+        "case1": "Una denegación IPv4 no revisó a escondidas el otro camino del servicio.",
+        "pass": "Ya pruebas éxito y bloqueo en ambas familias. Ese rigor sí me pone contenta.",
+        "review": "Volvamos a la dirección utilizada; estás celebrando dos rutas con una sola respuesta."
+      }
+    },
+    {
+      "id": "ipv6-foundations-encaminamiento",
+      "title": "Rutas IPv6 y siguiente salto con interfaz",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Aplicar la coincidencia de prefijo a ciento veintiocho bits",
+          "body": "La búsqueda básica de ruta IPv6 también compara el destino con los prefijos instalados y elige la coincidencia de mayor longitud en el contexto de tabla que se analiza. El tamaño completo de la dirección es distinto del de IPv4, pero el razonamiento de conjuntos se conserva. Si existen 2001:db8:50::/48 y 2001:db8:50:20::/64, el destino 2001:db8:50:20::9 coincide con ambos y selecciona el /64. El destino con cuarto grupo veintiuno no coincide con esa excepción y puede utilizar el /48 si no hay otra entrada más específica aplicable. Cuenta bits completos de grupos cuando la frontera coincide con dieciséis, pero recuerda que un prefijo puede terminar dentro de un grupo. Una ruta /128 fija la dirección entera y selecciona un destino individual. No elijas simplemente la barra numéricamente mayor de toda la tabla: primero verifica que el destino pertenece a esa entrada. La comparación puede hacerse sobre valores expandidos o mediante herramientas que interpreten correctamente direcciones, evitando una búsqueda textual que confunda abreviaturas con prefijos diferentes."
+        },
+        {
+          "title": "Interpretar la salida predeterminada y su vecino local",
+          "body": "La ruta ::/0 ofrece la coincidencia general para destinos que no tienen otra entrada aplicable más específica en la tabla simplificada. Su escritura no convierte la dirección no especificada en el destino real de la aplicación. La entrada puede indicar un siguiente salto como fe80::1 y una interfaz, por ejemplo Ethernet. Ese vecino se interpreta en el enlace indicado, aunque el paquete se dirija a un servidor de otra red. No hay contradicción entre la función local del siguiente salto y el alcance remoto del destino final: la entrega de cada tramo utiliza su contexto. Si falta la interfaz en una transcripción con varios enlaces, la información puede resultar insuficiente para resolver qué vecino es. También importa la dirección de origen que utiliza el sistema; una prueba no debe describirse únicamente con destino y gateway. Conserva la ruta efectiva observada en vez de asumir que una lista con varios routers selecciona siempre el de dirección numéricamente menor. Las preferencias y el estado de alcanzabilidad necesitan interpretarse según el mecanismo y la configuración que realmente muestra el entorno."
+        },
+        {
+          "title": "Separar prefijos de LAN, enlaces entre routers y destinos de host",
+          "body": "El uso habitual de /64 en LAN con SLAAC no significa que todas las entradas de encaminamiento deban tener esa longitud. Un /48 puede representar varios prefijos interiores y un /128 puede designar un destino específico. RFC 6164 también contempla /127 para enlaces punto a punto entre routers con las condiciones correspondientes. No debe trasladarse ese caso a cualquier LAN de usuarios ni suponerse compatible sin revisar la implementación. Para clasificar un prefijo, pregunta qué objeto representa: un anuncio agregado, una interfaz de un enlace de cierto tipo o una selección de destino en la tabla. La misma longitud no garantiza idéntica función en todas las configuraciones. En el taller, marcar como inválida una ruta /48 porque las estaciones usan /64 eliminaría información de encaminamiento legítima. El proceso correcto conserva las diferencias entre asignación de interfaces y cobertura de destinos. Antes de configurar un caso especial en un laboratorio real, documenta tipo de enlace, soporte y direcciones de ambos extremos, manteniendo una prueba que permita reconocer qué comportamiento se pretendía comprobar."
+        },
+        {
+          "title": "Relacionar cambios de router con observaciones del flujo",
+          "body": "La información aprendida de anuncios tiene tiempos y estados que pueden modificar las decisiones disponibles. Si un router deja de ser candidato predeterminado, el equipo puede necesitar utilizar otro camino o quedar sin salida aplicable, según su tabla y el resto del diseño. Eso no equivale automáticamente a invalidar todas sus direcciones: los tiempos y funciones ya estudiados deben mantenerse separados. Conserva una instantánea de la tabla junto a la hora de la prueba; una captura anterior puede explicar otro comportamiento. Después revisa la resolución del vecino y la respuesta del destino por el camino elegido. Un resultado desde una interfaz no sustituye la comprobación desde otra, especialmente si cambian origen, prefijo o filtros. Para cerrar el análisis del ejercicio, escribe cuatro elementos: destino que se buscó, entrada seleccionada, entrega inmediata que corresponde y condiciones de retorno que siguen verificadas o pendientes. Esta descripción permite comparar cambios sin recurrir a frases vagas como IPv6 no funciona y localizar la revisión en la pieza del trayecto que la evidencia realmente cuestiona."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué ruta selecciona 2001:db8:50:20::9 entre los dos prefijos coincidentes del ejemplo?",
+          "scenario": "La tabla instalada contiene 2001:db8:50::/48 y 2001:db8:50:20::/64 y ninguna coincidencia adicional más específica.",
+          "options": [
+            "El /64 de cuarto grupo veinte",
+            "El /48 por contener más destinos",
+            "Solo ::/0 aunque no aparezca en la tabla"
+          ],
+          "answer": 0,
+          "explanation": "El destino coincide con el /64 y este fija más bits que el /48; por ello es la coincidencia instalada más específica del ejemplo.",
+          "wrongExplanations": [
+            null,
+            "Contener más destinos vuelve al /48 menos específico; esa amplitud no le da prioridad sobre la entrada coincidente de mayor longitud.",
+            "No corresponde inventar una entrada ausente ni preferir una coincidencia general cuando la tabla ya ofrece un prefijo aplicable más específico."
+          ],
+          "aoi": {
+            "question": "Esta vez ambos coinciden; ahora sí cuenta cuál limita más el conjunto.",
+            "hint": "Compara cuarenta y ocho bits fijados con sesenta y cuatro compatibles.",
+            "correct": "Elegiste la excepción correcta a partir de su coincidencia con el destino.",
+            "soft": "La mayor cobertura no equivale a mayor especificidad de encaminamiento.",
+            "sharp": "Un prefijo más amplio no gana por tener más invitados, cariño; aplica la regla."
+          }
+        },
+        {
+          "prompt": "¿Qué entrada de esas dos coincide con 2001:db8:50:21::9?",
+          "scenario": "La única excepción /64 de la tabla tiene cuarto grupo veinte, mientras el destino consultado utiliza veintiuno.",
+          "options": [
+            "La excepción /64 por ser la más larga de la lista",
+            "El /48, si no hay otra coincidencia aplicable más específica",
+            "Ninguna porque IPv6 exige que coincidan ocho grupos para cualquier ruta"
+          ],
+          "answer": 1,
+          "explanation": "El /48 contiene el destino y la excepción /64 no; la mayor longitud de una entrada no sirve si sus bits fijados difieren del destino.",
+          "wrongExplanations": [
+            "Elegir una barra mayor sin comprobar pertenencia aplicaría una ruta destinada a otro conjunto; el cuarto grupo excluye al destino de esa excepción.",
+            null,
+            "Un prefijo no necesita fijar la dirección completa para coincidir; precisamente describe un conjunto de destinos con cierta cantidad de bits iniciales iguales."
+          ],
+          "aoi": {
+            "question": "Mira el cuarto grupo antes de enamorarte de la barra más larga.",
+            "hint": "Descarta la excepción que no contiene al destino y conserva la coincidencia restante.",
+            "correct": "Usaste la ruta que sí corresponde al conjunto donde cae este destino.",
+            "soft": "Comprueba primero la pertenencia, incluso si ya recuerdas qué barra es mayor.",
+            "sharp": "El veintiuno no se volvió veinte por preferir /64, tesoro; compara los grupos."
+          }
+        },
+        {
+          "prompt": "¿Qué representa ::/0 en la tabla simplificada?",
+          "scenario": "La entrada ofrece una salida para destinos sin otra coincidencia instalada más específica y no describe el destino final de la aplicación.",
+          "options": [
+            "La obligación de enviar todo a ::",
+            "Una red que solo contiene un host",
+            "Una coincidencia general de ruta por defecto"
+          ],
+          "answer": 2,
+          "explanation": "El prefijo de longitud cero no fija bits de destino y funciona como coincidencia general; no cambia el destino real ni demuestra que el camino responda.",
+          "wrongExplanations": [
+            "La dirección escrita como base del /0 no obliga a utilizar la dirección no especificada como destino final; la entrada representa un conjunto de destinos.",
+            "Fijar cero bits no identifica un host único; una ruta de destino individual IPv6 utilizaría la longitud completa /128 en ese contexto.",
+            null
+          ],
+          "aoi": {
+            "question": "El /0 representa cobertura general, no una dirección remota a la que debas llamar.",
+            "hint": "Pregunta cuántos bits del destino fija ese prefijo de longitud cero.",
+            "correct": "Interpretaste el conjunto general sin confundirlo con la dirección no especificada aislada.",
+            "soft": "Separa la escritura del prefijo de una dirección individual de aplicación.",
+            "sharp": "Otra vez enviarlo todo al cero no; el /0 describe una ruta, cielo."
+          }
+        },
+        {
+          "prompt": "¿Qué necesita el siguiente salto fe80::1 cuando existen varios enlaces posibles?",
+          "scenario": "La ficha copió el vecino de enlace local, pero perdió el dato de interfaz de la entrada utilizada para el flujo.",
+          "options": [
+            "El ámbito de interfaz correspondiente",
+            "La conversión obligatoria del servidor a IPv4",
+            "Una dirección MAC inventada por el alumno"
+          ],
+          "answer": 0,
+          "explanation": "La dirección de enlace local debe interpretarse en la interfaz o zona adecuada; el literal por sí solo puede ser insuficiente cuando existen varios enlaces.",
+          "wrongExplanations": [
+            null,
+            "El dato incompleto requiere recuperar contexto de la ruta, no cambiar automáticamente de protocolo al servidor ni rehacer el diseño del servicio.",
+            "La información de enlace debe obtenerse mediante el mecanismo y la evidencia correspondientes; inventar una asociación no resuelve la ambigüedad de interfaz."
+          ],
+          "aoi": {
+            "question": "La puerta tiene número; todavía falta saber en qué enlace estamos llamando.",
+            "hint": "Recupera la interfaz de la entrada que corresponde a la prueba.",
+            "correct": "Identificaste el contexto que faltaba sin modificar el protocolo ni fabricar un vecino.",
+            "soft": "Antes de resolver un vecino, confirma por qué interfaz tiene sentido buscarlo.",
+            "sharp": "Fe80 no acepta una MAC elegida por inspiración, demonios; recupera el ámbito de enlace."
+          }
+        },
+        {
+          "prompt": "¿Qué afirmación sobre /64 y /127 conserva el contexto correcto?",
+          "scenario": "El alumno compara una LAN habitual con SLAAC y un enlace punto a punto entre routers contemplado por RFC 6164.",
+          "options": [
+            "Toda entrada IPv6 de cualquier tabla tiene que ser /64",
+            "El /64 de esa LAN y el /127 de ese enlace tienen contextos diferentes",
+            "Un /127 sirve indistintamente para cualquier LAN de usuarios"
+          ],
+          "answer": 1,
+          "explanation": "La longitud debe relacionarse con su objeto y mecanismo; el caso /127 entre routers no invalida el uso de /64 en la LAN habitual con SLAAC.",
+          "wrongExplanations": [
+            "La tabla puede incluir agregaciones, rutas de host y otros tamaños apropiados; confundir un patrón de interfaz con todas las rutas produce una regla falsa.",
+            null,
+            "El uso /127 señalado corresponde a un caso específico y exige sus condiciones; no debe copiarse automáticamente en cualquier segmento de estaciones."
+          ],
+          "aoi": {
+            "question": "Cada prefijo tiene su trabajo; no los obligues a compartir una única medida.",
+            "hint": "Distingue la LAN con autoconfiguración del enlace específico entre routers.",
+            "correct": "Conservaste ambos mecanismos sin inventar una longitud universal para IPv6.",
+            "soft": "Pregunta qué objeto representa el prefijo antes de declarar una regla para todo.",
+            "sharp": "No metas a todos los vecinos dentro de un /127, cariño; respeta el tipo de enlace."
+          }
+        },
+        {
+          "prompt": "¿Qué debe conservarse al comparar una ruta antes y después de cambiar anuncios?",
+          "scenario": "El equipo revisa una prueba nueva, pero únicamente dispone de una tabla anterior al cambio de estado de un router predeterminado.",
+          "options": [
+            "Solo la terminación decimal del nombre del equipo",
+            "Una suposición de que las rutas nunca cambian",
+            "Hora, tabla efectiva y contexto del flujo para cada observación"
+          ],
+          "answer": 2,
+          "explanation": "Los tiempos y el estado pueden alterar la salida elegida; cada resultado debe relacionarse con su tabla, origen, interfaz y momento para permitir una comparación válida.",
+          "wrongExplanations": [
+            "La parte final de un nombre no identifica rutas efectivas ni permite saber qué información estaba disponible al producirse cada resultado de la prueba.",
+            "La información de router y otras rutas pueden cambiar; asumir permanencia impediría explicar diferencias reales entre observaciones hechas en momentos distintos.",
+            null
+          ],
+          "aoi": {
+            "question": "Nuestra tabla tiene fecha, y el router no prometió quedarse congelado en ella.",
+            "hint": "Asocia la decisión de salida con el estado disponible cuando ocurrió el flujo.",
+            "correct": "Comparaste estados reales en vez de usar una instantánea vieja como explicación eterna.",
+            "soft": "Falta comprobar qué entradas estaban activas al realizar la prueba que ahora observas.",
+            "sharp": "El router no se quedó quieto para que tu captura acertara siempre, joder; conserva los tiempos."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "La excepción no incluye al siguiente cuarto grupo",
+          "scenario": "La tabla presenta 2001:db8:50::/48 y 2001:db8:50:20::/64. El destino consultado es 2001:db8:50:21::9 y no aparece otra entrada más específica para ese valor.",
+          "explanation": "El destino pertenece al /48, pero no al /64 cuyo cuarto grupo es veinte. Debe seleccionarse la coincidencia /48 en esa tabla; el hecho de que exista una entrada más larga para otro destino no permite utilizarla para este."
+        },
+        {
+          "title": "Un siguiente salto con ámbito incompleto",
+          "scenario": "Un equipo tiene dos enlaces que muestran fe80::1 como vecino y una ficha copia únicamente default via fe80::1, omitiendo la interfaz y el origen de la observación.",
+          "explanation": "La dirección local necesita su ámbito de enlace. Hay que recuperar la interfaz y el contexto de la tabla utilizada antes de relacionar esa salida con el flujo. No debe elegirse una interfaz por intuición ni considerar que ambos vecinos son necesariamente el mismo dispositivo."
+        }
+      ],
+      "diagram": "network",
+      "intro": "La tabla ficticia de una sede combina un prefijo /48, una excepción /64, un destino /128 y una salida predeterminada mediante un router de enlace local. Cada consulta debe justificar su coincidencia.",
+      "scenario": "La tabla ficticia de una sede combina un prefijo /48, una excepción /64, un destino /128 y una salida predeterminada mediante un router de enlace local. Cada consulta debe justificar su coincidencia.",
+      "steps": [
+        "Expande el destino y los prefijos solo hasta los grupos necesarios.",
+        "Selecciona la coincidencia instalada de mayor longitud.",
+        "Registra siguiente salto, interfaz y dirección de origen utilizada.",
+        "Comprueba estado del vecino y camino de retorno.",
+        "Repite la consulta si cambió el estado de los anuncios o las rutas."
+      ],
+      "sourceIds": [
+        "net-ipv6",
+        "net-ndp",
+        "net-ipv6-p2p"
+      ],
+      "aoi": {
+        "intro": "Cambian los bits, no la obligación de comprobar qué prefijo contiene al destino.",
+        "theory0": "Un /64 más largo solo gana si el destino pertenece a él, cariño.",
+        "theory1": "El siguiente salto local nos entrega al router; el destino puede seguir mucho más lejos.",
+        "theory2": "SLAAC usa su contexto de LAN; la tabla no está condenada a tener solo /64.",
+        "theory3": "Si cambia el router disponible, guarda también cuándo miraste la ruta.",
+        "case0": "Ese cuarto grupo veintiuno no entró en la excepción del grupo veinte.",
+        "case1": "Fe80 necesita su interfaz; no hagamos una tómbola con los adaptadores.",
+        "pass": "Ya describes la búsqueda y la entrega como piezas distintas. Mi ceja está oficialmente satisfecha.",
+        "review": "Repasemos destino e interfaz; todavía estás seleccionando rutas por su apariencia."
+      }
+    },
+    {
+      "id": "ipv6-foundations-controles",
+      "title": "Proteger IPv6 sin confundir dirección y confianza",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Una dirección extensa no sustituye la política de acceso",
+          "body": "IPv6 proporciona un espacio de direcciones mucho mayor que IPv4, pero el tamaño del espacio no autentica equipos ni reemplaza controles del servicio. Una dirección puede conocerse mediante registros, publicaciones o actividad de aplicación; no debe protegerse un recurso solo esperando que nadie la encuentre. Tampoco presupongas que todo tráfico IPv6 está cifrado porque el protocolo pueda utilizar mecanismos de protección. La seguridad del contenido depende del mecanismo efectivamente configurado y de sus extremos, como ocurre con el transporte protegido de una aplicación. Define qué recurso se utiliza, desde qué origen, con qué identidad y para qué acción. Después expresa y verifica la política en el equipo y la familia correspondientes. Una dirección global no obliga a permitir nuevas conexiones desde cualquier lugar; una ULA no concede confianza automática por ser local. El objetivo consiste en vincular acceso con requisitos concretos y observaciones verificables. Si una herramienta presenta un icono de seguridad, comprueba qué propiedad indica y qué parte del flujo cubre antes de atribuirle una defensa completa del sistema."
+        },
+        {
+          "title": "Comprobar qué dispositivos deben anunciar información de router",
+          "body": "Los anuncios de router influyen en la información que reciben los equipos del segmento. En una red administrada conviene documentar qué puertos y dispositivos tienen ese papel autorizado. RA Guard describe una familia de mecanismos de filtrado que puede ayudar a limitar anuncios según las condiciones del enlace y las capacidades del equipo. No basta activar una opción sin comprobar su implementación ni copiar la misma confianza en todos los puertos. Un enlace hacia el router legítimo y un puerto de estación tienen roles diferentes. También pueden existir topologías con equipos intermedios que necesitan un análisis específico antes de definir dónde filtrar. En la actividad, un RA observado en un puerto destinado únicamente a una estación merece contrastar inventario, configuración y tiempos. No demuestra por sí solo intención maliciosa: podría existir un cambio no documentado o un error del montaje. El control debe conservar los anuncios legítimos necesarios para el funcionamiento previsto y evitar confiar en un mensaje únicamente porque su origen tenga una dirección de enlace local conocida."
+        },
+        {
+          "title": "Mantener separados control de enlace y control del recurso",
+          "body": "Filtrar anuncios de router no implementa todos los permisos de una aplicación. El servicio necesita su propio control de acceso y la red puede aplicar restricciones adicionales por zonas, puertos y protocolos. La revisión debe comprobar que cada regla realmente se aplica a IPv6 cuando esa familia forma parte del diseño. Mantén pruebas positivas desde orígenes autorizados y negativas desde zonas que no deben utilizar el recurso. Si un flujo requiere ICMPv6 para funciones de control, distingue esas necesidades de una exposición indiscriminada de puertos de aplicación. Una política con estado puede reconocer respuestas de comunicaciones permitidas, pero su comportamiento depende de la implementación y de la ruta del flujo. No declares equivalencia entre dos firewalls solo porque sus interfaces gráficas muestren un mismo nombre de regla. En el taller, la matriz de pruebas especifica origen, destino, protocolo, puerto, familia y resultado. Esa tabla permite comprobar el efecto después de un cambio y detectar si una corrección de descubrimiento abrió además un acceso que debía seguir bloqueado. Cada control tiene alcance y evidencia propios."
+        },
+        {
+          "title": "Relacionar direcciones temporales con registros y privacidad",
+          "body": "Un equipo puede utilizar direcciones IPv6 temporales para reducir cierta vinculación por un identificador de interfaz estable. Esa función no elimina cuentas, cookies ni otros identificadores de aplicación. Tampoco permite atribuir toda actividad de una dirección a una persona sin conocer el contexto. Al investigar un evento del laboratorio, relaciona momento, interfaz y registros disponibles de asignación o vecindad, limitándote a los datos necesarios. Una dirección distinta en dos momentos no demuestra automáticamente que participaran dos equipos, y repetir una dirección tampoco acredita una identidad humana permanente. Conserva precisión temporal y finalidad del registro; no recopiles contenido completo de sesiones si la tarea solo necesita demostrar un cambio de ruta o un anuncio inesperado. Los registros también requieren acceso restringido y conservación apropiada al entorno. Para cerrar el caso, separa qué se observó, qué pudo correlacionarse y qué permanece incierto. Así puedes reducir exposición innecesaria de datos sin prometer anonimato absoluto, y construir una explicación técnica que no dependa de adivinar identidades a partir del aspecto de una dirección."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué propiedad garantiza por sí solo el mayor espacio de direcciones IPv6?",
+          "scenario": "El servicio no presenta evidencias sobre cifrado, autenticación ni política y el alumno quiere deducirlas únicamente del tamaño de sus direcciones.",
+          "options": [
+            "Ninguna de esas garantías de seguridad se deduce solo del tamaño",
+            "Cifrado automático de todo contenido",
+            "Autorización universal de los equipos locales"
+          ],
+          "answer": 0,
+          "explanation": "El tamaño del espacio no implementa por sí mismo cifrado, identidad o permisos; cada garantía debe relacionarse con controles y comprobaciones del flujo concreto.",
+          "wrongExplanations": [
+            null,
+            "El protocolo puede utilizar protección mediante mecanismos configurados, pero una dirección de ciento veintiocho bits no demuestra que todo contenido esté cifrado.",
+            "El origen local no concede permisos generales de aplicación; el acceso debe ajustarse a identidad, recurso, acción y políticas de ese entorno."
+          ],
+          "aoi": {
+            "question": "El espacio creció; las garantías todavía necesitan mecanismos que las sostengan.",
+            "hint": "Distingue una propiedad del direccionamiento de un control realmente activo.",
+            "correct": "Conservaste la diferencia entre capacidad de direcciones y protección del recurso.",
+            "soft": "Busca qué mecanismo aportaría la propiedad que estás intentando afirmar.",
+            "sharp": "Los bits no instalaron autenticación mientras mirabas el prefijo, cielo; revisa los controles."
+          }
+        },
+        {
+          "prompt": "¿Qué función concreta puede ayudar a proteger RA Guard en el segmento?",
+          "scenario": "La topología distingue puertos autorizados para anuncios de router de otros destinados únicamente a estaciones de usuario.",
+          "options": [
+            "El cifrado de cualquier aplicación del portátil",
+            "La aceptación de anuncios de router según el papel autorizado del enlace",
+            "La eliminación de todas las rutas de retorno"
+          ],
+          "answer": 1,
+          "explanation": "RA Guard puede filtrar anuncios de router según condiciones y capacidades del enlace; debe configurarse y comprobarse sin atribuirle las funciones de otros controles.",
+          "wrongExplanations": [
+            "El filtrado de anuncios no cifra los datos de una aplicación; la protección de contenido necesita un mecanismo adecuado a los extremos del servicio.",
+            null,
+            "Eliminar todas las rutas de retorno no es el objetivo de proteger anuncios; rompería comunicaciones previstas y no demuestra una política correcta del segmento."
+          ],
+          "aoi": {
+            "question": "Pongamos al guardia en la puerta que realmente sabe vigilar.",
+            "hint": "Relaciona el control con RA y con los roles declarados de los puertos.",
+            "correct": "Identificaste la función protegida sin convertir una opción de enlace en seguridad universal.",
+            "soft": "Comprueba qué tipo de mensaje está diseñado para distinguir ese control.",
+            "sharp": "RA Guard no cifra tu aplicación por buena educación, cariño; conserva su función concreta."
+          }
+        },
+        {
+          "prompt": "¿Qué conclusión permite un RA desde un puerto inventariado como estación?",
+          "scenario": "La política del taller no autoriza a ese puerto a anunciar información de router y todavía no se han revisado cambios ni configuración.",
+          "options": [
+            "Que se conoce la identidad del atacante",
+            "Que todos los routers del mundo están comprometidos",
+            "Que hay una discrepancia con el rol documentado que debe investigarse"
+          ],
+          "answer": 2,
+          "explanation": "El origen observado contradice el inventario y merece revisión, pero aún no determina identidad ni intención; deben contrastarse cambios y configuración del entorno.",
+          "wrongExplanations": [
+            "El mensaje y el puerto no autentican por sí solos a una persona ni demuestran intención maliciosa; la atribución requiere evidencias adicionales apropiadas.",
+            "Una observación de un segmento no permite extender la conclusión a redes ajenas; el alcance debe mantenerse en la discrepancia que realmente se comprobó.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese puerto está haciendo algo distinto de su ficha; empecemos por esa diferencia.",
+            "hint": "Contrasta el papel autorizado con el anuncio sin saltar a una identidad inventada.",
+            "correct": "Delimitaste una observación útil para investigar y corregir el diseño del segmento.",
+            "soft": "Todavía falta revisar si hubo cambios o errores antes de atribuir una intención.",
+            "sharp": "El inventario no vino con una confesión del culpable, demonios; conserva el alcance."
+          }
+        },
+        {
+          "prompt": "¿Qué debe validarse tras corregir el filtrado de anuncios de router?",
+          "scenario": "El cambio busca impedir RA inesperados y mantener los anuncios y accesos necesarios del servicio de doble pila.",
+          "options": [
+            "Que continúe el tráfico legítimo y sigan bloqueadas las condiciones no autorizadas",
+            "Solo que desaparezca cualquier mensaje ICMPv6",
+            "Solo que la regla tenga un nombre nuevo"
+          ],
+          "answer": 0,
+          "explanation": "La corrección necesita pruebas positivas y negativas: preservar las funciones necesarias y comprobar las restricciones previstas evita resolver un síntoma abriendo o rompiendo otros flujos.",
+          "wrongExplanations": [
+            null,
+            "Eliminar todos los mensajes puede impedir funciones de descubrimiento y control; no demuestra que el segmento mantenga la conectividad y las restricciones requeridas.",
+            "Renombrar una regla no acredita su efecto ni su alcance IPv6; la evidencia debe describir comunicaciones y resultados después de aplicar el cambio."
+          ],
+          "aoi": {
+            "question": "El guardia debe distinguir puertas; no dejemos la sede entera sin conversación.",
+            "hint": "Comprueba tanto lo que necesita seguir pasando como lo que debe permanecer impedido.",
+            "correct": "Validaste el efecto completo del cambio en lugar de celebrar únicamente una ausencia.",
+            "soft": "Revisa si conservaste las condiciones legítimas además de reducir el mensaje que preocupaba.",
+            "sharp": "Un enlace mudo no es una política bien probada, cariño; verifica ambos tipos de resultado."
+          }
+        },
+        {
+          "prompt": "¿Impide la rotación de una IPv6 temporal que una cuenta siga identificando la sesión?",
+          "scenario": "El portátil cambia de dirección, pero la aplicación conserva la misma cuenta autenticada y sus identificadores de sesión.",
+          "options": [
+            "Sí, la aplicación debe olvidar automáticamente la cuenta",
+            "No, otros identificadores de aplicación siguen disponibles",
+            "Sí, todas las cookies se borran al cambiar el prefijo"
+          ],
+          "answer": 1,
+          "explanation": "La rotación de dirección no elimina por sí misma cuentas o cookies; el servicio puede relacionar sesiones mediante esos datos aunque cambie la representación de red.",
+          "wrongExplanations": [
+            "La identidad de una cuenta y su sesión pertenecen a mecanismos de aplicación que no desaparecen automáticamente por la dirección temporal del cliente.",
+            null,
+            "Las cookies no se borran por una regla general de cambio de prefijo; su gestión depende de la aplicación y del navegador, no de esa suposición."
+          ],
+          "aoi": {
+            "question": "Cambiar de dirección no te quita la tarjeta de la cuenta que sigues mostrando.",
+            "hint": "Observa qué identificadores de aplicación permanecen después de la rotación.",
+            "correct": "Interpretaste la protección de privacidad sin prometer una desaparición completa de la identidad.",
+            "soft": "La dirección cambió, pero revisa qué datos conserva la aplicación de la misma sesión.",
+            "sharp": "Las cookies no se van de vacaciones con tu IPv6 anterior, tesoro; siguen teniendo su función."
+          }
+        },
+        {
+          "prompt": "¿Qué relación prudente debe conservar un registro de una incidencia IPv6?",
+          "scenario": "El equipo quiere correlacionar un evento sin asumir que cada dirección identifica permanentemente a una persona ni recopilar contenido de sesión innecesario.",
+          "options": [
+            "Dirección igual a identidad humana permanente",
+            "Captura ilimitada de todos los contenidos para cualquier duda",
+            "Momento, interfaz y evidencia pertinente con límites de atribución y acceso"
+          ],
+          "answer": 2,
+          "explanation": "La correlación necesita contexto temporal y técnico, datos proporcionales y protección del registro; una dirección aislada no basta para una atribución humana permanente.",
+          "wrongExplanations": [
+            "Las direcciones pueden variar, compartirse en contextos distintos o relacionarse con procesos y equipos; no prueban por sí solas una identidad humana estable.",
+            "La recopilación debe responder a la finalidad y al alcance de la tarea; conservar todo el contenido añade exposición sin garantizar una explicación correcta del evento.",
+            null
+          ],
+          "aoi": {
+            "question": "Guardemos la evidencia que ayuda, sin convertir la curiosidad en una colección indiscriminada.",
+            "hint": "Relaciona el evento con su contexto y conserva solo lo necesario para explicarlo.",
+            "correct": "Preparaste una correlación útil que también respeta la protección de los registros.",
+            "soft": "Revisa qué dato permite la comparación y qué afirmación todavía no justifica.",
+            "sharp": "Más contenido capturado no fabrica una identidad cierta, joder; documenta las relaciones que sí puedes sostener."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un anuncio fuera del papel documentado",
+          "scenario": "La tabla del taller autoriza RA únicamente desde el puerto hacia el router, pero una captura de práctica muestra un anuncio recibido desde un puerto inventariado como estación de usuario.",
+          "explanation": "La observación contradice el papel documentado y requiere revisar inventario, cambios y configuración del segmento. Puede motivar un control específico de RA, comprobando su soporte y preservando los anuncios legítimos. La discrepancia no demuestra por sí sola quién actuó ni con qué intención."
+        },
+        {
+          "title": "La dirección temporal no borra la sesión",
+          "scenario": "Un portátil cambia su dirección temporal IPv6, pero continúa utilizando la misma cuenta autenticada y las mismas cookies de una aplicación de prueba.",
+          "explanation": "El servicio puede seguir relacionando la actividad mediante los identificadores de aplicación. La rotación de dirección reduce una forma de vinculación, no garantiza anonimato ni elimina la necesidad de revisar cuentas, cookies y protección de los registros asociados."
+        }
+      ],
+      "diagram": "network",
+      "intro": "El taller publica una aplicación por ambas familias y registra un anuncio de router en un puerto de usuario. Debes revisar controles de enlace, acceso y privacidad con datos delimitados.",
+      "scenario": "El taller publica una aplicación por ambas familias y registra un anuncio de router en un puerto de usuario. Debes revisar controles de enlace, acceso y privacidad con datos delimitados.",
+      "steps": [
+        "Relaciona cada control con la función que realmente protege.",
+        "Compara el origen del anuncio con los roles autorizados del segmento.",
+        "Prueba accesos permitidos y denegados al servicio por IPv6.",
+        "Conserva solo los registros necesarios para correlacionar la incidencia.",
+        "Comprueba que los cambios mantienen descubrimiento y tráfico legítimos."
+      ],
+      "sourceIds": [
+        "net-ra-guard",
+        "net-zero-trust",
+        "net-ipv6"
+      ],
+      "aoi": {
+        "intro": "Más bits no significan menos controles, cariño; el servicio sigue necesitando criterio.",
+        "theory0": "Una dirección difícil de recordar no es una cerradura ni cifra tus datos.",
+        "theory1": "El puerto de usuario no recibió permiso de router por tener un mensaje convincente.",
+        "theory2": "RA Guard protege una función; la aplicación todavía conserva sus propias puertas.",
+        "theory3": "Las direcciones temporales no se llevan las cookies al cambiar de traje.",
+        "case0": "Ese anuncio contradice el inventario; investiguemos sin inventarle todavía un culpable.",
+        "case1": "La cuenta sigue dentro de la sesión aunque el portátil estrene dirección.",
+        "pass": "Ya relacionas controles con funciones concretas. Esa precisión me está poniendo demasiado orgullosa.",
+        "review": "Volvamos al alcance del control; todavía le estás pidiendo a una sola opción que haga de todo."
+      }
+    },
+    {
+      "id": "ipv6-foundations-despliegue",
+      "title": "Preparar una migración IPv6 y verificar sus límites",
+      "minutes": 15,
+      "sections": [
+        {
+          "title": "Inventariar el camino completo y sus dependencias",
+          "body": "Preparar IPv6 no consiste únicamente en añadir una dirección al servidor. El camino incluye puestos, enlaces, routers, resolución de nombres, servicio, controles y observación. Empieza por describir qué aplicación debe funcionar, desde qué zonas y bajo qué restricciones. Después identifica qué componentes soportan la función requerida y cómo se administran. Conserva una configuración de referencia por cada punto relevante y registra quién puede autorizar su cambio. El inventario debe distinguir prefijos de interfaz, rutas anunciadas y direcciones publicadas; son objetos que pueden necesitar ajustes en momentos diferentes. Incluye las dependencias de seguimiento, como registros capaces de conservar direcciones IPv6 completas sin truncarlas o tratarlas como cuatro octetos. Un panel que solo mida resultados IPv4 puede ocultar fallos del piloto aunque la aplicación parezca disponible. También conviene comprobar qué mecanismos utilizan realmente los clientes para dirección, router y DNS. No presupongas que todos interpretan igual una configuración solo porque aparecen en el mismo segmento. La planificación reduce incertidumbre cuando relaciona cada dependencia con una comprobación y un responsable, sin convertir el soporte anunciado en prueba de funcionamiento efectivo."
+        },
+        {
+          "title": "Diseñar el piloto con el mismo objetivo de servicio",
+          "body": "Un piloto delimitado permite probar antes de ampliar la publicación. Define un conjunto de puestos y un servicio ficticio con nombre, identidades y permisos conocidos. La prueba debe representar la aplicación prevista: utilizar únicamente una dirección literal no siempre evalúa selección de sitio o validación de identidad dependiente del nombre. No resuelvas ese problema desactivando validaciones; prepara el entorno de prueba para conservarlas. Incluye acceso desde una zona permitida, denegación desde una no autorizada, resolución, camino de retorno y transferencias con tamaños representativos. Mantén evidencias separadas por familia para identificar si el cliente utilizó una alternativa. Si aparece un fallo, registra dirección de origen, destino, interfaz, hora y condición esperada antes de cambiar parámetros. Una prueba positiva aislada no demuestra que todas las restricciones continúen activas. En el laboratorio, una matriz pequeña con casos reproducibles es más útil que una captura general de una página abierta. El piloto termina cuando puede explicarse qué se probó, qué resultados se obtuvieron y qué partes del despliegue todavía quedan fuera de su alcance."
+        },
+        {
+          "title": "Publicar nombres sin olvidar cachés y estados existentes",
+          "body": "Cuando el servicio y su camino están preparados, puede evaluarse publicar el registro AAAA correspondiente al nombre que usarán los clientes. Esa publicación puede hacer que nuevos intentos seleccionen IPv6; por eso no debe adelantarse como sustituto de las pruebas de disponibilidad y política. Los tiempos de caché DNS también importan. Reducir ahora el TTL anunciado no acorta retroactivamente el tiempo que otro resolver ya conservaba de una respuesta anterior. Planifica el cambio y observa qué datos recibieron los clientes en cada momento. Retirar un registro tampoco cancela automáticamente conexiones ya establecidas ni elimina al instante toda copia de la respuesta anterior. Hay estados en distintas capas con duraciones propias. Lo mismo ocurre al retirar prefijos anunciados: deben revisarse los tiempos preferido y válido y el comportamiento de los equipos, no borrar números del diagrama y declarar terminado el uso. El plan necesita distinguir publicación, utilización y retirada. Esa separación evita dejar un destino anunciado sin camino o retirar de golpe una dependencia que todavía participa en sesiones legítimas del servicio."
+        },
+        {
+          "title": "Medir y recuperar con criterios definidos",
+          "body": "Antes de ampliar el piloto, acuerda qué resultados indicarían detener el cambio. Pueden incluir una restricción que deja de cumplirse, fallos de resolución o una diferencia de funcionamiento que afecte a los usuarios previstos. Relaciona las métricas con su contexto y evita comparar promedios de orígenes distintos como si describieran el mismo camino. Una recuperación útil conserva configuraciones conocidas y explica qué se restaurará, en qué orden y cómo se comprobará el resultado. No basta escribir volver atrás sin identificar las piezas que cambiaron. Cuando proceda retirar una publicación, contempla las cachés y las sesiones existentes en vez de asumir un efecto instantáneo. Después repite los casos positivos y negativos del estado elegido, conservando también evidencia del fallo que motivó la decisión. Aprender esta revisión en Aiocyb no acredita haber administrado una red real ni haber aprobado un examen externo; sí permite justificar un procedimiento con datos delimitados. Al continuar hacia redes y seguridad, conserva esa capacidad de explicar causas, límites y comprobaciones sin depender de una lista de cambios que nadie haya relacionado con los resultados."
+        }
+      ],
+      "questions": [
+        {
+          "prompt": "¿Qué debe prepararse además de la IPv6 del servidor para un despliegue útil?",
+          "scenario": "El proyecto quiere una aplicación operativa y protegida desde zonas concretas, sin retirar el camino IPv4 existente.",
+          "options": [
+            "Camino, nombres, servicio, controles y observación del conjunto",
+            "Solo un registro AAAA publicado cuanto antes",
+            "Únicamente una captura del prefijo en la interfaz"
+          ],
+          "answer": 0,
+          "explanation": "El servicio depende de varias piezas coordinadas; una dirección o publicación aislada no comprueba rutas, retorno, política ni que los resultados puedan observarse correctamente.",
+          "wrongExplanations": [
+            null,
+            "Publicar antes de validar puede dirigir clientes a un camino que aún falla o no conserva restricciones; el registro no prepara automáticamente las otras dependencias.",
+            "La captura de interfaz acredita un dato local, pero no describe el camino completo ni demuestra disponibilidad y protección de la aplicación desde las zonas previstas."
+          ],
+          "aoi": {
+            "question": "La dirección es una pieza del montaje, no todo el proyecto terminado.",
+            "hint": "Relaciona el objetivo de servicio con las dependencias que deben sostenerlo.",
+            "correct": "Conservaste una preparación completa en lugar de confundir un dato local con el despliegue.",
+            "soft": "Revisa qué funciones siguen sin comprobarse aunque el servidor ya tenga un número.",
+            "sharp": "Un prefijo en pantalla no montó toda la sede por arte de magia, cielo; completa el inventario."
+          }
+        },
+        {
+          "prompt": "¿Qué prueba conserva mejor el objetivo de una aplicación dependiente del nombre?",
+          "scenario": "El piloto necesita evaluar también selección del servicio y validación de identidad, además de un camino IPv6 disponible.",
+          "options": [
+            "Abrir solo una IP y desactivar cualquier validación que falle",
+            "Usar el nombre y las condiciones de identidad previstas en un entorno controlado",
+            "Declarar que una respuesta ICMP sustituye todo inicio de sesión"
+          ],
+          "answer": 1,
+          "explanation": "La prueba debe representar cómo se utiliza la aplicación y conservar sus validaciones; el entorno controlado permite revisar camino y comportamiento dependiente del nombre.",
+          "wrongExplanations": [
+            "Desactivar comprobaciones altera el objetivo del piloto y puede ocultar errores de identidad o selección del servicio que el despliegue precisamente debía evaluar.",
+            null,
+            "Una respuesta de control de red no comprueba selección de aplicación, identidad ni permisos de la sesión que deben validarse en este caso."
+          ],
+          "aoi": {
+            "question": "Nuestro piloto tiene que parecerse al servicio real, también cuando este comprueba su identidad.",
+            "hint": "Conserva el nombre y la validación que los usuarios legítimos necesitarán.",
+            "correct": "Elegiste condiciones de prueba que mantienen el objetivo de la aplicación y sus controles.",
+            "soft": "No confundas conseguir una respuesta con evaluar el comportamiento previsto del servicio.",
+            "sharp": "Quitar la validación para que parezca funcionar no la aprobó, cariño; corrige el entorno del piloto."
+          }
+        },
+        {
+          "prompt": "¿Qué significa reducir el TTL de nuevas respuestas DNS después de una caché anterior?",
+          "scenario": "El resolver conserva una respuesta cuyo tiempo restante todavía es treinta minutos y la nueva publicación anuncia cinco minutos.",
+          "options": [
+            "Que la copia anterior desaparece necesariamente de inmediato",
+            "Que todas las sesiones abiertas se cierran",
+            "Que la copia anterior conserva su contexto temporal y no se acorta retroactivamente"
+          ],
+          "answer": 2,
+          "explanation": "El nuevo TTL se aplica a la información recibida con ese valor; no modifica por sí mismo el tiempo ya conservado de una respuesta anterior en otro resolver.",
+          "wrongExplanations": [
+            "La caché previa no recibe automáticamente una orden de invalidación solo por cambiar el TTL que se anunciará a nuevas consultas del nombre.",
+            "Las sesiones establecidas tienen su propio estado y no terminan necesariamente por modificar un tiempo de caché DNS de respuestas posteriores.",
+            null
+          ],
+          "aoi": {
+            "question": "Ese TTL nuevo no inventó una máquina del tiempo para los resolvers.",
+            "hint": "Distingue el valor de la respuesta ya almacenada del que recibirán consultas posteriores.",
+            "correct": "Respetaste el estado previo y evitaste planificar una retirada basada en efecto retroactivo.",
+            "soft": "Revisa cuándo se guardó la respuesta cuyo vencimiento estás intentando explicar.",
+            "sharp": "La caché antigua no leyó tu nueva intención, tesoro; conserva los tiempos de cada respuesta."
+          }
+        },
+        {
+          "prompt": "¿Qué demuestra retirar un registro AAAA respecto de conexiones ya establecidas?",
+          "scenario": "La actividad analiza una retirada DNS sin presentar órdenes de cierre de sesión ni desaparición confirmada de cachés anteriores.",
+          "options": [
+            "No demuestra su cierre automático ni la eliminación inmediata de cachés previas",
+            "Que todas las conexiones se cancelaron al mismo instante",
+            "Que el servidor ya no necesita políticas IPv6"
+          ],
+          "answer": 0,
+          "explanation": "La retirada cambia la información de resolución disponible según sus tiempos; no prueba por sí sola el fin de sesiones existentes ni la desaparición de respuestas almacenadas.",
+          "wrongExplanations": [
+            null,
+            "Las conexiones conservan estado distinto de una publicación DNS y pueden continuar según sus condiciones; no hay evidencia de un cierre simultáneo de todas ellas.",
+            "El servicio puede seguir siendo alcanzable mediante datos ya conocidos o estados existentes; retirar el nombre no sustituye los controles del recurso y del camino."
+          ],
+          "aoi": {
+            "question": "Quitar el cartel no garantiza que todas las personas dentro hayan salido.",
+            "hint": "Separa la publicación de nombres de las sesiones y copias que ya existían.",
+            "correct": "Conservaste los estados que la retirada DNS no demuestra haber eliminado.",
+            "soft": "Todavía faltan pruebas del estado de conexiones y respuestas conservadas por los clientes.",
+            "sharp": "El AAAA no se llevó todas las sesiones al salir, demonios; revisa cada capa de estado."
+          }
+        },
+        {
+          "prompt": "¿Qué debe incluir una recuperación verificable del piloto?",
+          "scenario": "El proyecto quiere detener una ampliación por una restricción fallida y volver a un estado conocido sin perder el seguimiento del cambio.",
+          "options": [
+            "Solo la frase volver atrás",
+            "Piezas afectadas, orden de restauración y pruebas del estado elegido",
+            "La obligación de borrar cualquier registro del fallo"
+          ],
+          "answer": 1,
+          "explanation": "La recuperación necesita identificar cambios concretos, restaurarlos según un orden y comprobar disponibilidad y restricciones del estado elegido; una intención general no permite verificar el resultado.",
+          "wrongExplanations": [
+            "Una frase sin configuraciones, responsables o comprobaciones no explica qué debe recuperarse ni cómo reconocer que el estado vuelve a cumplir el objetivo previsto.",
+            null,
+            "La evidencia del fallo ayuda a justificar y evaluar la decisión; debe conservarse de forma proporcionada y protegida, no borrarse como requisito de recuperación."
+          ],
+          "aoi": {
+            "question": "Volver necesita un mapa; mi paciencia no restaura servidores por intuición.",
+            "hint": "Nombra lo que cambió y cómo comprobarás el estado al que quieres regresar.",
+            "correct": "Preparaste una recuperación que alguien puede seguir y verificar con pruebas concretas.",
+            "soft": "Revisa si tu plan describe acciones y resultados, además de expresar una intención.",
+            "sharp": "Volver atrás sin saber qué moviste es pasear en círculos, cariño; documenta las piezas."
+          }
+        },
+        {
+          "prompt": "¿Qué resultado de aprendizaje corresponde al cierre de este curso local?",
+          "scenario": "El estudiante resolvió las lecciones y ejercicios IPv6 de Aiocyb, pero no ha administrado equipos reales ni realizado un examen externo dentro de la app.",
+          "options": [
+            "Una certificación profesional oficial ya obtenida",
+            "Una garantía de funcionamiento de cualquier red real",
+            "Comprensión practicada sobre los casos delimitados, con trabajo externo pendiente según el objetivo"
+          ],
+          "answer": 2,
+          "explanation": "Resolver estas actividades permite ejercitar conceptos y justificar decisiones sobre los casos presentados; la práctica real y las certificaciones externas tienen requisitos y comprobaciones propias.",
+          "wrongExplanations": [
+            "La app no administra el examen ni emite esa credencial profesional; la preparación local no debe registrarse como una certificación externa conseguida.",
+            "Los escenarios proporcionan evidencias delimitadas de aprendizaje y no prueban todas las condiciones, equipos y configuraciones que existirán en cualquier red real.",
+            null
+          ],
+          "aoi": {
+            "question": "Terminaste el recorrido con mérito propio; no necesitamos inventarle un sello ajeno.",
+            "hint": "Relaciona el logro con lo que realmente estudiaste y practicaste aquí.",
+            "correct": "Reconociste tu avance con precisión; ahora puedes elegir el siguiente paso con criterio.",
+            "soft": "El curso aporta preparación; revisa qué objetivos necesitan práctica o evaluación adicional.",
+            "sharp": "Mi orgullo no falsifica diplomas, cielo; celebremos exactamente lo que aprendiste."
+          }
+        }
+      ],
+      "cases": [
+        {
+          "title": "Un AAAA publicado antes del piloto",
+          "scenario": "La institución añade el registro IPv6 al nombre de producción, pero aún no verifica retorno ni restricciones desde la zona de invitados. Algunos clientes empiezan a seleccionar ese destino.",
+          "explanation": "La publicación puede cambiar el camino utilizado por los clientes antes de que se conozca su comportamiento. Debe revisarse el despliegue con un piloto delimitado y pruebas de disponibilidad y política, en lugar de considerar que publicar el registro completa por sí mismo la preparación."
+        },
+        {
+          "title": "El TTL nuevo que no cambia una respuesta antigua",
+          "scenario": "Un resolver guardó una respuesta con tiempo restante de treinta minutos. Después se reduce el TTL de nuevas respuestas a cinco minutos y el grupo espera que aquella copia expire inmediatamente.",
+          "explanation": "El valor nuevo no reduce retroactivamente el tiempo de la copia ya almacenada. La planificación debe considerar respuestas anteriores y sus tiempos, además de distinguir caché DNS y sesiones existentes al evaluar la retirada o recuperación de un cambio."
+        }
+      ],
+      "diagram": "network",
+      "intro": "Una pequeña institución ficticia quiere habilitar IPv6 para una aplicación de consulta sin retirar IPv4. El grupo debe preparar un piloto, publicar información de nombres y conservar una recuperación verificable.",
+      "scenario": "Una pequeña institución ficticia quiere habilitar IPv6 para una aplicación de consulta sin retirar IPv4. El grupo debe preparar un piloto, publicar información de nombres y conservar una recuperación verificable.",
+      "steps": [
+        "Inventaría direcciones, rutas, nombres y controles de ambos caminos.",
+        "Define un piloto con accesos legítimos y restricciones que deban mantenerse.",
+        "Publica cambios solo después de validar las condiciones previstas.",
+        "Observa resultados por familia y conserva sus tiempos.",
+        "Describe criterios de interrupción y una vuelta atrás comprobable."
+      ],
+      "sourceIds": [
+        "net-ipv6",
+        "net-dns",
+        "net-ndp"
+      ],
+      "aoi": {
+        "intro": "Terminemos IPv6 con un plan que también sepa volver a casa, cariño.",
+        "theory0": "Añadir dirección no prepara por sí solo rutas, controles y observación.",
+        "theory1": "Nuestro piloto debe comprobar permisos y retorno, no únicamente una portada que abre.",
+        "theory2": "El TTL nuevo no viaja al pasado a corregir las cachés antiguas.",
+        "theory3": "Volver atrás necesita piezas, orden y pruebas; el dramatismo no restaura configuraciones.",
+        "case0": "Ese AAAA invitó clientes antes de que revisáramos el camino completo.",
+        "case1": "La caché escuchó el TTL anterior; no podemos exigirle que adivine el nuevo.",
+        "pass": "Cerraste el recorrido IPv6 explicando alcance y recuperación. Estoy orgullosa, y hoy no voy a disimularlo.",
+        "review": "Repasemos dependencias y tiempos; tu plan todavía supone cambios instantáneos donde hay estado."
+      }
+    }
+  ]
+}

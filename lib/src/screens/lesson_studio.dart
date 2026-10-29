@@ -496,6 +496,7 @@ class QuizScreen extends StatefulWidget {
     this.lessonId = 'diagnostic',
     this.passingScore,
     this.scenario,
+    this.isReinforcement = false,
   });
   final String title;
   final List<Question> questions;
@@ -504,6 +505,7 @@ class QuizScreen extends StatefulWidget {
   final String lessonId;
   final int? passingScore;
   final String? scenario;
+  final bool isReinforcement;
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
@@ -640,7 +642,11 @@ class _QuizScreenState extends State<QuizScreen>
     child: Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.passingScore == null ? 'Diagnóstico con Aoi' : 'Tu práctica',
+          widget.isReinforcement
+              ? 'Refuerzo con Aoi'
+              : widget.passingScore == null
+              ? 'Diagnóstico con Aoi'
+              : 'Tu práctica',
         ),
       ),
       body: SafeArea(
@@ -864,13 +870,19 @@ class _QuizScreenState extends State<QuizScreen>
             : _passed
             ? _justCompletedCourse
                   ? '¡Curso completado!'
+                  : widget.isReinforcement
+                  ? '¡Refuerzo superado!'
                   : '¡Lección superada!'
             : 'Un repaso y otra oportunidad.',
         style: Theme.of(context).textTheme.headlineMedium,
       ),
       const SizedBox(height: 16),
       Text(
-        widget.passingScore == null ? 'El diagnóstico no bloquea los cursos.' : 'Conservamos tu mejor resultado. Cada lección superada por primera vez suma 50 XP.',
+        widget.isReinforcement
+            ? 'Conservamos tu mejor nota de refuerzo por separado. Esta práctica no cambia las aprobaciones ni añade XP de lección.'
+            : widget.passingScore == null
+            ? 'El diagnóstico no bloquea los cursos.'
+            : 'Conservamos tu mejor resultado. Cada lección superada por primera vez suma 50 XP.',
       ),
       const SectionTitle('Tus decisiones'),
       for (final (index, question) in widget.questions.indexed)
@@ -911,6 +923,8 @@ class _QuizScreenState extends State<QuizScreen>
           child: Text(
             widget.passingScore == null
                 ? 'Volver a mi academia'
+                : widget.isReinforcement
+                ? 'Volver a los refuerzos'
                 : 'Volver a la lección',
           ),
         ),

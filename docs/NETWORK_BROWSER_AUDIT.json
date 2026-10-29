@@ -1,0 +1,230 @@
+{
+  "version": "1.7.0+9",
+  "viewports": [
+    "1440x1080",
+    "390x844",
+    "320x740"
+  ],
+  "courses": [
+    {
+      "id": "ipv4-subnetting",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "ipv4-subnetting-resumen",
+      "theoryAndBothWorkedCases": true
+    },
+    {
+      "id": "ipv6-foundations",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "ipv6-foundations-despliegue",
+      "theoryAndBothWorkedCases": true
+    },
+    {
+      "id": "switching-routing",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "switching-routing-cambios",
+      "theoryAndBothWorkedCases": true
+    },
+    {
+      "id": "network-diagnostics",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "network-diagnostics-informe",
+      "theoryAndBothWorkedCases": true
+    },
+    {
+      "id": "network-defense",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "network-defense-validacion",
+      "theoryAndBothWorkedCases": true
+    },
+    {
+      "id": "security-operations",
+      "lessons": 10,
+      "exercises": 60,
+      "finalLessonOpened": "security-operations-estudio",
+      "theoryAndBothWorkedCases": true
+    }
+  ],
+  "reinforcementBanks": [
+    {
+      "course": "networks-basics",
+      "questions": 40,
+      "exercisedId": "networks-basics-red-reinforcement",
+      "preservedOriginalThresholds": true
+    },
+    {
+      "course": "ip-dns",
+      "questions": 40,
+      "exercisedId": "ip-dns-diagnostico-reinforcement",
+      "preservedOriginalThresholds": true
+    },
+    {
+      "course": "home-wifi",
+      "questions": 40,
+      "exercisedId": "home-wifi-plan-mantenimiento-reinforcement",
+      "preservedOriginalThresholds": true
+    },
+    {
+      "course": "public-networks",
+      "questions": 40,
+      "exercisedId": "public-networks-plan-viaje-reinforcement",
+      "preservedOriginalThresholds": true
+    },
+    {
+      "course": "safe-browsing",
+      "questions": 40,
+      "exercisedId": "safe-browsing-navigation-plan-reinforcement",
+      "preservedOriginalThresholds": true
+    },
+    {
+      "course": "web-privacy",
+      "questions": 40,
+      "exercisedId": "web-privacy-privacy-routine-reinforcement",
+      "preservedOriginalThresholds": true
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Cisco CCST Networking",
+      "officialUrl": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/support-technician/index.html",
+      "officialLinkCopied": true,
+      "localProgressIsNotCredential": true
+    },
+    {
+      "title": "Cisco CCST Cybersecurity",
+      "officialUrl": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/support-technician/index.html",
+      "officialLinkCopied": true,
+      "localProgressIsNotCredential": true
+    },
+    {
+      "title": "ISC2 Certified in Cybersecurity (CC)",
+      "officialUrl": "https://www.isc2.org/certifications/cc/cc-certification-exam-outline",
+      "officialLinkCopied": true,
+      "localProgressIsNotCredential": true
+    },
+    {
+      "title": "Cisco CCNA",
+      "officialUrl": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html",
+      "officialLinkCopied": true,
+      "localProgressIsNotCredential": true
+    }
+  ],
+  "checks": [
+    "All six new courses expose original theory, two worked cases and their final lesson",
+    "Four correct answers of six pass the final lesson and complete its ten-lesson course",
+    "All six existing network courses retain forty lessons and expose forty separate reinforcements",
+    "First error is gentle; repeated error is sharper; hints, chosen-option explanations and result dialogue match the fixed context",
+    "Six reinforcement passes add no lesson XP, preserve original best scores and leave the regular resume lesson unchanged",
+    "The review list includes the independently graded reinforcement question",
+    "Four certification guides distinguish local lessons from official exam preparation and external credentials",
+    "Grades, mistakes, diagnostic, favorites and resume state survive reload",
+    "Certification and progress screens render at Android size and 320px light/violet with enlarged text",
+    "Tutor dialogue controls and history remain unavailable; external HTTP is blocked throughout"
+  ],
+  "screenshots": [
+    "1.7-networks/01-guia-certificaciones-escritorio.png",
+    "1.7-networks/02-meta-ccst-y-bases-locales.png",
+    "1.7-networks/03-ruta-redes-y-ciberdefensa.png",
+    "1.7-networks/04-teoria-profunda-con-aoi.png",
+    "1.7-networks/05-curso-completado-y-celebracion.png",
+    "1.7-networks/06-refuerzo-superado-nota-independiente.png",
+    "1.7-networks/07-progreso-y-refuerzos-escritorio.png",
+    "1.7-networks/08-inicio-redes-android.png",
+    "1.7-networks/09-certificaciones-android.png",
+    "1.7-networks/10-meta-ccna-clara-320.png",
+    "1.7-networks/11-progreso-claro-320.png"
+  ],
+  "errors": [],
+  "compiledWebSha256": "532f0c1855852f18d4a11d47d320fe6438ef09d61bc7c3a638ccaad6a044a2de",
+  "sourceFiles": [
+    {
+      "path": "lib/src/data/network_expansion.g.dart",
+      "sha256": "aabebd7e4ae4c7895492de6afdb5e2268deb8733601aad499caa3f4e6ca64c92"
+    },
+    {
+      "path": "lib/src/data/network_practice.dart",
+      "sha256": "d0b1bf4ce29ff1c27efc00feb294bedbec2c0a6737b19802c6553e4d9c56c3e8"
+    },
+    {
+      "path": "lib/src/data/network_sources.dart",
+      "sha256": "199f784e1f58a9de4aea8163fe7def02a46c4562a7fd35bc9731c0727e01f7f6"
+    },
+    {
+      "path": "lib/src/data/curriculum.dart",
+      "sha256": "afae9e6996d5146207cf8367f523b781b9155a7c63aa6e90fc18d6dd23f5e6f0"
+    },
+    {
+      "path": "lib/src/data/certification_guides.dart",
+      "sha256": "84cb74ee463c85e5df8221f0321becda760d264c921552acbc08ec1c02e1799b"
+    },
+    {
+      "path": "lib/src/data/learning_paths.dart",
+      "sha256": "c5899a5af9a126f4deb9650dd6e26ae6caf86a504c2d0b3ae232dca5447ec9dd"
+    },
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "db9a2e023d70207dfb57aed46c0819a72fb973db15cf8b05aac708fcfc52bbbc"
+    },
+    {
+      "path": "lib/src/models/course.dart",
+      "sha256": "c71040e7174651e804a717093b8e0b557119680e877caebe5b5edc776b2c544a"
+    },
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "c566a0736d3bdeb7aa3d4845db8c443c77d9fdde401d0a0dadbe8c9de45f00e1"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "0b507a242c79840b58c0a21df4cb4a8012a44685eb87bf67de434b1c8339dee6"
+    },
+    {
+      "path": "lib/src/data/micro_lesson_dialogues.dart",
+      "sha256": "35ce9a64db3f5e8e0e56be62c73ad336bab01dcf766cac5857f04d935f9c9347"
+    },
+    {
+      "path": "lib/src/screens/certifications.dart",
+      "sha256": "eb896a15988068a0e3e480ade6ebee6f9d88c473a3c7b17fd04925670400a5ea"
+    },
+    {
+      "path": "lib/src/screens/practice_bank.dart",
+      "sha256": "a6aa3c7baa19f0b9b77c0b5471bbdf3a2fb0f8745ece577761272fa7615ea5fb"
+    },
+    {
+      "path": "lib/src/screens/course_overview.dart",
+      "sha256": "612de5050d560c4659e33573459122d90d5ba527495ed8e83423522319b65ca9"
+    },
+    {
+      "path": "lib/src/screens/lesson_studio.dart",
+      "sha256": "fc42faca380b312434a0ade8f781c3e57f50e87f0f317db929e4ebe8e306e0de"
+    },
+    {
+      "path": "lib/src/screens/explore_screens.dart",
+      "sha256": "9baf784f0c456a74ebcd006788674a96f49cc0177c920b6c04637c94ca3b0cc2"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "ee94dd57b1b86b6e8d3da7a4191d3783fffa1bb3c8e09e1b2eed7fb7e77a3739"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "17578429e572b6f9c96d7d764d06ad8681898a95e774ee3f1d4f4cac63ab4cc2"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "7eb9ac19d19c5b4d2f96a57ef930c77ce6ec7c0a9d5345069f6c2665aa73b2e5"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "5317ef6053845462e1ab93db08b46d6844165154ec6006f9f42c792f68768b90"
+    }
+  ],
+  "regularPassedLessons": 51,
+  "completedReinforcements": 6,
+  "expectedXP": 2550,
+  "externalRequestsBlocked": 0,
+  "status": "passed"
+}

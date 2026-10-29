@@ -6,7 +6,7 @@ const { createHash } = require('node:crypto');
 const { chromium } = require(process.env.AIOCYB_PLAYWRIGHT || 'playwright');
 const root = path.resolve(__dirname, '..');
 const version = fs.readFileSync(path.join(root, 'pubspec.yaml'), 'utf8').match(/^version:\s*(\S+)/m)[1];
-const screenshotFolder = version.startsWith('1.5.') ? '' : '1.6-courses';
+const screenshotFolder = `${version.split('.').slice(0, 2).join('.')}-courses`;
 const base = process.env.AIOCYB_PREVIEW_URL || 'http://127.0.0.1:8895';
 const linux = JSON.parse(fs.readFileSync(path.join(root, 'assets/linux/linux-start.json'), 'utf8'));
 const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -55,9 +55,13 @@ const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   };
   const search = async text => {
     const input = page.getByRole('textbox').first();
-    await input.click(); await input.press('ControlOrMeta+A');
-    await input.press('Backspace'); await input.pressSequentially(text, { delay: 35 });
+    await input.click(); await page.waitForTimeout(250);
+    await input.press('ControlOrMeta+A'); await input.press('Backspace');
+    await page.waitForTimeout(100);
+    if (text) await input.pressSequentially(text, { delay: 50 });
     await page.waitForTimeout(650);
+    await page.waitForFunction(value => [...document.querySelectorAll('input,textarea')]
+      .some(field => field.value === value), text, { timeout: 5000 });
   };
   const enableSemantics = async () => {
     await page.waitForFunction(() => document.querySelector('flt-semantics-placeholder') || document.querySelector('flt-semantics[role="button"]'));
@@ -97,7 +101,7 @@ const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     await click('Temario'); await capture('51-temario-android.png');
     await back(); await search('criptografia'); await expectText('4 cursos disponibles');
     await search('esto-no-existe'); await expectText('No encontramos cursos con esa búsqueda.');
-    await click('Ver todos los cursos'); await expectText('25 cursos disponibles');
+    await click('Ver todos los cursos'); await expectText('31 cursos disponibles');
     report.checks.push('Accent-insensitive search, empty results and reset work on Android-sized layout');
     await click('Ajustes', 'tab'); await click(/Tema oscuro/, 'switch');
     await click('Neón violeta', 'checkbox');
@@ -127,7 +131,9 @@ const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       'lib/src/screens/academy_screens.dart', 'lib/src/screens/learning_home.dart',
       'lib/src/screens/learning_routes.dart', 'lib/src/screens/learning_progress.dart',
       'lib/src/widgets/learning_dashboard.dart', 'lib/src/widgets/learning_link.dart',
-      'lib/src/state/academy_store.dart', 'pubspec.yaml'].map(file => ({ path: file, sha256: digest(file) }));
+      'lib/src/state/academy_store.dart', 'lib/src/screens/practice_bank.dart',
+      'lib/src/data/curriculum.dart', 'lib/src/data/network_practice.dart',
+      'lib/src/data/network_expansion.g.dart', 'pubspec.yaml'].map(file => ({ path: file, sha256: digest(file) }));
     report.localCovers = [...assets].sort(); report.externalRequestsBlocked = blocked; report.status = 'passed';
     fs.writeFileSync(path.join(root, 'docs/COURSE_BROWSER_AUDIT.json'), JSON.stringify(report, null, 2) + '\n');
     console.log(JSON.stringify(report, null, 2));

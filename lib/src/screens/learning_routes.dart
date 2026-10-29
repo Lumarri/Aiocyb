@@ -7,6 +7,7 @@ import '../widgets/common.dart';
 import '../widgets/learning_dashboard.dart';
 import '../widgets/learning_link.dart';
 import 'lesson_screens.dart';
+import 'certifications.dart';
 
 void openLearningPath(
   BuildContext context,
@@ -40,8 +41,8 @@ class _RoutesScreenState extends State<RoutesScreen> {
         body: PageBody(
           maxWidth: 1200,
           children: [
-            const AcademyBadge(
-              'CINCO CAMINOS · UN MISMO CRITERIO',
+            AcademyBadge(
+              '${overview.paths.length} ${overview.paths.length == 1 ? 'CAMINO' : 'CAMINOS'} · UN MISMO CRITERIO',
               icon: Icons.route_outlined,
             ),
             const SizedBox(height: 18),
@@ -52,6 +53,12 @@ class _RoutesScreenState extends State<RoutesScreen> {
             const SizedBox(height: 12),
             const Text(
               'Cada ruta conecta cursos en un orden sugerido. Puedes abrir cualquiera y cambiar de camino cuando quieras.',
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: () => openCertifications(context, widget.store),
+              icon: const Icon(Icons.verified_outlined),
+              label: const Text('Orientarme hacia una certificación'),
             ),
             const SizedBox(height: 22),
             Wrap(

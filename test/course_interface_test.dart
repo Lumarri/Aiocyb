@@ -109,7 +109,7 @@ void main() {
         ['foundations'],
       );
       await tapLabel(tester, 'Quitar filtros');
-      expect(find.byType(CourseCard), findsNWidgets(25));
+      expect(find.byType(CourseCard), findsNWidgets(31));
       await tester.ensureVisible(find.byTooltip('Ordenar cursos'));
       await tester.tap(find.byTooltip('Ordenar cursos'));
       await tester.pumpAndSettle();

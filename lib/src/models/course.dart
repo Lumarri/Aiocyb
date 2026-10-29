@@ -79,6 +79,7 @@ class Course {
     required this.symbol,
     required this.color,
     required this.lessons,
+    this.practiceLessons = const [],
     this.completionTutor = '',
     this.completionExplanation = '',
   });
@@ -89,11 +90,16 @@ class Course {
   final String symbol;
   final int color;
   final List<Lesson> lessons;
+
+  /// Additional practice has independent grades and does not revoke a lesson pass.
+  final List<Lesson> practiceLessons;
   final String completionTutor;
   final String completionExplanation;
   int get minutes => lessons.fold(0, (sum, lesson) => sum + lesson.minutes);
-  int get exerciseCount =>
-      lessons.fold(0, (sum, lesson) => sum + lesson.questions.length);
+  int get exerciseCount => [
+    ...lessons,
+    ...practiceLessons,
+  ].fold(0, (sum, lesson) => sum + lesson.questions.length);
 }
 
 class LearningSource {

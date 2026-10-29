@@ -5,11 +5,16 @@ import 'curriculum.dart';
 /// never request a server, generate prose or rotate alternatives at runtime.
 Iterable<AoiDialogue> microLessonDialogues() sync* {
   for (final course in courses) {
-    for (final lesson in course.lessons.where(
-      (lesson) => lesson.tutor.isNotEmpty,
-    )) {
+    for (final lesson in [
+      ...course.lessons,
+      ...course.practiceLessons,
+    ].where((lesson) => lesson.tutor.isNotEmpty)) {
       final script = lesson.tutor;
-      final linux = course.category == 'Linux, terminal y registros';
+      final practice = course.practiceLessons.contains(lesson);
+      final expressive =
+          course.category == 'Linux, terminal y registros' ||
+          course.category == 'Redes prácticas y ciberdefensa' ||
+          practice;
       AoiDialogue entry(
         AoiStage stage,
         int anchor,
@@ -28,36 +33,38 @@ Iterable<AoiDialogue> microLessonDialogues() sync* {
         explanation: explanation,
         choiceIndex: choice,
       );
-      yield entry(
-        AoiStage.intro,
-        0,
-        linux ? 'curious' : 'smirk',
-        script['intro']!,
-        lesson.intro,
-      );
-      for (final (i, section) in lesson.sections.indexed) {
+      if (!practice) {
         yield entry(
-          AoiStage.theory,
-          i,
-          linux ? (i == 3 ? 'playful' : 'focused') : 'explaining',
-          script['theory$i'] ?? script['theory']!,
-          script.containsKey('theory$i') ? '' : section.body,
+          AoiStage.intro,
+          0,
+          expressive ? 'curious' : 'smirk',
+          script['intro']!,
+          lesson.intro,
         );
-      }
-      for (final (i, step) in lesson.steps.indexed) {
-        yield entry(AoiStage.procedure, i, 'explaining', step, '');
-      }
-      if (lesson.cases.isEmpty) {
-        yield entry(AoiStage.scenario, 0, 'skeptical', lesson.scenario, '');
-      } else {
-        for (var i = 0; i < lesson.cases.length; i++) {
+        for (final (i, section) in lesson.sections.indexed) {
           yield entry(
-            AoiStage.scenario,
+            AoiStage.theory,
             i,
-            linux ? (i == 0 ? 'surprised' : 'curious') : 'skeptical',
-            script['case$i']!,
-            '',
+            expressive ? (i == 3 ? 'playful' : 'focused') : 'explaining',
+            script['theory$i'] ?? script['theory']!,
+            script.containsKey('theory$i') ? '' : section.body,
           );
+        }
+        for (final (i, step) in lesson.steps.indexed) {
+          yield entry(AoiStage.procedure, i, 'explaining', step, '');
+        }
+        if (lesson.cases.isEmpty) {
+          yield entry(AoiStage.scenario, 0, 'skeptical', lesson.scenario, '');
+        } else {
+          for (var i = 0; i < lesson.cases.length; i++) {
+            yield entry(
+              AoiStage.scenario,
+              i,
+              expressive ? (i == 0 ? 'surprised' : 'curious') : 'skeptical',
+              script['case$i']!,
+              '',
+            );
+          }
         }
       }
       for (final (i, question) in lesson.questions.indexed) {
@@ -65,21 +72,21 @@ Iterable<AoiDialogue> microLessonDialogues() sync* {
         yield entry(
           AoiStage.question,
           i,
-          linux ? 'focused' : 'explaining',
+          expressive ? 'focused' : 'explaining',
           question.tutor['question'] ?? question.prompt,
           '',
         );
         yield entry(
           AoiStage.hint,
           i,
-          linux ? 'focused' : 'thinking',
+          expressive ? 'focused' : 'thinking',
           feedback['hint']!,
           '',
         );
         yield entry(
           AoiStage.correct,
           i,
-          linux ? 'relieved' : 'delighted',
+          expressive ? 'relieved' : 'delighted',
           feedback['correct']!,
           question.explanation,
         );
@@ -89,7 +96,7 @@ Iterable<AoiDialogue> microLessonDialogues() sync* {
           yield entry(
             AoiStage.incorrect,
             i,
-            linux ? 'pouting' : 'disappointed',
+            expressive ? 'pouting' : 'disappointed',
             feedback['soft']!,
             explanation,
             choice: choice,
@@ -108,7 +115,7 @@ Iterable<AoiDialogue> microLessonDialogues() sync* {
       yield entry(
         AoiStage.result,
         0,
-        linux ? 'blushing' : 'delighted',
+        expressive ? 'blushing' : 'delighted',
         script['pass']!,
         lesson.questions.map((question) => question.explanation).join('\n\n'),
       );
@@ -119,13 +126,14 @@ Iterable<AoiDialogue> microLessonDialogues() sync* {
         script['review']!,
         lesson.sections.first.body,
       );
+      if (practice) continue;
       final closure = course.completionTutor.isNotEmpty
           ? (course.completionTutor, course.completionExplanation)
           : _closures[course.id]!;
       yield entry(
         AoiStage.courseComplete,
         0,
-        linux ? 'celebrating' : 'proud',
+        expressive ? 'celebrating' : 'proud',
         closure.$1,
         closure.$2,
       );

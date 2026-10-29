@@ -62,7 +62,7 @@ void main() {
       expect(cases, hasLength(72));
       expect(lines, hasLength(360));
       expect(explanations, hasLength(216));
-      expect(allLessons.expand((lesson) => lesson.questions), hasLength(930));
+      expect(allLessons.expand((lesson) => lesson.questions), hasLength(1290));
     },
   );
 

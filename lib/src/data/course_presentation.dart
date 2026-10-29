@@ -52,6 +52,13 @@ const courseTracks = [
     Icons.terminal_rounded,
     'Observa sistemas, interpreta evidencias y conecta las pistas.',
   ),
+  CourseTrack(
+    'advanced-networks',
+    'Redes y defensa',
+    'networks',
+    Icons.router_outlined,
+    'Practica direccionamiento, diagnóstico y controles de red con casos explicados.',
+  ),
 ];
 
 CourseTrack trackFor(Course course) {
@@ -271,6 +278,54 @@ const courseProfiles = <String, CourseProfile>{
       'Organizar las evidencias del caso ficticio Aula Norte.',
       'Contrastar hipótesis con registros y estado del sistema.',
       'Proponer una respuesta y explicar lo que aún no está demostrado.',
+    ],
+  ),
+  'ipv4-subnetting': CourseProfile(
+    ['Prefijos IPv4', 'Subnetting y VLSM', 'Rutas y traducción'],
+    [
+      'Calcular bloques y repartir espacio de direcciones según las necesidades.',
+      'Distinguir ámbitos, asignación y decisiones de encaminamiento IPv4.',
+      'Contrastar máscaras, traducciones y agregaciones con ejemplos verificables.',
+    ],
+  ),
+  'ipv6-foundations': CourseProfile(
+    ['Direcciones IPv6', 'SLAAC y DHCPv6', 'Doble pila'],
+    [
+      'Interpretar notación, alcance y selección de direcciones IPv6.',
+      'Relacionar anuncios, vecinos y asignación con la comunicación del enlace.',
+      'Validar rutas, controles y despliegues sin extrapolar resultados de IPv4.',
+    ],
+  ),
+  'switching-routing': CourseProfile(
+    ['VLAN y troncales', 'Switching', 'Enrutamiento y ACL'],
+    [
+      'Seguir decisiones de enlace y límites entre VLAN en un diagrama de red.',
+      'Interpretar rutas y restricciones para comunicar segmentos con el alcance previsto.',
+      'Preparar cambios de conectividad con pruebas y recuperación documentadas.',
+    ],
+  ),
+  'network-diagnostics': CourseProfile(
+    ['Hipótesis y evidencias', 'Análisis de tráfico', 'Diagnóstico por capas'],
+    [
+      'Elegir pruebas acotadas que distingan causas posibles de un fallo.',
+      'Interpretar observaciones de enlace, protocolos y servicios con sus límites.',
+      'Explicar resultados en un informe reproducible sin atribuciones infundadas.',
+    ],
+  ),
+  'network-defense': CourseProfile(
+    ['Segmentación', 'Firewalls y VPN', 'Decisiones de acceso'],
+    [
+      'Traducir necesidades de comunicación en permisos y restricciones concretos.',
+      'Relacionar controles de red y host con identidad, contexto y visibilidad.',
+      'Validar flujos permitidos y prohibidos junto con la recuperación del cambio.',
+    ],
+  ),
+  'security-operations': CourseProfile(
+    ['Análisis de eventos', 'Respuesta defensiva', 'Continuidad operativa'],
+    [
+      'Organizar inventarios, referencias y registros para evaluar señales de seguridad.',
+      'Priorizar investigación y respuesta según evidencia, alcance e impacto.',
+      'Documentar recuperación y siguientes pasos de aprendizaje con objetivos realistas.',
     ],
   ),
 };

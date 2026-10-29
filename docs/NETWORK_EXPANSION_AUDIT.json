@@ -1,0 +1,619 @@
+{
+  "partial": false,
+  "courses": 6,
+  "lessons": 60,
+  "course_exercises": 360,
+  "reinforcement_exercises": 240,
+  "theory_words": 39621,
+  "explained_cases": 120,
+  "authored_aoi_lines": 4026,
+  "lesson_details": [
+    {
+      "id": "ipv4-subnetting-bits",
+      "theory_words": 630,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-bloque",
+      "theory_words": 631,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-extremos",
+      "theory_words": 643,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-reparto",
+      "theory_words": 651,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-ambitos",
+      "theory_words": 628,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-asignacion",
+      "theory_words": 681,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-rutas",
+      "theory_words": 667,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-traduccion",
+      "theory_words": 667,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-desajustes",
+      "theory_words": 660,
+      "questions": 6
+    },
+    {
+      "id": "ipv4-subnetting-resumen",
+      "theory_words": 651,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-notacion",
+      "theory_words": 634,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-alcance",
+      "theory_words": 677,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-slaac",
+      "theory_words": 684,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-dhcpv6",
+      "theory_words": 697,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-vecinos",
+      "theory_words": 688,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-mtu",
+      "theory_words": 700,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-dual",
+      "theory_words": 699,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-encaminamiento",
+      "theory_words": 682,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-controles",
+      "theory_words": 682,
+      "questions": 6
+    },
+    {
+      "id": "ipv6-foundations-despliegue",
+      "theory_words": 695,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-aprendizaje",
+      "theory_words": 678,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-acceso",
+      "theory_words": 705,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-troncales",
+      "theory_words": 689,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-nativa",
+      "theory_words": 673,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-intervlan",
+      "theory_words": 657,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-bucles",
+      "theory_words": 675,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-estaticas",
+      "theory_words": 681,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-ospf",
+      "theory_words": 696,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-acl",
+      "theory_words": 680,
+      "questions": 6
+    },
+    {
+      "id": "switching-routing-cambios",
+      "theory_words": 665,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-metodo",
+      "theory_words": 679,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-enlace",
+      "theory_words": 666,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-icmp",
+      "theory_words": 681,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-nombres",
+      "theory_words": 675,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-dhcp",
+      "theory_words": 649,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-tcp",
+      "theory_words": 665,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-rendimiento",
+      "theory_words": 657,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-filtros",
+      "theory_words": 666,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-captura",
+      "theory_words": 675,
+      "questions": 6
+    },
+    {
+      "id": "network-diagnostics-informe",
+      "theory_words": 658,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-zonas",
+      "theory_words": 681,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-politica",
+      "theory_words": 686,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-estado",
+      "theory_words": 702,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-salida",
+      "theory_words": 681,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-remota",
+      "theory_words": 680,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-sedes",
+      "theory_words": 674,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-host",
+      "theory_words": 644,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-deteccion",
+      "theory_words": 661,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-zero-trust",
+      "theory_words": 674,
+      "questions": 6
+    },
+    {
+      "id": "network-defense-validacion",
+      "theory_words": 670,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-inventario",
+      "theory_words": 600,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-registros",
+      "theory_words": 604,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-indicadores",
+      "theory_words": 602,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-triaje",
+      "theory_words": 602,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-prioridad",
+      "theory_words": 607,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-parches",
+      "theory_words": 600,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-contencion",
+      "theory_words": 604,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-restauracion",
+      "theory_words": 606,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-postincidente",
+      "theory_words": 610,
+      "questions": 6
+    },
+    {
+      "id": "security-operations-estudio",
+      "theory_words": 616,
+      "questions": 6
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/network_expansion/ipv4-subnetting.md",
+      "sha256": "bd8191b368c9d5c303840f039654f47233e10cf98e2b7f65a5388897ecce847e"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/03-prefijos.md",
+      "sha256": "4c127929d005cf97f958c93b4c4e9064bc9d0bd532aa848b111d0c9fbde18ab9"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/04-vlsm.md",
+      "sha256": "0e682956842463853a343a2c6f06b3d53e3b3face7f61899f76ff68e5990c637"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/05-ambitos.md",
+      "sha256": "2ecb8c153da1076f907ffef52093e077c3ea97c85769770f339291d0844740ec"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/06-asignacion.md",
+      "sha256": "ee671ffc993f0441023fd5c0f3163305d0bab0994f526e00fd95e19af3f1d453"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/07-rutas.md",
+      "sha256": "8b9a867e715f1023f8ea69f89bda66201798fc1e740b648007cd0206f4a6cbee"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/08-traduccion.md",
+      "sha256": "75cd0ae6585b8ebf1132f2e81b126ea4cb13261d5336f891793727bbe2dc43d6"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/09-diagnostico.md",
+      "sha256": "b3e99bd711f16f1c614e91456c12c5495076c54632a30fdeb0d08254628da6e8"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting/10-agregacion.md",
+      "sha256": "546a1814eb99ea9db83d6865c3dc7f6343fcfb4d92d18a70a8a3f3c22aa6cef8"
+    },
+    {
+      "path": "assets/network_expansion/ipv4-subnetting.json",
+      "sha256": "1a958583e3b56793c0ce33dcb06276807aa917c3ee842a0881a39605eea18321"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations.md",
+      "sha256": "9a5ed43c18de81a7b6b03626b9ce56ba17bf6753307aa6c10e07bfec8f9cb373"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/01-notacion.md",
+      "sha256": "a40ba8f6597da0aec6b12d8d042ffd28e083cebc85935c6b6fc7eade1803f747"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/02-alcance.md",
+      "sha256": "c86e8efe7f0eccf60dba806278e77ef6b6d8477b099449c560bbff9dd21d3268"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/03-slaac.md",
+      "sha256": "67f78971f6301d1e10e0c7c759118b46567d677312f663e8296c194a2db106a2"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/04-dhcpv6.md",
+      "sha256": "973de4acbcd7fee483124dcad92307d44f7f6b927494be0754b073c840a6b802"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/05-vecinos.md",
+      "sha256": "e569a96e1a36b8c2b5363fa1bf0aeba8ec4b27da88ea2e7475e9f49d84318482"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/06-mtu.md",
+      "sha256": "41fac275bdd7a248fb3098e26c87e89ebb0932255c80a5dfb0c50c0630032ddf"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/07-dual.md",
+      "sha256": "6496c797d0e01acf11665f96d4b3b58673c7accc33d1cdfb9f4a8e48f9a5d787"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/08-rutas.md",
+      "sha256": "4b6eead87ba1c07bbc1cb7413c058acea02f284e053848baf510242664abf90d"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/09-controles.md",
+      "sha256": "6fb764b3e1779a6a42fa26353a6c73436e9ed77a4ab457dbdb35ac3eb3792a3f"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations/10-despliegue.md",
+      "sha256": "ceb53675bcdfca5c7aab6f500bb57fa1f5df2f91230b78007607b10411391604"
+    },
+    {
+      "path": "assets/network_expansion/ipv6-foundations.json",
+      "sha256": "f1e7789d8767519445c7a55abeda27a9134ff1b003da8b1ea55adb69cd60c8cd"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing.md",
+      "sha256": "d1930e0b10b5cdfb66ac2f2d74096b77e9a62227807c3f6ef9bf234cda81969a"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/01-mac.md",
+      "sha256": "c21bf7cf70c1ccfc447170c0b02116d57f7ad56c48a68c108a0bd40a40e58135"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/02-acceso.md",
+      "sha256": "ba913c2111d4e29ddf129e19ca622db3a082f072905cd3dcb30194aeb4c98420"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/03-troncales.md",
+      "sha256": "ad1ff93538f96ff27bf4c4c17697960f2a16dfa20c4087209a221a417488c8bd"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/04-nativa.md",
+      "sha256": "77df8e0a6104a8468043c66911d8780aaf1da303dff7deed69db6a9bc48cae4d"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/05-intervlan.md",
+      "sha256": "abdc7e31cb2015beebb2fdbb45170f7bc3e65e5b250481a2dafcc6829390deca"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/06-bucles.md",
+      "sha256": "131c119251854ee821033966e4bb155cfc752c9d220386a866cd0345ec7fc47e"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/07-estaticas.md",
+      "sha256": "19c0a1b3078e6e3740ca7e5c1244a44a7f7b5ba14b4648554e1bb30f82d432ed"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/08-ospf.md",
+      "sha256": "49f3a1e2ccb981f91c6617a70a47a70aeed04ca57ea0959552c0882303824cee"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/09-acl.md",
+      "sha256": "ade447009875cc71030545d5a0d460b447e88fc30a82d10528c1915af96f92d8"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing/10-cambios.md",
+      "sha256": "e611612b98a6cc0657f65d5732d87968deb063db92fbb1abe528819f67e3024c"
+    },
+    {
+      "path": "assets/network_expansion/switching-routing.json",
+      "sha256": "d02d2b377dc2f4e47bb1dd84606329ae0d74ddc56e308108a407bd6d61f1adc7"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics.md",
+      "sha256": "8b858258976ffcd6756dbac4f64dbd7829abfb4afdc6edc124bfec7b4ba26184"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/01-metodo.md",
+      "sha256": "386a8aecbd9d2015a5d8512f4d1cbcec09a5d9ea59c4d00c1587ee15a7b6800a"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/02-enlace.md",
+      "sha256": "7b23794b52b66af4431cb3f6607ecef9cbb286c4b0aa2c3509feac165db426c7"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/03-icmp.md",
+      "sha256": "7c63d957cc54ce3ebcf7985be534716363d10a9b0c9c1d079996f2a4caa6a508"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/04-nombres.md",
+      "sha256": "1ca7bf616e51345a4828a2652dda45f38d653b5b9d26451a13d89bd6531d2b2b"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/05-dhcp.md",
+      "sha256": "0ff0eb52aed94c64061d4fc07855ae90c506cc147256c77887a717c60923c915"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/06-tcp.md",
+      "sha256": "974f0a0f980837995e5192aa8f8d92a242846276c2a2f931bd89ae88d204ca31"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/07-rendimiento.md",
+      "sha256": "36ad964da4a7abb9fd618ab7dcfc69b4723f9a082445802df76714b0dcf68b33"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/08-filtros.md",
+      "sha256": "9a4ab5c62f00433b2a5ea8ed9c75da30902e63cc18376ec65c6798b830218326"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/09-captura.md",
+      "sha256": "5e7fb15398efcc2dce194d238cc3b113892d7fdc7f57a66ea6421cafdfc24b7c"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics/10-informe.md",
+      "sha256": "eb1a0da81a4a75340bb9082ccd7ad0bb3c7b1ce0db52c3b193a54c8a66dd9760"
+    },
+    {
+      "path": "assets/network_expansion/network-diagnostics.json",
+      "sha256": "f85feac6ab89e15372735fc529345f80be34eef488f33192b8b98b6d4d0a49ea"
+    },
+    {
+      "path": "assets/network_expansion/network-defense.md",
+      "sha256": "d9c093b9b961a49ac8c38254a5ff8a496ec5978309249f2ed24b60737a35d798"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/01-zonas.md",
+      "sha256": "fe79a782a674248617aa77f83952c63f361c59eeeb5989cef6765a65ef9bf118"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/02-politica.md",
+      "sha256": "390ceea3dfb5c61e85fd8c57bd3ba39ed191225bdfce005771a40ad246be0ed4"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/03-estado.md",
+      "sha256": "7cb131de0c938bcb4bd41bd965fab0f0e82ee110d77bdf6e558c5cb4c708b270"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/04-salida.md",
+      "sha256": "c475506f45531e58b74320f0689773ac4bec621e0d90c02a7eddb0e9b30d1f7c"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/05-remota.md",
+      "sha256": "168cd83b8370b39706cd3419c4d86d8e56f20fd6050e834084451cc2812f4447"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/06-sedes.md",
+      "sha256": "6faba7ee014c47f672551af0756c34133a72bf1474fe02d68c5c49de30365d0e"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/07-host.md",
+      "sha256": "732dbe9588dcb4965787d2a5f2d38941bbfd5db9b45d3143e4223757d2860d97"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/08-deteccion.md",
+      "sha256": "43ed302634f8e6625caed1d59a3e66dcde67ddcf2084b89f99a42701cbf3737b"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/09-zero-trust.md",
+      "sha256": "9b935c0dd9d4a10b1cf14f5eb460be72ee97efcaa8f0b4facf08c44f319b52d3"
+    },
+    {
+      "path": "assets/network_expansion/network-defense/10-validacion.md",
+      "sha256": "0daee4d56eed186fe6486d1f50af25c09947edc3d58d80108cc75d1c3c900ce7"
+    },
+    {
+      "path": "assets/network_expansion/network-defense.json",
+      "sha256": "d50c51d7c9b89bf7c99e38f1aa0367d618a7ffb4217746b2e427d0af459bef1a"
+    },
+    {
+      "path": "assets/network_expansion/security-operations.md",
+      "sha256": "284cf9540444d72ac974c2e7b50daa425a7807527e45daa42c6a4cf378a8f346"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/01-inventario.md",
+      "sha256": "645dc9483d3f6897d4138b138c66f3ff26b0da8953190bbc0ec57b89291130bb"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/02-registros.md",
+      "sha256": "7a5c850d508a0868ca53b6339a0ec28f1c11817934074d6647df5b9afad4f4b0"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/03-indicadores.md",
+      "sha256": "90d59452e0be80ee5f1ad84032a8689e70a555c5392d5b7ffef937f823ad99ad"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/04-triaje.md",
+      "sha256": "30032ec81241046ab6d71c6efaa4d0a1367b38f07a9168b1e0d3cceb85fa3933"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/05-prioridad.md",
+      "sha256": "4eb909967e8903962524b1e04f2b1b39a3e8de93c89e79fbd5ffd3efa86aa6ff"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/06-parches.md",
+      "sha256": "d286204301bd2f473a45c929b042c1897cdccc97687159afdf0e784ee013fbf6"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/07-contencion.md",
+      "sha256": "e93cb51d1d4d99b5afe43aeef12a5b14624d42ba1fa472053ff4a5e64a1b70c8"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/08-restauracion.md",
+      "sha256": "2faf2378282ee57ecbbe054480a5280e2ea26d1973d9d3a1ff2a36b6f75013c3"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/09-postincidente.md",
+      "sha256": "a015247219e75e4eee71f6119599d3d4e581eb3c84f55cd572c667fb8acca148"
+    },
+    {
+      "path": "assets/network_expansion/security-operations/10-estudio.md",
+      "sha256": "fae8707bc212cf02f7ef84c3be1fee8bc2759fddb746b0ab6f420a429bcdbdc7"
+    },
+    {
+      "path": "assets/network_expansion/security-operations.json",
+      "sha256": "ea42b59eceead2783321d839e3dd1df902f8cf70c43bad9a149799a9c374454e"
+    },
+    {
+      "path": "assets/network_expansion/networks-basics.practice.md",
+      "sha256": "96148dfd38716066781671a3ff0b69114dec4287738c764b8575ed96147e37bf"
+    },
+    {
+      "path": "assets/network_expansion/ip-dns.practice.md",
+      "sha256": "9f3e9d864cd802bf69edadbde309e259bf1cfdc8b7ec575826ca75c8f74bd46d"
+    },
+    {
+      "path": "assets/network_expansion/home-wifi.practice.md",
+      "sha256": "c3011e9957660283959399902e565f96d5d8d36d03674e178945f42a4e7ef8b8"
+    },
+    {
+      "path": "assets/network_expansion/public-networks.practice.md",
+      "sha256": "fe795c581731385e6a1bbfe957d7124196f671698b3e4469c98d5067b6241f6f"
+    },
+    {
+      "path": "assets/network_expansion/safe-browsing.practice.md",
+      "sha256": "39f0ad7ccbba1d3def07ddd01fc345d80bd944234651355ff26f643d2619dbc1"
+    },
+    {
+      "path": "assets/network_expansion/web-privacy.practice.md",
+      "sha256": "e5579224a8aae328414896c78db4ff2e20cc0ad35f6c69aaead9640857faba3e"
+    }
+  ],
+  "errors": []
+}
