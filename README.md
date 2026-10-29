@@ -6,6 +6,8 @@ Academia de ciberseguridad para principiantes, desarrollada en Flutter con Andro
 
 Código fuente: [Lumarri/Aiocyb](https://github.com/Lumarri/Aiocyb). Icono nuevo para Android, web y Windows: [diseño y regeneración](docs/ICONO.md).
 
+Descarga para Android: [APK 1.7.0 ARM64](https://github.com/Lumarri/Aiocyb/releases/download/v1.7.0/Aiocyb-1.7.0-android-arm64.apk) · [Notas y SHA-256](https://github.com/Lumarri/Aiocyb/releases/tag/v1.7.0). Requiere Android 7.0 o superior y un dispositivo ARM64. Es una compilación de prueba para instalación directa, firmada con la clave de desarrollo.
+
 ## Versión 1.7
 
 La ampliación añade seis cursos de redes prácticas y defensa: **60 lecciones profundas, 360 ejercicios y 120 casos resueltos**. Los seis cursos de redes anteriores incorporan otros **240 ejercicios de refuerzo**, con notas independientes. El catálogo reúne **31 cursos, 490 lecciones y 1530 ejercicios**, además de las cinco preguntas del diagnóstico inicial.
