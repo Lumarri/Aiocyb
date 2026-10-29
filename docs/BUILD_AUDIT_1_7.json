@@ -1,0 +1,340 @@
+{
+  "version": "1.7.0+9",
+  "apk": "build/releases/aiocyb-1.7.0+9-arm64.apk",
+  "dependency_resolution": {
+    "lockfile": "pubspec.lock",
+    "workspaceSha256": "be814ddcd3dd99a232b268aa95a364fa38decfbc0fa8546f4b28c655e734ceb5",
+    "publishedGitReference": "HEAD:pubspec.lock",
+    "publishedSha256": "85b81e1764c150e6f5654d71cbff6f5bd995a3fef29144bdafc755c336f79eea",
+    "workspaceVersions": {
+      "jni": "1.1.1",
+      "shared_preferences_android": "2.5.4"
+    },
+    "publishedVersions": {
+      "jni": "1.1.0",
+      "shared_preferences_android": "2.5.3"
+    },
+    "workspaceDiffersFromPublished": true,
+    "preexistingLocalChangesPreserved": true,
+    "published": false,
+    "note": "The binary was built with the pre-existing workspace dependency resolutions. The local lockfile change is not published; a byte-identical rebuild from published sources is not claimed."
+  },
+  "bytes": 71406422,
+  "sha256": "62d3ff2b0fa9a36b0a1e57a20bcdb93a9cfddf591d79f86c3e82055e22f56d49",
+  "portraits": 16,
+  "course_covers": 5,
+  "course_interface_source_files": [
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "db9a2e023d70207dfb57aed46c0819a72fb973db15cf8b05aac708fcfc52bbbc"
+    },
+    {
+      "path": "lib/src/screens/course_catalog.dart",
+      "sha256": "d870e80cc931770c5b3d41f805657978368c55baec39fc02a7a84f7a4dc68a0b"
+    },
+    {
+      "path": "lib/src/screens/course_overview.dart",
+      "sha256": "612de5050d560c4659e33573459122d90d5ba527495ed8e83423522319b65ca9"
+    },
+    {
+      "path": "lib/src/screens/lesson_studio.dart",
+      "sha256": "fc42faca380b312434a0ade8f781c3e57f50e87f0f317db929e4ebe8e306e0de"
+    },
+    {
+      "path": "lib/src/screens/lesson_navigation.dart",
+      "sha256": "e33eacfd67cfd0d4e3b87ab59dce066df885d5679117c1cbb3bf443acb84182f"
+    },
+    {
+      "path": "lib/src/widgets/course_visuals.dart",
+      "sha256": "7f5faf1e527942c983b7b2783464585abc1e0651603928b945890f25510f2761"
+    },
+    {
+      "path": "lib/src/widgets/common.dart",
+      "sha256": "4365c4091be1e73075497b458dbe040b5a5b0a6dc553c88e1177b0b8cb8a5edf"
+    },
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "c566a0736d3bdeb7aa3d4845db8c443c77d9fdde401d0a0dadbe8c9de45f00e1"
+    },
+    {
+      "path": "lib/src/screens/academy_screens.dart",
+      "sha256": "afac73698cd8334087e5fdd7633ec3bf3fbfc94fac6364ba2f822abe1bd6c025"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "ee94dd57b1b86b6e8d3da7a4191d3783fffa1bb3c8e09e1b2eed7fb7e77a3739"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "17578429e572b6f9c96d7d764d06ad8681898a95e774ee3f1d4f4cac63ab4cc2"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "7eb9ac19d19c5b4d2f96a57ef930c77ce6ec7c0a9d5345069f6c2665aa73b2e5"
+    },
+    {
+      "path": "lib/src/widgets/learning_dashboard.dart",
+      "sha256": "e5ea71bbfbc7baf0fde992f35084b16c62fc9864efc241f63dbb948b0eb66a34"
+    },
+    {
+      "path": "lib/src/widgets/learning_link.dart",
+      "sha256": "0e9fe4bf40d5788d1c2884e02208e75fadf342ad6b7d07f9f71b348243ef9846"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "0b507a242c79840b58c0a21df4cb4a8012a44685eb87bf67de434b1c8339dee6"
+    },
+    {
+      "path": "lib/src/screens/practice_bank.dart",
+      "sha256": "a6aa3c7baa19f0b9b77c0b5471bbdf3a2fb0f8745ece577761272fa7615ea5fb"
+    },
+    {
+      "path": "lib/src/data/curriculum.dart",
+      "sha256": "afae9e6996d5146207cf8367f523b781b9155a7c63aa6e90fc18d6dd23f5e6f0"
+    },
+    {
+      "path": "lib/src/data/network_practice.dart",
+      "sha256": "d0b1bf4ce29ff1c27efc00feb294bedbec2c0a6737b19802c6553e4d9c56c3e8"
+    },
+    {
+      "path": "lib/src/data/network_expansion.g.dart",
+      "sha256": "aabebd7e4ae4c7895492de6afdb5e2268deb8733601aad499caa3f4e6ca64c92"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "5317ef6053845462e1ab93db08b46d6844165154ec6006f9f42c792f68768b90"
+    }
+  ],
+  "dashboard_source_files": [
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "c566a0736d3bdeb7aa3d4845db8c443c77d9fdde401d0a0dadbe8c9de45f00e1"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "0b507a242c79840b58c0a21df4cb4a8012a44685eb87bf67de434b1c8339dee6"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "ee94dd57b1b86b6e8d3da7a4191d3783fffa1bb3c8e09e1b2eed7fb7e77a3739"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "7eb9ac19d19c5b4d2f96a57ef930c77ce6ec7c0a9d5345069f6c2665aa73b2e5"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "17578429e572b6f9c96d7d764d06ad8681898a95e774ee3f1d4f4cac63ab4cc2"
+    },
+    {
+      "path": "lib/src/screens/dashboard_actions.dart",
+      "sha256": "0b212488660e475e92c0065f92fca59cbe56840843266e698a2a3b9217ecc49b"
+    },
+    {
+      "path": "lib/src/screens/academy_screens.dart",
+      "sha256": "afac73698cd8334087e5fdd7633ec3bf3fbfc94fac6364ba2f822abe1bd6c025"
+    },
+    {
+      "path": "lib/src/screens/explore_screens.dart",
+      "sha256": "9baf784f0c456a74ebcd006788674a96f49cc0177c920b6c04637c94ca3b0cc2"
+    },
+    {
+      "path": "lib/src/widgets/learning_dashboard.dart",
+      "sha256": "e5ea71bbfbc7baf0fde992f35084b16c62fc9864efc241f63dbb948b0eb66a34"
+    },
+    {
+      "path": "lib/src/widgets/learning_link.dart",
+      "sha256": "0e9fe4bf40d5788d1c2884e02208e75fadf342ad6b7d07f9f71b348243ef9846"
+    },
+    {
+      "path": "lib/src/data/learning_paths.dart",
+      "sha256": "c5899a5af9a126f4deb9650dd6e26ae6caf86a504c2d0b3ae232dca5447ec9dd"
+    },
+    {
+      "path": "lib/src/data/curriculum.dart",
+      "sha256": "afae9e6996d5146207cf8367f523b781b9155a7c63aa6e90fc18d6dd23f5e6f0"
+    },
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "db9a2e023d70207dfb57aed46c0819a72fb973db15cf8b05aac708fcfc52bbbc"
+    },
+    {
+      "path": "lib/src/data/network_expansion.g.dart",
+      "sha256": "aabebd7e4ae4c7895492de6afdb5e2268deb8733601aad499caa3f4e6ca64c92"
+    },
+    {
+      "path": "lib/src/data/network_practice.dart",
+      "sha256": "d0b1bf4ce29ff1c27efc00feb294bedbec2c0a6737b19802c6553e4d9c56c3e8"
+    },
+    {
+      "path": "lib/src/screens/certifications.dart",
+      "sha256": "eb896a15988068a0e3e480ade6ebee6f9d88c473a3c7b17fd04925670400a5ea"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "5317ef6053845462e1ab93db08b46d6844165154ec6006f9f42c792f68768b90"
+    }
+  ],
+  "network_source_files": [
+    {
+      "path": "lib/src/data/network_expansion.g.dart",
+      "sha256": "aabebd7e4ae4c7895492de6afdb5e2268deb8733601aad499caa3f4e6ca64c92"
+    },
+    {
+      "path": "lib/src/data/network_practice.dart",
+      "sha256": "d0b1bf4ce29ff1c27efc00feb294bedbec2c0a6737b19802c6553e4d9c56c3e8"
+    },
+    {
+      "path": "lib/src/data/network_sources.dart",
+      "sha256": "199f784e1f58a9de4aea8163fe7def02a46c4562a7fd35bc9731c0727e01f7f6"
+    },
+    {
+      "path": "lib/src/data/curriculum.dart",
+      "sha256": "afae9e6996d5146207cf8367f523b781b9155a7c63aa6e90fc18d6dd23f5e6f0"
+    },
+    {
+      "path": "lib/src/data/certification_guides.dart",
+      "sha256": "84cb74ee463c85e5df8221f0321becda760d264c921552acbc08ec1c02e1799b"
+    },
+    {
+      "path": "lib/src/data/learning_paths.dart",
+      "sha256": "c5899a5af9a126f4deb9650dd6e26ae6caf86a504c2d0b3ae232dca5447ec9dd"
+    },
+    {
+      "path": "lib/src/data/course_presentation.dart",
+      "sha256": "db9a2e023d70207dfb57aed46c0819a72fb973db15cf8b05aac708fcfc52bbbc"
+    },
+    {
+      "path": "lib/src/models/course.dart",
+      "sha256": "c71040e7174651e804a717093b8e0b557119680e877caebe5b5edc776b2c544a"
+    },
+    {
+      "path": "lib/src/models/learning_overview.dart",
+      "sha256": "c566a0736d3bdeb7aa3d4845db8c443c77d9fdde401d0a0dadbe8c9de45f00e1"
+    },
+    {
+      "path": "lib/src/state/academy_store.dart",
+      "sha256": "0b507a242c79840b58c0a21df4cb4a8012a44685eb87bf67de434b1c8339dee6"
+    },
+    {
+      "path": "lib/src/data/micro_lesson_dialogues.dart",
+      "sha256": "35ce9a64db3f5e8e0e56be62c73ad336bab01dcf766cac5857f04d935f9c9347"
+    },
+    {
+      "path": "lib/src/screens/certifications.dart",
+      "sha256": "eb896a15988068a0e3e480ade6ebee6f9d88c473a3c7b17fd04925670400a5ea"
+    },
+    {
+      "path": "lib/src/screens/practice_bank.dart",
+      "sha256": "a6aa3c7baa19f0b9b77c0b5471bbdf3a2fb0f8745ece577761272fa7615ea5fb"
+    },
+    {
+      "path": "lib/src/screens/course_overview.dart",
+      "sha256": "612de5050d560c4659e33573459122d90d5ba527495ed8e83423522319b65ca9"
+    },
+    {
+      "path": "lib/src/screens/lesson_studio.dart",
+      "sha256": "fc42faca380b312434a0ade8f781c3e57f50e87f0f317db929e4ebe8e306e0de"
+    },
+    {
+      "path": "lib/src/screens/explore_screens.dart",
+      "sha256": "9baf784f0c456a74ebcd006788674a96f49cc0177c920b6c04637c94ca3b0cc2"
+    },
+    {
+      "path": "lib/src/screens/learning_home.dart",
+      "sha256": "ee94dd57b1b86b6e8d3da7a4191d3783fffa1bb3c8e09e1b2eed7fb7e77a3739"
+    },
+    {
+      "path": "lib/src/screens/learning_routes.dart",
+      "sha256": "17578429e572b6f9c96d7d764d06ad8681898a95e774ee3f1d4f4cac63ab4cc2"
+    },
+    {
+      "path": "lib/src/screens/learning_progress.dart",
+      "sha256": "7eb9ac19d19c5b4d2f96a57ef930c77ce6ec7c0a9d5345069f6c2665aa73b2e5"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "5317ef6053845462e1ab93db08b46d6844165154ec6006f9f42c792f68768b90"
+    }
+  ],
+  "compiled_web_sha256": "532f0c1855852f18d4a11d47d320fe6438ef09d61bc7c3a638ccaad6a044a2de",
+  "learning_paths": 6,
+  "course_cover_files": [
+    "assets/artwork/defense-v1.png",
+    "assets/artwork/linux-v1.png",
+    "assets/artwork/networks-v1.png",
+    "assets/artwork/recovery-v1.png",
+    "assets/artwork/secure-build-v1.png"
+  ],
+  "dialogue_assets": 6,
+  "editorial_dialogues": 585,
+  "courses": 31,
+  "lessons": 490,
+  "exercises": 1530,
+  "starter_exercises": {
+    "foundations": 30,
+    "identity": 30,
+    "phishing": 30
+  },
+  "malware_courses": 6,
+  "malware_lessons": 60,
+  "malware_exercises": 240,
+  "malware_explained_cases": 120,
+  "malware_theory_words": 38984,
+  "malware_authored_aoi_lines": 1746,
+  "secure_courses": 4,
+  "secure_lessons": 40,
+  "secure_exercises": 120,
+  "secure_explained_cases": 80,
+  "secure_theory_words": 27038,
+  "secure_authored_aoi_lines": 964,
+  "linux_courses": 6,
+  "linux_lessons": 60,
+  "linux_exercises": 240,
+  "linux_explained_cases": 120,
+  "linux_theory_words": 40097,
+  "linux_authored_aoi_lines": 1746,
+  "advanced_network_courses": 6,
+  "advanced_network_lessons": 60,
+  "advanced_network_exercises": 360,
+  "advanced_network_explained_cases": 120,
+  "advanced_network_theory_words": 39621,
+  "network_authored_aoi_lines": 4026,
+  "network_reinforcement_exercises": 240,
+  "reinforced_course_ids": [
+    "networks-basics",
+    "ip-dns",
+    "home-wifi",
+    "public-networks",
+    "safe-browsing",
+    "web-privacy"
+  ],
+  "certification_guides": [
+    "ccst-networking",
+    "ccst-cybersecurity",
+    "isc2-cc",
+    "ccna"
+  ],
+  "compiled_certification_titles": [
+    "Cisco CCST Networking",
+    "Cisco CCST Cybersecurity",
+    "ISC2 Certified in Cybersecurity (CC)",
+    "Cisco CCNA"
+  ],
+  "offline_labs": 4,
+  "lab_stages": 12,
+  "lab_authored_aoi_lines": 52,
+  "compiled_lesson_ids": 490,
+  "compiled_regular_lesson_ids": 490,
+  "missing_lesson_ids": [],
+  "compiled_reinforcement_base_keys": 240,
+  "missing_reinforcement_base_keys": [],
+  "reinforcement_id_strategy": "240 runtime IDs from verified compiled base keys plus the compiled -reinforcement suffix; not 240 literal full IDs",
+  "flutter_abis": [
+    "arm64-v8a"
+  ],
+  "internet_permission": false,
+  "minimum_sdk": 24,
+  "target_sdk": 36,
+  "historical_note": "Audited 1.7.0 APK preserved before the flat icon patch; browser evidence belongs to this original version."
+}

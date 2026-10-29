@@ -1,12 +1,14 @@
 # Aiocyb
 
-<img src="assets/branding/play-store-icon-512.png" alt="Icono de Aiocyb: escudo con una A en cian y violeta" width="112" />
+<img src="assets/branding/play-store-icon-512.png" alt="Icono de Aiocyb: A azul oscuro sobre fondo cian" width="112" />
 
 Academia de ciberseguridad para principiantes, desarrollada en Flutter con Android como plataforma principal. El contenido, los ejercicios, las imágenes y el progreso funcionan localmente, sin iniciar sesión ni conectarse a un servidor.
 
 Código fuente: [Lumarri/Aiocyb](https://github.com/Lumarri/Aiocyb). Icono nuevo para Android, web y Windows: [diseño y regeneración](docs/ICONO.md).
 
-Descarga para Android: [APK 1.7.0 ARM64](https://github.com/Lumarri/Aiocyb/releases/download/v1.7.0/Aiocyb-1.7.0-android-arm64.apk) · [Notas y SHA-256](https://github.com/Lumarri/Aiocyb/releases/tag/v1.7.0). Requiere Android 7.0 o superior y un dispositivo ARM64. Es una compilación de prueba para instalación directa, firmada con la clave de desarrollo.
+Descarga para Android: [APK 1.7.1 ARM64](https://github.com/Lumarri/Aiocyb/releases/download/v1.7.1/Aiocyb-1.7.1-android-arm64.apk) · [Notas y SHA-256](https://github.com/Lumarri/Aiocyb/releases/tag/v1.7.1). Requiere Android 7.0 o superior y un dispositivo ARM64. Es una compilación de prueba para instalación directa, firmada con la clave de desarrollo.
+
+La versión 1.7.1 simplifica el icono: una A plana, con fondo cian hasta los bordes, sin escudo, relieves ni brillos. Android, web y Windows comparten el mismo [original vectorial editable](assets/branding/aiocyb-simple.svg).
 
 ## Versión 1.7
 

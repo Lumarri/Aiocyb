@@ -1,48 +1,56 @@
-# Icono de Aiocyb
+# Icono de Aiocyb 1.7.1
 
-26 de octubre de 2026. Emblema original de un escudo con una A, un destello central y bordes cian y violeta sobre azul oscuro. Sustituye el escudo verde anterior y los iconos de plantilla de web y Windows.
+29 de octubre de 2026. Diseño vectorial original definido con coordenadas SVG: una A geométrica azul oscuro `#081820` sobre cian `#22D3EE`. El fondo ocupa todo el cuadrado; la forma usa dos polígonos con relleno par e impar, sin tipografías, texturas, brillo ni bisel.
 
-![Icono final](../assets/branding/play-store-icon-512.png)
+![Icono plano de Aiocyb](../assets/branding/play-store-icon-512.png)
 
-## Archivos e integración
+## Fuente y exportaciones
 
-- [Original transparente](../assets/branding/aiocyb-emblem-v1.png), conservado sin modificaciones.
-- [Icono de 1024 px](../assets/branding/aiocyb-icon-1024.png) y [exportación de 512 px](../assets/branding/play-store-icon-512.png).
-- Android: cinco densidades de iconos clásicos; icono adaptativo desde API 26 y capa monocromática desde API 33. El manifiesto usa `@mipmap/ic_launcher` también para el icono redondo.
-- Web: favicon de 48 px y variantes normales y maskable de 192 y 512 px. El manifiesto y el tema del navegador usan `#0B1018`.
-- Windows: ICO con siete tamaños, entre 16 y 256 px. No se ha compilado el ejecutable de Windows.
+La fuente editable es [aiocyb-simple.svg](../assets/branding/aiocyb-simple.svg), con lienzo de 108 × 108. El [generador local](../tool/generate_icons.ps1) lee sus colores y coordenadas para producir los PNG, el ICO y los vectores Android. No descarga imágenes ni requiere nuevas dependencias de Flutter.
 
-El primer plano adaptativo es transparente, de 432 × 432 px para un lienzo de 108 dp. El dibujo ocupa 60 dp de altura; la comprobación de píxeles con alfa superior a 16 da un radio máximo de 31,03 dp, dentro del círculo seguro de 33 dp. Las variantes web maskable tienen su propio margen. Referencia: [iconos adaptativos de Android](https://developer.android.com/develop/ui/compose/system/icon_design_adaptive).
+- Doce PNG opacos: originales de 1024 y 512 px; cinco densidades Android de 48, 72, 96, 144 y 192 px; favicon de 48 px; iconos web normales y maskable de 192 y 512 px.
+- Android: iconos clásicos para API 24–25, primer plano vectorial y fondo de color desde API 26, y vector monocromático de la misma A desde API 33. El manifiesto usa `@mipmap/ic_launcher` para los iconos normal y redondo.
+- Windows: ICO con siete cuadros PNG reales de 16, 24, 32, 48, 64, 128 y 256 px. No se ha compilado el ejecutable de Windows.
 
-## Regeneración
+En los adaptativos, el símbolo alcanza un radio máximo de 32,52691 dp respecto del centro `(54,54)`, dentro del círculo seguro de 33 dp. El fondo cubre los 108 dp completos. Las exportaciones clásicas amplían la A con un radio geométrico del 46% del lienzo; las web maskable utilizan el 38,5%, dejando margen para el suavizado dentro del radio seguro del 40%. Los doce PNG mantienen alfa 255 y el color cian exacto en todos los píxeles de sus bordes.
 
-Las exportaciones se generan localmente desde el original mediante System.Drawing, sin descargar imágenes ni dependencias de Flutter:
+## Regeneración y auditoría
+
+Desde la raíz del proyecto, en Windows PowerShell:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tool/generate_icons.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tool/audit_icons.ps1
 ```
 
-El script solo exporta tamaños, formato y fondo para cada plataforma; el original generado conserva su transparencia. No modifica la política de ejecución del sistema.
+El segundo comando comprueba fuente, colores, geometría, contraste, tamaños, opacidad y bordes de los doce PNG, contenido de los siete cuadros ICO y correspondencia entre SVG, vectores y referencias adaptativas. En los cuadros ICO más pequeños puede haber suavizado hasta el borde; la comprobación estricta del fondo en todos los bordes corresponde a los doce PNG independientes. La inspección visual de 512 y 48 px confirma que la A sigue siendo reconocible; las comprobaciones de píxeles complementan esa revisión.
 
-## Comprobación de la entrega
+Para comprobar además el APK compilado:
 
-- `flutter analyze --no-pub`: sin incidencias.
-- Trece PNG exportados con las dimensiones esperadas y siete tamaños válidos en el ICO.
-- `flutter build apk --release --target-platform android-arm64 --no-pub`: compilación correcta; Gradle tardó 722,3 segundos.
-- El manifiesto Android compilado apunta al nuevo icono normal y redondo. El APK contiene las cinco densidades clásicas, dos variantes adaptativas y la capa monocromática.
-- Los píxeles visibles de los seis PNG Android empaquetados coinciden con los originales exportados, aunque la compresión de sus archivos sea diferente.
-- La auditoría completa del APK vuelve a confirmar 25 cursos, 430 lecciones, 930 ejercicios, los recursos de Aoi y la ausencia del permiso de Internet. Las fuentes de las comprobaciones de interfaz de 1.6 conservan sus hashes; no se ha modificado código Dart ni repetido la prueba de interfaz para cambiar el icono.
-
-[Auditoría del icono](ICON_AUDIT.json) · [Auditoría del APK actual](BUILD_AUDIT.json).
-
-APK local: `build/app/outputs/flutter-apk/app-release.apk`, 69 964 302 bytes. SHA-256: `4839e8b7097221776b76ee2efc366b2ed5add9750479c252ac629a41aacb0aad`. Se conserva la versión 1.6.0+8. El instalador se genera localmente y queda fuera del repositorio de código. No se ha instalado esta compilación en un teléfono ni comprobado el icono en un lanzador físico.
-
-## Generación original
-
-Se aplicó la habilidad imagegen con la herramienta integrada `image_gen`, con `transparent_background: true`. No se usó la CLI ni una clave API. El resultado se copió a `assets/branding/aiocyb-emblem-v1.png` antes de generar las exportaciones.
-
-Prompt final:
-
-```text
-Use case: logo-brand. Asset type: final Android app launcher icon source for Aiocyb, a Spanish offline cybersecurity academy whose UI uses deep navy, electric cyan and violet. Create ONE polished square icon artwork, front-facing orthographic, not a mockup or icon sheet. Subject: a bold faceted security shield forming a distinctive capital A in its negative space, with a crisp small lightning-shaped slash in the central crossbar. Material: clean dark titanium with luminous cyan bevel on the left and vibrant violet rim on the right, restrained soft neon bloom, high contrast, subtle dimensional depth. Strong simple silhouette, broad readable strokes, feels confident and playful. Center the entire emblem in the middle 58% of the square canvas so it survives circular Android adaptive masks, and leave the remaining outer area fully transparent. Transparent background, no tile, no rounded-square container, no shadow cast onto a background. Keep the interior dark navy. No typography, no wordmark, no letters beyond the geometric A built into the shield, no small circuit traces, no character, no extra objects, no watermark. 1024 by 1024 square, excellent recognition at 48 pixels.
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tool/audit_icons.ps1 `
+  -Apk build/app/outputs/flutter-apk/app-release.apk `
+  -Aapt D:/DevTools/Android/sdk/build-tools/36.1.0/aapt.exe
 ```
+
+Con `-Apk`, el auditor verifica identidad y versión frente a `pubspec.yaml`, las referencias de icono normal y redondo, las cinco densidades PNG empaquetadas por comparación de píxeles decodificados, los colores y trazados vectoriales compilados y las variantes adaptativas API 26 y 33. Utiliza `aapt`, `ZipArchive` y `System.Drawing`; no instala bibliotecas. Los nombres de recursos optimizados se obtienen del APK, sin depender de nombres internos de una compilación anterior.
+
+El resultado se escribe en [ICON_AUDIT.json](ICON_AUDIT.json). `scope: source_only` y `apk_verified: false` indican que se comprobaron únicamente fuentes y exportaciones; `scope: source_and_packaged_apk` y `apk_verified: true` requieren que también finalice la comprobación del APK indicado. Una comprobación fallida queda registrada con su error y devuelve código de salida 1.
+
+## Estado y límites
+
+La compilación Android ARM64 1.7.1+10 terminó correctamente en 791,6 segundos. La auditoría de fuentes y del APK terminó sin errores: doce PNG, siete tamaños ICO, cinco densidades Android empaquetadas con cero diferencias de píxeles, dos variantes adaptativas y una capa monocromática con los vectores correctos.
+
+APK: `build/app/outputs/flutter-apk/app-release.apk`, 71 287 226 bytes. SHA-256: `368a344c9ef39e89c282959d222995e4b42422474b4a54f2613a438b99d7c149`. La auditoría general vuelve a comprobar el contenido real del paquete: 31 cursos, 490 lecciones, 1530 ejercicios y ausencia del permiso de Internet.
+
+La evidencia de interfaz procede del commit verificado de 1.7.0; los recorridos no se repitieron para este cambio de icono. El auditor comprueba que los 44 archivos de `lib/` y los recursos de la interfaz conservan sus bytes, permitiendo únicamente el valor de versión en `app_info.dart` y `pubspec.yaml`. El informe distingue las huellas actuales y las comprobadas en el navegador. La auditoría general de este cambio se reproduce con:
+
+```powershell
+python tool/audit_release.py `
+  --aapt D:/DevTools/Android/sdk/build-tools/36.1.0/aapt.exe `
+  --browser-baseline-ref eb367e987b09b975a1d2e512de2f3c1a58752798
+```
+
+No se ha comprobado el icono en un lanzador de teléfono físico. Las máscaras y el tratamiento de los iconos temáticos dependen del sistema y del lanzador. La [auditoría general de compilación](BUILD_AUDIT.json) documenta el contenido y las limitaciones del APK entregado.
+
+El informe del emblema anterior se conserva intacto en [ICON_AUDIT_1_6.json](ICON_AUDIT_1_6.json), con su versión, recursos y huella originales.

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/aiocyb_emblem_foreground"
-    android:gravity="fill" />
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#081820" android:fillType="evenOdd"
+        android:pathData="M49,27 L59,27 L77,77 L65,77 L61,66 L47,66 L43,77 L31,77 Z M54,41 L50,56 L58,56 Z" />
+</vector>

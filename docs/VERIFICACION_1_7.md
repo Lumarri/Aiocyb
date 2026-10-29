@@ -24,7 +24,7 @@ La [auditoría editorial](NETWORK_EXPANSION_AUDIT.json) recoge cantidades, huell
 
 Los tres recorridos terminaron correctamente, sin errores registrados y con 37 capturas: [redes, refuerzos y certificaciones](NETWORK_BROWSER_AUDIT.json), [catálogo y aula](COURSE_BROWSER_AUDIT.json) e [Inicio, rutas y progreso](DASHBOARD_BROWSER_AUDIT.json). Los informes corresponden a la misma compilación web, con SHA-256 `532f0c1855852f18d4a11d47d320fe6438ef09d61bc7c3a638ccaad6a044a2de`.
 
-La compilación del APK Android ARM64 1.7.0+9 terminó correctamente en 864,5 segundos. La [auditoría del APK](BUILD_AUDIT.json) confirmó:
+La compilación del APK Android ARM64 1.7.0+9 terminó correctamente en 864,5 segundos. La [auditoría histórica del APK 1.7.0](BUILD_AUDIT_1_7.json) confirmó:
 
 - Tamaño: 71 406 422 bytes, aproximadamente 68,1 MiB.
 - SHA-256: `62d3ff2b0fa9a36b0a1e57a20bcdb93a9cfddf591d79f86c3e82055e22f56d49`.
@@ -35,4 +35,4 @@ La compilación del APK Android ARM64 1.7.0+9 terminó correctamente en 864,5 se
 
 No se ha confirmado instalación ni ejecución de esta versión en un teléfono físico. Las pruebas de widgets y la vista web no sustituyen esa comprobación. La vista web no incorpora un service worker para instalación offline. La auditoría del APK Android comprueba el contenido empaquetado y la ausencia del permiso de acceso a Internet.
 
-La resolución local preexistente de dependencias contiene `jni` 1.1.1 y `shared_preferences_android` 2.5.4. Ese cambio de `pubspec.lock` se conserva localmente y no se publica: el archivo del repositorio mantiene las versiones 1.1.0 y 2.5.3, respectivamente. La compilación Android utiliza la resolución local; no se afirma que el otro archivo de bloqueo reconstruya un binario idéntico byte por byte. El [informe de compilación](BUILD_AUDIT.json) distingue ambas resoluciones y registra sus versiones y huellas para relacionar el código publicado con la compilación entregada.
+La resolución local preexistente de dependencias contiene `jni` 1.1.1 y `shared_preferences_android` 2.5.4. Ese cambio de `pubspec.lock` se conserva localmente y no se publica: el archivo del repositorio mantiene las versiones 1.1.0 y 2.5.3, respectivamente. La compilación Android utiliza la resolución local; no se afirma que el otro archivo de bloqueo reconstruya un binario idéntico byte por byte. El [informe histórico de compilación 1.7.0](BUILD_AUDIT_1_7.json) distingue ambas resoluciones y registra sus versiones y huellas para relacionar el código publicado con la compilación entregada.

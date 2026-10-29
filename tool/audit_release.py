@@ -12,6 +12,9 @@ NETWORK_IDS = ['ipv4-subnetting', 'ipv6-foundations', 'switching-routing',
                'network-diagnostics', 'network-defense', 'security-operations']
 REINFORCED_IDS = ['networks-basics', 'ip-dns', 'home-wifi',
                   'public-networks', 'safe-browsing', 'web-privacy']
+BROWSER_REPORTS = ['COURSE_BROWSER_AUDIT', 'DASHBOARD_BROWSER_AUDIT',
+                   'NETWORK_BROWSER_AUDIT']
+APPROVED_BROWSER_BASELINE = 'eb367e987b09b975a1d2e512de2f3c1a58752798'
 
 
 def dependency_resolution():
@@ -47,21 +50,129 @@ def dependency_resolution():
     }
 
 
-def audit_release(apk, aapt):
-    version = re.search(r'^version:\s*(\S+)', (ROOT / 'pubspec.yaml').read_text(encoding='utf-8'), re.M).group(1)
-    version_name, version_code = version.split('+')
+def audit_browser_evidence(version, baseline_ref=None):
+    """Check current journeys, or explicitly inherit the approved icon-only baseline."""
+    digest = lambda data: hashlib.sha256(data).hexdigest()
     compiled_web_sha = hashlib.sha256((ROOT / 'build/web/main.dart.js').read_bytes()).hexdigest()
+    expected_version = version
+    changed_sources, baseline_files = [], {}
+    evidence = {
+        'mode': 'current_release', 'currentVersion': version,
+        'browserVersion': version, 'browserJourneysRerunForCurrentRelease': True,
+        'compiledWebSha256': compiled_web_sha,
+    }
+    if baseline_ref is not None:
+        assert baseline_ref == APPROVED_BROWSER_BASELINE, 'Browser reuse is limited to the explicitly approved 1.7.0 commit'
+
+        def baseline_blob(relative):
+            if relative not in baseline_files:
+                baseline_files[relative] = subprocess.run(
+                    ['git', 'show', f'{baseline_ref}:{relative}'], cwd=ROOT,
+                    check=True, capture_output=True).stdout
+            return baseline_files[relative]
+
+        old_pubspec = baseline_blob('pubspec.yaml')
+        version_pattern = rb'(?m)^(version:[ \t]*)(\S+)([ \t]*)(?=\r?$)'
+        versions = list(re.finditer(version_pattern, old_pubspec))
+        assert len(versions) == 1, 'Baseline must contain one pubspec version line'
+        match = versions[0]
+        expected_version = match.group(2).decode('ascii')
+        expected_pubspec = old_pubspec[:match.start(2)] + version.encode('ascii') + old_pubspec[match.end(2):]
+        assert (ROOT / 'pubspec.yaml').read_bytes() == expected_pubspec, 'Only the pubspec version value may differ from the browser baseline'
+        app_info_path = 'lib/src/app_info.dart'
+        old_info = baseline_blob(app_info_path)
+        old_default = f"defaultValue: '{expected_version.split('+')[0]}'".encode('ascii')
+        new_default = f"defaultValue: '{version.split('+')[0]}'".encode('ascii')
+        assert old_info.count(old_default) == 1, 'Unexpected baseline application-version declaration'
+        expected_info = old_info.replace(old_default, new_default, 1)
+
+        def verify_tree(relative, replacements=None):
+            replacements = replacements or {}
+            listing = subprocess.run(
+                ['git', 'ls-tree', '-r', '--name-only', '-z', baseline_ref, '--', relative],
+                cwd=ROOT, check=True, capture_output=True).stdout
+            paths = {item.decode('utf-8') for item in listing.split(b'\0') if item}
+            assert paths, f'No baseline files under {relative}'
+            entries = list((ROOT / relative).rglob('*'))
+            assert not any(item.is_symlink() for item in entries), f'Symlinks are not eligible for baseline reuse: {relative}'
+            current = {item.relative_to(ROOT).as_posix() for item in entries if item.is_file()}
+            assert current == paths, f'Baseline tree changed in {relative}; added={sorted(current - paths)}, missing={sorted(paths - current)}'
+            for name in sorted(paths):
+                expected = replacements.get(name, baseline_blob(name))
+                assert (ROOT / name).read_bytes() == expected, f'UI source differs from approved browser baseline: {name}'
+            return len(paths)
+
+        lib_count = verify_tree('lib', {app_info_path: expected_info})
+        asset_counts = {directory: verify_tree(directory) for directory in
+                        ['assets/artwork', 'assets/cisco', 'assets/aoi', 'assets/dialogues']}
+        baseline_build = json.loads(baseline_blob('docs/BUILD_AUDIT.json'))
+        assert baseline_build['version'] == expected_version, 'Baseline build and browser versions differ'
+        assert digest((ROOT / 'pubspec.lock').read_bytes()) == baseline_build['dependency_resolution']['workspaceSha256'], 'Workspace dependencies differ from the browser-tested resolutions'
+        for name, before, reason in [
+            ('pubspec.yaml', old_pubspec, 'Only the version value was replaced; every other byte is unchanged.'),
+            (app_info_path, old_info, 'Only the default application-version string was replaced; every other byte is unchanged.'),
+        ]:
+            after = (ROOT / name).read_bytes()
+            changed_sources.append({
+                'path': name, 'baselineSha256': digest(before), 'currentSha256': digest(after),
+                'changed': before != after, 'permittedDifference': reason,
+            })
+        evidence = {
+            'mode': 'inherited_approved_baseline', 'currentVersion': version,
+            'baselineCommit': baseline_ref, 'browserVersion': expected_version,
+            'browserJourneysRerunForCurrentRelease': False,
+            'compiledWebSha256': compiled_web_sha,
+            'verifiedLibFiles': lib_count, 'libFileSetUnchanged': True,
+            'verifiedUnchangedUiAssets': asset_counts,
+            'workspaceDependenciesMatchBrowserBaseline': True,
+            'versionOnlySourceDifferences': changed_sources,
+            'note': 'Browser journeys were not rerun for this release. Their committed results and screenshots are inherited from the identified baseline. All lib files and bundled UI assets match it byte for byte except the exact application-version default; pubspec differs only in its version value. The new APK content and Android metadata are audited separately below.',
+        }
+
     browser_reports = {}
-    for name in ['COURSE_BROWSER_AUDIT', 'DASHBOARD_BROWSER_AUDIT', 'NETWORK_BROWSER_AUDIT']:
-        report = json.loads((ROOT / 'docs' / f'{name}.json').read_text(encoding='utf-8'))
-        assert report['status'] == 'passed' and report['version'] == version, f'{name} is not current'
+    evidence_reports = []
+    for name in BROWSER_REPORTS:
+        report_path = f'docs/{name}.json'
+        report_bytes = (ROOT / report_path).read_bytes()
+        if baseline_ref is not None:
+            assert report_bytes == baseline_blob(report_path), f'{name} is not the committed baseline evidence'
+        report = json.loads(report_bytes)
+        assert report['status'] == 'passed' and report['version'] == expected_version, f'{name} has the wrong browser-evidence version'
         assert report['compiledWebSha256'] == compiled_web_sha, f'{name} is from a different web build'
         assert not report['errors'], f'{name} has unresolved browser errors'
+        current_sources = []
         for source in report['sourceFiles']:
-            assert hashlib.sha256((ROOT / source['path']).read_bytes()).hexdigest() == source['sha256'], f'Stale {name}: {source["path"]}'
+            current_sha = digest((ROOT / source['path']).read_bytes())
+            if baseline_ref is not None:
+                assert digest(baseline_blob(source['path'])) == source['sha256'], f'{name} source is not verified against the baseline commit: {source["path"]}'
+                if source['path'] != 'pubspec.yaml':
+                    assert current_sha == source['sha256'], f'Stale {name}: {source["path"]}'
+                current_sources.append({
+                    'path': source['path'], 'sha256': current_sha,
+                    'browserTestedSha256': source['sha256'],
+                    'unchangedSinceBrowserTests': current_sha == source['sha256'],
+                })
+            else:
+                assert current_sha == source['sha256'], f'Stale {name}: {source["path"]}'
+                current_sources.append(dict(source))
         for screenshot in report['screenshots']:
-            assert (ROOT / 'docs/screenshots' / screenshot).is_file(), f'Missing browser evidence: {screenshot}'
-        browser_reports[name] = report
+            screenshot_path = f'docs/screenshots/{screenshot}'
+            assert (ROOT / screenshot_path).is_file(), f'Missing browser evidence: {screenshot}'
+            if baseline_ref is not None:
+                assert (ROOT / screenshot_path).read_bytes() == baseline_blob(screenshot_path), f'Browser screenshot differs from the committed baseline: {screenshot}'
+        evidence_reports.append({
+            'path': report_path, 'sha256': digest(report_bytes),
+            'testedVersion': report['version'], 'screenshotsVerified': len(report['screenshots']),
+        })
+        browser_reports[name] = dict(report, sourceFiles=current_sources)
+    evidence['reports'] = evidence_reports
+    return browser_reports, evidence
+
+
+def audit_release(apk, aapt, browser_baseline_ref=None):
+    version = re.search(r'^version:\s*(\S+)', (ROOT / 'pubspec.yaml').read_text(encoding='utf-8'), re.M).group(1)
+    version_name, version_code = version.split('+')
+    browser_reports, browser_evidence = audit_browser_evidence(version, browser_baseline_ref)
     interface, dashboard, network_browser = (browser_reports[name] for name in
         ['COURSE_BROWSER_AUDIT', 'DASHBOARD_BROWSER_AUDIT', 'NETWORK_BROWSER_AUDIT'])
     assert len(dashboard['paths']) == 6, 'Expected six learning paths'
@@ -158,7 +269,9 @@ def audit_release(apk, aapt):
         'course_interface_source_files': interface['sourceFiles'],
         'dashboard_source_files': dashboard['sourceFiles'],
         'network_source_files': network_browser['sourceFiles'],
-        'compiled_web_sha256': compiled_web_sha,
+        'compiled_web_sha256': browser_evidence['compiledWebSha256'],
+        'compiled_web_version': browser_evidence['browserVersion'],
+        'browser_evidence': browser_evidence,
         'learning_paths': len(dashboard['paths']),
         'course_cover_files': [name.removeprefix('assets/flutter_assets/') for name in covers],
         'dialogue_assets': len(banks), 'editorial_dialogues': dialogues,
@@ -214,5 +327,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apk', type=Path, default=ROOT / 'build/app/outputs/flutter-apk/app-release.apk')
     parser.add_argument('--aapt', type=Path, required=True, help='Android SDK build-tools aapt executable')
+    parser.add_argument('--browser-baseline-ref', help='Explicitly inherit committed browser evidence only from the approved 1.7.0 commit after byte-for-byte UI and version-only metadata verification')
     arguments = parser.parse_args()
-    audit_release(arguments.apk.resolve(), arguments.aapt.resolve())
+    audit_release(arguments.apk.resolve(), arguments.aapt.resolve(), arguments.browser_baseline_ref)
